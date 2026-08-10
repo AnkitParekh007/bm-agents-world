@@ -1,6 +1,7 @@
 import { createHash, randomUUID } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import { extname, resolve } from "node:path";
+import type { MaybePromise } from "./capability-broker-contract.js";
 
 export interface StoredArtifact {
   id: string;
@@ -16,6 +17,36 @@ export interface StoredArtifact {
   uri: string;
 }
 
+export interface ArtifactLookup {
+  record: StoredArtifact;
+  /** Local filesystem path when the active repository is filesystem-backed. */
+  diskPath?: string;
+}
+
+export interface ArtifactRepository {
+  readonly kind: "filesystem" | "supabase-storage";
+  readonly location: string;
+  write(
+    runId: string,
+    type: string,
+    filename: string,
+    data: string | Buffer,
+    options?: { classification?: string; redacted?: boolean; mediaType?: string },
+  ): MaybePromise<StoredArtifact>;
+  writeJson(
+    runId: string,
+    type: string,
+    filename: string,
+    value: unknown,
+    options?: { classification?: string; redacted?: boolean },
+  ): MaybePromise<StoredArtifact>;
+  find(id: string): MaybePromise<ArtifactLookup | undefined>;
+  readJson<T>(id: string, expectedType?: string): MaybePromise<{ record: StoredArtifact; value: T } | undefined>;
+  readBuffer(id: string): MaybePromise<{ record: StoredArtifact; data: Buffer } | undefined>;
+  healthCheck?(): MaybePromise<boolean>;
+  close?(): MaybePromise<void>;
+}
+
 interface ArtifactMetadata extends StoredArtifact {
   diskPath: string;
 }
@@ -28,7 +59,7 @@ function safeSegment(value: string): string {
   return value.replace(/[^a-zA-Z0-9._-]/g, "_").slice(0, 120) || "artifact";
 }
 
-function mediaTypeFor(filename: string): string {
+export function mediaTypeFor(filename: string): string {
   switch (extname(filename).toLowerCase()) {
     case ".json": return "application/json";
     case ".png": return "image/png";
@@ -38,11 +69,14 @@ function mediaTypeFor(filename: string): string {
   }
 }
 
-export class ArtifactStore {
+export class ArtifactStore implements ArtifactRepository {
+  readonly kind = "filesystem" as const;
   readonly root: string;
+  readonly location: string;
 
   constructor(root = defaultRoot()) {
     this.root = root;
+    this.location = root;
     mkdirSync(this.root, { recursive: true });
   }
 
@@ -99,34 +133,20 @@ export class ArtifactStore {
     });
   }
 
-  find(id: string): { record: StoredArtifact; diskPath: string } | undefined {
-    if (!/^[0-9a-f-]{36}$/i.test(id) || !existsSync(this.root)) return undefined;
-
-    for (const runEntry of readdirSync(this.root, { withFileTypes: true })) {
-      if (!runEntry.isDirectory()) continue;
-      const artifactDirectory = resolve(this.root, runEntry.name, id);
-      const metadataPath = resolve(artifactDirectory, "metadata.json");
-      if (!existsSync(metadataPath)) continue;
-      try {
-        const metadata = JSON.parse(readFileSync(metadataPath, "utf8")) as ArtifactMetadata;
-        if (!metadata.diskPath || !existsSync(metadata.diskPath)) return undefined;
-        return {
-          record: this.publicRecord({ ...metadata, sizeBytes: statSync(metadata.diskPath).size }),
-          diskPath: metadata.diskPath,
-        };
-      } catch {
-        return undefined;
-      }
-    }
-    return undefined;
+  find(id: string): ArtifactLookup | undefined {
+    const metadata = this.findMetadata(id);
+    if (!metadata) return undefined;
+    return {
+      record: this.publicRecord({ ...metadata, sizeBytes: statSync(metadata.diskPath).size }),
+      diskPath: metadata.diskPath,
+    };
   }
 
   readJson<T>(id: string, expectedType?: string): { record: StoredArtifact; value: T } | undefined {
     const found = this.find(id);
-    if (!found) return undefined;
+    if (!found?.diskPath) return undefined;
     if (expectedType && found.record.type !== expectedType) return undefined;
     if (found.record.mediaType !== "application/json") return undefined;
-
     try {
       return {
         record: found.record,
@@ -135,6 +155,40 @@ export class ArtifactStore {
     } catch {
       return undefined;
     }
+  }
+
+  readBuffer(id: string): { record: StoredArtifact; data: Buffer } | undefined {
+    const found = this.find(id);
+    if (!found?.diskPath) return undefined;
+    try {
+      return { record: found.record, data: readFileSync(found.diskPath) };
+    } catch {
+      return undefined;
+    }
+  }
+
+  healthCheck(): boolean {
+    return existsSync(this.root);
+  }
+
+  close(): void {}
+
+  private findMetadata(id: string): ArtifactMetadata | undefined {
+    if (!/^[0-9a-f-]{36}$/i.test(id) || !existsSync(this.root)) return undefined;
+    for (const runEntry of readdirSync(this.root, { withFileTypes: true })) {
+      if (!runEntry.isDirectory()) continue;
+      const artifactDirectory = resolve(this.root, runEntry.name, id);
+      const metadataPath = resolve(artifactDirectory, "metadata.json");
+      if (!existsSync(metadataPath)) continue;
+      try {
+        const metadata = JSON.parse(readFileSync(metadataPath, "utf8")) as ArtifactMetadata;
+        if (!metadata.diskPath || !existsSync(metadata.diskPath)) return undefined;
+        return metadata;
+      } catch {
+        return undefined;
+      }
+    }
+    return undefined;
   }
 
   private publicRecord(record: ArtifactMetadata): StoredArtifact {
