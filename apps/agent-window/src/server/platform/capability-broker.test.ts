@@ -49,9 +49,9 @@ test("L0 QA reads are immediately executable", async () => {
 test("L3 external writes cannot execute before approval", async () => {
   const instance = broker();
   const action = instance.requestAction(
-    "qa.jira.bug.create",
+    "qa.teams.status.post",
     context("qa"),
-    { storyId: "PCC-101", summary: "Example defect", severity: "Major" },
+    { channel: "Teams-activities", message: "QA status ready" },
   );
 
   assert.equal(action.riskLevel, "L3");
@@ -63,9 +63,9 @@ test("L3 external writes cannot execute before approval", async () => {
 test("human approval is bound to the exact payload hash", async () => {
   const instance = broker();
   const action = instance.requestAction(
-    "qa.jira.bug.create",
+    "qa.teams.status.post",
     context("qa"),
-    { storyId: "PCC-101", summary: "Example defect", severity: "Major" },
+    { channel: "Teams-activities", message: "QA status ready" },
   );
 
   const originalHash = action.payloadHash;

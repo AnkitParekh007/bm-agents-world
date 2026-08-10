@@ -9,6 +9,8 @@ export interface JiraReadConfiguration {
   authMode?: "basic-token" | "bearer";
   emailConfigured: boolean;
   tokenConfigured: boolean;
+  writeEnabled: boolean;
+  writeMode: "live" | "mock";
 }
 
 export interface BitbucketRepositoryRef {
@@ -45,16 +47,11 @@ export interface QaIntegrationStatus {
 }
 
 function repoRoot(): string {
-  const candidates = [
-    process.env.BM_AGENTS_REPO_ROOT,
-    resolve(process.cwd(), "../.."),
-    process.cwd(),
-  ].filter((value): value is string => Boolean(value));
-
+  const candidates = [process.env.BM_AGENTS_REPO_ROOT, resolve(process.cwd(), "../.."), process.cwd()]
+    .filter((value): value is string => Boolean(value));
   for (const candidate of candidates) {
     if (existsSync(resolve(candidate, "packs", "qa-agent-pack"))) return candidate;
   }
-
   return process.cwd();
 }
 
@@ -79,7 +76,9 @@ function projectRegistry(): Array<Record<string, any>> {
   const path = resolve(repoRoot(), "packs", "qa-agent-pack", "config", "project-registry.yaml");
   if (!existsSync(path)) return [];
   const parsed = YAML.parse(readFileSync(path, "utf8")) as Record<string, unknown> | undefined;
-  return Array.isArray(parsed?.projects) ? parsed.projects.filter((item): item is Record<string, any> => Boolean(item && typeof item === "object")) : [];
+  return Array.isArray(parsed?.projects)
+    ? parsed.projects.filter((item): item is Record<string, any> => Boolean(item && typeof item === "object"))
+    : [];
 }
 
 function projectRegistryRepositories(): Record<string, BitbucketRepositoryRef[]> {
@@ -89,14 +88,12 @@ function projectRegistryRepositories(): Record<string, BitbucketRepositoryRef[]>
     if (!projectId) continue;
     const repositories = project.source?.repositories;
     if (!repositories || typeof repositories !== "object") continue;
-
     const refs = Object.entries(repositories)
       .map(([label, value]) => {
         const url = typeof value === "object" && value ? String((value as Record<string, unknown>).url ?? "") : "";
         return url ? parseCloudRepositoryUrl(url, label) : undefined;
       })
       .filter((value): value is BitbucketRepositoryRef => Boolean(value));
-
     if (refs.length) result[projectId] = refs;
   }
   return result;
@@ -119,40 +116,26 @@ function parseRepositoryOverride(projectId: string): BitbucketRepositoryRef[] | 
   const envKey = `QA_${projectId.toUpperCase().replace(/[^A-Z0-9]/g, "_")}_BITBUCKET_REPOS`;
   const raw = process.env[envKey]?.trim();
   if (!raw) return undefined;
-
   const defaultWorkspace = process.env.QA_BITBUCKET_WORKSPACE?.trim();
-  const refs = raw
-    .split(",")
-    .map((entry) => entry.trim())
-    .filter(Boolean)
-    .map((entry) => {
-      const [labelPart, repoPart] = entry.includes(":") ? entry.split(":", 2) : ["repository", entry];
-      const label = labelPart.trim();
-      const repo = repoPart.trim();
-      const [workspace, repoSlug] = repo.includes("/") ? repo.split("/", 2) : [defaultWorkspace, repo];
-      if (!workspace || !repoSlug) return undefined;
-      return { label, workspace, repoSlug };
-    })
-    .filter((value): value is BitbucketRepositoryRef => Boolean(value));
-
+  const refs = raw.split(",").map((entry) => entry.trim()).filter(Boolean).map((entry) => {
+    const [labelPart, repoPart] = entry.includes(":") ? entry.split(":", 2) : ["repository", entry];
+    const [workspace, repoSlug] = repoPart.trim().includes("/") ? repoPart.trim().split("/", 2) : [defaultWorkspace, repoPart.trim()];
+    if (!workspace || !repoSlug) return undefined;
+    return { label: labelPart.trim(), workspace, repoSlug };
+  }).filter((value): value is BitbucketRepositoryRef => Boolean(value));
   return refs.length ? refs : undefined;
 }
 
 function playwrightTargets(): PlaywrightTargetRef[] {
   const byKey = new Map<string, PlaywrightTargetRef>();
-  for (const target of projectRegistryPlaywrightTargets()) {
-    byKey.set(`${target.projectId}:${target.environment}`, target);
-  }
-
+  for (const target of projectRegistryPlaywrightTargets()) byKey.set(`${target.projectId}:${target.environment}`, target);
   for (const projectId of ["PCC", "SOP", "DataBridge"]) {
     const projectKey = projectId.toUpperCase().replace(/[^A-Z0-9]/g, "_");
     for (const environment of ["playground", "qa"] as const) {
-      const envKey = `QA_${projectKey}_PLAYWRIGHT_${environment.toUpperCase()}_URL`;
-      const url = cleanBaseUrl(process.env[envKey]);
+      const url = cleanBaseUrl(process.env[`QA_${projectKey}_PLAYWRIGHT_${environment.toUpperCase()}_URL`]);
       if (url) byKey.set(`${projectId}:${environment}`, { projectId, environment, url });
     }
   }
-
   return [...byKey.values()].sort((a, b) => `${a.projectId}:${a.environment}`.localeCompare(`${b.projectId}:${b.environment}`));
 }
 
@@ -162,22 +145,20 @@ export function loadQaIntegrationStatus(): QaIntegrationStatus {
   const jiraApiToken = process.env.QA_JIRA_API_TOKEN?.trim();
   const jiraBearerToken = process.env.QA_JIRA_BEARER_TOKEN?.trim();
   const jiraLive = Boolean(jiraBaseUrl && (jiraBearerToken || (jiraEmail && jiraApiToken)));
+  const jiraWriteEnabled = process.env.QA_JIRA_WRITE_ENABLED?.trim().toLowerCase() === "true";
 
   const registryProjects = projectRegistryRepositories();
   const projectIds = new Set(["PCC", "SOP", "DataBridge", ...Object.keys(registryProjects)]);
   const projects: Record<string, BitbucketRepositoryRef[]> = {};
   for (const projectId of projectIds) {
-    const override = parseRepositoryOverride(projectId);
-    const refs = override ?? registryProjects[projectId] ?? [];
+    const refs = parseRepositoryOverride(projectId) ?? registryProjects[projectId] ?? [];
     if (refs.length) projects[projectId] = refs;
   }
 
   const bitbucketToken = process.env.QA_BITBUCKET_ACCESS_TOKEN?.trim();
-  const bitbucketLive = Boolean(bitbucketToken && Object.values(projects).some((refs) => refs.length > 0));
   const targets = playwrightTargets();
   const playwrightEnabled = process.env.QA_PLAYWRIGHT_ENABLED?.trim().toLowerCase() === "true";
   const timeoutRaw = Number(process.env.QA_PLAYWRIGHT_TIMEOUT_MS ?? 45_000);
-  const timeoutMs = Number.isFinite(timeoutRaw) ? Math.max(5_000, Math.min(timeoutRaw, 120_000)) : 45_000;
 
   return {
     jira: {
@@ -186,9 +167,11 @@ export function loadQaIntegrationStatus(): QaIntegrationStatus {
       authMode: jiraBearerToken ? "bearer" : jiraEmail && jiraApiToken ? "basic-token" : undefined,
       emailConfigured: Boolean(jiraEmail),
       tokenConfigured: Boolean(jiraBearerToken || jiraApiToken),
+      writeEnabled: jiraWriteEnabled,
+      writeMode: jiraLive && jiraWriteEnabled ? "live" : "mock",
     },
     bitbucket: {
-      mode: bitbucketLive ? "live" : "mock",
+      mode: bitbucketToken && Object.values(projects).some((refs) => refs.length > 0) ? "live" : "mock",
       baseUrl: cleanBaseUrl(process.env.QA_BITBUCKET_BASE_URL) ?? "https://api.bitbucket.org/2.0",
       tokenConfigured: Boolean(bitbucketToken),
       projects,
@@ -197,7 +180,7 @@ export function loadQaIntegrationStatus(): QaIntegrationStatus {
       mode: playwrightEnabled && targets.length > 0 ? "live" : "mock",
       enabled: playwrightEnabled,
       browser: "chromium",
-      timeoutMs,
+      timeoutMs: Number.isFinite(timeoutRaw) ? Math.max(5_000, Math.min(timeoutRaw, 120_000)) : 45_000,
       targets,
     },
   };
@@ -213,11 +196,9 @@ export function resolvePlaywrightTarget(projectId: string, environment: Environm
 export function jiraAuthorizationHeader(): string | undefined {
   const bearer = process.env.QA_JIRA_BEARER_TOKEN?.trim();
   if (bearer) return `Bearer ${bearer}`;
-
   const email = process.env.QA_JIRA_EMAIL?.trim();
   const token = process.env.QA_JIRA_API_TOKEN?.trim();
-  if (email && token) return `Basic ${Buffer.from(`${email}:${token}`).toString("base64")}`;
-  return undefined;
+  return email && token ? `Basic ${Buffer.from(`${email}:${token}`).toString("base64")}` : undefined;
 }
 
 export function bitbucketAuthorizationHeader(): string | undefined {

@@ -121,6 +121,22 @@ export class ArtifactStore {
     return undefined;
   }
 
+  readJson<T>(id: string, expectedType?: string): { record: StoredArtifact; value: T } | undefined {
+    const found = this.find(id);
+    if (!found) return undefined;
+    if (expectedType && found.record.type !== expectedType) return undefined;
+    if (found.record.mediaType !== "application/json") return undefined;
+
+    try {
+      return {
+        record: found.record,
+        value: JSON.parse(readFileSync(found.diskPath, "utf8")) as T,
+      };
+    } catch {
+      return undefined;
+    }
+  }
+
   private publicRecord(record: ArtifactMetadata): StoredArtifact {
     const { diskPath: _diskPath, ...publicRecord } = record;
     return publicRecord;

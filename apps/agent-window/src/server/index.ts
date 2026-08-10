@@ -7,6 +7,7 @@ import { PackRegistry } from "./pack-registry.js";
 import { ArtifactStore } from "./platform/artifact-store.js";
 import { CapabilityBroker } from "./platform/capability-broker.js";
 import { BitbucketReadAdapter } from "./qa/bitbucket-read-adapter.js";
+import { JiraDefectAdapter } from "./qa/jira-defect-adapter.js";
 import { JiraReadAdapter } from "./qa/jira-read-adapter.js";
 import { PlaywrightWorkerAdapter } from "./qa/playwright-worker-adapter.js";
 import { QA_CAPABILITIES, QaMockAdapter } from "./qa/qa-capabilities.js";
@@ -17,11 +18,13 @@ const PORT = Number(process.env.PORT ?? 4000);
 const registry = new PackRegistry();
 const artifacts = new ArtifactStore();
 const qaMockAdapter = new QaMockAdapter();
+const jiraDefectAdapter = new JiraDefectAdapter(qaMockAdapter, artifacts);
 const qaBroker = new CapabilityBroker(QA_CAPABILITIES, [
   qaMockAdapter,
   new JiraReadAdapter(qaMockAdapter),
   new BitbucketReadAdapter(qaMockAdapter),
   new PlaywrightWorkerAdapter(qaMockAdapter, artifacts),
+  jiraDefectAdapter,
 ]);
 const runtime = buildCopilotRuntime(registry, qaBroker);
 const app = express();
@@ -43,7 +46,7 @@ app.get("/api/health", (_request, response) => {
       bitbucket: integrations.bitbucket.mode,
       database: "mock",
       playwright: integrations.playwright.mode,
-      jiraWrite: "mock",
+      jiraWrite: process.env.QA_JIRA_WRITE_ENABLED?.toLowerCase() === "true" && integrations.jira.mode === "live" ? "live" : "mock",
       teams: "mock",
     },
     qaProjectTests: projectTestCatalogStatus().map((item) => ({
@@ -54,9 +57,7 @@ app.get("/api/health", (_request, response) => {
   });
 });
 
-app.get("/api/packs", (_request, response) => {
-  response.json({ packs: registry.listPublic() });
-});
+app.get("/api/packs", (_request, response) => response.json({ packs: registry.listPublic() }));
 
 app.get("/api/packs/:packId", (request, response) => {
   const pack = registry.get(request.params.packId);
@@ -69,36 +70,21 @@ app.get("/api/packs/:packId", (request, response) => {
 });
 
 app.get("/api/qa/capabilities", (_request, response) => {
-  response.json({
-    integrations: loadQaIntegrationStatus(),
-    projectTests: projectTestCatalogStatus(),
-    capabilities: qaBroker.listCapabilities(),
-  });
+  response.json({ integrations: loadQaIntegrationStatus(), projectTests: projectTestCatalogStatus(), capabilities: qaBroker.listCapabilities() });
 });
 
-app.get("/api/qa/integrations", (_request, response) => {
-  response.json(loadQaIntegrationStatus());
-});
-
-app.get("/api/qa/project-tests", (_request, response) => {
-  response.json({ projects: projectTestCatalogStatus() });
-});
+app.get("/api/qa/integrations", (_request, response) => response.json(loadQaIntegrationStatus()));
+app.get("/api/qa/project-tests", (_request, response) => response.json({ projects: projectTestCatalogStatus() }));
 
 app.get("/api/qa/artifacts/:artifactId/metadata", (request, response) => {
   const artifact = artifacts.find(request.params.artifactId);
-  if (!artifact) {
-    response.status(404).json({ error: "artifact_not_found" });
-    return;
-  }
+  if (!artifact) return void response.status(404).json({ error: "artifact_not_found" });
   response.json(artifact.record);
 });
 
 app.get("/api/qa/artifacts/:artifactId", (request, response) => {
   const artifact = artifacts.find(request.params.artifactId);
-  if (!artifact) {
-    response.status(404).json({ error: "artifact_not_found" });
-    return;
-  }
+  if (!artifact) return void response.status(404).json({ error: "artifact_not_found" });
   response.setHeader("Cache-Control", "private, no-store");
   response.setHeader("X-Content-Type-Options", "nosniff");
   response.setHeader("Content-Type", artifact.record.mediaType);
@@ -108,19 +94,24 @@ app.get("/api/qa/artifacts/:artifactId", (request, response) => {
 
 app.get("/api/qa/actions/:actionId", (request, response) => {
   const action = qaBroker.getAction(request.params.actionId);
-  if (!action) {
-    response.status(404).json({ error: "action_not_found" });
-    return;
-  }
+  if (!action) return void response.status(404).json({ error: "action_not_found" });
   response.json(action);
+});
+
+app.get("/api/qa/actions/:actionId/review", async (request, response) => {
+  const action = qaBroker.getAction(request.params.actionId);
+  if (!action) return void response.status(404).json({ error: "action_not_found" });
+  if (action.capabilityId !== "qa.jira.bug.create") return void response.status(400).json({ error: "review_not_supported_for_capability" });
+  try {
+    response.json(await jiraDefectAdapter.previewCreateAction(action));
+  } catch (error) {
+    response.status(409).json({ error: "review_unavailable", message: error instanceof Error ? error.message : String(error) });
+  }
 });
 
 app.post("/api/qa/actions/:actionId/decision", (request, response) => {
   const decision = request.body?.decision;
-  if (decision !== "approved" && decision !== "rejected") {
-    response.status(400).json({ error: "decision_must_be_approved_or_rejected" });
-    return;
-  }
+  if (decision !== "approved" && decision !== "rejected") return void response.status(400).json({ error: "decision_must_be_approved_or_rejected" });
   const decidedBy = String(request.header("x-user-id") || "local-dev-user");
   const reason = typeof request.body?.reason === "string" ? request.body.reason : undefined;
   try {
@@ -132,8 +123,7 @@ app.post("/api/qa/actions/:actionId/decision", (request, response) => {
 
 app.get("/api/audit", (request, response) => {
   const rawLimit = Number(request.query.limit ?? 100);
-  const limit = Number.isFinite(rawLimit) ? rawLimit : 100;
-  response.json({ events: qaBroker.listAudit(limit) });
+  response.json({ events: qaBroker.listAudit(Number.isFinite(rawLimit) ? rawLimit : 100) });
 });
 
 app.use(createCopilotExpressHandler({
@@ -153,7 +143,6 @@ app.listen(PORT, "0.0.0.0", () => {
   const integrations = loadQaIntegrationStatus();
   console.log(`[bm-agents-world] loaded ${registry.packs.length} agent packs`);
   console.log(`[bm-agents-world] runtime: http://localhost:${PORT}/api/copilotkit`);
-  console.log(`[bm-agents-world] packs:   http://localhost:${PORT}/api/packs`);
   console.log(`[bm-agents-world] qa capabilities: ${qaBroker.listCapabilities().length}`);
-  console.log(`[bm-agents-world] qa jira read: ${integrations.jira.mode}; bitbucket read: ${integrations.bitbucket.mode}; playwright: ${integrations.playwright.mode}`);
+  console.log(`[bm-agents-world] qa jira read: ${integrations.jira.mode}; jira write: ${process.env.QA_JIRA_WRITE_ENABLED?.toLowerCase() === "true" ? "enabled" : "disabled"}; bitbucket: ${integrations.bitbucket.mode}; playwright: ${integrations.playwright.mode}`);
 });

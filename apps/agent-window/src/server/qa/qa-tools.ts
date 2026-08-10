@@ -5,10 +5,7 @@ import type { CapabilityBroker } from "../platform/capability-broker.js";
 import type { EnvironmentName, ExecutionContext } from "../platform/capability-types.js";
 import { projectTestCatalogStatus } from "./qa-project-tests.js";
 
-function contextFor(
-  projectId: string,
-  environment: EnvironmentName,
-): ExecutionContext {
+function contextFor(projectId: string, environment: EnvironmentName): ExecutionContext {
   return {
     runId: randomUUID(),
     userId: "local-dev-user",
@@ -24,20 +21,20 @@ function contextFor(
 export const QA_CAPABILITY_PROMPT = `
 
 QA capability execution protocol:
-- You have server tools that represent governed QA capabilities. Use them for executable QA work instead of pretending an external system was accessed.
-- Start with listQaCapabilities and listQaProjectTests when you need to understand executable QA scope.
-- For an action, call requestQaCapabilityAction with the exact project, environment, capability, and payload.
-- If the returned action status is ready, call executeQaCapabilityAction with that exact action id.
-- If the returned action status is pending_approval, call the frontend human-in-the-loop tool reviewQaAction with the action id, capability id, risk level, summary, and payload hash. Only after the human approves should you call executeQaCapabilityAction using the same action id.
-- Never substitute a new payload after approval. Approval is payload-hash-bound and expires.
-- If the action is rejected, denied, expired, or failed, explain that status and do not bypass it.
-- When result.mode is live and externalSideEffect is false, describe the result as real external evidence produced within the capability boundary.
-- When result.mode is mock, describe it as a simulation and never imply an external system was contacted.
-- For qa.playwright.test.run, use only the allowlisted story-smoke suite, include storyId and changedFiles from Bitbucket evidence, and never supply URLs, selectors, credentials, scripts, or test file paths. The server chooses the target, authenticated identity reference, and allowlisted cases.
-- A successful live Playwright result includes test-execution-result and evidence-manifest artifacts. If tests fail, it can also include a bug-draft artifact. Surface their /api/qa/artifacts/... URIs and summarize evidence without inventing data.
-- SecretReference metadata is safe to name, but never request or expose the referenced secret value or storage-state contents.
-- A live read or browser result is evidence, not permission to perform a write. Jira bug creation and Teams posting remain mock-only in this slice even after approval.
-- Current execution identity is a local development placeholder. Authentication/header-derived user identity is a later slice.
+- Use governed server tools for executable QA work; never pretend an external system was accessed.
+- Start with listQaCapabilities and listQaProjectTests when you need executable scope.
+- For an action, call requestQaCapabilityAction with exact project, environment, capability, and payload. Execute only the returned immutable action id.
+- If status is pending_approval, call reviewQaAction with the exact action id, capability id, risk level, summary, and payload hash. Execute only after human approval.
+- Approval is payload-hash-bound and expires. Never substitute a new payload after approval.
+- For qa.playwright.test.run, include storyId and changedFiles from Bitbucket evidence only. Never supply URLs, selectors, credentials, scripts, or test file paths.
+- A failed Playwright result can include bugDraftArtifact. Treat that immutable artifact as the only source for Jira defect creation.
+- Before Jira creation, request and execute qa.jira.duplicate.search with payload {bugDraftArtifactId, bugDraftSha256}. Report candidates.
+- To create a Jira bug, request qa.jira.bug.create using only {bugDraftArtifactId, bugDraftSha256}. Do not reconstruct title, description, severity, evidence, or parent story in the action payload. The server reloads the exact artifact.
+- When qa.jira.bug.create returns pending_approval, call reviewQaAction. The frontend review card loads the exact bug draft and current duplicate candidates from the server. Only after approval may you execute that same action id.
+- If the Jira create result has mode=live and externalSideEffect=true, report the returned Jira key as a real created defect. If mode=mock, explicitly say no Jira issue was created.
+- The Jira adapter rechecks duplicates immediately before the POST and may fail safely if a high-confidence duplicate appears.
+- SecretReference metadata is safe to name, but never request or expose secret values or storage-state contents.
+- Teams posting remains mock-only. Production browser execution and free-form production mutation are unavailable.
 `;
 
 export function buildQaTools(broker: CapabilityBroker) {
