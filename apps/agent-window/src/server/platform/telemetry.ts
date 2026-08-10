@@ -9,7 +9,6 @@ import { OTLPTraceExporter } from "@opentelemetry/exporter-trace-otlp-http";
 import { NodeSDK } from "@opentelemetry/sdk-node";
 
 const SERVICE_NAME = "bm-agents-world-agent-window";
-const tracer = trace.getTracer("bm-agents-world", "0.1.0");
 let sdk: NodeSDK | undefined;
 let initialized = false;
 
@@ -75,6 +74,7 @@ export function startActiveSpan<T>(
   attributes: Record<string, unknown> | undefined,
   fn: (span: Span) => T,
 ): T {
+  const tracer = trace.getTracer("bm-agents-world", "0.1.0");
   return tracer.startActiveSpan(name, { attributes: safeAttributes(attributes) }, (span) => {
     try {
       const result = fn(span);
