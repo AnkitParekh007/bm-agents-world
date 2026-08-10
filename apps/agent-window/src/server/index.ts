@@ -5,9 +5,11 @@ import { createCopilotExpressHandler } from "@copilotkit/runtime/v2/express";
 import { buildCopilotRuntime } from "./copilot.js";
 import { PackRegistry } from "./pack-registry.js";
 import { ArtifactStore } from "./platform/artifact-store.js";
+import { AgentTelemetryService, AgentTelemetryStore } from "./platform/agent-telemetry.js";
 import { CapabilityBroker } from "./platform/capability-broker.js";
 import { SqliteCapabilityStore } from "./platform/capability-store.js";
 import { buildDeploymentReadiness } from "./platform/deployment-readiness.js";
+import { enrichQaPilotRuns, enrichQaPilotSummary } from "./platform/pilot-telemetry-view.js";
 import { QaPilotObservabilityStore, type PilotRunEvaluationInput } from "./platform/qa-pilot-observability.js";
 import {
   canAccessExecutionContext,
@@ -15,6 +17,7 @@ import {
   currentRequestIdentity,
   identityMiddleware,
 } from "./platform/request-identity.js";
+import { initTelemetry, shutdownTelemetry, startActiveSpan, telemetryRuntimeStatus } from "./platform/telemetry.js";
 import { BitbucketReadAdapter } from "./qa/bitbucket-read-adapter.js";
 import { JiraDefectAdapter } from "./qa/jira-defect-adapter.js";
 import { JiraReadAdapter } from "./qa/jira-read-adapter.js";
@@ -25,10 +28,15 @@ import { projectTestCatalogStatus } from "./qa/qa-project-tests.js";
 
 const PORT = Number(process.env.PORT ?? 4000);
 const DAY_MS = 24 * 60 * 60 * 1000;
+
+initTelemetry();
+
 const registry = new PackRegistry();
 const artifacts = new ArtifactStore();
 const stateStore = new SqliteCapabilityStore();
 const observabilityStore = new QaPilotObservabilityStore(stateStore.path);
+const agentTelemetryStore = new AgentTelemetryStore(stateStore.path);
+const agentTelemetry = new AgentTelemetryService(agentTelemetryStore);
 const qaMockAdapter = new QaMockAdapter();
 const jiraDefectAdapter = new JiraDefectAdapter(qaMockAdapter, artifacts);
 const qaBroker = new CapabilityBroker(QA_CAPABILITIES, [
@@ -38,7 +46,7 @@ const qaBroker = new CapabilityBroker(QA_CAPABILITIES, [
   new PlaywrightWorkerAdapter(qaMockAdapter, artifacts),
   jiraDefectAdapter,
 ], stateStore);
-const runtime = buildCopilotRuntime(registry, qaBroker);
+const runtime = buildCopilotRuntime(registry, qaBroker, agentTelemetry);
 const app = express();
 
 app.disable("x-powered-by");
@@ -102,6 +110,18 @@ function observabilityQuery(request: express.Request, response: express.Response
   };
 }
 
+function enrichedMetricsForRun(runId: string) {
+  const run = qaBroker.getRun(runId);
+  if (!run) return undefined;
+  const metrics = observabilityStore.listRunMetrics({
+    tenantId: run.context.tenantId,
+    projectIds: [run.context.projectId],
+    projectId: run.context.projectId,
+    limit: 500,
+  }).find((item) => item.runId === runId);
+  return metrics ? enrichQaPilotRuns([metrics], agentTelemetryStore, qaBroker)[0] : undefined;
+}
+
 app.get("/api/session", (_request, response) => {
   const identity = currentRequestIdentity();
   response.json({
@@ -120,6 +140,10 @@ app.get("/api/health", (_request, response) => {
     artifactRoot: artifacts.root,
     packCount: registry.packs.length,
   });
+  const tokenRatesConfigured = Boolean(
+    process.env.BM_MODEL_INPUT_USD_PER_1M_TOKENS?.trim()
+    && process.env.BM_MODEL_OUTPUT_USD_PER_1M_TOKENS?.trim(),
+  );
   response.json({
     status: "ok",
     service: "bm-agents-world-agent-window",
@@ -135,7 +159,9 @@ app.get("/api/health", (_request, response) => {
     qaObservability: {
       evaluationPersistence: "sqlite",
       operationalMetrics: "derived-from-run-action-audit",
-      modelUsage: "not-instrumented",
+      modelUsage: "measured-when-provider-metadata-is-present",
+      costEstimation: tokenRatesConfigured ? "configured-token-rates" : "not-configured",
+      openTelemetry: telemetryRuntimeStatus(),
     },
     qaAdapters: {
       jira: integrations.jira.mode,
@@ -191,6 +217,7 @@ app.get("/api/qa/runs/:runId", (request, response) => {
     run,
     actions: qaBroker.listActionsForRun(run.id),
     evaluation: observabilityStore.getEvaluation(run.id),
+    telemetry: enrichedMetricsForRun(run.id),
   });
 });
 
@@ -219,7 +246,10 @@ app.get("/api/qa/observability/summary", (request, response) => {
   const query = observabilityQuery(request, response);
   if (!query) return;
   response.setHeader("Cache-Control", "private, no-store");
-  response.json(observabilityStore.summary({ ...query.scope, limit: 500 }, query.periodDays));
+  const baseRuns = observabilityStore.listRunMetrics({ ...query.scope, limit: 500 });
+  const runs = enrichQaPilotRuns(baseRuns, agentTelemetryStore, qaBroker);
+  const baseSummary = observabilityStore.summary({ ...query.scope, limit: 500 }, query.periodDays);
+  response.json(enrichQaPilotSummary(baseSummary, runs));
 });
 
 app.get("/api/qa/observability/runs", (request, response) => {
@@ -227,10 +257,11 @@ app.get("/api/qa/observability/runs", (request, response) => {
   if (!query) return;
   const limit = boundedNumber(request.query.limit, 50, 1, 200);
   response.setHeader("Cache-Control", "private, no-store");
+  const baseRuns = observabilityStore.listRunMetrics({ ...query.scope, limit });
   response.json({
     periodDays: query.periodDays,
     projectId: query.projectId,
-    runs: observabilityStore.listRunMetrics({ ...query.scope, limit }),
+    runs: enrichQaPilotRuns(baseRuns, agentTelemetryStore, qaBroker),
   });
 });
 
@@ -291,7 +322,19 @@ app.post("/api/qa/actions/:actionId/decision", (request, response) => {
   }
   const reason = typeof request.body?.reason === "string" ? request.body.reason : undefined;
   try {
-    response.json(qaBroker.decideAction(request.params.actionId, decision, identity.userId, reason));
+    const result = startActiveSpan(
+      "bm.approval.decision",
+      {
+        "bm.action.id": action.id,
+        "bm.run.id": action.context.runId,
+        "bm.capability.id": action.capabilityId,
+        "bm.tenant.id": action.context.tenantId,
+        "bm.project.id": action.context.projectId,
+        "bm.approval.decision": decision,
+      },
+      () => qaBroker.decideAction(request.params.actionId, decision, identity.userId, reason),
+    );
+    response.json(result);
   } catch (error) {
     response.status(409).json({ error: "approval_decision_rejected", message: error instanceof Error ? error.message : String(error) });
   }
@@ -330,21 +373,30 @@ const server = app.listen(PORT, "0.0.0.0", () => {
     artifactRoot: artifacts.root,
     packCount: registry.packs.length,
   });
+  const otel = telemetryRuntimeStatus();
   console.log(`[bm-agents-world] loaded ${registry.packs.length} agent packs`);
   console.log(`[bm-agents-world] runtime: http://localhost:${PORT}/api/copilotkit`);
   console.log(`[bm-agents-world] probes: /healthz and /readyz (${readiness.mode}, ready=${readiness.ready})`);
   console.log(`[bm-agents-world] qa capabilities: ${qaBroker.listCapabilities().length}`);
   console.log(`[bm-agents-world] qa state: sqlite ${stateStore.path}`);
-  console.log("[bm-agents-world] qa observability: operational metrics + persistent run evaluations; model usage not instrumented");
+  console.log(`[bm-agents-world] telemetry: model usage persists when provider metadata is present; otel=${otel.enabled ? "enabled" : "disabled"}`);
   console.log(`[bm-agents-world] identity mode: ${process.env.BM_IDENTITY_MODE?.trim() || "local-dev"}`);
   console.log(`[bm-agents-world] qa jira read: ${integrations.jira.mode}; jira write: ${integrations.jira.writeMode}; bitbucket: ${integrations.bitbucket.mode}; playwright: ${integrations.playwright.mode}`);
 });
 
+let shuttingDown = false;
 function shutdown() {
-  server.close(() => {
+  if (shuttingDown) return;
+  shuttingDown = true;
+  server.close(async () => {
     observabilityStore.close();
+    agentTelemetryStore.close();
     stateStore.close();
-    process.exit(0);
+    try {
+      await shutdownTelemetry();
+    } finally {
+      process.exit(0);
+    }
   });
 }
 
