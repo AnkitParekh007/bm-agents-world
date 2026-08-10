@@ -15,6 +15,10 @@ function metadataPath(id: string): string {
   return `artifacts/${id}/metadata.json`;
 }
 
+function sha256(data: Buffer): string {
+  return createHash("sha256").update(data).digest("hex");
+}
+
 function serverClient(url: string, secretKey: string): SupabaseClient {
   return createClient(url, secretKey, {
     auth: {
@@ -65,7 +69,7 @@ export class SupabaseArtifactStore implements ArtifactRepository {
       filename: safeFilename,
       mediaType: options.mediaType ?? mediaTypeFor(safeFilename),
       classification: options.classification ?? "internal-qa-evidence",
-      sha256: createHash("sha256").update(buffer).digest("hex"),
+      sha256: sha256(buffer),
       sizeBytes: buffer.length,
       createdAt: new Date().toISOString(),
       redacted: options.redacted ?? false,
@@ -76,7 +80,7 @@ export class SupabaseArtifactStore implements ArtifactRepository {
     const bucket = this.client.storage.from(this.bucket);
     const uploaded = await bucket.upload(storagePath, buffer, {
       contentType: record.mediaType,
-      cacheControl: "private, max-age=0, no-store",
+      cacheControl: "0",
       upsert: false,
     });
     if (uploaded.error) throw new Error(`Supabase artifact upload failed: ${uploaded.error.message}`);
@@ -84,7 +88,7 @@ export class SupabaseArtifactStore implements ArtifactRepository {
     const metadata = Buffer.from(JSON.stringify(record), "utf8");
     const metadataUpload = await bucket.upload(metadataPath(id), metadata, {
       contentType: "application/json",
-      cacheControl: "private, max-age=0, no-store",
+      cacheControl: "0",
       upsert: false,
     });
     if (metadataUpload.error) {
@@ -117,7 +121,7 @@ export class SupabaseArtifactStore implements ArtifactRepository {
     if (!metadata) return undefined;
     if (expectedType && metadata.type !== expectedType) return undefined;
     if (metadata.mediaType !== "application/json") return undefined;
-    const data = await this.download(metadata.storagePath);
+    const data = await this.verifiedDownload(metadata);
     if (!data) return undefined;
     try {
       return { record: this.publicRecord(metadata), value: JSON.parse(data.toString("utf8")) as T };
@@ -129,7 +133,7 @@ export class SupabaseArtifactStore implements ArtifactRepository {
   async readBuffer(id: string): Promise<{ record: StoredArtifact; data: Buffer } | undefined> {
     const metadata = await this.loadMetadata(id);
     if (!metadata) return undefined;
-    const data = await this.download(metadata.storagePath);
+    const data = await this.verifiedDownload(metadata);
     return data ? { record: this.publicRecord(metadata), data } : undefined;
   }
 
@@ -147,10 +151,17 @@ export class SupabaseArtifactStore implements ArtifactRepository {
     try {
       const metadata = JSON.parse(data.toString("utf8")) as SupabaseArtifactMetadata;
       if (metadata.id !== id || !metadata.storagePath || !metadata.runId) return undefined;
+      if (!/^[0-9a-f]{64}$/i.test(metadata.sha256) || !Number.isFinite(metadata.sizeBytes) || metadata.sizeBytes < 0) return undefined;
       return metadata;
     } catch {
       return undefined;
     }
+  }
+
+  private async verifiedDownload(metadata: SupabaseArtifactMetadata): Promise<Buffer | undefined> {
+    const data = await this.download(metadata.storagePath);
+    if (!data || data.length !== metadata.sizeBytes) return undefined;
+    return sha256(data) === metadata.sha256.toLowerCase() ? data : undefined;
   }
 
   private async download(path: string): Promise<Buffer | undefined> {
