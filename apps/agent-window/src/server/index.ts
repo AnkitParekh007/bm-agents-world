@@ -8,6 +8,7 @@ import { ArtifactStore } from "./platform/artifact-store.js";
 import { CapabilityBroker } from "./platform/capability-broker.js";
 import { SqliteCapabilityStore } from "./platform/capability-store.js";
 import { buildDeploymentReadiness } from "./platform/deployment-readiness.js";
+import { QaPilotObservabilityStore, type PilotRunEvaluationInput } from "./platform/qa-pilot-observability.js";
 import {
   canAccessExecutionContext,
   canSelfApprove,
@@ -23,9 +24,11 @@ import { loadQaIntegrationStatus } from "./qa/qa-integration-config.js";
 import { projectTestCatalogStatus } from "./qa/qa-project-tests.js";
 
 const PORT = Number(process.env.PORT ?? 4000);
+const DAY_MS = 24 * 60 * 60 * 1000;
 const registry = new PackRegistry();
 const artifacts = new ArtifactStore();
 const stateStore = new SqliteCapabilityStore();
+const observabilityStore = new QaPilotObservabilityStore(stateStore.path);
 const qaMockAdapter = new QaMockAdapter();
 const jiraDefectAdapter = new JiraDefectAdapter(qaMockAdapter, artifacts);
 const qaBroker = new CapabilityBroker(QA_CAPABILITIES, [
@@ -70,6 +73,35 @@ function accessibleAction(actionId: string) {
   return canAccessExecutionContext(currentRequestIdentity(), action.context) ? action : null;
 }
 
+function boundedNumber(value: unknown, fallback: number, min: number, max: number): number {
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? Math.max(min, Math.min(max, Math.round(parsed))) : fallback;
+}
+
+function observabilityQuery(request: express.Request, response: express.Response) {
+  const identity = currentRequestIdentity();
+  const projectId = typeof request.query.projectId === "string" && request.query.projectId.trim()
+    ? request.query.projectId.trim()
+    : undefined;
+  if (projectId && !identity.projectIds.includes(projectId)) {
+    response.status(403).json({ error: "observability_project_access_denied" });
+    return undefined;
+  }
+  const periodDays = boundedNumber(request.query.days, 7, 1, 90);
+  const since = new Date(Date.now() - periodDays * DAY_MS).toISOString();
+  return {
+    identity,
+    projectId,
+    periodDays,
+    scope: {
+      tenantId: identity.tenantId,
+      projectIds: identity.projectIds,
+      projectId,
+      since,
+    },
+  };
+}
+
 app.get("/api/session", (_request, response) => {
   const identity = currentRequestIdentity();
   response.json({
@@ -100,6 +132,11 @@ app.get("/api/health", (_request, response) => {
     identityMode: process.env.BM_IDENTITY_MODE?.trim() || "local-dev",
     stateStore: { type: "sqlite", path: stateStore.path },
     artifactRoot: artifacts.root,
+    qaObservability: {
+      evaluationPersistence: "sqlite",
+      operationalMetrics: "derived-from-run-action-audit",
+      modelUsage: "not-instrumented",
+    },
     qaAdapters: {
       jira: integrations.jira.mode,
       bitbucket: integrations.bitbucket.mode,
@@ -150,7 +187,51 @@ app.get("/api/qa/runs/:runId", (request, response) => {
   const run = accessibleRun(request.params.runId);
   if (run === undefined) return void response.status(404).json({ error: "run_not_found" });
   if (run === null) return void response.status(403).json({ error: "run_access_denied" });
-  response.json({ run, actions: qaBroker.listActionsForRun(run.id) });
+  response.json({
+    run,
+    actions: qaBroker.listActionsForRun(run.id),
+    evaluation: observabilityStore.getEvaluation(run.id),
+  });
+});
+
+app.post("/api/qa/runs/:runId/evaluation", (request, response) => {
+  const run = accessibleRun(request.params.runId);
+  if (run === undefined) return void response.status(404).json({ error: "run_not_found" });
+  if (run === null) return void response.status(403).json({ error: "run_access_denied" });
+  const identity = currentRequestIdentity();
+  const body = request.body ?? {};
+  const input: PilotRunEvaluationInput = {
+    outcome: body.outcome,
+    usefulnessScore: body.usefulnessScore,
+    wouldUseAgain: body.wouldUseAgain === true,
+    falsePositiveDefect: body.falsePositiveDefect === true,
+    manualOverrideMinutes: body.manualOverrideMinutes,
+    notes: typeof body.notes === "string" ? body.notes : undefined,
+  };
+  try {
+    response.json(observabilityStore.saveEvaluation(run, identity.userId, input));
+  } catch (error) {
+    response.status(400).json({ error: "invalid_pilot_evaluation", message: error instanceof Error ? error.message : String(error) });
+  }
+});
+
+app.get("/api/qa/observability/summary", (request, response) => {
+  const query = observabilityQuery(request, response);
+  if (!query) return;
+  response.setHeader("Cache-Control", "private, no-store");
+  response.json(observabilityStore.summary({ ...query.scope, limit: 500 }, query.periodDays));
+});
+
+app.get("/api/qa/observability/runs", (request, response) => {
+  const query = observabilityQuery(request, response);
+  if (!query) return;
+  const limit = boundedNumber(request.query.limit, 50, 1, 200);
+  response.setHeader("Cache-Control", "private, no-store");
+  response.json({
+    periodDays: query.periodDays,
+    projectId: query.projectId,
+    runs: observabilityStore.listRunMetrics({ ...query.scope, limit }),
+  });
 });
 
 app.get("/api/qa/artifacts/:artifactId/metadata", (request, response) => {
@@ -254,12 +335,14 @@ const server = app.listen(PORT, "0.0.0.0", () => {
   console.log(`[bm-agents-world] probes: /healthz and /readyz (${readiness.mode}, ready=${readiness.ready})`);
   console.log(`[bm-agents-world] qa capabilities: ${qaBroker.listCapabilities().length}`);
   console.log(`[bm-agents-world] qa state: sqlite ${stateStore.path}`);
+  console.log("[bm-agents-world] qa observability: operational metrics + persistent run evaluations; model usage not instrumented");
   console.log(`[bm-agents-world] identity mode: ${process.env.BM_IDENTITY_MODE?.trim() || "local-dev"}`);
   console.log(`[bm-agents-world] qa jira read: ${integrations.jira.mode}; jira write: ${integrations.jira.writeMode}; bitbucket: ${integrations.bitbucket.mode}; playwright: ${integrations.playwright.mode}`);
 });
 
 function shutdown() {
   server.close(() => {
+    observabilityStore.close();
     stateStore.close();
     process.exit(0);
   });
