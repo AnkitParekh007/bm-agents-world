@@ -9,13 +9,16 @@ on:
     paths:
       - "apps/agent-window/**"
       - "packs/**"
+      - "deploy/**"
+      - ".dockerignore"
       - "package.json"
       - ".github/workflows/agent-window-ci.yml"
+      - ".github/workflows/qa-pilot-image.yml"
 
 jobs:
   validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 25
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -31,8 +34,11 @@ jobs:
       - name: Typecheck
         run: npm run typecheck
 
-      - name: Test capability policies
+      - name: Test capability and deployment policies
         run: npm run test --workspace @bm-agents-world/agent-window
 
-      - name: Build
+      - name: Build application
         run: npm run build
+
+      - name: Build pilot container image
+        run: docker build --pull -f apps/agent-window/Dockerfile -t bm-agents-world:ci .

@@ -2,66 +2,71 @@
 
 BM Agents World is the incubation repository for turning the organization agent packs under `packs/` into runnable, governed AI coworkers. The implementation is intentionally being stabilized here before it is merged into BM Agent Foundry.
 
-## Current milestone: CopilotKit foundation
+## Current milestone: QA team pilot
 
-The first implementation slice lives in `apps/agent-window` and uses CopilotKit + AG-UI as the agent experience layer.
+`apps/agent-window` uses CopilotKit + AG-UI as the agent experience layer and now contains a real QA vertical slice plus a deployable shared-pilot package.
 
-What is working in this milestone:
+What is working:
 
-- Repository-driven agent pack discovery.
-- Parsing of pack manifests, agent registries, task catalogs, skills, MCPs, plugins, artifacts, workflows, projects, environments, and default policies.
-- Automatic compilation of every discovered pack into a named CopilotKit `BuiltInAgent`.
-- A global `default` BM Agents World supervisor agent for pack discovery.
-- Read-only server tools for pack overview, sub-agent discovery, and task lookup.
-- A React agent workspace using CopilotKit v2.
-- Role/agent selection from the packs already committed to the repository.
-- Programmatic daily-task launching using `agent.addMessage(...)` + `copilotkit.runAgent(...)`.
-- A Copilot chat surface for each role.
-- Explicit foundation guardrails: no production mutation and no claims of external execution before real integrations are wired.
-- GitHub CI for TypeScript and production builds.
+- Repository-driven agent pack discovery and one named CopilotKit agent per pack.
+- Global BM Agents World supervisor for agent-pack discovery.
+- Pack task launcher and Copilot chat workspace.
+- Governed capability broker with L0-L4 risk levels and payload-bound approvals.
+- Real Jira story reads.
+- Real Bitbucket change-impact reads.
+- Story-aware, allowlisted project-test selection.
+- Authenticated Playwright execution on approved non-production targets.
+- Screenshot, trace, network, test-result, evidence-manifest, and bug-draft artifacts.
+- Jira duplicate search.
+- Real Jira defect creation behind L3 exact-artifact human approval.
+- Durable QA run/action/approval/audit state in SQLite.
+- Request-scoped tenant/project authorization.
+- Self-approval denial in trusted shared-pilot mode.
+- Run-scoped artifact authorization.
+- Docker image with pinned Playwright browser runtime.
+- Kubernetes single-replica pilot package with persistent storage, health/readiness probes, and trusted-gateway-only ingress NetworkPolicy.
+- CI for strict TypeScript, policy/integration/deployment tests, production build, and container build.
 
 ## Architecture
 
 ```text
-packs/*
-   │
-   ▼
-PackRegistry
-   │
-   ├── manifest
-   ├── sub-agents
-   ├── tasks
-   ├── skills
-   ├── MCP definitions
-   ├── plugins
-   ├── artifacts
-   ├── workflows
-   └── policy metadata
-   │
-   ▼
-Pack compiler
-   │
-   ├── default world supervisor
-   └── one CopilotKit agent per pack
-   │
-   ▼
-CopilotRuntime (AG-UI)
-   │
-   ▼
+Organization Agent Packs
+        |
+        v
+PackRegistry / Pack Compiler
+        |
+        v
+CopilotKit + AG-UI
+        |
+        v
 Agent Window
-   ├── role selector
-   ├── pack metrics
-   ├── daily task launcher
-   └── CopilotChat
+        |
+        v
+Capability Broker
+        |
+        +-- Policy / risk level
+        +-- Persistent run/action state
+        +-- Human approval
+        +-- Audit
+        |
+        v
+Trusted adapters
+        |
+        +-- Jira
+        +-- Bitbucket
+        +-- Playwright
+        |
+        v
+Evidence / governed Jira defect
 ```
 
-The pack files remain the source material. The app must not hard-code separate implementations for QA, Java, Product, SRE, and every other role.
+The pack files remain the source material. The core application must not become a separate hard-coded implementation for every organizational role.
 
 ## Run locally
 
 Prerequisites:
 
-- Node.js 20.18+ (Node 22 recommended)
+- Node.js 22.13+
 - An API key for the model provider selected in `AI_MODEL`
 
 ```bash
@@ -72,51 +77,91 @@ npm run dev
 
 The UI runs at `http://localhost:5173` and proxies API calls to the runtime on `http://localhost:4000`.
 
-For OpenAI, set for example:
+For OpenAI, for example:
 
 ```bash
 AI_MODEL=openai:gpt-5.4-mini
 OPENAI_API_KEY=...
 ```
 
-CopilotKit supports provider/model selection on the server, so the platform is not intended to be locked to one model provider.
+Local development defaults to `BM_IDENTITY_MODE=local-dev`. Shared team deployments must use the trusted gateway model documented in `docs/qa-team-pilot-deployment.md`.
 
-## Foundation security boundary
+## QA shared pilot
 
-This milestone exposes pack metadata and read-only pack introspection only. Jira, Bitbucket, databases, browsers, cloud systems, Teams, deployment systems, and vaults are **not yet connected**.
-
-Future integrations must go through:
+The deployment package is under:
 
 ```text
-User identity
+deploy/k8s/qa-pilot/
+```
+
+The container can be built with:
+
+```bash
+docker build -f apps/agent-window/Dockerfile -t bm-agents-world:qa-pilot .
+```
+
+A manual GitHub Actions workflow can publish the image to GHCR. The Kubernetes base creates a `ClusterIP` service plus a NetworkPolicy that only permits explicitly labeled trusted-gateway pods in explicitly labeled gateway namespaces. There is intentionally no public Ingress. The cluster network provider must enforce NetworkPolicy, or an equivalent network restriction must be provided before trusted identity headers are accepted.
+
+Pilot probes:
+
+```text
+GET /healthz
+GET /readyz
+```
+
+`BM_DEPLOYMENT_MODE=pilot` makes readiness fail until the required trusted identity, persistent storage, model credential, Jira, Bitbucket, and Playwright configuration is live.
+
+See [QA Team Pilot Deployment](docs/qa-team-pilot-deployment.md) for the full gateway, network, secret, storage, image, and pilot-admission contract.
+
+## Security boundary
+
+External capability execution follows:
+
+```text
+Authenticated user
    ↓
-BM Agent Gateway
+Trusted gateway
    ↓
-RBAC / ABAC + OPA policy
+NetworkPolicy / equivalent isolation
    ↓
-Approval engine
+Tenant / project authorization
+   ↓
+CopilotKit agent
    ↓
 Capability broker
    ↓
-Workload identity / vault
+Risk / policy
    ↓
-Trusted MCP or native adapter
+Payload-bound human approval when required
    ↓
-Target system
+Trusted server adapter
+   ↓
+Jira / Bitbucket / Playwright
+   ↓
+Persistent audit + authorized evidence
 ```
 
-Raw secrets must not be inserted into model context.
+Raw Jira, Bitbucket, model-provider, and Playwright authentication material remains server-side and must not enter model context.
 
-## Next implementation milestones
+Free-form production mutation remains unavailable.
 
-1. Add the BM capability registry and approval contract.
-2. Wire the QA vertical slice first: Jira read, Bitbucket read, Playwright execution, read-only database validation, evidence artifact, and approved Jira bug creation.
-3. Add artifact persistence and run/audit records.
-4. Add project/environment scoping and user-to-agent RBAC.
-5. Add OPA policy evaluation before every external capability invocation.
-6. Add MCP connection management with organization-approved servers only.
-7. Add durable threads and run state.
-8. Expand the same runtime to Angular, Java, DB, DevOps, Product, SRE, Security, AI/ML, MLOps, and the remaining packs without changing the core architecture.
+## Current constraints
+
+- The QA pilot intentionally runs as **one replica** while SQLite is authoritative.
+- The Kubernetes base has **no public Ingress** and requires trusted-gateway network isolation.
+- Jira writes remain separately opt-in and always require L3 approval.
+- Database validation and Teams posting are not yet live integrations.
+- Production browser execution is not supported.
+- Horizontal scaling should wait for a shared Postgres/Supabase capability store and object storage.
+
+## Next milestones
+
+1. Deploy the QA pilot behind organization SSO/gateway and verify NetworkPolicy/equivalent isolation.
+2. Configure one real project first, then onboard 2-3 QA engineers and an independent reviewer.
+3. Measure task success, defect-draft quality, approval rejection, latency, cost, and manual overrides.
+4. Replace SQLite/filesystem persistence with shared Postgres/Supabase + object storage before horizontal scale.
+5. Add OPA-backed centralized policy evaluation and organization-approved MCP connection management.
+6. Reuse the proven capability/approval/audit pattern for Angular, Java, Database, DevOps, Product, SRE, Security, AI/ML, MLOps, and the remaining packs.
 
 ## Useful commands
 
@@ -124,6 +169,6 @@ Raw secrets must not be inserted into model context.
 npm run dev
 npm run typecheck
 npm run build
-npm run dev:agent-window:api
-npm run dev:agent-window:ui
+npm run test --workspace @bm-agents-world/agent-window
+docker build -f apps/agent-window/Dockerfile -t bm-agents-world:qa-pilot .
 ```

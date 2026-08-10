@@ -1,0 +1,12 @@
+node_modules
+.git
+.github
+.bm-agents-runtime
+**/.bm-agents-runtime
+**/.playwright-auth
+playwright/.auth
+**/.env
+**/dist
+*.sqlite
+*.sqlite-*
+.DS_Store

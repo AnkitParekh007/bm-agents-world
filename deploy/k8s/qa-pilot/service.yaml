@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: bm-agents-world
+  namespace: bm-agents-world
+  labels:
+    app.kubernetes.io/name: bm-agents-world
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: bm-agents-world
+    app.kubernetes.io/component: agent-window
+  ports:
+    - name: http
+      port: 80
+      targetPort: http

@@ -1,0 +1,32 @@
+name: Publish QA Pilot Image
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Log in to GHCR
+        env:
+          GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: echo "$GHCR_TOKEN" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+
+      - name: Build image
+        run: docker build --pull -f apps/agent-window/Dockerfile -t ghcr.io/ankitparekh007/bm-agents-world:${{ github.sha }} .
+
+      - name: Push immutable image
+        run: docker push ghcr.io/ankitparekh007/bm-agents-world:${{ github.sha }}
+
+      - name: Update pilot convenience tag
+        run: |
+          docker tag ghcr.io/ankitparekh007/bm-agents-world:${{ github.sha }} ghcr.io/ankitparekh007/bm-agents-world:qa-pilot
+          docker push ghcr.io/ankitparekh007/bm-agents-world:qa-pilot
