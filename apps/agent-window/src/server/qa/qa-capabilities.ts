@@ -49,14 +49,14 @@ export const QA_CAPABILITIES: CapabilityDefinition[] = [
     id: "qa.playwright.test.run",
     system: "playwright",
     action: "test.run",
-    description: "Run an allowlisted browser test against a non-production QA target.",
+    description: "Run an allowlisted isolated Chromium smoke test against a server-configured non-production target and persist evidence artifacts.",
     riskLevel: "L1",
     approvalMode: "standing-policy",
     actionClass: "test",
     externalWrite: false,
     productionMutation: false,
     allowedEnvironments: ["playground", "qa"],
-    adapterId: "qa-mock-adapter",
+    adapterId: "qa-playwright-worker-adapter",
   },
   {
     id: "qa.jira.bug.create",
@@ -159,7 +159,7 @@ export class QaMockAdapter implements CapabilityAdapter {
             failed: 1,
             skipped: 0,
             evidence: ["mock://screenshot/failure-1", "mock://trace/run-1"],
-            note: "No browser was launched; this is a contract-level simulation until Playwright MCP is connected.",
+            note: "No browser was launched because Playwright live execution is not configured.",
           },
         };
       case "qa.jira.bug.create":
