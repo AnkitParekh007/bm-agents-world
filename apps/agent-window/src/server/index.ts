@@ -7,6 +7,7 @@ import { PackRegistry } from "./pack-registry.js";
 import { ArtifactStore } from "./platform/artifact-store.js";
 import { CapabilityBroker } from "./platform/capability-broker.js";
 import { SqliteCapabilityStore } from "./platform/capability-store.js";
+import { buildDeploymentReadiness } from "./platform/deployment-readiness.js";
 import {
   canAccessExecutionContext,
   canSelfApprove,
@@ -39,6 +40,22 @@ const app = express();
 
 app.disable("x-powered-by");
 app.use(express.json({ limit: "1mb" }));
+
+// Kubernetes/container probes intentionally live before identity middleware.
+// They expose no user data, credentials, project details, or secret values.
+app.get("/healthz", (_request, response) => {
+  response.json({ status: "ok", service: "bm-agents-world-agent-window" });
+});
+
+app.get("/readyz", (_request, response) => {
+  const readiness = buildDeploymentReadiness(loadQaIntegrationStatus(), {
+    statePath: stateStore.path,
+    artifactRoot: artifacts.root,
+    packCount: registry.packs.length,
+  });
+  response.status(readiness.ready ? 200 : 503).json(readiness);
+});
+
 app.use(identityMiddleware());
 
 function accessibleRun(runId: string) {
@@ -66,6 +83,11 @@ app.get("/api/session", (_request, response) => {
 
 app.get("/api/health", (_request, response) => {
   const integrations = loadQaIntegrationStatus();
+  const readiness = buildDeploymentReadiness(integrations, {
+    statePath: stateStore.path,
+    artifactRoot: artifacts.root,
+    packCount: registry.packs.length,
+  });
   response.json({
     status: "ok",
     service: "bm-agents-world-agent-window",
@@ -73,14 +95,17 @@ app.get("/api/health", (_request, response) => {
     agents: ["default", ...registry.packs.map((pack) => pack.id)],
     model: process.env.AI_MODEL ?? "openai:gpt-5.4-mini",
     qaCapabilityCount: qaBroker.listCapabilities().length,
+    deploymentMode: readiness.mode,
+    ready: readiness.ready,
     identityMode: process.env.BM_IDENTITY_MODE?.trim() || "local-dev",
     stateStore: { type: "sqlite", path: stateStore.path },
+    artifactRoot: artifacts.root,
     qaAdapters: {
       jira: integrations.jira.mode,
       bitbucket: integrations.bitbucket.mode,
       database: "mock",
       playwright: integrations.playwright.mode,
-      jiraWrite: process.env.QA_JIRA_WRITE_ENABLED?.toLowerCase() === "true" && integrations.jira.mode === "live" ? "live" : "mock",
+      jiraWrite: integrations.jira.writeMode,
       teams: "mock",
     },
     qaProjectTests: projectTestCatalogStatus().map((item) => ({
@@ -219,12 +244,18 @@ if (existsSync(clientDirectory)) {
 
 const server = app.listen(PORT, "0.0.0.0", () => {
   const integrations = loadQaIntegrationStatus();
+  const readiness = buildDeploymentReadiness(integrations, {
+    statePath: stateStore.path,
+    artifactRoot: artifacts.root,
+    packCount: registry.packs.length,
+  });
   console.log(`[bm-agents-world] loaded ${registry.packs.length} agent packs`);
   console.log(`[bm-agents-world] runtime: http://localhost:${PORT}/api/copilotkit`);
+  console.log(`[bm-agents-world] probes: /healthz and /readyz (${readiness.mode}, ready=${readiness.ready})`);
   console.log(`[bm-agents-world] qa capabilities: ${qaBroker.listCapabilities().length}`);
   console.log(`[bm-agents-world] qa state: sqlite ${stateStore.path}`);
   console.log(`[bm-agents-world] identity mode: ${process.env.BM_IDENTITY_MODE?.trim() || "local-dev"}`);
-  console.log(`[bm-agents-world] qa jira read: ${integrations.jira.mode}; jira write: ${process.env.QA_JIRA_WRITE_ENABLED?.toLowerCase() === "true" ? "enabled" : "disabled"}; bitbucket: ${integrations.bitbucket.mode}; playwright: ${integrations.playwright.mode}`);
+  console.log(`[bm-agents-world] qa jira read: ${integrations.jira.mode}; jira write: ${integrations.jira.writeMode}; bitbucket: ${integrations.bitbucket.mode}; playwright: ${integrations.playwright.mode}`);
 });
 
 function shutdown() {
