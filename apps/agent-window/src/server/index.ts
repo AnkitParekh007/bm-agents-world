@@ -6,6 +6,13 @@ import { buildCopilotRuntime } from "./copilot.js";
 import { PackRegistry } from "./pack-registry.js";
 import { ArtifactStore } from "./platform/artifact-store.js";
 import { CapabilityBroker } from "./platform/capability-broker.js";
+import { SqliteCapabilityStore } from "./platform/capability-store.js";
+import {
+  canAccessExecutionContext,
+  canSelfApprove,
+  currentRequestIdentity,
+  identityMiddleware,
+} from "./platform/request-identity.js";
 import { BitbucketReadAdapter } from "./qa/bitbucket-read-adapter.js";
 import { JiraDefectAdapter } from "./qa/jira-defect-adapter.js";
 import { JiraReadAdapter } from "./qa/jira-read-adapter.js";
@@ -17,6 +24,7 @@ import { projectTestCatalogStatus } from "./qa/qa-project-tests.js";
 const PORT = Number(process.env.PORT ?? 4000);
 const registry = new PackRegistry();
 const artifacts = new ArtifactStore();
+const stateStore = new SqliteCapabilityStore();
 const qaMockAdapter = new QaMockAdapter();
 const jiraDefectAdapter = new JiraDefectAdapter(qaMockAdapter, artifacts);
 const qaBroker = new CapabilityBroker(QA_CAPABILITIES, [
@@ -25,12 +33,36 @@ const qaBroker = new CapabilityBroker(QA_CAPABILITIES, [
   new BitbucketReadAdapter(qaMockAdapter),
   new PlaywrightWorkerAdapter(qaMockAdapter, artifacts),
   jiraDefectAdapter,
-]);
+], stateStore);
 const runtime = buildCopilotRuntime(registry, qaBroker);
 const app = express();
 
 app.disable("x-powered-by");
 app.use(express.json({ limit: "1mb" }));
+app.use(identityMiddleware());
+
+function accessibleRun(runId: string) {
+  const run = qaBroker.getRun(runId);
+  if (!run) return undefined;
+  return canAccessExecutionContext(currentRequestIdentity(), run.context) ? run : null;
+}
+
+function accessibleAction(actionId: string) {
+  const action = qaBroker.getAction(actionId);
+  if (!action) return undefined;
+  return canAccessExecutionContext(currentRequestIdentity(), action.context) ? action : null;
+}
+
+app.get("/api/session", (_request, response) => {
+  const identity = currentRequestIdentity();
+  response.json({
+    userId: identity.userId,
+    tenantId: identity.tenantId,
+    projectIds: identity.projectIds,
+    source: identity.source,
+    selfApprovalAllowed: canSelfApprove(identity),
+  });
+});
 
 app.get("/api/health", (_request, response) => {
   const integrations = loadQaIntegrationStatus();
@@ -41,6 +73,8 @@ app.get("/api/health", (_request, response) => {
     agents: ["default", ...registry.packs.map((pack) => pack.id)],
     model: process.env.AI_MODEL ?? "openai:gpt-5.4-mini",
     qaCapabilityCount: qaBroker.listCapabilities().length,
+    identityMode: process.env.BM_IDENTITY_MODE?.trim() || "local-dev",
+    stateStore: { type: "sqlite", path: stateStore.path },
     qaAdapters: {
       jira: integrations.jira.mode,
       bitbucket: integrations.bitbucket.mode,
@@ -76,15 +110,40 @@ app.get("/api/qa/capabilities", (_request, response) => {
 app.get("/api/qa/integrations", (_request, response) => response.json(loadQaIntegrationStatus()));
 app.get("/api/qa/project-tests", (_request, response) => response.json({ projects: projectTestCatalogStatus() }));
 
+app.get("/api/qa/runs", (request, response) => {
+  const rawLimit = Number(request.query.limit ?? 50);
+  const limit = Number.isFinite(rawLimit) ? Math.max(1, Math.min(rawLimit, 200)) : 50;
+  const identity = currentRequestIdentity();
+  const runs = qaBroker.listRuns(500)
+    .filter((run) => canAccessExecutionContext(identity, run.context))
+    .slice(0, limit)
+    .map((run) => ({ ...run, actionCount: qaBroker.listActionsForRun(run.id).length }));
+  response.json({ runs });
+});
+
+app.get("/api/qa/runs/:runId", (request, response) => {
+  const run = accessibleRun(request.params.runId);
+  if (run === undefined) return void response.status(404).json({ error: "run_not_found" });
+  if (run === null) return void response.status(403).json({ error: "run_access_denied" });
+  response.json({ run, actions: qaBroker.listActionsForRun(run.id) });
+});
+
 app.get("/api/qa/artifacts/:artifactId/metadata", (request, response) => {
   const artifact = artifacts.find(request.params.artifactId);
   if (!artifact) return void response.status(404).json({ error: "artifact_not_found" });
+  const run = accessibleRun(artifact.record.runId);
+  if (run === undefined) return void response.status(409).json({ error: "artifact_run_not_persisted" });
+  if (run === null) return void response.status(403).json({ error: "artifact_access_denied" });
+  response.setHeader("Cache-Control", "private, no-store");
   response.json(artifact.record);
 });
 
 app.get("/api/qa/artifacts/:artifactId", (request, response) => {
   const artifact = artifacts.find(request.params.artifactId);
   if (!artifact) return void response.status(404).json({ error: "artifact_not_found" });
+  const run = accessibleRun(artifact.record.runId);
+  if (run === undefined) return void response.status(409).json({ error: "artifact_run_not_persisted" });
+  if (run === null) return void response.status(403).json({ error: "artifact_access_denied" });
   response.setHeader("Cache-Control", "private, no-store");
   response.setHeader("X-Content-Type-Options", "nosniff");
   response.setHeader("Content-Type", artifact.record.mediaType);
@@ -93,14 +152,16 @@ app.get("/api/qa/artifacts/:artifactId", (request, response) => {
 });
 
 app.get("/api/qa/actions/:actionId", (request, response) => {
-  const action = qaBroker.getAction(request.params.actionId);
-  if (!action) return void response.status(404).json({ error: "action_not_found" });
+  const action = accessibleAction(request.params.actionId);
+  if (action === undefined) return void response.status(404).json({ error: "action_not_found" });
+  if (action === null) return void response.status(403).json({ error: "action_access_denied" });
   response.json(action);
 });
 
 app.get("/api/qa/actions/:actionId/review", async (request, response) => {
-  const action = qaBroker.getAction(request.params.actionId);
-  if (!action) return void response.status(404).json({ error: "action_not_found" });
+  const action = accessibleAction(request.params.actionId);
+  if (action === undefined) return void response.status(404).json({ error: "action_not_found" });
+  if (action === null) return void response.status(403).json({ error: "action_access_denied" });
   if (action.capabilityId !== "qa.jira.bug.create") return void response.status(400).json({ error: "review_not_supported_for_capability" });
   try {
     response.json(await jiraDefectAdapter.previewCreateAction(action));
@@ -110,12 +171,21 @@ app.get("/api/qa/actions/:actionId/review", async (request, response) => {
 });
 
 app.post("/api/qa/actions/:actionId/decision", (request, response) => {
+  const action = accessibleAction(request.params.actionId);
+  if (action === undefined) return void response.status(404).json({ error: "action_not_found" });
+  if (action === null) return void response.status(403).json({ error: "action_access_denied" });
   const decision = request.body?.decision;
   if (decision !== "approved" && decision !== "rejected") return void response.status(400).json({ error: "decision_must_be_approved_or_rejected" });
-  const decidedBy = String(request.header("x-user-id") || "local-dev-user");
+  const identity = currentRequestIdentity();
+  if (decision === "approved" && identity.userId === action.context.userId && !canSelfApprove(identity)) {
+    return void response.status(409).json({
+      error: "self_approval_denied",
+      message: "The requester cannot approve their own protected action in trusted identity mode.",
+    });
+  }
   const reason = typeof request.body?.reason === "string" ? request.body.reason : undefined;
   try {
-    response.json(qaBroker.decideAction(request.params.actionId, decision, decidedBy, reason));
+    response.json(qaBroker.decideAction(request.params.actionId, decision, identity.userId, reason));
   } catch (error) {
     response.status(409).json({ error: "approval_decision_rejected", message: error instanceof Error ? error.message : String(error) });
   }
@@ -123,7 +193,15 @@ app.post("/api/qa/actions/:actionId/decision", (request, response) => {
 
 app.get("/api/audit", (request, response) => {
   const rawLimit = Number(request.query.limit ?? 100);
-  response.json({ events: qaBroker.listAudit(Number.isFinite(rawLimit) ? rawLimit : 100) });
+  const limit = Number.isFinite(rawLimit) ? Math.max(1, Math.min(rawLimit, 200)) : 100;
+  const identity = currentRequestIdentity();
+  const events = qaBroker.listAudit(500)
+    .filter((event) => {
+      const run = qaBroker.getRun(event.runId);
+      return Boolean(run && canAccessExecutionContext(identity, run.context));
+    })
+    .slice(0, limit);
+  response.json({ events });
 });
 
 app.use(createCopilotExpressHandler({
@@ -139,10 +217,22 @@ if (existsSync(clientDirectory)) {
   app.get("*path", (_request, response) => response.sendFile(resolve(clientDirectory, "index.html")));
 }
 
-app.listen(PORT, "0.0.0.0", () => {
+const server = app.listen(PORT, "0.0.0.0", () => {
   const integrations = loadQaIntegrationStatus();
   console.log(`[bm-agents-world] loaded ${registry.packs.length} agent packs`);
   console.log(`[bm-agents-world] runtime: http://localhost:${PORT}/api/copilotkit`);
   console.log(`[bm-agents-world] qa capabilities: ${qaBroker.listCapabilities().length}`);
+  console.log(`[bm-agents-world] qa state: sqlite ${stateStore.path}`);
+  console.log(`[bm-agents-world] identity mode: ${process.env.BM_IDENTITY_MODE?.trim() || "local-dev"}`);
   console.log(`[bm-agents-world] qa jira read: ${integrations.jira.mode}; jira write: ${process.env.QA_JIRA_WRITE_ENABLED?.toLowerCase() === "true" ? "enabled" : "disabled"}; bitbucket: ${integrations.bitbucket.mode}; playwright: ${integrations.playwright.mode}`);
 });
+
+function shutdown() {
+  server.close(() => {
+    stateStore.close();
+    process.exit(0);
+  });
+}
+
+process.on("SIGINT", shutdown);
+process.on("SIGTERM", shutdown);

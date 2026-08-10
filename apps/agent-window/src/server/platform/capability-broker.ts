@@ -10,6 +10,7 @@ import type {
   ExecutionContext,
   RiskLevel,
 } from "./capability-types.js";
+import type { CapabilityRun, CapabilityStore } from "./capability-store.js";
 
 const APPROVAL_TTL_MS = 10 * 60 * 1000;
 const RISK_REQUIRES_HUMAN = new Set<RiskLevel>(["L2", "L3", "L4"]);
@@ -44,9 +45,14 @@ export class CapabilityBroker {
   private readonly definitions = new Map<string, CapabilityDefinition>();
   private readonly adapters = new Map<string, CapabilityAdapter>();
   private readonly actions = new Map<string, CapabilityAction>();
+  private readonly runs = new Map<string, CapabilityRun>();
   private readonly auditEvents: AuditEvent[] = [];
 
-  constructor(definitions: CapabilityDefinition[], adapters: CapabilityAdapter[]) {
+  constructor(
+    definitions: CapabilityDefinition[],
+    adapters: CapabilityAdapter[],
+    private readonly store?: CapabilityStore,
+  ) {
     for (const definition of definitions) this.definitions.set(definition.id, definition);
     for (const adapter of adapters) this.adapters.set(adapter.id, adapter);
   }
@@ -55,16 +61,51 @@ export class CapabilityBroker {
     return [...this.definitions.values()];
   }
 
+  startRun(context: ExecutionContext): CapabilityRun {
+    const run = this.store?.upsertRun(context) ?? {
+      id: context.runId,
+      context,
+      createdAt: context.requestedAt,
+      updatedAt: new Date().toISOString(),
+    };
+    this.runs.set(run.id, run);
+    return run;
+  }
+
+  getRun(runId: string): CapabilityRun | undefined {
+    const persisted = this.store?.getRun(runId);
+    if (persisted) this.runs.set(runId, persisted);
+    return persisted ?? this.runs.get(runId);
+  }
+
+  listRuns(limit = 100): CapabilityRun[] {
+    if (this.store) return this.store.listRuns(limit);
+    return [...this.runs.values()]
+      .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt))
+      .slice(0, Math.max(1, Math.min(limit, 500)));
+  }
+
+  listActionsForRun(runId: string): CapabilityAction[] {
+    if (this.store) return this.store.listActionsForRun(runId);
+    return [...this.actions.values()]
+      .filter((action) => action.context.runId === runId)
+      .sort((a, b) => a.updatedAt.localeCompare(b.updatedAt));
+  }
+
   listAudit(limit = 100): AuditEvent[] {
+    if (this.store) return this.store.listAudit(limit);
     return this.auditEvents.slice(-Math.max(1, Math.min(limit, 500))).reverse();
   }
 
   getAction(actionId: string): CapabilityAction | undefined {
-    const action = this.actions.get(actionId);
+    const persisted = this.store?.getAction(actionId);
+    if (persisted) this.actions.set(actionId, persisted);
+    const action = persisted ?? this.actions.get(actionId);
     if (action?.approval?.status === "pending" && Date.parse(action.approval.expiresAt) <= Date.now()) {
       action.approval.status = "expired";
       action.status = "rejected";
       action.updatedAt = new Date().toISOString();
+      this.saveAction(action);
     }
     return action;
   }
@@ -77,6 +118,7 @@ export class CapabilityBroker {
     const definition = this.definitions.get(capabilityId);
     if (!definition) throw new Error(`Unknown capability: ${capabilityId}`);
 
+    this.startRun(context);
     const now = new Date();
     const hash = payloadHash(payload);
     const riskLevel = effectiveRisk(definition, context.environment);
@@ -96,7 +138,7 @@ export class CapabilityBroker {
         updatedAt: now.toISOString(),
         policyReason: `Capability is not allowed in ${context.environment}.`,
       };
-      this.actions.set(actionId, denied);
+      this.saveAction(denied);
       this.audit("action.denied", denied, "system", "capability-broker", {
         reason: denied.policyReason,
       });
@@ -117,7 +159,7 @@ export class CapabilityBroker {
         updatedAt: now.toISOString(),
         policyReason: "Free-form production mutation is denied by the QA pack policy.",
       };
-      this.actions.set(actionId, denied);
+      this.saveAction(denied);
       this.audit("action.denied", denied, "system", "capability-broker", {
         reason: denied.policyReason,
       });
@@ -156,7 +198,7 @@ export class CapabilityBroker {
           : "L0 scoped read is permitted automatically.",
     };
 
-    this.actions.set(action.id, action);
+    this.saveAction(action);
     this.audit("action.requested", action, "agent", context.agentId);
     if (approval) this.audit("approval.requested", action, "system", "capability-broker");
     return action;
@@ -185,6 +227,7 @@ export class CapabilityBroker {
     action.approval.reason = reason;
     action.status = decision === "approved" ? "approved" : "rejected";
     action.updatedAt = now;
+    this.saveAction(action);
 
     this.audit(
       decision === "approved" ? "approval.approved" : "approval.rejected",
@@ -215,12 +258,14 @@ export class CapabilityBroker {
 
     action.status = "executing";
     action.updatedAt = new Date().toISOString();
+    this.saveAction(action);
     this.audit("action.executing", action, "system", "capability-broker");
 
     try {
       action.result = await adapter.execute(definition, action.context, action.payload);
       action.status = action.result.ok ? "executed" : "failed";
       action.updatedAt = new Date().toISOString();
+      this.saveAction(action);
       this.audit(
         action.result.ok ? "action.executed" : "action.failed",
         action,
@@ -242,11 +287,19 @@ export class CapabilityBroker {
         externalSideEffect: false,
         error: error instanceof Error ? error.message : String(error),
       };
+      this.saveAction(action);
       this.audit("action.failed", action, "system", adapter.id, {
         error: action.result.error,
       });
       return action;
     }
+  }
+
+  private saveAction(action: CapabilityAction): void {
+    this.actions.set(action.id, action);
+    this.store?.saveAction(action);
+    const run = this.store?.getRun(action.context.runId);
+    if (run) this.runs.set(run.id, run);
   }
 
   private audit(
@@ -256,7 +309,7 @@ export class CapabilityBroker {
     actorId: string,
     metadata?: Record<string, unknown>,
   ) {
-    this.auditEvents.push({
+    const auditEvent: AuditEvent = {
       id: randomUUID(),
       timestamp: new Date().toISOString(),
       runId: action.context.runId,
@@ -267,6 +320,8 @@ export class CapabilityBroker {
       capabilityId: action.capabilityId,
       payloadHash: action.payloadHash,
       metadata,
-    });
+    };
+    this.auditEvents.push(auditEvent);
+    this.store?.appendAudit(auditEvent, action.context);
   }
 }

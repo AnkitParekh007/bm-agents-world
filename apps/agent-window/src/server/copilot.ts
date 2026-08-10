@@ -159,7 +159,7 @@ export function buildCopilotRuntime(
       model: modelName(),
       prompt: packPrompt(pack) + (isQa ? QA_CAPABILITY_PROMPT : ""),
       tools: isQa ? [...packTools(pack), ...buildQaTools(qaBroker)] : packTools(pack),
-      maxSteps: isQa ? 14 : 8,
+      maxSteps: isQa ? 16 : 8,
     });
   }
 
@@ -173,7 +173,7 @@ export function buildCopilotRuntime(
   return new CopilotRuntime({
     agents,
     forwardHeaders: {
-      allow: ["authorization", "x-user-id", "x-project-id", "x-tenant-id"],
+      allow: ["authorization", "x-user-id", "x-project-id", "x-project-ids", "x-tenant-id"],
     },
   });
 }

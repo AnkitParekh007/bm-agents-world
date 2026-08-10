@@ -3,27 +3,44 @@ import { defineTool } from "@copilotkit/runtime/v2";
 import { z } from "zod";
 import type { CapabilityBroker } from "../platform/capability-broker.js";
 import type { EnvironmentName, ExecutionContext } from "../platform/capability-types.js";
+import {
+  assertProjectAccess,
+  canAccessExecutionContext,
+  currentRequestIdentity,
+} from "../platform/request-identity.js";
 import { projectTestCatalogStatus } from "./qa-project-tests.js";
 
-function contextFor(projectId: string, environment: EnvironmentName): ExecutionContext {
+function contextFor(projectId: string, environment: EnvironmentName, runId = randomUUID()): ExecutionContext {
+  const identity = currentRequestIdentity();
+  assertProjectAccess(identity, projectId);
   return {
-    runId: randomUUID(),
-    userId: "local-dev-user",
+    runId,
+    userId: identity.userId,
     agentId: "qa",
     packId: "qa-agent-pack",
     projectId,
     environment,
-    tenantId: "local-dev",
+    tenantId: identity.tenantId,
     requestedAt: new Date().toISOString(),
   };
+}
+
+function actionForCurrentIdentity(broker: CapabilityBroker, actionId: string) {
+  const action = broker.getAction(actionId);
+  if (!action) return undefined;
+  if (!canAccessExecutionContext(currentRequestIdentity(), action.context)) {
+    throw new Error("Current identity is not authorized for this action scope.");
+  }
+  return action;
 }
 
 export const QA_CAPABILITY_PROMPT = `
 
 QA capability execution protocol:
 - Use governed server tools for executable QA work; never pretend an external system was accessed.
+- For every multi-step workflow, call startQaRun once with the exact project/environment and reuse the returned runId in every requestQaCapabilityAction call for that workflow.
 - Start with listQaCapabilities and listQaProjectTests when you need executable scope.
-- For an action, call requestQaCapabilityAction with exact project, environment, capability, and payload. Execute only the returned immutable action id.
+- For an action, call requestQaCapabilityAction with exact runId, project, environment, capability, and payload. Execute only the returned immutable action id.
 - If status is pending_approval, call reviewQaAction with the exact action id, capability id, risk level, summary, and payload hash. Execute only after human approval.
 - Approval is payload-hash-bound and expires. Never substitute a new payload after approval.
 - For qa.playwright.test.run, include storyId and changedFiles from Bitbucket evidence only. Never supply URLs, selectors, credentials, scripts, or test file paths.
@@ -52,32 +69,71 @@ export function buildQaTools(broker: CapabilityBroker) {
     execute: async () => ({ projects: projectTestCatalogStatus() }),
   });
 
+  const startRun = defineTool({
+    name: "startQaRun",
+    description: "Start one durable QA workflow run scoped to the current authenticated identity, project, and environment.",
+    parameters: z.object({
+      projectId: z.string().min(1),
+      environment: z.enum(["playground", "qa", "prod"]),
+    }),
+    execute: async ({ projectId, environment }) => {
+      const run = broker.startRun(contextFor(projectId, environment as EnvironmentName));
+      return {
+        runId: run.id,
+        projectId: run.context.projectId,
+        environment: run.context.environment,
+        requestedBy: run.context.userId,
+        tenantId: run.context.tenantId,
+      };
+    },
+  });
+
   const requestAction = defineTool({
     name: "requestQaCapabilityAction",
-    description: "Create an immutable, policy-evaluated QA capability action before execution.",
+    description: "Create an immutable, policy-evaluated QA capability action inside a durable QA run.",
     parameters: z.object({
+      runId: z.string().uuid().optional().describe("Run id from startQaRun. Omit only for backward-compatible single actions."),
       capabilityId: z.string().describe("Capability id from listQaCapabilities"),
       projectId: z.string().min(1).describe("Project id such as PCC, SOP, or DataBridge"),
       environment: z.enum(["playground", "qa", "prod"]),
       payload: z.record(z.string(), z.unknown()).default({}),
     }),
-    execute: async ({ capabilityId, projectId, environment, payload }) =>
-      broker.requestAction(capabilityId, contextFor(projectId, environment as EnvironmentName), payload),
+    execute: async ({ runId, capabilityId, projectId, environment, payload }) => {
+      const identity = currentRequestIdentity();
+      assertProjectAccess(identity, projectId);
+      let context: ExecutionContext;
+      if (runId) {
+        const run = broker.getRun(runId);
+        if (!run) throw new Error("QA run was not found or has expired from the configured store.");
+        if (!canAccessExecutionContext(identity, run.context)) throw new Error("Current identity cannot access this QA run.");
+        if (run.context.projectId !== projectId || run.context.environment !== environment) {
+          throw new Error("Action scope must match the durable QA run project and environment.");
+        }
+        context = run.context;
+      } else {
+        context = contextFor(projectId, environment as EnvironmentName);
+      }
+      return broker.requestAction(capabilityId, context, payload);
+    },
   });
 
   const getAction = defineTool({
     name: "getQaCapabilityAction",
-    description: "Read the server-side status of one previously requested QA action.",
+    description: "Read the server-side status of one previously requested QA action in the current identity scope.",
     parameters: z.object({ actionId: z.string().uuid() }),
-    execute: async ({ actionId }) => broker.getAction(actionId) ?? { error: "action_not_found", actionId },
+    execute: async ({ actionId }) => actionForCurrentIdentity(broker, actionId) ?? { error: "action_not_found", actionId },
   });
 
   const executeAction = defineTool({
     name: "executeQaCapabilityAction",
-    description: "Execute a previously requested QA action only when server policy permits its current status.",
+    description: "Execute a previously requested QA action only when server policy and current identity scope permit it.",
     parameters: z.object({ actionId: z.string().uuid() }),
-    execute: async ({ actionId }) => broker.executeAction(actionId),
+    execute: async ({ actionId }) => {
+      const action = actionForCurrentIdentity(broker, actionId);
+      if (!action) throw new Error("Action not found");
+      return broker.executeAction(actionId);
+    },
   });
 
-  return [listCapabilities, listProjectTests, requestAction, getAction, executeAction];
+  return [listCapabilities, listProjectTests, startRun, requestAction, getAction, executeAction];
 }
