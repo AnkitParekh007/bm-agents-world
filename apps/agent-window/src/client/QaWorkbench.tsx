@@ -23,6 +23,12 @@ interface QaIntegrationStatus {
     mode: "live" | "mock";
     projects: Record<string, Array<{ label: string; workspace: string; repoSlug: string }>>;
   };
+  playwright: {
+    mode: "live" | "mock";
+    enabled: boolean;
+    browser: "chromium";
+    targets: Array<{ projectId: string; environment: "playground" | "qa"; url: string }>;
+  };
 }
 
 interface ApprovalDecisionResponse {
@@ -197,7 +203,7 @@ export function QaWorkbench() {
 
   const runSmoke = () => run(
     "Run smoke",
-    `Run the QA smoke workflow for ${storyId} in project ${projectId}, environment ${environment}. Request qa.playwright.test.run with suite story-smoke and then execute it if policy permits. Interpret the result and clearly state that mock mode did not launch a real browser.`,
+    `Run the governed browser smoke workflow for ${storyId} in project ${projectId}, environment ${environment}. Request qa.playwright.test.run with payload {"suite":"story-smoke","storyId":"${storyId}"} and execute it if policy permits. Do not provide or invent a target URL; the server selects the approved target. If result.mode is live, summarize the real Chromium checks and provide the testResultArtifact.uri and evidenceManifestArtifact.uri plus useful screenshot/trace evidence URIs. If result.mode is mock, clearly state that no browser was launched.`,
   );
 
   const approvalDemo = () => run(
@@ -206,6 +212,10 @@ export function QaWorkbench() {
   );
 
   const configuredRepos = integrations?.bitbucket.projects[projectId]?.length ?? 0;
+  const playwrightTarget = integrations?.playwright.targets.find(
+    (target) => target.projectId === projectId && target.environment === environment,
+  );
+  const playwrightRunnable = environment !== "prod" && integrations?.playwright.mode === "live" && Boolean(playwrightTarget);
 
   return (
     <section className="qa-workbench">
@@ -250,9 +260,9 @@ export function QaWorkbench() {
           <strong>{activeAction === "Analyze story" ? "Analyzing…" : "Analyze story"}</strong>
           <span>Jira read → Bitbucket impact → QA plan</span>
         </button>
-        <button className="qa-action" disabled={agent.isRunning} onClick={() => void runSmoke()}>
-          <strong>{activeAction === "Run smoke" ? "Running…" : "Run smoke simulation"}</strong>
-          <span>L1 standing-policy Playwright contract</span>
+        <button className="qa-action" disabled={agent.isRunning || environment === "prod"} onClick={() => void runSmoke()}>
+          <strong>{activeAction === "Run smoke" ? "Running Chromium…" : playwrightRunnable ? "Run real browser smoke" : "Run smoke simulation"}</strong>
+          <span>{playwrightRunnable ? `L1 · ${integrations?.playwright.browser} · evidence captured` : "L1 standing-policy Playwright contract"}</span>
         </button>
         <button className="qa-action approval-demo" disabled={agent.isRunning} onClick={() => void approvalDemo()}>
           <strong>{activeAction === "Create bug" ? "Preparing…" : "Approval demo: create bug"}</strong>
@@ -264,7 +274,8 @@ export function QaWorkbench() {
         {riskSummary.map(([risk, count]) => <span key={risk}>{risk}: {count}</span>)}
         <span>Jira read: {integrations?.jira.mode ?? "loading"}</span>
         <span>Bitbucket read: {integrations?.bitbucket.mode ?? "loading"} · {configuredRepos} repos</span>
-        <span>Writes/Playwright: mock</span>
+        <span>Playwright: {integrations?.playwright.mode ?? "loading"}{playwrightTarget ? ` · ${environment} target` : ""}</span>
+        <span>Writes: mock</span>
       </div>
     </section>
   );
