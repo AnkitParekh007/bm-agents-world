@@ -24,7 +24,7 @@ What is working:
 - Self-approval denial in trusted shared-pilot mode.
 - Run-scoped artifact authorization.
 - Docker image with pinned Playwright browser runtime.
-- Kubernetes single-replica pilot package with persistent storage and health/readiness probes.
+- Kubernetes single-replica pilot package with persistent storage, health/readiness probes, and trusted-gateway-only ingress NetworkPolicy.
 - CI for strict TypeScript, policy/integration/deployment tests, production build, and container build.
 
 ## Architecture
@@ -100,7 +100,7 @@ The container can be built with:
 docker build -f apps/agent-window/Dockerfile -t bm-agents-world:qa-pilot .
 ```
 
-A manual GitHub Actions workflow can publish the image to GHCR. The Kubernetes base intentionally creates only a `ClusterIP` service; connect it to an authenticated internal gateway rather than exposing it directly.
+A manual GitHub Actions workflow can publish the image to GHCR. The Kubernetes base creates a `ClusterIP` service plus a NetworkPolicy that only permits explicitly labeled trusted-gateway pods in explicitly labeled gateway namespaces. There is intentionally no public Ingress. The cluster network provider must enforce NetworkPolicy, or an equivalent network restriction must be provided before trusted identity headers are accepted.
 
 Pilot probes:
 
@@ -111,7 +111,7 @@ GET /readyz
 
 `BM_DEPLOYMENT_MODE=pilot` makes readiness fail until the required trusted identity, persistent storage, model credential, Jira, Bitbucket, and Playwright configuration is live.
 
-See [QA Team Pilot Deployment](docs/qa-team-pilot-deployment.md) for the full gateway, secret, storage, image, and pilot-admission contract.
+See [QA Team Pilot Deployment](docs/qa-team-pilot-deployment.md) for the full gateway, network, secret, storage, image, and pilot-admission contract.
 
 ## Security boundary
 
@@ -121,6 +121,8 @@ External capability execution follows:
 Authenticated user
    ↓
 Trusted gateway
+   ↓
+NetworkPolicy / equivalent isolation
    ↓
 Tenant / project authorization
    ↓
@@ -146,7 +148,7 @@ Free-form production mutation remains unavailable.
 ## Current constraints
 
 - The QA pilot intentionally runs as **one replica** while SQLite is authoritative.
-- The Kubernetes base has **no public Ingress**.
+- The Kubernetes base has **no public Ingress** and requires trusted-gateway network isolation.
 - Jira writes remain separately opt-in and always require L3 approval.
 - Database validation and Teams posting are not yet live integrations.
 - Production browser execution is not supported.
@@ -154,7 +156,7 @@ Free-form production mutation remains unavailable.
 
 ## Next milestones
 
-1. Deploy the QA pilot behind organization SSO/gateway.
+1. Deploy the QA pilot behind organization SSO/gateway and verify NetworkPolicy/equivalent isolation.
 2. Configure one real project first, then onboard 2-3 QA engineers and an independent reviewer.
 3. Measure task success, defect-draft quality, approval rejection, latency, cost, and manual overrides.
 4. Replace SQLite/filesystem persistence with shared Postgres/Supabase + object storage before horizontal scale.
