@@ -7,7 +7,7 @@ import type {
   CapabilityDefinition,
   ExecutionContext,
 } from "../platform/capability-types.js";
-import type { ArtifactStore, StoredArtifact } from "../platform/artifact-store.js";
+import type { ArtifactRepository, StoredArtifact } from "../platform/artifact-store.js";
 import { loadQaIntegrationStatus, resolvePlaywrightTarget } from "./qa-integration-config.js";
 import {
   resolveProjectStorageState,
@@ -122,8 +122,6 @@ export class PlaywrightBrowserExecutor implements BrowserExecutor {
       const page = await context.newPage();
       page.setDefaultTimeout(request.timeoutMs);
 
-      // Start evidence capture only after authenticated context bootstrap. The
-      // storage-state secret itself is never emitted into model-visible data.
       await context.tracing.start({ screenshots: true, snapshots: true, sources: false });
       page.on("console", (message) => {
         if (message.type() === "error" && consoleErrors.length < MAX_CONSOLE_ERRORS) {
@@ -222,7 +220,7 @@ export class PlaywrightWorkerAdapter implements CapabilityAdapter {
 
   constructor(
     private readonly fallback: CapabilityAdapter,
-    private readonly artifacts: ArtifactStore,
+    private readonly artifacts: ArtifactRepository,
     private readonly executor: BrowserExecutor = new PlaywrightBrowserExecutor(),
   ) {}
 
@@ -274,9 +272,9 @@ export class PlaywrightWorkerAdapter implements CapabilityAdapter {
       const status = failedCases.length === 0 ? "passed" : "failed";
       const evidenceArtifacts: StoredArtifact[] = [];
 
-      if (evidence.screenshot) evidenceArtifacts.push(this.artifacts.write(context.runId, "screenshot", "project-tests.png", evidence.screenshot, { classification: "internal-qa-evidence", mediaType: "image/png" }));
-      if (evidence.trace) evidenceArtifacts.push(this.artifacts.write(context.runId, "playwright-trace", "trace.zip", evidence.trace, { classification: evidence.authenticated ? "restricted-qa-evidence" : "internal-qa-evidence", mediaType: "application/zip" }));
-      evidenceArtifacts.push(this.artifacts.writeJson(context.runId, "network-evidence", "network.json", {
+      if (evidence.screenshot) evidenceArtifacts.push(await this.artifacts.write(context.runId, "screenshot", "project-tests.png", evidence.screenshot, { classification: "internal-qa-evidence", mediaType: "image/png" }));
+      if (evidence.trace) evidenceArtifacts.push(await this.artifacts.write(context.runId, "playwright-trace", "trace.zip", evidence.trace, { classification: evidence.authenticated ? "restricted-qa-evidence" : "internal-qa-evidence", mediaType: "application/zip" }));
+      evidenceArtifacts.push(await this.artifacts.writeJson(context.runId, "network-evidence", "network.json", {
         targetUrl: evidence.targetUrl,
         finalUrl: evidence.finalUrl,
         requests: evidence.network,
@@ -307,12 +305,12 @@ export class PlaywrightWorkerAdapter implements CapabilityAdapter {
           caseResults: evidence.cases,
         },
       };
-      const resultArtifact = this.artifacts.writeJson(context.runId, "test-execution-result", "test-result.json", testResult);
+      const resultArtifact = await this.artifacts.writeJson(context.runId, "test-execution-result", "test-result.json", testResult);
       evidenceArtifacts.push(resultArtifact);
 
       let bugDraftArtifact: StoredArtifact | undefined;
       if (failedCases.length) {
-        bugDraftArtifact = this.artifacts.writeJson(
+        bugDraftArtifact = await this.artifacts.writeJson(
           context.runId,
           "bug-draft",
           "bug-draft.json",
@@ -321,7 +319,7 @@ export class PlaywrightWorkerAdapter implements CapabilityAdapter {
         evidenceArtifacts.push(bugDraftArtifact);
       }
 
-      const manifestArtifact = this.artifacts.writeJson(context.runId, "evidence-manifest", "evidence-manifest.json", {
+      const manifestArtifact = await this.artifacts.writeJson(context.runId, "evidence-manifest", "evidence-manifest.json", {
         runId: context.runId,
         items: evidenceArtifacts.map(artifactItem),
       });
@@ -360,7 +358,7 @@ export class PlaywrightWorkerAdapter implements CapabilityAdapter {
         evidenceIds: [],
         failure: { message: error instanceof Error ? error.message : String(error) },
       };
-      const resultArtifact = this.artifacts.writeJson(context.runId, "test-execution-result", "test-result.json", failureResult);
+      const resultArtifact = await this.artifacts.writeJson(context.runId, "test-execution-result", "test-result.json", failureResult);
       return { ok: false, mode: "live", externalSideEffect: false, data: { testResultArtifact: resultArtifact }, error: failureResult.failure.message };
     }
   }
