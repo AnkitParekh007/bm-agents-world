@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createServer } from "node:http";
 import test from "node:test";
 import { ApprovedConnectorRegistry } from "./connector-registry.js";
 import type { CapabilityDefinition, ExecutionContext } from "./capability-types.js";
@@ -22,6 +23,24 @@ function context(environment: ExecutionContext["environment"] = "qa", packId = "
     tenantId: "tenant-test",
     requestedAt: new Date().toISOString(),
   };
+}
+
+async function withFakeOpa(result: Record<string, unknown>, run: (baseUrl: string) => Promise<void>) {
+  const server = createServer((_request, response) => {
+    response.setHeader("content-type", "application/json");
+    response.end(JSON.stringify({ result, decision_id: "decision-test" }));
+  });
+  await new Promise<void>((resolve, reject) => {
+    server.once("error", reject);
+    server.listen(0, "127.0.0.1", () => resolve());
+  });
+  try {
+    const address = server.address();
+    assert.ok(address && typeof address !== "string");
+    await run(`http://127.0.0.1:${address.port}`);
+  } finally {
+    await new Promise<void>((resolve) => server.close(() => resolve()));
+  }
 }
 
 test("approved connector registry admits only mapped pack/tool/environment contracts", () => {
@@ -71,13 +90,26 @@ test("production reads are centrally escalated to privileged L4 approval", async
 
 test("unregistered capabilities fail closed before connector execution", async () => {
   const engine = new LocalPolicyEngine(new ApprovedConnectorRegistry());
-  const unknown: CapabilityDefinition = {
-    ...capability("qa.jira.story.read"),
-    id: "qa.unapproved.admin.read",
-  };
+  const unknown: CapabilityDefinition = { ...capability("qa.jira.story.read"), id: "qa.unapproved.admin.read" };
   const decision = await engine.evaluate(unknown, context("qa"));
   assert.equal(decision.effect, "deny");
   assert.match(decision.reason, /not present in the approved connector registry/i);
+});
+
+test("OPA cannot weaken the capability and connector minimum policy", async () => {
+  await withFakeOpa(
+    { effect: "allow", riskLevel: "L0", approvalMode: "none", reason: "intentionally permissive test result" },
+    async (baseUrl) => {
+      const engine = new OpaPolicyEngine(new ApprovedConnectorRegistry(), baseUrl);
+      const decision = await engine.evaluate(capability("qa.jira.bug.create"), context("qa"));
+      assert.equal(decision.effect, "approval");
+      assert.equal(decision.riskLevel, "L3");
+      assert.equal(decision.approvalMode, "human");
+      assert.equal(decision.source, "opa");
+      assert.equal(decision.decisionId, "decision-test");
+      assert.match(decision.reason, /bounded by the capability\/connector minimum/i);
+    },
+  );
 });
 
 test("OPA evaluator fails closed when the policy service is unavailable", async () => {
