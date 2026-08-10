@@ -113,6 +113,26 @@ create table if not exists bm_agents_world.agent_run_usage (
 create index if not exists idx_bm_agent_usage_tenant_started
   on bm_agents_world.agent_run_usage(tenant_id, started_at desc);
 
+-- AgentTelemetryService deliberately performs non-blocking lifecycle writes.
+-- Protect the authoritative row from an older "run started" callback arriving
+-- after the completed usage callback on another pool connection.
+create or replace function bm_agents_world.keep_agent_usage_monotonic()
+returns trigger
+language plpgsql
+as $$
+begin
+  if new.finished_at < old.finished_at then
+    return old;
+  end if;
+  return new;
+end;
+$$;
+
+drop trigger if exists trg_bm_agent_usage_monotonic on bm_agents_world.agent_run_usage;
+create trigger trg_bm_agent_usage_monotonic
+before update on bm_agents_world.agent_run_usage
+for each row execute function bm_agents_world.keep_agent_usage_monotonic();
+
 -- AG-UI lifecycle telemetry is intentionally fire-and-forget so it cannot
 -- block model streaming. A QA-run link can therefore arrive milliseconds
 -- before either side's persistence callback. Keep this correlation table free
