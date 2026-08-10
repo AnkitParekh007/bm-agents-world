@@ -13,6 +13,12 @@ Organization SSO / authenticated gateway
         | strips client identity headers
         | injects x-user-id / x-tenant-id / x-project-ids
         v
+Trusted gateway pod + namespace labels
+        |
+        v
+Kubernetes NetworkPolicy
+        |
+        v
 ClusterIP: bm-agents-world
         |
         v
@@ -25,6 +31,8 @@ Agent Window + CopilotKit
 ```
 
 There is intentionally **no Ingress manifest** in the base package. Do not expose the service directly to users when `BM_IDENTITY_MODE=trusted-headers`; trusted identity headers are authoritative only when injected by a controlled gateway.
+
+`ClusterIP` alone is not the security boundary. The base also applies a default-deny-style ingress `NetworkPolicy` for the application pods and permits TCP/4000 only from pods that carry the trusted-gateway label inside namespaces carrying the same trusted-gateway label. The cluster CNI/network provider must actually enforce Kubernetes `NetworkPolicy`. If it does not, implement equivalent isolation with your platform firewall, service mesh, or gateway network controls before trusting identity headers.
 
 ## Container image
 
@@ -54,6 +62,7 @@ deploy/k8s/qa-pilot/
 ├── pvc.yaml
 ├── deployment.yaml
 ├── service.yaml
+├── networkpolicy.yaml
 ├── kustomization.yaml
 ├── secret.example.yaml
 └── playwright-auth-secret.example.yaml
@@ -74,8 +83,27 @@ The base has these properties:
 - Linux capabilities dropped
 - RuntimeDefault seccomp
 - ClusterIP only; no public Ingress
+- ingress NetworkPolicy that allows only explicitly labeled trusted-gateway pods in explicitly labeled trusted-gateway namespaces
 
 Do **not scale above one replica while SQLite is authoritative**. Move the `CapabilityStore` to Postgres/Supabase before horizontal scaling.
+
+## Trusted gateway network labels
+
+Before team access, label the namespace that hosts the authenticated gateway and the gateway pods themselves:
+
+```bash
+kubectl label namespace <gateway-namespace> \
+  bm-agents-world.io/trusted-gateway=true
+
+kubectl -n <gateway-namespace> label pod <gateway-pod> \
+  bm-agents-world.io/trusted-gateway=true
+```
+
+Prefer putting the pod label in the gateway Deployment/Pod template rather than labeling individual running pods manually.
+
+The policy requires **both** selectors. Labeling only the namespace or only the pod is insufficient.
+
+Verify that your Kubernetes network provider enforces `networking.k8s.io/v1` NetworkPolicy. If it does not, do not rely on the trusted-header mode until an equivalent network-level restriction is in place.
 
 ## Probe contract
 
@@ -182,9 +210,11 @@ x-tenant-id: company
 x-project-ids: PCC,SOP
 ```
 
-5. forward the request to the internal ClusterIP service.
+5. forward the request from a pod/namespace allowed by the trusted-gateway NetworkPolicy.
 
 The application fails closed when trusted identity is absent. Project/tenant authorization applies to runs, actions, approvals, audit, and artifacts. The requester cannot approve their own protected action in trusted mode.
+
+The network boundary and identity boundary must both hold. A service that accepts authoritative headers from arbitrary cluster workloads is not an acceptable pilot deployment.
 
 ## Deploy
 
@@ -202,10 +232,10 @@ Check rollout:
 
 ```bash
 kubectl -n bm-agents-world rollout status deployment/bm-agents-world
-kubectl -n bm-agents-world get pods,svc,pvc
+kubectl -n bm-agents-world get pods,svc,pvc,networkpolicy
 ```
 
-Before the real gateway is connected, you can inspect probes with a temporary operator-only port forward:
+Before the real gateway is connected, an administrator can inspect probes with a temporary operator-only port forward if cluster policy permits it:
 
 ```bash
 kubectl -n bm-agents-world port-forward service/bm-agents-world 4000:80
@@ -221,6 +251,10 @@ Do not onboard QA engineers until all of these are true:
 
 - `/readyz` returns 200
 - SSO/gateway identity is trusted-header mode
+- client-supplied identity headers are stripped at the gateway
+- gateway namespace and gateway pods carry the required trusted-gateway labels
+- the cluster network provider enforces the NetworkPolicy, or an equivalent network restriction is proven
+- direct access to the Agent Window service from an untrusted test pod is denied
 - project membership is verified for each pilot user
 - requester self-approval is denied
 - state survives pod restart
