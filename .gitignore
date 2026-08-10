@@ -10,3 +10,6 @@ playwright/.auth/
 *.sqlite
 *.sqlite-*
 .DS_Store
+docs/_book/
+docs/honkit-serve*.log
+docs/static-serve*.log

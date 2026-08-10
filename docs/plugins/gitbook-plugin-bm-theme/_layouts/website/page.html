@@ -1,0 +1,19 @@
+{% extends template.self %}
+
+{% block description %}{{ page.title }} — architecture, workflows, and developer guidance for BM Agents World.{% endblock %}
+
+{% block head %}
+{{ super() }}
+<script>
+  (function () {
+    try {
+      var preference = localStorage.getItem("bm-docs-theme") || "system";
+      var effective = preference === "system"
+        ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
+        : preference;
+      document.documentElement.dataset.bmThemePreference = preference;
+      document.documentElement.dataset.bmTheme = effective;
+    } catch (_error) {}
+  }());
+</script>
+{% endblock %}

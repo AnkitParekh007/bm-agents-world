@@ -12,7 +12,11 @@
     "dev:agent-window:ui": "npm run dev:client --workspace @bm-agents-world/agent-window",
     "build": "npm run build --workspace @bm-agents-world/agent-window",
     "build:agent-window": "npm run build --workspace @bm-agents-world/agent-window",
-    "typecheck": "npm run typecheck --workspace @bm-agents-world/agent-window"
+    "typecheck": "npm run typecheck --workspace @bm-agents-world/agent-window",
+    "docs:serve": "npm run serve --prefix docs",
+    "docs:build": "npm run build --prefix docs",
+    "docs:clean": "npm run clean --prefix docs",
+    "docs:validate": "npm run validate --prefix docs"
   },
   "engines": {
     "node": ">=22.13.0"
