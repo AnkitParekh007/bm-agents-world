@@ -10,7 +10,8 @@ import type {
 } from "./capability-types.js";
 import type { CapabilityRun } from "./capability-store.js";
 import type { CapabilityBrokerContract } from "./capability-broker-contract.js";
-import type { PolicyDecision, PolicyEvaluator } from "./policy-engine.js";
+import { ApprovedConnectorRegistry } from "./connector-registry.js";
+import { createPolicyEngine, type PolicyDecision, type PolicyEvaluator } from "./policy-engine.js";
 import { startActiveSpan } from "./telemetry.js";
 
 const APPROVAL_TTL_MS = 10 * 60 * 1000;
@@ -64,15 +65,19 @@ function legacyDecision(definition: CapabilityDefinition, context: ExecutionCont
 export class AsyncCapabilityBroker implements CapabilityBrokerContract {
   private readonly definitions = new Map<string, CapabilityDefinition>();
   private readonly adapters = new Map<string, CapabilityAdapter>();
+  private readonly policy?: PolicyEvaluator;
 
   constructor(
     definitions: CapabilityDefinition[],
     adapters: CapabilityAdapter[],
     private readonly store: AsyncCapabilityStore,
-    private readonly policy?: PolicyEvaluator,
+    policy?: PolicyEvaluator,
   ) {
     for (const definition of definitions) this.definitions.set(definition.id, definition);
     for (const adapter of adapters) this.adapters.set(adapter.id, adapter);
+    this.policy = policy ?? (process.env.BM_POLICY_MODE?.trim()
+      ? createPolicyEngine(new ApprovedConnectorRegistry())
+      : undefined);
   }
 
   listCapabilities(): CapabilityDefinition[] { return [...this.definitions.values()]; }
