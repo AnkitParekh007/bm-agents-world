@@ -8,7 +8,10 @@ import { AgentTelemetryService } from "./platform/agent-telemetry.js";
 import { AsyncCapabilityBroker } from "./platform/async-capability-broker.js";
 import type { CapabilityBrokerContract } from "./platform/capability-broker-contract.js";
 import { CapabilityBroker } from "./platform/capability-broker.js";
+import { ApprovedConnectorRegistry } from "./platform/connector-registry.js";
 import { buildDeploymentReadiness } from "./platform/deployment-readiness.js";
+import { buildPilotValidation, type PilotPolicyStatus } from "./platform/pilot-validation.js";
+import { createPolicyEngine, type PolicyEvaluator } from "./platform/policy-engine.js";
 import { enrichQaPilotRunsShared } from "./platform/pilot-telemetry-view-async.js";
 import { enrichQaPilotRuns, enrichQaPilotSummary, type EnrichedQaPilotRunMetrics } from "./platform/pilot-telemetry-view.js";
 import type { PilotRunEvaluationInput, QaPilotRunMetrics, QaPilotSummary } from "./platform/qa-pilot-observability.js";
@@ -30,6 +33,7 @@ import { projectTestCatalogStatus } from "./qa/qa-project-tests.js";
 
 const PORT = Number(process.env.PORT ?? 4000);
 const DAY_MS = 24 * 60 * 60 * 1000;
+const INSTANCE_ID = process.env.HOSTNAME?.trim() || `pid-${process.pid}`;
 
 initTelemetry();
 
@@ -37,6 +41,10 @@ const registry = new PackRegistry();
 const persistence = await createRuntimePersistence();
 const artifacts = persistence.artifacts;
 const agentTelemetry = new AgentTelemetryService(persistence.telemetryServiceStore);
+const connectorRegistry = new ApprovedConnectorRegistry();
+const centralPolicy: PolicyEvaluator | undefined = persistence.shared && process.env.BM_POLICY_MODE?.trim()
+  ? createPolicyEngine(connectorRegistry)
+  : undefined;
 const qaMockAdapter = new QaMockAdapter();
 const jiraDefectAdapter = new JiraDefectAdapter(qaMockAdapter, artifacts);
 const adapters = [
@@ -47,7 +55,7 @@ const adapters = [
   jiraDefectAdapter,
 ];
 const qaBroker: CapabilityBrokerContract = persistence.shared
-  ? new AsyncCapabilityBroker(QA_CAPABILITIES, adapters, persistence.capabilityStore)
+  ? new AsyncCapabilityBroker(QA_CAPABILITIES, adapters, persistence.capabilityStore, centralPolicy)
   : new CapabilityBroker(QA_CAPABILITIES, adapters, persistence.capabilityStore);
 const runtime = buildCopilotRuntime(registry, qaBroker, agentTelemetry);
 const app = express();
@@ -55,9 +63,23 @@ const app = express();
 app.disable("x-powered-by");
 app.use(express.json({ limit: "1mb" }));
 
+async function currentPolicyStatus(): Promise<PilotPolicyStatus> {
+  const status = centralPolicy?.status();
+  return {
+    configured: Boolean(centralPolicy),
+    mode: status?.mode ?? "disabled",
+    healthy: centralPolicy ? await centralPolicy.healthCheck() : false,
+    connectorCount: connectorRegistry.listPublic().filter((connector) => connector.status !== "disabled").length,
+    failClosed: status?.failClosed === true,
+  };
+}
+
 async function currentReadiness() {
   const integrations = loadQaIntegrationStatus();
-  const health = await persistence.healthCheck();
+  const [health, policy] = await Promise.all([
+    persistence.healthCheck(),
+    currentPolicyStatus(),
+  ]);
   if (persistence.shared) {
     return buildDeploymentReadiness(integrations, {
       packCount: registry.packs.length,
@@ -66,6 +88,13 @@ async function currentReadiness() {
         shared: true,
         stateReady: health.state,
         artifactsReady: health.artifacts,
+      },
+      policy: {
+        configured: policy.configured,
+        mode: policy.mode,
+        healthy: policy.healthy,
+        connectorRegistryReady: policy.connectorCount > 0,
+        failClosed: policy.failClosed,
       },
     });
   }
@@ -85,12 +114,12 @@ async function currentReadiness() {
 // Kubernetes/container probes intentionally live before identity middleware.
 // They expose no user data, credentials, project details, or secret values.
 app.get("/healthz", (_request, response) => {
-  response.json({ status: "ok", service: "bm-agents-world-agent-window" });
+  response.json({ status: "ok", service: "bm-agents-world-agent-window", instanceId: INSTANCE_ID });
 });
 
 app.get("/readyz", async (_request, response) => {
   const readiness = await currentReadiness();
-  response.status(readiness.ready ? 200 : 503).json(readiness);
+  response.status(readiness.ready ? 200 : 503).json({ ...readiness, instanceId: INSTANCE_ID });
 });
 
 app.use(identityMiddleware());
@@ -206,7 +235,7 @@ app.get("/api/session", (_request, response) => {
 
 app.get("/api/health", async (_request, response) => {
   const integrations = loadQaIntegrationStatus();
-  const readiness = await currentReadiness();
+  const [readiness, policy] = await Promise.all([currentReadiness(), currentPolicyStatus()]);
   const tokenRatesConfigured = Boolean(
     process.env.BM_MODEL_INPUT_USD_PER_1M_TOKENS?.trim()
     && process.env.BM_MODEL_OUTPUT_USD_PER_1M_TOKENS?.trim(),
@@ -214,6 +243,7 @@ app.get("/api/health", async (_request, response) => {
   response.json({
     status: "ok",
     service: "bm-agents-world-agent-window",
+    instanceId: INSTANCE_ID,
     packCount: registry.packs.length,
     agents: ["default", ...registry.packs.map((pack) => pack.id)],
     model: process.env.AI_MODEL ?? "openai:gpt-5.4-mini",
@@ -222,6 +252,7 @@ app.get("/api/health", async (_request, response) => {
     ready: readiness.ready,
     identityMode: process.env.BM_IDENTITY_MODE?.trim() || "local-dev",
     persistence: persistence.status,
+    centralPolicy: policy,
     qaObservability: {
       evaluationPersistence: persistence.status.state.kind,
       operationalMetrics: "derived-from-run-action-audit",
@@ -243,6 +274,23 @@ app.get("/api/health", async (_request, response) => {
       suites: item.suites.map((suite) => ({ id: suite.id, cases: suite.cases.length })),
     })),
   });
+});
+
+app.get("/api/qa/pilot/validation", async (_request, response) => {
+  const identity = currentRequestIdentity();
+  const integrations = loadQaIntegrationStatus();
+  const [deployment, policy] = await Promise.all([currentReadiness(), currentPolicyStatus()]);
+  const validation = buildPilotValidation({
+    instanceId: INSTANCE_ID,
+    identity,
+    deployment,
+    integrations,
+    projectTests: projectTestCatalogStatus(),
+    persistence: persistence.status,
+    policy,
+  });
+  response.setHeader("Cache-Control", "private, no-store");
+  response.status(validation.ready ? 200 : 503).json(validation);
 });
 
 app.get("/api/packs", (_request, response) => response.json({ packs: registry.listPublic() }));
@@ -439,13 +487,16 @@ if (existsSync(clientDirectory)) {
 const server = app.listen(PORT, "0.0.0.0", async () => {
   const readiness = await currentReadiness();
   const integrations = loadQaIntegrationStatus();
+  const policy = await currentPolicyStatus();
   const otel = telemetryRuntimeStatus();
   console.log(`[bm-agents-world] loaded ${registry.packs.length} agent packs`);
   console.log(`[bm-agents-world] runtime: http://localhost:${PORT}/api/copilotkit`);
   console.log(`[bm-agents-world] probes: /healthz and /readyz (${readiness.mode}, ready=${readiness.ready})`);
+  console.log(`[bm-agents-world] instance: ${INSTANCE_ID}`);
   console.log(`[bm-agents-world] qa capabilities: ${qaBroker.listCapabilities().length}`);
   console.log(`[bm-agents-world] persistence: ${persistence.status.mode}; shared=${persistence.status.shared}`);
   console.log(`[bm-agents-world] state: ${persistence.status.state.kind}; artifacts: ${persistence.status.artifacts.kind}`);
+  console.log(`[bm-agents-world] central policy: ${policy.mode}; healthy=${policy.healthy}; connectors=${policy.connectorCount}`);
   console.log(`[bm-agents-world] telemetry: model usage persists when provider metadata is present; otel=${otel.enabled ? "enabled" : "disabled"}`);
   console.log(`[bm-agents-world] identity mode: ${process.env.BM_IDENTITY_MODE?.trim() || "local-dev"}`);
   console.log(`[bm-agents-world] qa jira read: ${integrations.jira.mode}; jira write: ${integrations.jira.writeMode}; bitbucket: ${integrations.bitbucket.mode}; playwright: ${integrations.playwright.mode}`);
