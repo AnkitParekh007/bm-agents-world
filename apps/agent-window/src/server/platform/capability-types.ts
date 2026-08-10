@@ -76,6 +76,9 @@ export interface CapabilityAction {
   status: ActionStatus;
   createdAt: string;
   updatedAt: string;
+  executionStartedAt?: string;
+  executionFinishedAt?: string;
+  executionDurationMs?: number;
   approval?: ApprovalContract;
   result?: AdapterResult;
   policyReason: string;
