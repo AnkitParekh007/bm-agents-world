@@ -25,7 +25,6 @@ data:
       "reason": "Production mutation is denied by centralized policy."
     } if {
       input.context.environment == "prod"
-      input.definition.actionClass in {"mutation", "external-write"}
       input.definition.productionMutation == true
     }
 
@@ -43,11 +42,24 @@ data:
       "effect": "approval",
       "riskLevel": risk,
       "approvalMode": mode,
+      "reason": sprintf("Production-scoped external write remains governed at %s.", [risk])
+    } if {
+      input.context.environment == "prod"
+      input.definition.actionClass == "external-write"
+      input.definition.productionMutation == false
+      risk := input.definition.riskLevel
+      mode := approval_mode(risk)
+    }
+
+    decision := {
+      "effect": "approval",
+      "riskLevel": risk,
+      "approvalMode": mode,
       "reason": sprintf("%s requires centralized governed approval.", [risk])
     } if {
       input.context.environment != "prod"
       risk := input.definition.riskLevel
-      risk_rank[risk] >= risk_rank.L2
+      risk_rank[risk] >= risk_rank["L2"]
       mode := approval_mode(risk)
     }
 
@@ -59,7 +71,7 @@ data:
     } if {
       input.context.environment != "prod"
       risk := input.definition.riskLevel
-      risk_rank[risk] < risk_rank.L2
+      risk_rank[risk] < risk_rank["L2"]
     }
 
     approval_mode(risk) := "privileged-process" if risk == "L4"
