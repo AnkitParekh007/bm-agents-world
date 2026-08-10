@@ -7,9 +7,12 @@ metadata:
     app.kubernetes.io/name: bm-agents-world
     app.kubernetes.io/component: agent-window
 spec:
-  replicas: 1
+  replicas: 2
   strategy:
-    type: Recreate
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
   selector:
     matchLabels:
       app.kubernetes.io/name: bm-agents-world
@@ -66,7 +69,7 @@ spec:
               path: /readyz
               port: http
             periodSeconds: 5
-            timeoutSeconds: 2
+            timeoutSeconds: 3
             failureThreshold: 3
           livenessProbe:
             httpGet:
@@ -76,8 +79,6 @@ spec:
             timeoutSeconds: 2
             failureThreshold: 5
           volumeMounts:
-            - name: data
-              mountPath: /var/lib/bm-agents
             - name: tmp
               mountPath: /tmp
             - name: shm
@@ -86,9 +87,6 @@ spec:
               mountPath: /var/run/bm-secrets/playwright-auth
               readOnly: true
       volumes:
-        - name: data
-          persistentVolumeClaim:
-            claimName: bm-agents-world-data
         - name: tmp
           emptyDir: {}
         - name: shm
