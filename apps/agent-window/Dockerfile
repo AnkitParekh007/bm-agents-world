@@ -16,7 +16,10 @@ FROM mcr.microsoft.com/playwright:v1.62.0-noble AS runtime
 
 ENV NODE_ENV=production \
     PORT=4000 \
-    BM_AGENTS_REPO_ROOT=/workspace
+    BM_AGENTS_REPO_ROOT=/workspace \
+    HOME=/tmp/pwuser \
+    TMPDIR=/tmp \
+    NPM_CONFIG_CACHE=/tmp/npm-cache
 
 WORKDIR /workspace
 
