@@ -1,0 +1,38 @@
+version: 1.0.0
+environments:
+- id: local-sandbox
+  classification: developer
+  production: false
+  autonomy: isolated-write
+  required_evidence:
+  - unit tests
+  - static checks
+- id: playground
+  classification: shared-nonproduction
+  production: false
+  autonomy: approval-controlled-write
+  required_evidence:
+  - build
+  - smoke
+  - integration
+  - artifact manifest
+- id: qa
+  classification: controlled-nonproduction
+  production: false
+  autonomy: approval-controlled-write
+  required_evidence:
+  - regression
+  - security
+  - migration rehearsal
+  - readiness
+- id: production
+  classification: production
+  production: true
+  autonomy: redacted-read-only-for-agent
+  required_evidence:
+  - go-no-go decision
+  - immutable artifacts
+  - approved runbook
+  - rollback
+  - observability
+  - operator assignment

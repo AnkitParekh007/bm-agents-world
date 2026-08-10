@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/ai-ml/experiment-plan.schema.json",
+  "title": "Experiment Plan",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "experiment_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "hypothesis": {
+      "type": "string",
+      "minLength": 1
+    },
+    "baseline": {
+      "type": "string",
+      "minLength": 1
+    },
+    "primary_metrics": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "guardrails": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "dataset_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "candidate_configs": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "stopping_rules": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "experiment_id",
+    "hypothesis",
+    "baseline",
+    "primary_metrics",
+    "dataset_refs"
+  ]
+}

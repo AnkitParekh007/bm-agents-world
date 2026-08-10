@@ -1,0 +1,46 @@
+name: feedback-to-outcome-review
+version: 1.0.0
+trigger: Scheduled outcome review or material post-release signal
+scope_binding:
+- project
+- product
+- initiative
+- time_window
+- requester
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: verify analytics, feedback, support, research, and privacy scope
+- id: context
+  agent: work-context-agent
+  action: collect hypothesis, baseline, release, quality, support, and prior decision evidence
+- id: parallel-evidence
+  parallel:
+  - agent: analytics-outcome-agent
+    action: analyze governed success, quality, adoption, and guardrail metrics
+  - agent: customer-value-agent
+    action: synthesize approved customer and user evidence
+  - agent: feedback-learning-agent
+    action: analyze support, stakeholder, and operational feedback
+  - agent: qa-readiness-agent
+    action: summarize quality regressions, escaped defects, and product risks
+  - agent: risk-compliance-agent
+    action: identify unintended privacy, security, accessibility, legal, or operational effects
+- id: review
+  agent: product-owner-reviewer-agent
+  action: challenge attribution, data quality, uncertainty, and recommendation
+- id: recommend
+  agent: product-owner-supervisor
+  action: prepare continue, iterate, expand, pause, retire, or collect-more-evidence options
+- id: backlog-decision
+  agent: backlog-ownership-agent
+  action: prepare backlog updates after accountable Product Owner decision
+- id: publish
+  agent: product-owner-supervisor
+  action: request approval before official Jira, Confluence, or Teams publication
+outputs:
+- outcome-review
+- backlog-decision
+- product-owner-daily-summary
+- approval-record
+failure_behavior: state uncertainty, avoid causal claims unsupported by evidence, and request additional validation

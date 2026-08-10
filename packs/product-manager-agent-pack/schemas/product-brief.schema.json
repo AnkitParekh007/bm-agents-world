@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/product-manager/product-brief.schema.json",
+  "title": "Product Brief",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "problem",
+    "target_users",
+    "desired_outcomes",
+    "evidence",
+    "scope",
+    "success_metrics",
+    "risks",
+    "decision_request"
+  ],
+  "properties": {
+    "problem": {
+      "type": "string"
+    },
+    "target_users": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "desired_outcomes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "scope": {
+      "type": "object"
+    },
+    "success_metrics": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "options": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "open_questions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "decision_request": {
+      "type": "string"
+    }
+  }
+}

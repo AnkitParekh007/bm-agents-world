@@ -1,0 +1,56 @@
+id: query-performance-optimization
+name: Query Performance Optimization
+version: 1.0.0
+trigger: Performance issue or tuning request
+production_mutation: false
+steps:
+- id: context
+  agent: work-context
+  action: normalize symptoms, SLOs and business impact
+  approval: none
+  on_failure: stop-and-preserve-evidence
+- id: authorize
+  agent: policy-enforcer
+  action: authorize diagnostic scope and redaction
+  approval: none
+  on_failure: stop-and-preserve-evidence
+- id: baseline
+  agent: query-performance-engineer
+  action: collect bounded workload and plan baseline
+  approval: none
+  on_failure: stop-and-preserve-evidence
+- id: analyze
+  agent: query-performance-engineer
+  action: analyze estimates, statistics, waits, indexes and contention
+  approval: none
+  on_failure: stop-and-preserve-evidence
+- id: design
+  agent: physical-schema-architect
+  action: design query or index alternatives
+  approval: none
+  on_failure: stop-and-preserve-evidence
+- id: sandbox
+  agent: database-test-engineer
+  action: benchmark alternatives with representative data
+  approval: none
+  on_failure: stop-and-preserve-evidence
+- id: concurrency
+  agent: transaction-concurrency-engineer
+  action: review write cost, locks and isolation impact
+  approval: none
+  on_failure: stop-and-preserve-evidence
+- id: review
+  agent: database-change-reviewer
+  action: select measured recommendation
+  approval: none
+  on_failure: stop-and-preserve-evidence
+- id: publish
+  agent: database-pipeline-release
+  action: publish repository change or recommendation
+  approval: required-if-write
+  on_failure: stop-and-preserve-evidence
+- id: verify
+  agent: observability-capacity-engineer
+  action: define post-change verification
+  approval: none
+  on_failure: stop-and-preserve-evidence

@@ -1,0 +1,45 @@
+apiVersion: python-developer-agent-pack/v1
+kind: Workflow
+metadata:
+  name: pull-request-and-release
+  version: 1.0.0
+spec:
+  trigger: quality-gates-passed
+  initialState: requested
+  steps:
+  - id: verify-drift
+    agent: repository-context
+    outputs:
+    - drift-status
+  - id: curate-evidence
+    agent: evidence-curator
+    outputs:
+    - evidence-manifest
+    dependsOn:
+    - verify-drift
+  - id: draft
+    agent: pr-release
+    outputs:
+    - pull-request-draft
+    - release-readiness
+    dependsOn:
+    - curate-evidence
+  - id: request-approval
+    agent: python-developer-supervisor
+    outputs:
+    - approval-request
+    dependsOn:
+    - draft
+  - id: external-actions
+    agent: pr-release
+    outputs:
+    - publication-results
+    dependsOn:
+    - request-approval
+    approvalRequired: true
+  - id: close
+    agent: python-developer-supervisor
+    outputs:
+    - run-summary
+    dependsOn:
+    - external-actions

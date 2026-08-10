@@ -1,0 +1,42 @@
+name: production-release-and-rollback
+version: 1.0.0
+trigger: Approved production release, rollback, or emergency restoration
+scope_binding:
+- project
+- change_id
+- service
+- production_environment
+- commit
+- artifact_digest
+- approvers
+steps:
+- id: freeze
+  agent: policy-enforcer
+  action: verify change window, environment lock, approvals, separation of duties, payload hash, and expiry
+- id: integrity
+  agent: security-supply-chain-agent
+  action: verify source revision, artifact digest, SBOM, signature, provenance, scans, and exceptions
+- id: readiness
+  agent: release-deployment-engineer
+  action: verify dependencies, migrations, health, capacity, monitoring, stop conditions, and rollback readiness
+- id: execute
+  agent: devops-supervisor
+  action: submit immutable change bundle to governed production executor
+- id: observe
+  agent: observability-engineer
+  action: observe rollout, health, errors, latency, saturation, and business signals using read-only access
+- id: decide
+  agent: sre-reliability-engineer
+  action: compare signals with success and stop thresholds
+- id: rollback
+  agent: release-deployment-engineer
+  action: request or invoke separately approved deterministic rollback when stop conditions are met
+- id: evidence
+  agent: evidence-manager
+  action: store approvals, actions, telemetry, results, artifact hashes, and final status
+outputs:
+- deployment-plan
+- deployment-evidence
+- rollback-plan
+- quality-gate-report
+failure_behavior: stop traffic progression, preserve state, and escalate to change owner or incident commander

@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Deployment Runbook",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "release_id",
+    "candidate_hash",
+    "target",
+    "prechecks",
+    "steps",
+    "validation",
+    "stop_conditions",
+    "rollback"
+  ],
+  "properties": {
+    "release_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "candidate_hash": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target": {
+      "type": "object"
+    },
+    "prechecks": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "validation": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "stop_conditions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "rollback": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "operators": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "communication_checkpoints": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}

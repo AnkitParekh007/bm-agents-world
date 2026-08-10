@@ -1,0 +1,93 @@
+version: 1.0.0
+plugin_count: 22
+plugins:
+- id: crm-account-adapter
+  description: Normalizes account, contact, ownership, lifecycle, and renewal metadata from approved CRM systems.
+  deterministic: true
+  status: enabled
+- id: customer-360-adapter
+  description: Builds a scoped Customer 360 projection without copying unrestricted source records.
+  deterministic: true
+  status: enabled
+- id: health-score-engine
+  description: Calculates explainable health components using approved deterministic rules and weights.
+  deterministic: true
+  status: enabled
+- id: success-plan-engine
+  description: Creates structured goals, milestones, owners, measures, dependencies, and progress records.
+  deterministic: true
+  status: enabled
+- id: stakeholder-map-builder
+  description: Creates customer organization and relationship maps from approved contacts and meeting evidence.
+  deterministic: true
+  status: enabled
+- id: adoption-trend-analyzer
+  description: Calculates adoption, activation, depth, breadth, and trend metrics from governed usage views.
+  deterministic: true
+  status: enabled
+- id: value-metric-calculator
+  description: Calculates customer-specific value measures from approved baselines and outcome evidence.
+  deterministic: true
+  status: enabled
+- id: renewal-window-calculator
+  description: Calculates notice, preparation, procurement, and renewal windows from approved contract metadata.
+  deterministic: true
+  status: enabled
+- id: risk-rule-engine
+  description: Evaluates deterministic risk signals, thresholds, confidence, and escalation rules.
+  deterministic: true
+  status: enabled
+- id: sentiment-signal-analyzer
+  description: Analyzes approved customer communications for coarse account-level sentiment with confidence and
+    privacy controls.
+  deterministic: true
+  status: enabled
+- id: qbr-ebr-builder
+  description: Assembles governed business-review packs from verified health, value, support, release, and success-plan
+    evidence.
+  deterministic: true
+  status: enabled
+- id: customer-journey-analyzer
+  description: Maps lifecycle touchpoints, handoffs, delays, and digital-success opportunities.
+  deterministic: true
+  status: enabled
+- id: ticket-theme-analyzer
+  description: Clusters approved support themes and correlates them to adoption, health, and outcomes.
+  deterministic: true
+  status: enabled
+- id: incident-impact-correlator
+  description: Correlates declared incidents with scoped customer and product-impact metadata.
+  deterministic: true
+  status: enabled
+- id: feedback-theme-clusterer
+  description: Clusters feedback while preserving provenance, segment, recency, and confidence.
+  deterministic: true
+  status: enabled
+- id: survey-analyzer
+  description: Calculates approved customer-satisfaction and survey results with response and bias caveats.
+  deterministic: true
+  status: enabled
+- id: meeting-brief-generator
+  description: Creates stakeholder-specific internal meeting briefs from bounded account context.
+  deterministic: true
+  status: enabled
+- id: communication-draft-renderer
+  description: Produces customer-safe drafts while applying commitment and claim guardrails.
+  deterministic: true
+  status: enabled
+- id: redaction-and-minimization-plugin
+  description: Removes secrets, unnecessary identifiers, sensitive fields, and cross-tenant content.
+  deterministic: true
+  status: enabled
+- id: approval-payload-binder
+  description: Hashes exact customer-facing or system-changing payloads and binds approvals to run and account scope.
+  deterministic: true
+  status: enabled
+- id: evidence-hash-plugin
+  description: Hashes and versions evidence and output artifacts for audit and reproducibility.
+  deterministic: true
+  status: enabled
+- id: customer-data-egress-guard
+  description: Prevents raw or unbounded customer, contact, commercial, or telemetry exports into model context.
+  deterministic: true
+  status: enabled

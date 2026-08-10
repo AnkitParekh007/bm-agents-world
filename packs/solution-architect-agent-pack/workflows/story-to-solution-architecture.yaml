@@ -1,0 +1,102 @@
+apiVersion: solution-architect-agent-pack/v1
+kind: AgentWorkflow
+metadata:
+  name: story-to-solution-architecture
+  title: Story or Epic to Solution Architecture
+  version: 1.0.0
+spec:
+  trigger:
+  - new_epic
+  - cross-system_story
+  - architecture_request
+  objective: Produce an evidence-backed, reviewable solution architecture and implementation handoff.
+  supervisor: solution-architect-supervisor
+  execution:
+    mode: stateful
+    defaultPolicy: deny
+    evidenceRequired: true
+    approvalBinding: payload-hash
+    resumeFromCheckpoint: true
+  stages:
+  - id: intake
+    agent: business-product-context
+    skills:
+    - architecture.jira-context
+    - architecture.stakeholder-map
+    - architecture.scope-boundary
+    gate: authorization
+  - id: discover-current-state
+    agent: current-state-discovery
+    skills:
+    - architecture.application-inventory
+    - architecture.integration-inventory
+    - architecture.data-store-inventory
+    - architecture.environment-topology
+    parallelWith:
+    - enterprise-context
+  - id: enterprise-context
+    agent: enterprise-context
+    skills:
+    - architecture.capability-map
+    - architecture.enterprise-standard-check
+    - architecture.cross-project-dependency-map
+  - id: quality-attributes
+    agent: quality-attribute-analysis
+    skills:
+    - architecture.quality-attribute-workshop
+    - architecture.nfr-conflict-analysis
+    - architecture.acceptance-evidence-plan
+    requires:
+    - discover-current-state
+    - enterprise-context
+  - id: options
+    agent: application-architecture
+    skills:
+    - architecture.option-comparison
+    - architecture.assumption-register
+    - architecture.constraint-register
+    - architecture.poc-design
+  - id: cross-cutting-reviews
+    agent: architecture-review
+    skills:
+    - architecture.atam-review
+    - architecture.architecture-risk-register
+    - architecture.evidence-quality-check
+    parallelDelegates:
+    - security-architecture
+    - data-architecture
+    - reliability-resilience
+    - performance-scalability
+    - cost-sustainability
+  - id: decision-draft
+    agent: decision-governance
+    skills:
+    - architecture.adr-authoring
+    - architecture.executive-architecture-summary
+    gate: publish-architecture-decision
+  - id: models
+    agent: architecture-modeling
+    skills:
+    - architecture.c4-context-diagram
+    - architecture.c4-container-diagram
+    - architecture.deployment-diagram
+    - architecture.data-flow-diagram
+  - id: handoff
+    agent: implementation-alignment
+    skills:
+    - architecture.implementation-slice-plan
+    - architecture.test-strategy-alignment
+    - architecture.conformance-checklist
+    - architecture.team-handoff
+  outputs:
+  - architecture-context
+  - quality-attribute-scenarios
+  - architecture-options
+  - solution-architecture-document
+  - architecture-decision-record
+  - implementation-handoff
+  terminalStates:
+  - completed
+  - rejected
+  - blocked
+  - cancelled

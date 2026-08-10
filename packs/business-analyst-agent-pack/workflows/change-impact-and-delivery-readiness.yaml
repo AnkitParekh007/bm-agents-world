@@ -1,0 +1,69 @@
+apiVersion: business-analyst-agent-pack/v1
+kind: AgentWorkflow
+metadata:
+  name: change-impact-and-delivery-readiness
+  title: Change Impact and Delivery Readiness
+  version: 1.0.0
+spec:
+  trigger:
+  - requirement_change
+  - design_change
+  - release_candidate
+  objective: Assess a proposed change and determine requirement, stakeholder, process, data, integration, test,
+    training, and release readiness.
+  supervisor: business-analysis-supervisor
+  execution:
+    mode: stateful
+    defaultPolicy: deny
+    evidenceRequired: true
+    approvalBinding: payload-hash
+    resumeFromCheckpoint: true
+  stages:
+  - id: change-intake
+    agent: traceability-lifecycle
+    skills:
+    - business-analysis.baseline-diff
+    - business-analysis.change-impact-trace
+    - business-analysis.orphan-detection
+    gate: authorization
+  - id: impact
+    agent: impact-analysis
+    skills:
+    - business-analysis.people-impact
+    - business-analysis.process-impact
+    - business-analysis.data-impact
+    - business-analysis.vendor-impact
+  - id: readiness
+    agent: delivery-readiness
+    skills:
+    - business-analysis.story-readiness
+    - business-analysis.design-handoff-check
+    - business-analysis.release-scope-check
+  - id: change-readiness
+    agent: change-readiness
+    skills:
+    - business-analysis.readiness-assessment
+    - business-analysis.training-needs
+    - business-analysis.communication-needs
+  - id: review
+    agent: independent-ba-review
+    skills:
+    - business-analysis.completeness-review
+    - business-analysis.requirement-to-test-trace
+    - business-analysis.decision-boundary-check
+  - id: decision
+    agent: business-analysis-supervisor
+    skills:
+    - business-analysis.decision-log
+    - business-analysis.payload-hash-approval
+    gate: payload-bound-approval
+  outputs:
+  - change-impact-assessment
+  - change-readiness-plan
+  - business-analysis-handoff
+  - decision-and-action-log
+  terminalStates:
+  - completed
+  - rejected
+  - blocked
+  - cancelled

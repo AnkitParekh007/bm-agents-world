@@ -1,0 +1,22 @@
+version: 1.0.0
+environments:
+- id: local-sandbox
+  classification: sandbox
+  agent_access: isolated read/write
+  customer_data: false
+  writes: autonomous within workspace
+- id: playground
+  classification: non-production
+  agent_access: read plus approved application actions
+  customer_data: synthetic or masked
+  writes: approval-controlled
+- id: qa
+  classification: non-production controlled
+  agent_access: read; bounded approved validation
+  customer_data: masked only
+  writes: approval-controlled
+- id: production
+  classification: production
+  agent_access: redacted read-only
+  customer_data: minimum necessary
+  writes: prohibited for free-form agent

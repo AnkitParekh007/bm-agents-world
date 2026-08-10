@@ -1,0 +1,56 @@
+id: schema-change-implementation
+name: Schema Change Implementation
+version: 1.0.0
+trigger: Approved database design
+production_mutation: false
+steps:
+- id: profile
+  agent: database-platform-compatibility
+  action: resolve engine/version/edition and migration conventions
+  approval: none
+  on_failure: stop-and-preserve-evidence
+- id: implement
+  agent: physical-schema-architect
+  action: create DDL and repository migration files in isolated workspace
+  approval: none
+  on_failure: stop-and-preserve-evidence
+- id: stored-code
+  agent: sql-developer
+  action: create required SQL routines and tests
+  approval: none
+  on_failure: stop-and-preserve-evidence
+- id: migration
+  agent: migration-engineer
+  action: create sequencing, previews and recovery strategy
+  approval: none
+  on_failure: stop-and-preserve-evidence
+- id: sandbox
+  agent: database-test-engineer
+  action: apply supported baselines in disposable database
+  approval: none
+  on_failure: stop-and-preserve-evidence
+- id: validate
+  agent: database-test-engineer
+  action: run schema, migration, permission, query and concurrency tests
+  approval: none
+  on_failure: stop-and-preserve-evidence
+- id: performance
+  agent: query-performance-engineer
+  action: assess lock, duration, plan and storage impact
+  approval: none
+  on_failure: stop-and-preserve-evidence
+- id: review
+  agent: database-change-reviewer
+  action: review diff, SQL and evidence
+  approval: none
+  on_failure: stop-and-preserve-evidence
+- id: publish
+  agent: database-pipeline-release
+  action: commit, push and create PR
+  approval: required
+  on_failure: stop-and-preserve-evidence
+- id: evidence
+  agent: evidence-manager
+  action: store final implementation bundle
+  approval: none
+  on_failure: stop-and-preserve-evidence

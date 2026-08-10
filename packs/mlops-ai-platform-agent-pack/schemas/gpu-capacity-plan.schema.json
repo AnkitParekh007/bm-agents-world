@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GPU Capacity Plan",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "workload": {
+      "type": "string",
+      "minLength": 1
+    },
+    "accelerator_class": {
+      "type": "string",
+      "minLength": 1
+    },
+    "required_memory_gb": {
+      "type": "number",
+      "minimum": 0
+    },
+    "replicas_or_workers": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "peak_concurrency": {
+      "type": "number",
+      "minimum": 0
+    },
+    "current_capacity": {
+      "type": "string",
+      "minLength": 1
+    },
+    "gap": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sharing_mode": {
+      "type": "string"
+    },
+    "cost_assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "required": [
+    "workload",
+    "accelerator_class",
+    "replicas_or_workers",
+    "current_capacity",
+    "gap"
+  ]
+}

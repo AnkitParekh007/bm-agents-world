@@ -1,0 +1,196 @@
+version: 1.0.0
+artifact_count: 27
+artifacts:
+- id: service-reliability-profile
+  description: Service purpose, users, criticality, owners, dependencies, topology, risks, SLOs, runbooks, and recovery
+    posture.
+  formats:
+  - markdown
+  - json
+  retention: service-incident-and-data-policy
+  publication: approval-controlled
+- id: service-ownership-record
+  description: Service owners, escalation paths, support hours, operational roles, and accountability boundaries.
+  formats:
+  - markdown
+  - json
+  retention: service-incident-and-data-policy
+  publication: approval-controlled
+- id: sli-catalog
+  description: Approved service-level indicators, user journeys, measurements, sources, filters, and data-quality
+    constraints.
+  formats:
+  - markdown
+  - json
+  retention: service-incident-and-data-policy
+  publication: approval-controlled
+- id: slo-specification
+  description: SLI, target, window, exclusions, rationale, reporting, review cadence, and decision owner.
+  formats:
+  - markdown
+  - json
+  retention: service-incident-and-data-policy
+  publication: approval-controlled
+- id: error-budget-policy
+  description: Budget calculation, burn thresholds, release implications, exception path, and review responsibilities.
+  formats:
+  - markdown
+  - json
+  retention: service-incident-and-data-policy
+  publication: approval-controlled
+- id: reliability-scorecard
+  description: SLO performance, error budget, incident, alert, capacity, toil, and corrective-action summary.
+  formats:
+  - markdown
+  - json
+  retention: service-incident-and-data-policy
+  publication: approval-controlled
+- id: alert-inventory
+  description: Alert purpose, signal, threshold, severity, route, owner, runbook, suppression, and retirement state.
+  formats:
+  - markdown
+  - json
+  retention: service-incident-and-data-policy
+  publication: approval-controlled
+- id: alert-quality-report
+  description: Noise, actionability, duplicates, false positives, gaps, routing, and improvement recommendations.
+  formats:
+  - markdown
+  - json
+  retention: service-incident-and-data-policy
+  publication: approval-controlled
+- id: operational-dashboard-specification
+  description: Audience, decisions, panels, queries, units, thresholds, ownership, and data-quality notes.
+  formats:
+  - markdown
+  - json
+  retention: service-incident-and-data-policy
+  publication: approval-controlled
+- id: operational-runbook
+  description: Symptoms, prerequisites, diagnostics, safe actions, approvals, stop conditions, rollback, and verification.
+  formats:
+  - markdown
+  - json
+  retention: service-incident-and-data-policy
+  publication: approval-controlled
+- id: oncall-readiness-brief
+  description: Coverage, access, active risk, runbook, service, dependency, escalation, and handoff readiness.
+  formats:
+  - markdown
+  - json
+  retention: service-incident-and-data-policy
+  publication: approval-controlled
+- id: incident-declaration-record
+  description: Affected scope, severity, evidence, start time, roles, communication cadence, and uncertainty.
+  formats:
+  - markdown
+  - json
+  retention: service-incident-and-data-policy
+  publication: approval-controlled
+- id: incident-command-brief
+  description: Objectives, impact, roles, workstreams, hypotheses, actions, risks, decisions, and next update.
+  formats:
+  - markdown
+  - json
+  retention: service-incident-and-data-policy
+  publication: approval-controlled
+- id: incident-timeline
+  description: Immutable chronological events, alerts, changes, decisions, actions, communications, and evidence
+    references.
+  formats:
+  - markdown
+  - json
+  retention: service-incident-and-data-policy
+  publication: approval-controlled
+- id: diagnostic-plan
+  description: Hypotheses, queries, checks, owners, safety limits, evidence requirements, and escalation criteria.
+  formats:
+  - markdown
+  - json
+  retention: service-incident-and-data-policy
+  publication: approval-controlled
+- id: mitigation-options-report
+  description: Options, expected effect, blast radius, prerequisites, stop conditions, rollback, evidence, and recommendation.
+  formats:
+  - markdown
+  - json
+  retention: service-incident-and-data-policy
+  publication: approval-controlled
+- id: production-action-request
+  description: Immutable exact action, target, reason, evidence, risk, approvals, expiry, rollback, and verification
+    plan.
+  formats:
+  - markdown
+  - json
+  retention: service-incident-and-data-policy
+  publication: approval-controlled
+- id: recovery-verification-report
+  description: Technical, user, business, dependency, and observation-window evidence supporting recovery state.
+  formats:
+  - markdown
+  - json
+  retention: service-incident-and-data-policy
+  publication: approval-controlled
+- id: incident-status-update
+  description: Approved factual impact, investigation, mitigation, recovery, uncertainty, and next-update communication.
+  formats:
+  - markdown
+  - json
+  retention: service-incident-and-data-policy
+  publication: approval-controlled
+- id: stakeholder-communication-plan
+  description: Audiences, channels, owners, cadence, approval path, templates, and escalation rules.
+  formats:
+  - markdown
+  - json
+  retention: service-incident-and-data-policy
+  publication: approval-controlled
+- id: post-incident-review
+  description: Impact, timeline, detection, response, trigger, contributing factors, learning, and corrective actions.
+  formats:
+  - markdown
+  - json
+  retention: service-incident-and-data-policy
+  publication: approval-controlled
+- id: corrective-action-register
+  description: Actions, risk addressed, owner, priority, due date, status, evidence, and effectiveness review.
+  formats:
+  - markdown
+  - json
+  retention: service-incident-and-data-policy
+  publication: approval-controlled
+- id: capacity-and-scalability-plan
+  description: Demand scenarios, baselines, headroom, bottlenecks, thresholds, options, cost, and actions.
+  formats:
+  - markdown
+  - json
+  retention: service-incident-and-data-policy
+  publication: approval-controlled
+- id: resilience-test-plan
+  description: Hypothesis, scope, faults, safeguards, approvals, stop conditions, telemetry, recovery, and learning.
+  formats:
+  - markdown
+  - json
+  retention: service-incident-and-data-policy
+  publication: approval-controlled
+- id: disaster-recovery-exercise-report
+  description: Scenario, RTO/RPO, execution, recovery, reconciliation, gaps, evidence, and actions.
+  formats:
+  - markdown
+  - json
+  retention: service-incident-and-data-policy
+  publication: approval-controlled
+- id: toil-and-automation-backlog
+  description: Repetitive work, frequency, risk, effort, automation options, ownership, and outcome measures.
+  formats:
+  - markdown
+  - json
+  retention: service-incident-and-data-policy
+  publication: approval-controlled
+- id: reliability-improvement-roadmap
+  description: Prioritized reliability outcomes, initiatives, dependencies, milestones, measures, and review cadence.
+  formats:
+  - markdown
+  - json
+  retention: service-incident-and-data-policy
+  publication: approval-controlled

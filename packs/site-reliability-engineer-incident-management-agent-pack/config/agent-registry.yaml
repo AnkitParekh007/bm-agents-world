@@ -1,0 +1,243 @@
+version: 1.0.0
+supervisor: sre-incident-management-supervisor
+agent_count: 27
+agents:
+- id: sre-incident-management-supervisor
+  description: Coordinates reliability engineering, SLO operations, incident command, diagnosis, recovery, reviews,
+    approvals, and evidence.
+  capabilities:
+  - orchestration
+  - sre
+  - incident-management
+  - governance
+  status: enabled
+  external_writes: approval-controlled
+- id: service-context-agent
+  description: Retrieves approved service, architecture, ownership, dependency, environment, release, runbook, and
+    business context.
+  capabilities:
+  - context
+  - service-catalog
+  - dependencies
+  status: enabled
+  external_writes: approval-controlled
+- id: sli-slo-agent
+  description: Defines and validates user-centered SLIs, SLOs, measurement windows, exclusions, and reporting.
+  capabilities:
+  - sli
+  - slo
+  - service-levels
+  status: enabled
+  external_writes: approval-controlled
+- id: error-budget-agent
+  description: Calculates error budgets, burn rates, policy thresholds, and evidence-backed reliability recommendations.
+  capabilities:
+  - error-budget
+  - burn-rate
+  - governance
+  status: enabled
+  external_writes: approval-controlled
+- id: observability-engineering-agent
+  description: Assesses metrics, logs, traces, events, profiles, telemetry pipelines, dashboards, and instrumentation
+    gaps.
+  capabilities:
+  - observability
+  - opentelemetry
+  - instrumentation
+  status: enabled
+  external_writes: approval-controlled
+- id: alert-quality-agent
+  description: Reviews paging policy, alert quality, routing, deduplication, noise, actionability, and runbook linkage.
+  capabilities:
+  - alerting
+  - paging
+  - event-management
+  status: enabled
+  external_writes: approval-controlled
+- id: oncall-readiness-agent
+  description: Evaluates rotations, handoffs, responder access, runbooks, paging burden, simulations, and readiness
+    gaps.
+  capabilities:
+  - oncall
+  - readiness
+  - handoff
+  status: enabled
+  external_writes: approval-controlled
+- id: incident-detection-agent
+  description: Correlates alerts and reports, assesses impact, recommends severity, and prepares incident declaration
+    evidence.
+  capabilities:
+  - detection
+  - severity
+  - correlation
+  status: enabled
+  external_writes: approval-controlled
+- id: incident-command-agent
+  description: Supports incident roles, objectives, workstreams, action tracking, handoffs, escalation, and decision
+    records.
+  capabilities:
+  - incident-command
+  - coordination
+  - timeline
+  status: enabled
+  external_writes: approval-controlled
+- id: technical-diagnosis-agent
+  description: Builds hypotheses and correlates telemetry, dependencies, releases, data stores, queues, and infrastructure
+    evidence.
+  capabilities:
+  - diagnosis
+  - hypothesis
+  - root-cause
+  status: enabled
+  external_writes: approval-controlled
+- id: mitigation-and-recovery-agent
+  description: Creates reversible mitigation options, action requests, stop conditions, recovery checks, and restoration
+    plans.
+  capabilities:
+  - mitigation
+  - recovery
+  - runbooks
+  status: enabled
+  external_writes: approval-controlled
+- id: incident-communication-agent
+  description: Drafts accurate internal, executive, support, customer, and status-page communications with uncertainty
+    labels.
+  capabilities:
+  - communication
+  - status-page
+  - stakeholders
+  status: enabled
+  external_writes: approval-controlled
+- id: post-incident-review-agent
+  description: Builds blameless post-incident reviews, timelines, systemic findings, and measurable corrective actions.
+  capabilities:
+  - postmortem
+  - learning
+  - corrective-actions
+  status: enabled
+  external_writes: approval-controlled
+- id: reliability-architecture-agent
+  description: Analyzes failure domains, redundancy, graceful degradation, retries, timeouts, load shedding, and
+    dependency risks.
+  capabilities:
+  - reliability
+  - architecture
+  - resilience
+  status: enabled
+  external_writes: approval-controlled
+- id: capacity-performance-agent
+  description: Forecasts capacity, analyzes saturation and latency, and prepares approved performance and load-test
+    plans.
+  capabilities:
+  - capacity
+  - performance
+  - scalability
+  status: enabled
+  external_writes: approval-controlled
+- id: resilience-testing-agent
+  description: Plans game days, fault-injection tests, dependency-failure exercises, safety controls, and evidence
+    collection.
+  capabilities:
+  - chaos-engineering
+  - game-days
+  - resilience
+  status: enabled
+  external_writes: approval-controlled
+- id: disaster-recovery-agent
+  description: Reviews RTO/RPO, backup and restore evidence, failover/failback, recovery order, reconciliation,
+    and DR exercises.
+  capabilities:
+  - disaster-recovery
+  - backup
+  - continuity
+  status: enabled
+  external_writes: approval-controlled
+- id: change-reliability-agent
+  description: Assesses releases and changes for reliability risk, health signals, progressive delivery, rollback,
+    and operational readiness.
+  capabilities:
+  - release
+  - change-risk
+  - operational-readiness
+  status: enabled
+  external_writes: approval-controlled
+- id: toil-automation-agent
+  description: Identifies toil and designs deterministic automation, self-service, runbook, and evidence improvements.
+  capabilities:
+  - toil
+  - automation
+  - developer-experience
+  status: enabled
+  external_writes: approval-controlled
+- id: service-dependency-agent
+  description: Maintains service and dependency graphs and analyzes upstream, downstream, vendor, network, and data-store
+    impact.
+  capabilities:
+  - dependencies
+  - service-map
+  - blast-radius
+  status: enabled
+  external_writes: approval-controlled
+- id: production-diagnostics-agent
+  description: Runs bounded redacted read-only production diagnostics across observability, platform, network, and
+    data systems.
+  capabilities:
+  - production
+  - read-only
+  - diagnostics
+  status: enabled
+  external_writes: approval-controlled
+- id: security-incident-liaison-agent
+  description: Coordinates with Product Security and incident response for security-related reliability events without
+    taking over security authority.
+  capabilities:
+  - security-liaison
+  - incident-response
+  - coordination
+  status: enabled
+  external_writes: approval-controlled
+- id: support-release-liaison-agent
+  description: Coordinates evidence and handoffs with Support, Release Management, Product, and customer-facing
+    teams.
+  capabilities:
+  - cross-pack
+  - support
+  - release
+  status: enabled
+  external_writes: approval-controlled
+- id: reliability-analytics-agent
+  description: Produces team-level reliability, incident, error-budget, alert, toil, capacity, and corrective-action
+    trends.
+  capabilities:
+  - analytics
+  - reliability-metrics
+  - improvement
+  status: enabled
+  external_writes: approval-controlled
+- id: sre-independent-reviewer-agent
+  description: Independently challenges severity, diagnosis, mitigation safety, recovery evidence, SLO design, and
+    closure readiness.
+  capabilities:
+  - review
+  - independence
+  - assurance
+  status: enabled
+  external_writes: approval-controlled
+- id: evidence-manager-agent
+  description: Hashes, versions, redacts, stores, links, and retains telemetry, timelines, approvals, reports, and
+    action evidence.
+  capabilities:
+  - evidence
+  - provenance
+  - retention
+  status: enabled
+  external_writes: approval-controlled
+- id: policy-enforcer-agent
+  description: Enforces service, environment, incident, credential, production, communication, approval, and mutation
+    boundaries.
+  capabilities:
+  - opa
+  - authorization
+  - guardrails
+  status: enabled
+  external_writes: policy-authority

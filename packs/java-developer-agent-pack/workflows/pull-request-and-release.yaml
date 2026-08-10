@@ -1,0 +1,70 @@
+apiVersion: java-developer-agent-pack/v1
+kind: Workflow
+metadata:
+  name: pull-request-and-release
+  version: 1.0.0
+spec:
+  trigger: quality-gates-passed
+  steps:
+  - id: verify-scope
+    agent: policy-enforcer
+    outputs:
+    - scope-verification
+  - id: assemble-evidence
+    agent: evidence-manager
+    outputs:
+    - evidence-bundle
+    - checksums
+    dependsOn:
+    - verify-scope
+  - id: prepare-pr
+    agent: pr-release
+    uses:
+    - java.change-manifest
+    - java.pr-draft
+    - java.release-notes
+    outputs:
+    - pull-request-draft
+    - release-readiness
+    dependsOn:
+    - assemble-evidence
+  - id: approval
+    agent: policy-enforcer
+    outputs:
+    - publication-approval
+    dependsOn:
+    - prepare-pr
+    approvalRequired: true
+  - id: commit-push-pr
+    agent: pr-release
+    outputs:
+    - commit-ref
+    - branch-ref
+    - pull-request-ref
+    dependsOn:
+    - approval
+  - id: jira-teams
+    agent: documentation
+    uses:
+    - java.jira-update
+    - java.teams-update
+    outputs:
+    - publication-records
+    dependsOn:
+    - commit-push-pr
+    approvalRequired: true
+  - id: pipeline
+    agent: build-pipeline
+    outputs:
+    - pipeline-ref
+    dependsOn:
+    - commit-push-pr
+    approvalRequired: true
+  - id: finalize
+    agent: evidence-manager
+    outputs:
+    - audit-record
+    - daily-summary
+    dependsOn:
+    - jira-teams
+    - pipeline

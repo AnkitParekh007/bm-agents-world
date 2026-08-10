@@ -1,0 +1,74 @@
+apiVersion: business-analyst-agent-pack/v1
+kind: AgentWorkflow
+metadata:
+  name: process-analysis-and-redesign
+  title: Process Analysis and Redesign
+  version: 1.0.0
+spec:
+  trigger:
+  - process_problem
+  - operational_improvement
+  - automation_candidate
+  objective: Model the current state, identify causes and waste, design options, and produce an approved future-state
+    process package.
+  supervisor: business-analysis-supervisor
+  execution:
+    mode: stateful
+    defaultPolicy: deny
+    evidenceRequired: true
+    approvalBinding: payload-hash
+    resumeFromCheckpoint: true
+  stages:
+  - id: scope
+    agent: business-needs
+    skills:
+    - business-analysis.process-boundary
+    - business-analysis.problem-statement
+    - business-analysis.success-measure-definition
+    gate: authorization
+  - id: discover
+    agent: process-discovery
+    skills:
+    - business-analysis.sipoc-model
+    - business-analysis.current-state-process
+    - business-analysis.handoff-analysis
+  - id: analyze
+    agent: process-modeling
+    skills:
+    - business-analysis.cycle-time-analysis
+    - business-analysis.waste-analysis
+    - business-analysis.control-point-analysis
+  - id: future-state
+    agent: process-modeling
+    skills:
+    - business-analysis.future-state-process
+    - business-analysis.bpmn-model
+    - business-analysis.process-kpi-definition
+  - id: impacts
+    agent: impact-analysis
+    skills:
+    - business-analysis.people-impact
+    - business-analysis.system-impact
+    - business-analysis.operational-impact
+  - id: review
+    agent: independent-ba-review
+    skills:
+    - business-analysis.process-model-review
+    - business-analysis.evidence-confidence
+    - business-analysis.decision-boundary-check
+  - id: approve
+    agent: business-analysis-supervisor
+    skills:
+    - business-analysis.controlled-publication
+    - business-analysis.payload-hash-approval
+    gate: payload-bound-approval
+  outputs:
+  - current-state-process
+  - future-state-process
+  - process-improvement-brief
+  - change-impact-assessment
+  terminalStates:
+  - completed
+  - rejected
+  - blocked
+  - cancelled

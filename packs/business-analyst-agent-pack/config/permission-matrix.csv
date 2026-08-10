@@ -1,0 +1,11 @@
+System/Capability,Read,Draft/Analyze,Publish/Mutate,Approval,Notes
+Jira,Scoped,Yes,Controlled,Business/Product Owner,No autonomous scope or acceptance changes
+Confluence/Documents,Scoped,Yes,Controlled,Document Owner,Drafts remain clearly marked
+Bitbucket,Read-only,Analyze diffs,No,N/A,"No commits, merges, or code changes"
+Figma,Read-only,Annotate isolated draft,Controlled,Design Owner,No shared library publication
+BPMN/Diagram workspace,Yes,Yes,Controlled,Process Owner,Draft-first and versioned
+Database,Metadata and bounded read-only,Analyze,No,Data Owner for sensitive access,No DDL/DML
+Analytics,Aggregate read,Analyze,No,Metric Owner for restricted metrics,No raw user exports
+Requirements repository,Scoped,Yes,Controlled,Business/Product Owner,Payload-bound baseline approval
+Teams,Read approved context,Draft,Controlled,Message Owner,No autonomous external messages
+Production,Metadata/read-only evidence,Analyze,No,Never via free-form agent,No production mutation

@@ -1,0 +1,117 @@
+apiVersion: integration-api-architect-agent-pack/v1
+kind: PluginRegistry
+metadata:
+  name: integration-api-architect-plugins
+  version: 1.0.0
+spec:
+  plugins:
+  - id: spectral-openapi-linter
+    purpose: Lint OpenAPI contracts against enterprise rules
+    execution: deterministic
+    network: deny-by-default
+    secrets: not-exposed-to-model
+  - id: oasdiff-breaking-change
+    purpose: Detect OpenAPI breaking and compatibility changes
+    execution: deterministic
+    network: deny-by-default
+    secrets: not-exposed-to-model
+  - id: openapi-generator
+    purpose: Generate review-only client/server stubs and SDK previews
+    execution: deterministic
+    network: deny-by-default
+    secrets: not-exposed-to-model
+  - id: asyncapi-parser-validator
+    purpose: Parse and validate AsyncAPI contracts
+    execution: deterministic
+    network: deny-by-default
+    secrets: not-exposed-to-model
+  - id: asyncapi-generator
+    purpose: Generate documentation and code previews from AsyncAPI
+    execution: deterministic
+    network: deny-by-default
+    secrets: not-exposed-to-model
+  - id: json-schema-validator
+    purpose: Validate JSON Schema Draft 2020-12 payload schemas
+    execution: deterministic
+    network: deny-by-default
+    secrets: not-exposed-to-model
+  - id: buf-protobuf
+    purpose: Lint, build and breaking-check protobuf contracts
+    execution: deterministic
+    network: deny-by-default
+    secrets: not-exposed-to-model
+  - id: graphql-schema-validator
+    purpose: Validate GraphQL schemas and operations
+    execution: deterministic
+    network: deny-by-default
+    secrets: not-exposed-to-model
+  - id: graphql-inspector
+    purpose: Detect GraphQL schema changes and consumer impact
+    execution: deterministic
+    network: deny-by-default
+    secrets: not-exposed-to-model
+  - id: pact-contract-tests
+    purpose: Run consumer-driven contract tests
+    execution: deterministic
+    network: deny-by-default
+    secrets: not-exposed-to-model
+  - id: schemathesis-api-tests
+    purpose: Generate property-based tests from OpenAPI
+    execution: deterministic
+    network: deny-by-default
+    secrets: not-exposed-to-model
+  - id: wiremock-virtualization
+    purpose: Create bounded virtual services and mocks
+    execution: deterministic
+    network: deny-by-default
+    secrets: not-exposed-to-model
+  - id: grpcurl-smoke
+    purpose: Perform approved gRPC discovery and smoke calls
+    execution: deterministic
+    network: deny-by-default
+    secrets: not-exposed-to-model
+  - id: k6-api-load
+    purpose: Execute approved non-production API performance scenarios
+    execution: deterministic
+    network: deny-by-default
+    secrets: not-exposed-to-model
+  - id: oauth-oidc-profile-checker
+    purpose: Validate OAuth/OIDC profile configuration and token expectations
+    execution: deterministic
+    network: deny-by-default
+    secrets: not-exposed-to-model
+  - id: jwt-structure-verifier
+    purpose: Inspect JWT structure and claims without exposing secrets
+    execution: deterministic
+    network: deny-by-default
+    secrets: not-exposed-to-model
+  - id: cloud-events-validator
+    purpose: Validate CloudEvents envelopes and bindings
+    execution: deterministic
+    network: deny-by-default
+    secrets: not-exposed-to-model
+  - id: api-style-guide-checker
+    purpose: Apply naming, pagination, errors and lifecycle rules
+    execution: deterministic
+    network: deny-by-default
+    secrets: not-exposed-to-model
+  - id: contract-catalog-indexer
+    purpose: Index APIs/events/schemas into an architecture catalog
+    execution: deterministic
+    network: deny-by-default
+    secrets: not-exposed-to-model
+  - id: mermaid-diagram-renderer
+    purpose: Render architecture, sequence and flow diagrams
+    execution: deterministic
+    network: deny-by-default
+    secrets: not-exposed-to-model
+  - id: secret-redaction-filter
+    purpose: Redact credentials and sensitive payload fields from evidence
+    execution: deterministic
+    network: deny-by-default
+    secrets: not-exposed-to-model
+  - id: policy-evaluation-client
+    purpose: Evaluate OPA-compatible policy and payload-bound approval requirements
+    execution: deterministic
+    network: deny-by-default
+    secrets: not-exposed-to-model

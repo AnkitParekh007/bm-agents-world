@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.internal/schemas/exception-request.schema.json",
+  "title": "Exception Request",
+  "type": "object",
+  "required": [
+    "scope",
+    "affected_controls",
+    "business_justification",
+    "compensating_controls",
+    "expiry",
+    "risk_owner"
+  ],
+  "properties": {
+    "scope": {
+      "type": "string"
+    },
+    "affected_controls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "business_justification": {
+      "type": "string"
+    },
+    "compensating_controls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "expiry": {
+      "type": "string"
+    },
+    "risk_owner": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

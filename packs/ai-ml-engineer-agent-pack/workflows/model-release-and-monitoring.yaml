@@ -1,0 +1,19 @@
+id: "model-release-and-monitoring"
+name: Model Release and Monitoring
+trigger: approved candidate
+steps:
+  - "('verify-candidate', 'release-agent', ['ai-ml.release.candidate-identity-verification', 'ai-ml.release.release-readiness-review'])"
+  - "('serving-readiness', 'serving-agent', ['ai-ml.serving.canary-design', 'ai-ml.serving.rollback-design'])"
+  - "('mlops-readiness', 'mlops-agent', ['ai-ml.mlops.model-promotion-gates', 'ai-ml.mlops.release-bundle-generation'])"
+  - "('independent-review', 'independent-review-agent', ['ai-ml.governance.independent-review-routing'])"
+  - "('human-approval', 'policy-agent', ['ai-ml.governance.approval-binding'])"
+  - "('authorized-execution', 'release-agent', ['ai-ml.governance.production-readonly-enforcement'])"
+  - "('observe', 'monitoring-agent', ['ai-ml.monitoring.llm-task-success-monitoring', 'ai-ml.monitoring.alert-design'])"
+  - "('evidence', 'evidence-agent', ['ai-ml.governance.audit-evidence-hashing'])"
+outputs:
+  - "release-readiness-report"
+  - "production-action-request"
+  - "rollback-plan"
+  - "model-monitoring-plan"
+  - "post-release-review"
+  - "evidence-bundle"

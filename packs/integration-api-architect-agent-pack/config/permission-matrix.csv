@@ -1,0 +1,12 @@
+capability,playground,qa,production,approval,notes
+Read Jira/Confluence/Bitbucket,allow,allow,allow,no,project-scoped
+Read API/event/schema catalogs,allow,allow,allow,no,project-scoped
+Read gateway/broker/IdP metadata,allow,allow,allow-readonly,no,bounded and redacted
+Generate contract drafts,allow,allow,allow-offline,no,isolated artifact only
+Publish contract/catalog entry,approve,approve,approve,yes,payload-bound approval
+Create/update Jira or Confluence,approve,approve,approve,yes,human-reviewed payload
+Create pull request,approve,approve,approve,yes,no merge permission
+Change gateway/broker/IdP,approve,approve,deny-freeform,yes,production via operator/pipeline
+Run contract/performance tests,allow,allow,bounded-readonly,sometimes,no destructive production traffic
+Read raw secrets,deny,deny,deny,n/a,trusted adapters only
+Accept residual security/business risk,deny,deny,deny,human-only,not delegable

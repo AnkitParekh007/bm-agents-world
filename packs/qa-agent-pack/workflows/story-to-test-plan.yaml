@@ -1,0 +1,14 @@
+apiVersion: qa-agent-pack/v1
+kind: Workflow
+metadata: { id: story-to-test-plan, version: 1.0.0 }
+trigger: manual-or-jira-event
+inputs: [project, jiraIssueKey, targetEnvironment]
+steps:
+  - { id: scope, agent: qa-supervisor, skill: qa.policy.classify-tool-risk }
+  - { id: context, agent: story-context, skill: qa.story.read-context, dependsOn: [scope] }
+  - { id: impact, agent: change-impact, skill: qa.change.frontend-impact, dependsOn: [context] }
+  - { id: risks, agent: story-context, skill: qa.risk.story-scoring, dependsOn: [context, impact] }
+  - { id: plan, agent: test-design, skill: qa.plan.story-test-plan, dependsOn: [risks] }
+  - { id: cases, agent: test-design, skill: qa.design.traceability-matrix, dependsOn: [plan] }
+  - { id: review, type: human-approval, dependsOn: [cases] }
+outputs: [story-context-brief, test-plan, test-case-set]

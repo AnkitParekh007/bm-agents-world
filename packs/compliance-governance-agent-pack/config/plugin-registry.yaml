@@ -1,0 +1,89 @@
+plugins:
+- id: framework-mapper
+  description: Cross-framework mapping and deduplication
+  execution: deterministic
+  secrets_in_model: false
+- id: evidence-hasher
+  description: SHA-256 evidence manifest generation
+  execution: deterministic
+  secrets_in_model: false
+- id: schema-validator
+  description: JSON/YAML evidence schema validation
+  execution: deterministic
+  secrets_in_model: false
+- id: policy-linter
+  description: Policy metadata and lifecycle validation
+  execution: deterministic
+  secrets_in_model: false
+- id: control-tester
+  description: Deterministic control-test execution
+  execution: deterministic
+  secrets_in_model: false
+- id: access-review-analyzer
+  description: Access review and SoD analysis
+  execution: deterministic
+  secrets_in_model: false
+- id: retention-checker
+  description: Retention/deletion schedule checking
+  execution: deterministic
+  secrets_in_model: false
+- id: privacy-inventory-analyzer
+  description: Privacy processing inventory validation
+  execution: deterministic
+  secrets_in_model: false
+- id: ai-inventory-analyzer
+  description: AI inventory completeness and classification checks
+  execution: deterministic
+  secrets_in_model: false
+- id: vendor-evidence-parser
+  description: Extract approved metadata from vendor assurance evidence
+  execution: deterministic
+  secrets_in_model: false
+- id: soc-report-indexer
+  description: Index approved SOC report sections without reproducing restricted content
+  execution: deterministic
+  secrets_in_model: false
+- id: audit-log-query
+  description: Bounded audit-log querying
+  execution: deterministic
+  secrets_in_model: false
+- id: cloud-control-evaluator
+  description: Read-only cloud control posture checks
+  execution: deterministic
+  secrets_in_model: false
+- id: k8s-policy-evaluator
+  description: Read-only Kubernetes policy checks
+  execution: deterministic
+  secrets_in_model: false
+- id: db-grant-analyzer
+  description: Database role/grant review
+  execution: deterministic
+  secrets_in_model: false
+- id: finding-normalizer
+  description: Normalize findings across scanners and audits
+  execution: deterministic
+  secrets_in_model: false
+- id: risk-calculator
+  description: Approved risk matrix calculations
+  execution: deterministic
+  secrets_in_model: false
+- id: exception-expiry-monitor
+  description: Detect expiring exceptions
+  execution: deterministic
+  secrets_in_model: false
+- id: evidence-freshness-checker
+  description: Check evidence age against control frequency
+  execution: deterministic
+  secrets_in_model: false
+- id: metrics-calculator
+  description: Calculate aggregate governance metrics
+  execution: deterministic
+  secrets_in_model: false
+- id: document-redactor
+  description: Redact secrets/PII from evidence copies
+  execution: deterministic
+  secrets_in_model: false
+- id: report-builder
+  description: Generate management/audit evidence packs
+  execution: deterministic
+  secrets_in_model: false

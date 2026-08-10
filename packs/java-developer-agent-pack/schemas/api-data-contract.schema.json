@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/java-agent/api-data-contract.schema.json",
+  "title": "API Data Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "kind",
+    "version",
+    "compatibility"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "kind": {
+      "enum": [
+        "rest",
+        "graphql",
+        "rpc",
+        "event",
+        "database",
+        "configuration"
+      ]
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "compatibility": {
+      "enum": [
+        "compatible",
+        "conditionally-compatible",
+        "breaking",
+        "unknown"
+      ]
+    },
+    "changes": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "consumerImpact": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "evidenceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    }
+  }
+}

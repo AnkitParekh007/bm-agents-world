@@ -1,0 +1,587 @@
+version: 1.0.0
+skills:
+- id: db.work-context
+  group: Work intake and governance
+  description: Read and normalize Jira items, acceptance criteria, linked incidents, contracts, and policy constraints
+  risk: medium
+  requires_engine_profile: true
+- id: db.requirement-decomposition
+  group: Work intake and governance
+  description: Convert requirements into data, schema, query, migration, security, and operational obligations
+  risk: medium
+  requires_engine_profile: true
+- id: db.traceability-map
+  group: Work intake and governance
+  description: Map acceptance criteria to database objects, migrations, tests, evidence, and approvals
+  risk: medium
+  requires_engine_profile: true
+- id: db.risk-classification
+  group: Work intake and governance
+  description: Classify destructive, locking, privacy, availability, compatibility, and performance risk
+  risk: medium
+  requires_engine_profile: true
+- id: db.change-scope
+  group: Work intake and governance
+  description: Define authorized engines, instances, databases, schemas, objects, branches, and environments
+  risk: medium
+  requires_engine_profile: true
+- id: db.data-classification
+  group: Work intake and governance
+  description: Identify public, internal, confidential, regulated, credential, and personal data
+  risk: medium
+  requires_engine_profile: true
+- id: db.ownership-map
+  group: Work intake and governance
+  description: Resolve business owner, technical owner, steward, approver, and on-call responsibilities
+  risk: medium
+  requires_engine_profile: true
+- id: db.engine-detection
+  group: Database discovery and inventory
+  description: Detect database engine, version, edition, extensions, compatibility level, and managed-service constraints
+  risk: medium
+  requires_engine_profile: true
+- id: db.schema-inventory
+  group: Database discovery and inventory
+  description: Inventory schemas, tables, views, routines, sequences, types, synonyms, and dependencies
+  risk: medium
+  requires_engine_profile: true
+- id: db.workload-profile
+  group: Database discovery and inventory
+  description: Classify OLTP, reporting, analytics, batch, event, archival, and mixed workloads
+  risk: medium
+  requires_engine_profile: true
+- id: db.topology-map
+  group: Database discovery and inventory
+  description: Map primary, replica, cluster, shard, tenant, region, and failover topology
+  risk: medium
+  requires_engine_profile: true
+- id: db.migration-tool-detection
+  group: Database discovery and inventory
+  description: Detect Flyway, Liquibase, native migration tooling, and repository conventions
+  risk: high
+  requires_engine_profile: true
+- id: db.query-inventory
+  group: Database discovery and inventory
+  description: Identify high-frequency, high-latency, high-resource, and business-critical query families
+  risk: medium
+  requires_engine_profile: true
+- id: db.data-volume-profile
+  group: Database discovery and inventory
+  description: Measure row counts, growth, skew, cardinality, retention, and storage distribution
+  risk: medium
+  requires_engine_profile: true
+- id: db.dependency-graph
+  group: Database discovery and inventory
+  description: Map object, service, report, job, ORM, event, and downstream dependencies
+  risk: medium
+  requires_engine_profile: true
+- id: db.domain-model
+  group: Data modeling and architecture
+  description: Model business entities, aggregates, ownership, lifecycle, and invariants
+  risk: medium
+  requires_engine_profile: true
+- id: db.logical-model
+  group: Data modeling and architecture
+  description: Design engine-neutral entities, attributes, keys, relationships, and cardinality
+  risk: medium
+  requires_engine_profile: true
+- id: db.normalization
+  group: Data modeling and architecture
+  description: Apply normalization deliberately and document justified denormalization
+  risk: medium
+  requires_engine_profile: true
+- id: db.key-design
+  group: Data modeling and architecture
+  description: Choose natural, surrogate, composite, UUID, sequence, and distributed key strategies
+  risk: medium
+  requires_engine_profile: true
+- id: db.temporal-modeling
+  group: Data modeling and architecture
+  description: Design effective dating, history, audit, slowly changing, and bitemporal patterns
+  risk: medium
+  requires_engine_profile: true
+- id: db.multitenancy
+  group: Data modeling and architecture
+  description: Design database-per-tenant, schema-per-tenant, shared-schema, and tenant-isolation patterns
+  risk: medium
+  requires_engine_profile: true
+- id: db.reference-data
+  group: Data modeling and architecture
+  description: Design controlled vocabularies, reference tables, ownership, and lifecycle
+  risk: medium
+  requires_engine_profile: true
+- id: db.data-contract
+  group: Data modeling and architecture
+  description: Define canonical types, nullability, units, precision, semantics, and compatibility
+  risk: medium
+  requires_engine_profile: true
+- id: db.architecture-decision
+  group: Data modeling and architecture
+  description: Create ADRs for material database choices and rejected alternatives
+  risk: medium
+  requires_engine_profile: true
+- id: db.table-design
+  group: Physical schema design
+  description: Design tables, columns, data types, defaults, generated values, and ownership
+  risk: medium
+  requires_engine_profile: true
+- id: db.constraint-design
+  group: Physical schema design
+  description: Design primary, foreign, unique, check, exclusion, and domain constraints
+  risk: medium
+  requires_engine_profile: true
+- id: db.index-design
+  group: Physical schema design
+  description: Design selective, covering, filtered, functional, partial, composite, and specialized indexes
+  risk: medium
+  requires_engine_profile: true
+- id: db.partitioning
+  group: Physical schema design
+  description: Design range, list, hash, interval, and lifecycle-aware partitioning
+  risk: medium
+  requires_engine_profile: true
+- id: db.storage-layout
+  group: Physical schema design
+  description: Design tablespaces, filegroups, compression, fill factors, and storage placement where applicable
+  risk: medium
+  requires_engine_profile: true
+- id: db.naming-standards
+  group: Physical schema design
+  description: Apply repository and organization naming rules
+  risk: medium
+  requires_engine_profile: true
+- id: db.view-design
+  group: Physical schema design
+  description: Design views, materialized/indexed views, security views, and refresh behavior
+  risk: medium
+  requires_engine_profile: true
+- id: db.procedure-function-design
+  group: Physical schema design
+  description: Design stored procedures, functions, packages, and deterministic boundaries
+  risk: medium
+  requires_engine_profile: true
+- id: db.trigger-review
+  group: Physical schema design
+  description: Use triggers only with documented semantics, ordering, recursion, performance, and observability
+  risk: medium
+  requires_engine_profile: true
+- id: db.engine-portability
+  group: Physical schema design
+  description: Separate portable SQL from engine-specific optimizations and document lock-in
+  risk: medium
+  requires_engine_profile: true
+- id: db.sql-authoring
+  group: SQL development
+  description: Write readable, set-oriented, parameterized, engine-compatible SQL
+  risk: medium
+  requires_engine_profile: true
+- id: db.query-correctness
+  group: SQL development
+  description: Validate joins, predicates, null semantics, aggregation, ordering, and duplicate behavior
+  risk: medium
+  requires_engine_profile: true
+- id: db.dml-safety
+  group: SQL development
+  description: Design bounded inserts, updates, deletes, merges, and upserts with measurable affected-row expectations
+  risk: medium
+  requires_engine_profile: true
+- id: db.bulk-operations
+  group: SQL development
+  description: Design chunked, resumable, throttled, and observable bulk operations
+  risk: medium
+  requires_engine_profile: true
+- id: db.window-functions
+  group: SQL development
+  description: Use analytic functions with explicit partitions, ordering, and frames
+  risk: medium
+  requires_engine_profile: true
+- id: db.cte-subquery
+  group: SQL development
+  description: Choose CTEs, derived tables, temp objects, and subqueries based on engine behavior
+  risk: medium
+  requires_engine_profile: true
+- id: db.dynamic-sql
+  group: SQL development
+  description: Constrain dynamic SQL, identifiers, parameters, execution context, and auditability
+  risk: medium
+  requires_engine_profile: true
+- id: db.stored-code
+  group: SQL development
+  description: Implement routines with explicit transactions, permissions, errors, logging, and testability
+  risk: medium
+  requires_engine_profile: true
+- id: db.sql-review
+  group: SQL development
+  description: Review correctness, readability, plan stability, security, and operational impact
+  risk: medium
+  requires_engine_profile: true
+- id: db.migration-authoring
+  group: Migrations and schema evolution
+  description: Create immutable versioned migrations following repository conventions
+  risk: high
+  requires_engine_profile: true
+- id: db.expand-contract
+  group: Migrations and schema evolution
+  description: Sequence additive changes, dual-read/write, backfill, cutover, and cleanup
+  risk: medium
+  requires_engine_profile: true
+- id: db.online-ddl
+  group: Migrations and schema evolution
+  description: Select online or low-lock DDL strategies supported by the engine and edition
+  risk: medium
+  requires_engine_profile: true
+- id: db.compatibility-window
+  group: Migrations and schema evolution
+  description: Support mixed application versions during rolling deployment
+  risk: medium
+  requires_engine_profile: true
+- id: db.migration-validation
+  group: Migrations and schema evolution
+  description: Validate checksums, ordering, drift, prerequisites, and target compatibility
+  risk: high
+  requires_engine_profile: true
+- id: db.rollback-rollforward
+  group: Migrations and schema evolution
+  description: Design rollback where safe and roll-forward recovery where rollback is unsafe
+  risk: high
+  requires_engine_profile: true
+- id: db.schema-drift
+  group: Migrations and schema evolution
+  description: Detect and reconcile repository-to-environment schema drift
+  risk: medium
+  requires_engine_profile: true
+- id: db.migration-idempotency
+  group: Migrations and schema evolution
+  description: Make reruns, retries, and partial failures safe where the tool permits
+  risk: high
+  requires_engine_profile: true
+- id: db.deprecation-cleanup
+  group: Migrations and schema evolution
+  description: Remove legacy objects only after verified consumer and retention windows
+  risk: medium
+  requires_engine_profile: true
+- id: db.release-sequencing
+  group: Migrations and schema evolution
+  description: Order schema, data, application, job, report, and feature-flag changes
+  risk: medium
+  requires_engine_profile: true
+- id: db.data-profile
+  group: Data migration and quality
+  description: Profile completeness, uniqueness, distribution, format, referential integrity, and anomalies
+  risk: medium
+  requires_engine_profile: true
+- id: db.backfill-design
+  group: Data migration and quality
+  description: Design resumable, checkpointed, throttled, idempotent backfills
+  risk: high
+  requires_engine_profile: true
+- id: db.transformation-mapping
+  group: Data migration and quality
+  description: Define source-to-target mapping, cleansing, defaulting, and exception handling
+  risk: medium
+  requires_engine_profile: true
+- id: db.reconciliation
+  group: Data migration and quality
+  description: Compare counts, checksums, aggregates, samples, and business invariants
+  risk: medium
+  requires_engine_profile: true
+- id: db.synthetic-data
+  group: Data migration and quality
+  description: Generate representative non-sensitive test data with preserved relationships
+  risk: medium
+  requires_engine_profile: true
+- id: db.masking-tokenization
+  group: Data migration and quality
+  description: Mask, tokenize, pseudonymize, or synthesize sensitive values
+  risk: medium
+  requires_engine_profile: true
+- id: db.archival-retention
+  group: Data migration and quality
+  description: Implement retention, legal hold, archival, purge, and verification policies
+  risk: medium
+  requires_engine_profile: true
+- id: db.cdc-validation
+  group: Data migration and quality
+  description: Validate change-data-capture ordering, deletes, schema evolution, and consumer lag
+  risk: medium
+  requires_engine_profile: true
+- id: db.lineage
+  group: Data migration and quality
+  description: Record source, transformation, destination, owner, and evidence lineage
+  risk: medium
+  requires_engine_profile: true
+- id: db.explain-plan
+  group: Query performance and capacity
+  description: Capture and interpret engine-specific estimated and actual execution plans safely
+  risk: medium
+  requires_engine_profile: true
+- id: db.cardinality-statistics
+  group: Query performance and capacity
+  description: Analyze statistics freshness, histograms, estimates, skew, and parameter sensitivity
+  risk: medium
+  requires_engine_profile: true
+- id: db.index-usage
+  group: Query performance and capacity
+  description: Analyze index seeks/scans, unused or duplicate indexes, write overhead, and maintenance cost
+  risk: medium
+  requires_engine_profile: true
+- id: db.query-rewrite
+  group: Query performance and capacity
+  description: Rewrite queries while preserving semantics and testing plan stability
+  risk: medium
+  requires_engine_profile: true
+- id: db.lock-wait-analysis
+  group: Query performance and capacity
+  description: Analyze locks, waits, latches, blocking chains, deadlocks, and contention
+  risk: medium
+  requires_engine_profile: true
+- id: db.query-history
+  group: Query performance and capacity
+  description: Use approved workload statistics such as pg_stat_statements or Query Store
+  risk: medium
+  requires_engine_profile: true
+- id: db.capacity-forecast
+  group: Query performance and capacity
+  description: Forecast storage, IOPS, memory, connections, CPU, temp space, and growth
+  risk: medium
+  requires_engine_profile: true
+- id: db.connection-pooling
+  group: Query performance and capacity
+  description: Design pool sizes, timeouts, leak detection, and admission control
+  risk: medium
+  requires_engine_profile: true
+- id: db.performance-baseline
+  group: Query performance and capacity
+  description: Create before/after baselines with representative data and concurrency
+  risk: medium
+  requires_engine_profile: true
+- id: db.plan-regression
+  group: Query performance and capacity
+  description: Detect and mitigate execution-plan regressions without unsafe hints
+  risk: medium
+  requires_engine_profile: true
+- id: db.transaction-boundary
+  group: Transactions and consistency
+  description: Define atomic business operations and ownership of commits and retries
+  risk: medium
+  requires_engine_profile: true
+- id: db.isolation-level
+  group: Transactions and consistency
+  description: Choose isolation based on anomalies, throughput, and engine behavior
+  risk: medium
+  requires_engine_profile: true
+- id: db.deadlock-prevention
+  group: Transactions and consistency
+  description: Define consistent access ordering, index support, retry policy, and diagnostics
+  risk: medium
+  requires_engine_profile: true
+- id: db.optimistic-concurrency
+  group: Transactions and consistency
+  description: Design versions, compare-and-set, and conflict handling
+  risk: medium
+  requires_engine_profile: true
+- id: db.pessimistic-locking
+  group: Transactions and consistency
+  description: Use explicit locking with bounded scope and timeout
+  risk: medium
+  requires_engine_profile: true
+- id: db.idempotency
+  group: Transactions and consistency
+  description: Design keys, uniqueness, deduplication, and replay-safe operations
+  risk: medium
+  requires_engine_profile: true
+- id: db.distributed-consistency
+  group: Transactions and consistency
+  description: Design outbox, saga, reconciliation, and eventual consistency boundaries
+  risk: medium
+  requires_engine_profile: true
+- id: db.replica-consistency
+  group: Transactions and consistency
+  description: Account for lag, read-your-writes, stale reads, and failover behavior
+  risk: medium
+  requires_engine_profile: true
+- id: db.identity-model
+  group: Security, privacy and compliance
+  description: Separate human, application, migration, monitoring, and break-glass identities
+  risk: medium
+  requires_engine_profile: true
+- id: db.role-design
+  group: Security, privacy and compliance
+  description: Design least-privilege roles and grants at appropriate scopes
+  risk: medium
+  requires_engine_profile: true
+- id: db.row-column-security
+  group: Security, privacy and compliance
+  description: Design row-level, column-level, view-based, label, or virtual private database controls
+  risk: medium
+  requires_engine_profile: true
+- id: db.encryption
+  group: Security, privacy and compliance
+  description: Design transport, at-rest, tablespace, column, and key-management controls
+  risk: high
+  requires_engine_profile: true
+- id: db.audit-policy
+  group: Security, privacy and compliance
+  description: Define authentication, privilege, DDL, sensitive access, and administrative audit events
+  risk: medium
+  requires_engine_profile: true
+- id: db.sql-injection-defense
+  group: Security, privacy and compliance
+  description: Require parameterization and constrain dynamic identifiers
+  risk: medium
+  requires_engine_profile: true
+- id: db.privilege-analysis
+  group: Security, privacy and compliance
+  description: Identify used and unused privileges and reduce attack surface
+  risk: high
+  requires_engine_profile: true
+- id: db.secrets-handling
+  group: Security, privacy and compliance
+  description: Use brokered short-lived credentials and never expose raw secrets to the model
+  risk: medium
+  requires_engine_profile: true
+- id: db.data-residency
+  group: Security, privacy and compliance
+  description: Map region, sovereignty, transfer, retention, and deletion constraints
+  risk: medium
+  requires_engine_profile: true
+- id: db.break-glass
+  group: Security, privacy and compliance
+  description: Define time-bound emergency access with dual control and mandatory review
+  risk: medium
+  requires_engine_profile: true
+- id: db.backup-policy
+  group: Availability, backup and recovery
+  description: Define full, incremental, differential, log, snapshot, and retention strategies
+  risk: medium
+  requires_engine_profile: true
+- id: db.restore-testing
+  group: Availability, backup and recovery
+  description: Perform isolated restore tests and verify usable data, permissions, and applications
+  risk: medium
+  requires_engine_profile: true
+- id: db.rpo-rto
+  group: Availability, backup and recovery
+  description: Map business requirements to backup, replication, failover, and recovery design
+  risk: medium
+  requires_engine_profile: true
+- id: db.replication
+  group: Availability, backup and recovery
+  description: Design physical, logical, transactional, streaming, and read-replica behavior
+  risk: medium
+  requires_engine_profile: true
+- id: db.failover
+  group: Availability, backup and recovery
+  description: Define automated or manual failover, fencing, DNS, connections, and validation
+  risk: high
+  requires_engine_profile: true
+- id: db.disaster-recovery
+  group: Availability, backup and recovery
+  description: Create region/site loss procedures and evidence
+  risk: medium
+  requires_engine_profile: true
+- id: db.point-in-time-recovery
+  group: Availability, backup and recovery
+  description: Validate log/WAL/binlog availability and recovery procedures
+  risk: medium
+  requires_engine_profile: true
+- id: db.maintenance
+  group: Availability, backup and recovery
+  description: Plan vacuum, statistics, index maintenance, integrity checks, patching, and storage cleanup
+  risk: medium
+  requires_engine_profile: true
+- id: db.schema-test
+  group: Testing and validation
+  description: Test object existence, types, constraints, defaults, permissions, and dependencies
+  risk: medium
+  requires_engine_profile: true
+- id: db.migration-test
+  group: Testing and validation
+  description: Apply migrations from supported baselines to disposable databases
+  risk: high
+  requires_engine_profile: true
+- id: db.rollback-test
+  group: Testing and validation
+  description: Test rollback or roll-forward recovery in isolated environments
+  risk: high
+  requires_engine_profile: true
+- id: db.query-test
+  group: Testing and validation
+  description: Test SQL outputs, edge cases, nulls, duplicates, ordering, and precision
+  risk: medium
+  requires_engine_profile: true
+- id: db.constraint-test
+  group: Testing and validation
+  description: Verify invalid states are rejected and valid states are accepted
+  risk: medium
+  requires_engine_profile: true
+- id: db.concurrency-test
+  group: Testing and validation
+  description: Test locking, isolation, retries, deadlocks, and race conditions
+  risk: medium
+  requires_engine_profile: true
+- id: db.performance-test
+  group: Testing and validation
+  description: Test latency, throughput, resource use, plans, and growth scenarios
+  risk: medium
+  requires_engine_profile: true
+- id: db.recovery-test
+  group: Testing and validation
+  description: Test restore, failover, reconnect, and application recovery
+  risk: medium
+  requires_engine_profile: true
+- id: db.security-test
+  group: Testing and validation
+  description: Verify grants, role inheritance, RLS, masking, audit, and denied operations
+  risk: medium
+  requires_engine_profile: true
+- id: db.drift-test
+  group: Testing and validation
+  description: Compare expected schema and migration history to target environments
+  risk: medium
+  requires_engine_profile: true
+- id: db.telemetry
+  group: Observability, review and release
+  description: Define safe database metrics, logs, traces, query identifiers, and redaction
+  risk: medium
+  requires_engine_profile: true
+- id: db.alert-design
+  group: Observability, review and release
+  description: Define actionable thresholds for saturation, lag, errors, blocking, storage, and backup failures
+  risk: medium
+  requires_engine_profile: true
+- id: db.change-manifest
+  group: Observability, review and release
+  description: Produce object, SQL, data, permission, compatibility, and operational change manifest
+  risk: medium
+  requires_engine_profile: true
+- id: db.pull-request-draft
+  group: Observability, review and release
+  description: Create traceable pull-request description with SQL previews and evidence
+  risk: medium
+  requires_engine_profile: true
+- id: db.release-readiness
+  group: Observability, review and release
+  description: Assess compatibility, lock risk, duration, resources, backup, rollback, and monitoring
+  risk: medium
+  requires_engine_profile: true
+- id: db.runbook
+  group: Observability, review and release
+  description: Create deployment, validation, incident, failover, and recovery procedures
+  risk: medium
+  requires_engine_profile: true
+- id: db.jira-update
+  group: Observability, review and release
+  description: Draft Jira status and technical summaries for approval
+  risk: medium
+  requires_engine_profile: true
+- id: db.teams-update
+  group: Observability, review and release
+  description: Draft Microsoft Teams change and risk updates for approval
+  risk: medium
+  requires_engine_profile: true
+- id: db.post-change-review
+  group: Observability, review and release
+  description: Compare actual duration, impact, errors, and performance to the plan
+  risk: medium
+  requires_engine_profile: true

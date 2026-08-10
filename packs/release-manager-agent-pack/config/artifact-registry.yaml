@@ -1,0 +1,196 @@
+version: 1.0.0
+artifact_count: 27
+artifacts:
+- id: release-request
+  description: Qualified release request, type, purpose, scope boundary, owners, window, and constraints.
+  formats:
+  - markdown
+  - json
+  retention: release-and-data-policy
+  publication: approval-controlled
+- id: release-context-package
+  description: Approved product, project, service, environment, repository, version, calendar, and policy context.
+  formats:
+  - markdown
+  - json
+  retention: release-and-data-policy
+  publication: approval-controlled
+- id: release-scope-baseline
+  description: Committed, optional, deferred, excluded, and late-change scope with immutable references.
+  formats:
+  - markdown
+  - json
+  retention: release-and-data-policy
+  publication: approval-controlled
+- id: release-plan
+  description: Milestones, owners, dependencies, environments, windows, gates, communication, validation, and closure.
+  formats:
+  - markdown
+  - json
+  retention: release-and-data-policy
+  publication: approval-controlled
+- id: release-calendar-entry
+  description: Timezone-safe release window, blackout checks, conflicts, support coverage, and escalation contacts.
+  formats:
+  - markdown
+  - json
+  retention: release-and-data-policy
+  publication: approval-controlled
+- id: dependency-and-compatibility-map
+  description: Service, contract, data, infrastructure, vendor, owner, sequencing, and supported-version dependencies.
+  formats:
+  - markdown
+  - json
+  retention: release-and-data-policy
+  publication: approval-controlled
+- id: release-bill-of-materials
+  description: Applications, APIs, database scripts, images, packages, IaC, configuration, documentation, and hashes.
+  formats:
+  - markdown
+  - json
+  retention: release-and-data-policy
+  publication: approval-controlled
+- id: artifact-integrity-manifest
+  description: Coordinates, digests, checksums, signatures, provenance, build, repository, and promotion state.
+  formats:
+  - markdown
+  - json
+  retention: release-and-data-policy
+  publication: approval-controlled
+- id: software-bill-of-materials
+  description: Candidate-bound SBOM references, formats, policy status, exceptions, and evidence.
+  formats:
+  - markdown
+  - json
+  retention: release-and-data-policy
+  publication: approval-controlled
+- id: version-and-support-matrix
+  description: Current, candidate, minimum, maximum, supported, deprecated, and incompatible versions.
+  formats:
+  - markdown
+  - json
+  retention: release-and-data-policy
+  publication: approval-controlled
+- id: quality-evidence-package
+  description: Test, defect, UAT, accessibility, performance, resilience, and known-limitation evidence.
+  formats:
+  - markdown
+  - json
+  retention: release-and-data-policy
+  publication: approval-controlled
+- id: security-and-compliance-package
+  description: Scan results, vulnerabilities, exceptions, signatures, licenses, privacy, and compliance evidence.
+  formats:
+  - markdown
+  - json
+  retention: release-and-data-policy
+  publication: approval-controlled
+- id: environment-readiness-report
+  description: Health, capacity, drift, identity, observability, backup, network, and operational readiness.
+  formats:
+  - markdown
+  - json
+  retention: release-and-data-policy
+  publication: approval-controlled
+- id: database-migration-readiness-package
+  description: Migration order, hashes, previews, duration, locking, data impact, validation, rollback, and operator
+    plan.
+  formats:
+  - markdown
+  - json
+  retention: release-and-data-policy
+  publication: approval-controlled
+- id: change-record
+  description: Risk, impact, implementation, validation, rollback, communication, approvals, decisions, and closure
+    evidence.
+  formats:
+  - markdown
+  - json
+  retention: release-and-data-policy
+  publication: approval-controlled
+- id: release-risk-register
+  description: Risk, probability, impact, evidence, mitigation, contingency, owner, status, and residual decision.
+  formats:
+  - markdown
+  - json
+  retention: release-and-data-policy
+  publication: approval-controlled
+- id: deployment-runbook
+  description: Prechecks, exact steps, owners, stage gates, validation, stop conditions, and handoffs.
+  formats:
+  - markdown
+  - json
+  retention: release-and-data-policy
+  publication: approval-controlled
+- id: rollback-and-recovery-plan
+  description: Rollback and fix-forward triggers, exact steps, data safety, artifacts, validation, and escalation.
+  formats:
+  - markdown
+  - json
+  retention: release-and-data-policy
+  publication: approval-controlled
+- id: release-communication-plan
+  description: Audience, message type, owner, channel, cadence, approvals, and publication schedule.
+  formats:
+  - markdown
+  - json
+  retention: release-and-data-policy
+  publication: approval-controlled
+- id: go-no-go-decision-pack
+  description: Scope, readiness by domain, blockers, conditions, dissent, risk, rollback, and decision options.
+  formats:
+  - markdown
+  - json
+  retention: release-and-data-policy
+  publication: approval-controlled
+- id: release-command-log
+  description: Immutable timeline of decisions, operators, stages, outcomes, evidence, issues, and communications.
+  formats:
+  - markdown
+  - json
+  retention: release-and-data-policy
+  publication: approval-controlled
+- id: release-status-update
+  description: Audience-specific factual status, timestamps, completed steps, risk, next checkpoint, and owner.
+  formats:
+  - markdown
+  - json
+  retention: release-and-data-policy
+  publication: approval-controlled
+- id: support-and-operations-handoff
+  description: Versions, known issues, runbooks, dashboards, workarounds, contacts, and escalation paths.
+  formats:
+  - markdown
+  - json
+  retention: release-and-data-policy
+  publication: approval-controlled
+- id: release-notes
+  description: Delivered capabilities, fixes, changes, limitations, deprecations, migration guidance, and support
+    information.
+  formats:
+  - markdown
+  - json
+  retention: release-and-data-policy
+  publication: approval-controlled
+- id: post-release-validation-report
+  description: Deployed state, telemetry, smoke tests, customer signals, incidents, and success-criteria assessment.
+  formats:
+  - markdown
+  - json
+  retention: release-and-data-policy
+  publication: approval-controlled
+- id: post-release-review
+  description: Outcome, incidents, rework, lessons, root causes, follow-ups, owners, and improvement experiments.
+  formats:
+  - markdown
+  - json
+  retention: release-and-data-policy
+  publication: approval-controlled
+- id: release-audit-evidence-bundle
+  description: Immutable approvals, hashes, artifacts, reports, decisions, logs, messages, policy decisions, and
+    retention metadata.
+  formats:
+  - markdown
+  - json
+  retention: release-and-data-policy
+  publication: approval-controlled

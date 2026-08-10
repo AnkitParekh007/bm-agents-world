@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "QA Test Case",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "preconditions",
+    "steps",
+    "expectedResult",
+    "priority",
+    "tags"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "preconditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "action",
+          "expected"
+        ],
+        "properties": {
+          "action": {
+            "type": "string"
+          },
+          "data": {
+            "type": [
+              "string",
+              "object",
+              "null"
+            ]
+          },
+          "expected": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "expectedResult": {
+      "type": "string"
+    },
+    "priority": {
+      "enum": [
+        "critical",
+        "high",
+        "medium",
+        "low"
+      ]
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "requirementIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,57 @@
+name: code-change-security-validation
+version: 1.0.0
+trigger: pull request, source revision, remediation patch, or security review request
+scope_binding:
+- project
+- repository
+- source_revision
+- pull_request
+- build_profile
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: validate repository, revision, scanner, source-handling, and publication scope
+- id: context
+  agent: security-context-agent
+  action: resolve repository profile, changed boundaries, dependencies, requirements, and prior findings
+- id: review
+  agent: secure-code-review-agent
+  action: perform focused security review of the exact diff
+- id: sast
+  agent: sast-agent
+  action: run and normalize approved static analysis
+  parallel_group: scans
+- id: sca
+  agent: sca-dependency-agent
+  action: analyze dependencies, vulnerabilities, reachability, support, and licenses
+  parallel_group: scans
+- id: secrets
+  agent: secrets-security-agent
+  action: scan source and history with adapter-side redaction
+  parallel_group: scans
+- id: api
+  agent: api-security-agent
+  action: validate changed API authorization, validation, and abuse controls
+  parallel_group: scans
+- id: triage
+  agent: vulnerability-triage-agent
+  action: normalize, deduplicate, confirm, and prioritize findings
+- id: remediation
+  agent: remediation-coordination-agent
+  action: create minimal fixes and verification guidance
+- id: assurance
+  agent: security-assurance-reviewer-agent
+  action: review evidence, false-positive dispositions, and residual uncertainty
+- id: publish
+  agent: application-security-devsecops-supervisor
+  action: request approval before official PR, Jira, or gate publication
+outputs:
+- sast-findings-report
+- sca-dependency-report
+- secrets-findings-report
+- api-security-review
+- vulnerability-triage-record
+- security-remediation-plan
+- security-assurance-report
+failure_behavior: scanner outage or incomplete coverage is unknown, not pass; no official state changes without
+  approval

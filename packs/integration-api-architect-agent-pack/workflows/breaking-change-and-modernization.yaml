@@ -1,0 +1,79 @@
+apiVersion: integration-api-architect-agent-pack/v1
+kind: AgentWorkflow
+metadata:
+  name: breaking-change-and-modernization
+  title: Breaking Change and Modernization
+  version: 1.0.0
+spec:
+  trigger:
+  - breaking_change_detected
+  - legacy_modernization
+  - api_deprecation
+  - partner_migration
+  objective: Assess consumer impact and execute a governed coexistence, migration, deprecation, or modernization
+    strategy
+  supervisor: integration-api-architect-supervisor
+  execution:
+    mode: stateful
+    defaultPolicy: deny
+    evidenceRequired: true
+    approvalBinding: payload-hash
+    resumeFromCheckpoint: true
+  stages:
+  - id: detect
+    agent: versioning-compatibility
+    skills:
+    - integration.versioning.breaking-change-detection
+    - integration.versioning.consumer-impact-analysis
+    gate: authorization
+  - id: landscape
+    agent: integration-landscape-discovery
+    skills:
+    - integration.discovery.integration-dependency-graph
+    - integration.discovery.shadow-and-duplicate-api-detection
+  - id: modernization
+    agent: legacy-modernization
+    skills:
+    - integration.legacy.strangler-integration-plan
+    - integration.legacy.anti-corruption-layer-plan
+    - integration.legacy.parallel-run-strategy
+  - id: consumer
+    agent: consumer-experience-sdk
+    skills:
+    - integration.consumer.sdk-versioning-policy
+    - integration.consumer.error-troubleshooting-guidance
+  - id: partner
+    agent: third-party-partner
+    skills:
+    - integration.partner.partner-contract-review
+    - integration.partner.sla-and-timeout-mapping
+    - integration.partner.data-sharing-boundary
+  - id: migration
+    agent: versioning-compatibility
+    skills:
+    - integration.versioning.deprecation-policy
+    - integration.versioning.sunset-plan-design
+    - integration.versioning.migration-guide-creation
+  - id: review
+    agent: architecture-review
+    skills:
+    - integration.review.independent-compatibility-review
+    - integration.review.consumer-impact-review
+    - integration.review.exception-and-residual-risk-review
+    gate: approve-breaking-change
+  - id: handoff
+    agent: implementation-alignment
+    skills:
+    - integration.handoff.implementation-conformance-review
+    - integration.handoff.technical-writer-documentation-handoff
+  outputs:
+  - consumer-impact-assessment
+  - deprecation-sunset-plan
+  - versioning-compatibility-plan
+  - architecture-decision-record
+  - implementation-handoff
+  terminalStates:
+  - completed
+  - rejected
+  - blocked
+  - cancelled

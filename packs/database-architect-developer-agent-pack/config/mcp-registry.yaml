@@ -1,0 +1,98 @@
+version: 1.0.0
+servers:
+- id: atlassian-context
+  description: Jira, Confluence, Bitbucket resources and approval-controlled writes
+  mode: read-mostly
+  trust: organization-managed
+  policy_enforced: true
+  audit: true
+- id: workspace-git
+  description: Ephemeral filesystem, SQL repository search, diff, patch, Git status, and allowlisted commands
+  mode: sandbox-write
+  trust: organization-managed
+  policy_enforced: true
+  audit: true
+- id: database-catalog
+  description: Engine metadata, schemas, objects, dependencies, grants, statistics, and migration history
+  mode: read-only
+  trust: organization-managed
+  policy_enforced: true
+  audit: true
+- id: database-query-analysis
+  description: Bounded EXPLAIN, plan retrieval, workload statistics, waits, locks, and query history
+  mode: diagnostic-read
+  trust: organization-managed
+  policy_enforced: true
+  audit: true
+- id: database-sandbox
+  description: Disposable engine instances, fixtures, migration execution, and validation
+  mode: sandbox-mutate
+  trust: organization-managed
+  policy_enforced: true
+  audit: true
+- id: migration-management
+  description: Flyway, Liquibase, and repository-native migration validation and SQL preview
+  mode: read-generate
+  trust: organization-managed
+  policy_enforced: true
+  audit: true
+- id: schema-diff
+  description: Repository, model, and environment schema comparison with drift classification
+  mode: read-generate
+  trust: organization-managed
+  policy_enforced: true
+  audit: true
+- id: data-quality
+  description: Profiling, validation rules, reconciliation, lineage, and masked samples
+  mode: read-generate
+  trust: organization-managed
+  policy_enforced: true
+  audit: true
+- id: test-data
+  description: Synthetic and masked test-data generation with relationship preservation
+  mode: sandbox-generate
+  trust: organization-managed
+  policy_enforced: true
+  audit: true
+- id: backup-recovery-metadata
+  description: Backup catalogs, restore history, replication status, RPO/RTO evidence, and runbooks
+  mode: read-only
+  trust: organization-managed
+  policy_enforced: true
+  audit: true
+- id: cloud-database-platform
+  description: Managed database configuration, topology, maintenance windows, and non-secret metadata
+  mode: read-only
+  trust: organization-managed
+  policy_enforced: true
+  audit: true
+- id: observability
+  description: Database logs, metrics, traces, dashboards, alerts, incidents, and capacity evidence
+  mode: read-only
+  trust: organization-managed
+  policy_enforced: true
+  audit: true
+- id: artifact-evidence
+  description: Immutable models, SQL previews, plans, reports, approvals, hashes, and retention
+  mode: append-read
+  trust: organization-managed
+  policy_enforced: true
+  audit: true
+- id: collaboration
+  description: Teams and Jira drafts plus approved publication
+  mode: approval-write
+  trust: organization-managed
+  policy_enforced: true
+  audit: true
+- id: secret-broker
+  description: Short-lived database and platform capability leases without exposing raw secrets
+  mode: broker-only
+  trust: organization-managed
+  policy_enforced: true
+  audit: true
+- id: policy
+  description: OPA decisions, SQL classification, scope checks, approval verification, and environment rules
+  mode: mandatory
+  trust: organization-managed
+  policy_enforced: true
+  audit: true

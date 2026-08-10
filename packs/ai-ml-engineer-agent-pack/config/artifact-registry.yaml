@@ -1,0 +1,198 @@
+pack: "ai-ml-engineer-agent-pack"
+artifacts:
+  - id: "ai-use-case-brief"
+    name: AI Use Case Brief
+    description: "Business problem, expected outcome, baseline, risk tier, constraints, owners, and success metrics."
+    format:
+      - markdown
+      - json
+    approval_required_to_publish: false
+  - id: "dataset-card"
+    name: Dataset Card
+    description: "Provenance, schema, scope, quality, classification, permitted use, limitations, and lineage."
+    format:
+      - markdown
+      - json
+    approval_required_to_publish: false
+  - id: "data-readiness-report"
+    name: Data Readiness Report
+    description: "Profiling, leakage, split, label, bias, provenance, and readiness findings."
+    format:
+      - markdown
+      - json
+    approval_required_to_publish: false
+  - id: "feature-specification"
+    name: Feature Specification
+    description: "Feature definitions, transformations, freshness, ownership, and train-serving contract."
+    format:
+      - markdown
+      - json
+    approval_required_to_publish: false
+  - id: "experiment-plan"
+    name: Experiment Plan
+    description: "Hypothesis, baseline, metrics, guardrails, datasets, configuration, and stopping rules."
+    format:
+      - markdown
+      - json
+    approval_required_to_publish: false
+  - id: "experiment-report"
+    name: Experiment Report
+    description: "Run comparison, uncertainty, artifacts, results, limitations, and decision rationale."
+    format:
+      - markdown
+      - json
+    approval_required_to_publish: false
+  - id: "model-card"
+    name: Model Card / System Card
+    description: "Intended use, model/data lineage, metrics, limitations, risks, oversight, and deployment context."
+    format:
+      - markdown
+      - json
+    approval_required_to_publish: true
+  - id: "evaluation-plan"
+    name: Evaluation Plan
+    description: "Golden sets, metrics, cohorts, robustness, safety, human evaluation, and promotion gates."
+    format:
+      - markdown
+      - json
+    approval_required_to_publish: false
+  - id: "evaluation-report"
+    name: Evaluation Report
+    description: "Candidate-bound task, quality, safety, robustness, fairness, and operational evidence."
+    format:
+      - markdown
+      - json
+    approval_required_to_publish: false
+  - id: "responsible-ai-assessment"
+    name: Responsible AI Assessment
+    description: "Harms, fairness, explainability, uncertainty, oversight, and contestability analysis."
+    format:
+      - markdown
+      - json
+    approval_required_to_publish: true
+  - id: "threat-model"
+    name: AI Threat Model
+    description: "Assets, trust boundaries, threats, abuse cases, mitigations, and security-test requirements."
+    format:
+      - markdown
+      - json
+    approval_required_to_publish: false
+  - id: "rag-design"
+    name: RAG Design
+    description: "Knowledge sources, ingestion, chunking, embeddings, retrieval, reranking, authorization, and freshness."
+    format:
+      - markdown
+      - json
+    approval_required_to_publish: false
+  - id: "rag-evaluation-report"
+    name: RAG Evaluation Report
+    description: "Retrieval recall/precision, ranking, grounding, citations, injection resistance, and failure analysis."
+    format:
+      - markdown
+      - json
+    approval_required_to_publish: false
+  - id: "prompt-specification"
+    name: Prompt and Tool Specification
+    description: "Versioned prompts, schemas, tool contracts, model settings, and validation rules."
+    format:
+      - markdown
+      - json
+    approval_required_to_publish: false
+  - id: "fine-tuning-plan"
+    name: "Fine-Tuning Plan"
+    description: "Base model, data, adaptation method, evaluation, safety, compute, and rollback strategy."
+    format:
+      - markdown
+      - json
+    approval_required_to_publish: false
+  - id: "training-runbook"
+    name: Training Runbook
+    description: "Environment, datasets, commands, compute, checkpoints, recovery, and reproducibility."
+    format:
+      - markdown
+      - json
+    approval_required_to_publish: false
+  - id: "model-registry-record"
+    name: Model Registry Record
+    description: "Immutable model identity, hashes, lineage, stage, approvals, and compatibility metadata."
+    format:
+      - markdown
+      - json
+    approval_required_to_publish: false
+  - id: "serving-design"
+    name: Inference Serving Design
+    description: "Serving pattern, schema, SLOs, scaling, caching, guardrails, health checks, and rollback."
+    format:
+      - markdown
+      - json
+    approval_required_to_publish: false
+  - id: "ml-pipeline-design"
+    name: ML Pipeline Design
+    description: "Training, evaluation, packaging, registry, promotion, and deployment stages."
+    format:
+      - markdown
+      - json
+    approval_required_to_publish: false
+  - id: "model-monitoring-plan"
+    name: Model Monitoring Plan
+    description: "Service, input, drift, quality, cost, safety, and ground-truth monitoring."
+    format:
+      - markdown
+      - json
+    approval_required_to_publish: false
+  - id: "drift-review"
+    name: Drift and Model Health Review
+    description: "Current drift, task success, incident, cost, and retraining evidence."
+    format:
+      - markdown
+      - json
+    approval_required_to_publish: false
+  - id: "performance-cost-report"
+    name: Performance and Cost Report
+    description: "Latency, throughput, memory, accelerator use, cost, and quality-cost frontier."
+    format:
+      - markdown
+      - json
+    approval_required_to_publish: false
+  - id: "security-review"
+    name: AI/ML Security Review
+    description: "Security scan and threat-model findings, severity, remediation, and verification."
+    format:
+      - markdown
+      - json
+    approval_required_to_publish: true
+  - id: "release-readiness-report"
+    name: AI/ML Release Readiness Report
+    description: "Candidate identity, gates, risks, rollback, observation, and approval evidence."
+    format:
+      - markdown
+      - json
+    approval_required_to_publish: true
+  - id: "production-action-request"
+    name: Production Model Action Request
+    description: "Payload-bound request for model promotion, traffic, endpoint, index, or monitored action."
+    format:
+      - markdown
+      - json
+    approval_required_to_publish: true
+  - id: "rollback-plan"
+    name: Model Rollback Plan
+    description: "Known-good candidate, compatible dependencies, triggers, steps, and verification."
+    format:
+      - markdown
+      - json
+    approval_required_to_publish: false
+  - id: "post-release-review"
+    name: "Post-Release Model Review"
+    description: "Outcome, reliability, drift, cost, support, safety, and follow-up actions."
+    format:
+      - markdown
+      - json
+    approval_required_to_publish: false
+  - id: "evidence-bundle"
+    name: AI/ML Evidence Bundle
+    description: "Immutable hashes and references for data, code, model, evaluation, policy, approvals, and release evidence."
+    format:
+      - markdown
+      - json
+    approval_required_to_publish: false

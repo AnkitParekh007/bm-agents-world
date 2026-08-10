@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Flow Health Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "team",
+    "time_window",
+    "metric_definitions",
+    "observations",
+    "limitations"
+  ],
+  "properties": {
+    "team": {
+      "type": "string",
+      "minLength": 1
+    },
+    "time_window": {
+      "type": "string",
+      "minLength": 1
+    },
+    "metric_definitions": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "cycle_time": {
+      "type": "object"
+    },
+    "throughput": {
+      "type": "object"
+    },
+    "work_item_age": {
+      "type": "object"
+    },
+    "wip": {
+      "type": "object"
+    },
+    "blocked_time": {
+      "type": "object"
+    },
+    "observations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "individual_scoring_present": {
+      "const": false
+    }
+  }
+}

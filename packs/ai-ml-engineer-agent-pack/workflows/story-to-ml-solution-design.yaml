@@ -1,0 +1,16 @@
+id: "story-to-ml-solution-design"
+name: Story to AI/ML Solution Design
+trigger: approved work item
+steps:
+  - "('authorize-scope', 'policy-agent', ['ai-ml.governance.project-scope-enforcement', 'ai-ml.governance.environment-scope-enforcement'])"
+  - "('frame-problem', 'work-context-agent', ['ai-ml.problem-framing.ml-suitability-assessment', 'ai-ml.problem-framing.business-metric-definition'])"
+  - "('assess-data', 'data-readiness-agent', ['ai-ml.data-readiness.dataset-discovery', 'ai-ml.data-readiness.data-leakage-detection'])"
+  - "('parallel-design', 'ai-ml-supervisor', ['ai-ml.classical-ml.model-interpretation', 'ai-ml.llm-genai.prompt-engineering', 'ai-ml.rag.retrieval-evaluation'])"
+  - "('risk-review', 'responsible-ai-agent', ['ai-ml.responsible-ai.harm-analysis', 'ai-ml.responsible-ai.human-oversight-design'])"
+  - "('independent-review', 'independent-review-agent', ['ai-ml.governance.independent-review-routing'])"
+  - "('produce-artifacts', 'evidence-agent', ['ai-ml.governance.audit-evidence-hashing'])"
+outputs:
+  - "ai-use-case-brief"
+  - "data-readiness-report"
+  - "experiment-plan"
+  - "evaluation-plan"

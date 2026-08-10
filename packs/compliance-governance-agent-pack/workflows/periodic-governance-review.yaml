@@ -1,0 +1,26 @@
+id: periodic-governance-review
+name: Access privacy AI and third-party periodic governance review
+supervisor: compliance-governance-supervisor
+steps:
+- order: 1
+  action: authorize review
+- order: 2
+  action: resolve populations
+- order: 3
+  action: collect bounded metadata
+- order: 4
+  action: parallel access/privacy/AI/vendor checks
+- order: 5
+  action: identify exceptions
+- order: 6
+  action: owner response
+- order: 7
+  action: independent review
+- order: 8
+  action: human decisions
+- order: 9
+  action: track remediation
+- order: 10
+  action: archive review report
+production_mutation: false
+human_decision_required: true

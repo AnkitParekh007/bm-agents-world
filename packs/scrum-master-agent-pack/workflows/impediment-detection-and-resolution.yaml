@@ -1,0 +1,36 @@
+name: impediment-detection-and-resolution
+version: 1.0.0
+trigger: Reported impediment or detected blocked/aging work
+scope_binding:
+- project
+- team
+- impediment
+- requester
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: verify scope and sensitive-data constraints
+- id: collect
+  agent: impediment-management-agent
+  action: collect evidence, classify impact, identify owner, age, and escalation threshold
+- id: dependencies
+  agent: cross-team-coordination-agent
+  action: map cross-team, system, vendor, and environment dependencies
+- id: systemic
+  agent: organizational-impediment-agent
+  action: determine whether the impediment is systemic and prepare options
+- id: review
+  agent: scrum-master-reviewer-agent
+  action: challenge classification, ownership, escalation proportionality, and evidence
+- id: approve-escalation
+  agent: scrum-master-supervisor
+  action: request owner approval before Jira, Confluence, Teams, or leadership escalation
+- id: verify
+  agent: continuous-improvement-agent
+  action: verify resolution and create prevention experiment when useful
+outputs:
+- impediment-register
+- organizational-impediment-brief
+- dependency-map
+- improvement-experiment
+failure_behavior: keep impediment open, preserve evidence, and identify a human resolution owner

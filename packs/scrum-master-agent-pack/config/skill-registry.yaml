@@ -1,0 +1,2907 @@
+version: 1.0.0
+skill_count: 194
+skills:
+- id: sm-001-explain-scrum-theory-and-empirical-process-control
+  name: Explain Scrum theory and empirical process control
+  category: Scrum framework and values
+  description: Apply explain scrum theory and empirical process control using approved context, transparent evidence,
+    and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-002-map-accountabilities-without-creating-a-hierarchy
+  name: Map accountabilities without creating a hierarchy
+  category: Scrum framework and values
+  description: Apply map accountabilities without creating a hierarchy using approved context, transparent evidence,
+    and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-003-clarify-sprint-increment-product-backlog-and-sprint-backlog
+  name: Clarify Sprint, Increment, Product Backlog, and Sprint Backlog
+  category: Scrum framework and values
+  description: Apply clarify sprint, increment, product backlog, and sprint backlog using approved context, transparent
+    evidence, and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-004-coach-transparency-inspection-and-adaptation
+  name: Coach transparency, inspection, and adaptation
+  category: Scrum framework and values
+  description: Apply coach transparency, inspection, and adaptation using approved context, transparent evidence,
+    and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-005-coach-commitment-focus-openness-respect-and-courage
+  name: Coach commitment, focus, openness, respect, and courage
+  category: Scrum framework and values
+  description: Apply coach commitment, focus, openness, respect, and courage using approved context, transparent
+    evidence, and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-006-detect-mechanical-scrum-and-cargo-cult-practices
+  name: Detect mechanical Scrum and cargo-cult practices
+  category: Scrum framework and values
+  description: Apply detect mechanical scrum and cargo-cult practices using approved context, transparent evidence,
+    and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-007-identify-scrum-anti-patterns
+  name: Identify Scrum anti-patterns
+  category: Scrum framework and values
+  description: Apply identify scrum anti-patterns using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-008-protect-the-purpose-of-scrum-events
+  name: Protect the purpose of Scrum events
+  category: Scrum framework and values
+  description: Apply protect the purpose of scrum events using approved context, transparent evidence, and Scrum
+    accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-009-explain-commitments-for-each-scrum-artifact
+  name: Explain commitments for each Scrum artifact
+  category: Scrum framework and values
+  description: Apply explain commitments for each scrum artifact using approved context, transparent evidence, and
+    Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-010-assess-whether-the-definition-of-done-creates-transparency
+  name: Assess whether the Definition of Done creates transparency
+  category: Scrum framework and values
+  description: Apply assess whether the definition of done creates transparency using approved context, transparent
+    evidence, and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-011-distinguish-scrum-from-a-project-plan-or-status-framework
+  name: Distinguish Scrum from a project plan or status framework
+  category: Scrum framework and values
+  description: Apply distinguish scrum from a project plan or status framework using approved context, transparent
+    evidence, and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-012-design-outcome-oriented-workshops
+  name: Design outcome-oriented workshops
+  category: Facilitation
+  description: Apply design outcome-oriented workshops using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-013-set-clear-purpose-and-decision-rights
+  name: Set clear purpose and decision rights
+  category: Facilitation
+  description: Apply set clear purpose and decision rights using approved context, transparent evidence, and Scrum
+    accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-014-create-agendas-and-timeboxes
+  name: Create agendas and timeboxes
+  category: Facilitation
+  description: Apply create agendas and timeboxes using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-015-select-inclusive-facilitation-techniques
+  name: Select inclusive facilitation techniques
+  category: Facilitation
+  description: Apply select inclusive facilitation techniques using approved context, transparent evidence, and
+    Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-016-facilitate-remote-and-hybrid-sessions
+  name: Facilitate remote and hybrid sessions
+  category: Facilitation
+  description: Apply facilitate remote and hybrid sessions using approved context, transparent evidence, and Scrum
+    accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-017-use-silent-brainstorming
+  name: Use silent brainstorming
+  category: Facilitation
+  description: Apply use silent brainstorming using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-018-use-affinity-mapping
+  name: Use affinity mapping
+  category: Facilitation
+  description: Apply use affinity mapping using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-019-use-dot-voting-with-decision-safeguards
+  name: Use dot voting with decision safeguards
+  category: Facilitation
+  description: Apply use dot voting with decision safeguards using approved context, transparent evidence, and Scrum
+    accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-020-use-fist-to-five-confidence-checks
+  name: Use fist-to-five confidence checks
+  category: Facilitation
+  description: Apply use fist-to-five confidence checks using approved context, transparent evidence, and Scrum
+    accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-021-use-1-2-4-all-or-equivalent-inclusive-participation
+  name: Use 1-2-4-All or equivalent inclusive participation
+  category: Facilitation
+  description: Apply use 1-2-4-all or equivalent inclusive participation using approved context, transparent evidence,
+    and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-022-manage-dominant-voices-and-quiet-participants
+  name: Manage dominant voices and quiet participants
+  category: Facilitation
+  description: Apply manage dominant voices and quiet participants using approved context, transparent evidence,
+    and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-023-handle-off-topic-discussions-with-a-parking-lot
+  name: Handle off-topic discussions with a parking lot
+  category: Facilitation
+  description: Apply handle off-topic discussions with a parking lot using approved context, transparent evidence,
+    and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-024-summarize-decisions-and-unresolved-questions
+  name: Summarize decisions and unresolved questions
+  category: Facilitation
+  description: Apply summarize decisions and unresolved questions using approved context, transparent evidence,
+    and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-025-create-contingency-plans-for-low-participation
+  name: Create contingency plans for low participation
+  category: Facilitation
+  description: Apply create contingency plans for low participation using approved context, transparent evidence,
+    and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-026-close-meetings-with-owners-and-review-dates
+  name: Close meetings with owners and review dates
+  category: Facilitation
+  description: Apply close meetings with owners and review dates using approved context, transparent evidence, and
+    Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-027-prepare-product-goal-and-product-context
+  name: Prepare Product Goal and product context
+  category: Sprint Planning
+  description: Apply prepare product goal and product context using approved context, transparent evidence, and
+    Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-028-check-ordered-backlog-candidate-readiness
+  name: Check ordered backlog candidate readiness
+  category: Sprint Planning
+  description: Apply check ordered backlog candidate readiness using approved context, transparent evidence, and
+    Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-029-facilitate-sprint-goal-creation
+  name: Facilitate Sprint Goal creation
+  category: Sprint Planning
+  description: Apply facilitate sprint goal creation using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-030-surface-capacity-and-availability-constraints
+  name: Surface capacity and availability constraints
+  category: Sprint Planning
+  description: Apply surface capacity and availability constraints using approved context, transparent evidence,
+    and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-031-surface-dependency-and-quality-risks
+  name: Surface dependency and quality risks
+  category: Sprint Planning
+  description: Apply surface dependency and quality risks using approved context, transparent evidence, and Scrum
+    accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-032-protect-developers-ownership-of-the-sprint-plan
+  name: Protect Developers ownership of the Sprint plan
+  category: Sprint Planning
+  description: Apply protect developers ownership of the sprint plan using approved context, transparent evidence,
+    and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-033-detect-overcommitment-pressure
+  name: Detect overcommitment pressure
+  category: Sprint Planning
+  description: Apply detect overcommitment pressure using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-034-facilitate-forecast-conversations
+  name: Facilitate forecast conversations
+  category: Sprint Planning
+  description: Apply facilitate forecast conversations using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-035-clarify-definition-of-done-implications
+  name: Clarify Definition of Done implications
+  category: Sprint Planning
+  description: Apply clarify definition of done implications using approved context, transparent evidence, and Scrum
+    accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-036-capture-assumptions-and-unresolved-decisions
+  name: Capture assumptions and unresolved decisions
+  category: Sprint Planning
+  description: Apply capture assumptions and unresolved decisions using approved context, transparent evidence,
+    and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-037-validate-planning-outputs-without-imposing-estimates
+  name: Validate planning outputs without imposing estimates
+  category: Sprint Planning
+  description: Apply validate planning outputs without imposing estimates using approved context, transparent evidence,
+    and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-038-coach-inspection-of-progress-toward-the-sprint-goal
+  name: Coach inspection of progress toward the Sprint Goal
+  category: Daily Scrum and Sprint adaptation
+  description: Apply coach inspection of progress toward the sprint goal using approved context, transparent evidence,
+    and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-039-detect-status-reporting-behavior
+  name: Detect status-reporting behavior
+  category: Daily Scrum and Sprint adaptation
+  description: Apply detect status-reporting behavior using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-040-coach-developers-to-adapt-their-plan
+  name: Coach Developers to adapt their plan
+  category: Daily Scrum and Sprint adaptation
+  description: Apply coach developers to adapt their plan using approved context, transparent evidence, and Scrum
+    accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-041-surface-blocked-work-without-taking-ownership
+  name: Surface blocked work without taking ownership
+  category: Daily Scrum and Sprint adaptation
+  description: Apply surface blocked work without taking ownership using approved context, transparent evidence,
+    and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-042-keep-detailed-problem-solving-outside-the-daily-scrum
+  name: Keep detailed problem-solving outside the Daily Scrum
+  category: Daily Scrum and Sprint adaptation
+  description: Apply keep detailed problem-solving outside the daily scrum using approved context, transparent evidence,
+    and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-043-support-asynchronous-context-before-the-event
+  name: Support asynchronous context before the event
+  category: Daily Scrum and Sprint adaptation
+  description: Apply support asynchronous context before the event using approved context, transparent evidence,
+    and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-044-detect-hidden-work-and-unplanned-scope
+  name: Detect hidden work and unplanned scope
+  category: Daily Scrum and Sprint adaptation
+  description: Apply detect hidden work and unplanned scope using approved context, transparent evidence, and Scrum
+    accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-045-facilitate-risk-based-follow-up-conversations
+  name: Facilitate risk-based follow-up conversations
+  category: Daily Scrum and Sprint adaptation
+  description: Apply facilitate risk-based follow-up conversations using approved context, transparent evidence,
+    and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-046-protect-the-daily-scrum-as-an-event-for-developers
+  name: Protect the Daily Scrum as an event for Developers
+  category: Daily Scrum and Sprint adaptation
+  description: Apply protect the daily scrum as an event for developers using approved context, transparent evidence,
+    and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-047-prepare-increment-and-outcome-evidence
+  name: Prepare Increment and outcome evidence
+  category: Sprint Review
+  description: Apply prepare increment and outcome evidence using approved context, transparent evidence, and Scrum
+    accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-048-invite-relevant-stakeholders
+  name: Invite relevant stakeholders
+  category: Sprint Review
+  description: Apply invite relevant stakeholders using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-049-facilitate-product-feedback
+  name: Facilitate product feedback
+  category: Sprint Review
+  description: Apply facilitate product feedback using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-050-connect-work-to-product-goal-and-market-context
+  name: Connect work to Product Goal and market context
+  category: Sprint Review
+  description: Apply connect work to product goal and market context using approved context, transparent evidence,
+    and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-051-avoid-demo-only-sprint-reviews
+  name: Avoid demo-only Sprint Reviews
+  category: Sprint Review
+  description: Apply avoid demo-only sprint reviews using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-052-capture-decisions-and-backlog-implications
+  name: Capture decisions and backlog implications
+  category: Sprint Review
+  description: Apply capture decisions and backlog implications using approved context, transparent evidence, and
+    Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-053-surface-release-risk-and-dependency-context
+  name: Surface release, risk, and dependency context
+  category: Sprint Review
+  description: Apply surface release, risk, and dependency context using approved context, transparent evidence,
+    and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-054-use-structured-feedback-prompts
+  name: Use structured feedback prompts
+  category: Sprint Review
+  description: Apply use structured feedback prompts using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-055-facilitate-difficult-stakeholder-conversations
+  name: Facilitate difficult stakeholder conversations
+  category: Sprint Review
+  description: Apply facilitate difficult stakeholder conversations using approved context, transparent evidence,
+    and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-056-close-with-learning-and-next-options
+  name: Close with learning and next options
+  category: Sprint Review
+  description: Apply close with learning and next options using approved context, transparent evidence, and Scrum
+    accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-057-assess-psychological-safety-for-a-retrospective
+  name: Assess psychological safety for a retrospective
+  category: Sprint Retrospective
+  description: Apply assess psychological safety for a retrospective using approved context, transparent evidence,
+    and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-058-select-a-retrospective-format-suited-to-the-team-context
+  name: Select a retrospective format suited to the team context
+  category: Sprint Retrospective
+  description: Apply select a retrospective format suited to the team context using approved context, transparent
+    evidence, and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-059-facilitate-data-gathering
+  name: Facilitate data gathering
+  category: Sprint Retrospective
+  description: Apply facilitate data gathering using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-060-generate-insights-without-blame
+  name: Generate insights without blame
+  category: Sprint Retrospective
+  description: Apply generate insights without blame using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-061-identify-systemic-causes
+  name: Identify systemic causes
+  category: Sprint Retrospective
+  description: Apply identify systemic causes using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-062-create-small-improvement-experiments
+  name: Create small improvement experiments
+  category: Sprint Retrospective
+  description: Apply create small improvement experiments using approved context, transparent evidence, and Scrum
+    accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-063-define-success-measures-and-guardrails
+  name: Define success measures and guardrails
+  category: Sprint Retrospective
+  description: Apply define success measures and guardrails using approved context, transparent evidence, and Scrum
+    accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-064-assign-experiment-ownership
+  name: Assign experiment ownership
+  category: Sprint Retrospective
+  description: Apply assign experiment ownership using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-065-review-previous-actions
+  name: Review previous actions
+  category: Sprint Retrospective
+  description: Apply review previous actions using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-066-prevent-repetitive-retrospectives
+  name: Prevent repetitive retrospectives
+  category: Sprint Retrospective
+  description: Apply prevent repetitive retrospectives using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-067-handle-sensitive-topics-safely
+  name: Handle sensitive topics safely
+  category: Sprint Retrospective
+  description: Apply handle sensitive topics safely using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-068-create-de-identified-summaries
+  name: Create de-identified summaries
+  category: Sprint Retrospective
+  description: Apply create de-identified summaries using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-069-escalate-serious-conduct-concerns-through-human-policy-channels
+  name: Escalate serious conduct concerns through human policy channels
+  category: Sprint Retrospective
+  description: Apply escalate serious conduct concerns through human policy channels using approved context, transparent
+    evidence, and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-070-identify-impediments-versus-ordinary-work
+  name: Identify impediments versus ordinary work
+  category: Impediment management
+  description: Apply identify impediments versus ordinary work using approved context, transparent evidence, and
+    Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-071-classify-team-product-technical-organizational-or-external-impediments
+  name: Classify team, product, technical, organizational, or external impediments
+  category: Impediment management
+  description: Apply classify team, product, technical, organizational, or external impediments using approved context,
+    transparent evidence, and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-072-assess-impact-and-urgency
+  name: Assess impact and urgency
+  category: Impediment management
+  description: Apply assess impact and urgency using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-073-assign-accountable-owners
+  name: Assign accountable owners
+  category: Impediment management
+  description: Apply assign accountable owners using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-074-define-escalation-thresholds
+  name: Define escalation thresholds
+  category: Impediment management
+  description: Apply define escalation thresholds using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-075-track-impediment-age
+  name: Track impediment age
+  category: Impediment management
+  description: Apply track impediment age using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-076-visualize-blocked-work
+  name: Visualize blocked work
+  category: Impediment management
+  description: Apply visualize blocked work using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-077-facilitate-dependency-resolution
+  name: Facilitate dependency resolution
+  category: Impediment management
+  description: Apply facilitate dependency resolution using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-078-prepare-executive-escalation-briefs
+  name: Prepare executive escalation briefs
+  category: Impediment management
+  description: Apply prepare executive escalation briefs using approved context, transparent evidence, and Scrum
+    accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-079-verify-resolution-and-learning
+  name: Verify resolution and learning
+  category: Impediment management
+  description: Apply verify resolution and learning using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-080-avoid-becoming-the-team-task-administrator
+  name: Avoid becoming the team task administrator
+  category: Impediment management
+  description: Apply avoid becoming the team task administrator using approved context, transparent evidence, and
+    Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-081-visualize-workflow
+  name: Visualize workflow
+  category: Flow and Kanban practices
+  description: Apply visualize workflow using approved context, transparent evidence, and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-082-define-work-item-types
+  name: Define work item types
+  category: Flow and Kanban practices
+  description: Apply define work item types using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-083-measure-cycle-time
+  name: Measure cycle time
+  category: Flow and Kanban practices
+  description: Apply measure cycle time using approved context, transparent evidence, and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-084-measure-throughput
+  name: Measure throughput
+  category: Flow and Kanban practices
+  description: Apply measure throughput using approved context, transparent evidence, and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-085-measure-work-item-age
+  name: Measure work item age
+  category: Flow and Kanban practices
+  description: Apply measure work item age using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-086-measure-wip
+  name: Measure WIP
+  category: Flow and Kanban practices
+  description: Apply measure wip using approved context, transparent evidence, and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-087-measure-blocked-time
+  name: Measure blocked time
+  category: Flow and Kanban practices
+  description: Apply measure blocked time using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-088-build-cumulative-flow-diagrams
+  name: Build cumulative flow diagrams
+  category: Flow and Kanban practices
+  description: Apply build cumulative flow diagrams using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-089-analyze-flow-distribution
+  name: Analyze flow distribution
+  category: Flow and Kanban practices
+  description: Apply analyze flow distribution using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-090-identify-bottlenecks
+  name: Identify bottlenecks
+  category: Flow and Kanban practices
+  description: Apply identify bottlenecks using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-091-define-service-level-expectations
+  name: Define service level expectations
+  category: Flow and Kanban practices
+  description: Apply define service level expectations using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-092-facilitate-wip-policy-experiments
+  name: Facilitate WIP policy experiments
+  category: Flow and Kanban practices
+  description: Apply facilitate wip policy experiments using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-093-separate-flow-metrics-from-individual-performance
+  name: Separate flow metrics from individual performance
+  category: Flow and Kanban practices
+  description: Apply separate flow metrics from individual performance using approved context, transparent evidence,
+    and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-094-interpret-metrics-with-context-and-uncertainty
+  name: Interpret metrics with context and uncertainty
+  category: Flow and Kanban practices
+  description: Apply interpret metrics with context and uncertainty using approved context, transparent evidence,
+    and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-095-coach-shared-ownership
+  name: Coach shared ownership
+  category: Team coaching and self-management
+  description: Apply coach shared ownership using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-096-coach-cross-functional-collaboration
+  name: Coach cross-functional collaboration
+  category: Team coaching and self-management
+  description: Apply coach cross-functional collaboration using approved context, transparent evidence, and Scrum
+    accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-097-coach-decision-making-methods
+  name: Coach decision-making methods
+  category: Team coaching and self-management
+  description: Apply coach decision-making methods using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-098-coach-peer-accountability
+  name: Coach peer accountability
+  category: Team coaching and self-management
+  description: Apply coach peer accountability using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-099-coach-constructive-disagreement
+  name: Coach constructive disagreement
+  category: Team coaching and self-management
+  description: Apply coach constructive disagreement using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-100-coach-feedback-conversations
+  name: Coach feedback conversations
+  category: Team coaching and self-management
+  description: Apply coach feedback conversations using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-101-support-working-agreements
+  name: Support working agreements
+  category: Team coaching and self-management
+  description: Apply support working agreements using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-102-support-skill-sharing
+  name: Support skill sharing
+  category: Team coaching and self-management
+  description: Apply support skill sharing using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-103-detect-dependency-on-the-scrum-master
+  name: Detect dependency on the Scrum Master
+  category: Team coaching and self-management
+  description: Apply detect dependency on the scrum master using approved context, transparent evidence, and Scrum
+    accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-104-reduce-unnecessary-handoffs
+  name: Reduce unnecessary handoffs
+  category: Team coaching and self-management
+  description: Apply reduce unnecessary handoffs using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-105-facilitate-team-boundaries
+  name: Facilitate team boundaries
+  category: Team coaching and self-management
+  description: Apply facilitate team boundaries using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-106-support-sustainable-pace
+  name: Support sustainable pace
+  category: Team coaching and self-management
+  description: Apply support sustainable pace using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-107-coach-quality-ownership
+  name: Coach quality ownership
+  category: Team coaching and self-management
+  description: Apply coach quality ownership using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-108-protect-team-autonomy
+  name: Protect team autonomy
+  category: Team coaching and self-management
+  description: Apply protect team autonomy using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-109-coach-product-goal-transparency
+  name: Coach Product Goal transparency
+  category: Product Owner support
+  description: Apply coach product goal transparency using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-110-coach-product-backlog-transparency
+  name: Coach Product Backlog transparency
+  category: Product Owner support
+  description: Apply coach product backlog transparency using approved context, transparent evidence, and Scrum
+    accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-111-support-stakeholder-collaboration
+  name: Support stakeholder collaboration
+  category: Product Owner support
+  description: Apply support stakeholder collaboration using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-112-facilitate-refinement-without-taking-backlog-ownership
+  name: Facilitate refinement without taking backlog ownership
+  category: Product Owner support
+  description: Apply facilitate refinement without taking backlog ownership using approved context, transparent
+    evidence, and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-113-surface-value-and-outcome-questions
+  name: Surface value and outcome questions
+  category: Product Owner support
+  description: Apply surface value and outcome questions using approved context, transparent evidence, and Scrum
+    accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-114-detect-proxy-product-owner-anti-patterns
+  name: Detect proxy Product Owner anti-patterns
+  category: Product Owner support
+  description: Apply detect proxy product owner anti-patterns using approved context, transparent evidence, and
+    Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-115-support-decision-preparation
+  name: Support decision preparation
+  category: Product Owner support
+  description: Apply support decision preparation using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-116-clarify-product-owner-accountability
+  name: Clarify Product Owner accountability
+  category: Product Owner support
+  description: Apply clarify product owner accountability using approved context, transparent evidence, and Scrum
+    accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-117-protect-the-product-owner-from-committee-ownership
+  name: Protect the Product Owner from committee ownership
+  category: Product Owner support
+  description: Apply protect the product owner from committee ownership using approved context, transparent evidence,
+    and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-118-coach-developers-ownership-of-sprint-backlog
+  name: Coach Developers ownership of Sprint Backlog
+  category: Developer support
+  description: Apply coach developers ownership of sprint backlog using approved context, transparent evidence,
+    and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-119-support-estimation-conversations-without-mandating-a-technique
+  name: Support estimation conversations without mandating a technique
+  category: Developer support
+  description: Apply support estimation conversations without mandating a technique using approved context, transparent
+    evidence, and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-120-coach-definition-of-done-improvement
+  name: Coach Definition of Done improvement
+  category: Developer support
+  description: Apply coach definition of done improvement using approved context, transparent evidence, and Scrum
+    accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-121-support-technical-debt-visibility
+  name: Support technical-debt visibility
+  category: Developer support
+  description: Apply support technical-debt visibility using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-122-support-engineering-quality-conversations
+  name: Support engineering quality conversations
+  category: Developer support
+  description: Apply support engineering quality conversations using approved context, transparent evidence, and
+    Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-123-facilitate-swarm-and-pairing-options
+  name: Facilitate swarm and pairing options
+  category: Developer support
+  description: Apply facilitate swarm and pairing options using approved context, transparent evidence, and Scrum
+    accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-124-support-dependency-reduction
+  name: Support dependency reduction
+  category: Developer support
+  description: Apply support dependency reduction using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-125-encourage-early-integration-and-testing
+  name: Encourage early integration and testing
+  category: Developer support
+  description: Apply encourage early integration and testing using approved context, transparent evidence, and Scrum
+    accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-126-support-automation-and-observability-learning
+  name: Support automation and observability learning
+  category: Developer support
+  description: Apply support automation and observability learning using approved context, transparent evidence,
+    and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-127-teach-scrum-to-stakeholders
+  name: Teach Scrum to stakeholders
+  category: Stakeholder and organization coaching
+  description: Apply teach scrum to stakeholders using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-128-coach-empirical-planning
+  name: Coach empirical planning
+  category: Stakeholder and organization coaching
+  description: Apply coach empirical planning using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-129-coach-outcome-oriented-governance
+  name: Coach outcome-oriented governance
+  category: Stakeholder and organization coaching
+  description: Apply coach outcome-oriented governance using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-130-detect-governance-that-conflicts-with-self-management
+  name: Detect governance that conflicts with self-management
+  category: Stakeholder and organization coaching
+  description: Apply detect governance that conflicts with self-management using approved context, transparent evidence,
+    and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-131-facilitate-cross-team-alignment
+  name: Facilitate cross-team alignment
+  category: Stakeholder and organization coaching
+  description: Apply facilitate cross-team alignment using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-132-map-organizational-impediments
+  name: Map organizational impediments
+  category: Stakeholder and organization coaching
+  description: Apply map organizational impediments using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-133-challenge-utilization-and-output-only-measures
+  name: Challenge utilization and output-only measures
+  category: Stakeholder and organization coaching
+  description: Apply challenge utilization and output-only measures using approved context, transparent evidence,
+    and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-134-prepare-leadership-coaching-conversations
+  name: Prepare leadership coaching conversations
+  category: Stakeholder and organization coaching
+  description: Apply prepare leadership coaching conversations using approved context, transparent evidence, and
+    Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-135-support-organizational-change-experiments
+  name: Support organizational change experiments
+  category: Stakeholder and organization coaching
+  description: Apply support organizational change experiments using approved context, transparent evidence, and
+    Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-136-communicate-uncertainty-responsibly
+  name: Communicate uncertainty responsibly
+  category: Stakeholder and organization coaching
+  description: Apply communicate uncertainty responsibly using approved context, transparent evidence, and Scrum
+    accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-137-frame-conflict-neutrally
+  name: Frame conflict neutrally
+  category: Conflict and difficult conversations
+  description: Apply frame conflict neutrally using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-138-identify-interests-and-positions
+  name: Identify interests and positions
+  category: Conflict and difficult conversations
+  description: Apply identify interests and positions using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-139-establish-conversation-safety
+  name: Establish conversation safety
+  category: Conflict and difficult conversations
+  description: Apply establish conversation safety using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-140-facilitate-active-listening
+  name: Facilitate active listening
+  category: Conflict and difficult conversations
+  description: Apply facilitate active listening using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-141-use-decision-rules
+  name: Use decision rules
+  category: Conflict and difficult conversations
+  description: Apply use decision rules using approved context, transparent evidence, and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-142-surface-power-dynamics
+  name: Surface power dynamics
+  category: Conflict and difficult conversations
+  description: Apply surface power dynamics using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-143-avoid-taking-sides
+  name: Avoid taking sides
+  category: Conflict and difficult conversations
+  description: Apply avoid taking sides using approved context, transparent evidence, and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-144-escalate-harassment-or-serious-conduct-concerns
+  name: Escalate harassment or serious conduct concerns
+  category: Conflict and difficult conversations
+  description: Apply escalate harassment or serious conduct concerns using approved context, transparent evidence,
+    and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-145-document-agreements-and-follow-up
+  name: Document agreements and follow-up
+  category: Conflict and difficult conversations
+  description: Apply document agreements and follow-up using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-146-define-metric-purpose-before-calculation
+  name: Define metric purpose before calculation
+  category: Metrics and evidence
+  description: Apply define metric purpose before calculation using approved context, transparent evidence, and
+    Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-147-validate-metric-data-quality
+  name: Validate metric data quality
+  category: Metrics and evidence
+  description: Apply validate metric data quality using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-148-use-team-level-aggregation
+  name: Use team-level aggregation
+  category: Metrics and evidence
+  description: Apply use team-level aggregation using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-149-explain-metric-limitations
+  name: Explain metric limitations
+  category: Metrics and evidence
+  description: Apply explain metric limitations using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-150-detect-goodhart-law-risks
+  name: Detect Goodhart-law risks
+  category: Metrics and evidence
+  description: Apply detect goodhart-law risks using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-151-avoid-velocity-comparisons
+  name: Avoid velocity comparisons
+  category: Metrics and evidence
+  description: Apply avoid velocity comparisons using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-152-avoid-individual-productivity-scores
+  name: Avoid individual productivity scores
+  category: Metrics and evidence
+  description: Apply avoid individual productivity scores using approved context, transparent evidence, and Scrum
+    accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-153-triangulate-quantitative-and-qualitative-evidence
+  name: Triangulate quantitative and qualitative evidence
+  category: Metrics and evidence
+  description: Apply triangulate quantitative and qualitative evidence using approved context, transparent evidence,
+    and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-154-use-confidence-aware-forecasts
+  name: Use confidence-aware forecasts
+  category: Metrics and evidence
+  description: Apply use confidence-aware forecasts using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-155-track-improvement-outcomes
+  name: Track improvement outcomes
+  category: Metrics and evidence
+  description: Apply track improvement outcomes using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-156-apply-evidence-based-management-concepts
+  name: Apply evidence-based management concepts
+  category: Metrics and evidence
+  description: Apply apply evidence-based management concepts using approved context, transparent evidence, and
+    Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-157-create-anti-gaming-safeguards
+  name: Create anti-gaming safeguards
+  category: Metrics and evidence
+  description: Apply create anti-gaming safeguards using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-158-facilitate-cross-team-dependency-review
+  name: Facilitate cross-team dependency review
+  category: Multi-team coordination
+  description: Apply facilitate cross-team dependency review using approved context, transparent evidence, and Scrum
+    accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-159-coordinate-integrated-increment-evidence
+  name: Coordinate integrated Increment evidence
+  category: Multi-team coordination
+  description: Apply coordinate integrated increment evidence using approved context, transparent evidence, and
+    Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-160-support-shared-product-goal-alignment
+  name: Support shared Product Goal alignment
+  category: Multi-team coordination
+  description: Apply support shared product goal alignment using approved context, transparent evidence, and Scrum
+    accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-161-facilitate-scrum-of-scrums-only-when-useful
+  name: Facilitate Scrum of Scrums only when useful
+  category: Multi-team coordination
+  description: Apply facilitate scrum of scrums only when useful using approved context, transparent evidence, and
+    Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-162-support-shared-definition-of-done-conversations
+  name: Support shared Definition of Done conversations
+  category: Multi-team coordination
+  description: Apply support shared definition of done conversations using approved context, transparent evidence,
+    and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-163-map-component-and-platform-dependencies
+  name: Map component and platform dependencies
+  category: Multi-team coordination
+  description: Apply map component and platform dependencies using approved context, transparent evidence, and Scrum
+    accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-164-coordinate-release-and-environment-constraints
+  name: Coordinate release and environment constraints
+  category: Multi-team coordination
+  description: Apply coordinate release and environment constraints using approved context, transparent evidence,
+    and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-165-escalate-systemic-impediments
+  name: Escalate systemic impediments
+  category: Multi-team coordination
+  description: Apply escalate systemic impediments using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-166-surface-quality-trends
+  name: Surface quality trends
+  category: Quality, release, and incident collaboration
+  description: Apply surface quality trends using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-167-facilitate-defect-and-regression-conversations
+  name: Facilitate defect and regression conversations
+  category: Quality, release, and incident collaboration
+  description: Apply facilitate defect and regression conversations using approved context, transparent evidence,
+    and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-168-coordinate-release-readiness-evidence
+  name: Coordinate release-readiness evidence
+  category: Quality, release, and incident collaboration
+  description: Apply coordinate release-readiness evidence using approved context, transparent evidence, and Scrum
+    accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-169-support-incident-communication
+  name: Support incident communication
+  category: Quality, release, and incident collaboration
+  description: Apply support incident communication using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-170-facilitate-blameless-post-incident-learning
+  name: Facilitate blameless post-incident learning
+  category: Quality, release, and incident collaboration
+  description: Apply facilitate blameless post-incident learning using approved context, transparent evidence, and
+    Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-171-track-corrective-actions
+  name: Track corrective actions
+  category: Quality, release, and incident collaboration
+  description: Apply track corrective actions using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-172-connect-operational-learning-to-improvement-backlog
+  name: Connect operational learning to improvement backlog
+  category: Quality, release, and incident collaboration
+  description: Apply connect operational learning to improvement backlog using approved context, transparent evidence,
+    and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-173-avoid-acting-as-release-approver
+  name: Avoid acting as release approver
+  category: Quality, release, and incident collaboration
+  description: Apply avoid acting as release approver using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-174-apply-least-privilege
+  name: Apply least privilege
+  category: Security, privacy, and governance
+  description: Apply apply least privilege using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-175-use-data-minimization
+  name: Use data minimization
+  category: Security, privacy, and governance
+  description: Apply use data minimization using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-176-redact-retrospective-and-team-health-data
+  name: Redact retrospective and team-health data
+  category: Security, privacy, and governance
+  description: Apply redact retrospective and team-health data using approved context, transparent evidence, and
+    Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-177-route-sensitive-issues-to-accountable-humans
+  name: Route sensitive issues to accountable humans
+  category: Security, privacy, and governance
+  description: Apply route sensitive issues to accountable humans using approved context, transparent evidence,
+    and Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-178-protect-raw-credentials-from-model-context
+  name: Protect raw credentials from model context
+  category: Security, privacy, and governance
+  description: Apply protect raw credentials from model context using approved context, transparent evidence, and
+    Scrum accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-179-use-payload-bound-approvals
+  name: Use payload-bound approvals
+  category: Security, privacy, and governance
+  description: Apply use payload-bound approvals using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-180-maintain-immutable-audit-evidence
+  name: Maintain immutable audit evidence
+  category: Security, privacy, and governance
+  description: Apply maintain immutable audit evidence using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-181-apply-retention-rules
+  name: Apply retention rules
+  category: Security, privacy, and governance
+  description: Apply apply retention rules using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-182-detect-prohibited-employment-decisions
+  name: Detect prohibited employment decisions
+  category: Security, privacy, and governance
+  description: Apply detect prohibited employment decisions using approved context, transparent evidence, and Scrum
+    accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-183-block-production-mutation
+  name: Block production mutation
+  category: Security, privacy, and governance
+  description: Apply block production mutation using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-184-draft-concise-event-agendas
+  name: Draft concise event agendas
+  category: Artifacts and communication
+  description: Apply draft concise event agendas using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-185-draft-facilitation-scripts
+  name: Draft facilitation scripts
+  category: Artifacts and communication
+  description: Apply draft facilitation scripts using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-186-draft-sprint-health-summaries
+  name: Draft Sprint health summaries
+  category: Artifacts and communication
+  description: Apply draft sprint health summaries using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-187-draft-impediment-escalation-briefs
+  name: Draft impediment escalation briefs
+  category: Artifacts and communication
+  description: Apply draft impediment escalation briefs using approved context, transparent evidence, and Scrum
+    accountability boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-188-draft-stakeholder-updates
+  name: Draft stakeholder updates
+  category: Artifacts and communication
+  description: Apply draft stakeholder updates using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-189-draft-retrospective-summaries
+  name: Draft retrospective summaries
+  category: Artifacts and communication
+  description: Apply draft retrospective summaries using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-190-draft-improvement-experiments
+  name: Draft improvement experiments
+  category: Artifacts and communication
+  description: Apply draft improvement experiments using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-191-draft-working-agreements
+  name: Draft working agreements
+  category: Artifacts and communication
+  description: Apply draft working agreements using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-192-create-mermaid-flow-diagrams
+  name: Create Mermaid flow diagrams
+  category: Artifacts and communication
+  description: Apply create mermaid flow diagrams using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-193-create-traceable-decision-logs
+  name: Create traceable decision logs
+  category: Artifacts and communication
+  description: Apply create traceable decision logs using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects
+- id: sm-194-create-handoff-packages
+  name: Create handoff packages
+  category: Artifacts and communication
+  description: Apply create handoff packages using approved context, transparent evidence, and Scrum accountability
+    boundaries.
+  inputs:
+  - authorized context
+  - team scope
+  - purpose
+  outputs:
+  - structured analysis or draft artifact
+  - assumptions
+  - risks
+  - next review
+  approval: required only for external publication or side effects

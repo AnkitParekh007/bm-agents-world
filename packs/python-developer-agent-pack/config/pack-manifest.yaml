@@ -1,0 +1,19 @@
+apiVersion: python-developer-agent-pack/v1
+kind: PackManifest
+metadata:
+  name: python-developer-agent-pack
+  version: 1.0.0
+  profile: Python Developer
+contents:
+  docs: 14
+  workflows: 5
+  schemas: 7
+  templates: 5
+  checklists: 2
+  policyFiles: 1
+defaults:
+  externalWrites: approval-required
+  productionMutations: prohibited
+  rawSecretsInModel: prohibited
+  workspace: ephemeral
+  toolPolicy: least-privilege

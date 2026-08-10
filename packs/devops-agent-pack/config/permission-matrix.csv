@@ -1,0 +1,15 @@
+capability,sandbox,playground,qa,production,approval,notes
+read repositories and work items,allow,allow,allow,allow,none,project scoped
+local patch and validation,allow,allow,allow,allow,none,isolated worker only
+commit/push/open PR,conditional,conditional,conditional,conditional,required,exact diff and destination
+read cloud/kubernetes inventory,allow,allow,allow,bounded,none/conditional,redacted and scoped
+iac plan/render/diff,allow,allow,allow,bounded,none/required,no apply
+iac apply,allow within ephemeral quota,conditional,conditional,deny direct,required,production via governed executor
+kubernetes mutation,allow in disposable cluster,conditional,conditional,deny direct,required,production via GitOps/pipeline
+pipeline trigger without side effects,allow,allow,allow,bounded,conditional,pinned commit
+pipeline trigger with deployment,deny,conditional,conditional,deny direct,required,governed executor
+registry promotion/signing,conditional,conditional,conditional,deny direct,required,remote signing only
+bounded telemetry query,allow,allow,allow,allow,none/conditional,minimum necessary
+secret value read into model,deny,deny,deny,deny,prohibited,adapter-only
+DNS/TLS/IAM/network mutation,deny,conditional,conditional,deny direct,required,specialist owner approval
+restore/failover/rollback,deny,conditional,conditional,deny direct,required,tested runbook

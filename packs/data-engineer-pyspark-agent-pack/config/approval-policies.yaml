@@ -1,0 +1,19 @@
+version: 1.0.0
+principles:
+- Approvals bind to exact project, pipeline, environment, dataset, source revision, artifact, action, payload hash,
+  approver, and expiry.
+- The proposing agent cannot approve its own action.
+- Production execution occurs only through authorized operators or deterministic systems.
+- Data mutation, replay, and backfill require bounded scope, reconciliation, stop conditions, and recovery.
+approval_required:
+- Jira, Confluence, Teams, catalog, contract, or lineage publication
+- branch, commit, pull request, pipeline, schedule, or configuration changes
+- non-production source extraction beyond approved fixtures
+- streaming topic writes or schema registry changes
+- production pipeline action requests, backfills, repairs, replays, table maintenance, or migrations
+- quality threshold changes and critical-rule waivers
+human_only:
+- final production action authorization
+- residual security, privacy, compliance, data-loss, or business-risk acceptance
+- destructive data correction, checkpoint deletion, source-of-truth change, or retention override
+- production schema or contract breaking-change approval

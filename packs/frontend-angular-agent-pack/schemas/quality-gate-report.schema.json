@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Frontend Quality Gate Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "runId",
+    "overall",
+    "gates"
+  ],
+  "properties": {
+    "runId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "overall": {
+      "type": "string",
+      "enum": [
+        "pass",
+        "fail",
+        "blocked",
+        "conditional"
+      ]
+    },
+    "gates": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "status"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pass",
+              "fail",
+              "skipped",
+              "blocked",
+              "warning"
+            ]
+          },
+          "commandId": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "artifactRefs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "metrics": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "bundleDeltaBytes": {
+      "type": "integer"
+    },
+    "coverage": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "accessibilityViolations": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "securityFindings": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "exceptions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,76 @@
+apiVersion: engineering-manager-technical-lead-agent-pack/v1
+kind: AgentWorkflow
+metadata:
+  name: team-health-and-capability
+  title: Team Health and Capability
+  version: 1.0.0
+spec:
+  trigger:
+  - manager_review
+  - one_on_one_cycle
+  - onboarding
+  - hiring_plan
+  objective: Prepare privacy-preserving team and capability artifacts while keeping employment decisions human-owned.
+  supervisor: engineering-leadership-supervisor
+  execution:
+    mode: stateful
+    defaultPolicy: deny
+    evidenceRequired: true
+    approvalBinding: payload-hash
+    resumeFromCheckpoint: true
+  stages:
+  - id: purpose-and-consent
+    agent: policy-enforcement
+    skills:
+    - engineering-leadership.sensitive-data-minimization
+    - engineering-leadership.decision-rights-assessment
+    - engineering-leadership.retention-policy-check
+    gate: authorization
+  - id: aggregate-health
+    agent: team-health
+    skills:
+    - engineering-leadership.team-health-summary
+    - engineering-leadership.meeting-load-analysis
+    - engineering-leadership.interrupt-load-analysis
+  - id: coaching
+    agent: coaching-growth
+    skills:
+    - engineering-leadership.coaching-question-design
+    - engineering-leadership.growth-goal-draft
+    - engineering-leadership.recognition-draft
+  - id: one-on-one
+    agent: one-on-one-preparation
+    skills:
+    - engineering-leadership.one-on-one-agenda
+    - engineering-leadership.one-on-one-action-tracking
+    - engineering-leadership.accomplishment-evidence
+  - id: capability
+    agent: team-capacity
+    skills:
+    - engineering-leadership.skills-gap-analysis
+    - engineering-leadership.bus-factor-capability-map
+    - engineering-leadership.mentoring-opportunity
+  - id: hiring-onboarding
+    agent: hiring-onboarding
+    skills:
+    - engineering-leadership.role-capability-profile
+    - engineering-leadership.structured-interview-plan
+    - engineering-leadership.onboarding-plan
+  - id: human-review
+    agent: independent-engineering-review
+    skills:
+    - engineering-leadership.agent-bias-risk-review
+    - engineering-leadership.evidence-gap-check
+    - engineering-leadership.hiring-decision-boundary
+    gate: payload-bound-approval
+  outputs:
+  - team-health-summary
+  - one-on-one-agenda
+  - growth-development-plan
+  - hiring-interview-plan
+  - onboarding-plan
+  terminalStates:
+  - completed
+  - rejected
+  - blocked
+  - cancelled

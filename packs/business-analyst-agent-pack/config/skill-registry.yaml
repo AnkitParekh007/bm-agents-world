@@ -1,0 +1,1242 @@
+apiVersion: business-analyst-agent-pack/v1
+kind: SkillRegistry
+metadata:
+  name: business-analysis-skills
+  version: 1.0.0
+spec:
+  skills:
+  - id: business-analysis.ba-approach-selection
+    domain: planning-monitoring
+    description: Ba approach selection
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.scope-boundary-definition
+    domain: planning-monitoring
+    description: Scope boundary definition
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.deliverable-plan
+    domain: planning-monitoring
+    description: Deliverable plan
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.stakeholder-engagement-plan
+    domain: planning-monitoring
+    description: Stakeholder engagement plan
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.governance-plan
+    domain: planning-monitoring
+    description: Governance plan
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.information-management-plan
+    domain: planning-monitoring
+    description: Information management plan
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.change-control-plan
+    domain: planning-monitoring
+    description: Change control plan
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.estimate-ba-effort
+    domain: planning-monitoring
+    description: Estimate ba effort
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.risk-based-analysis-plan
+    domain: planning-monitoring
+    description: Risk based analysis plan
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.analysis-status-report
+    domain: planning-monitoring
+    description: Analysis status report
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.jira-context
+    domain: work-context
+    description: Jira context
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.confluence-context
+    domain: work-context
+    description: Confluence context
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.policy-context
+    domain: work-context
+    description: Policy context
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.project-scope-resolution
+    domain: work-context
+    description: Project scope resolution
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.product-goal-traceability
+    domain: work-context
+    description: Product goal traceability
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.prior-decision-retrieval
+    domain: work-context
+    description: Prior decision retrieval
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.dependency-context
+    domain: work-context
+    description: Dependency context
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.environment-context
+    domain: work-context
+    description: Environment context
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.repository-read-context
+    domain: work-context
+    description: Repository read context
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.evidence-source-register
+    domain: work-context
+    description: Evidence source register
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.stakeholder-identification
+    domain: stakeholders
+    description: Stakeholder identification
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.stakeholder-segmentation
+    domain: stakeholders
+    description: Stakeholder segmentation
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.influence-interest-map
+    domain: stakeholders
+    description: Influence interest map
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.decision-rights-map
+    domain: stakeholders
+    description: Decision rights map
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.raci-matrix
+    domain: stakeholders
+    description: Raci matrix
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.stakeholder-needs-analysis
+    domain: stakeholders
+    description: Stakeholder needs analysis
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.conflict-analysis
+    domain: stakeholders
+    description: Conflict analysis
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.engagement-strategy
+    domain: stakeholders
+    description: Engagement strategy
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.communication-preference-map
+    domain: stakeholders
+    description: Communication preference map
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.stakeholder-validation-plan
+    domain: stakeholders
+    description: Stakeholder validation plan
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.problem-statement
+    domain: business-needs
+    description: Problem statement
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.opportunity-statement
+    domain: business-needs
+    description: Opportunity statement
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.outcome-definition
+    domain: business-needs
+    description: Outcome definition
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.success-measure-definition
+    domain: business-needs
+    description: Success measure definition
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.constraint-catalog
+    domain: business-needs
+    description: Constraint catalog
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.assumption-register
+    domain: business-needs
+    description: Assumption register
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.root-cause-analysis
+    domain: business-needs
+    description: Root cause analysis
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.five-whys
+    domain: business-needs
+    description: Five whys
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.fishbone-analysis
+    domain: business-needs
+    description: Fishbone analysis
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.scope-in-out
+    domain: business-needs
+    description: Scope in out
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.business-need-validation
+    domain: business-needs
+    description: Business need validation
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.capability-map
+    domain: strategy-analysis
+    description: Capability map
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.current-state-assessment
+    domain: strategy-analysis
+    description: Current state assessment
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.future-state-definition
+    domain: strategy-analysis
+    description: Future state definition
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.gap-analysis
+    domain: strategy-analysis
+    description: Gap analysis
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.operating-model-impact
+    domain: strategy-analysis
+    description: Operating model impact
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.policy-alignment
+    domain: strategy-analysis
+    description: Policy alignment
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.strategic-option-analysis
+    domain: strategy-analysis
+    description: Strategic option analysis
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.risk-assessment
+    domain: strategy-analysis
+    description: Risk assessment
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.change-strategy
+    domain: strategy-analysis
+    description: Change strategy
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.business-case-outline
+    domain: strategy-analysis
+    description: Business case outline
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.elicitation-objective
+    domain: elicitation
+    description: Elicitation objective
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.interview-guide
+    domain: elicitation
+    description: Interview guide
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.workshop-agenda
+    domain: elicitation
+    description: Workshop agenda
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.observation-plan
+    domain: elicitation
+    description: Observation plan
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.document-analysis
+    domain: elicitation
+    description: Document analysis
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.survey-design
+    domain: elicitation
+    description: Survey design
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.interface-analysis
+    domain: elicitation
+    description: Interface analysis
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.prototype-feedback-plan
+    domain: elicitation
+    description: Prototype feedback plan
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.elicitation-record
+    domain: elicitation
+    description: Elicitation record
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.elicitation-confirmation
+    domain: elicitation
+    description: Elicitation confirmation
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.facilitation-question-bank
+    domain: elicitation
+    description: Facilitation question bank
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.conflict-facilitation
+    domain: elicitation
+    description: Conflict facilitation
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.process-boundary
+    domain: process-analysis
+    description: Process boundary
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.sipoc-model
+    domain: process-analysis
+    description: Sipoc model
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.current-state-process
+    domain: process-analysis
+    description: Current state process
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.future-state-process
+    domain: process-analysis
+    description: Future state process
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.bpmn-model
+    domain: process-analysis
+    description: Bpmn model
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.swimlane-model
+    domain: process-analysis
+    description: Swimlane model
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.handoff-analysis
+    domain: process-analysis
+    description: Handoff analysis
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.cycle-time-analysis
+    domain: process-analysis
+    description: Cycle time analysis
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.waste-analysis
+    domain: process-analysis
+    description: Waste analysis
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.exception-path-model
+    domain: process-analysis
+    description: Exception path model
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.control-point-analysis
+    domain: process-analysis
+    description: Control point analysis
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.process-kpi-definition
+    domain: process-analysis
+    description: Process kpi definition
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.requirement-classification
+    domain: requirements-analysis
+    description: Requirement classification
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.requirement-decomposition
+    domain: requirements-analysis
+    description: Requirement decomposition
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.requirement-modeling
+    domain: requirements-analysis
+    description: Requirement modeling
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.requirement-quality-check
+    domain: requirements-analysis
+    description: Requirement quality check
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.ambiguity-detection
+    domain: requirements-analysis
+    description: Ambiguity detection
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.atomicity-check
+    domain: requirements-analysis
+    description: Atomicity check
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.consistency-check
+    domain: requirements-analysis
+    description: Consistency check
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.feasibility-questioning
+    domain: requirements-analysis
+    description: Feasibility questioning
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.requirement-prioritization
+    domain: requirements-analysis
+    description: Requirement prioritization
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.requirement-validation
+    domain: requirements-analysis
+    description: Requirement validation
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.requirement-baseline
+    domain: requirements-analysis
+    description: Requirement baseline
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.requirement-versioning
+    domain: requirements-analysis
+    description: Requirement versioning
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.business-rule-discovery
+    domain: business-rules
+    description: Business rule discovery
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.rule-statement
+    domain: business-rules
+    description: Rule statement
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.decision-table
+    domain: business-rules
+    description: Decision table
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.decision-tree
+    domain: business-rules
+    description: Decision tree
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.calculation-rule
+    domain: business-rules
+    description: Calculation rule
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.eligibility-rule
+    domain: business-rules
+    description: Eligibility rule
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.validation-rule
+    domain: business-rules
+    description: Validation rule
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.policy-rule-traceability
+    domain: business-rules
+    description: Policy rule traceability
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.rule-conflict-detection
+    domain: business-rules
+    description: Rule conflict detection
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.rule-example-generation
+    domain: business-rules
+    description: Rule example generation
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.rule-owner-assignment
+    domain: business-rules
+    description: Rule owner assignment
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.business-data-concept
+    domain: data
+    description: Business data concept
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.data-dictionary
+    domain: data
+    description: Data dictionary
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.canonical-term-definition
+    domain: data
+    description: Canonical term definition
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.data-owner-map
+    domain: data
+    description: Data owner map
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.data-quality-rule
+    domain: data
+    description: Data quality rule
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.data-lineage-requirement
+    domain: data
+    description: Data lineage requirement
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.data-retention-requirement
+    domain: data
+    description: Data retention requirement
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.data-privacy-requirement
+    domain: data
+    description: Data privacy requirement
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.reporting-requirement
+    domain: data
+    description: Reporting requirement
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.migration-requirement
+    domain: data
+    description: Migration requirement
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.reconciliation-rule
+    domain: data
+    description: Reconciliation rule
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.reference-data-requirement
+    domain: data
+    description: Reference data requirement
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.system-context-diagram
+    domain: integration
+    description: System context diagram
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.interface-inventory
+    domain: integration
+    description: Interface inventory
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.api-requirement
+    domain: integration
+    description: Api requirement
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.event-requirement
+    domain: integration
+    description: Event requirement
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.file-interface-requirement
+    domain: integration
+    description: File interface requirement
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.batch-integration-requirement
+    domain: integration
+    description: Batch integration requirement
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.error-handling-requirement
+    domain: integration
+    description: Error handling requirement
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.retry-idempotency-requirement
+    domain: integration
+    description: Retry idempotency requirement
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.integration-dependency-map
+    domain: integration
+    description: Integration dependency map
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.external-party-requirement
+    domain: integration
+    description: External party requirement
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.contract-versioning-requirement
+    domain: integration
+    description: Contract versioning requirement
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.performance-requirement
+    domain: nonfunctional
+    description: Performance requirement
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.availability-requirement
+    domain: nonfunctional
+    description: Availability requirement
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.resilience-requirement
+    domain: nonfunctional
+    description: Resilience requirement
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.security-requirement
+    domain: nonfunctional
+    description: Security requirement
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.privacy-requirement
+    domain: nonfunctional
+    description: Privacy requirement
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.accessibility-requirement
+    domain: nonfunctional
+    description: Accessibility requirement
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.audit-requirement
+    domain: nonfunctional
+    description: Audit requirement
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.supportability-requirement
+    domain: nonfunctional
+    description: Supportability requirement
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.maintainability-requirement
+    domain: nonfunctional
+    description: Maintainability requirement
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.localization-requirement
+    domain: nonfunctional
+    description: Localization requirement
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.compliance-requirement
+    domain: nonfunctional
+    description: Compliance requirement
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.capacity-requirement
+    domain: nonfunctional
+    description: Capacity requirement
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.user-story-draft
+    domain: stories-use-cases
+    description: User story draft
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.story-splitting
+    domain: stories-use-cases
+    description: Story splitting
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.use-case-model
+    domain: stories-use-cases
+    description: Use case model
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.use-case-specification
+    domain: stories-use-cases
+    description: Use case specification
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.actor-goal-analysis
+    domain: stories-use-cases
+    description: Actor goal analysis
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.scenario-model
+    domain: stories-use-cases
+    description: Scenario model
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.happy-path
+    domain: stories-use-cases
+    description: Happy path
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.negative-scenario
+    domain: stories-use-cases
+    description: Negative scenario
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.edge-case
+    domain: stories-use-cases
+    description: Edge case
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.acceptance-criteria
+    domain: stories-use-cases
+    description: Acceptance criteria
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.given-when-then
+    domain: stories-use-cases
+    description: Given when then
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.example-mapping
+    domain: stories-use-cases
+    description: Example mapping
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.definition-of-ready-check
+    domain: stories-use-cases
+    description: Definition of ready check
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.traceability-matrix
+    domain: traceability
+    description: Traceability matrix
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.requirement-linking
+    domain: traceability
+    description: Requirement linking
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.source-to-requirement-trace
+    domain: traceability
+    description: Source to requirement trace
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.requirement-to-design-trace
+    domain: traceability
+    description: Requirement to design trace
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.requirement-to-test-trace
+    domain: traceability
+    description: Requirement to test trace
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.requirement-to-release-trace
+    domain: traceability
+    description: Requirement to release trace
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.orphan-detection
+    domain: traceability
+    description: Orphan detection
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.coverage-analysis
+    domain: traceability
+    description: Coverage analysis
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.change-impact-trace
+    domain: traceability
+    description: Change impact trace
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.baseline-diff
+    domain: traceability
+    description: Baseline diff
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.approval-lineage
+    domain: traceability
+    description: Approval lineage
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.requirement-status-model
+    domain: traceability
+    description: Requirement status model
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.option-generation
+    domain: solution-options
+    description: Option generation
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.option-comparison
+    domain: solution-options
+    description: Option comparison
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.benefit-hypothesis
+    domain: solution-options
+    description: Benefit hypothesis
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.cost-category-analysis
+    domain: solution-options
+    description: Cost category analysis
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.risk-tradeoff
+    domain: solution-options
+    description: Risk tradeoff
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.build-buy-context
+    domain: solution-options
+    description: Build buy context
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.process-vs-system-option
+    domain: solution-options
+    description: Process vs system option
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.minimum-change-option
+    domain: solution-options
+    description: Minimum change option
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.transition-option
+    domain: solution-options
+    description: Transition option
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.sensitivity-analysis
+    domain: solution-options
+    description: Sensitivity analysis
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.recommendation-draft
+    domain: solution-options
+    description: Recommendation draft
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.people-impact
+    domain: impact-readiness
+    description: People impact
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.process-impact
+    domain: impact-readiness
+    description: Process impact
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.system-impact
+    domain: impact-readiness
+    description: System impact
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.data-impact
+    domain: impact-readiness
+    description: Data impact
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.policy-impact
+    domain: impact-readiness
+    description: Policy impact
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.control-impact
+    domain: impact-readiness
+    description: Control impact
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.vendor-impact
+    domain: impact-readiness
+    description: Vendor impact
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.operational-impact
+    domain: impact-readiness
+    description: Operational impact
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.support-impact
+    domain: impact-readiness
+    description: Support impact
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.training-needs
+    domain: impact-readiness
+    description: Training needs
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.communication-needs
+    domain: impact-readiness
+    description: Communication needs
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.readiness-assessment
+    domain: impact-readiness
+    description: Readiness assessment
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.dependency-risk
+    domain: impact-readiness
+    description: Dependency risk
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.uat-scope
+    domain: uat
+    description: Uat scope
+    risk: medium
+    requiresApproval: false
+  - id: business-analysis.uat-entry-criteria
+    domain: uat
+    description: Uat entry criteria
+    risk: medium
+    requiresApproval: false
+  - id: business-analysis.uat-exit-criteria
+    domain: uat
+    description: Uat exit criteria
+    risk: medium
+    requiresApproval: false
+  - id: business-analysis.uat-scenario
+    domain: uat
+    description: Uat scenario
+    risk: medium
+    requiresApproval: false
+  - id: business-analysis.uat-data-plan
+    domain: uat
+    description: Uat data plan
+    risk: medium
+    requiresApproval: false
+  - id: business-analysis.uat-role-plan
+    domain: uat
+    description: Uat role plan
+    risk: medium
+    requiresApproval: false
+  - id: business-analysis.uat-environment-plan
+    domain: uat
+    description: Uat environment plan
+    risk: medium
+    requiresApproval: false
+  - id: business-analysis.uat-evidence-plan
+    domain: uat
+    description: Uat evidence plan
+    risk: medium
+    requiresApproval: false
+  - id: business-analysis.uat-defect-triage
+    domain: uat
+    description: Uat defect triage
+    risk: medium
+    requiresApproval: false
+  - id: business-analysis.uat-signoff-draft
+    domain: uat
+    description: Uat signoff draft
+    risk: medium
+    requiresApproval: true
+  - id: business-analysis.business-acceptance-report
+    domain: uat
+    description: Business acceptance report
+    risk: medium
+    requiresApproval: true
+  - id: business-analysis.solution-performance-measure
+    domain: solution-evaluation
+    description: Solution performance measure
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.benefit-realization-check
+    domain: solution-evaluation
+    description: Benefit realization check
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.requirement-outcome-comparison
+    domain: solution-evaluation
+    description: Requirement outcome comparison
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.adoption-analysis
+    domain: solution-evaluation
+    description: Adoption analysis
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.limitation-analysis
+    domain: solution-evaluation
+    description: Limitation analysis
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.root-cause-of-underperformance
+    domain: solution-evaluation
+    description: Root cause of underperformance
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.corrective-option
+    domain: solution-evaluation
+    description: Corrective option
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.post-implementation-review
+    domain: solution-evaluation
+    description: Post implementation review
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.lessons-learned
+    domain: solution-evaluation
+    description: Lessons learned
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.solution-evaluation-report
+    domain: solution-evaluation
+    description: Solution evaluation report
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.backlog-refinement
+    domain: delivery-collaboration
+    description: Backlog refinement
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.story-readiness
+    domain: delivery-collaboration
+    description: Story readiness
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.scope-clarification
+    domain: delivery-collaboration
+    description: Scope clarification
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.developer-question-response
+    domain: delivery-collaboration
+    description: Developer question response
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.qa-question-response
+    domain: delivery-collaboration
+    description: Qa question response
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.design-handoff-check
+    domain: delivery-collaboration
+    description: Design handoff check
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.architecture-handoff-check
+    domain: delivery-collaboration
+    description: Architecture handoff check
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.dependency-escalation
+    domain: delivery-collaboration
+    description: Dependency escalation
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.release-scope-check
+    domain: delivery-collaboration
+    description: Release scope check
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.decision-log
+    domain: delivery-collaboration
+    description: Decision log
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.action-log
+    domain: delivery-collaboration
+    description: Action log
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.brd-draft
+    domain: documentation
+    description: Brd draft
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.functional-specification
+    domain: documentation
+    description: Functional specification
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.requirements-catalog
+    domain: documentation
+    description: Requirements catalog
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.business-glossary
+    domain: documentation
+    description: Business glossary
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.process-documentation
+    domain: documentation
+    description: Process documentation
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.meeting-minutes
+    domain: documentation
+    description: Meeting minutes
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.workshop-output
+    domain: documentation
+    description: Workshop output
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.document-version-control
+    domain: documentation
+    description: Document version control
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.template-conformance
+    domain: documentation
+    description: Template conformance
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.controlled-publication
+    domain: documentation
+    description: Controlled publication
+    risk: low
+    requiresApproval: true
+  - id: business-analysis.archive-package
+    domain: documentation
+    description: Archive package
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.peer-review-checklist
+    domain: quality-review
+    description: Peer review checklist
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.independent-requirement-review
+    domain: quality-review
+    description: Independent requirement review
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.testability-review
+    domain: quality-review
+    description: Testability review
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.completeness-review
+    domain: quality-review
+    description: Completeness review
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.stakeholder-coverage-review
+    domain: quality-review
+    description: Stakeholder coverage review
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.traceability-review
+    domain: quality-review
+    description: Traceability review
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.nfr-coverage-review
+    domain: quality-review
+    description: Nfr coverage review
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.business-rule-review
+    domain: quality-review
+    description: Business rule review
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.process-model-review
+    domain: quality-review
+    description: Process model review
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.decision-boundary-check
+    domain: quality-review
+    description: Decision boundary check
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.evidence-confidence
+    domain: quality-review
+    description: Evidence confidence
+    risk: low
+    requiresApproval: false
+  - id: business-analysis.purpose-bound-access
+    domain: security-governance
+    description: Purpose bound access
+    risk: medium
+    requiresApproval: false
+  - id: business-analysis.data-classification
+    domain: security-governance
+    description: Data classification
+    risk: medium
+    requiresApproval: false
+  - id: business-analysis.minimum-necessary-context
+    domain: security-governance
+    description: Minimum necessary context
+    risk: medium
+    requiresApproval: false
+  - id: business-analysis.redaction-check
+    domain: security-governance
+    description: Redaction check
+    risk: medium
+    requiresApproval: false
+  - id: business-analysis.sensitive-data-detection
+    domain: security-governance
+    description: Sensitive data detection
+    risk: medium
+    requiresApproval: false
+  - id: business-analysis.payload-hash-approval
+    domain: security-governance
+    description: Payload hash approval
+    risk: medium
+    requiresApproval: false
+  - id: business-analysis.publication-approval
+    domain: security-governance
+    description: Publication approval
+    risk: medium
+    requiresApproval: true
+  - id: business-analysis.external-commitment-check
+    domain: security-governance
+    description: External commitment check
+    risk: medium
+    requiresApproval: false
+  - id: business-analysis.production-mutation-denial
+    domain: security-governance
+    description: Production mutation denial
+    risk: medium
+    requiresApproval: false
+  - id: business-analysis.audit-record
+    domain: security-governance
+    description: Audit record
+    risk: medium
+    requiresApproval: false
+  - id: business-analysis.retention-policy-check
+    domain: security-governance
+    description: Retention policy check
+    risk: medium
+    requiresApproval: false

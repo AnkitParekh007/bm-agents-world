@@ -1,0 +1,106 @@
+version: 1.0.0
+artifacts:
+- id: product-vision
+  description: Target future, users, value, differentiation, principles, horizon, and measures.
+  retention: project-policy
+  contains_sensitive_data: false
+- id: product-strategy
+  description: Context, choices, target segments, value proposition, capabilities, tradeoffs, risks, and outcomes.
+  retention: project-policy
+  contains_sensitive_data: false
+- id: opportunity-map
+  description: Customer problems, jobs, evidence, impact, segments, assumptions, and opportunity relationships.
+  retention: project-policy
+  contains_sensitive_data: false
+- id: customer-insight-digest
+  description: Sanitized themes, evidence counts, segments, confidence, contradictions, and linked opportunities.
+  retention: project-policy
+  contains_sensitive_data: possible
+- id: market-competitive-analysis
+  description: Market definition, competitors, substitutes, positioning, trends, evidence, and uncertainties.
+  retention: project-policy
+  contains_sensitive_data: possible
+- id: product-brief
+  description: Problem, users, outcomes, scope, constraints, options, assumptions, risks, success measures, and decision
+    request.
+  retention: project-policy
+  contains_sensitive_data: false
+- id: product-requirements-document
+  description: Functional, non-functional, data, integration, role, error, analytics, accessibility, and operational
+    requirements.
+  retention: project-policy
+  contains_sensitive_data: false
+- id: user-story-map
+  description: Journey, activities, tasks, stories, slices, MVP boundary, dependencies, and release increments.
+  retention: project-policy
+  contains_sensitive_data: false
+- id: prioritization-scorecard
+  description: Candidates, scoring model, evidence, value, effort, risk, dependencies, confidence, and recommendation.
+  retention: project-policy
+  contains_sensitive_data: false
+- id: roadmap-plan
+  description: Objectives, themes, initiatives, sequencing, confidence, dependencies, capacity assumptions, and stakeholder
+    views.
+  retention: project-policy
+  contains_sensitive_data: false
+- id: portfolio-allocation-plan
+  description: Investment themes, products, capacity, mandatory work, risk, scenarios, and tradeoffs.
+  retention: project-policy
+  contains_sensitive_data: false
+- id: metric-dictionary
+  description: Metric definition, formula, source, owner, grain, quality checks, interpretation, and guardrails.
+  retention: project-policy
+  contains_sensitive_data: false
+- id: analytics-measurement-plan
+  description: Questions, events, properties, funnels, cohorts, dashboards, owners, and validation plan.
+  retention: project-policy
+  contains_sensitive_data: false
+- id: experiment-plan
+  description: Hypothesis, population, variants, metrics, guardrails, exposure, stopping rules, risks, and approvals.
+  retention: project-policy
+  contains_sensitive_data: false
+- id: experiment-readout
+  description: Design, data quality, results, uncertainty, segments, guardrails, decision, and follow-up.
+  retention: project-policy
+  contains_sensitive_data: false
+- id: dependency-risk-map
+  description: Technical, design, data, vendor, legal, operational, and organizational dependencies and mitigations.
+  retention: project-policy
+  contains_sensitive_data: false
+- id: release-plan
+  description: Scope, target users, rollout, feature flags, readiness, communications, support, monitoring, and rollback.
+  retention: project-policy
+  contains_sensitive_data: false
+- id: go-to-market-brief
+  description: Audience, positioning, messaging, launch tier, channels, enablement, adoption, and feedback loop.
+  retention: project-policy
+  contains_sensitive_data: possible
+- id: pricing-packaging-analysis
+  description: Options, evidence, value metric, entitlements, cost-to-serve, risks, assumptions, and approval needs.
+  retention: project-policy
+  contains_sensitive_data: possible
+- id: stakeholder-decision-memo
+  description: Decision, context, evidence, options, recommendation, dissent, risks, owner, and deadline.
+  retention: project-policy
+  contains_sensitive_data: false
+- id: product-decision-log
+  description: Decision, alternatives, evidence, approvers, date, consequences, and review trigger.
+  retention: project-policy
+  contains_sensitive_data: false
+- id: backlog-health-report
+  description: Readiness, aging, duplicates, dependencies, blocked items, stale items, and cleanup actions.
+  retention: project-policy
+  contains_sensitive_data: false
+- id: release-outcome-review
+  description: Baseline, shipped scope, adoption, quality, customer impact, business outcomes, unintended effects, and
+    learning.
+  retention: project-policy
+  contains_sensitive_data: false
+- id: product-risk-register
+  description: Risk, category, likelihood, impact, evidence, owner, mitigation, trigger, and status.
+  retention: project-policy
+  contains_sensitive_data: false
+- id: product-daily-summary
+  description: Completed work, decisions, evidence, blockers, risks, next actions, and approvals required.
+  retention: project-policy
+  contains_sensitive_data: false

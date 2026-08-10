@@ -1,0 +1,42 @@
+name: story-to-change-plan
+version: 1.0.0
+trigger: Jira story, service request, maintenance request, or change record
+scope_binding:
+- organization
+- project
+- work_item
+- repositories
+- service
+- environment
+- requester
+steps:
+- id: authorize
+  agent: policy-enforcer
+  action: verify project, repository, service, environment, purpose, and read capabilities
+- id: context
+  agent: work-context
+  action: read requirements, ownership, architecture, dependencies, history, and constraints
+- id: profile
+  agent: repo-pipeline-discovery
+  action: detect CI/CD, IaC, runtime, cloud, Kubernetes, registry, observability, and versions
+- id: architecture
+  agent: infrastructure-architect
+  action: analyze topology, dependencies, failure modes, blast radius, and reversibility
+- id: security
+  agent: security-supply-chain-agent
+  action: identify identity, data, network, supply-chain, and compliance risks
+- id: reliability
+  agent: sre-reliability-engineer
+  action: define validation signals, SLO impact, capacity, and stop conditions
+- id: plan
+  agent: devops-supervisor
+  action: create implementation, validation, rollback, communication, evidence, and approval plan
+- id: review
+  agent: change-reviewer
+  action: independently review scope, risk, completeness, and execution boundaries
+outputs:
+- work-context
+- platform-profile
+- change-plan
+- risk-register
+failure_behavior: stop and request owner resolution when scope, ownership, version, or rollback is unresolved

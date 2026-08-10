@@ -1,0 +1,237 @@
+version: 1.0.0
+supervisor: data-engineer-pyspark-supervisor
+agent_count: 27
+agents:
+- id: data-engineer-pyspark-supervisor
+  description: Coordinates data-product context, architecture, PySpark implementation, quality, performance, release,
+    approvals, and evidence.
+  capabilities:
+  - orchestration
+  - data-engineering
+  - pyspark
+  - governance
+  status: enabled
+  external_writes: approval-controlled
+- id: data-context-agent
+  description: Retrieves approved product, domain, source, consumer, repository, platform, environment, ownership,
+    and policy context.
+  capabilities:
+  - context
+  - data-products
+  - ownership
+  status: enabled
+  external_writes: approval-controlled
+- id: source-discovery-agent
+  description: Profiles approved source systems, schemas, volumes, change behavior, quality, latency, and extraction
+    constraints.
+  capabilities:
+  - source-discovery
+  - profiling
+  - contracts
+  status: enabled
+  external_writes: approval-controlled
+- id: data-contract-agent
+  description: Defines and validates producer-consumer data contracts, schemas, semantics, service levels, compatibility,
+    and ownership.
+  capabilities:
+  - data-contracts
+  - schemas
+  - compatibility
+  status: enabled
+  external_writes: approval-controlled
+- id: data-architecture-agent
+  description: Designs data products, layers, domains, storage, compute, orchestration, and batch/streaming boundaries.
+  capabilities:
+  - data-architecture
+  - lakehouse
+  - data-products
+  status: enabled
+  external_writes: approval-controlled
+- id: data-modeling-agent
+  description: Creates logical and physical models, keys, grain, dimensions, facts, aggregates, and history strategies.
+  capabilities:
+  - data-modeling
+  - dimensional-modeling
+  - semantics
+  status: enabled
+  external_writes: approval-controlled
+- id: pyspark-batch-agent
+  description: Implements maintainable DataFrame and Spark SQL batch pipelines using repository-compatible PySpark
+    APIs.
+  capabilities:
+  - pyspark
+  - batch
+  - spark-sql
+  status: enabled
+  external_writes: approval-controlled
+- id: structured-streaming-agent
+  description: Designs and implements Structured Streaming sources, sinks, watermarks, state, triggers, checkpoints,
+    and recovery.
+  capabilities:
+  - structured-streaming
+  - stateful-processing
+  - watermarks
+  status: enabled
+  external_writes: approval-controlled
+- id: ingestion-cdc-agent
+  description: Designs ingestion, incremental extraction, CDC, deduplication, ordering, replay, and source reconciliation.
+  capabilities:
+  - ingestion
+  - cdc
+  - incremental-processing
+  status: enabled
+  external_writes: approval-controlled
+- id: transformation-rules-agent
+  description: Implements testable business transformations, enrichment, normalization, joins, aggregations, and
+    reusable functions.
+  capabilities:
+  - transformations
+  - business-rules
+  - dataframes
+  status: enabled
+  external_writes: approval-controlled
+- id: lakehouse-table-agent
+  description: Manages governed Delta Lake, Apache Iceberg, or platform-native table design, evolution, partitioning,
+    and maintenance.
+  capabilities:
+  - lakehouse
+  - delta-lake
+  - iceberg
+  status: enabled
+  external_writes: approval-controlled
+- id: data-quality-agent
+  description: Defines, executes, trends, and enforces data quality checks, quarantine, thresholds, and issue ownership.
+  capabilities:
+  - data-quality
+  - expectations
+  - validation
+  status: enabled
+  external_writes: approval-controlled
+- id: reconciliation-agent
+  description: Performs source-to-target, control-total, count, amount, key, freshness, and completeness reconciliation.
+  capabilities:
+  - reconciliation
+  - control-totals
+  - assurance
+  status: enabled
+  external_writes: approval-controlled
+- id: schema-evolution-agent
+  description: Analyzes schema drift, compatibility, defaults, nullability, type changes, consumer impact, and migration
+    strategies.
+  capabilities:
+  - schema-evolution
+  - compatibility
+  - migration
+  status: enabled
+  external_writes: approval-controlled
+- id: orchestration-agent
+  description: Designs DAGs, dependencies, datasets, schedules, retries, backfills, SLAs, concurrency, and idempotent
+    task boundaries.
+  capabilities:
+  - orchestration
+  - airflow
+  - scheduling
+  status: enabled
+  external_writes: approval-controlled
+- id: data-testing-agent
+  description: Creates unit, transformation, contract, integration, end-to-end, quality, and regression tests with
+    deterministic fixtures.
+  capabilities:
+  - testing
+  - pytest
+  - spark-testing
+  status: enabled
+  external_writes: approval-controlled
+- id: spark-performance-agent
+  description: Analyzes logical and physical plans, shuffles, joins, skew, partitions, caching, serialization, and
+    resource use.
+  capabilities:
+  - performance
+  - query-plans
+  - spark-tuning
+  status: enabled
+  external_writes: approval-controlled
+- id: pipeline-reliability-agent
+  description: Designs idempotency, retries, checkpoints, restartability, replay, recovery, observability, and failure
+    handling.
+  capabilities:
+  - reliability
+  - recovery
+  - idempotency
+  status: enabled
+  external_writes: approval-controlled
+- id: data-observability-agent
+  description: Monitors pipeline runs, freshness, volume, schema, quality, lineage, cost, and anomaly signals.
+  capabilities:
+  - data-observability
+  - freshness
+  - monitoring
+  status: enabled
+  external_writes: approval-controlled
+- id: data-security-governance-agent
+  description: Enforces classification, minimization, masking, access, privacy, retention, deletion, and tenant
+    boundaries.
+  capabilities:
+  - data-security
+  - privacy
+  - governance
+  status: enabled
+  external_writes: approval-controlled
+- id: metadata-lineage-agent
+  description: Publishes approved metadata, ownership, documentation, schemas, quality, and runtime/design lineage.
+  capabilities:
+  - metadata
+  - openlineage
+  - catalog
+  status: enabled
+  external_writes: approval-controlled
+- id: data-platform-compatibility-agent
+  description: Resolves Spark, Python, JVM, connector, table-format, orchestrator, and managed-platform compatibility.
+  capabilities:
+  - compatibility
+  - versions
+  - platform
+  status: enabled
+  external_writes: approval-controlled
+- id: pipeline-release-agent
+  description: Prepares immutable candidates, CI/CD evidence, migration plans, runbooks, rollback, and release requests.
+  capabilities:
+  - release
+  - cicd
+  - deployment
+  status: enabled
+  external_writes: approval-controlled
+- id: data-incident-backfill-agent
+  description: Diagnoses data incidents and prepares safe repair, replay, reprocessing, and bounded backfill plans.
+  capabilities:
+  - incident
+  - backfill
+  - remediation
+  status: enabled
+  external_writes: approval-controlled
+- id: data-engineering-independent-reviewer-agent
+  description: Independently challenges design, correctness, quality, performance, security, recovery, and release
+    readiness.
+  capabilities:
+  - independent-review
+  - assurance
+  - quality
+  status: enabled
+  external_writes: approval-controlled
+- id: evidence-management-agent
+  description: Versions, redacts, hashes, stores, and links contracts, plans, test results, lineage, approvals,
+    and run evidence.
+  capabilities:
+  - evidence
+  - provenance
+  - retention
+  status: enabled
+  external_writes: approval-controlled
+- id: policy-enforcer-agent
+  description: Enforces project, data, environment, credential, execution, approval, production, and mutation boundaries.
+  capabilities:
+  - policy
+  - authorization
+  - guardrails
+  status: enabled
+  external_writes: approval-controlled

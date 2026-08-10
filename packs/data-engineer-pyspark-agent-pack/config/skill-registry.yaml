@@ -1,0 +1,2118 @@
+version: 1.0.0
+skill_count: 240
+skills:
+- id: review-assigned-jira-stories-defects-incidents-requests-and-platform-alerts
+  name: Review assigned Jira stories, defects, incidents, requests, and platform alerts
+  category: Work intake and prioritization
+  description: Perform review assigned jira stories, defects, incidents, requests, and platform alerts using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: identify-the-affected-data-product-domain-pipeline-dataset-consumer-and-owner
+  name: Identify the affected data product, domain, pipeline, dataset, consumer, and owner
+  category: Work intake and prioritization
+  description: Perform identify the affected data product, domain, pipeline, dataset, consumer, and owner using
+    scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval
+    and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: read-acceptance-criteria-business-rules-data-definitions-linked-designs-and-prior-decisions
+  name: Read acceptance criteria, business rules, data definitions, linked designs, and prior decisions
+  category: Work intake and prioritization
+  description: Perform read acceptance criteria, business rules, data definitions, linked designs, and prior decisions
+    using scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's
+    approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: confirm-target-repository-branch-environment-schedule-and-release-window
+  name: Confirm target repository, branch, environment, schedule, and release window
+  category: Work intake and prioritization
+  description: Perform confirm target repository, branch, environment, schedule, and release window using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: check-dependencies-on-source-teams-platform-teams-database-teams-and-downstream-consumers
+  name: Check dependencies on source teams, platform teams, database teams, and downstream consumers
+  category: Work intake and prioritization
+  description: Perform check dependencies on source teams, platform teams, database teams, and downstream consumers
+    using scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's
+    approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: classify-work-as-ingestion-transformation-streaming-quality-performance-migration-or-operations
+  name: Classify work as ingestion, transformation, streaming, quality, performance, migration, or operations
+  category: Work intake and prioritization
+  description: Perform classify work as ingestion, transformation, streaming, quality, performance, migration, or
+    operations using scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and
+    the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: assess-data-sensitivity-criticality-freshness-volume-and-blast-radius
+  name: Assess data sensitivity, criticality, freshness, volume, and blast radius
+  category: Work intake and prioritization
+  description: Perform assess data sensitivity, criticality, freshness, volume, and blast radius using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: identify-blocked-prerequisites-missing-access-missing-contracts-and-ambiguous-requirements
+  name: Identify blocked prerequisites, missing access, missing contracts, and ambiguous requirements
+  category: Work intake and prioritization
+  description: Perform identify blocked prerequisites, missing access, missing contracts, and ambiguous requirements
+    using scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's
+    approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: estimate-design-implementation-testing-backfill-and-operational-effort
+  name: Estimate design, implementation, testing, backfill, and operational effort
+  category: Work intake and prioritization
+  description: Perform estimate design, implementation, testing, backfill, and operational effort using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: prioritize-work-using-customer-impact-regulatory-risk-reliability-and-delivery-urgency
+  name: Prioritize work using customer impact, regulatory risk, reliability, and delivery urgency
+  category: Work intake and prioritization
+  description: Perform prioritize work using customer impact, regulatory risk, reliability, and delivery urgency
+    using scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's
+    approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: create-a-daily-execution-plan-with-evidence-and-approval-checkpoints
+  name: Create a daily execution plan with evidence and approval checkpoints
+  category: Work intake and prioritization
+  description: Perform create a daily execution plan with evidence and approval checkpoints using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: publish-an-approval-controlled-status-update-when-risks-or-dependencies-materially-change
+  name: Publish an approval-controlled status update when risks or dependencies materially change
+  category: Work intake and prioritization
+  description: Perform publish an approval-controlled status update when risks or dependencies materially change
+    using scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's
+    approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: define-the-data-product-purpose-users-decisions-and-measurable-outcomes
+  name: Define the data product purpose, users, decisions, and measurable outcomes
+  category: Data product and domain context
+  description: Perform define the data product purpose, users, decisions, and measurable outcomes using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: identify-accountable-data-owner-technical-owner-producer-steward-and-consumer-representatives
+  name: Identify accountable data owner, technical owner, producer, steward, and consumer representatives
+  category: Data product and domain context
+  description: Perform identify accountable data owner, technical owner, producer, steward, and consumer representatives
+    using scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's
+    approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: document-domain-terms-metrics-entities-keys-grain-and-business-semantics
+  name: Document domain terms, metrics, entities, keys, grain, and business semantics
+  category: Data product and domain context
+  description: Perform document domain terms, metrics, entities, keys, grain, and business semantics using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: map-upstream-sources-and-downstream-reports-apis-models-jobs-and-operational-processes
+  name: Map upstream sources and downstream reports, APIs, models, jobs, and operational processes
+  category: Data product and domain context
+  description: Perform map upstream sources and downstream reports, apis, models, jobs, and operational processes
+    using scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's
+    approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: define-freshness-availability-completeness-accuracy-and-retention-expectations
+  name: Define freshness, availability, completeness, accuracy, and retention expectations
+  category: Data product and domain context
+  description: Perform define freshness, availability, completeness, accuracy, and retention expectations using
+    scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval
+    and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: identify-historical-slowly-changing-snapshot-event-and-transactional-requirements
+  name: Identify historical, slowly changing, snapshot, event, and transactional requirements
+  category: Data product and domain context
+  description: Perform identify historical, slowly changing, snapshot, event, and transactional requirements using
+    scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval
+    and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: clarify-timezone-locale-currency-precision-and-calendar-semantics
+  name: Clarify timezone, locale, currency, precision, and calendar semantics
+  category: Data product and domain context
+  description: Perform clarify timezone, locale, currency, precision, and calendar semantics using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: identify-privacy-residency-consent-minimization-and-deletion-requirements
+  name: Identify privacy, residency, consent, minimization, and deletion requirements
+  category: Data product and domain context
+  description: Perform identify privacy, residency, consent, minimization, and deletion requirements using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: identify-audit-lineage-explainability-and-reconciliation-expectations
+  name: Identify audit, lineage, explainability, and reconciliation expectations
+  category: Data product and domain context
+  description: Perform identify audit, lineage, explainability, and reconciliation expectations using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: identify-replay-correction-restatement-and-late-arriving-data-requirements
+  name: Identify replay, correction, restatement, and late-arriving-data requirements
+  category: Data product and domain context
+  description: Perform identify replay, correction, restatement, and late-arriving-data requirements using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: capture-assumptions-evidence-gaps-open-questions-and-accountable-decisions
+  name: Capture assumptions, evidence gaps, open questions, and accountable decisions
+  category: Data product and domain context
+  description: Perform capture assumptions, evidence gaps, open questions, and accountable decisions using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: maintain-a-versioned-data-product-brief-linked-to-implementation-and-operations
+  name: Maintain a versioned data product brief linked to implementation and operations
+  category: Data product and domain context
+  description: Perform maintain a versioned data product brief linked to implementation and operations using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: inventory-source-systems-interfaces-owners-environments-and-extraction-methods
+  name: Inventory source systems, interfaces, owners, environments, and extraction methods
+  category: Source discovery and contracts
+  description: Perform inventory source systems, interfaces, owners, environments, and extraction methods using
+    scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval
+    and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: profile-source-schemas-keys-nullability-cardinality-distributions-and-sample-quality
+  name: Profile source schemas, keys, nullability, cardinality, distributions, and sample quality
+  category: Source discovery and contracts
+  description: Perform profile source schemas, keys, nullability, cardinality, distributions, and sample quality
+    using scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's
+    approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: measure-source-volume-change-rate-latency-retention-and-peak-behavior
+  name: Measure source volume, change rate, latency, retention, and peak behavior
+  category: Source discovery and contracts
+  description: Perform measure source volume, change rate, latency, retention, and peak behavior using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: identify-inserts-updates-deletes-corrections-duplicates-and-out-of-order-records
+  name: Identify inserts, updates, deletes, corrections, duplicates, and out-of-order records
+  category: Source discovery and contracts
+  description: Perform identify inserts, updates, deletes, corrections, duplicates, and out-of-order records using
+    scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval
+    and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: identify-source-time-semantics-sequence-fields-transaction-boundaries-and-watermarks
+  name: Identify source time semantics, sequence fields, transaction boundaries, and watermarks
+  category: Source discovery and contracts
+  description: Perform identify source time semantics, sequence fields, transaction boundaries, and watermarks using
+    scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval
+    and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: confirm-source-authentication-network-rate-limits-quotas-and-maintenance-windows
+  name: Confirm source authentication, network, rate limits, quotas, and maintenance windows
+  category: Source discovery and contracts
+  description: Perform confirm source authentication, network, rate limits, quotas, and maintenance windows using
+    scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval
+    and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: define-schema-semantic-quality-freshness-ownership-and-compatibility-contracts
+  name: Define schema, semantic, quality, freshness, ownership, and compatibility contracts
+  category: Source discovery and contracts
+  description: Perform define schema, semantic, quality, freshness, ownership, and compatibility contracts using
+    scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval
+    and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: validate-contract-examples-against-approved-bounded-source-evidence
+  name: Validate contract examples against approved bounded source evidence
+  category: Source discovery and contracts
+  description: Perform validate contract examples against approved bounded source evidence using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: identify-undocumented-fields-overloaded-values-sentinel-values-and-code-mappings
+  name: Identify undocumented fields, overloaded values, sentinel values, and code mappings
+  category: Source discovery and contracts
+  description: Perform identify undocumented fields, overloaded values, sentinel values, and code mappings using
+    scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval
+    and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: plan-producer-notification-and-compatibility-checks-for-contract-changes
+  name: Plan producer notification and compatibility checks for contract changes
+  category: Source discovery and contracts
+  description: Perform plan producer notification and compatibility checks for contract changes using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: record-source-limitations-and-fallback-or-reconciliation-strategies
+  name: Record source limitations and fallback or reconciliation strategies
+  category: Source discovery and contracts
+  description: Perform record source limitations and fallback or reconciliation strategies using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: publish-contracts-only-after-producer-and-consumer-approval
+  name: Publish contracts only after producer and consumer approval
+  category: Source discovery and contracts
+  description: Perform publish contracts only after producer and consumer approval using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: design-batch-streaming-or-hybrid-processing-boundaries-from-latency-and-consistency-needs
+  name: Design batch, streaming, or hybrid processing boundaries from latency and consistency needs
+  category: Data architecture and modeling
+  description: Perform design batch, streaming, or hybrid processing boundaries from latency and consistency needs
+    using scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's
+    approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: define-domain-lake-lakehouse-warehouse-mart-and-serving-responsibilities
+  name: Define domain, lake, lakehouse, warehouse, mart, and serving responsibilities
+  category: Data architecture and modeling
+  description: Perform define domain, lake, lakehouse, warehouse, mart, and serving responsibilities using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: design-bronze-silver-gold-raw-curated-or-organization-approved-data-layers
+  name: Design bronze, silver, gold, raw, curated, or organization-approved data layers
+  category: Data architecture and modeling
+  description: Perform design bronze, silver, gold, raw, curated, or organization-approved data layers using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: define-logical-entities-relationships-grain-keys-and-history-requirements
+  name: Define logical entities, relationships, grain, keys, and history requirements
+  category: Data architecture and modeling
+  description: Perform define logical entities, relationships, grain, keys, and history requirements using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: design-facts-dimensions-snapshots-aggregates-bridges-and-slowly-changing-dimensions
+  name: Design facts, dimensions, snapshots, aggregates, bridges, and slowly changing dimensions
+  category: Data architecture and modeling
+  description: Perform design facts, dimensions, snapshots, aggregates, bridges, and slowly changing dimensions
+    using scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's
+    approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: define-physical-schemas-types-nullability-defaults-constraints-and-metadata
+  name: Define physical schemas, types, nullability, defaults, constraints, and metadata
+  category: Data architecture and modeling
+  description: Perform define physical schemas, types, nullability, defaults, constraints, and metadata using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: design-partitioning-clustering-bucketing-ordering-and-file-size-strategy
+  name: Design partitioning, clustering, bucketing, ordering, and file-size strategy
+  category: Data architecture and modeling
+  description: Perform design partitioning, clustering, bucketing, ordering, and file-size strategy using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: define-table-format-catalog-namespace-ownership-and-retention-strategy
+  name: Define table format, catalog, namespace, ownership, and retention strategy
+  category: Data architecture and modeling
+  description: Perform define table format, catalog, namespace, ownership, and retention strategy using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: design-idempotency-deduplication-replay-correction-and-restatement-behavior
+  name: Design idempotency, deduplication, replay, correction, and restatement behavior
+  category: Data architecture and modeling
+  description: Perform design idempotency, deduplication, replay, correction, and restatement behavior using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: design-access-patterns-for-bi-apis-notebooks-ml-and-operational-consumers
+  name: Design access patterns for BI, APIs, notebooks, ML, and operational consumers
+  category: Data architecture and modeling
+  description: Perform design access patterns for bi, apis, notebooks, ml, and operational consumers using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: compare-architecture-options-for-cost-complexity-reliability-portability-and-governance
+  name: Compare architecture options for cost, complexity, reliability, portability, and governance
+  category: Data architecture and modeling
+  description: Perform compare architecture options for cost, complexity, reliability, portability, and governance
+    using scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's
+    approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: create-architecture-decisions-and-migration-boundaries-with-independent-review
+  name: Create architecture decisions and migration boundaries with independent review
+  category: Data architecture and modeling
+  description: Perform create architecture decisions and migration boundaries with independent review using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: create-repository-compatible-sparksession-and-configuration-boundaries
+  name: Create repository-compatible SparkSession and configuration boundaries
+  category: PySpark batch development
+  description: Perform create repository-compatible sparksession and configuration boundaries using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: implement-dataframe-and-spark-sql-reads-using-explicit-schemas-where-appropriate
+  name: Implement DataFrame and Spark SQL reads using explicit schemas where appropriate
+  category: PySpark batch development
+  description: Perform implement dataframe and spark sql reads using explicit schemas where appropriate using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: normalize-columns-types-timestamps-identifiers-and-missing-values
+  name: Normalize columns, types, timestamps, identifiers, and missing values
+  category: PySpark batch development
+  description: Perform normalize columns, types, timestamps, identifiers, and missing values using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: implement-reusable-deterministic-transformations-without-hidden-side-effects
+  name: Implement reusable deterministic transformations without hidden side effects
+  category: PySpark batch development
+  description: Perform implement reusable deterministic transformations without hidden side effects using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: prefer-built-in-spark-sql-functions-over-unnecessary-python-udfs
+  name: Prefer built-in Spark SQL functions over unnecessary Python UDFs
+  category: PySpark batch development
+  description: Perform prefer built-in spark sql functions over unnecessary python udfs using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: implement-joins-with-explicit-keys-cardinality-assumptions-and-duplicate-controls
+  name: Implement joins with explicit keys, cardinality assumptions, and duplicate controls
+  category: PySpark batch development
+  description: Perform implement joins with explicit keys, cardinality assumptions, and duplicate controls using
+    scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval
+    and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: implement-aggregations-with-correct-grain-null-precision-and-rounding-behavior
+  name: Implement aggregations with correct grain, null, precision, and rounding behavior
+  category: PySpark batch development
+  description: Perform implement aggregations with correct grain, null, precision, and rounding behavior using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: implement-window-functions-with-deterministic-partition-and-ordering-rules
+  name: Implement window functions with deterministic partition and ordering rules
+  category: PySpark batch development
+  description: Perform implement window functions with deterministic partition and ordering rules using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: write-outputs-using-safe-modes-partitioning-table-semantics-and-atomic-patterns
+  name: Write outputs using safe modes, partitioning, table semantics, and atomic patterns
+  category: PySpark batch development
+  description: Perform write outputs using safe modes, partitioning, table semantics, and atomic patterns using
+    scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval
+    and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: add-metrics-for-input-output-rejected-duplicate-and-transformed-records
+  name: Add metrics for input, output, rejected, duplicate, and transformed records
+  category: PySpark batch development
+  description: Perform add metrics for input, output, rejected, duplicate, and transformed records using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: handle-empty-inputs-malformed-files-partial-partitions-and-retry-behavior
+  name: Handle empty inputs, malformed files, partial partitions, and retry behavior
+  category: PySpark batch development
+  description: Perform handle empty inputs, malformed files, partial partitions, and retry behavior using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: refactor-code-into-testable-modules-consistent-with-repository-conventions
+  name: Refactor code into testable modules consistent with repository conventions
+  category: PySpark batch development
+  description: Perform refactor code into testable modules consistent with repository conventions using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: choose-streaming-sources-sinks-triggers-output-modes-and-processing-guarantees
+  name: Choose streaming sources, sinks, triggers, output modes, and processing guarantees
+  category: Structured Streaming engineering
+  description: Perform choose streaming sources, sinks, triggers, output modes, and processing guarantees using
+    scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval
+    and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: define-event-time-processing-time-ingestion-time-and-timezone-behavior
+  name: Define event time, processing time, ingestion time, and timezone behavior
+  category: Structured Streaming engineering
+  description: Perform define event time, processing time, ingestion time, and timezone behavior using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: design-watermarks-based-on-observed-lateness-and-business-tolerance
+  name: Design watermarks based on observed lateness and business tolerance
+  category: Structured Streaming engineering
+  description: Perform design watermarks based on observed lateness and business tolerance using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: design-deduplication-with-stable-keys-and-bounded-state
+  name: Design deduplication with stable keys and bounded state
+  category: Structured Streaming engineering
+  description: Perform design deduplication with stable keys and bounded state using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: design-stream-static-and-stream-stream-joins-with-explicit-time-constraints
+  name: Design stream-static and stream-stream joins with explicit time constraints
+  category: Structured Streaming engineering
+  description: Perform design stream-static and stream-stream joins with explicit time constraints using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: design-stateful-aggregations-and-monitor-state-growth
+  name: Design stateful aggregations and monitor state growth
+  category: Structured Streaming engineering
+  description: Perform design stateful aggregations and monitor state growth using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: configure-checkpoints-with-stable-ownership-and-compatible-lifecycle
+  name: Configure checkpoints with stable ownership and compatible lifecycle
+  category: Structured Streaming engineering
+  description: Perform configure checkpoints with stable ownership and compatible lifecycle using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: handle-schema-changes-malformed-events-poison-records-and-dead-letter-paths
+  name: Handle schema changes, malformed events, poison records, and dead-letter paths
+  category: Structured Streaming engineering
+  description: Perform handle schema changes, malformed events, poison records, and dead-letter paths using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: plan-replay-from-source-offsets-without-duplicate-side-effects
+  name: Plan replay from source offsets without duplicate side effects
+  category: Structured Streaming engineering
+  description: Perform plan replay from source offsets without duplicate side effects using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: monitor-input-rate-processing-rate-batch-duration-lag-state-and-sink-health
+  name: Monitor input rate, processing rate, batch duration, lag, state, and sink health
+  category: Structured Streaming engineering
+  description: Perform monitor input rate, processing rate, batch duration, lag, state, and sink health using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: test-restart-failure-late-data-duplicate-data-and-sink-unavailability
+  name: Test restart, failure, late data, duplicate data, and sink unavailability
+  category: Structured Streaming engineering
+  description: Perform test restart, failure, late data, duplicate data, and sink unavailability using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: block-checkpoint-deletion-or-incompatible-restart-without-approved-recovery-planning
+  name: Block checkpoint deletion or incompatible restart without approved recovery planning
+  category: Structured Streaming engineering
+  description: Perform block checkpoint deletion or incompatible restart without approved recovery planning using
+    scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval
+    and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: design-full-incremental-snapshot-log-based-and-api-based-ingestion-patterns
+  name: Design full, incremental, snapshot, log-based, and API-based ingestion patterns
+  category: Ingestion and CDC
+  description: Perform design full, incremental, snapshot, log-based, and api-based ingestion patterns using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: define-primary-keys-sequence-columns-operation-codes-and-ordering-semantics
+  name: Define primary keys, sequence columns, operation codes, and ordering semantics
+  category: Ingestion and CDC
+  description: Perform define primary keys, sequence columns, operation codes, and ordering semantics using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: handle-inserts-updates-deletes-tombstones-and-source-corrections
+  name: Handle inserts, updates, deletes, tombstones, and source corrections
+  category: Ingestion and CDC
+  description: Perform handle inserts, updates, deletes, tombstones, and source corrections using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: deduplicate-repeated-events-and-retries-using-deterministic-identity
+  name: Deduplicate repeated events and retries using deterministic identity
+  category: Ingestion and CDC
+  description: Perform deduplicate repeated events and retries using deterministic identity using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: handle-out-of-order-changes-and-late-arriving-updates
+  name: Handle out-of-order changes and late-arriving updates
+  category: Ingestion and CDC
+  description: Perform handle out-of-order changes and late-arriving updates using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: design-initial-snapshot-plus-ongoing-change-synchronization
+  name: Design initial snapshot plus ongoing change synchronization
+  category: Ingestion and CDC
+  description: Perform design initial snapshot plus ongoing change synchronization using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: validate-source-and-target-counts-keys-totals-and-change-windows
+  name: Validate source and target counts, keys, totals, and change windows
+  category: Ingestion and CDC
+  description: Perform validate source and target counts, keys, totals, and change windows using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: design-quarantine-for-invalid-unparseable-or-contract-breaking-records
+  name: Design quarantine for invalid, unparseable, or contract-breaking records
+  category: Ingestion and CDC
+  description: Perform design quarantine for invalid, unparseable, or contract-breaking records using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: plan-source-throttling-pagination-cursor-retry-and-backoff-behavior
+  name: Plan source throttling, pagination, cursor, retry, and backoff behavior
+  category: Ingestion and CDC
+  description: Perform plan source throttling, pagination, cursor, retry, and backoff behavior using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: protect-sources-from-unbounded-extraction-and-excessive-query-load
+  name: Protect sources from unbounded extraction and excessive query load
+  category: Ingestion and CDC
+  description: Perform protect sources from unbounded extraction and excessive query load using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: document-replay-and-re-snapshot-conditions-with-consumer-impact
+  name: Document replay and re-snapshot conditions with consumer impact
+  category: Ingestion and CDC
+  description: Perform document replay and re-snapshot conditions with consumer impact using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: create-cdc-runbooks-and-approved-recovery-procedures
+  name: Create CDC runbooks and approved recovery procedures
+  category: Ingestion and CDC
+  description: Perform create cdc runbooks and approved recovery procedures using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: translate-approved-business-rules-into-explicit-transformation-logic
+  name: Translate approved business rules into explicit transformation logic
+  category: Transformations and business rules
+  description: Perform translate approved business rules into explicit transformation logic using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: maintain-source-to-target-field-mappings-with-versioned-evidence
+  name: Maintain source-to-target field mappings with versioned evidence
+  category: Transformations and business rules
+  description: Perform maintain source-to-target field mappings with versioned evidence using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: implement-code-category-status-and-reference-data-mappings
+  name: Implement code, category, status, and reference-data mappings
+  category: Transformations and business rules
+  description: Perform implement code, category, status, and reference-data mappings using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: implement-temporal-joins-and-effective-dated-logic-correctly
+  name: Implement temporal joins and effective-dated logic correctly
+  category: Transformations and business rules
+  description: Perform implement temporal joins and effective-dated logic correctly using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: implement-slowly-changing-dimension-behavior-and-history-preservation
+  name: Implement slowly changing dimension behavior and history preservation
+  category: Transformations and business rules
+  description: Perform implement slowly changing dimension behavior and history preservation using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: implement-currency-unit-precision-and-timezone-conversions
+  name: Implement currency, unit, precision, and timezone conversions
+  category: Transformations and business rules
+  description: Perform implement currency, unit, precision, and timezone conversions using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: implement-hierarchy-parent-child-and-recursive-relationship-handling
+  name: Implement hierarchy, parent-child, and recursive relationship handling
+  category: Transformations and business rules
+  description: Perform implement hierarchy, parent-child, and recursive relationship handling using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: implement-data-standardization-normalization-and-canonical-identifiers
+  name: Implement data standardization, normalization, and canonical identifiers
+  category: Transformations and business rules
+  description: Perform implement data standardization, normalization, and canonical identifiers using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: handle-null-unknown-not-applicable-redacted-and-deleted-states-distinctly
+  name: Handle null, unknown, not-applicable, redacted, and deleted states distinctly
+  category: Transformations and business rules
+  description: Perform handle null, unknown, not-applicable, redacted, and deleted states distinctly using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: add-rule-level-metrics-and-rejected-record-evidence
+  name: Add rule-level metrics and rejected-record evidence
+  category: Transformations and business rules
+  description: Perform add rule-level metrics and rejected-record evidence using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: validate-transformations-against-examples-and-historical-edge-cases
+  name: Validate transformations against examples and historical edge cases
+  category: Transformations and business rules
+  description: Perform validate transformations against examples and historical edge cases using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: keep-business-rules-separate-from-orchestration-and-platform-specific-concerns
+  name: Keep business rules separate from orchestration and platform-specific concerns
+  category: Transformations and business rules
+  description: Perform keep business rules separate from orchestration and platform-specific concerns using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: select-delta-lake-apache-iceberg-or-approved-native-formats-based-on-platform-constraints
+  name: Select Delta Lake, Apache Iceberg, or approved native formats based on platform constraints
+  category: Lakehouse and table formats
+  description: Perform select delta lake, apache iceberg, or approved native formats based on platform constraints
+    using scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's
+    approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: define-catalog-namespace-table-ownership-and-access-boundaries
+  name: Define catalog, namespace, table ownership, and access boundaries
+  category: Lakehouse and table formats
+  description: Perform define catalog, namespace, table ownership, and access boundaries using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: design-schema-evolution-and-compatibility-rules-for-tables-and-consumers
+  name: Design schema evolution and compatibility rules for tables and consumers
+  category: Lakehouse and table formats
+  description: Perform design schema evolution and compatibility rules for tables and consumers using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: design-partitioning-and-clustering-based-on-actual-query-and-write-patterns
+  name: Design partitioning and clustering based on actual query and write patterns
+  category: Lakehouse and table formats
+  description: Perform design partitioning and clustering based on actual query and write patterns using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: monitor-file-counts-file-sizes-metadata-growth-and-manifest-behavior
+  name: Monitor file counts, file sizes, metadata growth, and manifest behavior
+  category: Lakehouse and table formats
+  description: Perform monitor file counts, file sizes, metadata growth, and manifest behavior using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: plan-compaction-optimization-vacuum-snapshot-expiration-and-retention-safely
+  name: Plan compaction, optimization, vacuum, snapshot expiration, and retention safely
+  category: Lakehouse and table formats
+  description: Perform plan compaction, optimization, vacuum, snapshot expiration, and retention safely using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: use-table-snapshots-or-versions-for-reproducibility-and-recovery-where-supported
+  name: Use table snapshots or versions for reproducibility and recovery where supported
+  category: Lakehouse and table formats
+  description: Perform use table snapshots or versions for reproducibility and recovery where supported using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: design-merge-upsert-delete-and-overwrite-behavior-with-bounded-scope
+  name: Design merge, upsert, delete, and overwrite behavior with bounded scope
+  category: Lakehouse and table formats
+  description: Perform design merge, upsert, delete, and overwrite behavior with bounded scope using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: validate-concurrency-and-isolation-behavior-for-writers-and-readers
+  name: Validate concurrency and isolation behavior for writers and readers
+  category: Lakehouse and table formats
+  description: Perform validate concurrency and isolation behavior for writers and readers using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: coordinate-table-maintenance-with-streaming-checkpoints-and-consumers
+  name: Coordinate table maintenance with streaming checkpoints and consumers
+  category: Lakehouse and table formats
+  description: Perform coordinate table maintenance with streaming checkpoints and consumers using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: prevent-destructive-cleanup-beyond-approved-retention-and-recovery-windows
+  name: Prevent destructive cleanup beyond approved retention and recovery windows
+  category: Lakehouse and table formats
+  description: Perform prevent destructive cleanup beyond approved retention and recovery windows using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: document-engine-and-connector-compatibility-for-each-table-format
+  name: Document engine and connector compatibility for each table format
+  category: Lakehouse and table formats
+  description: Perform document engine and connector compatibility for each table format using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: define-quality-dimensions-rules-thresholds-severity-and-accountable-owners
+  name: Define quality dimensions, rules, thresholds, severity, and accountable owners
+  category: Data quality and reconciliation
+  description: Perform define quality dimensions, rules, thresholds, severity, and accountable owners using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: validate-required-fields-types-ranges-formats-and-enumerations
+  name: Validate required fields, types, ranges, formats, and enumerations
+  category: Data quality and reconciliation
+  description: Perform validate required fields, types, ranges, formats, and enumerations using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: validate-uniqueness-referential-integrity-relationship-and-temporal-rules
+  name: Validate uniqueness, referential integrity, relationship, and temporal rules
+  category: Data quality and reconciliation
+  description: Perform validate uniqueness, referential integrity, relationship, and temporal rules using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: validate-freshness-completeness-volume-distribution-and-anomaly-thresholds
+  name: Validate freshness, completeness, volume, distribution, and anomaly thresholds
+  category: Data quality and reconciliation
+  description: Perform validate freshness, completeness, volume, distribution, and anomaly thresholds using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: validate-business-totals-balances-aggregates-and-cross-dataset-consistency
+  name: Validate business totals, balances, aggregates, and cross-dataset consistency
+  category: Data quality and reconciliation
+  description: Perform validate business totals, balances, aggregates, and cross-dataset consistency using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: choose-warn-quarantine-drop-or-fail-behavior-based-on-approved-policy
+  name: Choose warn, quarantine, drop, or fail behavior based on approved policy
+  category: Data quality and reconciliation
+  description: Perform choose warn, quarantine, drop, or fail behavior based on approved policy using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: capture-invalid-counts-and-redacted-examples-without-exposing-sensitive-values
+  name: Capture invalid counts and redacted examples without exposing sensitive values
+  category: Data quality and reconciliation
+  description: Perform capture invalid counts and redacted examples without exposing sensitive values using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: reconcile-source-and-target-counts-keys-totals-and-hashes
+  name: Reconcile source and target counts, keys, totals, and hashes
+  category: Data quality and reconciliation
+  description: Perform reconcile source and target counts, keys, totals, and hashes using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: trend-rule-failures-and-distinguish-source-issues-from-pipeline-defects
+  name: Trend rule failures and distinguish source issues from pipeline defects
+  category: Data quality and reconciliation
+  description: Perform trend rule failures and distinguish source issues from pipeline defects using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: route-issues-to-producer-pipeline-platform-or-consumer-owners
+  name: Route issues to producer, pipeline, platform, or consumer owners
+  category: Data quality and reconciliation
+  description: Perform route issues to producer, pipeline, platform, or consumer owners using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: retest-corrected-data-and-preserve-before-and-after-evidence
+  name: Retest corrected data and preserve before-and-after evidence
+  category: Data quality and reconciliation
+  description: Perform retest corrected data and preserve before-and-after evidence using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: block-release-when-critical-quality-or-reconciliation-evidence-is-unresolved
+  name: Block release when critical quality or reconciliation evidence is unresolved
+  category: Data quality and reconciliation
+  description: Perform block release when critical quality or reconciliation evidence is unresolved using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: detect-schema-drift-between-source-contract-registry-code-and-target
+  name: Detect schema drift between source, contract, registry, code, and target
+  category: Schema evolution and compatibility
+  description: Perform detect schema drift between source, contract, registry, code, and target using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: classify-additive-compatible-conditionally-compatible-and-breaking-changes
+  name: Classify additive, compatible, conditionally compatible, and breaking changes
+  category: Schema evolution and compatibility
+  description: Perform classify additive, compatible, conditionally compatible, and breaking changes using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: assess-column-additions-removals-renames-reorderings-and-type-changes
+  name: Assess column additions, removals, renames, reorderings, and type changes
+  category: Schema evolution and compatibility
+  description: Perform assess column additions, removals, renames, reorderings, and type changes using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: assess-nullability-default-precision-scale-and-timestamp-changes
+  name: Assess nullability, default, precision, scale, and timestamp changes
+  category: Schema evolution and compatibility
+  description: Perform assess nullability, default, precision, scale, and timestamp changes using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: assess-nested-array-map-union-and-event-envelope-changes
+  name: Assess nested, array, map, union, and event-envelope changes
+  category: Schema evolution and compatibility
+  description: Perform assess nested, array, map, union, and event-envelope changes using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: identify-affected-jobs-tables-dashboards-apis-models-and-consumers
+  name: Identify affected jobs, tables, dashboards, APIs, models, and consumers
+  category: Schema evolution and compatibility
+  description: Perform identify affected jobs, tables, dashboards, apis, models, and consumers using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: design-dual-read-dual-write-translation-or-compatibility-layers-when-needed
+  name: Design dual-read, dual-write, translation, or compatibility layers when needed
+  category: Schema evolution and compatibility
+  description: Perform design dual-read, dual-write, translation, or compatibility layers when needed using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: define-migration-deprecation-communication-and-retirement-windows
+  name: Define migration, deprecation, communication, and retirement windows
+  category: Schema evolution and compatibility
+  description: Perform define migration, deprecation, communication, and retirement windows using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: validate-old-and-new-schemas-against-representative-fixtures
+  name: Validate old and new schemas against representative fixtures
+  category: Schema evolution and compatibility
+  description: Perform validate old and new schemas against representative fixtures using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: update-contracts-registry-entries-documentation-and-lineage
+  name: Update contracts, registry entries, documentation, and lineage
+  category: Schema evolution and compatibility
+  description: Perform update contracts, registry entries, documentation, and lineage using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: prevent-silent-permissive-parsing-that-hides-breaking-changes
+  name: Prevent silent permissive parsing that hides breaking changes
+  category: Schema evolution and compatibility
+  description: Perform prevent silent permissive parsing that hides breaking changes using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: require-producer-and-consumer-approval-for-breaking-changes
+  name: Require producer and consumer approval for breaking changes
+  category: Schema evolution and compatibility
+  description: Perform require producer and consumer approval for breaking changes using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: design-dags-with-clear-task-boundaries-dependencies-and-ownership
+  name: Design DAGs with clear task boundaries, dependencies, and ownership
+  category: Orchestration and scheduling
+  description: Perform design dags with clear task boundaries, dependencies, and ownership using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: use-data-aware-dependencies-or-approved-dataset-triggers-where-appropriate
+  name: Use data-aware dependencies or approved dataset triggers where appropriate
+  category: Orchestration and scheduling
+  description: Perform use data-aware dependencies or approved dataset triggers where appropriate using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: define-schedules-calendars-timezones-catchup-and-business-day-behavior
+  name: Define schedules, calendars, timezones, catchup, and business-day behavior
+  category: Orchestration and scheduling
+  description: Perform define schedules, calendars, timezones, catchup, and business-day behavior using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: define-retries-backoff-timeouts-pools-queues-and-concurrency-limits
+  name: Define retries, backoff, timeouts, pools, queues, and concurrency limits
+  category: Orchestration and scheduling
+  description: Perform define retries, backoff, timeouts, pools, queues, and concurrency limits using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: design-tasks-to-be-idempotent-and-safe-to-retry
+  name: Design tasks to be idempotent and safe to retry
+  category: Orchestration and scheduling
+  description: Perform design tasks to be idempotent and safe to retry using scoped evidence, version-aware PySpark
+    and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: design-parameterized-partition-and-date-range-execution
+  name: Design parameterized partition and date-range execution
+  category: Orchestration and scheduling
+  description: Perform design parameterized partition and date-range execution using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: validate-dag-parsing-cycles-unreachable-tasks-and-dependency-correctness
+  name: Validate DAG parsing, cycles, unreachable tasks, and dependency correctness
+  category: Orchestration and scheduling
+  description: Perform validate dag parsing, cycles, unreachable tasks, and dependency correctness using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: define-sla-freshness-deadline-and-failure-notification-behavior
+  name: Define SLA, freshness, deadline, and failure-notification behavior
+  category: Orchestration and scheduling
+  description: Perform define sla, freshness, deadline, and failure-notification behavior using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: design-bounded-backfills-that-do-not-overload-sources-or-shared-platforms
+  name: Design bounded backfills that do not overload sources or shared platforms
+  category: Orchestration and scheduling
+  description: Perform design bounded backfills that do not overload sources or shared platforms using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: define-pause-resume-clear-rerun-and-recovery-procedures
+  name: Define pause, resume, clear, rerun, and recovery procedures
+  category: Orchestration and scheduling
+  description: Perform define pause, resume, clear, rerun, and recovery procedures using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: separate-orchestration-metadata-from-business-transformation-logic
+  name: Separate orchestration metadata from business transformation logic
+  category: Orchestration and scheduling
+  description: Perform separate orchestration metadata from business transformation logic using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: publish-schedule-or-production-action-changes-only-with-approval
+  name: Publish schedule or production action changes only with approval
+  category: Orchestration and scheduling
+  description: Perform publish schedule or production action changes only with approval using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: create-deterministic-unit-tests-for-transformation-functions
+  name: Create deterministic unit tests for transformation functions
+  category: Testing and validation
+  description: Perform create deterministic unit tests for transformation functions using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: create-spark-dataframe-comparison-tests-with-explicit-schemas-and-ordering-rules
+  name: Create Spark DataFrame comparison tests with explicit schemas and ordering rules
+  category: Testing and validation
+  description: Perform create spark dataframe comparison tests with explicit schemas and ordering rules using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: create-contract-and-schema-compatibility-tests
+  name: Create contract and schema compatibility tests
+  category: Testing and validation
+  description: Perform create contract and schema compatibility tests using scoped evidence, version-aware PySpark
+    and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: create-source-and-sink-integration-tests-in-isolated-environments
+  name: Create source and sink integration tests in isolated environments
+  category: Testing and validation
+  description: Perform create source and sink integration tests in isolated environments using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: create-batch-partition-empty-input-duplicate-invalid-and-late-data-tests
+  name: Create batch partition, empty input, duplicate, invalid, and late-data tests
+  category: Testing and validation
+  description: Perform create batch partition, empty input, duplicate, invalid, and late-data tests using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: create-streaming-watermark-restart-state-checkpoint-and-replay-tests
+  name: Create streaming watermark, restart, state, checkpoint, and replay tests
+  category: Testing and validation
+  description: Perform create streaming watermark, restart, state, checkpoint, and replay tests using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: create-data-quality-and-reconciliation-tests-with-known-outcomes
+  name: Create data quality and reconciliation tests with known outcomes
+  category: Testing and validation
+  description: Perform create data quality and reconciliation tests with known outcomes using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: create-orchestration-dag-validation-and-task-idempotency-tests
+  name: Create orchestration DAG validation and task-idempotency tests
+  category: Testing and validation
+  description: Perform create orchestration dag validation and task-idempotency tests using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: create-scale-skew-large-file-small-file-and-resource-limit-tests
+  name: Create scale, skew, large-file, small-file, and resource-limit tests
+  category: Testing and validation
+  description: Perform create scale, skew, large-file, small-file, and resource-limit tests using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: create-security-masking-access-retention-and-deletion-tests
+  name: Create security, masking, access, retention, and deletion tests
+  category: Testing and validation
+  description: Perform create security, masking, access, retention, and deletion tests using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: create-regression-tests-from-escaped-data-defects-and-incidents
+  name: Create regression tests from escaped data defects and incidents
+  category: Testing and validation
+  description: Perform create regression tests from escaped data defects and incidents using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: bind-all-test-evidence-to-exact-code-configuration-contract-and-platform-versions
+  name: Bind all test evidence to exact code, configuration, contract, and platform versions
+  category: Testing and validation
+  description: Perform bind all test evidence to exact code, configuration, contract, and platform versions using
+    scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval
+    and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: review-spark-ui-event-logs-sql-plans-stages-tasks-and-executor-metrics
+  name: Review Spark UI, event logs, SQL plans, stages, tasks, and executor metrics
+  category: Spark performance and cost optimization
+  description: Perform review spark ui, event logs, sql plans, stages, tasks, and executor metrics using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: identify-full-scans-missing-filters-excessive-columns-and-inefficient-file-reads
+  name: Identify full scans, missing filters, excessive columns, and inefficient file reads
+  category: Spark performance and cost optimization
+  description: Perform identify full scans, missing filters, excessive columns, and inefficient file reads using
+    scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval
+    and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: identify-unnecessary-shuffles-exchanges-sorts-repartitions-and-coalesces
+  name: Identify unnecessary shuffles, exchanges, sorts, repartitions, and coalesces
+  category: Spark performance and cost optimization
+  description: Perform identify unnecessary shuffles, exchanges, sorts, repartitions, and coalesces using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: analyze-join-cardinality-strategy-broadcast-size-and-skew
+  name: Analyze join cardinality, strategy, broadcast size, and skew
+  category: Spark performance and cost optimization
+  description: Perform analyze join cardinality, strategy, broadcast size, and skew using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: analyze-partition-sizes-task-duration-spill-memory-gc-and-serialization
+  name: Analyze partition sizes, task duration, spill, memory, GC, and serialization
+  category: Spark performance and cost optimization
+  description: Perform analyze partition sizes, task duration, spill, memory, gc, and serialization using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: use-adaptive-query-execution-and-optimizer-features-only-when-supported-and-tested
+  name: Use adaptive query execution and optimizer features only when supported and tested
+  category: Spark performance and cost optimization
+  description: Perform use adaptive query execution and optimizer features only when supported and tested using
+    scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval
+    and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: reduce-python-serialization-and-udf-overhead-with-built-in-expressions-where-feasible
+  name: Reduce Python serialization and UDF overhead with built-in expressions where feasible
+  category: Spark performance and cost optimization
+  description: Perform reduce python serialization and udf overhead with built-in expressions where feasible using
+    scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval
+    and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: use-caching-only-with-evidence-lifecycle-control-and-memory-impact-analysis
+  name: Use caching only with evidence, lifecycle control, and memory impact analysis
+  category: Spark performance and cost optimization
+  description: Perform use caching only with evidence, lifecycle control, and memory impact analysis using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: optimize-file-sizes-partition-pruning-clustering-and-table-maintenance
+  name: Optimize file sizes, partition pruning, clustering, and table maintenance
+  category: Spark performance and cost optimization
+  description: Perform optimize file sizes, partition pruning, clustering, and table maintenance using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: right-size-executors-cores-memory-parallelism-and-dynamic-allocation-using-measured-evidence
+  name: Right-size executors, cores, memory, parallelism, and dynamic allocation using measured evidence
+  category: Spark performance and cost optimization
+  description: Perform right-size executors, cores, memory, parallelism, and dynamic allocation using measured evidence
+    using scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's
+    approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: compare-runtime-resource-use-cost-and-correctness-before-and-after-changes
+  name: Compare runtime, resource use, cost, and correctness before and after changes
+  category: Spark performance and cost optimization
+  description: Perform compare runtime, resource use, cost, and correctness before and after changes using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: avoid-configuration-changes-that-hide-data-skew-or-correctness-problems
+  name: Avoid configuration changes that hide data skew or correctness problems
+  category: Spark performance and cost optimization
+  description: Perform avoid configuration changes that hide data skew or correctness problems using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: instrument-each-pipeline-with-run-partition-source-target-and-code-version-identity
+  name: Instrument each pipeline with run, partition, source, target, and code-version identity
+  category: Reliability and observability
+  description: Perform instrument each pipeline with run, partition, source, target, and code-version identity using
+    scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval
+    and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: emit-input-output-rejected-duplicate-latency-freshness-and-quality-metrics
+  name: Emit input, output, rejected, duplicate, latency, freshness, and quality metrics
+  category: Reliability and observability
+  description: Perform emit input, output, rejected, duplicate, latency, freshness, and quality metrics using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: capture-structured-errors-with-safe-context-and-correlation-identifiers
+  name: Capture structured errors with safe context and correlation identifiers
+  category: Reliability and observability
+  description: Perform capture structured errors with safe context and correlation identifiers using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: monitor-source-availability-sink-health-cluster-capacity-and-orchestrator-health
+  name: Monitor source availability, sink health, cluster capacity, and orchestrator health
+  category: Reliability and observability
+  description: Perform monitor source availability, sink health, cluster capacity, and orchestrator health using
+    scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval
+    and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: monitor-streaming-lag-throughput-state-growth-checkpoint-progress-and-failures
+  name: Monitor streaming lag, throughput, state growth, checkpoint progress, and failures
+  category: Reliability and observability
+  description: Perform monitor streaming lag, throughput, state growth, checkpoint progress, and failures using
+    scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval
+    and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: monitor-batch-duration-queue-time-retries-missed-schedules-and-deadline-risk
+  name: Monitor batch duration, queue time, retries, missed schedules, and deadline risk
+  category: Reliability and observability
+  description: Perform monitor batch duration, queue time, retries, missed schedules, and deadline risk using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: define-alert-thresholds-based-on-user-and-data-product-impact
+  name: Define alert thresholds based on user and data-product impact
+  category: Reliability and observability
+  description: Perform define alert thresholds based on user and data-product impact using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: maintain-dashboards-runbooks-escalation-routes-and-ownership-metadata
+  name: Maintain dashboards, runbooks, escalation routes, and ownership metadata
+  category: Reliability and observability
+  description: Perform maintain dashboards, runbooks, escalation routes, and ownership metadata using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: design-restartability-replay-recovery-and-partial-output-handling
+  name: Design restartability, replay, recovery, and partial-output handling
+  category: Reliability and observability
+  description: Perform design restartability, replay, recovery, and partial-output handling using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: validate-recovery-after-worker-cluster-network-source-or-sink-failures
+  name: Validate recovery after worker, cluster, network, source, or sink failures
+  category: Reliability and observability
+  description: Perform validate recovery after worker, cluster, network, source, or sink failures using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: perform-post-incident-review-for-material-data-failures
+  name: Perform post-incident review for material data failures
+  category: Reliability and observability
+  description: Perform perform post-incident review for material data failures using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: track-corrective-actions-and-reliability-improvements-to-completion
+  name: Track corrective actions and reliability improvements to completion
+  category: Reliability and observability
+  description: Perform track corrective actions and reliability improvements to completion using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: classify-datasets-and-fields-by-sensitivity-purpose-and-regulatory-scope
+  name: Classify datasets and fields by sensitivity, purpose, and regulatory scope
+  category: Security, privacy, and governance
+  description: Perform classify datasets and fields by sensitivity, purpose, and regulatory scope using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: minimize-data-collection-and-processing-to-approved-purposes
+  name: Minimize data collection and processing to approved purposes
+  category: Security, privacy, and governance
+  description: Perform minimize data collection and processing to approved purposes using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: apply-masking-tokenization-hashing-aggregation-or-redaction-where-required
+  name: Apply masking, tokenization, hashing, aggregation, or redaction where required
+  category: Security, privacy, and governance
+  description: Perform apply masking, tokenization, hashing, aggregation, or redaction where required using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: enforce-least-privilege-access-for-sources-storage-catalogs-clusters-and-consumers
+  name: Enforce least-privilege access for sources, storage, catalogs, clusters, and consumers
+  category: Security, privacy, and governance
+  description: Perform enforce least-privilege access for sources, storage, catalogs, clusters, and consumers using
+    scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval
+    and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: use-workload-identity-and-short-lived-credentials-through-trusted-adapters
+  name: Use workload identity and short-lived credentials through trusted adapters
+  category: Security, privacy, and governance
+  description: Perform use workload identity and short-lived credentials through trusted adapters using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: prevent-raw-secrets-tokens-keys-or-connection-strings-from-entering-model-context
+  name: Prevent raw secrets, tokens, keys, or connection strings from entering model context
+  category: Security, privacy, and governance
+  description: Perform prevent raw secrets, tokens, keys, or connection strings from entering model context using
+    scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval
+    and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: enforce-tenant-project-environment-and-regional-data-boundaries
+  name: Enforce tenant, project, environment, and regional data boundaries
+  category: Security, privacy, and governance
+  description: Perform enforce tenant, project, environment, and regional data boundaries using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: define-retention-archival-legal-hold-deletion-and-right-to-erasure-behavior
+  name: Define retention, archival, legal hold, deletion, and right-to-erasure behavior
+  category: Security, privacy, and governance
+  description: Perform define retention, archival, legal hold, deletion, and right-to-erasure behavior using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: validate-encryption-transport-audit-and-access-log-controls
+  name: Validate encryption, transport, audit, and access-log controls
+  category: Security, privacy, and governance
+  description: Perform validate encryption, transport, audit, and access-log controls using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: review-dependency-connector-package-image-and-supply-chain-security
+  name: Review dependency, connector, package, image, and supply-chain security
+  category: Security, privacy, and governance
+  description: Perform review dependency, connector, package, image, and supply-chain security using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: create-privacy-and-security-evidence-for-releases-and-audits
+  name: Create privacy and security evidence for releases and audits
+  category: Security, privacy, and governance
+  description: Perform create privacy and security evidence for releases and audits using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: escalate-residual-risk-to-accountable-human-security-and-privacy-owners
+  name: Escalate residual risk to accountable human security and privacy owners
+  category: Security, privacy, and governance
+  description: Perform escalate residual risk to accountable human security and privacy owners using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: register-approved-datasets-jobs-owners-descriptions-terms-and-service-levels
+  name: Register approved datasets, jobs, owners, descriptions, terms, and service levels
+  category: Metadata, lineage, and catalog
+  description: Perform register approved datasets, jobs, owners, descriptions, terms, and service levels using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: publish-schema-and-field-documentation-linked-to-source-to-target-mappings
+  name: Publish schema and field documentation linked to source-to-target mappings
+  category: Metadata, lineage, and catalog
+  description: Perform publish schema and field documentation linked to source-to-target mappings using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: emit-run-level-lineage-for-inputs-outputs-code-versions-and-processing-state
+  name: Emit run-level lineage for inputs, outputs, code versions, and processing state
+  category: Metadata, lineage, and catalog
+  description: Perform emit run-level lineage for inputs, outputs, code versions, and processing state using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: emit-design-time-lineage-for-declared-jobs-datasets-contracts-and-ownership
+  name: Emit design-time lineage for declared jobs, datasets, contracts, and ownership
+  category: Metadata, lineage, and catalog
+  description: Perform emit design-time lineage for declared jobs, datasets, contracts, and ownership using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: capture-field-level-lineage-where-evidence-and-tooling-support-it
+  name: Capture field-level lineage where evidence and tooling support it
+  category: Metadata, lineage, and catalog
+  description: Perform capture field-level lineage where evidence and tooling support it using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: link-quality-results-incidents-contracts-and-consumers-to-datasets
+  name: Link quality results, incidents, contracts, and consumers to datasets
+  category: Metadata, lineage, and catalog
+  description: Perform link quality results, incidents, contracts, and consumers to datasets using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: identify-orphaned-undocumented-duplicate-and-unowned-datasets
+  name: Identify orphaned, undocumented, duplicate, and unowned datasets
+  category: Metadata, lineage, and catalog
+  description: Perform identify orphaned, undocumented, duplicate, and unowned datasets using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: use-lineage-to-assess-change-impact-and-consumer-blast-radius
+  name: Use lineage to assess change impact and consumer blast radius
+  category: Metadata, lineage, and catalog
+  description: Perform use lineage to assess change impact and consumer blast radius using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: validate-lineage-completeness-and-avoid-unsupported-inferred-relationships
+  name: Validate lineage completeness and avoid unsupported inferred relationships
+  category: Metadata, lineage, and catalog
+  description: Perform validate lineage completeness and avoid unsupported inferred relationships using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: apply-classification-and-redaction-to-metadata-and-examples
+  name: Apply classification and redaction to metadata and examples
+  category: Metadata, lineage, and catalog
+  description: Perform apply classification and redaction to metadata and examples using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: maintain-glossary-and-semantic-consistency-across-domains
+  name: Maintain glossary and semantic consistency across domains
+  category: Metadata, lineage, and catalog
+  description: Perform maintain glossary and semantic consistency across domains using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: publish-catalog-changes-only-through-approved-governance-workflows
+  name: Publish catalog changes only through approved governance workflows
+  category: Metadata, lineage, and catalog
+  description: Perform publish catalog changes only through approved governance workflows using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: detect-repository-build-dependency-test-packaging-and-release-conventions
+  name: Detect repository build, dependency, test, packaging, and release conventions
+  category: CI/CD, packaging, and deployment
+  description: Perform detect repository build, dependency, test, packaging, and release conventions using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: pin-compatible-python-spark-jvm-connector-and-library-versions
+  name: Pin compatible Python, Spark, JVM, connector, and library versions
+  category: CI/CD, packaging, and deployment
+  description: Perform pin compatible python, spark, jvm, connector, and library versions using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: build-reproducible-wheels-archives-containers-or-platform-bundles
+  name: Build reproducible wheels, archives, containers, or platform bundles
+  category: CI/CD, packaging, and deployment
+  description: Perform build reproducible wheels, archives, containers, or platform bundles using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: generate-dependency-locks-sboms-provenance-and-artifact-hashes
+  name: Generate dependency locks, SBOMs, provenance, and artifact hashes
+  category: CI/CD, packaging, and deployment
+  description: Perform generate dependency locks, sboms, provenance, and artifact hashes using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: run-linting-typing-unit-integration-contract-and-quality-tests-in-ci
+  name: Run linting, typing, unit, integration, contract, and quality tests in CI
+  category: CI/CD, packaging, and deployment
+  description: Perform run linting, typing, unit, integration, contract, and quality tests in ci using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: run-isolated-spark-smoke-tests-using-representative-bounded-fixtures
+  name: Run isolated Spark smoke tests using representative bounded fixtures
+  category: CI/CD, packaging, and deployment
+  description: Perform run isolated spark smoke tests using representative bounded fixtures using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: validate-configuration-for-playground-qa-and-production-without-embedding-secrets
+  name: Validate configuration for playground, QA, and production without embedding secrets
+  category: CI/CD, packaging, and deployment
+  description: Perform validate configuration for playground, qa, and production without embedding secrets using
+    scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval
+    and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: promote-immutable-artifacts-rather-than-rebuilding-between-environments
+  name: Promote immutable artifacts rather than rebuilding between environments
+  category: CI/CD, packaging, and deployment
+  description: Perform promote immutable artifacts rather than rebuilding between environments using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: prepare-migration-deployment-monitoring-and-rollback-plans
+  name: Prepare migration, deployment, monitoring, and rollback plans
+  category: CI/CD, packaging, and deployment
+  description: Perform prepare migration, deployment, monitoring, and rollback plans using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: create-pull-requests-and-release-records-only-after-payload-bound-approval
+  name: Create pull requests and release records only after payload-bound approval
+  category: CI/CD, packaging, and deployment
+  description: Perform create pull requests and release records only after payload-bound approval using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: deploy-production-only-through-authorized-deterministic-pipelines-or-operators
+  name: Deploy production only through authorized deterministic pipelines or operators
+  category: CI/CD, packaging, and deployment
+  description: Perform deploy production only through authorized deterministic pipelines or operators using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: verify-deployed-artifact-configuration-schedule-contracts-and-telemetry-read-only
+  name: Verify deployed artifact, configuration, schedule, contracts, and telemetry read-only
+  category: CI/CD, packaging, and deployment
+  description: Perform verify deployed artifact, configuration, schedule, contracts, and telemetry read-only using
+    scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval
+    and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: triage-missing-late-duplicate-corrupt-inconsistent-or-unauthorized-data
+  name: Triage missing, late, duplicate, corrupt, inconsistent, or unauthorized data
+  category: Data incidents, backfills, and remediation
+  description: Perform triage missing, late, duplicate, corrupt, inconsistent, or unauthorized data using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: identify-affected-datasets-partitions-consumers-reports-models-and-business-processes
+  name: Identify affected datasets, partitions, consumers, reports, models, and business processes
+  category: Data incidents, backfills, and remediation
+  description: Perform identify affected datasets, partitions, consumers, reports, models, and business processes
+    using scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's
+    approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: correlate-failures-with-source-changes-code-changes-schema-changes-platform-events-and-releases
+  name: Correlate failures with source changes, code changes, schema changes, platform events, and releases
+  category: Data incidents, backfills, and remediation
+  description: Perform correlate failures with source changes, code changes, schema changes, platform events, and
+    releases using scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the
+    pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: preserve-redacted-evidence-and-prevent-further-propagation-when-approved
+  name: Preserve redacted evidence and prevent further propagation when approved
+  category: Data incidents, backfills, and remediation
+  description: Perform preserve redacted evidence and prevent further propagation when approved using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: design-bounded-correction-replay-reprocessing-or-backfill-options
+  name: Design bounded correction, replay, reprocessing, or backfill options
+  category: Data incidents, backfills, and remediation
+  description: Perform design bounded correction, replay, reprocessing, or backfill options using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: calculate-partition-scope-ordering-concurrency-source-load-duration-and-cost
+  name: Calculate partition scope, ordering, concurrency, source load, duration, and cost
+  category: Data incidents, backfills, and remediation
+  description: Perform calculate partition scope, ordering, concurrency, source load, duration, and cost using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: define-stop-conditions-checkpoints-controls-rollback-and-reconciliation
+  name: Define stop conditions, checkpoints, controls, rollback, and reconciliation
+  category: Data incidents, backfills, and remediation
+  description: Perform define stop conditions, checkpoints, controls, rollback, and reconciliation using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: require-approval-before-production-backfill-repair-replay-or-data-mutation
+  name: Require approval before production backfill, repair, replay, or data mutation
+  category: Data incidents, backfills, and remediation
+  description: Perform require approval before production backfill, repair, replay, or data mutation using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: monitor-execution-through-deterministic-systems-and-bounded-read-only-telemetry
+  name: Monitor execution through deterministic systems and bounded read-only telemetry
+  category: Data incidents, backfills, and remediation
+  description: Perform monitor execution through deterministic systems and bounded read-only telemetry using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: validate-corrected-outputs-and-downstream-consumer-recovery
+  name: Validate corrected outputs and downstream consumer recovery
+  category: Data incidents, backfills, and remediation
+  description: Perform validate corrected outputs and downstream consumer recovery using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: create-defect-incident-knowledge-and-corrective-action-records
+  name: Create defect, incident, knowledge, and corrective-action records
+  category: Data incidents, backfills, and remediation
+  description: Perform create defect, incident, knowledge, and corrective-action records using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: add-regression-tests-and-preventive-controls-for-escaped-defects
+  name: Add regression tests and preventive controls for escaped defects
+  category: Data incidents, backfills, and remediation
+  description: Perform add regression tests and preventive controls for escaped defects using scoped evidence, version-aware
+    PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: maintain-pipeline-architecture-contracts-mappings-runbooks-and-operational-ownership
+  name: Maintain pipeline architecture, contracts, mappings, runbooks, and operational ownership
+  category: Documentation, collaboration, and improvement
+  description: Perform maintain pipeline architecture, contracts, mappings, runbooks, and operational ownership
+    using scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's
+    approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: document-setup-local-development-testing-configuration-and-release-procedures
+  name: Document setup, local development, testing, configuration, and release procedures
+  category: Documentation, collaboration, and improvement
+  description: Perform document setup, local development, testing, configuration, and release procedures using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: create-diagrams-for-data-flow-pipeline-stages-lineage-and-deployment-topology
+  name: Create diagrams for data flow, pipeline stages, lineage, and deployment topology
+  category: Documentation, collaboration, and improvement
+  description: Perform create diagrams for data flow, pipeline stages, lineage, and deployment topology using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: write-clear-pull-request-descriptions-with-correctness-quality-performance-and-risk-evidence
+  name: Write clear pull request descriptions with correctness, quality, performance, and risk evidence
+  category: Documentation, collaboration, and improvement
+  description: Perform write clear pull request descriptions with correctness, quality, performance, and risk evidence
+    using scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's
+    approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: coordinate-with-product-business-analysis-architecture-database-qa-devops-security-and-support
+  name: Coordinate with Product, Business Analysis, Architecture, Database, QA, DevOps, Security, and Support
+  category: Documentation, collaboration, and improvement
+  description: Perform coordinate with product, business analysis, architecture, database, qa, devops, security,
+    and support using scoped evidence, version-aware PySpark and platform conventions, explicit uncertainty, and
+    the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: explain-assumptions-unknowns-tradeoffs-and-recommended-decisions
+  name: Explain assumptions, unknowns, tradeoffs, and recommended decisions
+  category: Documentation, collaboration, and improvement
+  description: Perform explain assumptions, unknowns, tradeoffs, and recommended decisions using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: participate-in-design-code-quality-release-and-post-incident-reviews
+  name: Participate in design, code, quality, release, and post-incident reviews
+  category: Documentation, collaboration, and improvement
+  description: Perform participate in design, code, quality, release, and post-incident reviews using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: review-recurring-pipeline-failures-quality-issues-and-operational-toil
+  name: Review recurring pipeline failures, quality issues, and operational toil
+  category: Documentation, collaboration, and improvement
+  description: Perform review recurring pipeline failures, quality issues, and operational toil using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: identify-reusable-components-templates-contracts-and-platform-capabilities
+  name: Identify reusable components, templates, contracts, and platform capabilities
+  category: Documentation, collaboration, and improvement
+  description: Perform identify reusable components, templates, contracts, and platform capabilities using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: improve-developer-experience-test-speed-observability-and-self-service-safely
+  name: Improve developer experience, test speed, observability, and self-service safely
+  category: Documentation, collaboration, and improvement
+  description: Perform improve developer experience, test speed, observability, and self-service safely using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: mentor-engineers-on-spark-execution-data-correctness-contracts-and-operations
+  name: Mentor engineers on Spark execution, data correctness, contracts, and operations
+  category: Documentation, collaboration, and improvement
+  description: Perform mentor engineers on spark execution, data correctness, contracts, and operations using scoped
+    evidence, version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and
+    production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: maintain-a-prioritized-improvement-roadmap-with-measurable-outcomes
+  name: Maintain a prioritized improvement roadmap with measurable outcomes
+  category: Documentation, collaboration, and improvement
+  description: Perform maintain a prioritized improvement roadmap with measurable outcomes using scoped evidence,
+    version-aware PySpark and platform conventions, explicit uncertainty, and the pack's approval and production-safety
+    controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects

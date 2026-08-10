@@ -1,0 +1,58 @@
+version: '1.0'
+projects:
+- id: pcc
+  profile: enterprise-application
+  ai_platform_usage:
+  - evaluation
+  - assistants
+  - analytics-optional
+  source_control: bitbucket
+  environments:
+  - playground
+  - qa
+  - production
+- id: sop
+  profile: enterprise-application
+  ai_platform_usage:
+  - evaluation
+  - assistants
+  - analytics-optional
+  source_control: bitbucket
+  environments:
+  - playground
+  - qa
+  - production
+- id: databridge
+  profile: data-and-integration
+  ai_platform_usage:
+  - pyspark
+  - ml-pipelines
+  - batch-inference
+  source_control: bitbucket
+  environments:
+  - playground
+  - qa
+  - production
+- id: bm-agent-foundry
+  profile: agent-platform
+  ai_platform_usage:
+  - llm-gateway
+  - agent-runtime
+  - evaluation
+  - tracing
+  - rag
+  - model-registry
+  source_control: github-or-bitbucket-as-configured
+  environments:
+  - development
+  - qa
+  - production
+- id: generic-ai-project
+  profile: template
+  ai_platform_usage:
+  - configure-per-project
+  source_control: configure
+  environments:
+  - development
+  - qa
+  - production

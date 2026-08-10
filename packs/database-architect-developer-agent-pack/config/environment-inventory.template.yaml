@@ -1,0 +1,70 @@
+version: 1.0.0
+environments:
+- id: playground
+  classification: non-production
+  database_service: REPLACE
+  engine: REPLACE
+  version: REPLACE
+  database: REPLACE
+  schemas:
+  - REPLACE
+  data_class: synthetic-or-masked
+  allowed_autonomous:
+  - metadata-read
+  - bounded-diagnostics
+  approval_required:
+  - ddl
+  - dml
+  - grant
+  - migration
+  - backfill
+  forbidden:
+  - superuser
+  - backup-delete
+  - failover
+- id: qa
+  classification: non-production
+  database_service: REPLACE
+  engine: REPLACE
+  version: REPLACE
+  database: REPLACE
+  schemas:
+  - REPLACE
+  data_class: controlled
+  allowed_autonomous:
+  - metadata-read
+  - bounded-diagnostics
+  approval_required:
+  - ddl
+  - dml
+  - grant
+  - migration
+  - backfill
+  forbidden:
+  - superuser
+  - backup-delete
+  - failover
+- id: production
+  classification: production
+  database_service: REPLACE
+  engine: REPLACE
+  version: REPLACE
+  database: REPLACE
+  schemas:
+  - REPLACE
+  data_class: production
+  allowed_autonomous:
+  - approved-metadata-read
+  - redacted-observability
+  - allowlisted-read-only-verification
+  approval_required:
+  - operator-handoff
+  forbidden:
+  - autonomous-ddl
+  - autonomous-dml
+  - autonomous-grant
+  - restore
+  - failover
+  - config-mutation
+  - backup-delete
+  - superuser

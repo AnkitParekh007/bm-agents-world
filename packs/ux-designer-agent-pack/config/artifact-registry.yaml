@@ -1,0 +1,102 @@
+version: 1.0.0
+artifacts:
+- id: design-brief
+  description: Problem, users, outcomes, constraints, scope, assumptions, risks, and success measures.
+  retention: project-policy
+  contains_pii: false
+- id: research-plan
+  description: Questions, methods, sample, consent, logistics, analysis, privacy, and decision linkage.
+  retention: project-policy
+  contains_pii: possible
+- id: participant-screener
+  description: Approved recruitment criteria without unnecessary sensitive attributes.
+  retention: project-policy
+  contains_pii: possible
+- id: interview-guide
+  description: Neutral discussion guide, probes, timing, consent reminders, and wrap-up.
+  retention: project-policy
+  contains_pii: false
+- id: usability-test-plan
+  description: Tasks, prototype, measures, participant criteria, moderation, capture, and analysis.
+  retention: project-policy
+  contains_pii: false
+- id: redacted-research-notes
+  description: Sanitized observations and timestamps with evidence references.
+  retention: project-policy
+  contains_pii: possible
+- id: research-insight-report
+  description: Findings, evidence strength, frequency, impact, confidence, risks, and recommendations.
+  retention: project-policy
+  contains_pii: possible
+- id: persona-jtbd-pack
+  description: Evidence-backed personas, jobs, contexts, goals, barriers, and anti-assumptions.
+  retention: project-policy
+  contains_pii: false
+- id: journey-map
+  description: Stages, actions, thoughts, emotions, pain points, opportunities, channels, and evidence.
+  retention: project-policy
+  contains_pii: false
+- id: service-blueprint
+  description: Frontstage, backstage, systems, policies, handoffs, failure points, and measures.
+  retention: project-policy
+  contains_pii: false
+- id: information-architecture
+  description: Content model, taxonomy, navigation, sitemap, labeling, search, and rationale.
+  retention: project-policy
+  contains_pii: false
+- id: task-flow
+  description: Actors, states, decisions, alternate paths, errors, recovery, permissions, and completion.
+  retention: project-policy
+  contains_pii: false
+- id: wireframe-set
+  description: Low-fidelity layouts covering key tasks, states, breakpoints, and content hierarchy.
+  retention: project-policy
+  contains_pii: false
+- id: high-fidelity-design
+  description: Approved visual designs with variants, responsive states, content, and annotations.
+  retention: project-policy
+  contains_pii: false
+- id: interactive-prototype
+  description: Testable prototype with realistic data, states, transitions, and version metadata.
+  retention: project-policy
+  contains_pii: false
+- id: content-specification
+  description: Approved labels, helper text, errors, empty states, notifications, tone, and localization notes.
+  retention: project-policy
+  contains_pii: false
+- id: design-token-package
+  description: Color, typography, spacing, radius, elevation, motion, semantic tokens, and mappings.
+  retention: project-policy
+  contains_pii: false
+- id: component-specification
+  description: Anatomy, props, variants, states, behavior, content, accessibility, and responsive rules.
+  retention: project-policy
+  contains_pii: false
+- id: accessibility-annotation
+  description: WCAG mapping, semantics, keyboard behavior, focus order, announcements, contrast, and motion.
+  retention: project-policy
+  contains_pii: false
+- id: design-system-change-proposal
+  description: Need, evidence, API, variants, migration, compatibility, governance, and rollout.
+  retention: project-policy
+  contains_pii: false
+- id: developer-handoff-package
+  description: Design links, scope, flows, specs, tokens, assets, acceptance criteria, and unresolved decisions.
+  retention: project-policy
+  contains_pii: false
+- id: design-qa-report
+  description: Implementation differences, severity, evidence, responsive/accessibility issues, and disposition.
+  retention: project-policy
+  contains_pii: false
+- id: experiment-measurement-plan
+  description: Hypothesis, metrics, events, guardrails, segmentation, analysis, and stopping rules.
+  retention: project-policy
+  contains_pii: false
+- id: design-decision-log
+  description: Decision, alternatives, evidence, participants, constraints, date, and consequences.
+  retention: project-policy
+  contains_pii: false
+- id: ux-daily-summary
+  description: Completed work, findings, decisions, blockers, next actions, and approvals needed.
+  retention: project-policy
+  contains_pii: false

@@ -1,0 +1,212 @@
+version: 1.0.0
+supervisor: devops-supervisor
+agents:
+- id: devops-supervisor
+  description: Coordinates bounded infrastructure, delivery, reliability, incident, approval, and evidence workflows.
+  capabilities:
+  - orchestration
+  - risk
+  - evidence
+  status: enabled
+  external_writes: none
+- id: work-context
+  description: Reads Jira, Confluence, repositories, change history, ownership, service catalog, and environment
+    metadata.
+  capabilities:
+  - jira
+  - requirements
+  - traceability
+  status: enabled
+  external_writes: none
+- id: repo-pipeline-discovery
+  description: Profiles repositories, CI/CD, IaC, deployment assets, versions, and platform conventions.
+  capabilities:
+  - repository
+  - pipeline
+  - discovery
+  status: enabled
+  external_writes: none
+- id: infrastructure-architect
+  description: Designs cloud/on-prem topology, landing zones, resilience, tenancy, and infrastructure boundaries.
+  capabilities:
+  - architecture
+  - resilience
+  - topology
+  status: enabled
+  external_writes: none
+- id: iac-engineer
+  description: Creates and validates Terraform, OpenTofu, CloudFormation, Bicep, Pulumi, and module changes.
+  capabilities:
+  - iac
+  - planning
+  - modules
+  status: enabled
+  external_writes: none
+- id: cloud-platform-engineer
+  description: Manages bounded cloud services, quotas, identities, networking, storage, and compute declarations.
+  capabilities:
+  - cloud
+  - platform
+  - capacity
+  status: enabled
+  external_writes: none
+- id: kubernetes-platform-engineer
+  description: Designs and validates Kubernetes resources, RBAC, policies, controllers, and cluster operations.
+  capabilities:
+  - kubernetes
+  - rbac
+  - workloads
+  status: enabled
+  external_writes: none
+- id: container-build-engineer
+  description: Builds secure reproducible container images, SBOMs, signatures, and registry workflows.
+  capabilities:
+  - containers
+  - sbom
+  - registry
+  status: enabled
+  external_writes: none
+- id: cicd-engineer
+  description: Creates and maintains build, test, security, artifact, and promotion pipelines.
+  capabilities:
+  - ci
+  - pipelines
+  - quality-gates
+  status: enabled
+  external_writes: none
+- id: gitops-engineer
+  description: Manages declarative delivery, application sets, sync policies, drift, and reconciliation.
+  capabilities:
+  - gitops
+  - argocd
+  - drift
+  status: enabled
+  external_writes: none
+- id: release-deployment-engineer
+  description: Plans and validates releases, canaries, rollbacks, smoke tests, and traffic changes.
+  capabilities:
+  - release
+  - deployment
+  - rollback
+  status: enabled
+  external_writes: approval-required
+- id: configuration-engineer
+  description: Manages typed configuration, overlays, feature configuration, and environment parity.
+  capabilities:
+  - configuration
+  - validation
+  - overlays
+  status: enabled
+  external_writes: none
+- id: secrets-identity-engineer
+  description: Designs workload identity, vault paths, leases, rotations, and least-privilege access.
+  capabilities:
+  - secrets
+  - identity
+  - vault
+  status: enabled
+  external_writes: none
+- id: network-dns-engineer
+  description: Designs and validates network, firewall, load balancer, DNS, TLS, and connectivity changes.
+  capabilities:
+  - network
+  - dns
+  - tls
+  status: enabled
+  external_writes: none
+- id: observability-engineer
+  description: Creates metrics, logs, traces, dashboards, alerts, collectors, and telemetry governance.
+  capabilities:
+  - observability
+  - otel
+  - alerts
+  status: enabled
+  external_writes: none
+- id: sre-reliability-engineer
+  description: Defines SLOs, error budgets, capacity, resilience, and toil reduction.
+  capabilities:
+  - sre
+  - slo
+  - reliability
+  status: enabled
+  external_writes: none
+- id: incident-response-agent
+  description: Builds timelines, diagnoses incidents, proposes bounded mitigations, and preserves evidence.
+  capabilities:
+  - incident
+  - diagnostics
+  - recovery
+  status: enabled
+  external_writes: approval-required
+- id: security-supply-chain-agent
+  description: Runs security scans, verifies provenance, reviews IAM, and protects build/deployment supply chains.
+  capabilities:
+  - security
+  - supply-chain
+  - iam
+  status: enabled
+  external_writes: none
+- id: policy-compliance-agent
+  description: Maps controls, validates policies, exceptions, retention, and separation of duties.
+  capabilities:
+  - compliance
+  - policy
+  - audit
+  status: enabled
+  external_writes: none
+- id: cost-capacity-agent
+  description: Analyzes spend, utilization, growth, limits, scaling, and optimization tradeoffs.
+  capabilities:
+  - finops
+  - capacity
+  - forecast
+  status: enabled
+  external_writes: none
+- id: backup-dr-agent
+  description: Plans backup, restore, failover, failback, RTO/RPO, and disaster exercises.
+  capabilities:
+  - backup
+  - dr
+  - recovery
+  status: enabled
+  external_writes: none
+- id: database-platform-agent
+  description: Coordinates database infrastructure, migrations, connectivity, backup, and release dependencies.
+  capabilities:
+  - database
+  - migration
+  - coordination
+  status: enabled
+  external_writes: none
+- id: platform-automation-agent
+  description: Creates self-service templates, golden paths, CLIs, APIs, MCP tools, and reusable automation.
+  capabilities:
+  - platform-engineering
+  - automation
+  - developer-experience
+  status: enabled
+  external_writes: none
+- id: change-reviewer
+  description: Performs independent technical, operational, security, cost, and rollback review.
+  capabilities:
+  - review
+  - risk
+  - quality
+  status: enabled
+  external_writes: none
+- id: evidence-manager
+  description: Creates immutable evidence bundles, provenance, redaction, and traceability.
+  capabilities:
+  - evidence
+  - provenance
+  - redaction
+  status: enabled
+  external_writes: none
+- id: policy-enforcer
+  description: Evaluates scope, environment, identity, approval, payload hash, and prohibited actions.
+  capabilities:
+  - opa
+  - authorization
+  - guardrails
+  status: enabled
+  external_writes: none

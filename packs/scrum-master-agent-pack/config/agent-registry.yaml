@@ -1,0 +1,240 @@
+version: 1.0.0
+supervisor: scrum-master-supervisor
+agents:
+- id: scrum-master-supervisor
+  description: Coordinates Scrum establishment, team effectiveness, events, impediments, flow, coaching, improvement
+    experiments, approvals, and evidence.
+  capabilities:
+  - orchestration
+  - scrum
+  - team-effectiveness
+  - continuous-improvement
+  status: enabled
+  external_writes: approval-controlled
+- id: team-context-agent
+  description: Retrieves approved team, product, backlog, delivery, quality, architecture, support, and organizational
+    context.
+  capabilities:
+  - context
+  - traceability
+  - jira
+  - confluence
+  status: enabled
+  external_writes: approval-controlled
+- id: scrum-framework-agent
+  description: Checks understanding and application of Scrum theory, accountabilities, events, artifacts, commitments,
+    and values.
+  capabilities:
+  - scrum
+  - framework
+  - coaching
+  status: enabled
+  external_writes: approval-controlled
+- id: team-effectiveness-agent
+  description: Assesses team effectiveness through outcomes, collaboration, quality, learning, and flow without
+    individual scoring.
+  capabilities:
+  - team-effectiveness
+  - systems-thinking
+  - outcomes
+  status: enabled
+  external_writes: approval-controlled
+- id: event-design-agent
+  description: Designs and facilitates purposeful Sprint Planning, Daily Scrum, Sprint Review, and Sprint Retrospective
+    sessions.
+  capabilities:
+  - facilitation
+  - scrum-events
+  - timeboxes
+  status: enabled
+  external_writes: approval-controlled
+- id: sprint-planning-facilitator-agent
+  description: Prepares planning context, Sprint Goal options, readiness evidence, risks, and facilitation prompts
+    without selecting work for Developers.
+  capabilities:
+  - sprint-planning
+  - facilitation
+  - sprint-goal
+  status: enabled
+  external_writes: approval-controlled
+- id: daily-scrum-coach-agent
+  description: Helps Developers inspect progress toward the Sprint Goal and adapt their plan without turning the
+    Daily Scrum into status reporting.
+  capabilities:
+  - daily-scrum
+  - self-management
+  - adaptation
+  status: enabled
+  external_writes: approval-controlled
+- id: sprint-review-facilitator-agent
+  description: Prepares evidence, stakeholder participation, product feedback, and outcome-oriented Sprint Review
+    facilitation.
+  capabilities:
+  - sprint-review
+  - stakeholders
+  - feedback
+  status: enabled
+  external_writes: approval-controlled
+- id: retrospective-facilitator-agent
+  description: Designs psychologically safer retrospectives and converts learning into owned, testable improvement
+    experiments.
+  capabilities:
+  - retrospective
+  - facilitation
+  - improvement
+  status: enabled
+  external_writes: approval-controlled
+- id: impediment-management-agent
+  description: Captures, classifies, routes, escalates, and tracks impediments while preserving accountable ownership.
+  capabilities:
+  - impediments
+  - escalation
+  - dependency
+  status: enabled
+  external_writes: approval-controlled
+- id: flow-analytics-agent
+  description: Analyzes cycle time, throughput, work item age, WIP, blocked time, predictability, and flow distribution.
+  capabilities:
+  - flow
+  - kanban
+  - metrics
+  status: enabled
+  external_writes: approval-controlled
+- id: delivery-risk-agent
+  description: Surfaces Sprint Goal, dependency, quality, release, environment, and operational risks with confidence-aware
+    forecasts.
+  capabilities:
+  - risk
+  - forecasting
+  - delivery
+  status: enabled
+  external_writes: approval-controlled
+- id: backlog-collaboration-agent
+  description: Supports Product Owner and Developers during refinement without owning Product Backlog order or requirements
+    decisions.
+  capabilities:
+  - refinement
+  - collaboration
+  - readiness
+  status: enabled
+  external_writes: approval-controlled
+- id: self-management-coach-agent
+  description: Coaches team decision-making, shared ownership, conflict navigation, and cross-functional collaboration.
+  capabilities:
+  - self-management
+  - coaching
+  - collaboration
+  status: enabled
+  external_writes: approval-controlled
+- id: product-owner-coach-agent
+  description: Supports Product Owner effectiveness, transparency, value focus, stakeholder collaboration, and backlog
+    management.
+  capabilities:
+  - product-owner
+  - coaching
+  - value
+  status: enabled
+  external_writes: approval-controlled
+- id: developer-coach-agent
+  description: Supports Developers in planning, quality ownership, technical collaboration, estimation conversations,
+    and adaptation.
+  capabilities:
+  - developers
+  - coaching
+  - quality
+  status: enabled
+  external_writes: approval-controlled
+- id: stakeholder-collaboration-agent
+  description: Improves stakeholder participation, feedback quality, expectation transparency, and decision preparation.
+  capabilities:
+  - stakeholders
+  - communication
+  - alignment
+  status: enabled
+  external_writes: approval-controlled
+- id: conflict-facilitation-agent
+  description: Prepares neutral conflict facilitation, working agreements, decision methods, and escalation paths.
+  capabilities:
+  - conflict
+  - facilitation
+  - working-agreements
+  status: enabled
+  external_writes: approval-controlled
+- id: organizational-impediment-agent
+  description: Identifies systemic policies, dependencies, governance, tooling, and structural constraints that
+    reduce team effectiveness.
+  capabilities:
+  - organization
+  - systems-thinking
+  - change
+  status: enabled
+  external_writes: approval-controlled
+- id: continuous-improvement-agent
+  description: Maintains improvement backlogs, hypotheses, experiments, measures, owners, review dates, and learning.
+  capabilities:
+  - improvement
+  - experiments
+  - learning
+  status: enabled
+  external_writes: approval-controlled
+- id: agile-metrics-agent
+  description: Creates transparent team-level metrics with privacy, anti-gaming, and context safeguards.
+  capabilities:
+  - metrics
+  - transparency
+  - privacy
+  status: enabled
+  external_writes: approval-controlled
+- id: quality-collaboration-agent
+  description: Coordinates quality visibility across QA, engineering, product, architecture, and DevOps without
+    acting as a quality gate owner.
+  capabilities:
+  - quality
+  - cross-pack
+  - risk
+  status: enabled
+  external_writes: approval-controlled
+- id: release-coordination-agent
+  description: Facilitates release readiness, dependency communication, and learning while leaving release decisions
+    to accountable owners.
+  capabilities:
+  - release
+  - coordination
+  - readiness
+  status: enabled
+  external_writes: approval-controlled
+- id: cross-team-coordination-agent
+  description: Supports Scrum of Scrums, Nexus-like dependency conversations, multi-team integration, and shared
+    impediment resolution.
+  capabilities:
+  - multi-team
+  - dependencies
+  - coordination
+  status: enabled
+  external_writes: approval-controlled
+- id: scrum-master-reviewer-agent
+  description: Independently challenges facilitation plans, metric interpretation, intervention risk, team autonomy,
+    and evidence quality.
+  capabilities:
+  - review
+  - challenge
+  - independence
+  status: enabled
+  external_writes: approval-controlled
+- id: evidence-manager-agent
+  description: Hashes, versions, redacts, stores, and links event records, impediments, experiments, approvals,
+    and artifacts.
+  capabilities:
+  - evidence
+  - provenance
+  - retention
+  status: enabled
+  external_writes: approval-controlled
+- id: policy-enforcer-agent
+  description: Enforces scope, privacy, approval, employment, publication, production, and self-management boundaries.
+  capabilities:
+  - opa
+  - authorization
+  - guardrails
+  status: enabled
+  external_writes: policy-authority

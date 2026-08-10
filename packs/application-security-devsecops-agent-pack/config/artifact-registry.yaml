@@ -1,0 +1,328 @@
+version: 1.0.0
+artifact_count: 28
+artifacts:
+- id: security-context-packet
+  description: Authorized project, asset, architecture, repository, pipeline, environment, data, owner, and policy
+    context.
+  required_metadata:
+  - owner
+  - project
+  - asset
+  - environment
+  - source_revision_or_candidate
+  - status
+  - classification
+  - evidence_refs
+- id: application-security-program-plan
+  description: Secure-SDLC scope, maturity baseline, roadmap, roles, controls, gates, training, metrics, and improvement
+    backlog.
+  required_metadata:
+  - owner
+  - project
+  - asset
+  - environment
+  - source_revision_or_candidate
+  - status
+  - classification
+  - evidence_refs
+- id: security-requirements-catalog
+  description: Versioned, testable, traceable application-security and privacy requirements with owners and evidence.
+  required_metadata:
+  - owner
+  - project
+  - asset
+  - environment
+  - source_revision_or_candidate
+  - status
+  - classification
+  - evidence_refs
+- id: threat-model
+  description: Assets, actors, trust boundaries, data flows, threats, abuse cases, mitigations, residual risk, and
+    validation.
+  required_metadata:
+  - owner
+  - project
+  - asset
+  - environment
+  - source_revision_or_candidate
+  - status
+  - classification
+  - evidence_refs
+- id: secure-architecture-review
+  description: Architecture findings, security decisions, trust assumptions, requirements, risks, and required controls.
+  required_metadata:
+  - owner
+  - project
+  - asset
+  - environment
+  - source_revision_or_candidate
+  - status
+  - classification
+  - evidence_refs
+- id: security-test-plan
+  description: Risk-based static, dynamic, dependency, API, fuzz, configuration, and manual security validation
+    plan.
+  required_metadata:
+  - owner
+  - project
+  - asset
+  - environment
+  - source_revision_or_candidate
+  - status
+  - classification
+  - evidence_refs
+- id: sast-findings-report
+  description: Normalized static-analysis findings bound to source revision with evidence, confidence, severity,
+    and remediation.
+  required_metadata:
+  - owner
+  - project
+  - asset
+  - environment
+  - source_revision_or_candidate
+  - status
+  - classification
+  - evidence_refs
+- id: sca-dependency-report
+  description: Dependency inventory, vulnerabilities, reachability, licenses, support status, upgrade options, and
+    risk.
+  required_metadata:
+  - owner
+  - project
+  - asset
+  - environment
+  - source_revision_or_candidate
+  - status
+  - classification
+  - evidence_refs
+- id: secrets-findings-report
+  description: Redacted credential-exposure findings, containment status, affected history, rotation requests, and
+    preventive actions.
+  required_metadata:
+  - owner
+  - project
+  - asset
+  - environment
+  - source_revision_or_candidate
+  - status
+  - classification
+  - evidence_refs
+- id: api-security-review
+  description: API authorization, authentication, validation, abuse, inventory, rate, integration, and evidence
+    assessment.
+  required_metadata:
+  - owner
+  - project
+  - asset
+  - environment
+  - source_revision_or_candidate
+  - status
+  - classification
+  - evidence_refs
+- id: dast-assessment-report
+  description: Authorized target, configuration, tests, findings, evidence, false-positive analysis, and retest
+    status.
+  required_metadata:
+  - owner
+  - project
+  - asset
+  - environment
+  - source_revision_or_candidate
+  - status
+  - classification
+  - evidence_refs
+- id: container-security-report
+  description: Image, Dockerfile, package, privilege, configuration, provenance, signature, and runtime-assumption
+    findings.
+  required_metadata:
+  - owner
+  - project
+  - asset
+  - environment
+  - source_revision_or_candidate
+  - status
+  - classification
+  - evidence_refs
+- id: iac-security-report
+  description: Infrastructure-code findings, plan impact, policy evidence, exceptions, remediation, and verification.
+  required_metadata:
+  - owner
+  - project
+  - asset
+  - environment
+  - source_revision_or_candidate
+  - status
+  - classification
+  - evidence_refs
+- id: kubernetes-security-report
+  description: Manifest, RBAC, identity, network, secret, Pod Security, admission, and multitenancy findings.
+  required_metadata:
+  - owner
+  - project
+  - asset
+  - environment
+  - source_revision_or_candidate
+  - status
+  - classification
+  - evidence_refs
+- id: cloud-security-posture-report
+  description: Scoped cloud identity, network, storage, encryption, logging, public exposure, and service findings.
+  required_metadata:
+  - owner
+  - project
+  - asset
+  - environment
+  - source_revision_or_candidate
+  - status
+  - classification
+  - evidence_refs
+- id: ci-cd-security-review
+  description: Source-control, runner, token, secret, build, approval, artifact, and deployment-separation assessment.
+  required_metadata:
+  - owner
+  - project
+  - asset
+  - environment
+  - source_revision_or_candidate
+  - status
+  - classification
+  - evidence_refs
+- id: software-bill-of-materials
+  description: Machine-readable inventory of components, services, dependencies, versions, hashes, licenses, and
+    suppliers.
+  required_metadata:
+  - owner
+  - project
+  - asset
+  - environment
+  - source_revision_or_candidate
+  - status
+  - classification
+  - evidence_refs
+- id: vulnerability-exploitability-exchange
+  description: Evidence-backed status and justification for vulnerabilities affecting a specific product or release.
+  required_metadata:
+  - owner
+  - project
+  - asset
+  - environment
+  - source_revision_or_candidate
+  - status
+  - classification
+  - evidence_refs
+- id: supply-chain-assurance-report
+  description: Source, build, artifact, provenance, signature, attestation, dependency-source, and verification
+    evidence.
+  required_metadata:
+  - owner
+  - project
+  - asset
+  - environment
+  - source_revision_or_candidate
+  - status
+  - classification
+  - evidence_refs
+- id: vulnerability-triage-record
+  description: Finding identity, affected assets, CVSS, reachability, exploit status, KEV, exposure, risk, owner,
+    SLA, and disposition.
+  required_metadata:
+  - owner
+  - project
+  - asset
+  - environment
+  - source_revision_or_candidate
+  - status
+  - classification
+  - evidence_refs
+- id: security-remediation-plan
+  description: Fix options, owner, milestones, backports, validation, rollout, rollback, communication, and residual
+    risk.
+  required_metadata:
+  - owner
+  - project
+  - asset
+  - environment
+  - source_revision_or_candidate
+  - status
+  - classification
+  - evidence_refs
+- id: security-exception-request
+  description: Scoped exception, alternatives, business need, compensating controls, owner, expiry, review, and
+    revocation triggers.
+  required_metadata:
+  - owner
+  - project
+  - asset
+  - environment
+  - source_revision_or_candidate
+  - status
+  - classification
+  - evidence_refs
+- id: security-gate-decision-pack
+  description: Candidate-bound findings, policy status, blockers, exceptions, evidence gaps, and human decision
+    options.
+  required_metadata:
+  - owner
+  - project
+  - asset
+  - environment
+  - source_revision_or_candidate
+  - status
+  - classification
+  - evidence_refs
+- id: security-release-readiness-report
+  description: Release-specific security requirements, scans, SBOM, provenance, findings, exceptions, and readiness
+    recommendation.
+  required_metadata:
+  - owner
+  - project
+  - asset
+  - environment
+  - source_revision_or_candidate
+  - status
+  - classification
+  - evidence_refs
+- id: product-security-incident-package
+  description: Affected versions, evidence, exposure, containment, remediation, disclosure inputs, and lessons learned.
+  required_metadata:
+  - owner
+  - project
+  - asset
+  - environment
+  - source_revision_or_candidate
+  - status
+  - classification
+  - evidence_refs
+- id: security-status-update
+  description: Audience-specific factual status, risk, completed work, blockers, decisions, and next actions.
+  required_metadata:
+  - owner
+  - project
+  - asset
+  - environment
+  - source_revision_or_candidate
+  - status
+  - classification
+  - evidence_refs
+- id: security-assurance-report
+  description: Independent assessment of evidence quality, control coverage, unsupported claims, and residual uncertainty.
+  required_metadata:
+  - owner
+  - project
+  - asset
+  - environment
+  - source_revision_or_candidate
+  - status
+  - classification
+  - evidence_refs
+- id: security-audit-evidence-bundle
+  description: Immutable reports, scans, hashes, tool versions, approvals, decisions, logs, and retention metadata.
+  required_metadata:
+  - owner
+  - project
+  - asset
+  - environment
+  - source_revision_or_candidate
+  - status
+  - classification
+  - evidence_refs

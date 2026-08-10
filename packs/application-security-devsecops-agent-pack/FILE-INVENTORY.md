@@ -1,0 +1,52 @@
+# Application Security / DevSecOps Agent Pack — File Inventory
+
+The package contains 48 files.
+
+1. `README.md`
+2. `SOURCES.md`
+3. `checklists/mvp-readiness.md`
+4. `checklists/project-onboarding.md`
+5. `config/agent-registry.yaml`
+6. `config/approval-policies.yaml`
+7. `config/artifact-registry.yaml`
+8. `config/environment-inventory.template.yaml`
+9. `config/mcp-registry.yaml`
+10. `config/pack-manifest.yaml`
+11. `config/permission-matrix.csv`
+12. `config/plugin-registry.yaml`
+13. `config/project-registry.yaml`
+14. `config/secret-references.template.yaml`
+15. `config/skill-registry.yaml`
+16. `docs/01-application-security-devsecops-daily-task-catalog.md`
+17. `docs/02-project-access-and-environment-model.md`
+18. `docs/03-agent-and-subagent-architecture.md`
+19. `docs/04-skills-catalog.md`
+20. `docs/05-mcp-servers-tools-and-plugins.md`
+21. `docs/06-artifacts-and-knowledge-assets.md`
+22. `docs/07-orchestration-and-workflows.md`
+23. `docs/08-key-vault-identity-and-secrets.md`
+24. `docs/09-permissions-approvals-and-guardrails.md`
+25. `docs/10-observability-audit-and-evaluation.md`
+26. `docs/11-deployment-runtime-and-networking.md`
+27. `docs/12-implementation-roadmap.md`
+28. `docs/13-diagram-input-specification.md`
+29. `docs/14-research-and-standards-notes.md`
+30. `schemas/remediation-plan.schema.json`
+31. `schemas/security-context.schema.json`
+32. `schemas/security-finding.schema.json`
+33. `schemas/security-gate.schema.json`
+34. `schemas/security-status-update.schema.json`
+35. `schemas/threat-model.schema.json`
+36. `schemas/vulnerability-triage.schema.json`
+37. `security/opa/application-security-devsecops-agent-policy.rego`
+38. `templates/security-finding.md`
+39. `templates/security-gate-readiness-report.md`
+40. `templates/security-review-brief.md`
+41. `templates/security-status-update.md`
+42. `templates/threat-model.md`
+43. `workflows/code-change-security-validation.yaml`
+44. `workflows/product-security-incident-and-exception-management.yaml`
+45. `workflows/secure-feature-intake-and-threat-model.yaml`
+46. `workflows/supply-chain-and-release-security.yaml`
+47. `workflows/vulnerability-triage-and-remediation.yaml`
+48. `FILE-INVENTORY.md`

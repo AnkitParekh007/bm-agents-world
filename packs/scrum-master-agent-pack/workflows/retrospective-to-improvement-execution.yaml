@@ -1,0 +1,40 @@
+name: retrospective-to-improvement-execution
+version: 1.0.0
+trigger: Sprint Retrospective or explicit improvement review
+scope_binding:
+- project
+- team
+- sprint
+- requester
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: verify team consent, privacy, restricted evidence, and publication scope
+- id: prepare
+  agent: retrospective-facilitator-agent
+  action: prepare safety check, activity, de-identified evidence, and facilitation plan
+- id: facilitate
+  agent: self-management-coach-agent
+  action: support team-owned inspection and selection of improvement opportunities
+- id: experiment
+  agent: continuous-improvement-agent
+  action: convert selected opportunity into hypothesis, intervention, measures, owner, guardrails, and review date
+- id: sensitive-review
+  agent: policy-enforcer-agent
+  action: route serious conduct or protected concerns to accountable human channels without broad publication
+- id: independent-review
+  agent: scrum-master-reviewer-agent
+  action: review blame risk, privacy, feasibility, and whether actions are team-owned
+- id: publish
+  agent: scrum-master-supervisor
+  action: request Scrum Team approval before publishing de-identified summary or experiment
+- id: observe
+  agent: continuous-improvement-agent
+  action: review experiment evidence at the agreed date and capture learning
+outputs:
+- retrospective-facilitation-pack
+- retrospective-summary
+- improvement-backlog
+- improvement-experiment
+failure_behavior: do not publish named or sensitive retrospective content; preserve only restricted evidence and
+  human escalation

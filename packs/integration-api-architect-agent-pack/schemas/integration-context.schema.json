@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/integration-context.schema.json",
+  "title": "Integration Context",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "project",
+    "request_id",
+    "providers",
+    "consumers",
+    "environment",
+    "data_classification"
+  ],
+  "properties": {
+    "project": {
+      "type": "string"
+    },
+    "request_id": {
+      "type": "string"
+    },
+    "providers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "consumers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "environment": {
+      "type": "string"
+    },
+    "data_classification": {
+      "type": "string"
+    },
+    "current_contracts": {
+      "type": "array"
+    },
+    "constraints": {
+      "type": "array"
+    }
+  }
+}

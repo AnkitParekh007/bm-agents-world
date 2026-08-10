@@ -1,0 +1,21 @@
+Capability,Local,Playground,QA,Production,Approval,Notes
+Read Jira/Confluence,Allow,Allow,Allow,Allow,L0,Project scoped
+Read Bitbucket repository,Allow,Allow,Allow,Allow,L0,Authorized repo and refs only
+Read Figma/design docs,Allow,Allow,Allow,Allow,L0,Approved files/nodes only
+Write workspace files,Allow,N/A,N/A,N/A,L1,Allowed paths only
+Install locked dependencies,Allow,N/A,N/A,N/A,L1,Approved registry; no publish
+Run lint/typecheck/tests/build,Allow,Allow,Allow,Deny,L1,Registered commands only
+Browser interaction,Allow,Allow,Allow,Read-only smoke,L1/L4,Origin allowlist
+Create remote branch,N/A,Allow,Allow,Deny,L2,Run branch naming policy
+Commit,N/A,Allow,Allow,Deny,L2,Agent identity and approved diff
+Push,N/A,Allow,Allow,Deny,L3,No force push
+Create/update pull request,N/A,Allow,Allow,Deny,L3,Cannot approve or merge
+Jira write,N/A,Allow,Allow,Restricted,L3/L4,Exact payload approval
+Teams post,N/A,Allow,Allow,Restricted,L3/L4,Draft then approve
+Pipeline trigger/rerun,N/A,Allow,Allow,Deny,L3,Named pipeline only
+Dependency/lockfile update,Allow,N/A,N/A,N/A,L2,Upgrade workflow only
+Package publish,Deny,Deny,Deny,Deny,Denied,Human release process
+Merge pull request,Deny,Deny,Deny,Deny,Denied,Human or protected automation
+Production deploy/config write,Deny,Deny,Deny,Deny,Denied,Privileged release process
+Secret value disclosure,Deny,Deny,Deny,Deny,Denied,Adapter-only injection
+Database write,Deny,Deny,Deny,Deny,Denied,Not a frontend capability

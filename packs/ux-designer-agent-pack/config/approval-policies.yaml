@@ -1,0 +1,59 @@
+version: 1.0.0
+policies:
+- action: read_project_context
+  approval: none
+  conditions:
+  - authorized project
+  - least data required
+- action: read_redacted_research
+  approval: none
+  conditions:
+  - consent permits use
+  - PII redacted
+  - purpose bound
+- action: contact_or_recruit_participant
+  approval: required
+  approvers:
+  - research lead
+  - privacy/ethics when required
+- action: record_research_session
+  approval: required
+  approvers:
+  - participant consent
+  - research owner
+- action: write_figma_personal_draft
+  approval: conditional
+  conditions:
+  - isolated draft
+  - no shared library mutation
+- action: write_shared_figma_file
+  approval: required
+  approvers:
+  - design owner
+- action: publish_design_library
+  approval: required
+  approvers:
+  - design-system owner
+  - engineering owner
+- action: publish_jira_confluence_teams
+  approval: required
+  approvers:
+  - requester or designated owner
+- action: launch_survey_or_experiment
+  approval: required
+  approvers:
+  - product owner
+  - research/analytics owner
+  - privacy when required
+- action: capture_production_screenshot
+  approval: required
+  conditions:
+  - redaction
+  - no unnecessary PII
+  - approved environment
+- action: modify_production_application
+  approval: prohibited
+  reason: UX agent does not mutate production applications.
+- action: export_raw_participant_data
+  approval: prohibited
+  reason: Raw participant data remains in approved repository and is not exposed to the model.

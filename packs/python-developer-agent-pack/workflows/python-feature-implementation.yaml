@@ -1,0 +1,107 @@
+apiVersion: python-developer-agent-pack/v1
+kind: Workflow
+metadata:
+  name: python-feature-implementation
+  version: 1.0.0
+spec:
+  trigger: approved-implementation-plan
+  initialState: requested
+  steps:
+  - id: create-workspace
+    agent: repository-context
+    outputs:
+    - workspace-ref
+    - base-commit
+  - id: implement-domain
+    agent: domain-implementation
+    uses:
+    - python.typed-functions
+    - python.exceptions
+    - python.configuration
+    outputs:
+    - domain-patch
+    dependsOn:
+    - create-workspace
+  - id: implement-api
+    agent: api-service
+    uses:
+    - python.endpoint-design
+    - python.schema-validation
+    - python.error-contracts
+    outputs:
+    - api-patch
+    dependsOn:
+    - create-workspace
+    when: profile requires API changes
+  - id: implement-data
+    agent: data-access
+    uses:
+    - python.orm-mapping
+    - python.transaction-design
+    - python.migration-draft
+    outputs:
+    - data-patch
+    - migration-plan
+    dependsOn:
+    - create-workspace
+    when: plan includes persistence changes
+  - id: implement-async
+    agent: async-workers
+    uses:
+    - python.asyncio-design
+    - python.timeouts-retries
+    - python.graceful-shutdown
+    outputs:
+    - worker-patch
+    dependsOn:
+    - create-workspace
+    when: plan includes async or worker changes
+  - id: integrate
+    agent: domain-implementation
+    outputs:
+    - code-change-manifest-draft
+    dependsOn:
+    - implement-domain
+    - implement-api
+    - implement-data
+    - implement-async
+  - id: deterministic-gates
+    agent: build-pipeline
+    uses:
+    - python.format
+    - python.lint
+    - python.typecheck
+    - python.pytest-unit
+    outputs:
+    - gate-results
+    dependsOn:
+    - integrate
+  - id: specialist-review
+    parallel: true
+    agents:
+    - test-engineer
+    - security-reviewer
+    - performance-reliability
+    - code-review
+    - dependency-packaging
+    outputs:
+    - specialist-reports
+    dependsOn:
+    - deterministic-gates
+  - id: aggregate
+    agent: build-pipeline
+    outputs:
+    - quality-gate-report
+    - code-change-manifest
+    dependsOn:
+    - specialist-review
+  - id: publication-artifacts
+    agent: pr-release
+    uses:
+    - python.pr-draft
+    - python.release-notes
+    outputs:
+    - pull-request-draft
+    - release-readiness
+    dependsOn:
+    - aggregate

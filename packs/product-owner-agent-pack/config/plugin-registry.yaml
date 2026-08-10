@@ -1,0 +1,91 @@
+version: 1.0.0
+plugin_count: 22
+plugins:
+- id: jira-read-adapter
+  description: Reads work items, links, comments, status, history, and backlog order
+  mode: read-only
+  status: enabled
+- id: jira-write-adapter
+  description: Creates or updates approved backlog items and ordering
+  mode: approval-controlled
+  status: enabled
+- id: confluence-read-adapter
+  description: Reads product, requirement, decision, and release pages
+  mode: read-only
+  status: enabled
+- id: confluence-publish-adapter
+  description: Publishes approved product artifacts
+  mode: approval-controlled
+  status: enabled
+- id: backlog-analysis-engine
+  description: Detects duplicates, aging, readiness, dependencies, and taxonomy gaps
+  mode: deterministic
+  status: enabled
+- id: story-quality-engine
+  description: Evaluates story purpose, scope, examples, acceptance, and traceability
+  mode: deterministic
+  status: enabled
+- id: prioritization-engine
+  description: Computes configured scoring and scenario comparisons
+  mode: deterministic
+  status: enabled
+- id: dependency-graph-engine
+  description: Builds cross-team and cross-system dependency graphs
+  mode: deterministic
+  status: enabled
+- id: acceptance-criteria-validator
+  description: Checks scenario coverage and ambiguity
+  mode: deterministic
+  status: enabled
+- id: analytics-query-adapter
+  description: Executes approved semantic-metric queries
+  mode: read-only
+  status: enabled
+- id: research-redaction-adapter
+  description: Redacts identifiers and returns approved evidence summaries
+  mode: read-only
+  status: enabled
+- id: figma-context-adapter
+  description: Retrieves approved design and prototype context
+  mode: read-only
+  status: enabled
+- id: openapi-validator
+  description: Validates approved API contracts and examples
+  mode: deterministic
+  status: enabled
+- id: release-readiness-engine
+  description: Aggregates quality, risk, support, rollout, and approval evidence
+  mode: deterministic
+  status: enabled
+- id: uat-evidence-adapter
+  description: Collects approved UAT execution evidence and findings
+  mode: scoped write
+  status: enabled
+- id: teams-publication-adapter
+  description: Posts approved summaries and decisions
+  mode: approval-controlled
+  status: enabled
+- id: document-renderer
+  description: Renders markdown, JSON, CSV, and diagrams into evidence artifacts
+  mode: deterministic
+  status: enabled
+- id: schema-validator
+  description: Validates structured outputs against JSON Schema
+  mode: deterministic
+  status: enabled
+- id: evidence-hasher
+  description: Hashes inputs, outputs, decisions, and approval payloads
+  mode: deterministic
+  status: enabled
+- id: policy-client
+  description: Requests OPA decisions for every privileged action
+  mode: deterministic
+  status: enabled
+- id: capability-broker-client
+  description: Obtains scoped short-lived capabilities
+  mode: deterministic
+  status: enabled
+- id: audit-emitter
+  description: Emits immutable structured audit and provenance events
+  mode: deterministic
+  status: enabled

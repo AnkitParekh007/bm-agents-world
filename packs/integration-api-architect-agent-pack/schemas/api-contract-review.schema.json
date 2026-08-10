@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/api-contract-review.schema.json",
+  "title": "Api Contract Review",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_id",
+    "style",
+    "revision",
+    "findings",
+    "compatibility",
+    "decision"
+  ],
+  "properties": {
+    "contract_id": {
+      "type": "string"
+    },
+    "style": {
+      "enum": [
+        "REST",
+        "GraphQL",
+        "gRPC",
+        "other"
+      ]
+    },
+    "revision": {
+      "type": "string"
+    },
+    "findings": {
+      "type": "array"
+    },
+    "compatibility": {
+      "type": "object"
+    },
+    "security": {
+      "type": "object"
+    },
+    "decision": {
+      "enum": [
+        "approve",
+        "approve-with-conditions",
+        "reject",
+        "rework"
+      ]
+    }
+  }
+}

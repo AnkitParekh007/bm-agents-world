@@ -1,0 +1,124 @@
+version: 1.0.0
+artifact_count: 28
+artifacts:
+- id: customer-context
+  description: Scoped customer, lifecycle, goals, products, owners, constraints, data classification, and evidence
+    sources.
+  retention: customer-and-project-policy
+  contains_sensitive_data: true
+- id: account-360-summary
+  description: Minimized account summary covering health, goals, adoption, support, stakeholders, renewal timing,
+    and risks.
+  retention: customer-and-project-policy
+  contains_sensitive_data: true
+- id: stakeholder-map
+  description: Customer and internal stakeholder roles, influence, ownership, engagement, and relationship changes.
+  retention: customer-and-project-policy
+  contains_sensitive_data: true
+- id: onboarding-plan
+  description: Onboarding milestones, prerequisites, owners, dependencies, risks, success criteria, and time-to-value.
+  retention: customer-and-project-policy
+  contains_sensitive_data: true
+- id: success-plan
+  description: Customer outcomes, measures, milestones, owners, dependencies, progress, and review cadence.
+  retention: customer-and-project-policy
+  contains_sensitive_data: true
+- id: mutual-action-plan
+  description: Shared non-binding action plan with outcomes, responsibilities, milestones, dependencies, and review
+    points.
+  retention: customer-and-project-policy
+  contains_sensitive_data: true
+- id: adoption-baseline
+  description: Approved product usage baseline, intended use cases, instrumentation caveats, and benchmark context.
+  retention: customer-and-project-policy
+  contains_sensitive_data: true
+- id: adoption-improvement-plan
+  description: Adoption gaps, interventions, owners, enablement actions, target signals, and follow-up.
+  retention: customer-and-project-policy
+  contains_sensitive_data: true
+- id: customer-health-assessment
+  description: Explainable health components, sources, confidence, trends, drivers, and recommended actions.
+  retention: customer-and-project-policy
+  contains_sensitive_data: true
+- id: customer-risk-register
+  description: Risks, evidence, confidence, category, impact, urgency, owner, mitigation, and status.
+  retention: customer-and-project-policy
+  contains_sensitive_data: true
+- id: customer-recovery-plan
+  description: Risk-recovery actions, owners, customer/internal dependencies, milestones, stop conditions, and evidence.
+  retention: customer-and-project-policy
+  contains_sensitive_data: true
+- id: value-realization-map
+  description: Customer goals mapped to baselines, measures, product capabilities, evidence, attribution limits,
+    and outcomes.
+  retention: customer-and-project-policy
+  contains_sensitive_data: true
+- id: value-scorecard
+  description: Period-specific value evidence, progress, confidence, gaps, and customer-confirmed outcomes.
+  retention: customer-and-project-policy
+  contains_sensitive_data: true
+- id: qbr-ebr-pack
+  description: Executive review covering goals, value, health, adoption, support, releases, risks, decisions, and
+    next priorities.
+  retention: customer-and-project-policy
+  contains_sensitive_data: true
+- id: executive-account-brief
+  description: Concise internal executive briefing with customer context, outcomes, relationships, risks, decisions,
+    and asks.
+  retention: customer-and-project-policy
+  contains_sensitive_data: true
+- id: renewal-readiness-pack
+  description: Non-binding renewal readiness, evidence, risks, value, dependencies, unresolved issues, and human
+    decision inputs.
+  retention: customer-and-project-policy
+  contains_sensitive_data: true
+- id: expansion-opportunity-brief
+  description: Value-backed growth signal, evidence, customer benefit, readiness, constraints, and commercial-owner
+    handoff.
+  retention: customer-and-project-policy
+  contains_sensitive_data: true
+- id: training-enablement-plan
+  description: Audience, skills, learning paths, assets, schedule, owners, and outcome measures.
+  retention: customer-and-project-policy
+  contains_sensitive_data: false
+- id: customer-journey-map
+  description: Lifecycle stages, touchpoints, handoffs, friction, triggers, digital plays, and escalation paths.
+  retention: customer-and-project-policy
+  contains_sensitive_data: true
+- id: voice-of-customer-digest
+  description: Evidence-backed themes with source type, segment, recency, frequency, confidence, and routed actions.
+  retention: customer-and-project-policy
+  contains_sensitive_data: true
+- id: feedback-action-log
+  description: Feedback item/theme, decision, owner, status, customer-loop closure, and evidence.
+  retention: customer-and-project-policy
+  contains_sensitive_data: true
+- id: advocacy-candidate-brief
+  description: Outcome evidence, relationship context, permissions, eligibility, risks, and proposed advocacy motion.
+  retention: customer-and-project-policy
+  contains_sensitive_data: true
+- id: incident-customer-brief
+  description: Authoritative incident facts, account impact, communications, concerns, actions, and recovery status.
+  retention: customer-and-project-policy
+  contains_sensitive_data: true
+- id: support-trend-report
+  description: Support volume, themes, severity, SLA, recurrence, customer impact, and improvement opportunities.
+  retention: customer-and-project-policy
+  contains_sensitive_data: true
+- id: customer-communication-plan
+  description: Audience, channel, purpose, cadence, owner, approvals, constraints, and communication triggers.
+  retention: customer-and-project-policy
+  contains_sensitive_data: true
+- id: customer-meeting-brief
+  description: Meeting purpose, attendees, goals, evidence, risks, questions, decisions needed, and follow-ups.
+  retention: customer-and-project-policy
+  contains_sensitive_data: true
+- id: customer-decision-log
+  description: Customer/account decision, evidence, alternatives, owner, approver, date, consequences, and review
+    trigger.
+  retention: customer-and-project-policy
+  contains_sensitive_data: true
+- id: customer-success-daily-summary
+  description: Completed work, account risks, meetings, follow-ups, escalations, approvals, and next actions.
+  retention: customer-and-project-policy
+  contains_sensitive_data: true

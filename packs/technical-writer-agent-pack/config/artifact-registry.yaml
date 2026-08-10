@@ -1,0 +1,283 @@
+version: 1.0.0
+artifact_count: 28
+artifacts:
+- id: documentation-request
+  description: Authorized request, scope, owner, deadline, audience, target, and constraints.
+  required_metadata:
+  - owner
+  - audience
+  - project
+  - product_version
+  - source_revision
+  - status
+  - evidence_refs
+- id: documentation-context-package
+  description: Version-bound product, code, API, UX, support, release, and existing-content evidence.
+  required_metadata:
+  - owner
+  - audience
+  - project
+  - product_version
+  - source_revision
+  - status
+  - evidence_refs
+- id: audience-and-task-model
+  description: Audience roles, goals, prerequisites, contexts, pain points, and success criteria.
+  required_metadata:
+  - owner
+  - audience
+  - project
+  - product_version
+  - source_revision
+  - status
+  - evidence_refs
+- id: content-strategy
+  description: Documentation goals, channels, coverage, ownership, lifecycle, and measurements.
+  required_metadata:
+  - owner
+  - audience
+  - project
+  - product_version
+  - source_revision
+  - status
+  - evidence_refs
+- id: documentation-plan
+  description: Scope, content types, owners, dependencies, milestones, reviews, and publication targets.
+  required_metadata:
+  - owner
+  - audience
+  - project
+  - product_version
+  - source_revision
+  - status
+  - evidence_refs
+- id: information-architecture-map
+  description: Navigation, hierarchy, taxonomy, labels, cross-links, and redirects.
+  required_metadata:
+  - owner
+  - audience
+  - project
+  - product_version
+  - source_revision
+  - status
+  - evidence_refs
+- id: content-brief
+  description: Purpose, audience, user need, source evidence, outline, terminology, and acceptance criteria.
+  required_metadata:
+  - owner
+  - audience
+  - project
+  - product_version
+  - source_revision
+  - status
+  - evidence_refs
+- id: documentation-change
+  description: Version-bound source changes, claims, diffs, validation, and publication metadata.
+  required_metadata:
+  - owner
+  - audience
+  - project
+  - product_version
+  - source_revision
+  - status
+  - evidence_refs
+- id: tutorial
+  description: Learning-oriented guided experience with safe prerequisites and verifiable outcomes.
+  required_metadata:
+  - owner
+  - audience
+  - project
+  - product_version
+  - source_revision
+  - status
+  - evidence_refs
+- id: how-to-guide
+  description: Goal-oriented procedure for a specific real-world task.
+  required_metadata:
+  - owner
+  - audience
+  - project
+  - product_version
+  - source_revision
+  - status
+  - evidence_refs
+- id: concept-topic
+  description: Explanation of a system, feature, architecture, decision, or mental model.
+  required_metadata:
+  - owner
+  - audience
+  - project
+  - product_version
+  - source_revision
+  - status
+  - evidence_refs
+- id: reference-topic
+  description: Accurate, scannable facts about APIs, commands, configuration, fields, limits, or behavior.
+  required_metadata:
+  - owner
+  - audience
+  - project
+  - product_version
+  - source_revision
+  - status
+  - evidence_refs
+- id: api-documentation-package
+  description: REST, event, webhook, SDK, authentication, errors, examples, and versioning content.
+  required_metadata:
+  - owner
+  - audience
+  - project
+  - product_version
+  - source_revision
+  - status
+  - evidence_refs
+- id: developer-onboarding-guide
+  description: Environment, repository, architecture, build, test, contribution, and troubleshooting guidance.
+  required_metadata:
+  - owner
+  - audience
+  - project
+  - product_version
+  - source_revision
+  - status
+  - evidence_refs
+- id: administrator-guide
+  description: Configuration, permissions, operations, maintenance, security, and troubleshooting guidance.
+  required_metadata:
+  - owner
+  - audience
+  - project
+  - product_version
+  - source_revision
+  - status
+  - evidence_refs
+- id: runbook
+  description: Operational prerequisites, steps, validation, stop conditions, escalation, recovery, and evidence.
+  required_metadata:
+  - owner
+  - audience
+  - project
+  - product_version
+  - source_revision
+  - status
+  - evidence_refs
+- id: troubleshooting-guide
+  description: Symptoms, diagnostics, causes, safe resolutions, escalation, and verification.
+  required_metadata:
+  - owner
+  - audience
+  - project
+  - product_version
+  - source_revision
+  - status
+  - evidence_refs
+- id: release-notes
+  description: Candidate-bound changes, fixes, known issues, upgrade impacts, deprecations, and references.
+  required_metadata:
+  - owner
+  - audience
+  - project
+  - product_version
+  - source_revision
+  - status
+  - evidence_refs
+- id: upgrade-and-migration-guide
+  description: Prerequisites, compatibility, steps, validation, rollback, and breaking-change guidance.
+  required_metadata:
+  - owner
+  - audience
+  - project
+  - product_version
+  - source_revision
+  - status
+  - evidence_refs
+- id: terminology-and-style-guide
+  description: Approved voice, terms, naming, grammar, formatting, examples, and exceptions.
+  required_metadata:
+  - owner
+  - audience
+  - project
+  - product_version
+  - source_revision
+  - status
+  - evidence_refs
+- id: glossary
+  description: Approved domain, product, architecture, data, and operational terms with ownership.
+  required_metadata:
+  - owner
+  - audience
+  - project
+  - product_version
+  - source_revision
+  - status
+  - evidence_refs
+- id: diagram-source-and-render
+  description: Editable diagram source, accessible description, render, version, and evidence references.
+  required_metadata:
+  - owner
+  - audience
+  - project
+  - product_version
+  - source_revision
+  - status
+  - evidence_refs
+- id: documentation-review-report
+  description: Findings, evidence, severity, owners, dispositions, and publication recommendation.
+  required_metadata:
+  - owner
+  - audience
+  - project
+  - product_version
+  - source_revision
+  - status
+  - evidence_refs
+- id: documentation-preview-bundle
+  description: Built preview, screenshots, link report, lint report, sample results, and metadata checks.
+  required_metadata:
+  - owner
+  - audience
+  - project
+  - product_version
+  - source_revision
+  - status
+  - evidence_refs
+- id: content-audit-report
+  description: Inventory, ownership, freshness, accuracy, duplication, usage, gaps, and remediation plan.
+  required_metadata:
+  - owner
+  - audience
+  - project
+  - product_version
+  - source_revision
+  - status
+  - evidence_refs
+- id: documentation-status-update
+  description: Progress, completed work, blockers, decisions, risks, and next actions.
+  required_metadata:
+  - owner
+  - audience
+  - project
+  - product_version
+  - source_revision
+  - status
+  - evidence_refs
+- id: localization-handoff-package
+  description: Source version, terminology, variables, screenshots, context, status, and approvals.
+  required_metadata:
+  - owner
+  - audience
+  - project
+  - product_version
+  - source_revision
+  - status
+  - evidence_refs
+- id: publication-and-evidence-bundle
+  description: Immutable sources, diffs, validation, reviews, approvals, target, and payload hash.
+  required_metadata:
+  - owner
+  - audience
+  - project
+  - product_version
+  - source_revision
+  - status
+  - evidence_refs

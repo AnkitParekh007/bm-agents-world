@@ -1,0 +1,69 @@
+apiVersion: java-developer-agent-pack/v1
+kind: ApprovalPolicies
+payloadBindingRequired: true
+actions:
+- action: git.commit
+  approverRoles:
+  - developer
+  - tech-lead
+  ttlMinutes: 30
+- action: git.push
+  approverRoles:
+  - developer
+  - tech-lead
+  ttlMinutes: 15
+- action: bitbucket.pullrequest.create
+  approverRoles:
+  - developer
+  - tech-lead
+  ttlMinutes: 30
+- action: jira.write
+  approverRoles:
+  - developer
+  - product-owner
+  - tech-lead
+  ttlMinutes: 30
+- action: teams.post
+  approverRoles:
+  - developer
+  - tech-lead
+  ttlMinutes: 30
+- action: dependency.add
+  approverRoles:
+  - tech-lead
+  - java-architect
+  ttlMinutes: 60
+- action: database.write.nonprod
+  approverRoles:
+  - developer
+  - database-owner
+  ttlMinutes: 15
+- action: migration.execute.nonprod
+  approverRoles:
+  - database-owner
+  - tech-lead
+  ttlMinutes: 15
+- action: messaging.publish.nonprod
+  approverRoles:
+  - developer
+  - service-owner
+  ttlMinutes: 15
+- action: pipeline.trigger
+  approverRoles:
+  - developer
+  - devops
+  ttlMinutes: 15
+- action: deployment.request.nonprod
+  approverRoles:
+  - devops
+  - tech-lead
+  ttlMinutes: 15
+neverDelegated:
+- bitbucket.merge
+- git.force-push
+- deployment.production
+- database.write.prod
+- messaging.mutate.prod
+- secret.read-value
+- artifact.sign
+- artifact.publish.production

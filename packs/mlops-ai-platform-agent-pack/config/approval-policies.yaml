@@ -1,0 +1,48 @@
+version: '1.0'
+policies:
+- action: read_metadata
+  approval: none
+  constraints:
+  - authorized project
+  - bounded query
+  - redaction
+- action: sandbox_or_disposable_execution
+  approval: none_or_project_policy
+  constraints:
+  - no production data mutation
+  - network allowlist
+- action: nonproduction_platform_change
+  approval: human
+  constraints:
+  - payload-bound
+  - expiry
+  - rollback
+- action: production_model_or_agent_promotion
+  approval: two_party_or_release_policy
+  constraints:
+  - immutable candidate
+  - evaluation evidence
+  - security/governance gates
+  - payload hash
+- action: production_traffic_shift_or_alias_change
+  approval: human
+  constraints:
+  - exact target
+  - stop conditions
+  - rollback candidate
+- action: production_index_swap_or_reembedding
+  approval: human
+  constraints:
+  - shadow validation
+  - authorization preserved
+  - recovery plan
+- action: production_infrastructure_or_gpu_change
+  approval: human_or_deterministic_change_system
+  constraints:
+  - exact plan
+  - blast radius
+  - rollback
+- action: risk_acceptance
+  approval: accountable_human_only
+  constraints:
+  - agent may recommend but never accept

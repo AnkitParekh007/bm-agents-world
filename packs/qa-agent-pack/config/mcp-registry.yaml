@@ -1,0 +1,44 @@
+apiVersion: qa-agent-pack/v1
+kind: MCPRegistry
+servers:
+  - id: atlassian-rovo
+    ownership: vendor
+    transport: remote
+    auth: oauth-2.1
+    systems: [jira, confluence, bitbucket]
+    enabledTools: []
+    writePolicy: approval-required
+  - id: bitbucket-adapter
+    ownership: organization
+    transport: streamable-http
+    auth: workload-identity-to-scoped-token
+    systems: [bitbucket-cloud, bitbucket-data-center]
+    writePolicy: approval-required
+  - id: playwright
+    ownership: microsoft
+    transport: stdio-or-http
+    runtime: sandboxed-browser-worker
+    networkPolicy: project-domain-allowlist
+    writePolicy: workflow-dependent
+  - id: qa-api
+    ownership: organization
+    transport: streamable-http
+    contractSource: openapi
+    writePolicy: approved-test-operations-only
+  - id: qa-database
+    ownership: organization
+    transport: streamable-http
+    mode: readonly
+    queryPolicy: select-only-allowlisted-bounded
+  - id: environment
+    ownership: organization
+    transport: streamable-http
+    writePolicy: approval-required
+  - id: observability
+    ownership: organization
+    transport: streamable-http
+    mode: readonly
+  - id: artifact
+    ownership: organization
+    transport: streamable-http
+    writePolicy: run-scoped

@@ -1,0 +1,11 @@
+resource,local,playground,qa,production,notes
+Jira/Confluence,read; draft,read; approved-write,read; approved-write,read; approved-write,Official writes are payload-bound.
+Source control,isolated-write,branch-write-with-approval,read; PR evidence,read-only,Merge/force-push denied.
+Datasets,synthetic/approved,project-scoped,masked/approved,bounded-redacted-readonly,Purpose limitation and lineage required.
+Experiment tracker,write,write,candidate-read/write,read-only,Production experiment mutation denied.
+Model registry,candidate-write,candidate-write,candidate-stage-with-approval,read-only,Promotion requires approval.
+Compute platform,bounded,bounded,approved-validation,read-only metadata,Production job submission denied.
+Vector/search indexes,local-write,project-scoped-write,approved-write,read-only,Production index mutation denied.
+Feature store,local/dev-write,project-scoped,approved-nonprod,read-only,Production feature mutation denied.
+Observability,local,read,read,bounded-redacted-readonly,No unrestricted log export.
+Vault/secrets,logical refs,logical refs,logical refs,logical refs,Raw secrets never enter model context.

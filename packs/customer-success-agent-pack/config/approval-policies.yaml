@@ -1,0 +1,68 @@
+version: 1.0.0
+policies:
+- action: read_authorized_customer_context
+  approval: none
+  conditions:
+  - authorized account/project
+  - minimum necessary
+  - purpose bound
+  - read-only
+- action: read_privacy_safe_usage_and_health_inputs
+  approval: none
+  conditions:
+  - approved metrics
+  - tenant isolated
+  - bounded time window
+  - read-only
+- action: create_isolated_customer_success_draft
+  approval: none
+  conditions:
+  - not externally published
+  - clearly marked draft
+  - no raw secrets or unbounded customer data
+- action: update_official_crm_or_cs_record
+  approval: required
+  approvers:
+  - account owner or customer-success owner
+- action: send_customer_communication
+  approval: required
+  approvers:
+  - account owner or designated customer-success owner
+- action: schedule_or_change_customer_meeting
+  approval: required
+  approvers:
+  - meeting owner or account owner
+- action: publish_health_override_or_risk_status
+  approval: required
+  approvers:
+  - customer-success owner
+- action: publish_renewal_or_expansion_signal
+  approval: required
+  approvers:
+  - customer-success owner
+  - commercial owner when applicable
+- action: launch_customer_survey_or_advocacy_request
+  approval: required
+  approvers:
+  - account owner
+  - program owner
+  - privacy or marketing when required
+- action: publish_qbr_ebr_or_value_claim
+  approval: required
+  approvers:
+  - account owner or customer-success owner
+- action: make_pricing_discount_contract_or_sla_commitment
+  approval: prohibited
+  reason: Commercial and contractual authority remains with authorized humans.
+- action: approve_renewal_or_expansion_transaction
+  approval: prohibited
+  reason: The agent may prepare evidence but cannot approve commercial transactions.
+- action: issue_credit_refund_or_entitlement_change
+  approval: prohibited
+  reason: Billing and entitlement mutations require authorized systems and humans.
+- action: export_raw_customer_or_contact_data
+  approval: prohibited
+  reason: Only minimized, redacted, or aggregate evidence may enter model context.
+- action: production_mutation
+  approval: prohibited
+  reason: Customer Success Agent may not mutate production systems, data, configuration, or access.

@@ -1,0 +1,47 @@
+name: sprint-event-facilitation
+version: 1.0.0
+trigger: Upcoming or active Scrum event
+scope_binding:
+- project
+- team
+- sprint
+- event
+- requester
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: verify event, team, data, and publication scope
+- id: context
+  agent: team-context-agent
+  action: collect event-relevant product, Sprint, quality, dependency, stakeholder, and prior-action evidence
+- id: route
+  agent: event-design-agent
+  action: select event-specific facilitation path and timebox
+- id: event-specialist
+  parallel:
+  - agent: sprint-planning-facilitator-agent
+    action: prepare planning evidence and prompts when event is Sprint Planning
+  - agent: daily-scrum-coach-agent
+    action: prepare Daily Scrum coaching when requested
+  - agent: sprint-review-facilitator-agent
+    action: prepare Increment, outcome, and stakeholder feedback facilitation for Sprint Review
+  - agent: retrospective-facilitator-agent
+    action: prepare safety, evidence, activities, and experiment prompts for Sprint Retrospective
+- id: risk
+  agent: delivery-risk-agent
+  action: surface material goal, quality, dependency, and operational risks without converting the event to status
+    reporting
+- id: review
+  agent: scrum-master-reviewer-agent
+  action: review purpose, inclusiveness, accountability boundaries, privacy, and evidence
+- id: facilitate-and-publish
+  agent: scrum-master-supervisor
+  action: facilitate or provide the pack; request approval before official publication
+outputs:
+- sprint-planning-pack
+- daily-scrum-coaching-guide
+- sprint-review-pack
+- retrospective-facilitation-pack
+- decision-log
+failure_behavior: use clearly marked template-only facilitation when live context is unavailable; fail closed on
+  publication

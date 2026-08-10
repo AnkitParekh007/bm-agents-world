@@ -1,0 +1,1443 @@
+pack: "ai-ml-engineer-agent-pack"
+version: 1.0.0
+skills:
+  - id: "ai-ml.problem-framing.ml-suitability-assessment"
+    category: "problem-framing"
+    name: Ml Suitability Assessment
+    description: Ml suitability assessment.
+    risk: low
+    external_write: false
+  - id: "ai-ml.problem-framing.use-case-risk-tiering"
+    category: "problem-framing"
+    name: Use Case Risk Tiering
+    description: Use case risk tiering.
+    risk: low
+    external_write: false
+  - id: "ai-ml.problem-framing.business-metric-definition"
+    category: "problem-framing"
+    name: Business Metric Definition
+    description: Business metric definition.
+    risk: low
+    external_write: false
+  - id: "ai-ml.problem-framing.baseline-definition"
+    category: "problem-framing"
+    name: Baseline Definition
+    description: Baseline definition.
+    risk: low
+    external_write: false
+  - id: "ai-ml.problem-framing.unit-of-prediction-definition"
+    category: "problem-framing"
+    name: Unit Of Prediction Definition
+    description: Unit of prediction definition.
+    risk: low
+    external_write: false
+  - id: "ai-ml.problem-framing.decision-boundary-analysis"
+    category: "problem-framing"
+    name: Decision Boundary Analysis
+    description: Decision boundary analysis.
+    risk: low
+    external_write: false
+  - id: "ai-ml.problem-framing.latency-slo-definition"
+    category: "problem-framing"
+    name: Latency Slo Definition
+    description: Latency slo definition.
+    risk: low
+    external_write: false
+  - id: "ai-ml.problem-framing.cost-constraint-analysis"
+    category: "problem-framing"
+    name: Cost Constraint Analysis
+    description: Cost constraint analysis.
+    risk: low
+    external_write: false
+  - id: "ai-ml.problem-framing.assumption-register"
+    category: "problem-framing"
+    name: Assumption Register
+    description: Assumption register.
+    risk: low
+    external_write: false
+  - id: "ai-ml.problem-framing.stakeholder-mapping"
+    category: "problem-framing"
+    name: Stakeholder Mapping
+    description: Stakeholder mapping.
+    risk: low
+    external_write: false
+  - id: "ai-ml.data-readiness.dataset-discovery"
+    category: "data-readiness"
+    name: Dataset Discovery
+    description: Dataset discovery.
+    risk: low
+    external_write: false
+  - id: "ai-ml.data-readiness.schema-profiling"
+    category: "data-readiness"
+    name: Schema Profiling
+    description: Schema profiling.
+    risk: low
+    external_write: false
+  - id: "ai-ml.data-readiness.missingness-analysis"
+    category: "data-readiness"
+    name: Missingness Analysis
+    description: Missingness analysis.
+    risk: low
+    external_write: false
+  - id: "ai-ml.data-readiness.label-quality-analysis"
+    category: "data-readiness"
+    name: Label Quality Analysis
+    description: Label quality analysis.
+    risk: low
+    external_write: false
+  - id: "ai-ml.data-readiness.data-leakage-detection"
+    category: "data-readiness"
+    name: Data Leakage Detection
+    description: Data leakage detection.
+    risk: low
+    external_write: false
+  - id: "ai-ml.data-readiness.temporal-split-design"
+    category: "data-readiness"
+    name: Temporal Split Design
+    description: Temporal split design.
+    risk: low
+    external_write: false
+  - id: "ai-ml.data-readiness.duplicate-detection"
+    category: "data-readiness"
+    name: Duplicate Detection
+    description: Duplicate detection.
+    risk: low
+    external_write: false
+  - id: "ai-ml.data-readiness.sampling-bias-analysis"
+    category: "data-readiness"
+    name: Sampling Bias Analysis
+    description: Sampling bias analysis.
+    risk: low
+    external_write: false
+  - id: "ai-ml.data-readiness.data-provenance-check"
+    category: "data-readiness"
+    name: Data Provenance Check
+    description: Data provenance check.
+    risk: low
+    external_write: false
+  - id: "ai-ml.data-readiness.dataset-snapshotting"
+    category: "data-readiness"
+    name: Dataset Snapshotting
+    description: Dataset snapshotting.
+    risk: low
+    external_write: false
+  - id: "ai-ml.feature-engineering.feature-definition"
+    category: "feature-engineering"
+    name: Feature Definition
+    description: Feature definition.
+    risk: low
+    external_write: false
+  - id: "ai-ml.feature-engineering.feature-leakage-review"
+    category: "feature-engineering"
+    name: Feature Leakage Review
+    description: Feature leakage review.
+    risk: low
+    external_write: false
+  - id: "ai-ml.feature-engineering.preprocessing-pipeline-design"
+    category: "feature-engineering"
+    name: Preprocessing Pipeline Design
+    description: Preprocessing pipeline design.
+    risk: low
+    external_write: false
+  - id: "ai-ml.feature-engineering.categorical-encoding"
+    category: "feature-engineering"
+    name: Categorical Encoding
+    description: Categorical encoding.
+    risk: low
+    external_write: false
+  - id: "ai-ml.feature-engineering.numerical-transforms"
+    category: "feature-engineering"
+    name: Numerical Transforms
+    description: Numerical transforms.
+    risk: low
+    external_write: false
+  - id: "ai-ml.feature-engineering.time-feature-engineering"
+    category: "feature-engineering"
+    name: Time Feature Engineering
+    description: Time feature engineering.
+    risk: low
+    external_write: false
+  - id: "ai-ml.feature-engineering.text-representation"
+    category: "feature-engineering"
+    name: Text Representation
+    description: Text representation.
+    risk: low
+    external_write: false
+  - id: "ai-ml.feature-engineering.image-preprocessing"
+    category: "feature-engineering"
+    name: Image Preprocessing
+    description: Image preprocessing.
+    risk: low
+    external_write: false
+  - id: "ai-ml.feature-engineering.feature-store-contracts"
+    category: "feature-engineering"
+    name: Feature Store Contracts
+    description: Feature store contracts.
+    risk: low
+    external_write: false
+  - id: "ai-ml.feature-engineering.train-serving-parity"
+    category: "feature-engineering"
+    name: Train Serving Parity
+    description: Train serving parity.
+    risk: low
+    external_write: false
+  - id: "ai-ml.classical-ml.linear-modeling"
+    category: "classical-ml"
+    name: Linear Modeling
+    description: Linear modeling.
+    risk: low
+    external_write: false
+  - id: "ai-ml.classical-ml.tree-modeling"
+    category: "classical-ml"
+    name: Tree Modeling
+    description: Tree modeling.
+    risk: low
+    external_write: false
+  - id: "ai-ml.classical-ml.ensemble-modeling"
+    category: "classical-ml"
+    name: Ensemble Modeling
+    description: Ensemble modeling.
+    risk: low
+    external_write: false
+  - id: "ai-ml.classical-ml.clustering"
+    category: "classical-ml"
+    name: Clustering
+    description: Clustering.
+    risk: low
+    external_write: false
+  - id: "ai-ml.classical-ml.anomaly-detection"
+    category: "classical-ml"
+    name: Anomaly Detection
+    description: Anomaly detection.
+    risk: low
+    external_write: false
+  - id: "ai-ml.classical-ml.cross-validation"
+    category: "classical-ml"
+    name: Cross Validation
+    description: Cross validation.
+    risk: low
+    external_write: false
+  - id: "ai-ml.classical-ml.hyperparameter-search"
+    category: "classical-ml"
+    name: Hyperparameter Search
+    description: Hyperparameter search.
+    risk: low
+    external_write: false
+  - id: "ai-ml.classical-ml.probability-calibration"
+    category: "classical-ml"
+    name: Probability Calibration
+    description: Probability calibration.
+    risk: low
+    external_write: false
+  - id: "ai-ml.classical-ml.threshold-optimization"
+    category: "classical-ml"
+    name: Threshold Optimization
+    description: Threshold optimization.
+    risk: low
+    external_write: false
+  - id: "ai-ml.classical-ml.model-interpretation"
+    category: "classical-ml"
+    name: Model Interpretation
+    description: Model interpretation.
+    risk: low
+    external_write: false
+  - id: "ai-ml.deep-learning.architecture-selection"
+    category: "deep-learning"
+    name: Architecture Selection
+    description: Architecture selection.
+    risk: low
+    external_write: false
+  - id: "ai-ml.deep-learning.transfer-learning"
+    category: "deep-learning"
+    name: Transfer Learning
+    description: Transfer learning.
+    risk: low
+    external_write: false
+  - id: "ai-ml.deep-learning.distributed-training"
+    category: "deep-learning"
+    name: Distributed Training
+    description: Distributed training.
+    risk: low
+    external_write: false
+  - id: "ai-ml.deep-learning.mixed-precision-training"
+    category: "deep-learning"
+    name: Mixed Precision Training
+    description: Mixed precision training.
+    risk: low
+    external_write: false
+  - id: "ai-ml.deep-learning.gradient-stability"
+    category: "deep-learning"
+    name: Gradient Stability
+    description: Gradient stability.
+    risk: low
+    external_write: false
+  - id: "ai-ml.deep-learning.checkpoint-management"
+    category: "deep-learning"
+    name: Checkpoint Management
+    description: Checkpoint management.
+    risk: low
+    external_write: false
+  - id: "ai-ml.deep-learning.optimizer-tuning"
+    category: "deep-learning"
+    name: Optimizer Tuning
+    description: Optimizer tuning.
+    risk: low
+    external_write: false
+  - id: "ai-ml.deep-learning.regularization"
+    category: "deep-learning"
+    name: Regularization
+    description: Regularization.
+    risk: low
+    external_write: false
+  - id: "ai-ml.deep-learning.quantization-analysis"
+    category: "deep-learning"
+    name: Quantization Analysis
+    description: Quantization analysis.
+    risk: low
+    external_write: false
+  - id: "ai-ml.deep-learning.model-distillation"
+    category: "deep-learning"
+    name: Model Distillation
+    description: Model distillation.
+    risk: low
+    external_write: false
+  - id: "ai-ml.multimodal.nlp-modeling"
+    category: multimodal
+    name: Nlp Modeling
+    description: Nlp modeling.
+    risk: low
+    external_write: false
+  - id: "ai-ml.multimodal.vision-modeling"
+    category: multimodal
+    name: Vision Modeling
+    description: Vision modeling.
+    risk: low
+    external_write: false
+  - id: "ai-ml.multimodal.audio-modeling"
+    category: multimodal
+    name: Audio Modeling
+    description: Audio modeling.
+    risk: low
+    external_write: false
+  - id: "ai-ml.multimodal.multimodal-modeling"
+    category: multimodal
+    name: Multimodal Modeling
+    description: Multimodal modeling.
+    risk: low
+    external_write: false
+  - id: "ai-ml.multimodal.tokenization-analysis"
+    category: multimodal
+    name: Tokenization Analysis
+    description: Tokenization analysis.
+    risk: low
+    external_write: false
+  - id: "ai-ml.multimodal.augmentation-design"
+    category: multimodal
+    name: Augmentation Design
+    description: Augmentation design.
+    risk: low
+    external_write: false
+  - id: "ai-ml.multimodal.multilingual-evaluation"
+    category: multimodal
+    name: Multilingual Evaluation
+    description: Multilingual evaluation.
+    risk: low
+    external_write: false
+  - id: "ai-ml.multimodal.ocr-document-ai"
+    category: multimodal
+    name: Ocr Document Ai
+    description: Ocr document ai.
+    risk: low
+    external_write: false
+  - id: "ai-ml.multimodal.modality-robustness"
+    category: multimodal
+    name: Modality Robustness
+    description: Modality robustness.
+    risk: low
+    external_write: false
+  - id: "ai-ml.multimodal.decoding-configuration"
+    category: multimodal
+    name: Decoding Configuration
+    description: Decoding configuration.
+    risk: low
+    external_write: false
+  - id: "ai-ml.llm-genai.prompt-engineering"
+    category: "llm-genai"
+    name: Prompt Engineering
+    description: Prompt engineering.
+    risk: low
+    external_write: false
+  - id: "ai-ml.llm-genai.system-prompt-versioning"
+    category: "llm-genai"
+    name: System Prompt Versioning
+    description: System prompt versioning.
+    risk: low
+    external_write: false
+  - id: "ai-ml.llm-genai.structured-output-design"
+    category: "llm-genai"
+    name: Structured Output Design
+    description: Structured output design.
+    risk: low
+    external_write: false
+  - id: "ai-ml.llm-genai.model-routing"
+    category: "llm-genai"
+    name: Model Routing
+    description: Model routing.
+    risk: low
+    external_write: false
+  - id: "ai-ml.llm-genai.tool-contract-design"
+    category: "llm-genai"
+    name: Tool Contract Design
+    description: Tool contract design.
+    risk: low
+    external_write: false
+  - id: "ai-ml.llm-genai.llm-fallback-design"
+    category: "llm-genai"
+    name: Llm Fallback Design
+    description: Llm fallback design.
+    risk: low
+    external_write: false
+  - id: "ai-ml.llm-genai.token-budgeting"
+    category: "llm-genai"
+    name: Token Budgeting
+    description: Token budgeting.
+    risk: low
+    external_write: false
+  - id: "ai-ml.llm-genai.hallucination-evaluation"
+    category: "llm-genai"
+    name: Hallucination Evaluation
+    description: Hallucination evaluation.
+    risk: low
+    external_write: false
+  - id: "ai-ml.llm-genai.refusal-evaluation"
+    category: "llm-genai"
+    name: Refusal Evaluation
+    description: Refusal evaluation.
+    risk: low
+    external_write: false
+  - id: "ai-ml.llm-genai.instruction-following-evaluation"
+    category: "llm-genai"
+    name: Instruction Following Evaluation
+    description: Instruction following evaluation.
+    risk: low
+    external_write: false
+  - id: "ai-ml.rag.source-authority-mapping"
+    category: rag
+    name: Source Authority Mapping
+    description: Source authority mapping.
+    risk: low
+    external_write: false
+  - id: "ai-ml.rag.document-ingestion"
+    category: rag
+    name: Document Ingestion
+    description: Document ingestion.
+    risk: low
+    external_write: false
+  - id: "ai-ml.rag.chunking-strategy"
+    category: rag
+    name: Chunking Strategy
+    description: Chunking strategy.
+    risk: low
+    external_write: false
+  - id: "ai-ml.rag.embedding-selection"
+    category: rag
+    name: Embedding Selection
+    description: Embedding selection.
+    risk: low
+    external_write: false
+  - id: "ai-ml.rag.hybrid-retrieval"
+    category: rag
+    name: Hybrid Retrieval
+    description: Hybrid retrieval.
+    risk: low
+    external_write: false
+  - id: "ai-ml.rag.reranking"
+    category: rag
+    name: Reranking
+    description: Reranking.
+    risk: low
+    external_write: false
+  - id: "ai-ml.rag.retrieval-evaluation"
+    category: rag
+    name: Retrieval Evaluation
+    description: Retrieval evaluation.
+    risk: low
+    external_write: false
+  - id: "ai-ml.rag.grounding-evaluation"
+    category: rag
+    name: Grounding Evaluation
+    description: Grounding evaluation.
+    risk: low
+    external_write: false
+  - id: "ai-ml.rag.citation-validation"
+    category: rag
+    name: Citation Validation
+    description: Citation validation.
+    risk: low
+    external_write: false
+  - id: "ai-ml.rag.retrieval-access-control"
+    category: rag
+    name: Retrieval Access Control
+    description: Retrieval access control.
+    risk: low
+    external_write: false
+  - id: "ai-ml.fine-tuning.fine-tune-suitability"
+    category: "fine-tuning"
+    name: Fine Tune Suitability
+    description: Fine tune suitability.
+    risk: low
+    external_write: false
+  - id: "ai-ml.fine-tuning.sft-dataset-design"
+    category: "fine-tuning"
+    name: Sft Dataset Design
+    description: Sft dataset design.
+    risk: low
+    external_write: false
+  - id: "ai-ml.fine-tuning.preference-data-design"
+    category: "fine-tuning"
+    name: Preference Data Design
+    description: Preference data design.
+    risk: low
+    external_write: false
+  - id: "ai-ml.fine-tuning.peft-adapters"
+    category: "fine-tuning"
+    name: Peft Adapters
+    description: Peft adapters.
+    risk: low
+    external_write: false
+  - id: "ai-ml.fine-tuning.checkpoint-lineage"
+    category: "fine-tuning"
+    name: Checkpoint Lineage
+    description: Checkpoint lineage.
+    risk: low
+    external_write: false
+  - id: "ai-ml.fine-tuning.contamination-check"
+    category: "fine-tuning"
+    name: Contamination Check
+    description: Contamination check.
+    risk: low
+    external_write: false
+  - id: "ai-ml.fine-tuning.catastrophic-forgetting-eval"
+    category: "fine-tuning"
+    name: Catastrophic Forgetting Eval
+    description: Catastrophic forgetting eval.
+    risk: low
+    external_write: false
+  - id: "ai-ml.fine-tuning.safety-regression-eval"
+    category: "fine-tuning"
+    name: Safety Regression Eval
+    description: Safety regression eval.
+    risk: low
+    external_write: false
+  - id: "ai-ml.fine-tuning.fine-tune-cost-analysis"
+    category: "fine-tuning"
+    name: Fine Tune Cost Analysis
+    description: Fine tune cost analysis.
+    risk: low
+    external_write: false
+  - id: "ai-ml.fine-tuning.training-data-governance"
+    category: "fine-tuning"
+    name: Training Data Governance
+    description: Training data governance.
+    risk: low
+    external_write: false
+  - id: "ai-ml.experimentation.hypothesis-definition"
+    category: experimentation
+    name: Hypothesis Definition
+    description: Hypothesis definition.
+    risk: low
+    external_write: false
+  - id: "ai-ml.experimentation.experiment-tracking"
+    category: experimentation
+    name: Experiment Tracking
+    description: Experiment tracking.
+    risk: low
+    external_write: false
+  - id: "ai-ml.experimentation.seed-management"
+    category: experimentation
+    name: Seed Management
+    description: Seed management.
+    risk: low
+    external_write: false
+  - id: "ai-ml.experimentation.environment-capture"
+    category: experimentation
+    name: Environment Capture
+    description: Environment capture.
+    risk: low
+    external_write: false
+  - id: "ai-ml.experimentation.ablation-design"
+    category: experimentation
+    name: Ablation Design
+    description: Ablation design.
+    risk: low
+    external_write: false
+  - id: "ai-ml.experimentation.uncertainty-estimation"
+    category: experimentation
+    name: Uncertainty Estimation
+    description: Uncertainty estimation.
+    risk: low
+    external_write: false
+  - id: "ai-ml.experimentation.baseline-comparison"
+    category: experimentation
+    name: Baseline Comparison
+    description: Baseline comparison.
+    risk: low
+    external_write: false
+  - id: "ai-ml.experimentation.negative-result-capture"
+    category: experimentation
+    name: Negative Result Capture
+    description: Negative result capture.
+    risk: low
+    external_write: false
+  - id: "ai-ml.experimentation.holdout-governance"
+    category: experimentation
+    name: Holdout Governance
+    description: Holdout governance.
+    risk: low
+    external_write: false
+  - id: "ai-ml.experimentation.experiment-reproduction"
+    category: experimentation
+    name: Experiment Reproduction
+    description: Experiment reproduction.
+    risk: low
+    external_write: false
+  - id: "ai-ml.evaluation.metric-selection"
+    category: evaluation
+    name: Metric Selection
+    description: Metric selection.
+    risk: low
+    external_write: false
+  - id: "ai-ml.evaluation.golden-set-design"
+    category: evaluation
+    name: Golden Set Design
+    description: Golden set design.
+    risk: low
+    external_write: false
+  - id: "ai-ml.evaluation.regression-suite-design"
+    category: evaluation
+    name: Regression Suite Design
+    description: Regression suite design.
+    risk: low
+    external_write: false
+  - id: "ai-ml.evaluation.cohort-evaluation"
+    category: evaluation
+    name: Cohort Evaluation
+    description: Cohort evaluation.
+    risk: low
+    external_write: false
+  - id: "ai-ml.evaluation.robustness-evaluation"
+    category: evaluation
+    name: Robustness Evaluation
+    description: Robustness evaluation.
+    risk: low
+    external_write: false
+  - id: "ai-ml.evaluation.ood-evaluation"
+    category: evaluation
+    name: Ood Evaluation
+    description: Ood evaluation.
+    risk: low
+    external_write: false
+  - id: "ai-ml.evaluation.llm-rubric-design"
+    category: evaluation
+    name: Llm Rubric Design
+    description: Llm rubric design.
+    risk: low
+    external_write: false
+  - id: "ai-ml.evaluation.judge-calibration"
+    category: evaluation
+    name: Judge Calibration
+    description: Judge calibration.
+    risk: low
+    external_write: false
+  - id: "ai-ml.evaluation.human-evaluation-design"
+    category: evaluation
+    name: Human Evaluation Design
+    description: Human evaluation design.
+    risk: low
+    external_write: false
+  - id: "ai-ml.evaluation.promotion-gate-design"
+    category: evaluation
+    name: Promotion Gate Design
+    description: Promotion gate design.
+    risk: low
+    external_write: false
+  - id: "ai-ml.responsible-ai.harm-analysis"
+    category: "responsible-ai"
+    name: Harm Analysis
+    description: Harm analysis.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.responsible-ai.fairness-assessment"
+    category: "responsible-ai"
+    name: Fairness Assessment
+    description: Fairness assessment.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.responsible-ai.subgroup-evaluation"
+    category: "responsible-ai"
+    name: Subgroup Evaluation
+    description: Subgroup evaluation.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.responsible-ai.proxy-risk-analysis"
+    category: "responsible-ai"
+    name: Proxy Risk Analysis
+    description: Proxy risk analysis.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.responsible-ai.explainability-design"
+    category: "responsible-ai"
+    name: Explainability Design
+    description: Explainability design.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.responsible-ai.uncertainty-communication"
+    category: "responsible-ai"
+    name: Uncertainty Communication
+    description: Uncertainty communication.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.responsible-ai.human-oversight-design"
+    category: "responsible-ai"
+    name: Human Oversight Design
+    description: Human oversight design.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.responsible-ai.contestability-design"
+    category: "responsible-ai"
+    name: Contestability Design
+    description: Contestability design.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.responsible-ai.abstention-policy"
+    category: "responsible-ai"
+    name: Abstention Policy
+    description: Abstention policy.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.responsible-ai.model-card-authoring"
+    category: "responsible-ai"
+    name: Model Card Authoring
+    description: Model card authoring.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.ai-security.ai-threat-modeling"
+    category: "ai-security"
+    name: Ai Threat Modeling
+    description: Ai threat modeling.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.ai-security.prompt-injection-testing"
+    category: "ai-security"
+    name: Prompt Injection Testing
+    description: Prompt injection testing.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.ai-security.indirect-injection-testing"
+    category: "ai-security"
+    name: Indirect Injection Testing
+    description: Indirect injection testing.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.ai-security.tool-misuse-analysis"
+    category: "ai-security"
+    name: Tool Misuse Analysis
+    description: Tool misuse analysis.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.ai-security.model-artifact-security"
+    category: "ai-security"
+    name: Model Artifact Security
+    description: Model artifact security.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.ai-security.training-data-poisoning-analysis"
+    category: "ai-security"
+    name: Training Data Poisoning Analysis
+    description: Training data poisoning analysis.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.ai-security.retrieval-poisoning-analysis"
+    category: "ai-security"
+    name: Retrieval Poisoning Analysis
+    description: Retrieval poisoning analysis.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.ai-security.secret-exposure-prevention"
+    category: "ai-security"
+    name: Secret Exposure Prevention
+    description: Secret exposure prevention.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.ai-security.model-provenance-verification"
+    category: "ai-security"
+    name: Model Provenance Verification
+    description: Model provenance verification.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.ai-security.ai-red-team-coordination"
+    category: "ai-security"
+    name: Ai Red Team Coordination
+    description: Ai red team coordination.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.model-registry.model-registration"
+    category: "model-registry"
+    name: Model Registration
+    description: Model registration.
+    risk: low
+    external_write: false
+  - id: "ai-ml.model-registry.artifact-digesting"
+    category: "model-registry"
+    name: Artifact Digesting
+    description: Artifact digesting.
+    risk: low
+    external_write: false
+  - id: "ai-ml.model-registry.lineage-graphing"
+    category: "model-registry"
+    name: Lineage Graphing
+    description: Lineage graphing.
+    risk: low
+    external_write: false
+  - id: "ai-ml.model-registry.stage-transition-review"
+    category: "model-registry"
+    name: Stage Transition Review
+    description: Stage transition review.
+    risk: low
+    external_write: false
+  - id: "ai-ml.model-registry.model-card-linking"
+    category: "model-registry"
+    name: Model Card Linking
+    description: Model card linking.
+    risk: low
+    external_write: false
+  - id: "ai-ml.model-registry.sbom-linking"
+    category: "model-registry"
+    name: Sbom Linking
+    description: Sbom linking.
+    risk: low
+    external_write: false
+  - id: "ai-ml.model-registry.license-metadata"
+    category: "model-registry"
+    name: License Metadata
+    description: License metadata.
+    risk: low
+    external_write: false
+  - id: "ai-ml.model-registry.runtime-compatibility-metadata"
+    category: "model-registry"
+    name: Runtime Compatibility Metadata
+    description: Runtime compatibility metadata.
+    risk: low
+    external_write: false
+  - id: "ai-ml.model-registry.deprecation-planning"
+    category: "model-registry"
+    name: Deprecation Planning
+    description: Deprecation planning.
+    risk: low
+    external_write: false
+  - id: "ai-ml.model-registry.registry-audit-review"
+    category: "model-registry"
+    name: Registry Audit Review
+    description: Registry audit review.
+    risk: low
+    external_write: false
+  - id: "ai-ml.serving.online-serving-design"
+    category: serving
+    name: Online Serving Design
+    description: Online serving design.
+    risk: low
+    external_write: false
+  - id: "ai-ml.serving.batch-inference-design"
+    category: serving
+    name: Batch Inference Design
+    description: Batch inference design.
+    risk: low
+    external_write: false
+  - id: "ai-ml.serving.async-inference-design"
+    category: serving
+    name: Async Inference Design
+    description: Async inference design.
+    risk: low
+    external_write: false
+  - id: "ai-ml.serving.serving-schema-design"
+    category: serving
+    name: Serving Schema Design
+    description: Serving schema design.
+    risk: low
+    external_write: false
+  - id: "ai-ml.serving.latency-benchmarking"
+    category: serving
+    name: Latency Benchmarking
+    description: Latency benchmarking.
+    risk: low
+    external_write: false
+  - id: "ai-ml.serving.throughput-benchmarking"
+    category: serving
+    name: Throughput Benchmarking
+    description: Throughput benchmarking.
+    risk: low
+    external_write: false
+  - id: "ai-ml.serving.autoscaling-signals"
+    category: serving
+    name: Autoscaling Signals
+    description: Autoscaling signals.
+    risk: low
+    external_write: false
+  - id: "ai-ml.serving.canary-design"
+    category: serving
+    name: Canary Design
+    description: Canary design.
+    risk: low
+    external_write: false
+  - id: "ai-ml.serving.shadow-testing"
+    category: serving
+    name: Shadow Testing
+    description: Shadow testing.
+    risk: low
+    external_write: false
+  - id: "ai-ml.serving.rollback-design"
+    category: serving
+    name: Rollback Design
+    description: Rollback design.
+    risk: low
+    external_write: false
+  - id: "ai-ml.mlops.training-pipeline-design"
+    category: mlops
+    name: Training Pipeline Design
+    description: Training pipeline design.
+    risk: low
+    external_write: false
+  - id: "ai-ml.mlops.evaluation-pipeline-design"
+    category: mlops
+    name: Evaluation Pipeline Design
+    description: Evaluation pipeline design.
+    risk: low
+    external_write: false
+  - id: "ai-ml.mlops.packaging-pipeline-design"
+    category: mlops
+    name: Packaging Pipeline Design
+    description: Packaging pipeline design.
+    risk: low
+    external_write: false
+  - id: "ai-ml.mlops.model-promotion-gates"
+    category: mlops
+    name: Model Promotion Gates
+    description: Model promotion gates.
+    risk: low
+    external_write: false
+  - id: "ai-ml.mlops.container-builds"
+    category: mlops
+    name: Container Builds
+    description: Container builds.
+    risk: low
+    external_write: false
+  - id: "ai-ml.mlops.dependency-locking"
+    category: mlops
+    name: Dependency Locking
+    description: Dependency locking.
+    risk: low
+    external_write: false
+  - id: "ai-ml.mlops.gpu-runtime-compatibility"
+    category: mlops
+    name: Gpu Runtime Compatibility
+    description: Gpu runtime compatibility.
+    risk: low
+    external_write: false
+  - id: "ai-ml.mlops.workload-identity"
+    category: mlops
+    name: Workload Identity
+    description: Workload identity.
+    risk: low
+    external_write: false
+  - id: "ai-ml.mlops.provenance-attestations"
+    category: mlops
+    name: Provenance Attestations
+    description: Provenance attestations.
+    risk: low
+    external_write: false
+  - id: "ai-ml.mlops.release-bundle-generation"
+    category: mlops
+    name: Release Bundle Generation
+    description: Release bundle generation.
+    risk: low
+    external_write: false
+  - id: "ai-ml.monitoring.input-drift-monitoring"
+    category: monitoring
+    name: Input Drift Monitoring
+    description: Input drift monitoring.
+    risk: low
+    external_write: false
+  - id: "ai-ml.monitoring.feature-drift-monitoring"
+    category: monitoring
+    name: Feature Drift Monitoring
+    description: Feature drift monitoring.
+    risk: low
+    external_write: false
+  - id: "ai-ml.monitoring.prediction-drift-monitoring"
+    category: monitoring
+    name: Prediction Drift Monitoring
+    description: Prediction drift monitoring.
+    risk: low
+    external_write: false
+  - id: "ai-ml.monitoring.concept-drift-analysis"
+    category: monitoring
+    name: Concept Drift Analysis
+    description: Concept drift analysis.
+    risk: low
+    external_write: false
+  - id: "ai-ml.monitoring.delayed-label-monitoring"
+    category: monitoring
+    name: Delayed Label Monitoring
+    description: Delayed label monitoring.
+    risk: low
+    external_write: false
+  - id: "ai-ml.monitoring.llm-task-success-monitoring"
+    category: monitoring
+    name: Llm Task Success Monitoring
+    description: Llm task success monitoring.
+    risk: low
+    external_write: false
+  - id: "ai-ml.monitoring.retrieval-monitoring"
+    category: monitoring
+    name: Retrieval Monitoring
+    description: Retrieval monitoring.
+    risk: low
+    external_write: false
+  - id: "ai-ml.monitoring.cost-monitoring"
+    category: monitoring
+    name: Cost Monitoring
+    description: Cost monitoring.
+    risk: low
+    external_write: false
+  - id: "ai-ml.monitoring.alert-design"
+    category: monitoring
+    name: Alert Design
+    description: Alert design.
+    risk: low
+    external_write: false
+  - id: "ai-ml.monitoring.retraining-trigger-analysis"
+    category: monitoring
+    name: Retraining Trigger Analysis
+    description: Retraining trigger analysis.
+    risk: low
+    external_write: false
+  - id: "ai-ml.performance-cost.training-profiling"
+    category: "performance-cost"
+    name: Training Profiling
+    description: Training profiling.
+    risk: low
+    external_write: false
+  - id: "ai-ml.performance-cost.inference-profiling"
+    category: "performance-cost"
+    name: Inference Profiling
+    description: Inference profiling.
+    risk: low
+    external_write: false
+  - id: "ai-ml.performance-cost.gpu-utilization-analysis"
+    category: "performance-cost"
+    name: Gpu Utilization Analysis
+    description: Gpu utilization analysis.
+    risk: low
+    external_write: false
+  - id: "ai-ml.performance-cost.memory-optimization"
+    category: "performance-cost"
+    name: Memory Optimization
+    description: Memory optimization.
+    risk: low
+    external_write: false
+  - id: "ai-ml.performance-cost.batching-optimization"
+    category: "performance-cost"
+    name: Batching Optimization
+    description: Batching optimization.
+    risk: low
+    external_write: false
+  - id: "ai-ml.performance-cost.quantization-benchmarking"
+    category: "performance-cost"
+    name: Quantization Benchmarking
+    description: Quantization benchmarking.
+    risk: low
+    external_write: false
+  - id: "ai-ml.performance-cost.compilation-benchmarking"
+    category: "performance-cost"
+    name: Compilation Benchmarking
+    description: Compilation benchmarking.
+    risk: low
+    external_write: false
+  - id: "ai-ml.performance-cost.quality-cost-frontier"
+    category: "performance-cost"
+    name: Quality Cost Frontier
+    description: Quality cost frontier.
+    risk: low
+    external_write: false
+  - id: "ai-ml.performance-cost.capacity-estimation"
+    category: "performance-cost"
+    name: Capacity Estimation
+    description: Capacity estimation.
+    risk: low
+    external_write: false
+  - id: "ai-ml.performance-cost.ai-cost-attribution"
+    category: "performance-cost"
+    name: Ai Cost Attribution
+    description: Ai cost attribution.
+    risk: low
+    external_write: false
+  - id: "ai-ml.data-governance.purpose-limitation"
+    category: "data-governance"
+    name: Purpose Limitation
+    description: Purpose limitation.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.data-governance.data-minimization"
+    category: "data-governance"
+    name: Data Minimization
+    description: Data minimization.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.data-governance.pii-classification"
+    category: "data-governance"
+    name: Pii Classification
+    description: Pii classification.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.data-governance.retention-policy-mapping"
+    category: "data-governance"
+    name: Retention Policy Mapping
+    description: Retention policy mapping.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.data-governance.dataset-access-control"
+    category: "data-governance"
+    name: Dataset Access Control
+    description: Dataset access control.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.data-governance.lineage-validation"
+    category: "data-governance"
+    name: Lineage Validation
+    description: Lineage validation.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.data-governance.license-compliance"
+    category: "data-governance"
+    name: License Compliance
+    description: License compliance.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.data-governance.data-residency-review"
+    category: "data-governance"
+    name: Data Residency Review
+    description: Data residency review.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.data-governance.deletion-impact-analysis"
+    category: "data-governance"
+    name: Deletion Impact Analysis
+    description: Deletion impact analysis.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.data-governance.sensitive-data-redaction"
+    category: "data-governance"
+    name: Sensitive Data Redaction
+    description: Sensitive data redaction.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.integration.inference-api-contracts"
+    category: integration
+    name: Inference Api Contracts
+    description: Inference api contracts.
+    risk: low
+    external_write: false
+  - id: "ai-ml.integration.event-contracts"
+    category: integration
+    name: Event Contracts
+    description: Event contracts.
+    risk: low
+    external_write: false
+  - id: "ai-ml.integration.feature-contracts"
+    category: integration
+    name: Feature Contracts
+    description: Feature contracts.
+    risk: low
+    external_write: false
+  - id: "ai-ml.integration.tool-api-contracts"
+    category: integration
+    name: Tool Api Contracts
+    description: Tool api contracts.
+    risk: low
+    external_write: false
+  - id: "ai-ml.integration.schema-versioning"
+    category: integration
+    name: Schema Versioning
+    description: Schema versioning.
+    risk: low
+    external_write: false
+  - id: "ai-ml.integration.idempotency-design"
+    category: integration
+    name: Idempotency Design
+    description: Idempotency design.
+    risk: low
+    external_write: false
+  - id: "ai-ml.integration.timeout-retry-design"
+    category: integration
+    name: Timeout Retry Design
+    description: Timeout retry design.
+    risk: low
+    external_write: false
+  - id: "ai-ml.integration.downstream-impact-analysis"
+    category: integration
+    name: Downstream Impact Analysis
+    description: Downstream impact analysis.
+    risk: low
+    external_write: false
+  - id: "ai-ml.integration.client-compatibility"
+    category: integration
+    name: Client Compatibility
+    description: Client compatibility.
+    risk: low
+    external_write: false
+  - id: "ai-ml.integration.integration-test-design"
+    category: integration
+    name: Integration Test Design
+    description: Integration test design.
+    risk: low
+    external_write: false
+  - id: "ai-ml.testing.ml-unit-testing"
+    category: testing
+    name: Ml Unit Testing
+    description: Ml unit testing.
+    risk: low
+    external_write: false
+  - id: "ai-ml.testing.data-test-design"
+    category: testing
+    name: Data Test Design
+    description: Data test design.
+    risk: low
+    external_write: false
+  - id: "ai-ml.testing.feature-test-design"
+    category: testing
+    name: Feature Test Design
+    description: Feature test design.
+    risk: low
+    external_write: false
+  - id: "ai-ml.testing.model-contract-tests"
+    category: testing
+    name: Model Contract Tests
+    description: Model contract tests.
+    risk: low
+    external_write: false
+  - id: "ai-ml.testing.inference-integration-tests"
+    category: testing
+    name: Inference Integration Tests
+    description: Inference integration tests.
+    risk: low
+    external_write: false
+  - id: "ai-ml.testing.rag-regression-tests"
+    category: testing
+    name: Rag Regression Tests
+    description: Rag regression tests.
+    risk: low
+    external_write: false
+  - id: "ai-ml.testing.prompt-regression-tests"
+    category: testing
+    name: Prompt Regression Tests
+    description: Prompt regression tests.
+    risk: low
+    external_write: false
+  - id: "ai-ml.testing.serialization-tests"
+    category: testing
+    name: Serialization Tests
+    description: Serialization tests.
+    risk: low
+    external_write: false
+  - id: "ai-ml.testing.clean-environment-tests"
+    category: testing
+    name: Clean Environment Tests
+    description: Clean environment tests.
+    risk: low
+    external_write: false
+  - id: "ai-ml.testing.reproducibility-tests"
+    category: testing
+    name: Reproducibility Tests
+    description: Reproducibility tests.
+    risk: low
+    external_write: false
+  - id: "ai-ml.documentation.dataset-card-authoring"
+    category: documentation
+    name: Dataset Card Authoring
+    description: Dataset card authoring.
+    risk: low
+    external_write: false
+  - id: "ai-ml.documentation.system-card-authoring"
+    category: documentation
+    name: System Card Authoring
+    description: System card authoring.
+    risk: low
+    external_write: false
+  - id: "ai-ml.documentation.runbook-authoring"
+    category: documentation
+    name: Runbook Authoring
+    description: Runbook authoring.
+    risk: low
+    external_write: false
+  - id: "ai-ml.documentation.architecture-diagrams"
+    category: documentation
+    name: Architecture Diagrams
+    description: Architecture diagrams.
+    risk: low
+    external_write: false
+  - id: "ai-ml.documentation.data-flow-diagrams"
+    category: documentation
+    name: Data Flow Diagrams
+    description: Data flow diagrams.
+    risk: low
+    external_write: false
+  - id: "ai-ml.documentation.evaluation-reporting"
+    category: documentation
+    name: Evaluation Reporting
+    description: Evaluation reporting.
+    risk: low
+    external_write: false
+  - id: "ai-ml.documentation.experiment-summary"
+    category: documentation
+    name: Experiment Summary
+    description: Experiment summary.
+    risk: low
+    external_write: false
+  - id: "ai-ml.documentation.api-documentation"
+    category: documentation
+    name: Api Documentation
+    description: Api documentation.
+    risk: low
+    external_write: false
+  - id: "ai-ml.documentation.support-handoff"
+    category: documentation
+    name: Support Handoff
+    description: Support handoff.
+    risk: low
+    external_write: false
+  - id: "ai-ml.documentation.known-limitations-documentation"
+    category: documentation
+    name: Known Limitations Documentation
+    description: Known limitations documentation.
+    risk: low
+    external_write: false
+  - id: "ai-ml.release.candidate-identity-verification"
+    category: release
+    name: Candidate Identity Verification
+    description: Candidate identity verification.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.release.release-readiness-review"
+    category: release
+    name: Release Readiness Review
+    description: Release readiness review.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.release.security-gate-review"
+    category: release
+    name: Security Gate Review
+    description: Security gate review.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.release.responsible-ai-gate-review"
+    category: release
+    name: Responsible Ai Gate Review
+    description: Responsible ai gate review.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.release.capacity-gate-review"
+    category: release
+    name: Capacity Gate Review
+    description: Capacity gate review.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.release.rollback-readiness"
+    category: release
+    name: Rollback Readiness
+    description: Rollback readiness.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.release.observation-window-design"
+    category: release
+    name: Observation Window Design
+    description: Observation window design.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.release.release-evidence-bundle"
+    category: release
+    name: Release Evidence Bundle
+    description: Release evidence bundle.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.release.post-release-review"
+    category: release
+    name: Post Release Review
+    description: Post release review.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.release.model-retirement-planning"
+    category: release
+    name: Model Retirement Planning
+    description: Model retirement planning.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.governance.approval-binding"
+    category: governance
+    name: Approval Binding
+    description: Approval binding.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.governance.environment-scope-enforcement"
+    category: governance
+    name: Environment Scope Enforcement
+    description: Environment scope enforcement.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.governance.project-scope-enforcement"
+    category: governance
+    name: Project Scope Enforcement
+    description: Project scope enforcement.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.governance.production-readonly-enforcement"
+    category: governance
+    name: Production Readonly Enforcement
+    description: Production readonly enforcement.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.governance.external-write-control"
+    category: governance
+    name: External Write Control
+    description: External write control.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.governance.risk-acceptance-separation"
+    category: governance
+    name: Risk Acceptance Separation
+    description: Risk acceptance separation.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.governance.independent-review-routing"
+    category: governance
+    name: Independent Review Routing
+    description: Independent review routing.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.governance.audit-evidence-hashing"
+    category: governance
+    name: Audit Evidence Hashing
+    description: Audit evidence hashing.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.governance.exception-expiry"
+    category: governance
+    name: Exception Expiry
+    description: Exception expiry.
+    risk: medium
+    external_write: false
+  - id: "ai-ml.governance.policy-decision-recording"
+    category: governance
+    name: Policy Decision Recording
+    description: Policy decision recording.
+    risk: medium
+    external_write: false

@@ -1,0 +1,57 @@
+version: 1.0.0
+projects:
+- id: pcc
+  name: PCC
+  product_owner: ${PCC_PRODUCT_OWNER}
+  scrum_teams:
+  - ${PCC_TEAM_1}
+  repositories:
+  - ${PCC_ANGULAR_REPO}
+  - ${PCC_JAVA_REPO}
+  delivery: scrum-or-configured-hybrid
+  environments:
+  - playground
+  - qa
+  - production
+- id: sop
+  name: SOP
+  product_owner: ${SOP_PRODUCT_OWNER}
+  scrum_teams:
+  - ${SOP_TEAM_1}
+  repositories:
+  - ${SOP_ANGULAR_REPO}
+  - ${SOP_JAVA_REPO}
+  delivery: scrum-or-configured-hybrid
+  environments:
+  - playground
+  - qa
+  - production
+- id: databridge
+  name: DataBridge
+  product_owner: ${DATABRIDGE_PRODUCT_OWNER}
+  scrum_teams:
+  - ${DATABRIDGE_TEAM_1}
+  repositories:
+  - ${DATABRIDGE_ANGULARJS_REPO}
+  - ${DATABRIDGE_JAVA_REPO}
+  delivery: scrum-or-flow-based-maintenance
+  environments:
+  - playground
+  - qa
+  - production
+- id: bm-agent-foundry
+  name: BM Agent Foundry
+  product_owner: ${BMAF_PRODUCT_OWNER}
+  scrum_teams:
+  - ${BMAF_PLATFORM_TEAM}
+  repositories:
+  - ${BMAF_REPOSITORIES}
+  delivery: scrum-with-kanban-practices
+  environments:
+  - development
+  - test
+  - production
+rules:
+- one run is bound to one project and one team unless cross-team scope is approved
+- production is read-only
+- team and people data follow minimum-necessary access

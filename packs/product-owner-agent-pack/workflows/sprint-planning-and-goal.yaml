@@ -1,0 +1,36 @@
+name: sprint-planning-and-goal
+version: 1.0.0
+trigger: Upcoming Sprint Planning
+scope_binding:
+- project
+- product
+- team
+- sprint
+- requester
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: verify team, sprint, backlog, and communication permissions
+- id: candidates
+  agent: backlog-ownership-agent
+  action: provide ordered ready Product Backlog candidates and rationale
+- id: goal-options
+  agent: sprint-goal-agent
+  action: prepare coherent Sprint Goal options tied to product value
+- id: readiness
+  agent: backlog-refinement-agent
+  action: confirm readiness, dependencies, open decisions, and excluded items
+- id: planning-support
+  agent: agile-collaboration-agent
+  action: prepare Product Owner inputs while preserving Developers ownership of Sprint Backlog selection and plan
+- id: decision-log
+  agent: decision-log-agent
+  action: record agreed Product Owner clarifications and decisions
+- id: publish
+  agent: product-owner-supervisor
+  action: request approval for official Sprint Goal/product communication where required
+outputs:
+- sprint-planning-brief
+- sprint-goal
+- sprint-decision-log
+failure_behavior: do not push unready work; surface options, impacts, and unresolved decisions

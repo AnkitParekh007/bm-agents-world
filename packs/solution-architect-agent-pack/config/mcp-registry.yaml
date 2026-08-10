@@ -1,0 +1,134 @@
+apiVersion: solution-architect-agent-pack/v1
+kind: MCPRegistry
+metadata:
+  name: solution-architect-mcp-servers
+  version: 1.0.0
+spec:
+  defaultTrust: deny
+  servers:
+  - id: atlassian-context
+    description: Jira, Confluence and delivery-context resources plus approval-controlled writes
+    accessMode: read-mostly
+    transport: approved-managed-or-stdio
+    credentialHandling: trusted-adapter-only
+    networkPolicy: allowlisted
+    toolPublication: explicit
+  - id: bitbucket-repository
+    description: Repository inventory, code search, ownership, pull requests and pipeline metadata
+    accessMode: read-mostly
+    transport: approved-managed-or-stdio
+    credentialHandling: trusted-adapter-only
+    networkPolicy: allowlisted
+    toolPublication: explicit
+  - id: enterprise-architecture-repository
+    description: Capabilities, applications, standards, principles, decisions and technology radar
+    accessMode: read-only
+    transport: approved-managed-or-stdio
+    credentialHandling: trusted-adapter-only
+    networkPolicy: allowlisted
+    toolPublication: explicit
+  - id: architecture-knowledge
+    description: Approved reference architectures, patterns, policies, runbooks and incident learnings
+    accessMode: read-only
+    transport: approved-managed-or-stdio
+    credentialHandling: trusted-adapter-only
+    networkPolicy: allowlisted
+    toolPublication: explicit
+  - id: architecture-modeling
+    description: C4, Mermaid, Structurizr, graph and ArchiMate-compatible model generation
+    accessMode: workspace-generate
+    transport: approved-managed-or-stdio
+    credentialHandling: trusted-adapter-only
+    networkPolicy: allowlisted
+    toolPublication: explicit
+  - id: openapi-contracts
+    description: OpenAPI resources, validation, compatibility and generation
+    accessMode: read-generate
+    transport: approved-managed-or-stdio
+    credentialHandling: trusted-adapter-only
+    networkPolicy: allowlisted
+    toolPublication: explicit
+  - id: asyncapi-contracts
+    description: AsyncAPI resources, event schema, compatibility and generation
+    accessMode: read-generate
+    transport: approved-managed-or-stdio
+    credentialHandling: trusted-adapter-only
+    networkPolicy: allowlisted
+    toolPublication: explicit
+  - id: database-metadata
+    description: Database catalog, schema history, lineage and bounded diagnostics
+    accessMode: read-only
+    transport: approved-managed-or-stdio
+    credentialHandling: trusted-adapter-only
+    networkPolicy: allowlisted
+    toolPublication: explicit
+  - id: cloud-platform-catalog
+    description: Cloud accounts, services, quotas, regions and approved patterns
+    accessMode: read-only
+    transport: approved-managed-or-stdio
+    credentialHandling: trusted-adapter-only
+    networkPolicy: allowlisted
+    toolPublication: explicit
+  - id: kubernetes-platform
+    description: Clusters, namespaces, workloads, policies, services and topology
+    accessMode: observe
+    transport: approved-managed-or-stdio
+    credentialHandling: trusted-adapter-only
+    networkPolicy: allowlisted
+    toolPublication: explicit
+  - id: observability
+    description: Logs, metrics, traces, dashboards, SLOs, incidents and capacity evidence
+    accessMode: read-only
+    transport: approved-managed-or-stdio
+    credentialHandling: trusted-adapter-only
+    networkPolicy: allowlisted
+    toolPublication: explicit
+  - id: security-posture
+    description: Threat models, vulnerability summaries, IAM posture and security evidence
+    accessMode: read-only
+    transport: approved-managed-or-stdio
+    credentialHandling: trusted-adapter-only
+    networkPolicy: allowlisted
+    toolPublication: explicit
+  - id: identity-governance
+    description: Identity domains, roles, service accounts and access policies
+    accessMode: read-only
+    transport: approved-managed-or-stdio
+    credentialHandling: trusted-adapter-only
+    networkPolicy: allowlisted
+    toolPublication: explicit
+  - id: cost-management
+    description: Budgets, usage, allocation, forecasts and option estimates
+    accessMode: read-only
+    transport: approved-managed-or-stdio
+    credentialHandling: trusted-adapter-only
+    networkPolicy: allowlisted
+    toolPublication: explicit
+  - id: vendor-technology-catalog
+    description: Approved products, licenses, support status, lifecycle and exceptions
+    accessMode: read-only
+    transport: approved-managed-or-stdio
+    credentialHandling: trusted-adapter-only
+    networkPolicy: allowlisted
+    toolPublication: explicit
+  - id: artifact-evidence
+    description: Immutable architecture artifacts, hashes, retention and retrieval
+    accessMode: append-read
+    transport: approved-managed-or-stdio
+    credentialHandling: trusted-adapter-only
+    networkPolicy: allowlisted
+    toolPublication: explicit
+  - id: secret-broker
+    description: Capability lease requests without exposing raw credentials
+    accessMode: broker-only
+    transport: approved-managed-or-stdio
+    credentialHandling: trusted-adapter-only
+    networkPolicy: allowlisted
+    toolPublication: explicit
+  - id: policy
+    description: OPA decisions, scope validation, data classification and approval verification
+    accessMode: mandatory
+    transport: approved-managed-or-stdio
+    credentialHandling: trusted-adapter-only
+    networkPolicy: allowlisted
+    toolPublication: explicit

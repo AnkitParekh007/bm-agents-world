@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bm-agent-foundry.local/schemas/quality-attribute-scenarios.schema.json",
+  "title": "Quality Attribute Scenarios",
+  "type": "object",
+  "required": [
+    "contextId",
+    "scenarios"
+  ],
+  "properties": {
+    "contextId": {
+      "type": "string"
+    },
+    "scenarios": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "attribute",
+          "source",
+          "stimulus",
+          "environment",
+          "artifact",
+          "response",
+          "measure",
+          "priority",
+          "owner"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "attribute": {
+            "enum": [
+              "availability",
+              "reliability",
+              "performance",
+              "scalability",
+              "security",
+              "privacy",
+              "modifiability",
+              "interoperability",
+              "usability",
+              "accessibility",
+              "operability",
+              "testability",
+              "cost",
+              "sustainability",
+              "portability",
+              "recoverability",
+              "other"
+            ]
+          },
+          "source": {
+            "type": "string"
+          },
+          "stimulus": {
+            "type": "string"
+          },
+          "environment": {
+            "type": "string"
+          },
+          "artifact": {
+            "type": "string"
+          },
+          "response": {
+            "type": "string"
+          },
+          "measure": {
+            "type": "object",
+            "required": [
+              "metric",
+              "target"
+            ],
+            "properties": {
+              "metric": {
+                "type": "string"
+              },
+              "target": {}
+            }
+          },
+          "priority": {
+            "enum": [
+              "must",
+              "should",
+              "could"
+            ]
+          },
+          "owner": {
+            "type": "string"
+          },
+          "evidenceRefs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

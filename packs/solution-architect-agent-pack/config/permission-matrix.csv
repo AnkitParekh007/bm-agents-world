@@ -1,0 +1,23 @@
+Domain,Resource,Operation,Decision,Conditions
+Context,Jira/Confluence/Product docs,Read scoped resources,Allow,Project-scoped and audited
+Source control,Bitbucket repositories,"Read code, history, PRs",Allow,Repository-scoped
+Source control,Bitbucket repositories,Commit/push/create PR,Approve,Payload-bound approval
+Architecture,Draft workspace,"Create diagrams, options, ADR drafts",Allow,Isolated draft only
+Architecture,Official architecture repository,Publish or supersede decisions,Approve,Independent review
+Contracts,OpenAPI/AsyncAPI/data contract registry,Read,Allow,Consumer/producer scope
+Contracts,OpenAPI/AsyncAPI/data contract registry,Publish,Approve,Producer and consumer approval
+Cloud/IaC,Cloud and infrastructure inventories,Read metadata/plans,Allow,No raw credentials
+Cloud/IaC,Cloud and infrastructure,Apply/mutate,Deny,Operator or deterministic pipeline only
+Kubernetes,Clusters,Read approved metadata,Allow,Scoped service account
+Kubernetes,Clusters,Mutate resources,Deny,No free-form agent execution
+Database,Catalog/schema metadata,Read,Allow,Redacted and scoped
+Database,Any environment,DDL/DML/grants,Deny,No direct database mutation
+Production,Applications/data/infrastructure,Read diagnostics,Approve,"Time-bound, redacted, audited"
+Production,Applications/data/infrastructure,Mutate,Deny,Human/operator controlled
+Secrets,Vault/secret manager,Resolve capability reference,Allow,Trusted broker only
+Secrets,Vault/secret manager,Reveal raw value to model,Deny,Never allowed
+Vendor,Vendor portals/trials,Read approved public/internal material,Allow,Licensed and scoped
+Vendor,Commercial commitment,Approve,Procurement and budget owner
+Communication,Teams/email/customer channels,Publish,Approve,Review exact payload
+Governance,Risk and exception register,Draft,Allow,Evidence-linked
+Governance,Risk acceptance/exception approval,Deny,Human accountable owner only

@@ -1,0 +1,91 @@
+apiVersion: solution-architect-agent-pack/v1
+kind: ProjectRegistry
+metadata:
+  name: organization-solution-architecture-projects
+  version: 1.0.0
+spec:
+  projects:
+  - id: pcc
+    name: PCC
+    deliveryRepositories:
+    - PCC Angular 12 repository
+    - PCC Java repository
+    technologyProfile:
+    - Angular 12
+    - Java
+    - relational database
+    architectureMode: legacy-compatible
+    environments:
+    - playground
+    - qa
+    - production
+    constraints:
+    - Respect pinned framework and runtime versions
+    - Prefer incremental changes over unapproved modernization
+    - Production mutations are operator-only
+  - id: sop
+    name: SOP
+    deliveryRepositories:
+    - SOP Angular 15 repository
+    - SOP Java repository
+    technologyProfile:
+    - Angular 15
+    - Java
+    - relational database
+    architectureMode: version-aware
+    environments:
+    - playground
+    - qa
+    - production
+    constraints:
+    - Resolve actual repository versions before design
+    - Preserve documented integration contracts
+    - Production mutations are operator-only
+  - id: databridge
+    name: DataBridge
+    deliveryRepositories:
+    - DataBridge AngularJS repository
+    - DataBridge Java repository
+    technologyProfile:
+    - AngularJS
+    - Java
+    - data integration
+    - relational database
+    architectureMode: conservative-modernization
+    environments:
+    - playground
+    - qa
+    - production
+    constraints:
+    - Treat legacy compatibility and migration risk as first-class
+    - Require transition architecture for major modernization
+    - Production mutations are operator-only
+  - id: bm-agent-foundry
+    name: BM Agent Foundry
+    deliveryRepositories:
+    - product-manager-agent-pack
+    - ux-designer-agent-pack
+    - frontend-angular-agent-pack
+    - java-developer-agent-pack
+    - python-developer-agent-pack
+    - database-architect-developer-agent-pack
+    - qa-agent-pack
+    - devops-agent-pack
+    technologyProfile:
+    - Agent orchestration
+    - MCP
+    - Supabase
+    - GKE/Kubernetes
+    - policy-as-code
+    - artifact management
+    architectureMode: platform-and-product
+    environments:
+    - local
+    - playground
+    - qa
+    - production
+    constraints:
+    - Tenant and project isolation
+    - Short-lived workload identity
+    - Approval-controlled external writes
+    - No raw secret exposure to models

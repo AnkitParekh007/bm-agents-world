@@ -1,0 +1,136 @@
+apiVersion: engineering-manager-technical-lead-agent-pack/v1
+kind: McpRegistry
+metadata:
+  name: engineering-leadership-mcp-servers
+  version: 1.0.0
+spec:
+  servers:
+  - id: atlassian-work-management
+    purpose: Jira and Confluence work, requirements, decisions, and approved publication.
+    transport: remote
+    access: read; approval-controlled write
+    defaultEnabled: true
+    trustBoundary: trusted-adapter
+    rawSecretsToModel: false
+  - id: bitbucket-engineering
+    purpose: Repositories, branches, commits, pull requests, code owners, and approved repository actions.
+    transport: remote
+    access: read; approval-controlled write
+    defaultEnabled: true
+    trustBoundary: trusted-adapter
+    rawSecretsToModel: false
+  - id: repository-intelligence
+    purpose: Scoped semantic and structural analysis of source, configuration, ownership, dependencies, and tests.
+    transport: local/remote
+    access: read-only
+    defaultEnabled: true
+    trustBoundary: trusted-adapter
+    rawSecretsToModel: false
+  - id: ci-cd-evidence
+    purpose: Pipeline definitions, runs, checks, artifacts, deployment evidence, and approved retries.
+    transport: remote
+    access: read; approval-controlled execute
+    defaultEnabled: true
+    trustBoundary: trusted-adapter
+    rawSecretsToModel: false
+  - id: code-quality-security
+    purpose: Static analysis, coverage, vulnerabilities, licenses, secrets, and quality-gate evidence.
+    transport: remote
+    access: read-only
+    defaultEnabled: true
+    trustBoundary: trusted-adapter
+    rawSecretsToModel: false
+  - id: observability
+    purpose: Redacted logs, metrics, traces, SLOs, alerts, and dashboards.
+    transport: remote
+    access: read-only
+    defaultEnabled: true
+    trustBoundary: trusted-adapter
+    rawSecretsToModel: false
+  - id: incident-management
+    purpose: Incidents, timelines, pages, status, corrective actions, and approved updates.
+    transport: remote
+    access: read; approval-controlled write
+    defaultEnabled: true
+    trustBoundary: trusted-adapter
+    rawSecretsToModel: false
+  - id: service-catalog
+    purpose: Services, owners, dependencies, tiers, runbooks, lifecycle, and support rotations.
+    transport: remote
+    access: read-only
+    defaultEnabled: true
+    trustBoundary: trusted-adapter
+    rawSecretsToModel: false
+  - id: architecture-repository
+    purpose: ADRs, system models, standards, contracts, and architecture-review evidence.
+    transport: remote
+    access: read; approval-controlled publish
+    defaultEnabled: true
+    trustBoundary: trusted-adapter
+    rawSecretsToModel: false
+  - id: engineering-analytics
+    purpose: Curated DORA, SPACE, DevEx, flow, quality, reliability, and cost datasets.
+    transport: remote
+    access: aggregate read-only
+    defaultEnabled: true
+    trustBoundary: trusted-adapter
+    rawSecretsToModel: false
+  - id: release-change-management
+    purpose: Release calendars, change records, approvals, rollbacks, and post-release verification.
+    transport: remote
+    access: read; approval-controlled write
+    defaultEnabled: true
+    trustBoundary: trusted-adapter
+    rawSecretsToModel: false
+  - id: microsoft-teams
+    purpose: Channels, approved team context, and approval-controlled communications.
+    transport: remote
+    access: read; approval-controlled post
+    defaultEnabled: true
+    trustBoundary: trusted-adapter
+    rawSecretsToModel: false
+  - id: calendar-availability
+    purpose: Work calendars, approved availability, leave summaries, and on-call schedules.
+    transport: remote
+    access: minimum necessary read-only
+    defaultEnabled: true
+    trustBoundary: trusted-adapter
+    rawSecretsToModel: false
+  - id: people-safe-context
+    purpose: Career framework, role expectations, employee-selected one-on-one topics, and approved aggregate team-health
+      inputs.
+    transport: remote
+    access: restricted, purpose-bound read-only
+    defaultEnabled: false
+    trustBoundary: trusted-adapter
+    rawSecretsToModel: false
+  - id: recruiting-onboarding
+    purpose: Approved role plans, interview structures, candidate evidence references, onboarding tasks, and access
+      status.
+    transport: remote
+    access: restricted; no autonomous decisions
+    defaultEnabled: false
+    trustBoundary: trusted-adapter
+    rawSecretsToModel: false
+  - id: finance-vendor-summary
+    purpose: Approved engineering budgets, license summaries, vendor dependencies, and renewal metadata.
+    transport: remote
+    access: aggregate/summary read-only
+    defaultEnabled: false
+    trustBoundary: trusted-adapter
+    rawSecretsToModel: false
+  - id: artifact-store
+    purpose: Versioned leadership plans, reviews, reports, evidence bundles, and templates.
+    transport: remote
+    access: read; scoped write
+    defaultEnabled: true
+    trustBoundary: trusted-adapter
+    rawSecretsToModel: false
+  - id: key-vault-policy-broker
+    purpose: Workload identity, short-lived capability leases, approvals, policy decisions, and secret injection
+      inside trusted adapters.
+    transport: remote
+    access: broker only; no raw secret output
+    defaultEnabled: true
+    trustBoundary: trusted-adapter
+    rawSecretsToModel: false

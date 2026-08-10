@@ -1,0 +1,18 @@
+resource,action,sandbox,playground,qa,prod,approval,notes
+repository,read,allow,allow,allow,allow,no,Project/repository scoped
+workspace,write,allow,allow,allow,deny,no,Ephemeral workspace only
+git,commit,conditional,conditional,conditional,deny,yes,Payload-bound
+git,push,deny,conditional,conditional,deny,yes,Non-protected branch only
+bitbucket-pr,create,deny,conditional,conditional,deny,yes,Draft preferred
+jira,write,deny,conditional,conditional,deny,yes,Exact draft approved
+teams,post,deny,conditional,conditional,deny,yes,Sanitized content
+database,metadata/select,allow,allow,allow,conditional,no,"Bounded, read-only; prod diagnostics policy"
+database,write/migrate,allow-local,conditional,conditional,deny,yes,Production prohibited
+messaging,metadata,allow-local,allow,allow,conditional,no,No secret payload exposure
+messaging,publish/offset/purge,allow-local,conditional,conditional,deny,yes,Purge prohibited everywhere unless external admin
+pipeline,read,allow,allow,allow,allow,no,Project scoped
+pipeline,trigger,deny,conditional,conditional,deny,yes,Idempotent trigger
+artifact,download,allow,allow,allow,conditional,no,Approved registries only
+artifact,publish/sign,deny,deny,deny,deny,external,Dedicated release process
+deployment,request,deny,conditional,conditional,deny,yes,Production external
+secrets,read raw value,deny,deny,deny,deny,never,Adapter consumes secret

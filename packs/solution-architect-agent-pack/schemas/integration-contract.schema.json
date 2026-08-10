@@ -1,0 +1,192 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bm-agent-foundry.local/schemas/integration-contract.schema.json",
+  "title": "Integration Contract",
+  "type": "object",
+  "required": [
+    "contractId",
+    "style",
+    "producer",
+    "consumers",
+    "version",
+    "ownership",
+    "security",
+    "reliability",
+    "observability",
+    "testing",
+    "lifecycle"
+  ],
+  "properties": {
+    "contractId": {
+      "type": "string"
+    },
+    "style": {
+      "enum": [
+        "http-api",
+        "event",
+        "message",
+        "file",
+        "batch",
+        "cdc",
+        "database-view",
+        "other"
+      ]
+    },
+    "producer": {
+      "type": "string"
+    },
+    "consumers": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "version": {
+      "type": "string"
+    },
+    "specificationReference": {
+      "type": "string"
+    },
+    "ownership": {
+      "type": "object",
+      "required": [
+        "producerOwner",
+        "consumerOwners"
+      ],
+      "properties": {
+        "producerOwner": {
+          "type": "string"
+        },
+        "consumerOwners": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "dataClassification": {
+      "enum": [
+        "public",
+        "internal",
+        "confidential",
+        "restricted"
+      ]
+    },
+    "security": {
+      "type": "object",
+      "required": [
+        "authentication",
+        "authorization",
+        "encryption"
+      ],
+      "properties": {
+        "authentication": {
+          "type": "string"
+        },
+        "authorization": {
+          "type": "string"
+        },
+        "encryption": {
+          "type": "string"
+        },
+        "threatModelRef": {
+          "type": "string"
+        }
+      }
+    },
+    "reliability": {
+      "type": "object",
+      "required": [
+        "timeout",
+        "retry",
+        "idempotency",
+        "failureHandling"
+      ],
+      "properties": {
+        "timeout": {
+          "type": "string"
+        },
+        "retry": {
+          "type": "string"
+        },
+        "idempotency": {
+          "type": "string"
+        },
+        "failureHandling": {
+          "type": "string"
+        },
+        "deliverySemantics": {
+          "type": "string"
+        }
+      }
+    },
+    "observability": {
+      "type": "object",
+      "required": [
+        "correlation",
+        "metrics",
+        "alerts"
+      ],
+      "properties": {
+        "correlation": {
+          "type": "string"
+        },
+        "metrics": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "alerts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "testing": {
+      "type": "object",
+      "required": [
+        "contractTests",
+        "compatibility"
+      ],
+      "properties": {
+        "contractTests": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "compatibility": {
+          "type": "string"
+        }
+      }
+    },
+    "lifecycle": {
+      "type": "object",
+      "required": [
+        "versioning",
+        "deprecation",
+        "retention"
+      ],
+      "properties": {
+        "versioning": {
+          "type": "string"
+        },
+        "deprecation": {
+          "type": "string"
+        },
+        "retention": {
+          "type": "string"
+        }
+      }
+    },
+    "approvalReference": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

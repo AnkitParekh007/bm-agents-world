@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/approval-request.schema.json",
+  "title": "Approval Request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "action",
+    "target",
+    "payload_sha256",
+    "requester",
+    "expires_at"
+  ],
+  "properties": {
+    "action": {
+      "type": "string"
+    },
+    "target": {
+      "type": "string"
+    },
+    "payload_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "requester": {
+      "type": "string"
+    },
+    "approvers": {
+      "type": "array"
+    },
+    "expires_at": {
+      "type": "string"
+    },
+    "evidence_refs": {
+      "type": "array"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+System,Read,Local/Sandbox Write,Shared Nonprod Write,Production Write,Approval
+Jira/Confluence,Yes,N/A,Draft/publish,No admin,Required for publish
+Bitbucket,Yes,Patch in isolated workspace,Commit/push/PR,Merge denied,Required
+Database catalog,Scoped,Disposable only,N/A,Scoped read-only,Policy scoped
+Query diagnostics,Bounded/redacted,Disposable,Approved bounded,Approved read-only,Sometimes
+DDL,No target mutation,Disposable,Approved playground/QA,Denied,Required
+DML/backfill,No target mutation,Disposable,Approved with row/time limits,Denied,Required
+Grants/security policy,Read metadata,Disposable,Approved with security review,Denied,Required
+Backup/restore/failover,Read metadata,Disposable drills,Operator controlled,Denied,Dual control
+Secret manager,References only,Brokered lease,Brokered lease,Read-only verifier lease,Policy/approval
+Teams,Read if connected,Draft,Publish approved,N/A,Required

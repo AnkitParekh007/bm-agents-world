@@ -1,0 +1,83 @@
+apiVersion: java-developer-agent-pack/v1
+kind: PluginRegistry
+plugins:
+- id: bitbucket-adapter
+  purpose: Bitbucket Cloud/Data Center repository, pull request and pipeline operations
+  status: planned
+  credentials: brokered-if-required
+- id: jira-confluence-adapter
+  purpose: Atlassian context and controlled writes
+  status: planned
+  credentials: brokered-if-required
+- id: java-profile-detector
+  purpose: JDK/framework/build/test/application-server detection
+  status: planned
+  credentials: brokered-if-required
+- id: jdk-toolchain-runner
+  purpose: Isolated JDK selection, compilation and Java tool execution
+  status: planned
+  credentials: brokered-if-required
+- id: maven-adapter
+  purpose: Maven wrapper, lifecycle, dependency and plugin operations
+  status: planned
+  credentials: brokered-if-required
+- id: gradle-adapter
+  purpose: Gradle wrapper, tasks, dependency and build-scan operations
+  status: planned
+  credentials: brokered-if-required
+- id: junit-adapter
+  purpose: JUnit test selection, execution and structured evidence
+  status: planned
+  credentials: brokered-if-required
+- id: testcontainers-adapter
+  purpose: Disposable integration infrastructure with policy limits
+  status: planned
+  credentials: brokered-if-required
+- id: static-analysis-adapter
+  purpose: Checkstyle/SpotBugs/PMD/Error Prone/Sonar mapping
+  status: planned
+  credentials: brokered-if-required
+- id: security-scanner-adapter
+  purpose: SAST, dependency, secret and container scanning
+  status: planned
+  credentials: brokered-if-required
+- id: database-adapter
+  purpose: Dialect-aware schema and read-only diagnostic access
+  status: planned
+  credentials: brokered-if-required
+- id: migration-adapter
+  purpose: Flyway/Liquibase migration inspection and sandbox execution
+  status: planned
+  credentials: brokered-if-required
+- id: openapi-adapter
+  purpose: OpenAPI validation, diff and contract generation
+  status: planned
+  credentials: brokered-if-required
+- id: messaging-adapter
+  purpose: Kafka/JMS/RabbitMQ metadata and sandbox test harness
+  status: planned
+  credentials: brokered-if-required
+- id: jfr-observability-adapter
+  purpose: JFR, logs, metrics, traces and profile retrieval
+  status: planned
+  credentials: brokered-if-required
+- id: container-adapter
+  purpose: Rootless image build, SBOM and provenance generation
+  status: planned
+  credentials: brokered-if-required
+- id: secret-manager-adapter
+  purpose: Vault, cloud key manager or enterprise secret manager
+  status: planned
+  credentials: brokered-if-required
+- id: approval-adapter
+  purpose: Payload-bound, expiring human approvals
+  status: planned
+  credentials: brokered-if-required
+- id: artifact-adapter
+  purpose: Immutable evidence storage and retrieval
+  status: planned
+  credentials: brokered-if-required
+- id: teams-adapter
+  purpose: Approved collaboration publication
+  status: planned
+  credentials: brokered-if-required

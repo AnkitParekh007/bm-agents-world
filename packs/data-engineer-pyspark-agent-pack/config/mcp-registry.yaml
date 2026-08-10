@@ -1,0 +1,97 @@
+version: 1.0.0
+server_count: 18
+servers:
+- id: atlassian-data-context-mcp
+  description: Read Jira and Confluence context; approved writes create data work items, decisions, and status updates.
+  mode: mixed
+  authentication: workload-identity-or-capability-broker
+  model_receives_raw_secret: false
+- id: bitbucket-data-engineering-mcp
+  description: Read repositories, commits, pull requests, pipelines, and code owners; protected writes require approval.
+  mode: mixed
+  authentication: workload-identity-or-capability-broker
+  model_receives_raw_secret: false
+- id: source-data-catalog-mcp
+  description: Read approved source schemas, ownership, classification, statistics, contracts, and sample profiles.
+  mode: read-only
+  authentication: workload-identity-or-capability-broker
+  model_receives_raw_secret: false
+- id: spark-platform-mcp
+  description: Read Spark configuration, cluster metadata, job history, event logs, and bounded plans; execution
+    is isolated or approval-controlled.
+  mode: mixed
+  authentication: workload-identity-or-capability-broker
+  model_receives_raw_secret: false
+- id: notebook-workspace-mcp
+  description: Read approved notebooks and run isolated notebook tests without exposing personal workspace credentials.
+  mode: isolated-execution
+  authentication: workload-identity-or-capability-broker
+  model_receives_raw_secret: false
+- id: sql-source-adapter-mcp
+  description: Run parameterized, bounded, read-only source and warehouse queries through trusted adapters.
+  mode: read-only
+  authentication: workload-identity-or-capability-broker
+  model_receives_raw_secret: false
+- id: object-storage-metadata-mcp
+  description: Read approved object metadata, partitions, manifests, file sizes, formats, and retention state.
+  mode: read-only
+  authentication: workload-identity-or-capability-broker
+  model_receives_raw_secret: false
+- id: streaming-platform-mcp
+  description: Read Kafka or approved event-platform topics, schemas, offsets, lag, and bounded samples; writes
+    require approval.
+  mode: mixed
+  authentication: workload-identity-or-capability-broker
+  model_receives_raw_secret: false
+- id: orchestration-mcp
+  description: Read Airflow or approved scheduler DAGs, runs, dependencies, logs, datasets, and task state; protected
+    actions require approval.
+  mode: mixed
+  authentication: workload-identity-or-capability-broker
+  model_receives_raw_secret: false
+- id: lakehouse-catalog-mcp
+  description: Read and validate Delta, Iceberg, Hive, Unity Catalog, or approved metastore metadata and table properties.
+  mode: read-only
+  authentication: workload-identity-or-capability-broker
+  model_receives_raw_secret: false
+- id: data-quality-mcp
+  description: Execute approved quality, profiling, validation, and reconciliation rules in isolated workers.
+  mode: isolated-execution
+  authentication: workload-identity-or-capability-broker
+  model_receives_raw_secret: false
+- id: schema-registry-contract-mcp
+  description: Read and validate schema registry entries, data contracts, compatibility modes, and consumer mappings.
+  mode: read-only
+  authentication: workload-identity-or-capability-broker
+  model_receives_raw_secret: false
+- id: lineage-metadata-mcp
+  description: Read and publish approval-controlled OpenLineage-compatible job, run, and dataset metadata.
+  mode: mixed
+  authentication: workload-identity-or-capability-broker
+  model_receives_raw_secret: false
+- id: data-observability-mcp
+  description: Read bounded pipeline, freshness, quality, cost, lineage, and anomaly telemetry.
+  mode: read-only
+  authentication: workload-identity-or-capability-broker
+  model_receives_raw_secret: false
+- id: artifact-registry-mcp
+  description: Store versioned pipeline packages, wheels, containers, reports, contracts, and evidence bundles.
+  mode: mixed
+  authentication: workload-identity-or-capability-broker
+  model_receives_raw_secret: false
+- id: vault-capability-mcp
+  description: Issues short-lived connector and platform capabilities to trusted adapters without revealing raw
+    secrets.
+  mode: broker-only
+  authentication: workload-identity-or-capability-broker
+  model_receives_raw_secret: false
+- id: policy-approval-mcp
+  description: Evaluates OPA policy and obtains immutable payload-bound approvals for protected actions.
+  mode: control-plane
+  authentication: workload-identity-or-capability-broker
+  model_receives_raw_secret: false
+- id: documentation-standards-mcp
+  description: Provides version-pinned Spark, platform, data standard, runbook, and organization documentation.
+  mode: read-only
+  authentication: workload-identity-or-capability-broker
+  model_receives_raw_secret: false

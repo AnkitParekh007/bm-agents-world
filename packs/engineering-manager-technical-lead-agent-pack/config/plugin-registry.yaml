@@ -1,0 +1,117 @@
+apiVersion: engineering-manager-technical-lead-agent-pack/v1
+kind: PluginRegistry
+metadata:
+  name: engineering-leadership-plugins
+  version: 1.0.0
+spec:
+  plugins:
+  - id: jira-context-plugin
+    description: Collects bounded Jira and Confluence context for planning and status workflows.
+    execution: deterministic-adapter
+    approvalRequired: false
+    auditRequired: true
+  - id: bitbucket-review-plugin
+    description: Aggregates pull-request scope, reviewers, checks, and code-ownership evidence.
+    execution: deterministic-adapter
+    approvalRequired: false
+    auditRequired: true
+  - id: repository-intelligence-plugin
+    description: Builds repository, dependency, test, and ownership profiles.
+    execution: deterministic-adapter
+    approvalRequired: false
+    auditRequired: true
+  - id: delivery-planning-plugin
+    description: Creates milestones, slices, capacity scenarios, and confidence-aware forecasts.
+    execution: deterministic-adapter
+    approvalRequired: false
+    auditRequired: true
+  - id: sprint-flow-plugin
+    description: Analyzes WIP, age, blockers, queues, carryover, and scope changes.
+    execution: deterministic-adapter
+    approvalRequired: false
+    auditRequired: true
+  - id: dependency-map-plugin
+    description: Maintains cross-team and cross-system dependency maps.
+    execution: deterministic-adapter
+    approvalRequired: false
+    auditRequired: true
+  - id: technical-direction-plugin
+    description: Creates technical options, decision drafts, and standards-conformance evidence.
+    execution: deterministic-adapter
+    approvalRequired: false
+    auditRequired: true
+  - id: architecture-alignment-plugin
+    description: Compares implementation plans and changes with ADRs and approved architecture.
+    execution: deterministic-adapter
+    approvalRequired: false
+    auditRequired: true
+  - id: code-quality-plugin
+    description: Aggregates build, lint, static-analysis, maintainability, and review evidence.
+    execution: deterministic-adapter
+    approvalRequired: false
+    auditRequired: true
+  - id: test-quality-plugin
+    description: Aggregates test, defect, flaky-test, regression, and environment evidence.
+    execution: deterministic-adapter
+    approvalRequired: false
+    auditRequired: true
+  - id: security-risk-plugin
+    description: Aggregates security, privacy, compliance, vulnerability, and exception evidence.
+    execution: deterministic-adapter
+    approvalRequired: false
+    auditRequired: true
+  - id: reliability-operations-plugin
+    description: Aggregates SLO, error-budget, observability, runbook, capacity, and toil evidence.
+    execution: deterministic-adapter
+    approvalRequired: false
+    auditRequired: true
+  - id: incident-coordination-plugin
+    description: Creates incident timelines, role maps, updates, PIR drafts, and action tracking.
+    execution: deterministic-adapter
+    approvalRequired: false
+    auditRequired: true
+  - id: release-readiness-plugin
+    description: Builds cross-discipline release evidence and go/no-go recommendations.
+    execution: deterministic-adapter
+    approvalRequired: false
+    auditRequired: true
+  - id: engineering-metrics-plugin
+    description: Computes balanced delivery, flow, quality, reliability, SPACE, and DevEx views.
+    execution: deterministic-adapter
+    approvalRequired: false
+    auditRequired: true
+  - id: technical-debt-plugin
+    description: Maintains debt, lifecycle, modernization, and decommissioning evidence.
+    execution: deterministic-adapter
+    approvalRequired: false
+    auditRequired: true
+  - id: team-health-plugin
+    description: Processes consented aggregate team-health and collaboration signals.
+    execution: deterministic-adapter
+    approvalRequired: false
+    auditRequired: true
+  - id: coaching-preparation-plugin
+    description: Prepares one-on-one, feedback, recognition, growth, and mentoring drafts.
+    execution: deterministic-adapter
+    approvalRequired: false
+    auditRequired: true
+  - id: hiring-onboarding-plugin
+    description: Supports structured interview and onboarding artifacts with decision boundaries.
+    execution: deterministic-adapter
+    approvalRequired: false
+    auditRequired: true
+  - id: stakeholder-publisher-plugin
+    description: Publishes approved Jira, Confluence, Teams, and report updates.
+    execution: deterministic-adapter
+    approvalRequired: true
+    auditRequired: true
+  - id: approval-policy-plugin
+    description: Binds sensitive actions to immutable payload hashes, approvers, expiry, and audit.
+    execution: deterministic-adapter
+    approvalRequired: true
+    auditRequired: true
+  - id: secret-injection-plugin
+    description: Injects short-lived credentials inside trusted adapters without exposing them to the model.
+    execution: deterministic-adapter
+    approvalRequired: false
+    auditRequired: true

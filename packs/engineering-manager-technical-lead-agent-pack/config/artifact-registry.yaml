@@ -1,0 +1,169 @@
+apiVersion: engineering-manager-technical-lead-agent-pack/v1
+kind: ArtifactRegistry
+metadata:
+  name: engineering-leadership-artifacts
+  version: 1.0.0
+spec:
+  artifacts:
+  - id: engineering-daily-summary
+    description: Daily priorities, risks, decisions, blockers, and follow-ups.
+    classification: internal
+    versioned: true
+    evidenceRequired: true
+    publicationApproval: false
+  - id: engineering-delivery-plan
+    description: Workstreams, slices, milestones, ownership, dependencies, forecasts, and evidence.
+    classification: internal
+    versioned: true
+    evidenceRequired: true
+    publicationApproval: true
+  - id: capacity-scenario
+    description: Availability, operational load, planned allocation, assumptions, and alternatives.
+    classification: internal
+    versioned: true
+    evidenceRequired: true
+    publicationApproval: false
+  - id: sprint-health-report
+    description: Goal alignment, progress, WIP, aging, blockers, scope changes, and carryover risk.
+    classification: internal
+    versioned: true
+    evidenceRequired: true
+    publicationApproval: true
+  - id: dependency-map
+    description: Cross-team, system, vendor, environment, and decision dependencies.
+    classification: internal
+    versioned: true
+    evidenceRequired: true
+    publicationApproval: true
+  - id: engineering-risk-register
+    description: Delivery, technical, quality, security, reliability, people-process, and vendor risks.
+    classification: internal
+    versioned: true
+    evidenceRequired: true
+    publicationApproval: true
+  - id: technical-decision-record
+    description: Context, options, tradeoffs, recommendation, decision owner, and follow-up.
+    classification: internal
+    versioned: true
+    evidenceRequired: true
+    publicationApproval: true
+  - id: architecture-alignment-report
+    description: Conformance, deviations, exceptions, and required architecture actions.
+    classification: internal
+    versioned: true
+    evidenceRequired: true
+    publicationApproval: true
+  - id: pull-request-review-summary
+    description: Scope, evidence, reviewer coverage, unresolved findings, and readiness.
+    classification: internal
+    versioned: true
+    evidenceRequired: true
+    publicationApproval: true
+  - id: quality-engineering-report
+    description: Test coverage, defects, regression, environments, and quality risks.
+    classification: internal
+    versioned: true
+    evidenceRequired: true
+    publicationApproval: true
+  - id: security-risk-summary
+    description: Security, privacy, compliance, findings, exceptions, and remediation.
+    classification: internal
+    versioned: true
+    evidenceRequired: true
+    publicationApproval: true
+  - id: operational-readiness-review
+    description: SLOs, observability, runbooks, capacity, resilience, and support readiness.
+    classification: internal
+    versioned: true
+    evidenceRequired: true
+    publicationApproval: true
+  - id: release-readiness-report
+    description: Cross-discipline evidence and go, conditional-go, or no-go recommendation.
+    classification: internal
+    versioned: true
+    evidenceRequired: true
+    publicationApproval: true
+  - id: incident-brief
+    description: Impact, timeline, current state, decisions, actions, and communications.
+    classification: internal
+    versioned: true
+    evidenceRequired: true
+    publicationApproval: true
+  - id: post-incident-review
+    description: Blameless analysis, contributing conditions, lessons, and corrective actions.
+    classification: internal
+    versioned: true
+    evidenceRequired: true
+    publicationApproval: true
+  - id: technical-debt-register
+    description: Debt items, impact, evidence, owner, priority, and modernization path.
+    classification: internal
+    versioned: true
+    evidenceRequired: true
+    publicationApproval: true
+  - id: developer-experience-assessment
+    description: Journey friction, feedback loops, cognitive load, and improvement options.
+    classification: internal
+    versioned: true
+    evidenceRequired: true
+    publicationApproval: true
+  - id: engineering-metrics-dashboard-spec
+    description: Metric definitions, owners, sources, interpretation, and guardrails.
+    classification: internal
+    versioned: true
+    evidenceRequired: true
+    publicationApproval: true
+  - id: team-health-summary
+    description: Aggregate, privacy-preserving team health and collaboration findings.
+    classification: confidential
+    versioned: true
+    evidenceRequired: true
+    publicationApproval: true
+  - id: one-on-one-agenda
+    description: Employee-selected topics, prior actions, recognition, coaching questions, and follow-up.
+    classification: confidential
+    versioned: true
+    evidenceRequired: true
+    publicationApproval: true
+  - id: growth-development-plan
+    description: Human-reviewed goals, evidence, learning, mentoring, and opportunities.
+    classification: confidential
+    versioned: true
+    evidenceRequired: true
+    publicationApproval: true
+  - id: hiring-interview-plan
+    description: Role capabilities, structured interviews, panel coverage, and scorecards.
+    classification: confidential
+    versioned: true
+    evidenceRequired: true
+    publicationApproval: true
+  - id: onboarding-plan
+    description: Access, project context, architecture, codebase, tooling, practices, and checkpoints.
+    classification: internal
+    versioned: true
+    evidenceRequired: true
+    publicationApproval: true
+  - id: stakeholder-engineering-update
+    description: Progress, outcomes, risks, decisions, forecast, and asks.
+    classification: internal
+    versioned: true
+    evidenceRequired: true
+    publicationApproval: true
+  - id: improvement-experiment
+    description: Hypothesis, intervention, metrics, guardrails, duration, and review.
+    classification: internal
+    versioned: true
+    evidenceRequired: true
+    publicationApproval: true
+  - id: approval-request
+    description: Payload-bound request with action, hash, scope, approvers, expiry, and status.
+    classification: internal
+    versioned: true
+    evidenceRequired: true
+    publicationApproval: true
+  - id: audit-evidence-bundle
+    description: Immutable provenance, inputs, decisions, approvals, outputs, and execution references.
+    classification: internal
+    versioned: true
+    evidenceRequired: true
+    publicationApproval: true

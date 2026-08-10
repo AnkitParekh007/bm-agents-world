@@ -1,0 +1,66 @@
+apiVersion: frontend-angular-agent-pack/v1
+kind: ApprovalPolicies
+levels:
+  L0:
+    description: scoped read
+    humanApproval: false
+  L1:
+    description: isolated workspace mutation and deterministic validation
+    humanApproval: workflow-or-standing-policy
+  L2:
+    description: controlled repository or Jira mutation
+    humanApproval: true
+  L3:
+    description: external organizational write
+    humanApproval: true
+  L4:
+    description: production, release, secret, or package action
+    humanApproval: privileged-process
+rules:
+- match:
+    action: workspace.write
+  level: L1
+- match:
+    action: dependency.lockfile.update
+  level: L2
+- match:
+    action: git.commit
+  level: L2
+- match:
+    action: git.push
+  level: L3
+- match:
+    action: bitbucket.pullrequest.create
+  level: L3
+- match:
+    action: jira.write
+  level: L3
+- match:
+    action: teams.post
+  level: L3
+- match:
+    action: pipeline.trigger
+  level: L3
+- match:
+    action: git.force-push
+  effect: deny
+- match:
+    action: bitbucket.merge
+  effect: deny
+- match:
+    action: package.publish
+  effect: deny
+- match:
+    action: database.write
+  effect: deny
+- match:
+    action: secret.read-value
+  effect: deny
+- match:
+    environment: prod
+    actionClass: mutation
+  effect: deny
+- match:
+    environment: prod
+    actionClass: read
+  level: L4

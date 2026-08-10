@@ -1,0 +1,63 @@
+apiVersion: python-developer-agent-pack/v1
+kind: Workflow
+metadata:
+  name: story-to-implementation-plan
+  version: 1.0.0
+spec:
+  trigger: jira-item-selected
+  initialState: requested
+  steps:
+  - id: resolve-scope
+    agent: python-developer-supervisor
+    outputs:
+    - authorization-scope
+  - id: load-story
+    agent: story-context
+    uses:
+    - python.story-context
+    - python.acceptance-criteria
+    outputs:
+    - story-context
+    dependsOn:
+    - resolve-scope
+  - id: profile-repository
+    agent: repository-context
+    uses:
+    - python.map-repository
+    - python.detect-python-version
+    - python.detect-framework
+    - python.detect-dependency-manager
+    - python.detect-test-stack
+    outputs:
+    - repository-profile
+    dependsOn:
+    - resolve-scope
+  - id: compatibility
+    agent: python-compatibility
+    uses:
+    - python.detect-python-version
+    - python.pyproject
+    outputs:
+    - compatibility-assessment
+    dependsOn:
+    - profile-repository
+  - id: impact
+    agent: architecture-analyzer
+    uses:
+    - python.dependency-analysis
+    - python.risk-scoring
+    outputs:
+    - change-impact-report
+    dependsOn:
+    - load-story
+    - profile-repository
+    - compatibility
+  - id: plan
+    agent: architecture-analyzer
+    uses:
+    - python.implementation-plan
+    - python.rollback-plan
+    outputs:
+    - implementation-plan
+    dependsOn:
+    - impact

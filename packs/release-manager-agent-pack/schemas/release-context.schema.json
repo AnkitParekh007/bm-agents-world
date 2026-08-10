@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Release Context",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "release_id",
+    "project",
+    "release_type",
+    "target_environments",
+    "purpose",
+    "sources"
+  ],
+  "properties": {
+    "release_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "project": {
+      "type": "string",
+      "minLength": 1
+    },
+    "release_type": {
+      "type": "string",
+      "enum": [
+        "standard",
+        "normal",
+        "major",
+        "minor",
+        "patch",
+        "hotfix",
+        "emergency",
+        "infrastructure",
+        "database",
+        "configuration",
+        "documentation"
+      ]
+    },
+    "target_environments": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "requested_window": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "owners": {
+      "type": "object"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "data_classification": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "candidate_hash": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

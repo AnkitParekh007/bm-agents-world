@@ -1,0 +1,31 @@
+apiVersion: qa-agent-pack/v1
+kind: EnvironmentInventory
+project: PCC
+environments:
+  playground:
+    applicationUrl: ""
+    apiBaseUrl: ""
+    healthUrl: ""
+    allowedDomains: []
+    testTenantIds: []
+    browserIdentityRef: ""
+    apiIdentityRef: ""
+    databaseIdentityRef: ""
+    observabilitySource: ""
+  qa:
+    applicationUrl: ""
+    apiBaseUrl: ""
+    healthUrl: ""
+    allowedDomains: []
+    testTenantIds: []
+    browserIdentityRef: ""
+    apiIdentityRef: ""
+    databaseIdentityRef: ""
+    observabilitySource: ""
+  prod:
+    applicationUrl: ""
+    apiBaseUrl: ""
+    healthUrl: ""
+    allowedDomains: []
+    mode: read-only
+    approvalPolicy: production-read

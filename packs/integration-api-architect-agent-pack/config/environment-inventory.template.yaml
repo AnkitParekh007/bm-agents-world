@@ -1,0 +1,39 @@
+apiVersion: integration-api-architect-agent-pack/v1
+kind: EnvironmentInventory
+metadata:
+  project: <project-id>
+spec:
+  environments:
+  - id: playground
+    risk: low
+    apiGateways:
+    - <gateway-ref>
+    brokers:
+    - <broker-ref>
+    identity:
+    - <idp-ref>
+    observability:
+    - <otel-ref>
+    mutation: approval-required
+  - id: qa
+    risk: medium
+    apiGateways:
+    - <gateway-ref>
+    brokers:
+    - <broker-ref>
+    identity:
+    - <idp-ref>
+    observability:
+    - <otel-ref>
+    mutation: approval-required
+  - id: production
+    risk: critical
+    apiGateways:
+    - <gateway-ref>
+    brokers:
+    - <broker-ref>
+    identity:
+    - <idp-ref>
+    observability:
+    - <otel-ref>
+    mutation: operator-or-deterministic-pipeline-only

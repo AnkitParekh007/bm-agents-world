@@ -1,0 +1,36 @@
+version: 1.0.0
+environments:
+- id: security-sandbox
+  classification: isolated
+  allowed_actions:
+  - draft
+  - analyze
+  - sast
+  - sca
+  - secret-scan
+  - fuzz
+  - dast
+  - render
+  - verify
+  data: synthetic-or-approved-source-only
+- id: playground
+  classification: nonproduction
+  allowed_actions:
+  - read
+  - approved-active-scan
+  - synthetic-security-test
+  writes: bounded-synthetic-only
+- id: qa
+  classification: nonproduction-shared
+  allowed_actions:
+  - read
+  - candidate-bound-scan
+  - approved-security-regression
+  writes: approval-controlled-synthetic-only
+- id: production
+  classification: production
+  allowed_actions:
+  - bounded-redacted-read
+  - artifact-verification
+  active_testing: prohibited-by-default
+  writes: prohibited-for-free-form-agent

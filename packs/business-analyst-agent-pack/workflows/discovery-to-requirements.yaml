@@ -1,0 +1,94 @@
+apiVersion: business-analyst-agent-pack/v1
+kind: AgentWorkflow
+metadata:
+  name: discovery-to-requirements
+  title: Discovery to Requirements
+  version: 1.0.0
+spec:
+  trigger:
+  - approved_analysis_plan
+  - discovery_request
+  objective: Elicit, analyze, validate, trace, and prepare an implementation-ready requirements package.
+  supervisor: business-analysis-supervisor
+  execution:
+    mode: stateful
+    defaultPolicy: deny
+    evidenceRequired: true
+    approvalBinding: payload-hash
+    resumeFromCheckpoint: true
+  stages:
+  - id: context
+    agent: work-context
+    skills:
+    - business-analysis.confluence-context
+    - business-analysis.policy-context
+    - business-analysis.prior-decision-retrieval
+    gate: authorization
+  - id: elicitation
+    agent: requirements-elicitation
+    skills:
+    - business-analysis.interview-guide
+    - business-analysis.workshop-agenda
+    - business-analysis.elicitation-record
+  - id: process
+    agent: process-discovery
+    skills:
+    - business-analysis.current-state-process
+    - business-analysis.exception-path-model
+    - business-analysis.control-point-analysis
+  - id: requirements
+    agent: requirements-analysis
+    skills:
+    - business-analysis.requirement-decomposition
+    - business-analysis.requirement-quality-check
+    - business-analysis.requirement-validation
+  - id: parallel-specialists
+    parallel:
+    - agent: business-rules
+      skills:
+      - business-analysis.decision-table
+      - business-analysis.rule-conflict-detection
+    - agent: data-requirements
+      skills:
+      - business-analysis.data-dictionary
+      - business-analysis.data-quality-rule
+    - agent: interface-integration
+      skills:
+      - business-analysis.interface-inventory
+      - business-analysis.error-handling-requirement
+    - agent: nonfunctional-requirements
+      skills:
+      - business-analysis.performance-requirement
+      - business-analysis.security-requirement
+      - business-analysis.accessibility-requirement
+  - id: stories
+    agent: user-story-acceptance
+    skills:
+    - business-analysis.user-story-draft
+    - business-analysis.acceptance-criteria
+    - business-analysis.example-mapping
+  - id: trace
+    agent: traceability-lifecycle
+    skills:
+    - business-analysis.traceability-matrix
+    - business-analysis.coverage-analysis
+    - business-analysis.requirement-baseline
+  - id: review-and-publish
+    agent: independent-ba-review
+    skills:
+    - business-analysis.completeness-review
+    - business-analysis.testability-review
+    - business-analysis.traceability-review
+    gate: payload-bound-approval
+  outputs:
+  - business-requirements-document
+  - requirements-catalog
+  - user-story-package
+  - business-rules-catalog
+  - business-data-dictionary
+  - requirements-traceability-matrix
+  terminalStates:
+  - completed
+  - rejected
+  - blocked
+  - cancelled

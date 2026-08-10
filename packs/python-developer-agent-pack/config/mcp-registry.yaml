@@ -1,0 +1,63 @@
+apiVersion: python-developer-agent-pack/v1
+kind: MCPRegistry
+servers:
+- id: atlassian-context
+  purpose: Jira, Confluence, Bitbucket resources and approval-controlled writes
+  defaultMode: read-mostly
+  enabled: true
+- id: workspace-git
+  purpose: Ephemeral filesystem, search, diff, patch, Git status, and allowlisted commands
+  defaultMode: sandbox-write
+  enabled: true
+- id: python-docs
+  purpose: Version-matched Python language and standard-library resources
+  defaultMode: read-only
+  enabled: true
+- id: framework-docs
+  purpose: Version-matched framework, ORM, queue, and data-engineering resources
+  defaultMode: read-only
+  enabled: true
+- id: openapi-contracts
+  purpose: OpenAPI resources, schema validation, and workspace generation
+  defaultMode: read-generate
+  enabled: true
+- id: database-metadata
+  purpose: Schema, migration history, EXPLAIN, and bounded SELECT
+  defaultMode: read-only
+  enabled: true
+- id: queue-cache-metadata
+  purpose: Queue, dead-letter, scheduler, and cache metadata
+  defaultMode: observe
+  enabled: true
+- id: package-registry
+  purpose: Trusted package indexes, metadata, provenance, and version resolution
+  defaultMode: read-only
+  enabled: true
+- id: ci-cd
+  purpose: Pipeline definitions, results, logs, artifacts, and approved triggers
+  defaultMode: read-mostly
+  enabled: true
+- id: container-build
+  purpose: Isolated image build, SBOM, and image scanning
+  defaultMode: sandbox
+  enabled: true
+- id: observability
+  purpose: Logs, metrics, traces, dashboards, and incident context
+  defaultMode: read-only
+  enabled: true
+- id: artifact-evidence
+  purpose: Immutable artifact storage, hashes, retention, and retrieval
+  defaultMode: append-read
+  enabled: true
+- id: collaboration
+  purpose: Teams and Jira update drafts and approved publication
+  defaultMode: approval-write
+  enabled: true
+- id: secret-broker
+  purpose: Capability lease requests without exposing raw secrets
+  defaultMode: broker-only
+  enabled: true
+- id: policy
+  purpose: OPA decision and approval verification
+  defaultMode: mandatory
+  enabled: true

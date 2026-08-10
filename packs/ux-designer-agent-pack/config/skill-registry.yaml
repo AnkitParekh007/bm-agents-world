@@ -1,0 +1,878 @@
+version: 1.0.0
+skill_count: 175
+skills:
+- id: jira-story-reading
+  category: work-intake
+  description: Jira story reading
+  risk: low
+  status: enabled
+- id: acceptance-criteria-analysis
+  category: work-intake
+  description: Acceptance criteria analysis
+  risk: low
+  status: enabled
+- id: business-goal-mapping
+  category: work-intake
+  description: Business goal mapping
+  risk: low
+  status: enabled
+- id: stakeholder-mapping
+  category: work-intake
+  description: Stakeholder mapping
+  risk: low
+  status: enabled
+- id: constraint-discovery
+  category: work-intake
+  description: Constraint discovery
+  risk: low
+  status: enabled
+- id: dependency-analysis
+  category: work-intake
+  description: Dependency analysis
+  risk: low
+  status: enabled
+- id: design-history-review
+  category: work-intake
+  description: Design history review
+  risk: low
+  status: enabled
+- id: support-theme-review
+  category: work-intake
+  description: Support theme review
+  risk: low
+  status: enabled
+- id: analytics-context-review
+  category: work-intake
+  description: Analytics context review
+  risk: low
+  status: enabled
+- id: research-question-framing
+  category: research-strategy
+  description: Research question framing
+  risk: low
+  status: enabled
+- id: method-selection
+  category: research-strategy
+  description: Method selection
+  risk: low
+  status: enabled
+- id: mixed-methods-planning
+  category: research-strategy
+  description: Mixed methods planning
+  risk: low
+  status: enabled
+- id: sampling-strategy
+  category: research-strategy
+  description: Sampling strategy
+  risk: low
+  status: enabled
+- id: participant-screening
+  category: research-strategy
+  description: Participant screening
+  risk: medium
+  status: enabled
+- id: consent-planning
+  category: research-strategy
+  description: Consent planning
+  risk: medium
+  status: enabled
+- id: research-risk-assessment
+  category: research-strategy
+  description: Research risk assessment
+  risk: low
+  status: enabled
+- id: interview-guide-writing
+  category: research-strategy
+  description: Interview guide writing
+  risk: low
+  status: enabled
+- id: survey-design
+  category: research-strategy
+  description: Survey design
+  risk: low
+  status: enabled
+- id: diary-study-design
+  category: research-strategy
+  description: Diary study design
+  risk: low
+  status: enabled
+- id: contextual-inquiry-planning
+  category: research-strategy
+  description: Contextual inquiry planning
+  risk: low
+  status: enabled
+- id: moderated-interviewing
+  category: research-execution
+  description: Moderated interviewing
+  risk: low
+  status: enabled
+- id: unmoderated-study-setup
+  category: research-execution
+  description: Unmoderated study setup
+  risk: low
+  status: enabled
+- id: contextual-observation
+  category: research-execution
+  description: Contextual observation
+  risk: low
+  status: enabled
+- id: think-aloud-moderation
+  category: research-execution
+  description: Think aloud moderation
+  risk: low
+  status: enabled
+- id: neutral-probing
+  category: research-execution
+  description: Neutral probing
+  risk: low
+  status: enabled
+- id: note-taking
+  category: research-execution
+  description: Note taking
+  risk: low
+  status: enabled
+- id: session-timestamping
+  category: research-execution
+  description: Session timestamping
+  risk: low
+  status: enabled
+- id: transcript-redaction
+  category: research-execution
+  description: Transcript redaction
+  risk: low
+  status: enabled
+- id: bias-monitoring
+  category: research-execution
+  description: Bias monitoring
+  risk: low
+  status: enabled
+- id: participant-safety
+  category: research-execution
+  description: Participant safety
+  risk: medium
+  status: enabled
+- id: incentive-governance
+  category: research-execution
+  description: Incentive governance
+  risk: medium
+  status: enabled
+- id: qualitative-coding
+  category: synthesis
+  description: Qualitative coding
+  risk: low
+  status: enabled
+- id: affinity-mapping
+  category: synthesis
+  description: Affinity mapping
+  risk: low
+  status: enabled
+- id: theme-development
+  category: synthesis
+  description: Theme development
+  risk: low
+  status: enabled
+- id: evidence-strength-rating
+  category: synthesis
+  description: Evidence strength rating
+  risk: low
+  status: enabled
+- id: triangulation
+  category: synthesis
+  description: Triangulation
+  risk: low
+  status: enabled
+- id: quantitative-summary
+  category: synthesis
+  description: Quantitative summary
+  risk: low
+  status: enabled
+- id: insight-writing
+  category: synthesis
+  description: Insight writing
+  risk: low
+  status: enabled
+- id: opportunity-framing
+  category: synthesis
+  description: Opportunity framing
+  risk: low
+  status: enabled
+- id: assumption-mapping
+  category: synthesis
+  description: Assumption mapping
+  risk: low
+  status: enabled
+- id: research-repository-curation
+  category: synthesis
+  description: Research repository curation
+  risk: low
+  status: enabled
+- id: persona-modeling
+  category: modeling
+  description: Persona modeling
+  risk: low
+  status: enabled
+- id: proto-persona-risk-labeling
+  category: modeling
+  description: Proto persona risk labeling
+  risk: low
+  status: enabled
+- id: jobs-to-be-done
+  category: modeling
+  description: Jobs to be done
+  risk: low
+  status: enabled
+- id: journey-mapping
+  category: modeling
+  description: Journey mapping
+  risk: low
+  status: enabled
+- id: experience-mapping
+  category: modeling
+  description: Experience mapping
+  risk: low
+  status: enabled
+- id: scenario-writing
+  category: modeling
+  description: Scenario writing
+  risk: low
+  status: enabled
+- id: story-mapping
+  category: modeling
+  description: Story mapping
+  risk: low
+  status: enabled
+- id: service-blueprinting
+  category: modeling
+  description: Service blueprinting
+  risk: low
+  status: enabled
+- id: ecosystem-mapping
+  category: modeling
+  description: Ecosystem mapping
+  risk: low
+  status: enabled
+- id: mental-model-analysis
+  category: modeling
+  description: Mental model analysis
+  risk: low
+  status: enabled
+- id: content-inventory
+  category: information-architecture
+  description: Content inventory
+  risk: low
+  status: enabled
+- id: taxonomy-design
+  category: information-architecture
+  description: Taxonomy design
+  risk: low
+  status: enabled
+- id: card-sorting
+  category: information-architecture
+  description: Card sorting
+  risk: low
+  status: enabled
+- id: tree-testing
+  category: information-architecture
+  description: Tree testing
+  risk: low
+  status: enabled
+- id: sitemap-design
+  category: information-architecture
+  description: Sitemap design
+  risk: low
+  status: enabled
+- id: navigation-modeling
+  category: information-architecture
+  description: Navigation modeling
+  risk: low
+  status: enabled
+- id: labeling-systems
+  category: information-architecture
+  description: Labeling systems
+  risk: low
+  status: enabled
+- id: search-design
+  category: information-architecture
+  description: Search design
+  risk: low
+  status: enabled
+- id: faceted-filter-design
+  category: information-architecture
+  description: Faceted filter design
+  risk: low
+  status: enabled
+- id: information-scent-review
+  category: information-architecture
+  description: Information scent review
+  risk: low
+  status: enabled
+- id: task-flow-design
+  category: interaction-design
+  description: Task flow design
+  risk: low
+  status: enabled
+- id: user-flow-design
+  category: interaction-design
+  description: User flow design
+  risk: low
+  status: enabled
+- id: state-modeling
+  category: interaction-design
+  description: State modeling
+  risk: low
+  status: enabled
+- id: form-design
+  category: interaction-design
+  description: Form design
+  risk: low
+  status: enabled
+- id: validation-patterns
+  category: interaction-design
+  description: Validation patterns
+  risk: low
+  status: enabled
+- id: error-recovery
+  category: interaction-design
+  description: Error recovery
+  risk: low
+  status: enabled
+- id: empty-state-design
+  category: interaction-design
+  description: Empty state design
+  risk: low
+  status: enabled
+- id: progressive-disclosure
+  category: interaction-design
+  description: Progressive disclosure
+  risk: low
+  status: enabled
+- id: permission-flow-design
+  category: interaction-design
+  description: Permission flow design
+  risk: low
+  status: enabled
+- id: notification-design
+  category: interaction-design
+  description: Notification design
+  risk: low
+  status: enabled
+- id: responsive-interaction
+  category: interaction-design
+  description: Responsive interaction
+  risk: low
+  status: enabled
+- id: keyboard-flow-design
+  category: interaction-design
+  description: Keyboard flow design
+  risk: low
+  status: enabled
+- id: microinteraction-specification
+  category: interaction-design
+  description: Microinteraction specification
+  risk: low
+  status: enabled
+- id: visual-hierarchy
+  category: visual-design
+  description: Visual hierarchy
+  risk: low
+  status: enabled
+- id: grid-and-layout
+  category: visual-design
+  description: Grid and layout
+  risk: low
+  status: enabled
+- id: typography-systems
+  category: visual-design
+  description: Typography systems
+  risk: low
+  status: enabled
+- id: color-systems
+  category: visual-design
+  description: Color systems
+  risk: low
+  status: enabled
+- id: iconography
+  category: visual-design
+  description: Iconography
+  risk: low
+  status: enabled
+- id: imagery-direction
+  category: visual-design
+  description: Imagery direction
+  risk: low
+  status: enabled
+- id: density-and-spacing
+  category: visual-design
+  description: Density and spacing
+  risk: low
+  status: enabled
+- id: responsive-composition
+  category: visual-design
+  description: Responsive composition
+  risk: low
+  status: enabled
+- id: dark-mode-design
+  category: visual-design
+  description: Dark mode design
+  risk: low
+  status: enabled
+- id: data-visualization-design
+  category: visual-design
+  description: Data visualization design
+  risk: low
+  status: enabled
+- id: visual-consistency-review
+  category: visual-design
+  description: Visual consistency review
+  risk: low
+  status: enabled
+- id: ux-writing
+  category: content-design
+  description: Ux writing
+  risk: low
+  status: enabled
+- id: plain-language
+  category: content-design
+  description: Plain language
+  risk: low
+  status: enabled
+- id: microcopy
+  category: content-design
+  description: Microcopy
+  risk: low
+  status: enabled
+- id: error-message-writing
+  category: content-design
+  description: Error message writing
+  risk: low
+  status: enabled
+- id: empty-state-writing
+  category: content-design
+  description: Empty state writing
+  risk: low
+  status: enabled
+- id: onboarding-content
+  category: content-design
+  description: Onboarding content
+  risk: low
+  status: enabled
+- id: notification-content
+  category: content-design
+  description: Notification content
+  risk: low
+  status: enabled
+- id: content-hierarchy
+  category: content-design
+  description: Content hierarchy
+  risk: low
+  status: enabled
+- id: terminology-governance
+  category: content-design
+  description: Terminology governance
+  risk: low
+  status: enabled
+- id: voice-and-tone
+  category: content-design
+  description: Voice and tone
+  risk: low
+  status: enabled
+- id: localization-ready-copy
+  category: content-design
+  description: Localization ready copy
+  risk: low
+  status: enabled
+- id: design-token-modeling
+  category: design-systems
+  description: Design token modeling
+  risk: low
+  status: enabled
+- id: component-anatomy
+  category: design-systems
+  description: Component anatomy
+  risk: low
+  status: enabled
+- id: variant-design
+  category: design-systems
+  description: Variant design
+  risk: low
+  status: enabled
+- id: component-state-design
+  category: design-systems
+  description: Component state design
+  risk: low
+  status: enabled
+- id: pattern-library-design
+  category: design-systems
+  description: Pattern library design
+  risk: low
+  status: enabled
+- id: token-to-code-mapping
+  category: design-systems
+  description: Token to code mapping
+  risk: low
+  status: enabled
+- id: figma-variables
+  category: design-systems
+  description: Figma variables
+  risk: low
+  status: enabled
+- id: code-connect-mapping
+  category: design-systems
+  description: Code connect mapping
+  risk: low
+  status: enabled
+- id: component-governance
+  category: design-systems
+  description: Component governance
+  risk: low
+  status: enabled
+- id: contribution-workflow
+  category: design-systems
+  description: Contribution workflow
+  risk: low
+  status: enabled
+- id: deprecation-planning
+  category: design-systems
+  description: Deprecation planning
+  risk: low
+  status: enabled
+- id: library-versioning
+  category: design-systems
+  description: Library versioning
+  risk: low
+  status: enabled
+- id: paper-prototyping
+  category: prototyping
+  description: Paper prototyping
+  risk: low
+  status: enabled
+- id: wireframing
+  category: prototyping
+  description: Wireframing
+  risk: low
+  status: enabled
+- id: clickable-prototyping
+  category: prototyping
+  description: Clickable prototyping
+  risk: low
+  status: enabled
+- id: advanced-figma-prototyping
+  category: prototyping
+  description: Advanced figma prototyping
+  risk: low
+  status: enabled
+- id: realistic-data-prototyping
+  category: prototyping
+  description: Realistic data prototyping
+  risk: low
+  status: enabled
+- id: branching-prototypes
+  category: prototyping
+  description: Branching prototypes
+  risk: low
+  status: enabled
+- id: responsive-prototypes
+  category: prototyping
+  description: Responsive prototypes
+  risk: low
+  status: enabled
+- id: motion-prototyping
+  category: prototyping
+  description: Motion prototyping
+  risk: low
+  status: enabled
+- id: prototype-instrumentation
+  category: prototyping
+  description: Prototype instrumentation
+  risk: low
+  status: enabled
+- id: prototype-accessibility-annotation
+  category: prototyping
+  description: Prototype accessibility annotation
+  risk: low
+  status: enabled
+- id: wcag-2-2-mapping
+  category: accessibility
+  description: Wcag 2 2 mapping
+  risk: low
+  status: enabled
+- id: aria-apg-pattern-selection
+  category: accessibility
+  description: Aria apg pattern selection
+  risk: low
+  status: enabled
+- id: contrast-evaluation
+  category: accessibility
+  description: Contrast evaluation
+  risk: low
+  status: enabled
+- id: focus-order-design
+  category: accessibility
+  description: Focus order design
+  risk: low
+  status: enabled
+- id: keyboard-interaction-design
+  category: accessibility
+  description: Keyboard interaction design
+  risk: low
+  status: enabled
+- id: screen-reader-annotation
+  category: accessibility
+  description: Screen reader annotation
+  risk: low
+  status: enabled
+- id: target-size-review
+  category: accessibility
+  description: Target size review
+  risk: low
+  status: enabled
+- id: motion-sensitivity-review
+  category: accessibility
+  description: Motion sensitivity review
+  risk: low
+  status: enabled
+- id: cognitive-accessibility
+  category: accessibility
+  description: Cognitive accessibility
+  risk: low
+  status: enabled
+- id: accessible-content-design
+  category: accessibility
+  description: Accessible content design
+  risk: low
+  status: enabled
+- id: accessible-data-visualization
+  category: accessibility
+  description: Accessible data visualization
+  risk: low
+  status: enabled
+- id: inclusive-design-review
+  category: accessibility
+  description: Inclusive design review
+  risk: low
+  status: enabled
+- id: usability-task-writing
+  category: usability-validation
+  description: Usability task writing
+  risk: low
+  status: enabled
+- id: success-criteria-definition
+  category: usability-validation
+  description: Success criteria definition
+  risk: low
+  status: enabled
+- id: moderation-guide
+  category: usability-validation
+  description: Moderation guide
+  risk: low
+  status: enabled
+- id: session-observation
+  category: usability-validation
+  description: Session observation
+  risk: low
+  status: enabled
+- id: severity-rating
+  category: usability-validation
+  description: Severity rating
+  risk: low
+  status: enabled
+- id: completion-rate-analysis
+  category: usability-validation
+  description: Completion rate analysis
+  risk: low
+  status: enabled
+- id: time-on-task-analysis
+  category: usability-validation
+  description: Time on task analysis
+  risk: low
+  status: enabled
+- id: sus-score-analysis
+  category: usability-validation
+  description: Sus score analysis
+  risk: low
+  status: enabled
+- id: finding-prioritization
+  category: usability-validation
+  description: Finding prioritization
+  risk: low
+  status: enabled
+- id: recommendation-writing
+  category: usability-validation
+  description: Recommendation writing
+  risk: low
+  status: enabled
+- id: retest-planning
+  category: usability-validation
+  description: Retest planning
+  risk: low
+  status: enabled
+- id: event-taxonomy-design
+  category: analytics-experimentation
+  description: Event taxonomy design
+  risk: low
+  status: enabled
+- id: funnel-analysis
+  category: analytics-experimentation
+  description: Funnel analysis
+  risk: low
+  status: enabled
+- id: journey-analytics
+  category: analytics-experimentation
+  description: Journey analytics
+  risk: low
+  status: enabled
+- id: feature-adoption-analysis
+  category: analytics-experimentation
+  description: Feature adoption analysis
+  risk: low
+  status: enabled
+- id: hypothesis-writing
+  category: analytics-experimentation
+  description: Hypothesis writing
+  risk: low
+  status: enabled
+- id: experiment-design
+  category: analytics-experimentation
+  description: Experiment design
+  risk: low
+  status: enabled
+- id: guardrail-metrics
+  category: analytics-experimentation
+  description: Guardrail metrics
+  risk: low
+  status: enabled
+- id: sample-size-consultation
+  category: analytics-experimentation
+  description: Sample size consultation
+  risk: low
+  status: enabled
+- id: experiment-readout
+  category: analytics-experimentation
+  description: Experiment readout
+  risk: low
+  status: enabled
+- id: qual-quant-triangulation
+  category: analytics-experimentation
+  description: Qual quant triangulation
+  risk: low
+  status: enabled
+- id: developer-handoff
+  category: design-qa-handoff
+  description: Developer handoff
+  risk: low
+  status: enabled
+- id: design-specification
+  category: design-qa-handoff
+  description: Design specification
+  risk: low
+  status: enabled
+- id: responsive-annotation
+  category: design-qa-handoff
+  description: Responsive annotation
+  risk: low
+  status: enabled
+- id: interaction-annotation
+  category: design-qa-handoff
+  description: Interaction annotation
+  risk: low
+  status: enabled
+- id: asset-export
+  category: design-qa-handoff
+  description: Asset export
+  risk: low
+  status: enabled
+- id: design-token-export
+  category: design-qa-handoff
+  description: Design token export
+  risk: low
+  status: enabled
+- id: storybook-review
+  category: design-qa-handoff
+  description: Storybook review
+  risk: low
+  status: enabled
+- id: browser-design-qa
+  category: design-qa-handoff
+  description: Browser design qa
+  risk: low
+  status: enabled
+- id: visual-diff-analysis
+  category: design-qa-handoff
+  description: Visual diff analysis
+  risk: low
+  status: enabled
+- id: implementation-acceptance-criteria
+  category: design-qa-handoff
+  description: Implementation acceptance criteria
+  risk: low
+  status: enabled
+- id: design-change-log
+  category: design-qa-handoff
+  description: Design change log
+  risk: low
+  status: enabled
+- id: handoff-walkthrough
+  category: design-qa-handoff
+  description: Handoff walkthrough
+  risk: low
+  status: enabled
+- id: figma-file-architecture
+  category: operations-governance
+  description: Figma file architecture
+  risk: low
+  status: enabled
+- id: branching-and-merging
+  category: operations-governance
+  description: Branching and merging
+  risk: low
+  status: enabled
+- id: naming-conventions
+  category: operations-governance
+  description: Naming conventions
+  risk: low
+  status: enabled
+- id: library-permissions
+  category: operations-governance
+  description: Library permissions
+  risk: low
+  status: enabled
+- id: artifact-retention
+  category: operations-governance
+  description: Artifact retention
+  risk: low
+  status: enabled
+- id: decision-logging
+  category: operations-governance
+  description: Decision logging
+  risk: low
+  status: enabled
+- id: design-critique-facilitation
+  category: operations-governance
+  description: Design critique facilitation
+  risk: low
+  status: enabled
+- id: roadmap-prioritization
+  category: operations-governance
+  description: Roadmap prioritization
+  risk: low
+  status: enabled
+- id: design-debt-tracking
+  category: operations-governance
+  description: Design debt tracking
+  risk: low
+  status: enabled
+- id: design-maturity-metrics
+  category: operations-governance
+  description: Design maturity metrics
+  risk: low
+  status: enabled
+- id: privacy-redaction
+  category: operations-governance
+  description: Privacy redaction
+  risk: medium
+  status: enabled
+- id: approval-evidence
+  category: operations-governance
+  description: Approval evidence
+  risk: low
+  status: enabled

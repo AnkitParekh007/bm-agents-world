@@ -1,0 +1,43 @@
+apiVersion: business-analyst-agent-pack/v1
+kind: AgentPack
+metadata:
+  name: business-analyst-agent-pack
+  version: 1.0.0
+  created: '2026-08-06'
+  role: Business Analyst
+  maintainer: Business Analysis and Product Delivery
+spec:
+  purpose: Transform evidence and stakeholder needs into clear, traceable, testable, governed business and solution
+    requirements while preserving human decision ownership.
+  operatingProfiles:
+  - business-analyst
+  - product-owner-support
+  - process-analyst
+  - requirements-analyst
+  - business-systems-analyst
+  coordinatesRolePacks:
+  - product-manager-agent-pack
+  - solution-architect-agent-pack
+  - engineering-manager-technical-lead-agent-pack
+  - ux-designer-agent-pack
+  - frontend-angular-agent-pack
+  - java-developer-agent-pack
+  - python-developer-agent-pack
+  - database-architect-developer-agent-pack
+  - qa-agent-pack
+  - devops-agent-pack
+  counts:
+    tasks: 220
+    agents: 27
+    skills: 247
+    mcpServers: 18
+    plugins: 22
+    artifacts: 27
+    workflows: 5
+    schemas: 7
+  defaultMode: proposal-first
+  decisionBoundary: Humans own business policy, scope, prioritization, acceptance, legal interpretation, commitments,
+    and publication of official requirements.
+  policy:
+    engine: OPA-compatible
+    file: security/opa/business-analyst-agent-policy.rego

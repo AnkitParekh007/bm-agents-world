@@ -1,0 +1,88 @@
+apiVersion: integration-api-architect-agent-pack/v1
+kind: AgentWorkflow
+metadata:
+  name: api-contract-design-and-review
+  title: API Contract Design and Review
+  version: 1.0.0
+spec:
+  trigger:
+  - new_http_api
+  - api_change
+  - graphql_change
+  - grpc_change
+  objective: Design and review synchronous API contracts with security, compatibility, consumer experience, testing,
+    and observability controls
+  supervisor: integration-api-architect-supervisor
+  execution:
+    mode: stateful
+    defaultPolicy: deny
+    evidenceRequired: true
+    approvalBinding: payload-hash
+    resumeFromCheckpoint: true
+  stages:
+  - id: scope
+    agent: business-product-context
+    skills:
+    - integration.context.jira-and-requirement-context
+    - integration.context.integration-use-case-classification
+    gate: authorization
+  - id: style
+    agent: api-strategy-governance
+    skills:
+    - integration.api_strategy.api-style-selection
+    - integration.api_strategy.resource-and-operation-convention
+  - id: rest-design
+    agent: rest-http-api
+    skills:
+    - integration.rest.openapi-contract-design
+    - integration.rest.rfc9457-problem-details
+    - integration.rest.pagination-filtering-sorting
+  - id: graphql-review
+    agent: graphql-api
+    skills:
+    - integration.graphql.graphql-schema-modeling
+    - integration.graphql.query-complexity-control
+    - integration.graphql.graphql-evolution-policy
+  - id: grpc-review
+    agent: grpc-rpc
+    skills:
+    - integration.grpc.protobuf-message-design
+    - integration.grpc.backward-compatible-proto-evolution
+    - integration.grpc.deadline-propagation
+  - id: identity
+    agent: identity-authorization
+    skills:
+    - integration.identity.oauth-flow-selection
+    - integration.identity.scope-model-design
+    - integration.identity.token-audience-design
+  - id: compatibility
+    agent: versioning-compatibility
+    skills:
+    - integration.versioning.breaking-change-detection
+    - integration.versioning.consumer-impact-analysis
+    - integration.versioning.deprecation-policy
+  - id: testing
+    agent: integration-testing
+    skills:
+    - integration.testing.provider-contract-test-plan
+    - integration.testing.consumer-driven-contract-test
+    - integration.testing.compatibility-certification
+  - id: review
+    agent: architecture-review
+    skills:
+    - integration.review.independent-contract-review
+    - integration.review.independent-security-review
+    - integration.review.independent-compatibility-review
+    gate: publish-contract
+  outputs:
+  - openapi-contract
+  - graphql-contract
+  - protobuf-contract
+  - authorization-profile
+  - consumer-impact-assessment
+  - contract-test-plan
+  terminalStates:
+  - completed
+  - rejected
+  - blocked
+  - cancelled

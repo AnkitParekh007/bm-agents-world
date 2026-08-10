@@ -1,0 +1,46 @@
+apiVersion: solution-architect-agent-pack/v1
+kind: EnvironmentInventory
+metadata:
+  name: <project>-environment-inventory
+  version: 1.0.0
+spec:
+  projectId: <project-id>
+  owner: <team>
+  dataClassification: <public|internal|confidential|restricted>
+  environments:
+  - id: <environment-id>
+    type: <local|playground|qa|staging|production>
+    criticality: <low|medium|high|critical>
+    regions:
+    - <region>
+    entryPoints:
+    - <redacted-or-catalog-reference>
+    runtime:
+      platform: <kubernetes|vm|serverless|application-server|other>
+      orchestrator: <name-and-version>
+      deploymentModel: <rolling|blue-green|canary|other>
+    systems:
+    - id: <system-id>
+      owner: <team>
+      repository: <repository-reference>
+      technology:
+      - <technology>
+      upstream:
+      - <system-id>
+      downstream:
+      - <system-id>
+    dataStores:
+    - id: <store-id>
+      engine: <engine-and-version>
+      classification: <classification>
+      accessReference: <capability-reference>
+    observability:
+      metrics: <resource-reference>
+      logs: <resource-reference>
+      traces: <resource-reference>
+      dashboards:
+      - <resource-reference>
+    changePolicy:
+      agentMutationAllowed: false
+      humanApprovalRequired: true
+      operatorExecutionRequired: <true-for-production>

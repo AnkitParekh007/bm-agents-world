@@ -1,0 +1,76 @@
+apiVersion: java-developer-agent-pack/v1
+kind: Workflow
+metadata:
+  name: dependency-and-java-upgrade
+  version: 1.0.0
+spec:
+  trigger: upgrade-request
+  steps:
+  - id: baseline
+    agent: java-runtime-compatibility
+    outputs:
+    - current-version-matrix
+    - baseline-evidence
+  - id: research
+    agent: migration-modernization
+    uses:
+    - java.jdk-upgrade
+    - java.spring-upgrade
+    - java.jakarta-migration
+    - java.dependency-upgrade
+    outputs:
+    - upgrade-impact
+    - migration-sequence
+    dependsOn:
+    - baseline
+  - id: approve-plan
+    agent: policy-enforcer
+    outputs:
+    - approval-request
+    dependsOn:
+    - research
+    approvalRequired: true
+  - id: mechanical-upgrade
+    agent: dependency-build
+    uses:
+    - java.maven
+    - java.gradle
+    - java.jvm-toolchains
+    outputs:
+    - build-patch
+    dependsOn:
+    - approve-plan
+  - id: source-migration
+    agent: migration-modernization
+    outputs:
+    - source-patch
+    - compatibility-notes
+    dependsOn:
+    - mechanical-upgrade
+  - id: test-matrix
+    agent: test-engineer
+    uses:
+    - java.junit-unit
+    - java.testcontainers
+    - java.contract-test
+    outputs:
+    - matrix-results
+    dependsOn:
+    - source-migration
+  - id: security-performance
+    parallel: true
+    agents:
+    - security-reviewer
+    - performance-reliability
+    outputs:
+    - risk-reports
+    dependsOn:
+    - test-matrix
+  - id: release-plan
+    agent: pr-release
+    outputs:
+    - pull-request-draft
+    - release-readiness
+    - rollback-plan
+    dependsOn:
+    - security-performance

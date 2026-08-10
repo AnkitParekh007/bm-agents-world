@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Bug Draft",
+  "type": "object",
+  "required": [
+    "title",
+    "parentIssue",
+    "environment",
+    "stepsToReproduce",
+    "expectedResult",
+    "actualResult",
+    "evidenceIds"
+  ],
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "parentIssue": {
+      "type": "string"
+    },
+    "environment": {
+      "type": "string"
+    },
+    "build": {
+      "type": "string"
+    },
+    "preconditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "stepsToReproduce": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "expectedResult": {
+      "type": "string"
+    },
+    "actualResult": {
+      "type": "string"
+    },
+    "businessImpact": {
+      "type": "string"
+    },
+    "severityRecommendation": {
+      "type": "string"
+    },
+    "evidenceIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "duplicateCandidates": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

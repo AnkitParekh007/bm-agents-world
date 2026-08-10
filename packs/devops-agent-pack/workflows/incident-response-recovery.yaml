@@ -1,0 +1,43 @@
+name: incident-response-recovery
+version: 1.0.0
+trigger: Active incident or severe service degradation
+scope_binding:
+- incident_id
+- project
+- service
+- environment
+- incident_commander
+steps:
+- id: authorize
+  agent: policy-enforcer
+  action: verify incident scope, diagnostic capabilities, commander, and emergency policy
+- id: timeline
+  agent: incident-response-agent
+  action: correlate alerts, deployments, infrastructure changes, logs, metrics, traces, and communications
+- id: diagnose
+  agent: observability-engineer
+  action: run bounded telemetry queries and identify evidence-supported hypotheses
+- id: platform
+  agent: sre-reliability-engineer
+  action: analyze saturation, dependencies, error budget, failure amplification, and recovery signals
+- id: options
+  agent: incident-response-agent
+  action: propose containment, rollback, scale, traffic, restore, or failover options with risks and stop conditions
+- id: approve
+  agent: policy-enforcer
+  action: validate pre-authorized runbook or request incident-commander approval for exact action
+- id: execute
+  agent: devops-supervisor
+  action: delegate approved action to deterministic adapter or human operator
+- id: verify
+  agent: incident-response-agent
+  action: verify recovery with technical and business signals
+- id: review
+  agent: evidence-manager
+  action: create timeline, incident report, evidence bundle, and action list
+outputs:
+- incident-timeline
+- incident-report
+- deployment-evidence
+- quality-gate-report
+failure_behavior: preserve evidence, avoid repeated unsafe actions, and escalate when recovery signals conflict

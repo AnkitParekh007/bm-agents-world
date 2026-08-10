@@ -1,0 +1,44 @@
+name: team-launch-and-scrum-establishment
+version: 1.0.0
+trigger: New team, new product, major team change, or explicit Scrum reset request
+scope_binding:
+- project
+- team
+- product
+- requester
+- time_window
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: verify team scope, purpose, people-data boundary, and publication rights
+- id: context
+  agent: team-context-agent
+  action: collect approved product, team, backlog, delivery, quality, architecture, and organizational context
+- id: scrum-assessment
+  agent: scrum-framework-agent
+  action: assess accountabilities, events, artifacts, commitments, values, and major anti-patterns
+- id: effectiveness
+  agent: team-effectiveness-agent
+  action: establish a team-level baseline for outcomes, flow, quality, collaboration, and learning
+- id: working-agreements
+  agent: self-management-coach-agent
+  action: facilitate team-created working agreements and decision methods
+- id: event-design
+  agent: event-design-agent
+  action: prepare event cadence, purposes, participants, timeboxes, and logistics
+- id: impediments
+  agent: organizational-impediment-agent
+  action: identify initial systemic constraints and escalation paths
+- id: review
+  agent: scrum-master-reviewer-agent
+  action: challenge autonomy, accountabilities, privacy, feasibility, and intervention risk
+- id: publish
+  agent: scrum-master-supervisor
+  action: request team and accountable-owner approval before publishing charter, agreements, calendar, or assessment
+outputs:
+- scrum-team-charter
+- working-agreement
+- scrum-establishment-assessment
+- sprint-event-calendar
+- improvement-backlog
+failure_behavior: preserve draft and evidence; do not establish policy or publish without team ownership

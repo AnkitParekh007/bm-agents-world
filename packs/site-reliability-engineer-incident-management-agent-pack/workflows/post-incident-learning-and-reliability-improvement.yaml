@@ -1,0 +1,45 @@
+name: post-incident-learning-and-reliability-improvement
+version: 1.0.0
+trigger: Resolved incident, recurring failure, severe near miss, or corrective-action review
+scope_binding:
+- incident_id
+- project
+- service
+- review_owner
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: validate review scope, evidence access, privacy, and publication policy
+- id: timeline
+  agent: evidence-manager-agent
+  action: assemble immutable timeline, impact, decisions, actions, and communications
+- id: analysis
+  agent: post-incident-review-agent
+  action: analyze detection, response, trigger, contributing systems, and learning
+- id: reliability
+  agent: reliability-architecture-agent
+  action: identify architectural, operational, and resilience improvements
+- id: alerts
+  agent: alert-quality-agent
+  action: identify alerting and detection changes
+- id: toil
+  agent: toil-automation-agent
+  action: identify automation, runbook, and developer-experience improvements
+- id: actions
+  agent: post-incident-review-agent
+  action: create measurable corrective actions with owners and effectiveness checks
+- id: review
+  agent: sre-independent-reviewer-agent
+  action: verify factuality, blamelessness, systemic depth, and action quality
+- id: publish
+  agent: sre-incident-management-supervisor
+  action: prepare approval-controlled post-incident review and roadmap updates
+- id: track
+  agent: reliability-analytics-agent
+  action: track completion, recurrence, reliability impact, and overdue risk
+outputs:
+- post-incident-review
+- corrective-action-register
+- toil-and-automation-backlog
+- reliability-improvement-roadmap
+failure_behavior: preserve uncertainty, reject blameful or unsupported conclusions, and escalate unresolved ownership

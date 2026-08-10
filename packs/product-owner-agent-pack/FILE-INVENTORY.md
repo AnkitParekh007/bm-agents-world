@@ -1,0 +1,51 @@
+# Product Owner Agent Pack — File Inventory
+
+Total files: **48** (including this inventory)
+
+- `README.md`
+- `SOURCES.md`
+- `checklists/mvp-readiness.md`
+- `checklists/project-onboarding.md`
+- `config/agent-registry.yaml`
+- `config/approval-policies.yaml`
+- `config/artifact-registry.yaml`
+- `config/environment-inventory.template.yaml`
+- `config/mcp-registry.yaml`
+- `config/pack-manifest.yaml`
+- `config/permission-matrix.csv`
+- `config/plugin-registry.yaml`
+- `config/project-registry.yaml`
+- `config/secret-references.template.yaml`
+- `config/skill-registry.yaml`
+- `docs/01-product-owner-daily-task-catalog.md`
+- `docs/02-project-access-and-environment-model.md`
+- `docs/03-agent-and-subagent-architecture.md`
+- `docs/04-skills-catalog.md`
+- `docs/05-mcp-servers-tools-and-plugins.md`
+- `docs/06-artifacts-and-knowledge-assets.md`
+- `docs/07-orchestration-and-workflows.md`
+- `docs/08-key-vault-identity-and-secrets.md`
+- `docs/09-permissions-approvals-and-guardrails.md`
+- `docs/10-observability-audit-and-evaluation.md`
+- `docs/11-deployment-runtime-and-networking.md`
+- `docs/12-implementation-roadmap.md`
+- `docs/13-diagram-input-specification.md`
+- `docs/14-research-and-standards-notes.md`
+- `schemas/backlog-decision.schema.json`
+- `schemas/backlog-item.schema.json`
+- `schemas/outcome-review.schema.json`
+- `schemas/product-owner-context.schema.json`
+- `schemas/release-acceptance.schema.json`
+- `schemas/sprint-readiness.schema.json`
+- `schemas/stakeholder-decision.schema.json`
+- `security/opa/product-owner-agent-policy.rego`
+- `templates/backlog-refinement-pack.md`
+- `templates/product-owner-daily-summary.md`
+- `templates/release-acceptance.md`
+- `templates/sprint-goal.md`
+- `templates/user-story.md`
+- `workflows/backlog-refinement-and-readiness.yaml`
+- `workflows/feedback-to-outcome-review.yaml`
+- `workflows/release-acceptance-and-rollout.yaml`
+- `workflows/sprint-planning-and-goal.yaml`
+- `workflows/strategy-to-team-backlog.yaml`

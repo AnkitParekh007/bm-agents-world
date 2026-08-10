@@ -1,0 +1,140 @@
+version: 1.0.0
+artifacts:
+- id: work-context
+  description: Normalized requirement, policies, dependencies, owners, and open questions
+  immutable: true
+  content_hash: true
+  redaction_required: true
+  retention: project-policy
+- id: database-estate-profile
+  description: Engine, version, edition, topology, schemas, workloads, tools, and constraints
+  immutable: true
+  content_hash: true
+  redaction_required: true
+  retention: project-policy
+- id: data-domain-model
+  description: Business entities, ownership, lifecycle, glossary, and invariants
+  immutable: true
+  content_hash: true
+  redaction_required: true
+  retention: project-policy
+- id: logical-data-model
+  description: Engine-neutral entities, keys, relationships, optionality, and temporal rules
+  immutable: true
+  content_hash: true
+  redaction_required: true
+  retention: project-policy
+- id: physical-schema-design
+  description: Engine-specific objects, types, constraints, indexes, partitions, storage, and grants
+  immutable: true
+  content_hash: true
+  redaction_required: true
+  retention: project-policy
+- id: erd
+  description: Versioned entity-relationship diagram source and rendered representation
+  immutable: true
+  content_hash: true
+  redaction_required: true
+  retention: project-policy
+- id: data-dictionary
+  description: Objects, columns, semantics, classification, ownership, quality, and retention
+  immutable: true
+  content_hash: true
+  redaction_required: true
+  retention: project-policy
+- id: architecture-decision
+  description: Database choice, alternatives, tradeoffs, consequences, and review date
+  immutable: true
+  content_hash: true
+  redaction_required: true
+  retention: project-policy
+- id: schema-change-manifest
+  description: Objects, SQL, dependencies, consumers, permissions, compatibility, and risk
+  immutable: true
+  content_hash: true
+  redaction_required: true
+  retention: project-policy
+- id: migration-plan
+  description: Preconditions, SQL previews, sequencing, validation, rollback/roll-forward, and approvals
+  immutable: true
+  content_hash: true
+  redaction_required: true
+  retention: project-policy
+- id: data-movement-plan
+  description: Mapping, chunks, checkpoints, throttles, reconciliation, exception handling, and cleanup
+  immutable: true
+  content_hash: true
+  redaction_required: true
+  retention: project-policy
+- id: query-performance-report
+  description: Plans, statistics, waits, indexes, baselines, recommendations, and measured results
+  immutable: true
+  content_hash: true
+  redaction_required: true
+  retention: project-policy
+- id: security-design
+  description: Identities, roles, grants, RLS/masking, encryption, auditing, and residual risk
+  immutable: true
+  content_hash: true
+  redaction_required: true
+  retention: project-policy
+- id: data-quality-report
+  description: Profiling, rules, violations, reconciliation, lineage, and disposition
+  immutable: true
+  content_hash: true
+  redaction_required: true
+  retention: project-policy
+- id: test-plan
+  description: Schema, migration, query, constraint, security, concurrency, performance, and recovery coverage
+  immutable: true
+  content_hash: true
+  redaction_required: true
+  retention: project-policy
+- id: test-results
+  description: Structured disposable-environment and approved target validation evidence
+  immutable: true
+  content_hash: true
+  redaction_required: true
+  retention: project-policy
+- id: quality-gate-report
+  description: Lint, drift, migration, test, security, performance, backup, and policy results
+  immutable: true
+  content_hash: true
+  redaction_required: true
+  retention: project-policy
+- id: backup-recovery-plan
+  description: Backup, restore, replication, RPO/RTO, failover, and evidence requirements
+  immutable: true
+  content_hash: true
+  redaction_required: true
+  retention: project-policy
+- id: release-readiness
+  description: Lock/duration/resource risk, compatibility, backup, rollback, monitoring, and approvals
+  immutable: true
+  content_hash: true
+  redaction_required: true
+  retention: project-policy
+- id: pull-request-draft
+  description: Traceable database change PR with SQL previews and reviewer guidance
+  immutable: true
+  content_hash: true
+  redaction_required: true
+  retention: project-policy
+- id: operational-runbook
+  description: Deployment, validation, monitoring, incident, failover, recovery, and ownership actions
+  immutable: true
+  content_hash: true
+  redaction_required: true
+  retention: project-policy
+- id: daily-summary
+  description: Completed work, blockers, approvals, evidence, risks, and next actions
+  immutable: true
+  content_hash: true
+  redaction_required: true
+  retention: project-policy
+- id: audit-record
+  description: Immutable run, identity, policy, query, tool, approval, artifact, and decision history
+  immutable: true
+  content_hash: true
+  redaction_required: true
+  retention: project-policy

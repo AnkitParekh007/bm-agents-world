@@ -1,0 +1,129 @@
+version: 1.0.0
+server_count: 18
+servers:
+- id: service-catalog-cmdb-mcp
+  purpose: Services, owners, dependencies, environments, criticality, SLO tier, runbooks, and escalation paths
+  deployment: remote
+  owner: organization
+  access: read-only
+  trust: approved-and-version-pinned
+  secrets: injected-inside-adapter
+- id: observability-mcp
+  purpose: Bounded redacted metrics, logs, traces, dashboards, exemplars, profiles, and telemetry health
+  deployment: remote
+  owner: organization
+  access: bounded read-only
+  trust: approved-and-version-pinned
+  secrets: injected-inside-adapter
+- id: alerting-oncall-mcp
+  purpose: Alerts, paging rules, routing, silences, schedules, escalations, acknowledgements, and on-call history
+  deployment: remote
+  owner: organization
+  access: read plus approved update
+  trust: approved-and-version-pinned
+  secrets: injected-inside-adapter
+- id: incident-command-mcp
+  purpose: Incident records, roles, channels, timelines, actions, severity, communications, and post-incident reviews
+  deployment: remote
+  owner: organization
+  access: read plus approved write
+  trust: approved-and-version-pinned
+  secrets: injected-inside-adapter
+- id: kubernetes-platform-mcp
+  purpose: Cluster, namespace, workload, pod, event, resource, rollout, and policy context without direct mutation
+  deployment: remote
+  owner: organization
+  access: bounded read-only
+  trust: approved-and-version-pinned
+  secrets: injected-inside-adapter
+- id: cloud-infrastructure-mcp
+  purpose: Cloud resources, health, quotas, load balancers, autoscaling, topology, and audit events
+  deployment: remote
+  owner: organization
+  access: bounded read-only
+  trust: approved-and-version-pinned
+  secrets: injected-inside-adapter
+- id: cicd-release-mcp
+  purpose: Builds, deployments, artifacts, commits, migrations, release candidates, health gates, and rollback metadata
+  deployment: remote
+  owner: organization
+  access: read-only
+  trust: approved-and-version-pinned
+  secrets: injected-inside-adapter
+- id: feature-configuration-mcp
+  purpose: Feature flags, runtime configuration, entitlements, versions, and environment comparison
+  deployment: remote
+  owner: organization
+  access: read-only
+  trust: approved-and-version-pinned
+  secrets: injected-inside-adapter
+- id: database-diagnostics-mcp
+  purpose: Metadata and parameterized row-bounded read-only checks for approved databases
+  deployment: remote
+  owner: organization
+  access: read-only
+  trust: approved-and-version-pinned
+  secrets: injected-inside-adapter
+- id: network-dns-mcp
+  purpose: Network paths, DNS, TLS, gateways, proxies, service mesh, traffic, and edge health
+  deployment: remote
+  owner: organization
+  access: bounded read-only
+  trust: approved-and-version-pinned
+  secrets: injected-inside-adapter
+- id: synthetic-monitoring-mcp
+  purpose: Approved synthetic checks, black-box probes, user journeys, locations, and result history
+  deployment: remote
+  owner: organization
+  access: read plus approved nonproduction execute
+  trust: approved-and-version-pinned
+  secrets: injected-inside-adapter
+- id: load-chaos-testing-mcp
+  purpose: Approved non-production load, stress, fault-injection, and game-day execution with hard safety limits
+  deployment: remote
+  owner: organization
+  access: approval-controlled execute
+  trust: approved-and-version-pinned
+  secrets: injected-inside-adapter
+- id: status-page-communication-mcp
+  purpose: Status pages, subscriptions, templates, incident components, and approved updates
+  deployment: remote
+  owner: organization
+  access: read plus approved publish
+  trust: approved-and-version-pinned
+  secrets: injected-inside-adapter
+- id: atlassian-knowledge-mcp
+  purpose: Jira work, incidents, changes, corrective actions, Confluence runbooks, standards, and reviews
+  deployment: remote
+  owner: Atlassian
+  access: read plus approved write
+  trust: approved-and-version-pinned
+  secrets: injected-inside-adapter
+- id: bitbucket-context-mcp
+  purpose: Repository, commit, pull request, branch, tag, CODEOWNERS, and pipeline context
+  deployment: remote
+  owner: organization
+  access: read-only
+  trust: approved-and-version-pinned
+  secrets: injected-inside-adapter
+- id: teams-collaboration-mcp
+  purpose: Microsoft Teams operational channels, incident rooms, handoffs, and approval-controlled posts
+  deployment: remote
+  owner: Microsoft
+  access: read plus approved post
+  trust: approved-and-version-pinned
+  secrets: injected-inside-adapter
+- id: artifact-store-mcp
+  purpose: Versioned reliability artifacts, evidence, dashboards, timelines, approvals, hashes, and retention
+  deployment: remote
+  owner: organization
+  access: scoped read/write
+  trust: approved-and-version-pinned
+  secrets: injected-inside-adapter
+- id: vault-policy-approval-mcp
+  purpose: Short-lived capability leases, opaque credential references, OPA decisions, approvals, expiry, and audit
+  deployment: remote
+  owner: organization
+  access: policy authority; no raw secret exposure
+  trust: approved-and-version-pinned
+  secrets: injected-inside-adapter

@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Security Finding",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "finding_id",
+    "title",
+    "asset",
+    "source",
+    "status",
+    "severity",
+    "evidence_refs"
+  ],
+  "properties": {
+    "finding_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "asset": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "new",
+        "confirmed",
+        "likely",
+        "needs-investigation",
+        "false-positive",
+        "duplicate",
+        "not-affected",
+        "exception-approved",
+        "remediated",
+        "closed"
+      ]
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "informational",
+        "low",
+        "medium",
+        "high",
+        "critical",
+        "unknown"
+      ]
+    },
+    "cvss_vector": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "reachability": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "exposure": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kev": {
+      "type": "boolean"
+    },
+    "affected_versions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "owner": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "due_date": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    }
+  }
+}

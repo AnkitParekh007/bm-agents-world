@@ -1,0 +1,1203 @@
+version: '1.0'
+role: mlops-ai-platform
+skills:
+- id: project-scope-resolution
+  domain: platform-context
+  description: Project scope resolution.
+  risk: medium
+  default_approval: none
+- id: environment-resolution
+  domain: platform-context
+  description: Environment resolution.
+  risk: medium
+  default_approval: none
+- id: tenant-isolation-analysis
+  domain: platform-context
+  description: Tenant isolation analysis.
+  risk: medium
+  default_approval: none
+- id: cluster-inventory-analysis
+  domain: platform-context
+  description: Cluster inventory analysis.
+  risk: medium
+  default_approval: none
+- id: service-catalog-analysis
+  domain: platform-context
+  description: Service catalog analysis.
+  risk: medium
+  default_approval: none
+- id: ownership-resolution
+  domain: platform-context
+  description: Ownership resolution.
+  risk: medium
+  default_approval: none
+- id: dependency-mapping
+  domain: platform-context
+  description: Dependency mapping.
+  risk: medium
+  default_approval: none
+- id: data-classification-resolution
+  domain: platform-context
+  description: Data classification resolution.
+  risk: medium
+  default_approval: none
+- id: approval-owner-resolution
+  domain: platform-context
+  description: Approval owner resolution.
+  risk: medium
+  default_approval: none
+- id: blast-radius-estimation
+  domain: platform-context
+  description: Blast radius estimation.
+  risk: medium
+  default_approval: none
+- id: reference-architecture-design
+  domain: platform-architecture
+  description: Reference architecture design.
+  risk: medium
+  default_approval: none
+- id: control-plane-design
+  domain: platform-architecture
+  description: Control plane design.
+  risk: medium
+  default_approval: none
+- id: data-plane-design
+  domain: platform-architecture
+  description: Data plane design.
+  risk: medium
+  default_approval: none
+- id: multi-tenancy-design
+  domain: platform-architecture
+  description: Multi tenancy design.
+  risk: medium
+  default_approval: none
+- id: workspace-design
+  domain: platform-architecture
+  description: Workspace design.
+  risk: medium
+  default_approval: none
+- id: platform-adr-authoring
+  domain: platform-architecture
+  description: Platform adr authoring.
+  risk: medium
+  default_approval: none
+- id: managed-vs-self-hosted-analysis
+  domain: platform-architecture
+  description: Managed vs self hosted analysis.
+  risk: medium
+  default_approval: none
+- id: portability-analysis
+  domain: platform-architecture
+  description: Portability analysis.
+  risk: medium
+  default_approval: none
+- id: platform-drift-detection
+  domain: platform-architecture
+  description: Platform drift detection.
+  risk: medium
+  default_approval: none
+- id: architecture-conformance-review
+  domain: platform-architecture
+  description: Architecture conformance review.
+  risk: medium
+  default_approval: none
+- id: experiment-metadata-standardization
+  domain: experiment-tracking
+  description: Experiment metadata standardization.
+  risk: medium
+  default_approval: none
+- id: run-lineage-validation
+  domain: experiment-tracking
+  description: Run lineage validation.
+  risk: medium
+  default_approval: none
+- id: dataset-snapshot-linking
+  domain: experiment-tracking
+  description: Dataset snapshot linking.
+  risk: medium
+  default_approval: none
+- id: environment-capture
+  domain: experiment-tracking
+  description: Environment capture.
+  risk: medium
+  default_approval: none
+- id: artifact-lineage-analysis
+  domain: experiment-tracking
+  description: Artifact lineage analysis.
+  risk: medium
+  default_approval: none
+- id: experiment-retention-planning
+  domain: experiment-tracking
+  description: Experiment retention planning.
+  risk: medium
+  default_approval: none
+- id: experiment-rbac-review
+  domain: experiment-tracking
+  description: Experiment rbac review.
+  risk: medium
+  default_approval: none
+- id: run-deduplication
+  domain: experiment-tracking
+  description: Run deduplication.
+  risk: medium
+  default_approval: none
+- id: tracking-reliability-analysis
+  domain: experiment-tracking
+  description: Tracking reliability analysis.
+  risk: medium
+  default_approval: none
+- id: experiment-backup-restore-planning
+  domain: experiment-tracking
+  description: Experiment backup restore planning.
+  risk: medium
+  default_approval: none
+- id: model-registration
+  domain: registry
+  description: Model registration.
+  risk: medium
+  default_approval: none
+- id: prompt-registration
+  domain: registry
+  description: Prompt registration.
+  risk: medium
+  default_approval: none
+- id: agent-registration
+  domain: registry
+  description: Agent registration.
+  risk: medium
+  default_approval: none
+- id: candidate-identity-validation
+  domain: registry
+  description: Candidate identity validation.
+  risk: medium
+  default_approval: none
+- id: alias-governance
+  domain: registry
+  description: Alias governance.
+  risk: medium
+  default_approval: none
+- id: lifecycle-state-management
+  domain: registry
+  description: Lifecycle state management.
+  risk: medium
+  default_approval: none
+- id: registry-rbac-review
+  domain: registry
+  description: Registry rbac review.
+  risk: medium
+  default_approval: none
+- id: registry-metadata-validation
+  domain: registry
+  description: Registry metadata validation.
+  risk: medium
+  default_approval: none
+- id: artifact-retirement-planning
+  domain: registry
+  description: Artifact retirement planning.
+  risk: medium
+  default_approval: none
+- id: registry-dr-planning
+  domain: registry
+  description: Registry dr planning.
+  risk: medium
+  default_approval: none
+- id: pipeline-dag-design
+  domain: training-pipelines
+  description: Pipeline dag design.
+  risk: medium
+  default_approval: none
+- id: pipeline-parameterization
+  domain: training-pipelines
+  description: Pipeline parameterization.
+  risk: medium
+  default_approval: none
+- id: pipeline-component-design
+  domain: training-pipelines
+  description: Pipeline component design.
+  risk: medium
+  default_approval: none
+- id: checkpoint-strategy
+  domain: training-pipelines
+  description: Checkpoint strategy.
+  risk: medium
+  default_approval: none
+- id: distributed-training-orchestration
+  domain: training-pipelines
+  description: Distributed training orchestration.
+  risk: medium
+  default_approval: none
+- id: retry-resume-design
+  domain: training-pipelines
+  description: Retry resume design.
+  risk: medium
+  default_approval: none
+- id: training-image-standardization
+  domain: training-pipelines
+  description: Training image standardization.
+  risk: medium
+  default_approval: none
+- id: pipeline-cache-analysis
+  domain: training-pipelines
+  description: Pipeline cache analysis.
+  risk: medium
+  default_approval: none
+- id: pipeline-failure-analysis
+  domain: training-pipelines
+  description: Pipeline failure analysis.
+  risk: medium
+  default_approval: none
+- id: pipeline-compatibility-testing
+  domain: training-pipelines
+  description: Pipeline compatibility testing.
+  risk: medium
+  default_approval: none
+- id: feature-contract-design
+  domain: feature-platform
+  description: Feature contract design.
+  risk: medium
+  default_approval: none
+- id: offline-online-consistency-check
+  domain: feature-platform
+  description: Offline online consistency check.
+  risk: medium
+  default_approval: none
+- id: feature-freshness-analysis
+  domain: feature-platform
+  description: Feature freshness analysis.
+  risk: medium
+  default_approval: none
+- id: feature-lineage-validation
+  domain: feature-platform
+  description: Feature lineage validation.
+  risk: medium
+  default_approval: none
+- id: feature-materialization-planning
+  domain: feature-platform
+  description: Feature materialization planning.
+  risk: medium
+  default_approval: none
+- id: feature-schema-evolution
+  domain: feature-platform
+  description: Feature schema evolution.
+  risk: medium
+  default_approval: none
+- id: feature-rbac-review
+  domain: feature-platform
+  description: Feature rbac review.
+  risk: medium
+  default_approval: none
+- id: training-serving-skew-analysis
+  domain: feature-platform
+  description: Training serving skew analysis.
+  risk: medium
+  default_approval: none
+- id: feature-latency-analysis
+  domain: feature-platform
+  description: Feature latency analysis.
+  risk: medium
+  default_approval: none
+- id: feature-incident-coordination
+  domain: feature-platform
+  description: Feature incident coordination.
+  risk: medium
+  default_approval: none
+- id: evaluation-set-versioning
+  domain: evaluation
+  description: Evaluation set versioning.
+  risk: medium
+  default_approval: none
+- id: quality-gate-design
+  domain: evaluation
+  description: Quality gate design.
+  risk: medium
+  default_approval: none
+- id: llm-evaluation-design
+  domain: evaluation
+  description: Llm evaluation design.
+  risk: medium
+  default_approval: none
+- id: rag-evaluation-design
+  domain: evaluation
+  description: Rag evaluation design.
+  risk: medium
+  default_approval: none
+- id: agent-evaluation-design
+  domain: evaluation
+  description: Agent evaluation design.
+  risk: medium
+  default_approval: none
+- id: human-review-queue-design
+  domain: evaluation
+  description: Human review queue design.
+  risk: medium
+  default_approval: none
+- id: judge-version-governance
+  domain: evaluation
+  description: Judge version governance.
+  risk: medium
+  default_approval: none
+- id: evaluation-regression-analysis
+  domain: evaluation
+  description: Evaluation regression analysis.
+  risk: medium
+  default_approval: none
+- id: evaluation-cost-analysis
+  domain: evaluation
+  description: Evaluation cost analysis.
+  risk: medium
+  default_approval: none
+- id: evaluation-evidence-packaging
+  domain: evaluation
+  description: Evaluation evidence packaging.
+  risk: medium
+  default_approval: none
+- id: model-gateway-governance
+  domain: llm-agent-platform
+  description: Model gateway governance.
+  risk: medium
+  default_approval: none
+- id: provider-routing-design
+  domain: llm-agent-platform
+  description: Provider routing design.
+  risk: medium
+  default_approval: none
+- id: model-catalog-governance
+  domain: llm-agent-platform
+  description: Model catalog governance.
+  risk: medium
+  default_approval: none
+- id: prompt-versioning
+  domain: llm-agent-platform
+  description: Prompt versioning.
+  risk: medium
+  default_approval: none
+- id: tool-contract-governance
+  domain: llm-agent-platform
+  description: Tool contract governance.
+  risk: medium
+  default_approval: none
+- id: agent-sandbox-design
+  domain: llm-agent-platform
+  description: Agent sandbox design.
+  risk: medium
+  default_approval: none
+- id: model-quota-design
+  domain: llm-agent-platform
+  description: Model quota design.
+  risk: medium
+  default_approval: none
+- id: fallback-circuit-breaker-design
+  domain: llm-agent-platform
+  description: Fallback circuit breaker design.
+  risk: medium
+  default_approval: none
+- id: token-cost-analysis
+  domain: llm-agent-platform
+  description: Token cost analysis.
+  risk: medium
+  default_approval: none
+- id: agent-runtime-compatibility
+  domain: llm-agent-platform
+  description: Agent runtime compatibility.
+  risk: medium
+  default_approval: none
+- id: vector-index-governance
+  domain: rag-vector
+  description: Vector index governance.
+  risk: medium
+  default_approval: none
+- id: embedding-versioning
+  domain: rag-vector
+  description: Embedding versioning.
+  risk: medium
+  default_approval: none
+- id: chunking-policy-versioning
+  domain: rag-vector
+  description: Chunking policy versioning.
+  risk: medium
+  default_approval: none
+- id: document-authorization-design
+  domain: rag-vector
+  description: Document authorization design.
+  risk: medium
+  default_approval: none
+- id: index-freshness-analysis
+  domain: rag-vector
+  description: Index freshness analysis.
+  risk: medium
+  default_approval: none
+- id: reembedding-migration-planning
+  domain: rag-vector
+  description: Reembedding migration planning.
+  risk: medium
+  default_approval: none
+- id: shadow-index-design
+  domain: rag-vector
+  description: Shadow index design.
+  risk: medium
+  default_approval: none
+- id: retrieval-service-slo-design
+  domain: rag-vector
+  description: Retrieval service slo design.
+  risk: medium
+  default_approval: none
+- id: vector-cost-analysis
+  domain: rag-vector
+  description: Vector cost analysis.
+  risk: medium
+  default_approval: none
+- id: production-index-swap-planning
+  domain: rag-vector
+  description: Production index swap planning.
+  risk: medium
+  default_approval: none
+- id: inference-runtime-selection
+  domain: serving
+  description: Inference runtime selection.
+  risk: medium
+  default_approval: none
+- id: endpoint-slo-design
+  domain: serving
+  description: Endpoint slo design.
+  risk: medium
+  default_approval: none
+- id: autoscaling-design
+  domain: serving
+  description: Autoscaling design.
+  risk: medium
+  default_approval: none
+- id: batching-concurrency-tuning
+  domain: serving
+  description: Batching concurrency tuning.
+  risk: medium
+  default_approval: none
+- id: canary-deployment-design
+  domain: serving
+  description: Canary deployment design.
+  risk: medium
+  default_approval: none
+- id: shadow-deployment-design
+  domain: serving
+  description: Shadow deployment design.
+  risk: medium
+  default_approval: none
+- id: fallback-design
+  domain: serving
+  description: Fallback design.
+  risk: medium
+  default_approval: none
+- id: model-load-health-design
+  domain: serving
+  description: Model load health design.
+  risk: medium
+  default_approval: none
+- id: tail-latency-analysis
+  domain: serving
+  description: Tail latency analysis.
+  risk: medium
+  default_approval: none
+- id: serving-compatibility-testing
+  domain: serving
+  description: Serving compatibility testing.
+  risk: medium
+  default_approval: none
+- id: batch-inference-design
+  domain: batch-inference
+  description: Batch inference design.
+  risk: medium
+  default_approval: none
+- id: async-inference-design
+  domain: batch-inference
+  description: Async inference design.
+  risk: medium
+  default_approval: none
+- id: idempotency-design
+  domain: batch-inference
+  description: Idempotency design.
+  risk: medium
+  default_approval: none
+- id: partitioning-strategy
+  domain: batch-inference
+  description: Partitioning strategy.
+  risk: medium
+  default_approval: none
+- id: result-reconciliation
+  domain: batch-inference
+  description: Result reconciliation.
+  risk: medium
+  default_approval: none
+- id: queue-retention-design
+  domain: batch-inference
+  description: Queue retention design.
+  risk: medium
+  default_approval: none
+- id: batch-capacity-planning
+  domain: batch-inference
+  description: Batch capacity planning.
+  risk: medium
+  default_approval: none
+- id: retry-deduplication-analysis
+  domain: batch-inference
+  description: Retry deduplication analysis.
+  risk: medium
+  default_approval: none
+- id: large-rerun-planning
+  domain: batch-inference
+  description: Large rerun planning.
+  risk: medium
+  default_approval: none
+- id: batch-observability-design
+  domain: batch-inference
+  description: Batch observability design.
+  risk: medium
+  default_approval: none
+- id: gpu-inventory-analysis
+  domain: gpu-platform
+  description: Gpu inventory analysis.
+  risk: medium
+  default_approval: none
+- id: gpu-operator-management
+  domain: gpu-platform
+  description: Gpu operator management.
+  risk: medium
+  default_approval: none
+- id: driver-cuda-compatibility
+  domain: gpu-platform
+  description: Driver cuda compatibility.
+  risk: medium
+  default_approval: none
+- id: mig-policy-design
+  domain: gpu-platform
+  description: Mig policy design.
+  risk: medium
+  default_approval: none
+- id: gpu-sharing-analysis
+  domain: gpu-platform
+  description: Gpu sharing analysis.
+  risk: medium
+  default_approval: none
+- id: gpu-telemetry-analysis
+  domain: gpu-platform
+  description: Gpu telemetry analysis.
+  risk: medium
+  default_approval: none
+- id: gpu-fragmentation-analysis
+  domain: gpu-platform
+  description: Gpu fragmentation analysis.
+  risk: medium
+  default_approval: none
+- id: gpu-capacity-planning
+  domain: gpu-platform
+  description: Gpu capacity planning.
+  risk: medium
+  default_approval: none
+- id: gpu-quota-design
+  domain: gpu-platform
+  description: Gpu quota design.
+  risk: medium
+  default_approval: none
+- id: accelerator-recovery-planning
+  domain: gpu-platform
+  description: Accelerator recovery planning.
+  risk: medium
+  default_approval: none
+- id: workload-queue-design
+  domain: scheduling
+  description: Workload queue design.
+  risk: medium
+  default_approval: none
+- id: fair-share-design
+  domain: scheduling
+  description: Fair share design.
+  risk: medium
+  default_approval: none
+- id: priority-policy-design
+  domain: scheduling
+  description: Priority policy design.
+  risk: medium
+  default_approval: none
+- id: gang-scheduling-design
+  domain: scheduling
+  description: Gang scheduling design.
+  risk: medium
+  default_approval: none
+- id: topology-aware-placement
+  domain: scheduling
+  description: Topology aware placement.
+  risk: medium
+  default_approval: none
+- id: quota-analysis
+  domain: scheduling
+  description: Quota analysis.
+  risk: medium
+  default_approval: none
+- id: pending-time-analysis
+  domain: scheduling
+  description: Pending time analysis.
+  risk: medium
+  default_approval: none
+- id: preemption-analysis
+  domain: scheduling
+  description: Preemption analysis.
+  risk: medium
+  default_approval: none
+- id: resource-sizing-analysis
+  domain: scheduling
+  description: Resource sizing analysis.
+  risk: medium
+  default_approval: none
+- id: maintenance-scheduling
+  domain: scheduling
+  description: Maintenance scheduling.
+  risk: medium
+  default_approval: none
+- id: base-image-governance
+  domain: supply-chain
+  description: Base image governance.
+  risk: medium
+  default_approval: none
+- id: container-build-reproducibility
+  domain: supply-chain
+  description: Container build reproducibility.
+  risk: medium
+  default_approval: none
+- id: sbom-generation
+  domain: supply-chain
+  description: Sbom generation.
+  risk: medium
+  default_approval: none
+- id: image-vulnerability-analysis
+  domain: supply-chain
+  description: Image vulnerability analysis.
+  risk: medium
+  default_approval: none
+- id: artifact-signature-verification
+  domain: supply-chain
+  description: Artifact signature verification.
+  risk: medium
+  default_approval: none
+- id: provenance-validation
+  domain: supply-chain
+  description: Provenance validation.
+  risk: medium
+  default_approval: none
+- id: registry-immutability
+  domain: supply-chain
+  description: Registry immutability.
+  risk: medium
+  default_approval: none
+- id: package-source-policy
+  domain: supply-chain
+  description: Package source policy.
+  risk: medium
+  default_approval: none
+- id: model-source-policy
+  domain: supply-chain
+  description: Model source policy.
+  risk: medium
+  default_approval: none
+- id: artifact-retention-analysis
+  domain: supply-chain
+  description: Artifact retention analysis.
+  risk: medium
+  default_approval: none
+- id: ml-ci-design
+  domain: cicd-promotion
+  description: Ml ci design.
+  risk: high
+  default_approval: conditional
+- id: ml-cd-design
+  domain: cicd-promotion
+  description: Ml cd design.
+  risk: high
+  default_approval: conditional
+- id: candidate-manifest-generation
+  domain: cicd-promotion
+  description: Candidate manifest generation.
+  risk: high
+  default_approval: conditional
+- id: promotion-gate-design
+  domain: cicd-promotion
+  description: Promotion gate design.
+  risk: high
+  default_approval: conditional
+- id: payload-hash-generation
+  domain: cicd-promotion
+  description: Payload hash generation.
+  risk: high
+  default_approval: conditional
+- id: nonprod-auto-promotion
+  domain: cicd-promotion
+  description: Nonprod auto promotion.
+  risk: high
+  default_approval: conditional
+- id: production-approval-binding
+  domain: cicd-promotion
+  description: Production approval binding.
+  risk: high
+  default_approval: conditional
+- id: rollback-reference-validation
+  domain: cicd-promotion
+  description: Rollback reference validation.
+  risk: high
+  default_approval: conditional
+- id: post-promotion-verification
+  domain: cicd-promotion
+  description: Post promotion verification.
+  risk: high
+  default_approval: conditional
+- id: promotion-audit-analysis
+  domain: cicd-promotion
+  description: Promotion audit analysis.
+  risk: high
+  default_approval: conditional
+- id: otel-instrumentation-design
+  domain: observability
+  description: Otel instrumentation design.
+  risk: medium
+  default_approval: none
+- id: genai-tracing-design
+  domain: observability
+  description: Genai tracing design.
+  risk: medium
+  default_approval: none
+- id: token-metric-design
+  domain: observability
+  description: Token metric design.
+  risk: medium
+  default_approval: none
+- id: cost-telemetry-design
+  domain: observability
+  description: Cost telemetry design.
+  risk: medium
+  default_approval: none
+- id: sensitive-content-telemetry-policy
+  domain: observability
+  description: Sensitive content telemetry policy.
+  risk: medium
+  default_approval: none
+- id: trace-correlation-design
+  domain: observability
+  description: Trace correlation design.
+  risk: medium
+  default_approval: none
+- id: cardinality-analysis
+  domain: observability
+  description: Cardinality analysis.
+  risk: medium
+  default_approval: none
+- id: sampling-design
+  domain: observability
+  description: Sampling design.
+  risk: medium
+  default_approval: none
+- id: dashboard-design
+  domain: observability
+  description: Dashboard design.
+  risk: medium
+  default_approval: none
+- id: alert-design
+  domain: observability
+  description: Alert design.
+  risk: medium
+  default_approval: none
+- id: data-drift-analysis
+  domain: model-monitoring
+  description: Data drift analysis.
+  risk: medium
+  default_approval: none
+- id: feature-drift-analysis
+  domain: model-monitoring
+  description: Feature drift analysis.
+  risk: medium
+  default_approval: none
+- id: prediction-drift-analysis
+  domain: model-monitoring
+  description: Prediction drift analysis.
+  risk: medium
+  default_approval: none
+- id: quality-regression-analysis
+  domain: model-monitoring
+  description: Quality regression analysis.
+  risk: medium
+  default_approval: none
+- id: delayed-label-analysis
+  domain: model-monitoring
+  description: Delayed label analysis.
+  risk: medium
+  default_approval: none
+- id: fallback-overuse-analysis
+  domain: model-monitoring
+  description: Fallback overuse analysis.
+  risk: medium
+  default_approval: none
+- id: rag-quality-monitoring
+  domain: model-monitoring
+  description: Rag quality monitoring.
+  risk: medium
+  default_approval: none
+- id: llm-safety-monitoring
+  domain: model-monitoring
+  description: Llm safety monitoring.
+  risk: medium
+  default_approval: none
+- id: retraining-trigger-design
+  domain: model-monitoring
+  description: Retraining trigger design.
+  risk: medium
+  default_approval: none
+- id: model-health-review
+  domain: model-monitoring
+  description: Model health review.
+  risk: medium
+  default_approval: none
+- id: workload-identity-design
+  domain: security
+  description: Workload identity design.
+  risk: high
+  default_approval: none
+- id: least-privilege-review
+  domain: security
+  description: Least privilege review.
+  risk: high
+  default_approval: none
+- id: tenant-isolation-review
+  domain: security
+  description: Tenant isolation review.
+  risk: high
+  default_approval: none
+- id: network-egress-policy
+  domain: security
+  description: Network egress policy.
+  risk: high
+  default_approval: none
+- id: secret-reference-design
+  domain: security
+  description: Secret reference design.
+  risk: high
+  default_approval: none
+- id: model-provenance-review
+  domain: security
+  description: Model provenance review.
+  risk: high
+  default_approval: none
+- id: artifact-poisoning-analysis
+  domain: security
+  description: Artifact poisoning analysis.
+  risk: high
+  default_approval: none
+- id: serving-hardening
+  domain: security
+  description: Serving hardening.
+  risk: high
+  default_approval: none
+- id: agent-tool-security
+  domain: security
+  description: Agent tool security.
+  risk: high
+  default_approval: none
+- id: ai-platform-incident-security
+  domain: security
+  description: Ai platform incident security.
+  risk: high
+  default_approval: none
+- id: model-card-gate
+  domain: governance
+  description: Model card gate.
+  risk: high
+  default_approval: none
+- id: system-card-gate
+  domain: governance
+  description: System card gate.
+  risk: high
+  default_approval: none
+- id: risk-tier-classification
+  domain: governance
+  description: Risk tier classification.
+  risk: high
+  default_approval: none
+- id: approval-workflow-design
+  domain: governance
+  description: Approval workflow design.
+  risk: high
+  default_approval: none
+- id: governance-evidence-linking
+  domain: governance
+  description: Governance evidence linking.
+  risk: high
+  default_approval: none
+- id: exception-expiry-management
+  domain: governance
+  description: Exception expiry management.
+  risk: high
+  default_approval: none
+- id: prohibited-use-check
+  domain: governance
+  description: Prohibited use check.
+  risk: high
+  default_approval: none
+- id: human-oversight-check
+  domain: governance
+  description: Human oversight check.
+  risk: high
+  default_approval: none
+- id: audit-evidence-packaging
+  domain: governance
+  description: Audit evidence packaging.
+  risk: high
+  default_approval: none
+- id: policy-version-governance
+  domain: governance
+  description: Policy version governance.
+  risk: high
+  default_approval: none
+- id: gpu-cost-allocation
+  domain: finops
+  description: Gpu cost allocation.
+  risk: medium
+  default_approval: none
+- id: inference-cost-allocation
+  domain: finops
+  description: Inference cost allocation.
+  risk: medium
+  default_approval: none
+- id: provider-cost-analysis
+  domain: finops
+  description: Provider cost analysis.
+  risk: medium
+  default_approval: none
+- id: vector-cost-analysis
+  domain: finops
+  description: Vector cost analysis.
+  risk: medium
+  default_approval: none
+- id: storage-cost-analysis
+  domain: finops
+  description: Storage cost analysis.
+  risk: medium
+  default_approval: none
+- id: idle-resource-detection
+  domain: finops
+  description: Idle resource detection.
+  risk: medium
+  default_approval: none
+- id: rightsizing-analysis
+  domain: finops
+  description: Rightsizing analysis.
+  risk: medium
+  default_approval: none
+- id: budget-alert-design
+  domain: finops
+  description: Budget alert design.
+  risk: medium
+  default_approval: none
+- id: cost-per-request-analysis
+  domain: finops
+  description: Cost per request analysis.
+  risk: medium
+  default_approval: none
+- id: managed-vs-self-hosted-tco
+  domain: finops
+  description: Managed vs self hosted tco.
+  risk: medium
+  default_approval: none
+- id: platform-slo-design
+  domain: reliability
+  description: Platform slo design.
+  risk: medium
+  default_approval: none
+- id: registry-backup-design
+  domain: reliability
+  description: Registry backup design.
+  risk: medium
+  default_approval: none
+- id: artifact-store-dr
+  domain: reliability
+  description: Artifact store dr.
+  risk: medium
+  default_approval: none
+- id: serving-failover-design
+  domain: reliability
+  description: Serving failover design.
+  risk: medium
+  default_approval: none
+- id: provider-outage-fallback
+  domain: reliability
+  description: Provider outage fallback.
+  risk: medium
+  default_approval: none
+- id: control-plane-degradation-analysis
+  domain: reliability
+  description: Control plane degradation analysis.
+  risk: medium
+  default_approval: none
+- id: recovery-test-design
+  domain: reliability
+  description: Recovery test design.
+  risk: medium
+  default_approval: none
+- id: dr-exercise-planning
+  domain: reliability
+  description: Dr exercise planning.
+  risk: medium
+  default_approval: none
+- id: reliability-gap-tracking
+  domain: reliability
+  description: Reliability gap tracking.
+  risk: medium
+  default_approval: none
+- id: recovery-evidence-validation
+  domain: reliability
+  description: Recovery evidence validation.
+  risk: medium
+  default_approval: none
+- id: incident-triage
+  domain: incidents
+  description: Incident triage.
+  risk: high
+  default_approval: conditional
+- id: blast-radius-analysis
+  domain: incidents
+  description: Blast radius analysis.
+  risk: high
+  default_approval: conditional
+- id: release-correlation
+  domain: incidents
+  description: Release correlation.
+  risk: high
+  default_approval: conditional
+- id: bounded-production-diagnostics
+  domain: incidents
+  description: Bounded production diagnostics.
+  risk: high
+  default_approval: conditional
+- id: mitigation-option-analysis
+  domain: incidents
+  description: Mitigation option analysis.
+  risk: high
+  default_approval: conditional
+- id: rollback-readiness-analysis
+  domain: incidents
+  description: Rollback readiness analysis.
+  risk: high
+  default_approval: conditional
+- id: recovery-verification
+  domain: incidents
+  description: Recovery verification.
+  risk: high
+  default_approval: conditional
+- id: incident-timeline-authoring
+  domain: incidents
+  description: Incident timeline authoring.
+  risk: high
+  default_approval: conditional
+- id: stakeholder-update-drafting
+  domain: incidents
+  description: Stakeholder update drafting.
+  risk: high
+  default_approval: conditional
+- id: post-incident-action-design
+  domain: incidents
+  description: Post incident action design.
+  risk: high
+  default_approval: conditional
+- id: golden-path-design
+  domain: developer-experience
+  description: Golden path design.
+  risk: medium
+  default_approval: none
+- id: self-service-onboarding
+  domain: developer-experience
+  description: Self service onboarding.
+  risk: medium
+  default_approval: none
+- id: sdk-governance
+  domain: developer-experience
+  description: Sdk governance.
+  risk: medium
+  default_approval: none
+- id: cli-governance
+  domain: developer-experience
+  description: Cli governance.
+  risk: medium
+  default_approval: none
+- id: sandbox-design
+  domain: developer-experience
+  description: Sandbox design.
+  risk: medium
+  default_approval: none
+- id: platform-doc-design
+  domain: developer-experience
+  description: Platform doc design.
+  risk: medium
+  default_approval: none
+- id: developer-friction-analysis
+  domain: developer-experience
+  description: Developer friction analysis.
+  risk: medium
+  default_approval: none
+- id: template-versioning
+  domain: developer-experience
+  description: Template versioning.
+  risk: medium
+  default_approval: none
+- id: breaking-change-analysis
+  domain: developer-experience
+  description: Breaking change analysis.
+  risk: medium
+  default_approval: none
+- id: platform-adoption-analysis
+  domain: developer-experience
+  description: Platform adoption analysis.
+  risk: medium
+  default_approval: none
+- id: compatibility-matrix-management
+  domain: upgrades-audit
+  description: Compatibility matrix management.
+  risk: medium
+  default_approval: none
+- id: platform-release-note-analysis
+  domain: upgrades-audit
+  description: Platform release note analysis.
+  risk: medium
+  default_approval: none
+- id: deprecation-detection
+  domain: upgrades-audit
+  description: Deprecation detection.
+  risk: medium
+  default_approval: none
+- id: upgrade-test-planning
+  domain: upgrades-audit
+  description: Upgrade test planning.
+  risk: medium
+  default_approval: none
+- id: crd-migration-analysis
+  domain: upgrades-audit
+  description: Crd migration analysis.
+  risk: medium
+  default_approval: none
+- id: control-plane-upgrade-planning
+  domain: upgrades-audit
+  description: Control plane upgrade planning.
+  risk: medium
+  default_approval: none
+- id: synthetic-platform-validation
+  domain: upgrades-audit
+  description: Synthetic platform validation.
+  risk: medium
+  default_approval: none
+- id: permission-review
+  domain: upgrades-audit
+  description: Permission review.
+  risk: medium
+  default_approval: none
+- id: stale-resource-review
+  domain: upgrades-audit
+  description: Stale resource review.
+  risk: medium
+  default_approval: none
+- id: platform-maturity-assessment
+  domain: upgrades-audit
+  description: Platform maturity assessment.
+  risk: medium
+  default_approval: none

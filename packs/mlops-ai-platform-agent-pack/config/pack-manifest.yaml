@@ -1,0 +1,16 @@
+pack: mlops-ai-platform-agent-pack
+version: 1.0.0
+generated: '2026-08-08'
+counts:
+  tasks: 250
+  agents: 27
+  skills: 240
+  mcp_servers: 18
+  plugins: 22
+  artifacts: 28
+  workflows: 5
+  json_schemas: 7
+  yaml_files: 15
+  total_files: 48
+production_model: read_and_prepare_requests_only
+raw_secrets: false

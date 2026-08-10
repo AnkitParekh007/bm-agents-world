@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Approval Request",
+  "type": "object",
+  "required": [
+    "actionId",
+    "action",
+    "target",
+    "risk",
+    "reason",
+    "expiresAt"
+  ],
+  "properties": {
+    "actionId": {
+      "type": "string"
+    },
+    "action": {
+      "type": "string"
+    },
+    "target": {
+      "type": "object"
+    },
+    "payloadDiff": {
+      "type": [
+        "object",
+        "array",
+        "string",
+        "null"
+      ]
+    },
+    "risk": {
+      "type": "string"
+    },
+    "reason": {
+      "type": "string"
+    },
+    "evidenceIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "expiresAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Event Facilitation Pack",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "event",
+    "purpose",
+    "timebox_minutes",
+    "agenda",
+    "decisions",
+    "approval_status"
+  ],
+  "properties": {
+    "event": {
+      "enum": [
+        "sprint-planning",
+        "daily-scrum-coaching",
+        "sprint-review",
+        "sprint-retrospective",
+        "other"
+      ]
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "timebox_minutes": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "participants": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "agenda": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "step",
+          "minutes"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minutes": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "facilitator_note": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "approval_status": {
+      "enum": [
+        "draft",
+        "approved",
+        "rejected"
+      ]
+    }
+  }
+}

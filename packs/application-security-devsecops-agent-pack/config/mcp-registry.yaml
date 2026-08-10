@@ -1,0 +1,99 @@
+version: 1.0.0
+server_count: 18
+servers:
+- id: atlassian-security-context-mcp
+  description: Jira and Confluence read access plus approval-controlled security findings, exceptions, and remediation
+    updates.
+  mode: mixed
+  credentials: workload-identity-or-vault-reference
+  status: template
+- id: bitbucket-security-mcp
+  description: Read repositories, branches, commits, pull requests, permissions, and pipelines; protected writes
+    require approval.
+  mode: mixed
+  credentials: workload-identity-or-vault-reference
+  status: template
+- id: source-code-intelligence-mcp
+  description: Read-only symbols, data flows, frameworks, dependencies, configuration, and test context from approved
+    repositories.
+  mode: read-only
+  credentials: workload-identity-or-vault-reference
+  status: template
+- id: ci-cd-security-mcp
+  description: Read pipeline definitions, runs, runner metadata, gates, artifacts, and approvals; protected changes
+    require approval.
+  mode: mixed
+  credentials: workload-identity-or-vault-reference
+  status: template
+- id: security-scanner-mcp
+  description: Broker approved SAST, SCA, secrets, license, and policy scanners in isolated workers.
+  mode: isolated-execution
+  credentials: workload-identity-or-vault-reference
+  status: template
+- id: api-contract-security-mcp
+  description: Read and validate OpenAPI, AsyncAPI, GraphQL, and service contracts against security requirements.
+  mode: read-only
+  credentials: workload-identity-or-vault-reference
+  status: template
+- id: dast-browser-security-mcp
+  description: Run authorized, rate-limited browser, API, DAST, and fuzzing checks against approved targets.
+  mode: isolated-execution
+  credentials: workload-identity-or-vault-reference
+  status: template
+- id: container-registry-security-mcp
+  description: Read image metadata, digests, packages, vulnerabilities, signatures, attestations, and registry policy.
+  mode: read-only
+  credentials: workload-identity-or-vault-reference
+  status: template
+- id: iac-policy-mcp
+  description: Validate infrastructure code, plans, Helm, cloud templates, and organization policy before apply.
+  mode: isolated-execution
+  credentials: workload-identity-or-vault-reference
+  status: template
+- id: kubernetes-security-mcp
+  description: Read approved cluster and manifest security metadata; no free-form production mutation.
+  mode: read-only
+  credentials: workload-identity-or-vault-reference
+  status: template
+- id: cloud-security-posture-mcp
+  description: Read scoped cloud IAM, posture findings, network, storage, logging, and encryption metadata.
+  mode: read-only
+  credentials: workload-identity-or-vault-reference
+  status: template
+- id: sbom-provenance-mcp
+  description: Generate, store, validate, and verify SBOMs, VEX, provenance, signatures, and attestations.
+  mode: mixed
+  credentials: workload-identity-or-vault-reference
+  status: template
+- id: vulnerability-intelligence-mcp
+  description: Read CVE, CVSS, KEV, vendor advisory, exploit, fix, and end-of-support intelligence.
+  mode: read-only
+  credentials: workload-identity-or-vault-reference
+  status: template
+- id: security-observability-mcp
+  description: Read redacted, bounded WAF, identity, audit, application, cloud, and runtime security telemetry.
+  mode: read-only
+  credentials: workload-identity-or-vault-reference
+  status: template
+- id: security-ticket-and-exception-mcp
+  description: Manage draft findings, remediation, exception, disclosure, and verification records with approval-controlled
+    writes.
+  mode: mixed
+  credentials: workload-identity-or-vault-reference
+  status: template
+- id: artifact-and-evidence-mcp
+  description: Store versioned threat models, reports, scan results, decision packs, and immutable evidence bundles.
+  mode: mixed
+  credentials: workload-identity-or-vault-reference
+  status: template
+- id: vault-capability-mcp
+  description: Provides short-lived scanner and connector capabilities to trusted adapters without exposing secret
+    values to the model.
+  mode: broker-only
+  credentials: workload-identity-or-vault-reference
+  status: template
+- id: policy-and-approval-mcp
+  description: Evaluates OPA policies and obtains payload-bound approvals for protected security actions.
+  mode: control-plane
+  credentials: workload-identity-or-vault-reference
+  status: template

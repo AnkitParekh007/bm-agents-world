@@ -1,0 +1,1168 @@
+version: 1.0.0
+skill_count: 233
+skills:
+- id: jira-item-reading
+  category: work-intake
+  description: Jira item reading
+  risk: low
+  status: enabled
+- id: confluence-context-retrieval
+  category: work-intake
+  description: Confluence context retrieval
+  risk: low
+  status: enabled
+- id: initiative-linkage
+  category: work-intake
+  description: Initiative linkage
+  risk: low
+  status: enabled
+- id: acceptance-criteria-reading
+  category: work-intake
+  description: Acceptance criteria reading
+  risk: low
+  status: enabled
+- id: stakeholder-request-analysis
+  category: work-intake
+  description: Stakeholder request analysis
+  risk: low
+  status: enabled
+- id: decision-history-review
+  category: work-intake
+  description: Decision history review
+  risk: low
+  status: enabled
+- id: dependency-discovery
+  category: work-intake
+  description: Dependency discovery
+  risk: low
+  status: enabled
+- id: delivery-status-review
+  category: work-intake
+  description: Delivery status review
+  risk: low
+  status: enabled
+- id: support-theme-review
+  category: work-intake
+  description: Support theme review
+  risk: low
+  status: enabled
+- id: design-history-review
+  category: work-intake
+  description: Design history review
+  risk: low
+  status: enabled
+- id: code-change-context-reading
+  category: work-intake
+  description: Code change context reading
+  risk: low
+  status: enabled
+- id: continuous-discovery-planning
+  category: product-discovery
+  description: Continuous discovery planning
+  risk: low
+  status: enabled
+- id: customer-problem-identification
+  category: product-discovery
+  description: Customer problem identification
+  risk: low
+  status: enabled
+- id: opportunity-solution-tree
+  category: product-discovery
+  description: Opportunity solution tree
+  risk: low
+  status: enabled
+- id: jobs-to-be-done
+  category: product-discovery
+  description: Jobs to be done
+  risk: low
+  status: enabled
+- id: pain-point-analysis
+  category: product-discovery
+  description: Pain point analysis
+  risk: low
+  status: enabled
+- id: needs-segmentation
+  category: product-discovery
+  description: Needs segmentation
+  risk: low
+  status: enabled
+- id: assumption-mapping
+  category: product-discovery
+  description: Assumption mapping
+  risk: low
+  status: enabled
+- id: solution-hypothesis-framing
+  category: product-discovery
+  description: Solution hypothesis framing
+  risk: low
+  status: enabled
+- id: discovery-interview-planning
+  category: product-discovery
+  description: Discovery interview planning
+  risk: low
+  status: enabled
+- id: prototype-feedback-planning
+  category: product-discovery
+  description: Prototype feedback planning
+  risk: low
+  status: enabled
+- id: evidence-gap-analysis
+  category: product-discovery
+  description: Evidence gap analysis
+  risk: low
+  status: enabled
+- id: feedback-taxonomy
+  category: customer-insights
+  description: Feedback taxonomy
+  risk: low
+  status: enabled
+- id: support-ticket-synthesis
+  category: customer-insights
+  description: Support ticket synthesis
+  risk: low
+  status: enabled
+- id: sales-feedback-synthesis
+  category: customer-insights
+  description: Sales feedback synthesis
+  risk: low
+  status: enabled
+- id: survey-analysis
+  category: customer-insights
+  description: Survey analysis
+  risk: low
+  status: enabled
+- id: interview-note-synthesis
+  category: customer-insights
+  description: Interview note synthesis
+  risk: low
+  status: enabled
+- id: verbatim-redaction
+  category: customer-insights
+  description: Verbatim redaction
+  risk: low
+  status: enabled
+- id: customer-request-decomposition
+  category: customer-insights
+  description: Customer request decomposition
+  risk: low
+  status: enabled
+- id: segment-comparison
+  category: customer-insights
+  description: Segment comparison
+  risk: low
+  status: enabled
+- id: frequency-impact-analysis
+  category: customer-insights
+  description: Frequency impact analysis
+  risk: low
+  status: enabled
+- id: insight-confidence-rating
+  category: customer-insights
+  description: Insight confidence rating
+  risk: low
+  status: enabled
+- id: feedback-to-opportunity-linking
+  category: customer-insights
+  description: Feedback to opportunity linking
+  risk: low
+  status: enabled
+- id: market-definition
+  category: market-intelligence
+  description: Market definition
+  risk: low
+  status: enabled
+- id: market-sizing-assumptions
+  category: market-intelligence
+  description: Market sizing assumptions
+  risk: low
+  status: enabled
+- id: competitor-landscape
+  category: market-intelligence
+  description: Competitor landscape
+  risk: low
+  status: enabled
+- id: competitive-feature-analysis
+  category: market-intelligence
+  description: Competitive feature analysis
+  risk: low
+  status: enabled
+- id: substitute-analysis
+  category: market-intelligence
+  description: Substitute analysis
+  risk: low
+  status: enabled
+- id: trend-scanning
+  category: market-intelligence
+  description: Trend scanning
+  risk: low
+  status: enabled
+- id: regulatory-scan
+  category: market-intelligence
+  description: Regulatory scan
+  risk: low
+  status: enabled
+- id: positioning-analysis
+  category: market-intelligence
+  description: Positioning analysis
+  risk: low
+  status: enabled
+- id: win-loss-analysis
+  category: market-intelligence
+  description: Win loss analysis
+  risk: low
+  status: enabled
+- id: pricing-page-analysis
+  category: market-intelligence
+  description: Pricing page analysis
+  risk: medium
+  status: enabled
+- id: public-source-verification
+  category: market-intelligence
+  description: Public source verification
+  risk: low
+  status: enabled
+- id: source-provenance
+  category: market-intelligence
+  description: Source provenance
+  risk: low
+  status: enabled
+- id: product-vision-writing
+  category: product-strategy
+  description: Product vision writing
+  risk: low
+  status: enabled
+- id: strategic-context-analysis
+  category: product-strategy
+  description: Strategic context analysis
+  risk: low
+  status: enabled
+- id: target-segment-selection
+  category: product-strategy
+  description: Target segment selection
+  risk: low
+  status: enabled
+- id: value-proposition-design
+  category: product-strategy
+  description: Value proposition design
+  risk: low
+  status: enabled
+- id: differentiation-analysis
+  category: product-strategy
+  description: Differentiation analysis
+  risk: low
+  status: enabled
+- id: strategic-choice-framing
+  category: product-strategy
+  description: Strategic choice framing
+  risk: low
+  status: enabled
+- id: north-star-metric-design
+  category: product-strategy
+  description: North star metric design
+  risk: low
+  status: enabled
+- id: outcome-tree-design
+  category: product-strategy
+  description: Outcome tree design
+  risk: low
+  status: enabled
+- id: strategy-to-roadmap-linkage
+  category: product-strategy
+  description: Strategy to roadmap linkage
+  risk: low
+  status: enabled
+- id: strategic-risk-analysis
+  category: product-strategy
+  description: Strategic risk analysis
+  risk: low
+  status: enabled
+- id: portfolio-theme-definition
+  category: product-strategy
+  description: Portfolio theme definition
+  risk: low
+  status: enabled
+- id: problem-statement-writing
+  category: problem-framing
+  description: Problem statement writing
+  risk: low
+  status: enabled
+- id: symptom-vs-cause-analysis
+  category: problem-framing
+  description: Symptom vs cause analysis
+  risk: low
+  status: enabled
+- id: request-vs-need-analysis
+  category: problem-framing
+  description: Request vs need analysis
+  risk: low
+  status: enabled
+- id: constraint-mapping
+  category: problem-framing
+  description: Constraint mapping
+  risk: low
+  status: enabled
+- id: scope-boundary-definition
+  category: problem-framing
+  description: Scope boundary definition
+  risk: low
+  status: enabled
+- id: current-state-analysis
+  category: problem-framing
+  description: Current state analysis
+  risk: low
+  status: enabled
+- id: desired-outcome-definition
+  category: problem-framing
+  description: Desired outcome definition
+  risk: low
+  status: enabled
+- id: assumption-register
+  category: problem-framing
+  description: Assumption register
+  risk: low
+  status: enabled
+- id: decision-question-framing
+  category: problem-framing
+  description: Decision question framing
+  risk: low
+  status: enabled
+- id: unknowns-and-risks
+  category: problem-framing
+  description: Unknowns and risks
+  risk: low
+  status: enabled
+- id: event-taxonomy-reading
+  category: analytics
+  description: Event taxonomy reading
+  risk: low
+  status: enabled
+- id: metric-definition
+  category: analytics
+  description: Metric definition
+  risk: low
+  status: enabled
+- id: funnel-analysis
+  category: analytics
+  description: Funnel analysis
+  risk: low
+  status: enabled
+- id: retention-analysis
+  category: analytics
+  description: Retention analysis
+  risk: low
+  status: enabled
+- id: cohort-analysis
+  category: analytics
+  description: Cohort analysis
+  risk: low
+  status: enabled
+- id: path-analysis
+  category: analytics
+  description: Path analysis
+  risk: low
+  status: enabled
+- id: feature-adoption-analysis
+  category: analytics
+  description: Feature adoption analysis
+  risk: low
+  status: enabled
+- id: segmentation-analysis
+  category: analytics
+  description: Segmentation analysis
+  risk: low
+  status: enabled
+- id: quality-signal-analysis
+  category: analytics
+  description: Quality signal analysis
+  risk: low
+  status: enabled
+- id: leading-lagging-indicators
+  category: analytics
+  description: Leading lagging indicators
+  risk: low
+  status: enabled
+- id: dashboard-interpretation
+  category: analytics
+  description: Dashboard interpretation
+  risk: low
+  status: enabled
+- id: data-quality-check
+  category: analytics
+  description: Data quality check
+  risk: low
+  status: enabled
+- id: privacy-threshold-validation
+  category: analytics
+  description: Privacy threshold validation
+  risk: medium
+  status: enabled
+- id: hypothesis-writing
+  category: experimentation
+  description: Hypothesis writing
+  risk: low
+  status: enabled
+- id: variant-definition
+  category: experimentation
+  description: Variant definition
+  risk: low
+  status: enabled
+- id: primary-metric-selection
+  category: experimentation
+  description: Primary metric selection
+  risk: low
+  status: enabled
+- id: guardrail-metric-selection
+  category: experimentation
+  description: Guardrail metric selection
+  risk: low
+  status: enabled
+- id: exposure-plan
+  category: experimentation
+  description: Exposure plan
+  risk: low
+  status: enabled
+- id: sample-size-consultation
+  category: experimentation
+  description: Sample size consultation
+  risk: low
+  status: enabled
+- id: power-risk-identification
+  category: experimentation
+  description: Power risk identification
+  risk: low
+  status: enabled
+- id: experiment-pre-registration
+  category: experimentation
+  description: Experiment pre registration
+  risk: medium
+  status: enabled
+- id: stopping-rule-definition
+  category: experimentation
+  description: Stopping rule definition
+  risk: low
+  status: enabled
+- id: experiment-readout
+  category: experimentation
+  description: Experiment readout
+  risk: medium
+  status: enabled
+- id: novelty-effect-review
+  category: experimentation
+  description: Novelty effect review
+  risk: low
+  status: enabled
+- id: segment-effect-review
+  category: experimentation
+  description: Segment effect review
+  risk: low
+  status: enabled
+- id: experiment-cleanup-plan
+  category: experimentation
+  description: Experiment cleanup plan
+  risk: medium
+  status: enabled
+- id: rice-scoring
+  category: prioritization
+  description: Rice scoring
+  risk: low
+  status: enabled
+- id: wsjf-analysis
+  category: prioritization
+  description: Wsjf analysis
+  risk: low
+  status: enabled
+- id: value-effort-analysis
+  category: prioritization
+  description: Value effort analysis
+  risk: low
+  status: enabled
+- id: cost-of-delay-analysis
+  category: prioritization
+  description: Cost of delay analysis
+  risk: low
+  status: enabled
+- id: strategic-fit-scoring
+  category: prioritization
+  description: Strategic fit scoring
+  risk: low
+  status: enabled
+- id: evidence-strength-scoring
+  category: prioritization
+  description: Evidence strength scoring
+  risk: low
+  status: enabled
+- id: risk-reduction-scoring
+  category: prioritization
+  description: Risk reduction scoring
+  risk: low
+  status: enabled
+- id: dependency-weighting
+  category: prioritization
+  description: Dependency weighting
+  risk: low
+  status: enabled
+- id: confidence-scoring
+  category: prioritization
+  description: Confidence scoring
+  risk: low
+  status: enabled
+- id: must-should-could-wont
+  category: prioritization
+  description: Must should could wont
+  risk: low
+  status: enabled
+- id: tradeoff-documentation
+  category: prioritization
+  description: Tradeoff documentation
+  risk: low
+  status: enabled
+- id: priority-challenge-review
+  category: prioritization
+  description: Priority challenge review
+  risk: low
+  status: enabled
+- id: capacity-aware-prioritization
+  category: prioritization
+  description: Capacity aware prioritization
+  risk: low
+  status: enabled
+- id: outcome-roadmap-design
+  category: roadmapping
+  description: Outcome roadmap design
+  risk: low
+  status: enabled
+- id: now-next-later-roadmap
+  category: roadmapping
+  description: Now next later roadmap
+  risk: low
+  status: enabled
+- id: theme-based-roadmap
+  category: roadmapping
+  description: Theme based roadmap
+  risk: low
+  status: enabled
+- id: timeline-risk-communication
+  category: roadmapping
+  description: Timeline risk communication
+  risk: low
+  status: enabled
+- id: dependency-sequencing
+  category: roadmapping
+  description: Dependency sequencing
+  risk: low
+  status: enabled
+- id: confidence-range-communication
+  category: roadmapping
+  description: Confidence range communication
+  risk: low
+  status: enabled
+- id: scenario-roadmapping
+  category: roadmapping
+  description: Scenario roadmapping
+  risk: low
+  status: enabled
+- id: capacity-allocation
+  category: roadmapping
+  description: Capacity allocation
+  risk: low
+  status: enabled
+- id: roadmap-change-control
+  category: roadmapping
+  description: Roadmap change control
+  risk: low
+  status: enabled
+- id: stakeholder-view-design
+  category: roadmapping
+  description: Stakeholder view design
+  risk: low
+  status: enabled
+- id: roadmap-health-review
+  category: roadmapping
+  description: Roadmap health review
+  risk: low
+  status: enabled
+- id: product-brief-writing
+  category: requirements
+  description: Product brief writing
+  risk: low
+  status: enabled
+- id: prd-writing
+  category: requirements
+  description: Prd writing
+  risk: low
+  status: enabled
+- id: functional-requirements
+  category: requirements
+  description: Functional requirements
+  risk: low
+  status: enabled
+- id: nonfunctional-requirements
+  category: requirements
+  description: Nonfunctional requirements
+  risk: low
+  status: enabled
+- id: acceptance-criteria-writing
+  category: requirements
+  description: Acceptance criteria writing
+  risk: low
+  status: enabled
+- id: business-rule-specification
+  category: requirements
+  description: Business rule specification
+  risk: low
+  status: enabled
+- id: role-permission-requirements
+  category: requirements
+  description: Role permission requirements
+  risk: low
+  status: enabled
+- id: data-requirements
+  category: requirements
+  description: Data requirements
+  risk: low
+  status: enabled
+- id: integration-requirements
+  category: requirements
+  description: Integration requirements
+  risk: low
+  status: enabled
+- id: error-state-requirements
+  category: requirements
+  description: Error state requirements
+  risk: low
+  status: enabled
+- id: audit-requirements
+  category: requirements
+  description: Audit requirements
+  risk: low
+  status: enabled
+- id: analytics-instrumentation-requirements
+  category: requirements
+  description: Analytics instrumentation requirements
+  risk: low
+  status: enabled
+- id: accessibility-requirements
+  category: requirements
+  description: Accessibility requirements
+  risk: low
+  status: enabled
+- id: localization-requirements
+  category: requirements
+  description: Localization requirements
+  risk: low
+  status: enabled
+- id: journey-decomposition
+  category: story-mapping
+  description: Journey decomposition
+  risk: low
+  status: enabled
+- id: user-story-mapping
+  category: story-mapping
+  description: User story mapping
+  risk: low
+  status: enabled
+- id: vertical-slicing
+  category: story-mapping
+  description: Vertical slicing
+  risk: low
+  status: enabled
+- id: mvp-definition
+  category: story-mapping
+  description: Mvp definition
+  risk: low
+  status: enabled
+- id: walking-skeleton-design
+  category: story-mapping
+  description: Walking skeleton design
+  risk: low
+  status: enabled
+- id: release-slice-design
+  category: story-mapping
+  description: Release slice design
+  risk: medium
+  status: enabled
+- id: dependency-aware-slicing
+  category: story-mapping
+  description: Dependency aware slicing
+  risk: low
+  status: enabled
+- id: spike-identification
+  category: story-mapping
+  description: Spike identification
+  risk: low
+  status: enabled
+- id: enabler-story-identification
+  category: story-mapping
+  description: Enabler story identification
+  risk: low
+  status: enabled
+- id: acceptance-test-linkage
+  category: story-mapping
+  description: Acceptance test linkage
+  risk: low
+  status: enabled
+- id: backlog-deduplication
+  category: backlog-governance
+  description: Backlog deduplication
+  risk: low
+  status: enabled
+- id: readiness-check
+  category: backlog-governance
+  description: Readiness check
+  risk: low
+  status: enabled
+- id: definition-of-ready-review
+  category: backlog-governance
+  description: Definition of ready review
+  risk: low
+  status: enabled
+- id: aging-analysis
+  category: backlog-governance
+  description: Aging analysis
+  risk: low
+  status: enabled
+- id: stale-item-cleanup
+  category: backlog-governance
+  description: Stale item cleanup
+  risk: low
+  status: enabled
+- id: dependency-linking
+  category: backlog-governance
+  description: Dependency linking
+  risk: low
+  status: enabled
+- id: story-splitting
+  category: backlog-governance
+  description: Story splitting
+  risk: low
+  status: enabled
+- id: priority-ordering
+  category: backlog-governance
+  description: Priority ordering
+  risk: low
+  status: enabled
+- id: release-tagging
+  category: backlog-governance
+  description: Release tagging
+  risk: medium
+  status: enabled
+- id: decision-traceability
+  category: backlog-governance
+  description: Decision traceability
+  risk: low
+  status: enabled
+- id: backlog-health-reporting
+  category: backlog-governance
+  description: Backlog health reporting
+  risk: low
+  status: enabled
+- id: stakeholder-mapping
+  category: stakeholder-management
+  description: Stakeholder mapping
+  risk: low
+  status: enabled
+- id: raci-definition
+  category: stakeholder-management
+  description: Raci definition
+  risk: low
+  status: enabled
+- id: decision-rights-mapping
+  category: stakeholder-management
+  description: Decision rights mapping
+  risk: low
+  status: enabled
+- id: executive-summary-writing
+  category: stakeholder-management
+  description: Executive summary writing
+  risk: low
+  status: enabled
+- id: decision-memo-writing
+  category: stakeholder-management
+  description: Decision memo writing
+  risk: low
+  status: enabled
+- id: workshop-facilitation
+  category: stakeholder-management
+  description: Workshop facilitation
+  risk: low
+  status: enabled
+- id: conflict-resolution
+  category: stakeholder-management
+  description: Conflict resolution
+  risk: low
+  status: enabled
+- id: expectation-management
+  category: stakeholder-management
+  description: Expectation management
+  risk: low
+  status: enabled
+- id: status-communication
+  category: stakeholder-management
+  description: Status communication
+  risk: low
+  status: enabled
+- id: risk-escalation
+  category: stakeholder-management
+  description: Risk escalation
+  risk: low
+  status: enabled
+- id: meeting-decision-capture
+  category: stakeholder-management
+  description: Meeting decision capture
+  risk: low
+  status: enabled
+- id: cross-functional-alignment
+  category: stakeholder-management
+  description: Cross functional alignment
+  risk: low
+  status: enabled
+- id: sprint-goal-support
+  category: delivery-and-release
+  description: Sprint goal support
+  risk: low
+  status: enabled
+- id: scope-change-analysis
+  category: delivery-and-release
+  description: Scope change analysis
+  risk: low
+  status: enabled
+- id: dependency-tracking
+  category: delivery-and-release
+  description: Dependency tracking
+  risk: low
+  status: enabled
+- id: delivery-risk-review
+  category: delivery-and-release
+  description: Delivery risk review
+  risk: low
+  status: enabled
+- id: release-scope-definition
+  category: delivery-and-release
+  description: Release scope definition
+  risk: medium
+  status: enabled
+- id: readiness-checklist
+  category: delivery-and-release
+  description: Readiness checklist
+  risk: low
+  status: enabled
+- id: rollout-plan
+  category: delivery-and-release
+  description: Rollout plan
+  risk: low
+  status: enabled
+- id: feature-flag-strategy
+  category: delivery-and-release
+  description: Feature flag strategy
+  risk: medium
+  status: enabled
+- id: beta-program-planning
+  category: delivery-and-release
+  description: Beta program planning
+  risk: low
+  status: enabled
+- id: release-note-writing
+  category: delivery-and-release
+  description: Release note writing
+  risk: medium
+  status: enabled
+- id: support-enablement
+  category: delivery-and-release
+  description: Support enablement
+  risk: low
+  status: enabled
+- id: sales-enablement
+  category: delivery-and-release
+  description: Sales enablement
+  risk: low
+  status: enabled
+- id: rollback-communication
+  category: delivery-and-release
+  description: Rollback communication
+  risk: low
+  status: enabled
+- id: launch-tiering
+  category: delivery-and-release
+  description: Launch tiering
+  risk: low
+  status: enabled
+- id: positioning-brief
+  category: go-to-market
+  description: Positioning brief
+  risk: low
+  status: enabled
+- id: audience-segmentation
+  category: go-to-market
+  description: Audience segmentation
+  risk: low
+  status: enabled
+- id: messaging-framework
+  category: go-to-market
+  description: Messaging framework
+  risk: low
+  status: enabled
+- id: launch-goals
+  category: go-to-market
+  description: Launch goals
+  risk: low
+  status: enabled
+- id: channel-plan
+  category: go-to-market
+  description: Channel plan
+  risk: low
+  status: enabled
+- id: adoption-plan
+  category: go-to-market
+  description: Adoption plan
+  risk: low
+  status: enabled
+- id: enablement-plan
+  category: go-to-market
+  description: Enablement plan
+  risk: low
+  status: enabled
+- id: customer-communication-draft
+  category: go-to-market
+  description: Customer communication draft
+  risk: medium
+  status: enabled
+- id: internal-launch-brief
+  category: go-to-market
+  description: Internal launch brief
+  risk: low
+  status: enabled
+- id: competitive-response-plan
+  category: go-to-market
+  description: Competitive response plan
+  risk: low
+  status: enabled
+- id: post-launch-feedback-loop
+  category: go-to-market
+  description: Post launch feedback loop
+  risk: low
+  status: enabled
+- id: packaging-option-analysis
+  category: pricing-packaging
+  description: Packaging option analysis
+  risk: low
+  status: enabled
+- id: entitlement-mapping
+  category: pricing-packaging
+  description: Entitlement mapping
+  risk: low
+  status: enabled
+- id: value-metric-analysis
+  category: pricing-packaging
+  description: Value metric analysis
+  risk: low
+  status: enabled
+- id: willingness-to-pay-evidence-review
+  category: pricing-packaging
+  description: Willingness to pay evidence review
+  risk: low
+  status: enabled
+- id: cost-to-serve-analysis
+  category: pricing-packaging
+  description: Cost to serve analysis
+  risk: low
+  status: enabled
+- id: pricing-risk-analysis
+  category: pricing-packaging
+  description: Pricing risk analysis
+  risk: medium
+  status: enabled
+- id: grandfathering-impact
+  category: pricing-packaging
+  description: Grandfathering impact
+  risk: low
+  status: enabled
+- id: commercial-assumption-log
+  category: pricing-packaging
+  description: Commercial assumption log
+  risk: low
+  status: enabled
+- id: pricing-experiment-plan
+  category: pricing-packaging
+  description: Pricing experiment plan
+  risk: medium
+  status: enabled
+- id: approval-routing
+  category: pricing-packaging
+  description: Approval routing
+  risk: medium
+  status: enabled
+- id: intake-design
+  category: product-operations
+  description: Intake design
+  risk: low
+  status: enabled
+- id: product-taxonomy
+  category: product-operations
+  description: Product taxonomy
+  risk: low
+  status: enabled
+- id: artifact-template-governance
+  category: product-operations
+  description: Artifact template governance
+  risk: low
+  status: enabled
+- id: decision-log-maintenance
+  category: product-operations
+  description: Decision log maintenance
+  risk: low
+  status: enabled
+- id: roadmap-cadence
+  category: product-operations
+  description: Roadmap cadence
+  risk: low
+  status: enabled
+- id: portfolio-reporting
+  category: product-operations
+  description: Portfolio reporting
+  risk: low
+  status: enabled
+- id: product-metrics-governance
+  category: product-operations
+  description: Product metrics governance
+  risk: low
+  status: enabled
+- id: ritual-design
+  category: product-operations
+  description: Ritual design
+  risk: low
+  status: enabled
+- id: tool-permission-governance
+  category: product-operations
+  description: Tool permission governance
+  risk: low
+  status: enabled
+- id: archive-and-retention
+  category: product-operations
+  description: Archive and retention
+  risk: low
+  status: enabled
+- id: product-debt-tracking
+  category: product-operations
+  description: Product debt tracking
+  risk: low
+  status: enabled
+- id: product-process-improvement
+  category: product-operations
+  description: Product process improvement
+  risk: low
+  status: enabled
+- id: privacy-impact-screening
+  category: risk-and-governance
+  description: Privacy impact screening
+  risk: medium
+  status: enabled
+- id: security-requirement-routing
+  category: risk-and-governance
+  description: Security requirement routing
+  risk: low
+  status: enabled
+- id: legal-review-routing
+  category: risk-and-governance
+  description: Legal review routing
+  risk: medium
+  status: enabled
+- id: accessibility-risk-routing
+  category: risk-and-governance
+  description: Accessibility risk routing
+  risk: low
+  status: enabled
+- id: regulatory-impact-screening
+  category: risk-and-governance
+  description: Regulatory impact screening
+  risk: low
+  status: enabled
+- id: operational-risk-analysis
+  category: risk-and-governance
+  description: Operational risk analysis
+  risk: low
+  status: enabled
+- id: financial-risk-analysis
+  category: risk-and-governance
+  description: Financial risk analysis
+  risk: low
+  status: enabled
+- id: reputational-risk-analysis
+  category: risk-and-governance
+  description: Reputational risk analysis
+  risk: low
+  status: enabled
+- id: production-data-minimization
+  category: risk-and-governance
+  description: Production data minimization
+  risk: low
+  status: enabled
+- id: approval-evidence
+  category: risk-and-governance
+  description: Approval evidence
+  risk: medium
+  status: enabled
+- id: policy-exception-routing
+  category: risk-and-governance
+  description: Policy exception routing
+  risk: low
+  status: enabled
+- id: launch-baseline-definition
+  category: outcomes-and-learning
+  description: Launch baseline definition
+  risk: low
+  status: enabled
+- id: post-launch-monitoring
+  category: outcomes-and-learning
+  description: Post launch monitoring
+  risk: low
+  status: enabled
+- id: outcome-vs-output-review
+  category: outcomes-and-learning
+  description: Outcome vs output review
+  risk: low
+  status: enabled
+- id: adoption-review
+  category: outcomes-and-learning
+  description: Adoption review
+  risk: low
+  status: enabled
+- id: customer-impact-review
+  category: outcomes-and-learning
+  description: Customer impact review
+  risk: low
+  status: enabled
+- id: quality-impact-review
+  category: outcomes-and-learning
+  description: Quality impact review
+  risk: low
+  status: enabled
+- id: unintended-effect-review
+  category: outcomes-and-learning
+  description: Unintended effect review
+  risk: low
+  status: enabled
+- id: hypothesis-validation
+  category: outcomes-and-learning
+  description: Hypothesis validation
+  risk: low
+  status: enabled
+- id: decision-retrospective
+  category: outcomes-and-learning
+  description: Decision retrospective
+  risk: low
+  status: enabled
+- id: follow-up-experiment-design
+  category: outcomes-and-learning
+  description: Follow up experiment design
+  risk: medium
+  status: enabled
+- id: sunset-recommendation
+  category: outcomes-and-learning
+  description: Sunset recommendation
+  risk: low
+  status: enabled
+- id: learning-repository-update
+  category: outcomes-and-learning
+  description: Learning repository update
+  risk: low
+  status: enabled

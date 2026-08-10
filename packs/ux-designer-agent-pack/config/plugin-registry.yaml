@@ -1,0 +1,82 @@
+version: 1.0.0
+plugins:
+- id: figma-dev-mode
+  description: Figma Dev Mode integration for structured specifications and implementation context.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: figma-code-connect
+  description: Maps Figma components to production design-system code.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: figjam-collaboration
+  description: Facilitates approved workshops, affinity maps, journeys, and service blueprints.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: storybook-review
+  description: Surfaces implemented components and states for design-system and handoff review.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: axe-accessibility
+  description: Runs deterministic accessibility checks and produces issue evidence.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: playwright-browser
+  description: Runs isolated product walkthroughs, prototype validations, screenshots, and responsive checks.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: visual-diff
+  description: Compares approved designs, baselines, and implementation screenshots.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: design-token-transformer
+  description: Validates and transforms tokens between design and code formats.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: contrast-analyzer
+  description: Checks color contrast and non-text contrast combinations.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: content-linter
+  description: Checks clarity, terminology, tone, consistency, and localization readiness.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: localization-preview
+  description: Previews text expansion, RTL, locale formats, and truncation risks.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: analytics-reader
+  description: Provides privacy-thresholded read-only product analytics.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: research-recorder
+  description: Captures approved sessions and generates redacted transcripts.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: research-repository
+  description: Indexes studies, evidence, findings, and decisions.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: survey-adapter
+  description: Drafts and reads approved survey instruments and responses.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: jira-confluence-adapter
+  description: Reads work context and publishes approved design updates.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: teams-adapter
+  description: Publishes approved critique, research, and handoff summaries.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: privacy-redactor
+  description: Removes direct identifiers and sensitive content before model processing or retention.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: artifact-signer
+  description: Hashes and signs immutable design decision and validation bundles.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: opa-policy-client
+  description: Evaluates runtime scope, privacy, publication, and mutation policies.
+  status: enabled
+  secrets_exposed_to_model: false

@@ -1,0 +1,79 @@
+apiVersion: integration-api-architect-agent-pack/v1
+kind: AgentWorkflow
+metadata:
+  name: event-driven-integration-design
+  title: Event-Driven Integration Design
+  version: 1.0.0
+spec:
+  trigger:
+  - new_event
+  - new_topic
+  - cdc_integration
+  - event_contract_change
+  objective: Design asynchronous integrations with explicit ownership, delivery semantics, schemas, compatibility,
+    security, replay, and operational controls
+  supervisor: integration-api-architect-supervisor
+  execution:
+    mode: stateful
+    defaultPolicy: deny
+    evidenceRequired: true
+    approvalBinding: payload-hash
+    resumeFromCheckpoint: true
+  stages:
+  - id: scope
+    agent: business-product-context
+    skills:
+    - integration.context.jira-and-requirement-context
+    - integration.context.system-of-record-identification
+    gate: authorization
+  - id: domain
+    agent: domain-service-boundary
+    skills:
+    - integration.domain.domain-event-identification
+    - integration.domain.orchestration-versus-choreography-decision
+  - id: events
+    agent: event-driven-messaging
+    skills:
+    - integration.events.asyncapi-contract-design
+    - integration.events.event-versus-command-classification
+    - integration.events.delivery-semantics-selection
+    - integration.events.replay-and-retention-design
+  - id: schema
+    agent: data-contract-schema
+    skills:
+    - integration.schemas.json-schema-design
+    - integration.schemas.schema-registry-policy
+    - integration.schemas.schema-ownership-and-stewardship
+  - id: security
+    agent: api-security
+    skills:
+    - integration.security.owasp-api-threat-modeling
+    - integration.security.unsafe-third-party-consumption-review
+  - id: observability
+    agent: observability-operability
+    skills:
+    - integration.observability.messaging-semantic-convention-mapping
+    - integration.observability.integration-slo-definition
+  - id: testing
+    agent: integration-testing
+    skills:
+    - integration.testing.schema-conformance-test
+    - integration.testing.fault-injection-test-plan
+  - id: review
+    agent: architecture-review
+    skills:
+    - integration.review.independent-compatibility-review
+    - integration.review.independent-reliability-review
+    - integration.review.evidence-completeness-review
+    gate: publish-event-contract
+  outputs:
+  - asyncapi-contract
+  - data-contract
+  - reliability-policy
+  - observability-specification
+  - contract-test-plan
+  terminalStates:
+  - completed
+  - rejected
+  - blocked
+  - cancelled

@@ -1,0 +1,91 @@
+version: 1.0.0
+plugin_count: 22
+plugins:
+- id: release-request-normalizer
+  description: Normalizes release requests into the governed context schema.
+  execution: deterministic
+  external_side_effects: false
+- id: semantic-version-calculator
+  description: Calculates candidate versions from approved versioning rules.
+  execution: deterministic
+  external_side_effects: false
+- id: release-diff-builder
+  description: Builds commit, artifact, migration, configuration, and infrastructure diffs.
+  execution: deterministic
+  external_side_effects: false
+- id: dependency-graph-builder
+  description: Builds service, team, contract, data, and deployment dependency graphs.
+  execution: deterministic
+  external_side_effects: false
+- id: release-calendar-checker
+  description: Checks windows, freezes, blackouts, maintenance, conflicts, and timezones.
+  execution: deterministic
+  external_side_effects: false
+- id: artifact-integrity-verifier
+  description: Validates checksums, digests, signatures, coordinates, and immutability.
+  execution: deterministic
+  external_side_effects: false
+- id: sbom-and-provenance-validator
+  description: Validates SBOM presence, attestations, provenance, and policy results.
+  execution: deterministic
+  external_side_effects: false
+- id: test-evidence-aggregator
+  description: Aggregates candidate-bound quality evidence and defect state.
+  execution: deterministic
+  external_side_effects: false
+- id: readiness-scorecard-engine
+  description: Calculates transparent readiness status without making the final decision.
+  execution: deterministic
+  external_side_effects: false
+- id: change-risk-calculator
+  description: Calculates configured change risk using evidence and declared rules.
+  execution: deterministic
+  external_side_effects: false
+- id: approval-binding-validator
+  description: Validates actor, action, payload hash, environment, window, expiry, and replay protection.
+  execution: deterministic
+  external_side_effects: false
+- id: migration-plan-validator
+  description: Validates migration ordering, previews, hashes, duration, locking, recovery, and evidence.
+  execution: deterministic
+  external_side_effects: false
+- id: rollback-plan-validator
+  description: Validates rollback triggers, artifacts, compatibility, data safety, and operator ownership.
+  execution: deterministic
+  external_side_effects: false
+- id: deployment-sequence-builder
+  description: Builds deterministic staged deployment sequences and checkpoints.
+  execution: deterministic
+  external_side_effects: false
+- id: environment-drift-comparator
+  description: Compares approved environment and configuration baselines.
+  execution: deterministic
+  external_side_effects: false
+- id: feature-rollout-validator
+  description: Validates feature prerequisites, rollout rings, segments, and observation gates.
+  execution: deterministic
+  external_side_effects: false
+- id: release-notes-renderer
+  description: Renders approved release notes from delivered scope and known limitations.
+  execution: deterministic
+  external_side_effects: false
+- id: status-communication-renderer
+  description: Renders audience-specific release status messages from approved facts.
+  execution: deterministic
+  external_side_effects: false
+- id: release-timeline-recorder
+  description: Creates immutable release-command timestamps and evidence links.
+  execution: deterministic
+  external_side_effects: false
+- id: post-release-signal-correlator
+  description: Correlates telemetry, tickets, incidents, deployments, and customer signals.
+  execution: deterministic
+  external_side_effects: false
+- id: release-metrics-calculator
+  description: Calculates governed release and DORA-aligned delivery metrics.
+  execution: deterministic
+  external_side_effects: false
+- id: evidence-redaction-and-bundling-plugin
+  description: Redacts sensitive material and creates immutable evidence packages.
+  execution: deterministic
+  external_side_effects: false

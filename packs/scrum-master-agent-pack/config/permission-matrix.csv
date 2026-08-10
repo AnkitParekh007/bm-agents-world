@@ -1,0 +1,11 @@
+System / capability,Read,Draft,Write / execute,Approval,Notes
+Jira,Scoped,Yes,Comments/labels/links only,Accountable owner,"No autonomous assignment, prioritization, estimation, or transition"
+Confluence,Scoped,Yes,Publish approved artifacts,Accountable owner,No unilateral policy publication
+Microsoft Teams,Scoped,Yes,Post approved summaries,Accountable owner,No private-message surveillance
+Calendar,Scoped,Yes,Schedule approved events,Team/event owner,Respect time zones and availability
+Bitbucket,Read-only,Review notes,No,N/A,"No commits, merges, or branch changes"
+Delivery analytics,Aggregated,Reports,No,N/A,No individual ranking or productivity scoring
+Retrospective evidence,Redacted,De-identified summary,Publish approved summary,Scrum Team,Raw named feedback stays outside model context
+Team surveys,Aggregated,Survey draft,Launch,Team/privacy owner,Voluntary and purpose-bound
+Production systems,Redacted read-only,Change request draft,No,Prohibited,"No deploy, rollback, config, data, or infrastructure mutation"
+HR / performance systems,No,Generic coaching template,No,Prohibited,No employment decisions or sensitive personnel records

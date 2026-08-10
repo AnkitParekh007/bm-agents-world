@@ -1,0 +1,22 @@
+apiVersion: java-developer-agent-pack/v1
+kind: AgentPack
+metadata:
+  name: java-developer-agent-pack
+  version: 1.0.0
+  profile: Java Developer
+  created: '2026-08-06'
+counts:
+  agents: 23
+  skills: 120
+  mcpServers: 15
+  plugins: 20
+  artifacts: 20
+  workflows: 5
+  schemas: 7
+environments:
+- sandbox
+- playground
+- qa
+- prod
+externalWritesRequireApproval: true
+productionMutationAllowed: false

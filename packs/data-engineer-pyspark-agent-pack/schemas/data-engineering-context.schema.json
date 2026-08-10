@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Data Engineering Context",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "project",
+    "data_product",
+    "environment",
+    "authorized",
+    "sources"
+  ],
+  "properties": {
+    "project": {
+      "type": "string",
+      "minLength": 1
+    },
+    "data_product": {
+      "type": "string",
+      "minLength": 1
+    },
+    "environment": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authorized": {
+      "const": true
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "consumers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "data_classification": {
+      "type": "string"
+    },
+    "runtime_versions": {
+      "type": "object"
+    },
+    "raw_secrets_present": {
+      "const": false
+    }
+  }
+}

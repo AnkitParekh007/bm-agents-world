@@ -1,0 +1,83 @@
+apiVersion: qa-agent-pack/v1
+kind: AgentRegistry
+agents:
+  - id: qa-supervisor
+    role: Supervisor
+    purpose: Coordinate run, state, policies, approvals, and final result
+    enabled: true
+    toolPolicy: least-privilege
+  - id: story-context
+    role: Specialist
+    purpose: Read Jira and linked context
+    enabled: true
+    toolPolicy: least-privilege
+  - id: change-impact
+    role: Specialist
+    purpose: Analyze repository, API, and schema impact
+    enabled: true
+    toolPolicy: least-privilege
+  - id: test-design
+    role: Specialist
+    purpose: Create plan, cases, and traceability
+    enabled: true
+    toolPolicy: least-privilege
+  - id: environment-readiness
+    role: Specialist
+    purpose: Validate deployment and dependencies
+    enabled: true
+    toolPolicy: least-privilege
+  - id: browser-qa
+    role: Executor
+    purpose: Execute browser tests and capture evidence
+    enabled: true
+    toolPolicy: least-privilege
+  - id: api-qa
+    role: Executor
+    purpose: Execute API tests and validate contracts
+    enabled: true
+    toolPolicy: least-privilege
+  - id: database-validation
+    role: Executor
+    purpose: Execute guarded read-only data validation
+    enabled: true
+    toolPolicy: least-privilege
+  - id: integration-qa
+    role: Executor
+    purpose: Correlate cross-system transactions
+    enabled: true
+    toolPolicy: least-privilege
+  - id: defect-investigator
+    role: Specialist
+    purpose: Reproduce, isolate, and draft defects
+    enabled: true
+    toolPolicy: least-privilege
+  - id: test-automation
+    role: Engineer
+    purpose: Prepare test automation patches
+    enabled: true
+    toolPolicy: least-privilege
+  - id: regression-planner
+    role: Specialist
+    purpose: Select and interpret regression suites
+    enabled: true
+    toolPolicy: least-privilege
+  - id: release-readiness
+    role: Reviewer
+    purpose: Consolidate release quality position
+    enabled: true
+    toolPolicy: least-privilege
+  - id: qa-reporter
+    role: Publisher
+    purpose: Draft Jira, Teams, and QA reports
+    enabled: true
+    toolPolicy: least-privilege
+  - id: evidence-curator
+    role: Control
+    purpose: Validate, redact, hash, and retain evidence
+    enabled: true
+    toolPolicy: least-privilege
+  - id: policy-guard
+    role: Control
+    purpose: Evaluate tool/action policies
+    enabled: true
+    toolPolicy: least-privilege

@@ -1,0 +1,231 @@
+apiVersion: integration-api-architect-agent-pack/v1
+kind: ArtifactRegistry
+metadata:
+  name: integration-api-architect-artifacts
+  version: 1.0.0
+spec:
+  artifacts:
+  - id: integration-architecture-document
+    name: Integration Architecture Document
+    format:
+    - markdown
+    - yaml
+    - json
+    - mermaid
+    immutableWhenApproved: true
+  - id: api-strategy
+    name: API Strategy and Principles
+    format:
+    - markdown
+    - yaml
+    - json
+    - mermaid
+    immutableWhenApproved: true
+  - id: api-standards
+    name: API Standards and Style Guide
+    format:
+    - markdown
+    - yaml
+    - json
+    - mermaid
+    immutableWhenApproved: true
+  - id: integration-inventory
+    name: Integration and API Inventory
+    format:
+    - markdown
+    - yaml
+    - json
+    - mermaid
+    immutableWhenApproved: true
+  - id: service-dependency-map
+    name: Service and Integration Dependency Map
+    format:
+    - markdown
+    - yaml
+    - json
+    - mermaid
+    immutableWhenApproved: true
+  - id: api-context-diagram
+    name: API/System Context Diagram
+    format:
+    - markdown
+    - yaml
+    - json
+    - mermaid
+    immutableWhenApproved: true
+  - id: sequence-diagram
+    name: Integration Sequence Diagram
+    format:
+    - markdown
+    - yaml
+    - json
+    - mermaid
+    immutableWhenApproved: true
+  - id: openapi-contract
+    name: OpenAPI Contract
+    format:
+    - markdown
+    - yaml
+    - json
+    - mermaid
+    immutableWhenApproved: true
+  - id: asyncapi-contract
+    name: AsyncAPI Contract
+    format:
+    - markdown
+    - yaml
+    - json
+    - mermaid
+    immutableWhenApproved: true
+  - id: graphql-contract
+    name: GraphQL Schema Contract
+    format:
+    - markdown
+    - yaml
+    - json
+    - mermaid
+    immutableWhenApproved: true
+  - id: protobuf-contract
+    name: Protobuf/gRPC Contract
+    format:
+    - markdown
+    - yaml
+    - json
+    - mermaid
+    immutableWhenApproved: true
+  - id: data-contract
+    name: Data/Payload Contract
+    format:
+    - markdown
+    - yaml
+    - json
+    - mermaid
+    immutableWhenApproved: true
+  - id: error-model
+    name: Standard Error and Problem-Details Model
+    format:
+    - markdown
+    - yaml
+    - json
+    - mermaid
+    immutableWhenApproved: true
+  - id: authorization-profile
+    name: API Authentication and Authorization Profile
+    format:
+    - markdown
+    - yaml
+    - json
+    - mermaid
+    immutableWhenApproved: true
+  - id: api-security-review
+    name: API Security Review
+    format:
+    - markdown
+    - yaml
+    - json
+    - mermaid
+    immutableWhenApproved: true
+  - id: threat-model
+    name: API/Integration Threat Model
+    format:
+    - markdown
+    - yaml
+    - json
+    - mermaid
+    immutableWhenApproved: true
+  - id: versioning-compatibility-plan
+    name: Versioning and Compatibility Plan
+    format:
+    - markdown
+    - yaml
+    - json
+    - mermaid
+    immutableWhenApproved: true
+  - id: deprecation-sunset-plan
+    name: Deprecation and Sunset Plan
+    format:
+    - markdown
+    - yaml
+    - json
+    - mermaid
+    immutableWhenApproved: true
+  - id: consumer-impact-assessment
+    name: Consumer Impact Assessment
+    format:
+    - markdown
+    - yaml
+    - json
+    - mermaid
+    immutableWhenApproved: true
+  - id: contract-test-plan
+    name: Contract and Conformance Test Plan
+    format:
+    - markdown
+    - yaml
+    - json
+    - mermaid
+    immutableWhenApproved: true
+  - id: performance-capacity-budget
+    name: Performance and Capacity Budget
+    format:
+    - markdown
+    - yaml
+    - json
+    - mermaid
+    immutableWhenApproved: true
+  - id: reliability-policy
+    name: Integration Reliability Policy
+    format:
+    - markdown
+    - yaml
+    - json
+    - mermaid
+    immutableWhenApproved: true
+  - id: observability-specification
+    name: API/Integration Observability Specification
+    format:
+    - markdown
+    - yaml
+    - json
+    - mermaid
+    immutableWhenApproved: true
+  - id: gateway-policy-bundle
+    name: Gateway Policy Bundle
+    format:
+    - markdown
+    - yaml
+    - json
+    - mermaid
+    immutableWhenApproved: true
+  - id: architecture-decision-record
+    name: Architecture Decision Record
+    format:
+    - markdown
+    - yaml
+    - json
+    - mermaid
+    immutableWhenApproved: true
+  - id: implementation-handoff
+    name: Implementation Handoff Package
+    format:
+    - markdown
+    - yaml
+    - json
+    - mermaid
+    immutableWhenApproved: true
+  - id: contract-publication-request
+    name: Contract Publication / Change Request
+    format:
+    - markdown
+    - yaml
+    - json
+    - mermaid
+    immutableWhenApproved: true
+  - id: integration-daily-summary
+    name: Integration Architect Daily Summary
+    format:
+    - markdown
+    - yaml
+    - json
+    - mermaid
+    immutableWhenApproved: true

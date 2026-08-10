@@ -1,0 +1,1263 @@
+version: 1.0.0
+skill_count: 252
+skills:
+- id: understand-the-current-product-goal-and-its-evidence-base
+  category: product-goal-and-value
+  description: Understand the current Product Goal and its evidence base
+  risk: low
+  status: enabled
+- id: translate-product-strategy-into-a-clear-team-level-value-narrative
+  category: product-goal-and-value
+  description: Translate product strategy into a clear team-level value narrative
+  risk: low
+  status: enabled
+- id: check-that-backlog-priorities-support-the-product-goal
+  category: product-goal-and-value
+  description: Check that backlog priorities support the Product Goal
+  risk: low
+  status: enabled
+- id: identify-work-that-does-not-contribute-to-an-agreed-product-outcome
+  category: product-goal-and-value
+  description: Identify work that does not contribute to an agreed product outcome
+  risk: low
+  status: enabled
+- id: clarify-the-customer-or-user-value-expected-from-each-major-backlog-item
+  category: product-goal-and-value
+  description: Clarify the customer or user value expected from each major backlog item
+  risk: low
+  status: enabled
+- id: maintain-a-concise-product-value-hypothesis-for-active-initiatives
+  category: product-goal-and-value
+  description: Maintain a concise product-value hypothesis for active initiatives
+  risk: low
+  status: enabled
+- id: compare-requested-scope-with-the-current-product-goal
+  category: product-goal-and-value
+  description: Compare requested scope with the current Product Goal
+  risk: low
+  status: enabled
+- id: identify-conflicting-objectives-across-stakeholders
+  category: product-goal-and-value
+  description: Identify conflicting objectives across stakeholders
+  risk: low
+  status: enabled
+- id: prepare-product-goal-updates-for-accountable-human-approval
+  category: product-goal-and-value
+  description: Prepare Product Goal updates for accountable human approval
+  risk: medium
+  status: enabled
+- id: track-progress-toward-the-product-goal-using-outcome-evidence
+  category: product-goal-and-value
+  description: Track progress toward the Product Goal using outcome evidence
+  risk: low
+  status: enabled
+- id: review-whether-the-product-goal-remains-valid-after-new-learning
+  category: product-goal-and-value
+  description: Review whether the Product Goal remains valid after new learning
+  risk: low
+  status: enabled
+- id: recommend-when-a-product-goal-should-be-refined-replaced-or-retired
+  category: product-goal-and-value
+  description: Recommend when a Product Goal should be refined, replaced, or retired
+  risk: low
+  status: enabled
+- id: read-assigned-jira-epics-stories-bugs-spikes-and-requests
+  category: work-intake-and-context
+  description: Read assigned Jira epics, stories, bugs, spikes, and requests
+  risk: medium
+  status: enabled
+- id: read-linked-confluence-pages-product-briefs-designs-and-decisions
+  category: work-intake-and-context
+  description: Read linked Confluence pages, product briefs, designs, and decisions
+  risk: medium
+  status: enabled
+- id: review-acceptance-criteria-comments-attachments-and-dependencies
+  category: work-intake-and-context
+  description: Review acceptance criteria, comments, attachments, and dependencies
+  risk: low
+  status: enabled
+- id: identify-the-originating-stakeholder-and-requested-outcome
+  category: work-intake-and-context
+  description: Identify the originating stakeholder and requested outcome
+  risk: low
+  status: enabled
+- id: determine-whether-a-request-belongs-in-the-product-backlog
+  category: work-intake-and-context
+  description: Determine whether a request belongs in the product backlog
+  risk: low
+  status: enabled
+- id: detect-duplicate-overlapping-or-contradictory-requests
+  category: work-intake-and-context
+  description: Detect duplicate, overlapping, or contradictory requests
+  risk: low
+  status: enabled
+- id: identify-affected-products-modules-users-and-environments
+  category: work-intake-and-context
+  description: Identify affected products, modules, users, and environments
+  risk: low
+  status: enabled
+- id: review-related-incidents-support-cases-analytics-and-research
+  category: work-intake-and-context
+  description: Review related incidents, support cases, analytics, and research
+  risk: low
+  status: enabled
+- id: identify-missing-business-design-technical-data-or-compliance-context
+  category: work-intake-and-context
+  description: Identify missing business, design, technical, data, or compliance context
+  risk: low
+  status: enabled
+- id: create-a-structured-intake-summary
+  category: work-intake-and-context
+  description: Create a structured intake summary
+  risk: low
+  status: enabled
+- id: route-incomplete-requests-back-for-clarification
+  category: work-intake-and-context
+  description: Route incomplete requests back for clarification
+  risk: low
+  status: enabled
+- id: maintain-traceability-between-intake-sources-and-backlog-items
+  category: work-intake-and-context
+  description: Maintain traceability between intake sources and backlog items
+  risk: low
+  status: enabled
+- id: map-decision-makers-contributors-reviewers-users-and-affected-teams
+  category: stakeholder-alignment
+  description: Map decision makers, contributors, reviewers, users, and affected teams
+  risk: medium
+  status: enabled
+- id: prepare-stakeholder-interview-and-alignment-agendas
+  category: stakeholder-alignment
+  description: Prepare stakeholder interview and alignment agendas
+  risk: low
+  status: enabled
+- id: capture-stakeholder-needs-without-treating-every-request-as-a-commitment
+  category: stakeholder-alignment
+  description: Capture stakeholder needs without treating every request as a commitment
+  risk: low
+  status: enabled
+- id: separate-user-needs-business-goals-constraints-and-proposed-solutions
+  category: stakeholder-alignment
+  description: Separate user needs, business goals, constraints, and proposed solutions
+  risk: low
+  status: enabled
+- id: surface-stakeholder-conflicts-and-tradeoffs
+  category: stakeholder-alignment
+  description: Surface stakeholder conflicts and tradeoffs
+  risk: low
+  status: enabled
+- id: prepare-decision-options-with-evidence-and-consequences
+  category: stakeholder-alignment
+  description: Prepare decision options with evidence and consequences
+  risk: low
+  status: enabled
+- id: record-decisions-owners-dates-and-review-conditions
+  category: stakeholder-alignment
+  description: Record decisions, owners, dates, and review conditions
+  risk: low
+  status: enabled
+- id: communicate-approved-priority-and-scope-decisions
+  category: stakeholder-alignment
+  description: Communicate approved priority and scope decisions
+  risk: low
+  status: enabled
+- id: manage-stakeholder-expectations-about-sequencing-and-uncertainty
+  category: stakeholder-alignment
+  description: Manage stakeholder expectations about sequencing and uncertainty
+  risk: low
+  status: enabled
+- id: escalate-unresolved-decision-ownership
+  category: stakeholder-alignment
+  description: Escalate unresolved decision ownership
+  risk: low
+  status: enabled
+- id: prepare-concise-status-updates-for-business-and-delivery-stakeholders
+  category: stakeholder-alignment
+  description: Prepare concise status updates for business and delivery stakeholders
+  risk: medium
+  status: enabled
+- id: maintain-a-stakeholder-communication-plan
+  category: stakeholder-alignment
+  description: Maintain a stakeholder communication plan
+  risk: low
+  status: enabled
+- id: review-approved-customer-research-and-usability-findings
+  category: customer-and-user-value
+  description: Review approved customer research and usability findings
+  risk: low
+  status: enabled
+- id: review-support-themes-and-recurring-customer-pain-points
+  category: customer-and-user-value
+  description: Review support themes and recurring customer pain points
+  risk: low
+  status: enabled
+- id: review-product-analytics-and-adoption-signals
+  category: customer-and-user-value
+  description: Review product analytics and adoption signals
+  risk: low
+  status: enabled
+- id: identify-the-user-problem-addressed-by-each-backlog-item
+  category: customer-and-user-value
+  description: Identify the user problem addressed by each backlog item
+  risk: low
+  status: enabled
+- id: check-that-user-stories-describe-a-meaningful-user-or-system-outcome
+  category: customer-and-user-value
+  description: Check that user stories describe a meaningful user or system outcome
+  risk: low
+  status: enabled
+- id: distinguish-customer-evidence-from-stakeholder-opinion
+  category: customer-and-user-value
+  description: Distinguish customer evidence from stakeholder opinion
+  risk: low
+  status: enabled
+- id: identify-assumptions-requiring-validation
+  category: customer-and-user-value
+  description: Identify assumptions requiring validation
+  risk: low
+  status: enabled
+- id: propose-low-cost-discovery-or-validation-activities
+  category: customer-and-user-value
+  description: Propose low-cost discovery or validation activities
+  risk: low
+  status: enabled
+- id: assess-whether-proposed-solutions-are-usable-and-accessible
+  category: customer-and-user-value
+  description: Assess whether proposed solutions are usable and accessible
+  risk: low
+  status: enabled
+- id: check-whether-changes-create-negative-impacts-for-other-user-groups
+  category: customer-and-user-value
+  description: Check whether changes create negative impacts for other user groups
+  risk: low
+  status: enabled
+- id: maintain-a-customer-value-evidence-link-for-high-priority-work
+  category: customer-and-user-value
+  description: Maintain a customer-value evidence link for high-priority work
+  risk: low
+  status: enabled
+- id: feed-validated-learning-back-into-backlog-ordering
+  category: customer-and-user-value
+  description: Feed validated learning back into backlog ordering
+  risk: low
+  status: enabled
+- id: maintain-a-single-transparent-product-backlog-for-the-team
+  category: backlog-ownership-and-transparency
+  description: Maintain a single transparent product backlog for the team
+  risk: low
+  status: enabled
+- id: ensure-every-backlog-item-has-a-clear-purpose-and-owner
+  category: backlog-ownership-and-transparency
+  description: Ensure every backlog item has a clear purpose and owner
+  risk: low
+  status: enabled
+- id: order-backlog-items-to-maximize-value-and-manage-risk
+  category: backlog-ownership-and-transparency
+  description: Order backlog items to maximize value and manage risk
+  risk: low
+  status: enabled
+- id: keep-the-highest-priority-items-sufficiently-detailed
+  category: backlog-ownership-and-transparency
+  description: Keep the highest-priority items sufficiently detailed
+  risk: low
+  status: enabled
+- id: archive-or-close-obsolete-items-with-rationale
+  category: backlog-ownership-and-transparency
+  description: Archive or close obsolete items with rationale
+  risk: low
+  status: enabled
+- id: identify-stale-backlog-items-and-outdated-assumptions
+  category: backlog-ownership-and-transparency
+  description: Identify stale backlog items and outdated assumptions
+  risk: low
+  status: enabled
+- id: detect-duplicate-stories-bugs-enablers-and-spikes
+  category: backlog-ownership-and-transparency
+  description: Detect duplicate stories, bugs, enablers, and spikes
+  risk: low
+  status: enabled
+- id: maintain-links-between-epics-stories-defects-designs-and-releases
+  category: backlog-ownership-and-transparency
+  description: Maintain links between epics, stories, defects, designs, and releases
+  risk: low
+  status: enabled
+- id: separate-product-backlog-ownership-from-sprint-backlog-ownership
+  category: backlog-ownership-and-transparency
+  description: Separate product backlog ownership from Sprint Backlog ownership
+  risk: low
+  status: enabled
+- id: ensure-technical-debt-defects-compliance-and-platform-work-are-visible
+  category: backlog-ownership-and-transparency
+  description: Ensure technical debt, defects, compliance, and platform work are visible
+  risk: low
+  status: enabled
+- id: maintain-backlog-labels-components-products-and-taxonomy
+  category: backlog-ownership-and-transparency
+  description: Maintain backlog labels, components, products, and taxonomy
+  risk: low
+  status: enabled
+- id: publish-backlog-changes-only-after-required-approval
+  category: backlog-ownership-and-transparency
+  description: Publish backlog changes only after required approval
+  risk: medium
+  status: enabled
+- id: prepare-refinement-candidates-based-on-priority-and-team-capacity
+  category: backlog-refinement
+  description: Prepare refinement candidates based on priority and team capacity
+  risk: low
+  status: enabled
+- id: check-each-candidate-against-a-definition-of-ready-or-equivalent-policy
+  category: backlog-refinement
+  description: Check each candidate against a Definition of Ready or equivalent policy
+  risk: low
+  status: enabled
+- id: clarify-scope-user-value-assumptions-rules-and-constraints
+  category: backlog-refinement
+  description: Clarify scope, user value, assumptions, rules, and constraints
+  risk: low
+  status: enabled
+- id: split-oversized-items-into-valuable-vertical-slices
+  category: backlog-refinement
+  description: Split oversized items into valuable vertical slices
+  risk: low
+  status: enabled
+- id: identify-spikes-where-uncertainty-prevents-responsible-commitment
+  category: backlog-refinement
+  description: Identify spikes where uncertainty prevents responsible commitment
+  risk: low
+  status: enabled
+- id: add-examples-scenarios-and-edge-cases
+  category: backlog-refinement
+  description: Add examples, scenarios, and edge cases
+  risk: low
+  status: enabled
+- id: clarify-role-permission-data-and-workflow-behavior
+  category: backlog-refinement
+  description: Clarify role, permission, data, and workflow behavior
+  risk: low
+  status: enabled
+- id: clarify-error-empty-loading-timeout-and-recovery-behavior
+  category: backlog-refinement
+  description: Clarify error, empty, loading, timeout, and recovery behavior
+  risk: low
+  status: enabled
+- id: clarify-accessibility-localization-analytics-and-operability-expectations
+  category: backlog-refinement
+  description: Clarify accessibility, localization, analytics, and operability expectations
+  risk: low
+  status: enabled
+- id: identify-dependencies-and-sequencing-constraints
+  category: backlog-refinement
+  description: Identify dependencies and sequencing constraints
+  risk: low
+  status: enabled
+- id: capture-team-questions-and-unresolved-decisions
+  category: backlog-refinement
+  description: Capture team questions and unresolved decisions
+  risk: low
+  status: enabled
+- id: update-items-after-refinement-without-overwriting-human-decisions
+  category: backlog-refinement
+  description: Update items after refinement without overwriting human decisions
+  risk: medium
+  status: enabled
+- id: draft-user-stories-from-approved-product-and-business-context
+  category: user-stories-and-requirements
+  description: Draft user stories from approved product and business context
+  risk: low
+  status: enabled
+- id: use-job-user-or-system-centered-story-formats-appropriately
+  category: user-stories-and-requirements
+  description: Use job, user, or system-centered story formats appropriately
+  risk: low
+  status: enabled
+- id: write-concise-problem-and-outcome-statements
+  category: user-stories-and-requirements
+  description: Write concise problem and outcome statements
+  risk: low
+  status: enabled
+- id: document-functional-behavior-without-prescribing-unnecessary-implementation
+  category: user-stories-and-requirements
+  description: Document functional behavior without prescribing unnecessary implementation
+  risk: low
+  status: enabled
+- id: document-business-rules-and-calculations
+  category: user-stories-and-requirements
+  description: Document business rules and calculations
+  risk: low
+  status: enabled
+- id: document-data-inputs-outputs-validation-and-retention-needs
+  category: user-stories-and-requirements
+  description: Document data inputs, outputs, validation, and retention needs
+  risk: low
+  status: enabled
+- id: document-integration-and-contract-expectations
+  category: user-stories-and-requirements
+  description: Document integration and contract expectations
+  risk: low
+  status: enabled
+- id: document-nonfunctional-expectations
+  category: user-stories-and-requirements
+  description: Document nonfunctional expectations
+  risk: low
+  status: enabled
+- id: document-analytics-and-telemetry-needs
+  category: user-stories-and-requirements
+  description: Document analytics and telemetry needs
+  risk: low
+  status: enabled
+- id: document-migration-and-backward-compatibility-expectations
+  category: user-stories-and-requirements
+  description: Document migration and backward-compatibility expectations
+  risk: low
+  status: enabled
+- id: document-rollout-support-and-operational-expectations
+  category: user-stories-and-requirements
+  description: Document rollout, support, and operational expectations
+  risk: low
+  status: enabled
+- id: maintain-requirement-to-story-traceability
+  category: user-stories-and-requirements
+  description: Maintain requirement-to-story traceability
+  risk: low
+  status: enabled
+- id: write-testable-acceptance-criteria
+  category: acceptance-criteria-and-readiness
+  description: Write testable acceptance criteria
+  risk: low
+  status: enabled
+- id: use-scenario-based-examples-for-complex-behavior
+  category: acceptance-criteria-and-readiness
+  description: Use scenario-based examples for complex behavior
+  risk: low
+  status: enabled
+- id: cover-happy-paths-negative-paths-boundaries-and-permissions
+  category: acceptance-criteria-and-readiness
+  description: Cover happy paths, negative paths, boundaries, and permissions
+  risk: low
+  status: enabled
+- id: cover-error-handling-and-user-recovery
+  category: acceptance-criteria-and-readiness
+  description: Cover error handling and user recovery
+  risk: low
+  status: enabled
+- id: cover-accessibility-and-keyboard-behavior
+  category: acceptance-criteria-and-readiness
+  description: Cover accessibility and keyboard behavior
+  risk: low
+  status: enabled
+- id: cover-data-integrity-and-audit-behavior
+  category: acceptance-criteria-and-readiness
+  description: Cover data integrity and audit behavior
+  risk: low
+  status: enabled
+- id: cover-api-and-integration-failure-behavior
+  category: acceptance-criteria-and-readiness
+  description: Cover API and integration failure behavior
+  risk: low
+  status: enabled
+- id: cover-performance-and-reliability-expectations-when-material
+  category: acceptance-criteria-and-readiness
+  description: Cover performance and reliability expectations when material
+  risk: low
+  status: enabled
+- id: cover-analytics-instrumentation-and-event-definitions
+  category: acceptance-criteria-and-readiness
+  description: Cover analytics instrumentation and event definitions
+  risk: low
+  status: enabled
+- id: check-acceptance-criteria-for-ambiguity-or-contradiction
+  category: acceptance-criteria-and-readiness
+  description: Check acceptance criteria for ambiguity or contradiction
+  risk: low
+  status: enabled
+- id: coordinate-acceptance-criteria-review-with-qa-and-engineering
+  category: acceptance-criteria-and-readiness
+  description: Coordinate acceptance criteria review with QA and engineering
+  risk: low
+  status: enabled
+- id: mark-unresolved-acceptance-decisions-explicitly
+  category: acceptance-criteria-and-readiness
+  description: Mark unresolved acceptance decisions explicitly
+  risk: low
+  status: enabled
+- id: apply-an-approved-prioritization-method-consistently
+  category: prioritization-and-ordering
+  description: Apply an approved prioritization method consistently
+  risk: low
+  status: enabled
+- id: compare-customer-value-business-value-risk-urgency-learning-and-effort
+  category: prioritization-and-ordering
+  description: Compare customer value, business value, risk, urgency, learning, and effort
+  risk: low
+  status: enabled
+- id: account-for-dependencies-and-sequencing-constraints
+  category: prioritization-and-ordering
+  description: Account for dependencies and sequencing constraints
+  risk: low
+  status: enabled
+- id: account-for-defects-security-compliance-reliability-and-technical-debt
+  category: prioritization-and-ordering
+  description: Account for defects, security, compliance, reliability, and technical debt
+  risk: low
+  status: enabled
+- id: avoid-treating-loud-stakeholder-demand-as-objective-priority
+  category: prioritization-and-ordering
+  description: Avoid treating loud stakeholder demand as objective priority
+  risk: low
+  status: enabled
+- id: document-assumptions-and-confidence-behind-ordering-decisions
+  category: prioritization-and-ordering
+  description: Document assumptions and confidence behind ordering decisions
+  risk: low
+  status: enabled
+- id: create-scenario-based-ordering-options
+  category: prioritization-and-ordering
+  description: Create scenario-based ordering options
+  risk: low
+  status: enabled
+- id: evaluate-cost-of-delay-and-opportunity-cost
+  category: prioritization-and-ordering
+  description: Evaluate cost of delay and opportunity cost
+  risk: low
+  status: enabled
+- id: identify-mandatory-work-separately-from-discretionary-work
+  category: prioritization-and-ordering
+  description: Identify mandatory work separately from discretionary work
+  risk: low
+  status: enabled
+- id: revisit-priorities-after-material-evidence-or-constraint-changes
+  category: prioritization-and-ordering
+  description: Revisit priorities after material evidence or constraint changes
+  risk: low
+  status: enabled
+- id: record-reasons-for-major-priority-changes
+  category: prioritization-and-ordering
+  description: Record reasons for major priority changes
+  risk: medium
+  status: enabled
+- id: request-human-decision-for-disputed-or-high-impact-ordering-changes
+  category: prioritization-and-ordering
+  description: Request human decision for disputed or high-impact ordering changes
+  risk: medium
+  status: enabled
+- id: prepare-ordered-ready-backlog-candidates-before-sprint-planning
+  category: sprint-planning-and-sprint-goal
+  description: Prepare ordered, ready backlog candidates before Sprint Planning
+  risk: low
+  status: enabled
+- id: propose-a-coherent-sprint-goal-tied-to-product-value
+  category: sprint-planning-and-sprint-goal
+  description: Propose a coherent Sprint Goal tied to product value
+  risk: low
+  status: enabled
+- id: explain-how-candidate-items-support-the-proposed-sprint-goal
+  category: sprint-planning-and-sprint-goal
+  description: Explain how candidate items support the proposed Sprint Goal
+  risk: low
+  status: enabled
+- id: provide-scope-options-rather-than-pushing-work-onto-developers
+  category: sprint-planning-and-sprint-goal
+  description: Provide scope options rather than pushing work onto Developers
+  risk: low
+  status: enabled
+- id: respect-developers-ownership-of-sprint-backlog-selection-and-plan
+  category: sprint-planning-and-sprint-goal
+  description: Respect Developers’ ownership of Sprint Backlog selection and plan
+  risk: low
+  status: enabled
+- id: clarify-acceptance-questions-during-sprint-planning
+  category: sprint-planning-and-sprint-goal
+  description: Clarify acceptance questions during Sprint Planning
+  risk: low
+  status: enabled
+- id: identify-dependencies-risks-and-external-decisions-before-selection
+  category: sprint-planning-and-sprint-goal
+  description: Identify dependencies, risks, and external decisions before selection
+  risk: low
+  status: enabled
+- id: confirm-design-data-environment-and-test-readiness
+  category: sprint-planning-and-sprint-goal
+  description: Confirm design, data, environment, and test readiness
+  risk: low
+  status: enabled
+- id: identify-work-that-should-not-enter-the-sprint
+  category: sprint-planning-and-sprint-goal
+  description: Identify work that should not enter the Sprint
+  risk: low
+  status: enabled
+- id: record-agreed-scope-assumptions-and-product-owner-decisions
+  category: sprint-planning-and-sprint-goal
+  description: Record agreed scope assumptions and Product Owner decisions
+  risk: low
+  status: enabled
+- id: update-the-product-backlog-after-sprint-planning
+  category: sprint-planning-and-sprint-goal
+  description: Update the Product Backlog after Sprint Planning
+  risk: medium
+  status: enabled
+- id: communicate-the-agreed-sprint-goal-and-value-narrative
+  category: sprint-planning-and-sprint-goal
+  description: Communicate the agreed Sprint Goal and value narrative
+  risk: low
+  status: enabled
+- id: answer-product-and-requirement-questions-during-the-sprint
+  category: sprint-collaboration-and-decisions
+  description: Answer product and requirement questions during the Sprint
+  risk: low
+  status: enabled
+- id: provide-timely-priority-and-scope-decisions
+  category: sprint-collaboration-and-decisions
+  description: Provide timely priority and scope decisions
+  risk: low
+  status: enabled
+- id: clarify-behavior-when-new-edge-cases-are-discovered
+  category: sprint-collaboration-and-decisions
+  description: Clarify behavior when new edge cases are discovered
+  risk: low
+  status: enabled
+- id: assess-proposed-scope-tradeoffs-against-the-sprint-goal
+  category: sprint-collaboration-and-decisions
+  description: Assess proposed scope tradeoffs against the Sprint Goal
+  risk: low
+  status: enabled
+- id: avoid-changing-sprint-scope-informally-or-without-team-discussion
+  category: sprint-collaboration-and-decisions
+  description: Avoid changing Sprint scope informally or without team discussion
+  risk: low
+  status: enabled
+- id: coordinate-stakeholder-access-when-clarification-is-needed
+  category: sprint-collaboration-and-decisions
+  description: Coordinate stakeholder access when clarification is needed
+  risk: low
+  status: enabled
+- id: review-incremental-work-early-instead-of-waiting-for-sprint-review
+  category: sprint-collaboration-and-decisions
+  description: Review incremental work early instead of waiting for Sprint Review
+  risk: low
+  status: enabled
+- id: confirm-whether-implemented-behavior-meets-agreed-acceptance-intent
+  category: sprint-collaboration-and-decisions
+  description: Confirm whether implemented behavior meets agreed acceptance intent
+  risk: low
+  status: enabled
+- id: maintain-decision-logs-for-material-changes
+  category: sprint-collaboration-and-decisions
+  description: Maintain decision logs for material changes
+  risk: low
+  status: enabled
+- id: escalate-decisions-that-exceed-product-owner-authority
+  category: sprint-collaboration-and-decisions
+  description: Escalate decisions that exceed Product Owner authority
+  risk: low
+  status: enabled
+- id: protect-the-team-from-conflicting-stakeholder-instructions
+  category: sprint-collaboration-and-decisions
+  description: Protect the team from conflicting stakeholder instructions
+  risk: low
+  status: enabled
+- id: keep-backlog-ordering-current-as-learning-emerges
+  category: sprint-collaboration-and-decisions
+  description: Keep backlog ordering current as learning emerges
+  risk: low
+  status: enabled
+- id: confirm-relevant-user-journeys-and-states-are-understood
+  category: ux-and-design-readiness
+  description: Confirm relevant user journeys and states are understood
+  risk: low
+  status: enabled
+- id: verify-approved-designs-are-linked-to-backlog-items
+  category: ux-and-design-readiness
+  description: Verify approved designs are linked to backlog items
+  risk: low
+  status: enabled
+- id: confirm-responsive-and-accessibility-expectations
+  category: ux-and-design-readiness
+  description: Confirm responsive and accessibility expectations
+  risk: low
+  status: enabled
+- id: identify-missing-states-errors-permissions-and-edge-cases-in-designs
+  category: ux-and-design-readiness
+  description: Identify missing states, errors, permissions, and edge cases in designs
+  risk: low
+  status: enabled
+- id: coordinate-content-and-ux-writing-decisions
+  category: ux-and-design-readiness
+  description: Coordinate content and UX-writing decisions
+  risk: low
+  status: enabled
+- id: confirm-design-system-component-usage-or-exceptions
+  category: ux-and-design-readiness
+  description: Confirm design-system component usage or exceptions
+  risk: low
+  status: enabled
+- id: assess-whether-design-research-is-sufficient-for-high-risk-work
+  category: ux-and-design-readiness
+  description: Assess whether design research is sufficient for high-risk work
+  risk: low
+  status: enabled
+- id: route-unresolved-usability-risks-to-ux-specialists
+  category: ux-and-design-readiness
+  description: Route unresolved usability risks to UX specialists
+  risk: low
+  status: enabled
+- id: ensure-design-changes-are-versioned-and-traceable
+  category: ux-and-design-readiness
+  description: Ensure design changes are versioned and traceable
+  risk: low
+  status: enabled
+- id: confirm-engineering-handoff-details-are-available
+  category: ux-and-design-readiness
+  description: Confirm engineering handoff details are available
+  risk: low
+  status: enabled
+- id: review-implementation-with-ux-during-delivery
+  category: ux-and-design-readiness
+  description: Review implementation with UX during delivery
+  risk: low
+  status: enabled
+- id: record-approved-design-deviations
+  category: ux-and-design-readiness
+  description: Record approved design deviations
+  risk: low
+  status: enabled
+- id: confirm-architecture-decisions-and-constraints-are-linked
+  category: technical-and-architecture-readiness
+  description: Confirm architecture decisions and constraints are linked
+  risk: low
+  status: enabled
+- id: identify-cross-service-api-database-and-infrastructure-dependencies
+  category: technical-and-architecture-readiness
+  description: Identify cross-service, API, database, and infrastructure dependencies
+  risk: low
+  status: enabled
+- id: confirm-technical-spikes-are-completed-when-required
+  category: technical-and-architecture-readiness
+  description: Confirm technical spikes are completed when required
+  risk: low
+  status: enabled
+- id: clarify-product-intent-without-dictating-engineering-design
+  category: technical-and-architecture-readiness
+  description: Clarify product intent without dictating engineering design
+  risk: low
+  status: enabled
+- id: review-engineering-estimates-as-inputs-not-commitments-imposed-by-the-agent
+  category: technical-and-architecture-readiness
+  description: Review engineering estimates as inputs, not commitments imposed by the agent
+  risk: low
+  status: enabled
+- id: coordinate-tradeoffs-between-value-scope-quality-and-feasibility
+  category: technical-and-architecture-readiness
+  description: Coordinate tradeoffs between value, scope, quality, and feasibility
+  risk: low
+  status: enabled
+- id: ensure-observability-support-migration-and-rollback-needs-are-represented
+  category: technical-and-architecture-readiness
+  description: Ensure observability, support, migration, and rollback needs are represented
+  risk: low
+  status: enabled
+- id: confirm-security-and-privacy-reviews-are-initiated
+  category: technical-and-architecture-readiness
+  description: Confirm security and privacy reviews are initiated
+  risk: low
+  status: enabled
+- id: confirm-data-ownership-and-integration-contracts-are-understood
+  category: technical-and-architecture-readiness
+  description: Confirm data ownership and integration contracts are understood
+  risk: low
+  status: enabled
+- id: track-architectural-decisions-that-affect-product-behavior
+  category: technical-and-architecture-readiness
+  description: Track architectural decisions that affect product behavior
+  risk: low
+  status: enabled
+- id: route-technical-authority-decisions-to-the-technical-lead-or-architect
+  category: technical-and-architecture-readiness
+  description: Route technical authority decisions to the Technical Lead or Architect
+  risk: low
+  status: enabled
+- id: keep-product-scope-aligned-with-approved-technical-constraints
+  category: technical-and-architecture-readiness
+  description: Keep product scope aligned with approved technical constraints
+  risk: low
+  status: enabled
+- id: coordinate-story-readiness-with-qa
+  category: qa-uat-and-business-acceptance
+  description: Coordinate story readiness with QA
+  risk: low
+  status: enabled
+- id: confirm-acceptance-criteria-can-be-validated
+  category: qa-uat-and-business-acceptance
+  description: Confirm acceptance criteria can be validated
+  risk: low
+  status: enabled
+- id: review-test-plans-for-product-risk-coverage
+  category: qa-uat-and-business-acceptance
+  description: Review test plans for product-risk coverage
+  risk: low
+  status: enabled
+- id: provide-test-data-and-business-rule-clarification
+  category: qa-uat-and-business-acceptance
+  description: Provide test data and business-rule clarification
+  risk: low
+  status: enabled
+- id: triage-defects-by-user-impact-and-value-risk
+  category: qa-uat-and-business-acceptance
+  description: Triage defects by user impact and value risk
+  risk: low
+  status: enabled
+- id: distinguish-release-blockers-from-lower-priority-defects
+  category: qa-uat-and-business-acceptance
+  description: Distinguish release blockers from lower-priority defects
+  risk: low
+  status: enabled
+- id: coordinate-uat-scope-participants-scenarios-and-timing
+  category: qa-uat-and-business-acceptance
+  description: Coordinate UAT scope, participants, scenarios, and timing
+  risk: low
+  status: enabled
+- id: review-uat-evidence-and-unresolved-findings
+  category: qa-uat-and-business-acceptance
+  description: Review UAT evidence and unresolved findings
+  risk: low
+  status: enabled
+- id: prepare-business-acceptance-recommendations
+  category: qa-uat-and-business-acceptance
+  description: Prepare business-acceptance recommendations
+  risk: medium
+  status: enabled
+- id: ensure-final-business-acceptance-is-made-by-an-accountable-human
+  category: qa-uat-and-business-acceptance
+  description: Ensure final business acceptance is made by an accountable human
+  risk: medium
+  status: enabled
+- id: add-escaped-defects-and-learning-to-the-backlog
+  category: qa-uat-and-business-acceptance
+  description: Add escaped defects and learning to the backlog
+  risk: low
+  status: enabled
+- id: maintain-traceability-from-requirements-to-tests-and-acceptance-evidence
+  category: qa-uat-and-business-acceptance
+  description: Maintain traceability from requirements to tests and acceptance evidence
+  risk: low
+  status: enabled
+- id: define-release-scope-and-intended-customer-outcome
+  category: release-planning-and-acceptance
+  description: Define release scope and intended customer outcome
+  risk: low
+  status: enabled
+- id: confirm-included-backlog-items-and-excluded-scope
+  category: release-planning-and-acceptance
+  description: Confirm included backlog items and excluded scope
+  risk: low
+  status: enabled
+- id: review-quality-security-accessibility-support-and-operational-readiness
+  category: release-planning-and-acceptance
+  description: Review quality, security, accessibility, support, and operational readiness
+  risk: low
+  status: enabled
+- id: review-unresolved-defects-and-accepted-risks
+  category: release-planning-and-acceptance
+  description: Review unresolved defects and accepted risks
+  risk: low
+  status: enabled
+- id: confirm-release-notes-and-internal-enablement-materials
+  category: release-planning-and-acceptance
+  description: Confirm release notes and internal enablement materials
+  risk: low
+  status: enabled
+- id: confirm-rollout-feature-flag-migration-monitoring-and-rollback-plans
+  category: release-planning-and-acceptance
+  description: Confirm rollout, feature flag, migration, monitoring, and rollback plans
+  risk: low
+  status: enabled
+- id: coordinate-customer-or-stakeholder-communication-drafts
+  category: release-planning-and-acceptance
+  description: Coordinate customer or stakeholder communication drafts
+  risk: low
+  status: enabled
+- id: prepare-a-release-acceptance-recommendation
+  category: release-planning-and-acceptance
+  description: Prepare a release acceptance recommendation
+  risk: medium
+  status: enabled
+- id: request-final-release-or-business-approval-from-accountable-humans
+  category: release-planning-and-acceptance
+  description: Request final release or business approval from accountable humans
+  risk: low
+  status: enabled
+- id: participate-in-approved-go-no-go-discussions
+  category: release-planning-and-acceptance
+  description: Participate in approved go/no-go discussions
+  risk: low
+  status: enabled
+- id: verify-post-release-product-behavior-and-critical-journeys
+  category: release-planning-and-acceptance
+  description: Verify post-release product behavior and critical journeys
+  risk: low
+  status: enabled
+- id: update-backlog-and-roadmap-based-on-release-learning
+  category: release-planning-and-acceptance
+  description: Update backlog and roadmap based on release learning
+  risk: medium
+  status: enabled
+- id: define-success-quality-and-guardrail-measures-for-backlog-initiatives
+  category: metrics-outcomes-and-experiments
+  description: Define success, quality, and guardrail measures for backlog initiatives
+  risk: low
+  status: enabled
+- id: ensure-instrumentation-requirements-are-included-before-delivery
+  category: metrics-outcomes-and-experiments
+  description: Ensure instrumentation requirements are included before delivery
+  risk: low
+  status: enabled
+- id: review-baseline-metrics-and-data-quality
+  category: metrics-outcomes-and-experiments
+  description: Review baseline metrics and data quality
+  risk: low
+  status: enabled
+- id: track-adoption-task-success-quality-and-business-outcomes
+  category: metrics-outcomes-and-experiments
+  description: Track adoption, task success, quality, and business outcomes
+  risk: low
+  status: enabled
+- id: separate-output-completion-from-outcome-achievement
+  category: metrics-outcomes-and-experiments
+  description: Separate output completion from outcome achievement
+  risk: low
+  status: enabled
+- id: review-experiment-hypotheses-variants-and-stopping-rules
+  category: metrics-outcomes-and-experiments
+  description: Review experiment hypotheses, variants, and stopping rules
+  risk: medium
+  status: enabled
+- id: ensure-experiments-have-privacy-risk-and-approval-controls
+  category: metrics-outcomes-and-experiments
+  description: Ensure experiments have privacy, risk, and approval controls
+  risk: medium
+  status: enabled
+- id: interpret-results-with-uncertainty-and-limitations
+  category: metrics-outcomes-and-experiments
+  description: Interpret results with uncertainty and limitations
+  risk: low
+  status: enabled
+- id: identify-unintended-effects-and-affected-segments
+  category: metrics-outcomes-and-experiments
+  description: Identify unintended effects and affected segments
+  risk: low
+  status: enabled
+- id: recommend-continue-iterate-expand-pause-or-retire-options
+  category: metrics-outcomes-and-experiments
+  description: Recommend continue, iterate, expand, pause, or retire options
+  risk: low
+  status: enabled
+- id: feed-outcome-evidence-into-backlog-ordering
+  category: metrics-outcomes-and-experiments
+  description: Feed outcome evidence into backlog ordering
+  risk: low
+  status: enabled
+- id: prepare-outcome-review-artifacts-for-human-decision
+  category: metrics-outcomes-and-experiments
+  description: Prepare outcome review artifacts for human decision
+  risk: low
+  status: enabled
+- id: prepare-product-owner-inputs-for-refinement
+  category: ceremonies-and-agile-collaboration
+  description: Prepare Product Owner inputs for refinement
+  risk: low
+  status: enabled
+- id: prepare-product-owner-inputs-for-sprint-planning
+  category: ceremonies-and-agile-collaboration
+  description: Prepare Product Owner inputs for Sprint Planning
+  risk: low
+  status: enabled
+- id: participate-in-daily-scrum-only-when-useful-and-without-directing-developers
+  category: ceremonies-and-agile-collaboration
+  description: Participate in Daily Scrum only when useful and without directing Developers
+  risk: low
+  status: enabled
+- id: prepare-sprint-review-narratives-and-evidence
+  category: ceremonies-and-agile-collaboration
+  description: Prepare Sprint Review narratives and evidence
+  risk: low
+  status: enabled
+- id: collect-stakeholder-feedback-during-sprint-review
+  category: ceremonies-and-agile-collaboration
+  description: Collect stakeholder feedback during Sprint Review
+  risk: low
+  status: enabled
+- id: prepare-retrospective-inputs-about-product-and-decision-flow
+  category: ceremonies-and-agile-collaboration
+  description: Prepare retrospective inputs about product and decision flow
+  risk: low
+  status: enabled
+- id: track-product-owner-action-items-from-ceremonies
+  category: ceremonies-and-agile-collaboration
+  description: Track Product Owner action items from ceremonies
+  risk: low
+  status: enabled
+- id: coordinate-with-the-scrum-master-on-impediments-and-process-issues
+  category: ceremonies-and-agile-collaboration
+  description: Coordinate with the Scrum Master on impediments and process issues
+  risk: low
+  status: enabled
+- id: avoid-converting-ceremonies-into-status-reporting-for-management
+  category: ceremonies-and-agile-collaboration
+  description: Avoid converting ceremonies into status reporting for management
+  risk: low
+  status: enabled
+- id: maintain-transparency-about-decisions-priorities-and-uncertainty
+  category: ceremonies-and-agile-collaboration
+  description: Maintain transparency about decisions, priorities, and uncertainty
+  risk: low
+  status: enabled
+- id: respect-accountabilities-defined-by-the-team-s-chosen-operating-model
+  category: ceremonies-and-agile-collaboration
+  description: Respect accountabilities defined by the team’s chosen operating model
+  risk: low
+  status: enabled
+- id: improve-product-collaboration-practices-through-retrospectives
+  category: ceremonies-and-agile-collaboration
+  description: Improve product collaboration practices through retrospectives
+  risk: low
+  status: enabled
+- id: identify-dependencies-across-pcc-sop-databridge-and-shared-platforms
+  category: cross-team-and-dependency-management
+  description: Identify dependencies across PCC, SOP, DataBridge, and shared platforms
+  risk: low
+  status: enabled
+- id: map-provider-and-consumer-teams
+  category: cross-team-and-dependency-management
+  description: Map provider and consumer teams
+  risk: medium
+  status: enabled
+- id: align-backlog-ordering-with-shared-dependency-milestones
+  category: cross-team-and-dependency-management
+  description: Align backlog ordering with shared dependency milestones
+  risk: low
+  status: enabled
+- id: coordinate-shared-api-data-design-system-and-release-decisions
+  category: cross-team-and-dependency-management
+  description: Coordinate shared API, data, design-system, and release decisions
+  risk: low
+  status: enabled
+- id: detect-conflicting-priorities-across-teams
+  category: cross-team-and-dependency-management
+  description: Detect conflicting priorities across teams
+  risk: medium
+  status: enabled
+- id: prepare-cross-team-decision-and-sequencing-options
+  category: cross-team-and-dependency-management
+  description: Prepare cross-team decision and sequencing options
+  risk: low
+  status: enabled
+- id: track-dependency-owners-and-target-dates
+  category: cross-team-and-dependency-management
+  description: Track dependency owners and target dates
+  risk: low
+  status: enabled
+- id: escalate-blocked-dependencies
+  category: cross-team-and-dependency-management
+  description: Escalate blocked dependencies
+  risk: low
+  status: enabled
+- id: coordinate-integration-and-end-to-end-readiness
+  category: cross-team-and-dependency-management
+  description: Coordinate integration and end-to-end readiness
+  risk: low
+  status: enabled
+- id: avoid-committing-another-team-s-capacity-or-delivery-date
+  category: cross-team-and-dependency-management
+  description: Avoid committing another team’s capacity or delivery date
+  risk: low
+  status: enabled
+- id: maintain-dependency-evidence-and-status
+  category: cross-team-and-dependency-management
+  description: Maintain dependency evidence and status
+  risk: low
+  status: enabled
+- id: update-plans-when-dependency-assumptions-change
+  category: cross-team-and-dependency-management
+  description: Update plans when dependency assumptions change
+  risk: medium
+  status: enabled
+- id: identify-privacy-security-legal-regulatory-accessibility-and-operational-risks
+  category: risk-compliance-and-governance
+  description: Identify privacy, security, legal, regulatory, accessibility, and operational risks
+  risk: low
+  status: enabled
+- id: route-specialist-reviews-early
+  category: risk-compliance-and-governance
+  description: Route specialist reviews early
+  risk: low
+  status: enabled
+- id: ensure-mandatory-work-is-visible-and-ordered-appropriately
+  category: risk-compliance-and-governance
+  description: Ensure mandatory work is visible and ordered appropriately
+  risk: low
+  status: enabled
+- id: document-risk-owners-and-mitigation-expectations
+  category: risk-compliance-and-governance
+  description: Document risk owners and mitigation expectations
+  risk: low
+  status: enabled
+- id: track-unresolved-policy-exceptions
+  category: risk-compliance-and-governance
+  description: Track unresolved policy exceptions
+  risk: low
+  status: enabled
+- id: prevent-release-acceptance-when-mandatory-approvals-are-absent
+  category: risk-compliance-and-governance
+  description: Prevent release acceptance when mandatory approvals are absent
+  risk: medium
+  status: enabled
+- id: avoid-accepting-residual-risk-on-behalf-of-accountable-executives-or-specialists
+  category: risk-compliance-and-governance
+  description: Avoid accepting residual risk on behalf of accountable executives or specialists
+  risk: low
+  status: enabled
+- id: maintain-auditable-priority-and-scope-decisions
+  category: risk-compliance-and-governance
+  description: Maintain auditable priority and scope decisions
+  risk: low
+  status: enabled
+- id: check-that-sensitive-data-use-is-minimized
+  category: risk-compliance-and-governance
+  description: Check that sensitive data use is minimized
+  risk: low
+  status: enabled
+- id: ensure-customer-contact-and-experiments-are-approved
+  category: risk-compliance-and-governance
+  description: Ensure customer contact and experiments are approved
+  risk: medium
+  status: enabled
+- id: ensure-production-changes-remain-outside-free-form-agent-authority
+  category: risk-compliance-and-governance
+  description: Ensure production changes remain outside free-form agent authority
+  risk: low
+  status: enabled
+- id: preserve-evidence-for-governance-and-audit
+  category: risk-compliance-and-governance
+  description: Preserve evidence for governance and audit
+  risk: low
+  status: enabled
+- id: prepare-a-daily-product-owner-summary
+  category: communication-and-reporting
+  description: Prepare a daily Product Owner summary
+  risk: low
+  status: enabled
+- id: prepare-backlog-health-reports
+  category: communication-and-reporting
+  description: Prepare backlog-health reports
+  risk: low
+  status: enabled
+- id: prepare-refinement-readiness-summaries
+  category: communication-and-reporting
+  description: Prepare refinement-readiness summaries
+  risk: low
+  status: enabled
+- id: prepare-sprint-goal-and-planning-briefs
+  category: communication-and-reporting
+  description: Prepare Sprint Goal and planning briefs
+  risk: low
+  status: enabled
+- id: prepare-delivery-and-dependency-updates
+  category: communication-and-reporting
+  description: Prepare delivery and dependency updates
+  risk: medium
+  status: enabled
+- id: prepare-release-readiness-and-acceptance-summaries
+  category: communication-and-reporting
+  description: Prepare release-readiness and acceptance summaries
+  risk: low
+  status: enabled
+- id: prepare-outcome-and-learning-reviews
+  category: communication-and-reporting
+  description: Prepare outcome and learning reviews
+  risk: low
+  status: enabled
+- id: draft-jira-confluence-and-teams-updates
+  category: communication-and-reporting
+  description: Draft Jira, Confluence, and Teams updates
+  risk: medium
+  status: enabled
+- id: tailor-communication-to-executives-delivery-teams-support-and-users
+  category: communication-and-reporting
+  description: Tailor communication to executives, delivery teams, support, and users
+  risk: medium
+  status: enabled
+- id: state-assumptions-confidence-decisions-and-open-questions-clearly
+  category: communication-and-reporting
+  description: State assumptions, confidence, decisions, and open questions clearly
+  risk: low
+  status: enabled
+- id: avoid-representing-forecasts-as-guaranteed-commitments
+  category: communication-and-reporting
+  description: Avoid representing forecasts as guaranteed commitments
+  risk: low
+  status: enabled
+- id: publish-communications-only-through-approved-workflows
+  category: communication-and-reporting
+  description: Publish communications only through approved workflows
+  risk: medium
+  status: enabled
+- id: review-backlog-aging-and-throughput-patterns
+  category: continuous-improvement-and-product-operations
+  description: Review backlog aging and throughput patterns
+  risk: low
+  status: enabled
+- id: review-quality-of-stories-and-acceptance-criteria
+  category: continuous-improvement-and-product-operations
+  description: Review quality of stories and acceptance criteria
+  risk: low
+  status: enabled
+- id: review-decision-latency-and-clarification-bottlenecks
+  category: continuous-improvement-and-product-operations
+  description: Review decision latency and clarification bottlenecks
+  risk: low
+  status: enabled
+- id: review-defect-escape-and-rework-themes
+  category: continuous-improvement-and-product-operations
+  description: Review defect escape and rework themes
+  risk: low
+  status: enabled
+- id: review-stakeholder-feedback-on-backlog-transparency
+  category: continuous-improvement-and-product-operations
+  description: Review stakeholder feedback on backlog transparency
+  risk: low
+  status: enabled
+- id: improve-templates-taxonomies-and-readiness-criteria
+  category: continuous-improvement-and-product-operations
+  description: Improve templates, taxonomies, and readiness criteria
+  risk: low
+  status: enabled
+- id: identify-recurring-dependencies-and-systemic-blockers
+  category: continuous-improvement-and-product-operations
+  description: Identify recurring dependencies and systemic blockers
+  risk: low
+  status: enabled
+- id: improve-traceability-and-evidence-capture
+  category: continuous-improvement-and-product-operations
+  description: Improve traceability and evidence capture
+  risk: low
+  status: enabled
+- id: reduce-duplicate-and-low-value-backlog-inventory
+  category: continuous-improvement-and-product-operations
+  description: Reduce duplicate and low-value backlog inventory
+  risk: low
+  status: enabled
+- id: review-whether-ceremonies-produce-useful-decisions
+  category: continuous-improvement-and-product-operations
+  description: Review whether ceremonies produce useful decisions
+  risk: low
+  status: enabled
+- id: maintain-product-owner-playbooks-and-onboarding-guidance
+  category: continuous-improvement-and-product-operations
+  description: Maintain Product Owner playbooks and onboarding guidance
+  risk: low
+  status: enabled
+- id: recommend-process-experiments-and-evaluate-their-outcomes
+  category: continuous-improvement-and-product-operations
+  description: Recommend process experiments and evaluate their outcomes
+  risk: medium
+  status: enabled

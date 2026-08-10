@@ -1,0 +1,12 @@
+apiVersion: qa-agent-pack/v1
+kind: ArtifactRegistry
+artifacts:
+  - { id: story-context-brief, schema: ../schemas/story-context.schema.json, immutableAfterFinalize: true }
+  - { id: test-plan, schema: ../schemas/test-plan.schema.json, immutableAfterFinalize: true }
+  - { id: test-case-set, schema: ../schemas/test-case.schema.json, immutableAfterFinalize: true }
+  - { id: test-execution-result, schema: ../schemas/test-result.schema.json, immutableAfterFinalize: true }
+  - { id: evidence-manifest, schema: ../schemas/evidence-manifest.schema.json, immutableAfterFinalize: true }
+  - { id: bug-draft, schema: ../schemas/bug-draft.schema.json, immutableAfterFinalize: true }
+  - { id: approval-request, schema: ../schemas/approval-request.schema.json, immutableAfterFinalize: true }
+  - { id: release-readiness, schema: null, immutableAfterFinalize: true }
+  - { id: agent-run-audit, schema: null, immutableAfterFinalize: true }

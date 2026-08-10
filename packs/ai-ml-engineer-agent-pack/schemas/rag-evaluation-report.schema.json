@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/ai-ml/rag-evaluation-report.schema.json",
+  "title": "RAG Evaluation Report",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "system_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "knowledge_snapshot": {
+      "type": "string",
+      "minLength": 1
+    },
+    "retrieval_metrics": {
+      "type": "object"
+    },
+    "grounding_metrics": {
+      "type": "object"
+    },
+    "citation_findings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "injection_findings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "failure_modes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "system_id",
+    "knowledge_snapshot",
+    "retrieval_metrics",
+    "grounding_metrics"
+  ]
+}

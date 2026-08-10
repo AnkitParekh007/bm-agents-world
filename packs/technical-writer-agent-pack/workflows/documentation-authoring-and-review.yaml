@@ -1,0 +1,54 @@
+name: documentation-authoring-and-review
+version: 1.0.0
+trigger: approved documentation plan and content brief
+scope_binding:
+- project
+- documentation_collection
+- audience
+- product_version
+- source_revision
+- publication_target
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: validate plan, project, version, workspace, and allowed tools
+- id: draft
+  agent: technical-writer-supervisor
+  action: route each topic to the correct content specialist in an isolated workspace
+- id: samples
+  agent: code-sample-agent
+  action: extract or create and test approved examples when required
+- id: visuals
+  agent: diagram-and-visual-agent
+  action: create versioned diagrams and safe screenshots when required
+- id: style
+  agent: style-and-terminology-agent
+  action: apply project style, terminology, voice, and formatting
+- id: accessibility
+  agent: accessibility-and-inclusive-content-agent
+  action: review accessibility, inclusive language, and cognitive load
+- id: localization
+  agent: localization-readiness-agent
+  action: check global readiness, variables, examples, and translation context
+- id: build
+  agent: docs-as-code-agent
+  action: build preview and run markup, prose, link, metadata, and sample validation
+- id: quality
+  agent: content-quality-agent
+  action: review factuality, completeness, testability, freshness, and contradictions
+- id: independent-review
+  agent: documentation-reviewer-agent
+  action: independently recommend approve, conditional approval, revise, or block
+- id: bundle
+  agent: evidence-management-agent
+  action: create immutable preview, diff, validation, evidence, and payload hash
+- id: publication-request
+  agent: technical-writer-supervisor
+  action: request approval for protected repository or documentation-platform writes
+outputs:
+- documentation-change
+- documentation-preview-bundle
+- documentation-review-report
+- publication-and-evidence-bundle
+failure_behavior: block publication for unsupported claims, failed samples, broken builds, inaccessible output,
+  or approval mismatch

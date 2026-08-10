@@ -1,0 +1,40 @@
+name: renewal-expansion-readiness
+version: 1.0.0
+trigger: Renewal window, growth signal, commercial planning checkpoint, or account review
+scope_binding:
+- organization
+- project
+- customer_id
+- account_owner
+- purpose
+- environment
+- requester
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: verify account and commercial-boundary scope
+- id: context
+  agent: work-context-agent
+  action: collect account goals, contract metadata, usage, support, product, relationship, and risk context
+- id: value
+  agent: value-realization-agent
+  action: prepare evidence-backed customer outcome and value summary
+- id: health
+  agent: customer-health-agent
+  action: summarize health, confidence, and unresolved drivers
+- id: renewal
+  agent: renewal-readiness-agent
+  action: prepare renewal readiness, risk scenarios, dependencies, and evidence gaps
+- id: expansion
+  agent: expansion-signal-agent
+  action: identify optional value-backed growth signals without pricing or commitment
+- id: review
+  agent: customer-success-reviewer-agent
+  action: challenge commercial assumptions, unsupported predictions, evidence gaps, and boundary violations
+outputs:
+- renewal-readiness-pack
+- expansion-opportunity-brief
+- value-scorecard
+- customer-risk-register
+failure_behavior: stop, preserve evidence, identify the unresolved decision or missing authorization, and route
+  to the accountable human owner

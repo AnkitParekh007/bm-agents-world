@@ -1,0 +1,15 @@
+capability,local,playground,qa,prod,approval,notes
+repository.read,allow,allow,allow,allow,no,Authorized repository only
+workspace.write,allow,allow,allow,deny,no,Ephemeral workspace and allowed paths
+format_lint_type_test,allow,allow,allow,deny,no,Sandbox execution
+database.schema_read,allow,allow,allow,allow-limited,no,Approved schemas/metadata
+database.select,allow-test,allow,allow,allow-read-replica,policy,Bounded statement and row/time limit
+database.write,test-db-only,approval,approval,deny,yes,Production prohibited
+queue.publish,test-only,approval,approval,deny,yes,Synthetic/test messages only
+git.commit_push,workspace-only,approval,approval,deny,yes,Exact payload approval
+pull_request.create,n/a,approval,approval,n/a,yes,Draft preferred
+pipeline.trigger,n/a,approval,approval,deny-by-default,yes,Approved commit only
+package.publish,deny,deny,deny,external-release-only,yes,Outside autonomous scope
+deployment,deny,request-only,request-only,deny,yes,Execution by deployment system
+observability.read,n/a,allow,allow,allow-redacted,no,Project/environment scoped
+secret.value,deny,deny,deny,deny,n/a,Adapter injection only

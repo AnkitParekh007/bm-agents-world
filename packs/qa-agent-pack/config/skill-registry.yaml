@@ -1,0 +1,198 @@
+apiVersion: qa-agent-pack/v1
+kind: SkillRegistry
+skills:
+  - id: qa.story.read-context
+    version: 1.0.0
+    status: planned
+  - id: qa.story.acceptance-criteria-analysis
+    version: 1.0.0
+    status: planned
+  - id: qa.story.gap-detection
+    version: 1.0.0
+    status: planned
+  - id: qa.risk.story-scoring
+    version: 1.0.0
+    status: planned
+  - id: qa.change.frontend-impact
+    version: 1.0.0
+    status: planned
+  - id: qa.change.backend-impact
+    version: 1.0.0
+    status: planned
+  - id: qa.change.database-impact
+    version: 1.0.0
+    status: planned
+  - id: qa.plan.story-test-plan
+    version: 1.0.0
+    status: planned
+  - id: qa.plan.regression-selection
+    version: 1.0.0
+    status: planned
+  - id: qa.design.functional-cases
+    version: 1.0.0
+    status: planned
+  - id: qa.design.negative-cases
+    version: 1.0.0
+    status: planned
+  - id: qa.design.boundary-analysis
+    version: 1.0.0
+    status: planned
+  - id: qa.design.state-transition
+    version: 1.0.0
+    status: planned
+  - id: qa.design.role-permission-matrix
+    version: 1.0.0
+    status: planned
+  - id: qa.design.api-contract-cases
+    version: 1.0.0
+    status: planned
+  - id: qa.design.database-validation-cases
+    version: 1.0.0
+    status: planned
+  - id: qa.design.integration-cases
+    version: 1.0.0
+    status: planned
+  - id: qa.design.accessibility-cases
+    version: 1.0.0
+    status: planned
+  - id: qa.design.performance-cases
+    version: 1.0.0
+    status: planned
+  - id: qa.design.security-abuse-cases
+    version: 1.0.0
+    status: planned
+  - id: qa.design.traceability-matrix
+    version: 1.0.0
+    status: planned
+  - id: qa.env.verify-deployment
+    version: 1.0.0
+    status: planned
+  - id: qa.env.verify-dependencies
+    version: 1.0.0
+    status: planned
+  - id: qa.data.create-synthetic-dataset
+    version: 1.0.0
+    status: planned
+  - id: qa.data.reset-test-dataset
+    version: 1.0.0
+    status: planned
+  - id: qa.browser.execute-scripted-case
+    version: 1.0.0
+    status: planned
+  - id: qa.browser.exploratory-charter
+    version: 1.0.0
+    status: planned
+  - id: qa.browser.capture-console-network
+    version: 1.0.0
+    status: planned
+  - id: qa.browser.cross-browser-validation
+    version: 1.0.0
+    status: planned
+  - id: qa.browser.responsive-validation
+    version: 1.0.0
+    status: planned
+  - id: qa.browser.accessibility-check
+    version: 1.0.0
+    status: planned
+  - id: qa.api.execute-contract-suite
+    version: 1.0.0
+    status: planned
+  - id: qa.api.compare-ui-api
+    version: 1.0.0
+    status: planned
+  - id: qa.db.execute-readonly-validation
+    version: 1.0.0
+    status: planned
+  - id: qa.db.compare-api-database
+    version: 1.0.0
+    status: planned
+  - id: qa.integration.trace-transaction
+    version: 1.0.0
+    status: planned
+  - id: qa.ci.interpret-pipeline-failure
+    version: 1.0.0
+    status: planned
+  - id: qa.defect.reproduce
+    version: 1.0.0
+    status: planned
+  - id: qa.defect.duplicate-search
+    version: 1.0.0
+    status: planned
+  - id: qa.defect.isolate-layer
+    version: 1.0.0
+    status: planned
+  - id: qa.defect.severity-recommendation
+    version: 1.0.0
+    status: planned
+  - id: qa.defect.draft-jira-bug
+    version: 1.0.0
+    status: planned
+  - id: qa.defect.collect-evidence
+    version: 1.0.0
+    status: planned
+  - id: qa.retest.verify-fix
+    version: 1.0.0
+    status: planned
+  - id: qa.retest.targeted-regression
+    version: 1.0.0
+    status: planned
+  - id: qa.automation.playwright-generate
+    version: 1.0.0
+    status: planned
+  - id: qa.automation.page-object-refactor
+    version: 1.0.0
+    status: planned
+  - id: qa.automation.locator-hardening
+    version: 1.0.0
+    status: planned
+  - id: qa.automation.fixture-design
+    version: 1.0.0
+    status: planned
+  - id: qa.automation.flake-triage
+    version: 1.0.0
+    status: planned
+  - id: qa.automation.api-test-generate
+    version: 1.0.0
+    status: planned
+  - id: qa.automation.review-test-patch
+    version: 1.0.0
+    status: planned
+  - id: qa.report.daily-summary
+    version: 1.0.0
+    status: planned
+  - id: qa.report.story-result
+    version: 1.0.0
+    status: planned
+  - id: qa.report.regression-result
+    version: 1.0.0
+    status: planned
+  - id: qa.report.release-readiness
+    version: 1.0.0
+    status: planned
+  - id: qa.report.teams-update-draft
+    version: 1.0.0
+    status: planned
+  - id: qa.evidence.redact-sensitive-data
+    version: 1.0.0
+    status: planned
+  - id: qa.evidence.build-manifest
+    version: 1.0.0
+    status: planned
+  - id: qa.policy.classify-tool-risk
+    version: 1.0.0
+    status: planned
+  - id: qa.policy.prepare-approval-request
+    version: 1.0.0
+    status: planned
+  - id: qa.policy.verify-action-result
+    version: 1.0.0
+    status: planned
+  - id: qa.security.prompt-injection-screening
+    version: 1.0.0
+    status: planned
+  - id: qa.security.secret-leak-screening
+    version: 1.0.0
+    status: planned
+  - id: qa.eval.score-agent-run
+    version: 1.0.0
+    status: planned

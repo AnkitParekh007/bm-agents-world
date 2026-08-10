@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bm-agent-foundry.local/schemas/payload-bound-approval-request.schema.json",
+  "title": "Payload Bound Approval Request",
+  "type": "object",
+  "required": [
+    "requestId",
+    "action",
+    "payloadReference",
+    "payloadHash",
+    "requester",
+    "approvers",
+    "expiresAt",
+    "status"
+  ],
+  "properties": {
+    "requestId": {
+      "type": "string"
+    },
+    "action": {
+      "type": "string"
+    },
+    "payloadReference": {
+      "type": "string"
+    },
+    "payloadHash": {
+      "type": "string",
+      "minLength": 16
+    },
+    "scope": {
+      "type": "object"
+    },
+    "requester": {
+      "type": "string"
+    },
+    "approvers": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "role",
+          "status"
+        ],
+        "properties": {
+          "role": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "pending",
+              "approved",
+              "rejected"
+            ]
+          },
+          "comment": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "expiresAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "enum": [
+        "pending",
+        "approved",
+        "rejected",
+        "expired",
+        "invalidated",
+        "executed"
+      ]
+    },
+    "auditReferences": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

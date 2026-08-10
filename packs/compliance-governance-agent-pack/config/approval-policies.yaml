@@ -1,0 +1,16 @@
+approval_policies:
+- operation: publish_policy
+  approval: policy_owner+compliance_owner
+- operation: accept_risk
+  approval: accountable_risk_owner
+  agent_may_not_approve: true
+- operation: close_material_finding
+  approval: independent_reviewer+control_owner
+- operation: publish_customer_assurance
+  approval: compliance_owner
+  legal_if_contractual: true
+- operation: regulatory_notification
+  approval: legal/privacy/accountable executive
+  agent_may_not_execute: true
+- operation: production_mutation
+  approval: denied_in_this_pack; delegate to owning engineering/operations pack

@@ -1,0 +1,237 @@
+version: 1.0.0
+supervisor: release-manager-supervisor
+agent_count: 27
+agents:
+- id: release-manager-supervisor
+  description: Coordinates release intake, planning, readiness, approvals, deployment orchestration, communications,
+    validation, closure, and evidence.
+  capabilities:
+  - orchestration
+  - release-management
+  - governance
+  status: enabled
+  external_writes: approval-controlled
+- id: release-context-agent
+  description: Retrieves approved product, Jira, repository, artifact, environment, service, calendar, change, test,
+    and operational context.
+  capabilities:
+  - context
+  - traceability
+  - service-catalog
+  status: enabled
+  external_writes: approval-controlled
+- id: release-intake-agent
+  description: Qualifies release requests, release type, accountable owners, environments, windows, and missing
+    information.
+  capabilities:
+  - intake
+  - classification
+  - routing
+  status: enabled
+  external_writes: approval-controlled
+- id: scope-and-version-agent
+  description: Builds exact release scope, version maps, fix-version alignment, artifact identity, and release bill
+    of materials.
+  capabilities:
+  - scope
+  - versioning
+  - manifest
+  status: enabled
+  external_writes: approval-controlled
+- id: release-calendar-agent
+  description: Coordinates release windows, freezes, blackout periods, sequencing, milestones, and timezone-safe
+    calendars.
+  capabilities:
+  - calendar
+  - scheduling
+  - coordination
+  status: enabled
+  external_writes: approval-controlled
+- id: dependency-coordination-agent
+  description: Maps service, team, data, infrastructure, vendor, consumer, and sequencing dependencies.
+  capabilities:
+  - dependencies
+  - compatibility
+  - coordination
+  status: enabled
+  external_writes: approval-controlled
+- id: quality-evidence-agent
+  description: Aggregates QA, UAT, regression, nonfunctional, defect, and acceptance evidence for the exact candidate.
+  capabilities:
+  - quality
+  - testing
+  - evidence
+  status: enabled
+  external_writes: approval-controlled
+- id: security-and-supply-chain-agent
+  description: Reviews security scans, exceptions, signatures, provenance, SBOMs, licenses, and trusted-build evidence.
+  capabilities:
+  - security
+  - supply-chain
+  - compliance
+  status: enabled
+  external_writes: approval-controlled
+- id: architecture-compatibility-agent
+  description: Checks cross-system contracts, supported version combinations, architecture constraints, and backward
+    compatibility.
+  capabilities:
+  - architecture
+  - compatibility
+  - contracts
+  status: enabled
+  external_writes: approval-controlled
+- id: database-migration-readiness-agent
+  description: Reviews schema, data, backfill, locking, duration, validation, rollback, restore, and operator readiness.
+  capabilities:
+  - database
+  - migration
+  - data
+  status: enabled
+  external_writes: approval-controlled
+- id: infrastructure-readiness-agent
+  description: Reviews infrastructure plans, cloud and Kubernetes changes, network, capacity, backups, and platform
+    readiness.
+  capabilities:
+  - infrastructure
+  - cloud
+  - kubernetes
+  status: enabled
+  external_writes: approval-controlled
+- id: environment-and-config-agent
+  description: Validates environment health, inventory, configuration drift, feature state, and target readiness.
+  capabilities:
+  - environment
+  - configuration
+  - feature-flags
+  status: enabled
+  external_writes: approval-controlled
+- id: change-governance-agent
+  description: Builds change records, risk classification, approval bindings, separation of duties, and audit history.
+  capabilities:
+  - change-management
+  - approvals
+  - audit
+  status: enabled
+  external_writes: approval-controlled
+- id: deployment-planning-agent
+  description: Creates deterministic deployment sequence, prechecks, validation, decision points, owners, and stop
+    conditions.
+  capabilities:
+  - deployment
+  - runbook
+  - orchestration
+  status: enabled
+  external_writes: approval-controlled
+- id: rollback-and-recovery-agent
+  description: Creates tested rollback, fix-forward, restore, and recovery decision trees with measurable triggers.
+  capabilities:
+  - rollback
+  - recovery
+  - resilience
+  status: enabled
+  external_writes: approval-controlled
+- id: release-communications-agent
+  description: Drafts release notices, command updates, customer-safe notes, maintenance notices, and closure communications.
+  capabilities:
+  - communication
+  - status
+  - stakeholders
+  status: enabled
+  external_writes: approval-controlled
+- id: business-and-support-readiness-agent
+  description: Checks documentation, training, support, operations, customer, business, and go-to-market readiness.
+  capabilities:
+  - business-readiness
+  - support
+  - handoff
+  status: enabled
+  external_writes: approval-controlled
+- id: go-no-go-readiness-agent
+  description: Assembles readiness evidence, blockers, conditions, risk, dissent, and decision options without making
+    the final decision.
+  capabilities:
+  - readiness
+  - decision-support
+  - risk
+  status: enabled
+  external_writes: approval-controlled
+- id: production-coordination-agent
+  description: Maintains release command timeline, stage gates, checkpoints, escalations, and approved operator
+    handoffs.
+  capabilities:
+  - release-command
+  - coordination
+  - timeline
+  status: enabled
+  external_writes: approval-controlled
+- id: hotfix-and-emergency-agent
+  description: Coordinates minimal-scope emergency releases, expedited evidence, approval, restoration, reconciliation,
+    and retrospective controls.
+  capabilities:
+  - hotfix
+  - emergency-change
+  - restoration
+  status: enabled
+  external_writes: approval-controlled
+- id: artifact-integrity-agent
+  description: Validates artifact manifests, image digests, package coordinates, signatures, checksums, and candidate
+    immutability.
+  capabilities:
+  - artifacts
+  - integrity
+  - provenance
+  status: enabled
+  external_writes: approval-controlled
+- id: post-release-validation-agent
+  description: Coordinates post-deployment smoke checks, telemetry, customer signals, rollout verification, and
+    closure evidence.
+  capabilities:
+  - validation
+  - observability
+  - closure
+  status: enabled
+  external_writes: approval-controlled
+- id: release-metrics-agent
+  description: Calculates governed release, flow, stability, rework, predictability, and continual-improvement metrics.
+  capabilities:
+  - metrics
+  - dora
+  - improvement
+  status: enabled
+  external_writes: approval-controlled
+- id: cross-pack-coordination-agent
+  description: Delegates evidence and actions to Product, Architecture, Engineering, QA, Database, DevOps, Support,
+    and Security packs.
+  capabilities:
+  - cross-pack
+  - delegation
+  - coordination
+  status: enabled
+  external_writes: approval-controlled
+- id: release-reviewer-agent
+  description: Independently reviews readiness, factuality, risk, approvals, rollback, communications, and unsupported
+    claims.
+  capabilities:
+  - independent-review
+  - quality
+  - governance
+  status: enabled
+  external_writes: approval-controlled
+- id: evidence-management-agent
+  description: Creates immutable, attributable, redacted evidence bundles with provenance, retention, and audit
+    references.
+  capabilities:
+  - evidence
+  - provenance
+  - retention
+  status: enabled
+  external_writes: approval-controlled
+- id: policy-enforcer-agent
+  description: Evaluates scope, environment, approval, separation-of-duties, secrets, production, and publication
+    policy before tool use.
+  capabilities:
+  - policy
+  - opa
+  - authorization
+  status: enabled
+  external_writes: approval-controlled

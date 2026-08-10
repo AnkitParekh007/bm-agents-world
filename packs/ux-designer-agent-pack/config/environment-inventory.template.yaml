@@ -1,0 +1,38 @@
+version: 1.0.0
+environments:
+- id: design-sandbox
+  classification: isolated
+  allowed:
+  - prototype
+  - research-synthesis
+  - design-exploration
+  - asset-draft
+  approval: none
+  production_data: false
+- id: playground
+  classification: non-production
+  allowed:
+  - read
+  - browser-review
+  - design-qa
+  - approved-test-data
+  approval: conditional
+  production_data: false
+- id: qa
+  classification: shared-non-production
+  allowed:
+  - read
+  - browser-review
+  - design-qa
+  - usability-validation-with-approved-data
+  approval: required-for-mutation
+  production_data: false
+- id: production
+  classification: production
+  allowed:
+  - read-only-observation
+  - privacy-thresholded-analytics
+  - approved-screenshot-with-redaction
+  approval: required
+  production_data: true
+  autonomous_mutation: false

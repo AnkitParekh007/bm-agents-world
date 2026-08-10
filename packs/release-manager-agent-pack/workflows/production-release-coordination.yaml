@@ -1,0 +1,48 @@
+name: production-release-coordination
+version: 1.0.0
+trigger: approved production release window
+scope_binding:
+- release
+- candidate_hash
+- production_targets
+- runbook_hash
+- approval_record
+- window
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: validate exact payload, operator, decision, runbook, target, window, and approval expiry
+- id: preflight
+  agent: environment-and-config-agent
+  action: confirm read-only production health, drift, version baseline, telemetry, and freeze prerequisites
+- id: command
+  agent: production-coordination-agent
+  action: open immutable timeline, checkpoints, owners, communication cadence, and escalation path
+- id: operator-handoff
+  agent: deployment-planning-agent
+  action: provide exact approved deterministic runbook to authorized operator or pipeline
+- id: monitor
+  agent: post-release-validation-agent
+  action: observe read-only deployment state, telemetry, stage promotion criteria, and customer signals
+- id: communicate
+  agent: release-communications-agent
+  action: draft factual updates for approval at agreed checkpoints
+- id: rollback-check
+  agent: rollback-and-recovery-agent
+  action: evaluate observable stop and rollback criteria; request authorized execution when met
+- id: review
+  agent: release-reviewer-agent
+  action: independently verify state, evidence, claims, and policy compliance
+- id: handoff
+  agent: business-and-support-readiness-agent
+  action: provide approved support and operations handoff
+- id: close-window
+  agent: release-manager-supervisor
+  action: record state and request approval for official status updates
+outputs:
+- deployment-runbook
+- release-command-log
+- release-status-update
+- support-and-operations-handoff
+- post-release-validation-report
+failure_behavior: the free-form agent never executes production mutations; pause and route to authorized operator

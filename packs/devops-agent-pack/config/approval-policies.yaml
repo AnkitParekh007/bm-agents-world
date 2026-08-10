@@ -1,0 +1,68 @@
+version: 1.0.0
+policies:
+- action: read_scoped_context
+  approval: none
+  conditions:
+  - authorized project
+  - minimum necessary
+  - redaction
+- action: write_isolated_workspace
+  approval: none
+  conditions:
+  - ephemeral worker
+  - no production credentials
+  - quota and TTL
+- action: commit_push_open_pr
+  approval: required
+  approvers:
+  - requester or repository owner
+  binding:
+  - run_id
+  - repository
+  - branch
+  - diff_hash
+  - commit_base
+  - expiration
+- action: trigger_side_effect_pipeline
+  approval: required
+  approvers:
+  - service owner or release owner
+  binding:
+  - pipeline
+  - commit
+  - environment
+  - variables_hash
+  - expiration
+- action: shared_nonproduction_mutation
+  approval: required
+  approvers:
+  - environment owner
+  binding:
+  - target
+  - plan_or_manifest_hash
+  - rollback_hash
+  - expiration
+- action: production_deployment_or_rollback
+  approval: required
+  approvers:
+  - service owner
+  - release/change approver
+  separation_of_duties: true
+  executor: deterministic-pipeline-or-human
+- action: iam_network_dns_tls_secret_change
+  approval: required
+  approvers:
+  - platform owner
+  - security or network owner when applicable
+- action: production_restore_failover_failback
+  approval: required
+  approvers:
+  - incident commander or change authority
+  - service/data owner
+  executor: human-or-preauthorized-runbook
+- action: force_push_merge_bypass_gate
+  approval: prohibited
+- action: expose_raw_secret_or_signing_key
+  approval: prohibited
+- action: autonomous_production_shell_or_cluster_admin
+  approval: prohibited

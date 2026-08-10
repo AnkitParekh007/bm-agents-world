@@ -1,0 +1,53 @@
+name: hotfix-and-emergency-release
+version: 1.0.0
+trigger: major incident, critical vulnerability, severe production defect, or authorized emergency request
+scope_binding:
+- incident_or_emergency
+- release
+- candidate_hash
+- services
+- production_targets
+- window
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: validate emergency authority, incident scope, minimum change, production boundary, and expiry
+- id: minimal-scope
+  agent: hotfix-and-emergency-agent
+  action: define smallest safe change, restoration goal, exclusions, risk, and follow-up
+- id: candidate
+  agent: artifact-integrity-agent
+  action: validate exact patch, commit, artifact, migration, configuration delta, and provenance
+- id: expedited-evidence
+  agent: quality-evidence-agent
+  action: aggregate proportionate tests, known gaps, defect reproduction, and restoration evidence
+- id: security
+  agent: security-and-supply-chain-agent
+  action: review security and supply-chain risk appropriate to the emergency
+- id: runbook
+  agent: deployment-planning-agent
+  action: prepare concise deterministic implementation, validation, stop, and rollback steps
+- id: approval
+  agent: change-governance-agent
+  action: bind emergency approval to exact payload, target, authority, and expiry
+- id: coordinate
+  agent: production-coordination-agent
+  action: coordinate authorized operator, incident command, checkpoints, and communication
+- id: validate
+  agent: post-release-validation-agent
+  action: verify restoration, regression signals, and deployed state
+- id: reconcile
+  agent: hotfix-and-emergency-agent
+  action: create source-control, documentation, permanent-fix, and retrospective follow-up
+- id: review
+  agent: release-reviewer-agent
+  action: verify emergency classification was not used to hide unrelated scope or bypass accountability
+outputs:
+- release-scope-baseline
+- deployment-runbook
+- rollback-and-recovery-plan
+- change-record
+- release-command-log
+- post-release-validation-report
+- post-release-review
+failure_behavior: restore safely, minimize scope, preserve evidence, and require retrospective reconciliation

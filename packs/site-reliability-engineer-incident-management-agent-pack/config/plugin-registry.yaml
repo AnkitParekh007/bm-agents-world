@@ -1,0 +1,93 @@
+version: 1.0.0
+plugin_count: 22
+plugins:
+- id: scope-and-service-validator
+  description: Validates service, project, environment, incident, region, tenant, and time-window scope.
+  execution: deterministic
+  network: deny-unless-allowlisted
+- id: pii-secret-redactor
+  description: Removes secrets, tokens, personal data, customer identifiers, and restricted fields before model
+    use.
+  execution: deterministic
+  network: deny-unless-allowlisted
+- id: sli-slo-calculator
+  description: Calculates SLI compliance, SLO attainment, windows, exclusions, and confidence from approved time
+    series.
+  execution: deterministic
+  network: deny-unless-allowlisted
+- id: error-budget-burn-analyzer
+  description: Calculates remaining error budget and multi-window burn rates from validated SLI data.
+  execution: deterministic
+  network: deny-unless-allowlisted
+- id: alert-deduplication-engine
+  description: Groups alerts by service, dependency, symptom, fingerprint, and time window.
+  execution: deterministic
+  network: deny-unless-allowlisted
+- id: incident-severity-calculator
+  description: Calculates recommended incident severity from approved impact and urgency rules.
+  execution: deterministic
+  network: deny-unless-allowlisted
+- id: incident-timeline-builder
+  description: Builds an immutable chronological timeline with sources, decisions, actions, and uncertainty.
+  execution: deterministic
+  network: deny-unless-allowlisted
+- id: service-dependency-graph
+  description: Builds and queries service, infrastructure, data, queue, vendor, and network dependency graphs.
+  execution: deterministic
+  network: deny-unless-allowlisted
+- id: release-change-correlator
+  description: Correlates incident onset with deployments, commits, migrations, flags, and configuration changes.
+  execution: deterministic
+  network: deny-unless-allowlisted
+- id: telemetry-query-guard
+  description: Enforces bounded, read-only, service-scoped, time-scoped, redacted telemetry queries.
+  execution: deterministic
+  network: deny-unless-allowlisted
+- id: log-query-builder
+  description: Builds approved bounded log queries and extracts signatures and correlation identifiers.
+  execution: deterministic
+  network: deny-unless-allowlisted
+- id: trace-critical-path-analyzer
+  description: Analyzes spans, errors, latency, retries, and downstream dependencies along critical paths.
+  execution: deterministic
+  network: deny-unless-allowlisted
+- id: metrics-anomaly-summarizer
+  description: Summarizes deviations against approved baselines without autonomously changing alerts.
+  execution: deterministic
+  network: deny-unless-allowlisted
+- id: saturation-and-capacity-analyzer
+  description: Analyzes utilization, saturation, queues, pools, storage, quotas, and capacity headroom.
+  execution: deterministic
+  network: deny-unless-allowlisted
+- id: capacity-forecast-engine
+  description: Produces scenario-based capacity forecasts with assumptions and confidence ranges.
+  execution: deterministic
+  network: deny-unless-allowlisted
+- id: runbook-applicability-validator
+  description: Checks runbook version, prerequisites, scope, safety, reversibility, ownership, and approvals.
+  execution: deterministic
+  network: deny-unless-allowlisted
+- id: mitigation-risk-assessor
+  description: Compares mitigation blast radius, dependency effects, rollback, stop conditions, and residual risk.
+  execution: deterministic
+  network: deny-unless-allowlisted
+- id: recovery-health-verifier
+  description: Validates sustained technical and user-journey recovery against predeclared success criteria.
+  execution: deterministic
+  network: deny-unless-allowlisted
+- id: post-incident-review-linter
+  description: Checks factuality, blameless language, timeline completeness, systemic analysis, and action quality.
+  execution: deterministic
+  network: deny-unless-allowlisted
+- id: corrective-action-tracker
+  description: Tracks action ownership, due dates, evidence, effectiveness, and recurrence linkage.
+  execution: deterministic
+  network: deny-unless-allowlisted
+- id: evidence-hasher
+  description: Creates SHA-256 hashes, manifests, timestamps, signatures, and provenance links.
+  execution: deterministic
+  network: deny-unless-allowlisted
+- id: approval-client
+  description: Creates payload-bound approval requests and validates approver, scope, expiry, signature, and non-replay.
+  execution: deterministic
+  network: deny-unless-allowlisted

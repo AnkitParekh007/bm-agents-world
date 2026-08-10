@@ -1,0 +1,188 @@
+version: 1.0.0
+servers:
+- id: atlassian-rovo-mcp
+  description: Jira and Confluence context, links, comments, plans, and approval-controlled publication.
+  tools:
+  - jira_search
+  - jira_read
+  - confluence_search
+  - confluence_read
+  - draft_comment
+  - publish_comment
+  default_mode: read-only
+  status: enabled
+- id: jira-product-discovery-mcp
+  description: Ideas, insights, fields, scores, views, roadmaps, and approved idea or roadmap updates.
+  tools:
+  - idea_search
+  - idea_read
+  - insight_read
+  - score_read
+  - roadmap_read
+  - draft_idea
+  - publish_idea
+  default_mode: read-only
+  status: enabled
+- id: product-management-platform-mcp
+  description: Optional Productboard or equivalent adapter for customer insights, objectives, features, prioritization,
+    and roadmaps.
+  tools:
+  - insight_search
+  - feature_read
+  - objective_read
+  - prioritization_read
+  - roadmap_read
+  - draft_update
+  default_mode: read-only
+  status: enabled
+- id: bitbucket-product-context-mcp
+  description: Read repositories, pull requests, commits, release branches, changelogs, and delivery history.
+  tools:
+  - repo_search
+  - file_read
+  - diff_read
+  - pr_read
+  - commit_read
+  - release_tag_read
+  default_mode: read-only
+  status: enabled
+- id: figma-design-context-mcp
+  description: Read design files, prototypes, components, variables, annotations, and approved design status.
+  tools:
+  - file_read
+  - prototype_read
+  - component_read
+  - annotation_read
+  - design_status
+  default_mode: read-only
+  status: enabled
+- id: customer-feedback-mcp
+  description: Read approved support, survey, community, interview, NPS/CSAT, and feedback themes with redaction.
+  tools:
+  - feedback_search
+  - theme_read
+  - survey_read
+  - verbatim_read
+  - sentiment_summary
+  default_mode: read-only
+  status: enabled
+- id: crm-sales-insights-mcp
+  description: Read approved CRM opportunity themes, win-loss notes, segments, and commercial context with data minimization.
+  tools:
+  - account_theme_search
+  - win_loss_read
+  - segment_summary
+  - opportunity_pattern_read
+  default_mode: read-only
+  status: enabled
+- id: product-analytics-mcp
+  description: Read-only funnels, retention, cohorts, journeys, adoption, dashboards, and event definitions with privacy
+    thresholds.
+  tools:
+  - event_catalog
+  - metric_read
+  - funnel_read
+  - retention_read
+  - cohort_read
+  - path_read
+  - dashboard_read
+  default_mode: read-only
+  status: enabled
+- id: experimentation-feature-management-mcp
+  description: Read flags and experiments; draft hypotheses and rollout plans; launches and production mutations require
+    approval.
+  tools:
+  - flag_read
+  - experiment_read
+  - metric_read
+  - draft_experiment
+  - draft_rollout
+  - publish_experiment
+  default_mode: read-only
+  status: enabled
+- id: data-warehouse-insights-mcp
+  description: Runs approved read-only aggregate queries against curated product marts and semantic models.
+  tools:
+  - dataset_catalog
+  - semantic_metric_read
+  - aggregate_query
+  - data_quality_read
+  default_mode: read-only
+  status: enabled
+- id: market-research-browser-mcp
+  description: Isolated browser and public-source retrieval for competitors, regulations, pricing pages, and market evidence.
+  tools:
+  - search
+  - navigate
+  - capture
+  - source_metadata
+  - compare_pages
+  default_mode: read-only
+  status: enabled
+- id: roadmap-portfolio-mcp
+  description: Reads objectives, initiatives, capacity assumptions, dependencies, and portfolio views; writes require
+    approval.
+  tools:
+  - objective_read
+  - initiative_read
+  - capacity_read
+  - dependency_read
+  - scenario_create
+  - publish_scenario
+  default_mode: read-only
+  status: enabled
+- id: release-delivery-mcp
+  description: Reads CI/CD, environments, feature status, release candidates, incidents, and quality gates.
+  tools:
+  - pipeline_read
+  - deployment_read
+  - environment_read
+  - quality_gate_read
+  - incident_read
+  default_mode: read-only
+  status: enabled
+- id: calendar-meeting-mcp
+  description: Reads approved meetings and creates decision-ready agendas or follow-up drafts.
+  tools:
+  - calendar_read
+  - meeting_context
+  - agenda_draft
+  - followup_draft
+  default_mode: read-only
+  status: enabled
+- id: collaboration-mcp
+  description: Drafts and publishes approved updates to Microsoft Teams or organizational collaboration channels.
+  tools:
+  - thread_read
+  - draft_message
+  - publish_message
+  default_mode: read-only
+  status: enabled
+- id: artifact-evidence-mcp
+  description: Stores and retrieves redacted, hashed product artifacts, evidence, decisions, and approvals.
+  tools:
+  - artifact_write
+  - artifact_read
+  - hash
+  - redact
+  - retention_tag
+  default_mode: read-only
+  status: enabled
+- id: secret-capability-broker-mcp
+  description: Issues short-lived adapter capabilities without exposing credentials to the language model.
+  tools:
+  - lease_request
+  - lease_status
+  - lease_revoke
+  default_mode: read-only
+  status: enabled
+- id: policy-approval-mcp
+  description: Evaluates policy and manages payload-bound approvals for publication, customer contact, experiments, and
+    external commitments.
+  tools:
+  - policy_check
+  - approval_request
+  - approval_status
+  - approval_consume
+  default_mode: read-only
+  status: enabled

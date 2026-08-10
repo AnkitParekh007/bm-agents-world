@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Database Approval Request",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "action": {
+      "type": "string",
+      "minLength": 1
+    },
+    "environment": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target": {
+      "type": "object"
+    },
+    "artifact_hash": {
+      "type": "string",
+      "minLength": 1
+    },
+    "normalized_sql_hash": {
+      "type": "string",
+      "minLength": 1
+    },
+    "expected_rows": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "max_duration_seconds": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "risk": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ]
+    },
+    "recovery_summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "run_id",
+    "action",
+    "environment",
+    "target",
+    "artifact_hash",
+    "normalized_sql_hash",
+    "risk",
+    "recovery_summary",
+    "expires_at"
+  ]
+}

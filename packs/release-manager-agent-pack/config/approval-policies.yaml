@@ -1,0 +1,86 @@
+version: 1.0.0
+default: deny
+policies:
+- action: read-approved-release-context
+  risk: low
+  approval: not-required
+  conditions:
+  - scope binding valid
+  - minimum necessary
+  - connector read permission
+- action: draft-release-artifact
+  risk: low
+  approval: not-required
+  conditions:
+  - isolated workspace
+  - no external publication
+  - no production side effect
+- action: run-nonproduction-release-validation
+  risk: medium
+  approval: release-owner-or-policy
+  binding:
+  - project
+  - environment
+  - tool
+  - candidate_hash
+  - expiry
+- action: update-jira-version-or-change-record
+  risk: medium
+  approval: release-or-change-owner
+  binding:
+  - release
+  - record
+  - action
+  - payload_hash
+  - expiry
+- action: publish-release-communication
+  risk: medium
+  approval: release-communications-owner
+  binding:
+  - release
+  - audience
+  - channel
+  - payload_hash
+  - expiry
+- action: trigger-nonproduction-deployment-or-rehearsal
+  risk: high
+  approval: environment-owner-and-release-owner
+  binding:
+  - release
+  - environment
+  - candidate_hash
+  - runbook_hash
+  - window
+  - expiry
+- action: request-production-deployment
+  risk: high
+  approval: authorized-release-decision-and-operator
+  binding:
+  - release
+  - environment
+  - candidate_hash
+  - runbook_hash
+  - approval_record
+  - window
+  - expiry
+- action: record-go-no-go-decision
+  risk: high
+  approval: accountable-human-decision-maker
+  binding:
+  - release
+  - candidate_hash
+  - decision
+  - conditions
+  - expiry
+- action: execute-production-mutation
+  risk: critical
+  approval: prohibited-for-free-form-agent
+- action: approve-own-release-or-risk
+  risk: critical
+  approval: prohibited-for-agent
+- action: access-raw-secrets-or-signing-keys
+  risk: critical
+  approval: prohibited-for-model-context
+- action: make-legal-contractual-or-guaranteed-date-commitment
+  risk: critical
+  approval: prohibited-for-agent

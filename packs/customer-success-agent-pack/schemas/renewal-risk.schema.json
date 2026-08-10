@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/customer-success/renewal-risk.schema.json",
+  "title": "Renewal Readiness",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "customer_id",
+    "renewal_date",
+    "readiness",
+    "evidence"
+  ],
+  "properties": {
+    "customer_id": {
+      "type": "string"
+    },
+    "renewal_date": {
+      "type": "string"
+    },
+    "readiness": {
+      "type": "string"
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "value_summary": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "commercial_owner": {
+      "type": "string"
+    }
+  }
+}

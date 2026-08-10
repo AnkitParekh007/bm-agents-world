@@ -1,0 +1,247 @@
+version: 1.0.0
+supervisor: application-security-devsecops-supervisor
+agent_count: 27
+agents:
+- id: application-security-devsecops-supervisor
+  description: Coordinates secure-SDLC intake, threat modeling, automated and manual assurance, vulnerability response,
+    release gates, exceptions, and evidence.
+  capabilities:
+  - orchestration
+  - application-security
+  - devsecops-governance
+  status: enabled
+  external_writes: approval-controlled
+- id: security-context-agent
+  description: Retrieves approved product, architecture, repository, dependency, pipeline, environment, data-classification,
+    incident, and security-policy context.
+  capabilities:
+  - context
+  - asset-inventory
+  - traceability
+  status: enabled
+  external_writes: approval-controlled
+- id: secure-sdlc-governance-agent
+  description: Maps the organization secure-development program to SSDF, SAMM, internal policy, roles, gates, training,
+    and measurable improvement.
+  capabilities:
+  - secure-sdlc
+  - governance
+  - maturity
+  status: enabled
+  external_writes: approval-controlled
+- id: security-requirements-agent
+  description: Derives versioned, testable application-security requirements from risk, data, architecture, ASVS,
+    API, mobile, privacy, and organizational controls.
+  capabilities:
+  - security-requirements
+  - asvs
+  - traceability
+  status: enabled
+  external_writes: approval-controlled
+- id: threat-modeling-agent
+  description: Models assets, trust boundaries, entry points, threats, abuse cases, mitigations, residual risk,
+    and validation needs.
+  capabilities:
+  - threat-modeling
+  - abuse-cases
+  - data-flows
+  status: enabled
+  external_writes: approval-controlled
+- id: secure-architecture-agent
+  description: Reviews authentication, authorization, cryptography, secrets, tenancy, integrations, data flows,
+    resilience, and security boundaries.
+  capabilities:
+  - secure-architecture
+  - identity
+  - cryptography
+  status: enabled
+  external_writes: approval-controlled
+- id: secure-code-review-agent
+  description: Performs evidence-backed security review of focused code changes and validates remediation quality
+    without replacing deterministic scanners.
+  capabilities:
+  - secure-code-review
+  - language-security
+  - remediation
+  status: enabled
+  external_writes: approval-controlled
+- id: sast-agent
+  description: Configures, runs, normalizes, deduplicates, and interprets static-analysis findings against the exact
+    source revision.
+  capabilities:
+  - sast
+  - code-analysis
+  - triage
+  status: enabled
+  external_writes: approval-controlled
+- id: sca-dependency-agent
+  description: Inventories dependencies, vulnerabilities, licenses, reachability, transitive risk, upgrade paths,
+    and unsupported components.
+  capabilities:
+  - sca
+  - dependencies
+  - licenses
+  status: enabled
+  external_writes: approval-controlled
+- id: secrets-security-agent
+  description: Detects exposed secrets, classifies exposure, coordinates containment, rotation requests, history
+    cleanup, and preventive controls.
+  capabilities:
+  - secrets
+  - credential-exposure
+  - prevention
+  status: enabled
+  external_writes: approval-controlled
+- id: api-security-agent
+  description: Reviews REST, GraphQL, event, webhook, and service APIs for authorization, authentication, validation,
+    abuse, inventory, and unsafe consumption risks.
+  capabilities:
+  - api-security
+  - authorization
+  - contracts
+  status: enabled
+  external_writes: approval-controlled
+- id: client-application-security-agent
+  description: Reviews Angular, browser, desktop, and mobile-client security including storage, transport, sessions,
+    CSP, permissions, and tamper resistance.
+  capabilities:
+  - client-security
+  - browser-security
+  - mobile-security
+  status: enabled
+  external_writes: approval-controlled
+- id: iac-security-agent
+  description: Scans Terraform, OpenTofu, CloudFormation, Bicep, Helm, and configuration code for policy, exposure,
+    encryption, identity, and drift risks.
+  capabilities:
+  - iac-security
+  - policy-as-code
+  - configuration
+  status: enabled
+  external_writes: approval-controlled
+- id: container-image-security-agent
+  description: Reviews Dockerfiles, base images, packages, image configuration, privileges, signatures, attestations,
+    and runtime assumptions.
+  capabilities:
+  - container-security
+  - image-security
+  - hardening
+  status: enabled
+  external_writes: approval-controlled
+- id: kubernetes-security-agent
+  description: Reviews manifests, Helm, admission policy, workload identity, network policy, secrets, RBAC, Pod
+    Security, and multitenancy controls.
+  capabilities:
+  - kubernetes-security
+  - rbac
+  - admission-policy
+  status: enabled
+  external_writes: approval-controlled
+- id: cloud-platform-security-agent
+  description: Reviews cloud IAM, networks, storage, encryption, logging, managed services, posture findings, and
+    service-control boundaries.
+  capabilities:
+  - cloud-security
+  - iam
+  - posture-management
+  status: enabled
+  external_writes: approval-controlled
+- id: ci-cd-security-agent
+  description: Reviews build isolation, branch protection, runner trust, token scope, secret handling, approvals,
+    artifact flow, and deployment separation.
+  capabilities:
+  - pipeline-security
+  - branch-protection
+  - build-security
+  status: enabled
+  external_writes: approval-controlled
+- id: supply-chain-provenance-agent
+  description: Validates source integrity, trusted builds, provenance, signatures, attestations, dependency sources,
+    and artifact verification using SLSA-aligned controls.
+  capabilities:
+  - supply-chain
+  - slsa
+  - provenance
+  status: enabled
+  external_writes: approval-controlled
+- id: sbom-vex-agent
+  description: Generates and validates SBOMs, maps vulnerabilities to components, and produces evidence-backed VEX
+    status without suppressing unknown risk.
+  capabilities:
+  - sbom
+  - vex
+  - component-inventory
+  status: enabled
+  external_writes: approval-controlled
+- id: vulnerability-triage-agent
+  description: Combines technical severity, exploitability, exposure, reachability, asset criticality, KEV intelligence,
+    compensating controls, and business impact.
+  capabilities:
+  - vulnerability-management
+  - cvss
+  - risk-prioritization
+  status: enabled
+  external_writes: approval-controlled
+- id: remediation-coordination-agent
+  description: Creates remediation options, owners, SLAs, verification plans, backport strategy, rollout constraints,
+    and escalation paths.
+  capabilities:
+  - remediation
+  - sla
+  - coordination
+  status: enabled
+  external_writes: approval-controlled
+- id: dast-and-penetration-agent
+  description: Plans and runs authorized, rate-limited DAST and penetration-test activities in isolated or explicitly
+    approved targets.
+  capabilities:
+  - dast
+  - penetration-testing
+  - dynamic-analysis
+  status: enabled
+  external_writes: approval-controlled
+- id: product-security-incident-agent
+  description: Coordinates application-security incident evidence, containment recommendations, affected-version
+    analysis, disclosure inputs, and lessons learned.
+  capabilities:
+  - product-security-incident
+  - containment
+  - disclosure
+  status: enabled
+  external_writes: approval-controlled
+- id: security-exception-agent
+  description: Prepares time-bound, scoped exception requests with alternatives, compensating controls, owners,
+    expiry, and verification requirements.
+  capabilities:
+  - exceptions
+  - risk-treatment
+  - compensating-controls
+  status: enabled
+  external_writes: approval-controlled
+- id: security-assurance-reviewer-agent
+  description: Independently reviews security claims, findings, gates, exceptions, evidence, unsupported conclusions,
+    and separation of duties.
+  capabilities:
+  - independent-review
+  - assurance
+  - quality
+  status: enabled
+  external_writes: approval-controlled
+- id: evidence-management-agent
+  description: Creates redacted, attributable, immutable security evidence bundles with source revisions, tool versions,
+    approvals, and retention metadata.
+  capabilities:
+  - evidence
+  - provenance
+  - retention
+  status: enabled
+  external_writes: approval-controlled
+- id: policy-enforcer-agent
+  description: Evaluates authorization, target scope, data minimization, scan safety, approvals, production boundaries,
+    and prohibited actions.
+  capabilities:
+  - policy
+  - authorization
+  - guardrails
+  status: enabled
+  external_writes: approval-controlled

@@ -1,0 +1,166 @@
+apiVersion: java-developer-agent-pack/v1
+kind: AgentRegistry
+agents:
+- id: java-developer-supervisor
+  purpose: Coordinates bounded Java engineering workflows, selects specialists, enforces state and approval rules.
+  concerns:
+  - orchestration
+  - risk
+  - evidence
+  enabled: true
+- id: story-context
+  purpose: Reads Jira, Confluence, linked designs, incidents, API contracts and acceptance criteria.
+  concerns:
+  - jira
+  - requirements
+  - traceability
+  enabled: true
+- id: repository-context
+  purpose: Profiles modules, build files, ownership, architecture, conventions and change history.
+  concerns:
+  - bitbucket
+  - git
+  - code-search
+  enabled: true
+- id: architecture-impact
+  purpose: Maps domain boundaries, dependencies, data flows, compatibility and blast radius.
+  concerns:
+  - architecture
+  - dependency-analysis
+  - risk
+  enabled: true
+- id: java-runtime-compatibility
+  purpose: Resolves JDK, language level, bytecode target, JVM vendor, framework and library compatibility.
+  concerns:
+  - jdk
+  - compatibility
+  - toolchains
+  enabled: true
+- id: domain-implementation
+  purpose: Implements domain rules, services, value objects and application-layer behavior.
+  concerns:
+  - java
+  - ddd
+  - clean-code
+  enabled: true
+- id: api-service
+  purpose: Implements REST, GraphQL or RPC endpoints, validation, errors and backward-compatible contracts.
+  concerns:
+  - spring-web
+  - jakarta-rest
+  - openapi
+  enabled: true
+- id: persistence-data
+  purpose: Implements JDBC/JPA/Hibernate/Spring Data access, transactions, queries and migration drafts.
+  concerns:
+  - sql
+  - jpa
+  - hibernate
+  - transactions
+  enabled: true
+- id: messaging-integration
+  purpose: Implements Kafka/JMS/RabbitMQ/event integrations, retries, idempotency and schemas.
+  concerns:
+  - messaging
+  - events
+  - resilience
+  enabled: true
+- id: batch-scheduler
+  purpose: Implements Spring Batch, Quartz, scheduled jobs and restart-safe processing.
+  concerns:
+  - batch
+  - scheduler
+  - restartability
+  enabled: true
+- id: concurrency-runtime
+  purpose: Reviews threads, executors, virtual threads, reactive flows, locks, timeouts and cancellation.
+  concerns:
+  - concurrency
+  - reactive
+  - loom
+  enabled: true
+- id: test-engineer
+  purpose: Creates and maintains JUnit, Mockito, integration, contract, mutation and Testcontainers tests.
+  concerns:
+  - junit
+  - mockito
+  - testcontainers
+  enabled: true
+- id: security-reviewer
+  purpose: Reviews authentication, authorization, input handling, deserialization, secrets and dependency risk.
+  concerns:
+  - owasp
+  - sast
+  - threat-model
+  enabled: true
+- id: performance-reliability
+  purpose: Reviews latency, allocation, GC, connection pools, caching, resilience and load behavior.
+  concerns:
+  - jfr
+  - jmc
+  - profiling
+  - resilience
+  enabled: true
+- id: dependency-build
+  purpose: Maintains Maven/Gradle builds, BOMs, plugins, reproducibility, SBOM and dependency policy.
+  concerns:
+  - maven
+  - gradle
+  - supply-chain
+  enabled: true
+- id: migration-modernization
+  purpose: Plans JDK, Spring Boot, Jakarta namespace, framework and application-server upgrades.
+  concerns:
+  - upgrade
+  - migration
+  - compatibility
+  enabled: true
+- id: code-review
+  purpose: Performs semantic review for correctness, maintainability, architecture and test sufficiency.
+  concerns:
+  - review
+  - quality
+  - maintainability
+  enabled: true
+- id: build-pipeline
+  purpose: Runs deterministic compile, format, static-analysis, test, package, scan and container gates.
+  concerns:
+  - ci
+  - quality-gates
+  - artifacts
+  enabled: true
+- id: observability-operations
+  purpose: Implements and reviews logs, metrics, traces, health checks, runbooks and incident diagnostics.
+  concerns:
+  - opentelemetry
+  - micrometer
+  - operations
+  enabled: true
+- id: documentation
+  purpose: Maintains ADRs, API docs, Javadocs, service guides, runbooks and change notes.
+  concerns:
+  - docs
+  - adr
+  - javadoc
+  enabled: true
+- id: pr-release
+  purpose: Prepares change manifests, pull-request drafts, release notes and deployment-readiness evidence.
+  concerns:
+  - bitbucket
+  - release
+  - traceability
+  enabled: true
+- id: evidence-manager
+  purpose: Hashes, stores, links and retains build, test, scan and review evidence.
+  concerns:
+  - artifacts
+  - provenance
+  - audit
+  enabled: true
+- id: policy-enforcer
+  purpose: Evaluates project scope, permissions, approvals, secret leases and production prohibitions.
+  concerns:
+  - opa
+  - authorization
+  - guardrails
+  enabled: true

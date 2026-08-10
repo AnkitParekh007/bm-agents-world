@@ -1,0 +1,16 @@
+id: "fine-tuning-and-model-adaptation"
+name: "Fine-Tuning and Model Adaptation"
+trigger: "approved fine-tuning proposal"
+steps:
+  - "('justify-adaptation', 'fine-tuning-agent', ['ai-ml.fine-tuning.fine-tune-suitability'])"
+  - "('govern-data', 'data-governance-agent', ['ai-ml.fine-tuning.training-data-governance', 'ai-ml.data-governance.license-compliance'])"
+  - "('train', 'fine-tuning-agent', ['ai-ml.fine-tuning.sft-dataset-design', 'ai-ml.fine-tuning.checkpoint-lineage'])"
+  - "('evaluate-regressions', 'evaluation-agent', ['ai-ml.fine-tuning.catastrophic-forgetting-eval', 'ai-ml.fine-tuning.safety-regression-eval'])"
+  - "('register', 'model-registry-agent', ['ai-ml.model-registry.model-registration', 'ai-ml.model-registry.artifact-digesting'])"
+  - "('independent-review', 'independent-review-agent', ['ai-ml.governance.independent-review-routing'])"
+outputs:
+  - "fine-tuning-plan"
+  - "training-runbook"
+  - "experiment-report"
+  - "evaluation-report"
+  - "model-registry-record"

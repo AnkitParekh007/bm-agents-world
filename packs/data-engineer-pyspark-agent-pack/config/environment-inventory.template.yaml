@@ -1,0 +1,44 @@
+version: 1.0.0
+project: REPLACE_ME
+environments:
+- id: playground
+  classification: non-production
+  spark_platform: REPLACE_ME
+  catalog: REPLACE_ME
+  orchestrator: REPLACE_ME
+  sources:
+  - REPLACE_ME
+  sinks:
+  - REPLACE_ME
+  allowed_actions:
+  - read
+  - isolated_execute
+  - approved_write
+- id: qa
+  classification: non-production-shared
+  spark_platform: REPLACE_ME
+  catalog: REPLACE_ME
+  orchestrator: REPLACE_ME
+  allowed_actions:
+  - read
+  - approved_execute
+  - approved_write
+- id: production
+  classification: production
+  spark_platform: REPLACE_ME
+  catalog: REPLACE_ME
+  orchestrator: REPLACE_ME
+  allowed_actions:
+  - bounded_redacted_read_only
+  - prepare_production_action_request
+required_metadata:
+- owners
+- data_classification
+- network_zone
+- region
+- runtime_versions
+- table_formats
+- retention
+- backup_or_snapshot
+- monitoring
+- approval_group

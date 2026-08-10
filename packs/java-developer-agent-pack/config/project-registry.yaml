@@ -1,0 +1,39 @@
+apiVersion: java-developer-agent-pack/v1
+kind: ProjectRegistry
+projects:
+- id: pcc
+  displayName: PCC
+  sourceControl: bitbucket
+  frontend: Angular 12
+  backendProfile: java-discovery-required
+  repositories:
+  - REPLACE_WITH_PCC_JAVA_REPOSITORIES
+  environments:
+  - playground
+  - qa
+  - prod
+  mode: legacy-compatible
+- id: sop
+  displayName: SOP
+  sourceControl: bitbucket
+  frontend: Angular 15
+  backendProfile: java-discovery-required
+  repositories:
+  - REPLACE_WITH_SOP_JAVA_REPOSITORIES
+  environments:
+  - playground
+  - qa
+  - prod
+  mode: version-aware
+- id: databridge
+  displayName: DataBridge
+  sourceControl: bitbucket
+  frontend: AngularJS
+  backendProfile: java-discovery-required
+  repositories:
+  - REPLACE_WITH_DATABRIDGE_JAVA_REPOSITORIES
+  environments:
+  - playground
+  - qa
+  - prod
+  mode: conservative-maintenance

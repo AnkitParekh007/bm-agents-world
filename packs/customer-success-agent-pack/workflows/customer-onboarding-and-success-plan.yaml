@@ -1,0 +1,44 @@
+name: customer-onboarding-and-success-plan
+version: 1.0.0
+trigger: New customer, implementation handoff, or onboarding restart
+scope_binding:
+- organization
+- project
+- customer_id
+- account_owner
+- purpose
+- environment
+- requester
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: verify account/project scope, purpose, data classification, customer-contact authority, and allowed outputs
+- id: collect-context
+  agent: work-context-agent
+  action: read approved CRM, contract metadata, Jira, product, support, implementation, and prior decision context
+- id: profile
+  agent: customer-profile-agent
+  action: resolve lifecycle, segment, products, entitlements, goals, and service model
+- id: handoff
+  agent: onboarding-agent
+  action: validate handoff completeness, prerequisites, milestones, blockers, and time-to-value
+- id: stakeholders
+  agent: stakeholder-map-agent
+  action: map sponsor, champion, admins, technical owners, and decision makers
+- id: success-plan
+  agent: success-plan-agent
+  action: draft customer outcomes, measures, milestones, owners, dependencies, and review cadence
+- id: enablement
+  agent: training-enablement-agent
+  action: define role-based enablement required to reach intended adoption and outcomes
+- id: review
+  agent: customer-success-reviewer-agent
+  action: challenge assumptions, customer claims, dependencies, data quality, and approval readiness
+outputs:
+- customer-context
+- stakeholder-map
+- onboarding-plan
+- success-plan
+- training-enablement-plan
+failure_behavior: stop, preserve evidence, identify the unresolved decision or missing authorization, and route
+  to the accountable human owner

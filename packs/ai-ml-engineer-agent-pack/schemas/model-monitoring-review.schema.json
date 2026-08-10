@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/ai-ml/model-monitoring-review.schema.json",
+  "title": "Model Monitoring Review",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "model_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "period_start": {
+      "type": "string",
+      "minLength": 1
+    },
+    "period_end": {
+      "type": "string",
+      "minLength": 1
+    },
+    "service_metrics": {
+      "type": "object"
+    },
+    "quality_metrics": {
+      "type": "object"
+    },
+    "drift_metrics": {
+      "type": "object"
+    },
+    "cost_metrics": {
+      "type": "object"
+    },
+    "incidents": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "recommendation": {
+      "type": "string",
+      "enum": [
+        "continue",
+        "investigate",
+        "reevaluate",
+        "rollback-request",
+        "retire-request"
+      ]
+    }
+  },
+  "required": [
+    "model_id",
+    "period_start",
+    "period_end",
+    "recommendation"
+  ]
+}

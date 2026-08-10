@@ -1,0 +1,203 @@
+version: 1.0.0
+supervisor: ux-designer-supervisor
+agents:
+- id: ux-designer-supervisor
+  description: Coordinates bounded UX discovery, research, design, validation, handoff, approvals, and evidence.
+  capabilities:
+  - orchestration
+  - risk
+  - evidence
+  status: enabled
+  external_writes: none
+- id: work-context
+  description: Reads Jira, Confluence, product strategy, support themes, analytics summaries, code and design history.
+  capabilities:
+  - jira
+  - requirements
+  - traceability
+  status: enabled
+  external_writes: none
+- id: research-planner
+  description: Defines research questions, method, sample, consent, risk, schedule, and analysis plan.
+  capabilities:
+  - research-plan
+  - methods
+  - ethics
+  status: enabled
+  external_writes: none
+- id: user-researcher
+  description: Conducts approved interviews, contextual inquiry, surveys, diary studies, and moderated sessions.
+  capabilities:
+  - interviews
+  - observation
+  - surveys
+  status: enabled
+  external_writes: none
+- id: research-operations
+  description: Manages recruitment criteria, consent records, scheduling, incentives, repositories, and privacy
+    controls.
+  capabilities:
+  - recruitment
+  - consent
+  - research-ops
+  status: enabled
+  external_writes: none
+- id: insight-synthesizer
+  description: Codes evidence, clusters findings, separates observation from interpretation, and produces prioritized
+    insights.
+  capabilities:
+  - synthesis
+  - affinity
+  - evidence
+  status: enabled
+  external_writes: none
+- id: persona-journey-modeler
+  description: Creates evidence-backed personas, jobs, journeys, scenarios, moments of truth, and pain-point maps.
+  capabilities:
+  - personas
+  - jtbd
+  - journey-mapping
+  status: enabled
+  external_writes: none
+- id: information-architect
+  description: Designs navigation, taxonomy, labeling, hierarchy, search, sitemap, and content organization.
+  capabilities:
+  - ia
+  - taxonomy
+  - navigation
+  status: enabled
+  external_writes: none
+- id: interaction-designer
+  description: Designs task flows, state models, controls, errors, recovery, responsive behavior, and interaction
+    details.
+  capabilities:
+  - flows
+  - states
+  - interaction
+  status: enabled
+  external_writes: none
+- id: visual-ui-designer
+  description: Creates hierarchy, layout, typography, color, imagery, responsive compositions, and polished UI.
+  capabilities:
+  - visual-design
+  - responsive
+  - ui
+  status: enabled
+  external_writes: none
+- id: content-designer
+  description: Creates interface copy, labels, instructions, errors, empty states, notifications, and content hierarchy.
+  capabilities:
+  - ux-writing
+  - content-model
+  - plain-language
+  status: enabled
+  external_writes: none
+- id: design-system-architect
+  description: Defines tokens, components, patterns, variants, governance, contribution rules, and code/design alignment.
+  capabilities:
+  - tokens
+  - components
+  - governance
+  status: enabled
+  external_writes: none
+- id: prototype-builder
+  description: Builds low-to-high fidelity prototypes with realistic states, data, transitions, and test instrumentation.
+  capabilities:
+  - figma
+  - prototype
+  - interaction
+  status: enabled
+  external_writes: none
+- id: accessibility-inclusive-designer
+  description: Applies WCAG, APG, keyboard, screen-reader, contrast, motion, cognitive, and inclusive-design requirements.
+  capabilities:
+  - wcag
+  - aria
+  - inclusive-design
+  status: enabled
+  external_writes: none
+- id: usability-test-engineer
+  description: Creates tasks, protocols, success measures, session capture, analysis, and validated findings.
+  capabilities:
+  - usability-testing
+  - metrics
+  - moderation
+  status: enabled
+  external_writes: none
+- id: analytics-experiment-designer
+  description: Maps UX questions to product analytics, funnels, events, hypotheses, experiments, and success criteria.
+  capabilities:
+  - analytics
+  - experimentation
+  - measurement
+  status: enabled
+  external_writes: none
+- id: service-blueprint-architect
+  description: Maps frontstage, backstage, people, systems, policies, handoffs, failure points, and operational
+    dependencies.
+  capabilities:
+  - service-design
+  - blueprints
+  - operations
+  status: enabled
+  external_writes: none
+- id: localization-content-specialist
+  description: Reviews internationalization, translation expansion, date/number formats, RTL, terminology, and cultural
+    risks.
+  capabilities:
+  - localization
+  - i18n
+  - content
+  status: enabled
+  external_writes: none
+- id: design-qa-specialist
+  description: Compares implemented UI with approved design, tests responsive states, accessibility, content, and
+    visual quality.
+  capabilities:
+  - design-qa
+  - visual-diff
+  - browser
+  status: enabled
+  external_writes: none
+- id: developer-handoff-engineer
+  description: Produces implementation-ready specs, tokens, assets, behavior notes, acceptance criteria, and change
+    traceability.
+  capabilities:
+  - handoff
+  - specification
+  - code-connect
+  status: enabled
+  external_writes: none
+- id: design-reviewer
+  description: Reviews research rigor, usability, consistency, accessibility, feasibility, risk, and evidence sufficiency.
+  capabilities:
+  - review
+  - quality
+  - risk
+  status: enabled
+  external_writes: none
+- id: design-operations
+  description: Maintains libraries, templates, naming, branching, versioning, intake, capacity, rituals, and metrics.
+  capabilities:
+  - design-ops
+  - libraries
+  - workflow
+  status: enabled
+  external_writes: none
+- id: evidence-manager
+  description: Hashes, stores, links, redacts, and retains research, design, test, approval, and handoff evidence.
+  capabilities:
+  - artifacts
+  - provenance
+  - audit
+  status: enabled
+  external_writes: none
+- id: policy-enforcer
+  description: Evaluates participant privacy, project scope, data use, tool permissions, approvals, publication,
+    and production prohibitions.
+  capabilities:
+  - opa
+  - authorization
+  - guardrails
+  status: enabled
+  external_writes: none

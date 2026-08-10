@@ -1,0 +1,234 @@
+version: 1.0.0
+supervisor: product-manager-supervisor
+agents:
+- id: product-manager-supervisor
+  description: Coordinates bounded product discovery, strategy, prioritization, delivery readiness, release planning,
+    outcome review, approvals, and evidence.
+  capabilities:
+  - orchestration
+  - decision-quality
+  - risk
+  - evidence
+  status: enabled
+  external_writes: approval-controlled
+- id: work-context-agent
+  description: Reads Jira, Confluence, product strategy, customer feedback, analytics summaries, design and code history,
+    and delivery status.
+  capabilities:
+  - jira
+  - context
+  - traceability
+  status: enabled
+  external_writes: approval-controlled
+- id: customer-insight-agent
+  description: Synthesizes approved customer interviews, support themes, sales feedback, surveys, and usage evidence
+    without exposing unnecessary identifiers.
+  capabilities:
+  - customer-insights
+  - feedback
+  - evidence
+  status: enabled
+  external_writes: approval-controlled
+- id: market-intelligence-agent
+  description: Researches market structure, competitors, substitutes, trends, regulations, and positioning using approved
+    public and internal sources.
+  capabilities:
+  - market-research
+  - competitive-analysis
+  - positioning
+  status: enabled
+  external_writes: approval-controlled
+- id: product-strategy-agent
+  description: Develops product vision, strategic choices, target segments, value proposition, differentiators, and measurable
+    outcomes.
+  capabilities:
+  - vision
+  - strategy
+  - outcomes
+  status: enabled
+  external_writes: approval-controlled
+- id: opportunity-discovery-agent
+  description: Frames opportunities from customer problems, jobs, pain points, unmet needs, and business goals.
+  capabilities:
+  - discovery
+  - opportunity-mapping
+  - jtbd
+  status: enabled
+  external_writes: approval-controlled
+- id: problem-framing-agent
+  description: Separates problems, assumptions, constraints, symptoms, requests, and solution hypotheses.
+  capabilities:
+  - problem-framing
+  - assumptions
+  - scope
+  status: enabled
+  external_writes: approval-controlled
+- id: product-analytics-agent
+  description: Analyzes privacy-thresholded funnels, retention, adoption, cohorts, paths, quality signals, and outcome
+    metrics.
+  capabilities:
+  - analytics
+  - funnels
+  - retention
+  - measurement
+  status: enabled
+  external_writes: approval-controlled
+- id: experiment-design-agent
+  description: Defines hypotheses, variants, success metrics, guardrails, sample and exposure assumptions, stopping rules,
+    and readouts.
+  capabilities:
+  - experimentation
+  - metrics
+  - causal-reasoning
+  status: enabled
+  external_writes: approval-controlled
+- id: prioritization-agent
+  description: Applies transparent scoring, dependency, risk, evidence, value, effort, urgency, and strategic-fit analysis.
+  capabilities:
+  - prioritization
+  - scoring
+  - tradeoffs
+  status: enabled
+  external_writes: approval-controlled
+- id: roadmap-agent
+  description: Creates outcome-oriented roadmaps, sequencing options, confidence ranges, dependencies, and stakeholder
+    views.
+  capabilities:
+  - roadmapping
+  - sequencing
+  - dependencies
+  status: enabled
+  external_writes: approval-controlled
+- id: portfolio-agent
+  description: Balances investments across products, initiatives, maintenance, compliance, platform work, and strategic
+    themes.
+  capabilities:
+  - portfolio
+  - capacity
+  - investment-balance
+  status: enabled
+  external_writes: approval-controlled
+- id: product-requirements-agent
+  description: Creates product briefs, PRDs, functional requirements, non-functional expectations, acceptance criteria,
+    and open questions.
+  capabilities:
+  - requirements
+  - prd
+  - acceptance-criteria
+  status: enabled
+  external_writes: approval-controlled
+- id: story-mapping-agent
+  description: Builds user journeys, story maps, slices, MVP boundaries, release increments, and dependency-aware delivery
+    options.
+  capabilities:
+  - story-mapping
+  - mvp
+  - slicing
+  status: enabled
+  external_writes: approval-controlled
+- id: backlog-governance-agent
+  description: Maintains backlog quality, readiness, ordering, aging, duplication, dependencies, and decision traceability.
+  capabilities:
+  - backlog
+  - refinement
+  - governance
+  status: enabled
+  external_writes: approval-controlled
+- id: stakeholder-alignment-agent
+  description: Maps stakeholders, prepares decision materials, captures concerns, resolves conflicts, and maintains communication
+    plans.
+  capabilities:
+  - stakeholders
+  - alignment
+  - communication
+  status: enabled
+  external_writes: approval-controlled
+- id: delivery-coordination-agent
+  description: Tracks scope, dependencies, risks, decisions, progress, readiness, and cross-functional actions without
+    replacing Scrum or engineering ownership.
+  capabilities:
+  - delivery
+  - dependency-management
+  - risk
+  status: enabled
+  external_writes: approval-controlled
+- id: release-planning-agent
+  description: Coordinates release scope, customer impact, rollout, support readiness, release notes, enablement, and
+    rollback communication.
+  capabilities:
+  - release-planning
+  - readiness
+  - rollout
+  status: enabled
+  external_writes: approval-controlled
+- id: go-to-market-agent
+  description: Drafts positioning, audience, launch tiers, sales/support enablement, adoption plan, and market communication
+    inputs.
+  capabilities:
+  - gtm
+  - positioning
+  - enablement
+  status: enabled
+  external_writes: approval-controlled
+- id: pricing-packaging-agent
+  description: Analyzes packaging, entitlement, willingness-to-pay evidence, cost-to-serve, and commercial options without
+    making commitments.
+  capabilities:
+  - pricing
+  - packaging
+  - commercial-analysis
+  status: enabled
+  external_writes: approval-controlled
+- id: product-operations-agent
+  description: Maintains intake, templates, taxonomies, rituals, repositories, decision logs, metrics, and portfolio
+    reporting.
+  capabilities:
+  - product-ops
+  - governance
+  - workflow
+  status: enabled
+  external_writes: approval-controlled
+- id: risk-compliance-agent
+  description: Identifies privacy, security, legal, accessibility, operational, financial, and regulatory product risks
+    and routes approvals.
+  capabilities:
+  - risk
+  - compliance
+  - privacy
+  status: enabled
+  external_writes: approval-controlled
+- id: outcome-review-agent
+  description: Compares shipped outcomes with hypotheses, success metrics, customer evidence, quality, adoption, and
+    unintended effects.
+  capabilities:
+  - outcomes
+  - post-launch
+  - learning
+  status: enabled
+  external_writes: approval-controlled
+- id: product-reviewer-agent
+  description: Independently reviews evidence quality, strategy fit, assumptions, feasibility, measurement, risks, and
+    decision readiness.
+  capabilities:
+  - review
+  - quality
+  - challenge
+  status: enabled
+  external_writes: approval-controlled
+- id: evidence-manager-agent
+  description: Hashes, stores, links, redacts, versions, and retains product evidence, decisions, approvals, and artifacts.
+  capabilities:
+  - artifacts
+  - provenance
+  - audit
+  status: enabled
+  external_writes: approval-controlled
+- id: policy-enforcer-agent
+  description: Evaluates project scope, data use, permissions, approvals, publication, customer contact, experiments,
+    and production prohibitions.
+  capabilities:
+  - opa
+  - authorization
+  - guardrails
+  status: enabled
+  external_writes: approval-controlled

@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SLO Specification",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "service",
+    "sli",
+    "target",
+    "window",
+    "data_source",
+    "owner"
+  ],
+  "properties": {
+    "service": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sli": {
+      "type": "object"
+    },
+    "target": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "window": {
+      "type": "string",
+      "minLength": 1
+    },
+    "data_source": {
+      "type": "string",
+      "minLength": 1
+    },
+    "exclusions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "approval_required": {
+      "const": true
+    }
+  }
+}

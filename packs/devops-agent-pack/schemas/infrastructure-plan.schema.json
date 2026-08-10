@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/devops-agent/infrastructure-plan.schema.json",
+  "title": "Infrastructure Plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "tool",
+    "source_revision",
+    "target",
+    "actions",
+    "destructive_actions",
+    "plan_hash"
+  ],
+  "properties": {
+    "tool": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_revision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target": {
+      "type": "string",
+      "minLength": 1
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "address",
+          "action"
+        ],
+        "properties": {
+          "address": {
+            "type": "string",
+            "minLength": 1
+          },
+          "action": {
+            "type": "string",
+            "enum": [
+              "create",
+              "read",
+              "update",
+              "replace",
+              "delete",
+              "no-op"
+            ]
+          },
+          "risk": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "destructive_actions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "unknown_values": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "state_backend": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "cost_effect": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "plan_hash": {
+      "type": "string",
+      "minLength": 1
+    },
+    "redacted": {
+      "type": "boolean"
+    }
+  }
+}

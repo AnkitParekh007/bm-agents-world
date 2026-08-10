@@ -1,0 +1,29 @@
+version: 1.0.0
+project: ${PROJECT_ID}
+team: ${TEAM_ID}
+sprint:
+  cadence_days: ${SPRINT_LENGTH_DAYS}
+  timezone: ${TEAM_TIMEZONE}
+  planning: ${PLANNING_SCHEDULE}
+  review: ${REVIEW_SCHEDULE}
+  retrospective: ${RETRO_SCHEDULE}
+jira:
+  board_id: ${JIRA_BOARD_ID}
+  project_key: ${JIRA_PROJECT_KEY}
+  read_identity: ${JIRA_READ_IDENTITY_REF}
+  write_identity: ${JIRA_WRITE_IDENTITY_REF}
+confluence:
+  space: ${CONFLUENCE_SPACE}
+  read_identity: ${CONFLUENCE_READ_IDENTITY_REF}
+  write_identity: ${CONFLUENCE_WRITE_IDENTITY_REF}
+teams:
+  team_id: ${TEAMS_TEAM_ID}
+  channel_id: ${TEAMS_CHANNEL_ID}
+  post_identity: ${TEAMS_POST_IDENTITY_REF}
+metrics:
+  semantic_layer: ${METRICS_SOURCE}
+  minimum_aggregation: 5
+  individual_metrics: prohibited
+production:
+  mode: read-only
+  mutations: prohibited

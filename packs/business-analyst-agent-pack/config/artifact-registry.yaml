@@ -1,0 +1,196 @@
+apiVersion: business-analyst-agent-pack/v1
+kind: ArtifactRegistry
+metadata:
+  name: business-analysis-artifacts
+  version: 1.0.0
+spec:
+  artifacts:
+  - id: business-analysis-plan
+    title: Business Analysis Plan
+    format:
+    - markdown
+    - json
+    evidenceRequired: true
+    approvalRequired: false
+  - id: stakeholder-map
+    title: Stakeholder Map
+    format:
+    - markdown
+    - json
+    evidenceRequired: true
+    approvalRequired: false
+  - id: raci-matrix
+    title: RACI Matrix
+    format:
+    - markdown
+    - json
+    evidenceRequired: true
+    approvalRequired: false
+  - id: problem-opportunity-brief
+    title: Problem and Opportunity Brief
+    format:
+    - markdown
+    - json
+    evidenceRequired: true
+    approvalRequired: false
+  - id: business-case-outline
+    title: Business Case Outline
+    format:
+    - markdown
+    - json
+    evidenceRequired: true
+    approvalRequired: false
+  - id: capability-gap-assessment
+    title: Capability and Gap Assessment
+    format:
+    - markdown
+    - json
+    evidenceRequired: true
+    approvalRequired: false
+  - id: current-state-process
+    title: Current-State Process Model
+    format:
+    - markdown
+    - json
+    evidenceRequired: true
+    approvalRequired: false
+  - id: future-state-process
+    title: Future-State Process Model
+    format:
+    - markdown
+    - json
+    evidenceRequired: true
+    approvalRequired: false
+  - id: process-improvement-brief
+    title: Process Improvement Brief
+    format:
+    - markdown
+    - json
+    evidenceRequired: true
+    approvalRequired: false
+  - id: business-requirements-document
+    title: Business Requirements Document
+    format:
+    - markdown
+    - json
+    evidenceRequired: true
+    approvalRequired: true
+  - id: requirements-catalog
+    title: Requirements Catalog
+    format:
+    - markdown
+    - json
+    evidenceRequired: true
+    approvalRequired: true
+  - id: functional-specification
+    title: Functional Requirements Specification
+    format:
+    - markdown
+    - json
+    evidenceRequired: true
+    approvalRequired: false
+  - id: nonfunctional-requirements
+    title: Nonfunctional Requirements Catalog
+    format:
+    - markdown
+    - json
+    evidenceRequired: true
+    approvalRequired: false
+  - id: user-story-package
+    title: User Story and Acceptance Package
+    format:
+    - markdown
+    - json
+    evidenceRequired: true
+    approvalRequired: false
+  - id: use-case-specification
+    title: Use-Case Specification
+    format:
+    - markdown
+    - json
+    evidenceRequired: true
+    approvalRequired: false
+  - id: business-rules-catalog
+    title: Business Rules and Decision Tables
+    format:
+    - markdown
+    - json
+    evidenceRequired: true
+    approvalRequired: false
+  - id: business-data-dictionary
+    title: Business Data Dictionary
+    format:
+    - markdown
+    - json
+    evidenceRequired: true
+    approvalRequired: false
+  - id: interface-requirements
+    title: Interface and Integration Requirements
+    format:
+    - markdown
+    - json
+    evidenceRequired: true
+    approvalRequired: false
+  - id: requirements-traceability-matrix
+    title: Requirements Traceability Matrix
+    format:
+    - markdown
+    - json
+    evidenceRequired: true
+    approvalRequired: false
+  - id: change-impact-assessment
+    title: Change Impact Assessment
+    format:
+    - markdown
+    - json
+    evidenceRequired: true
+    approvalRequired: false
+  - id: change-readiness-plan
+    title: Change Readiness Plan
+    format:
+    - markdown
+    - json
+    evidenceRequired: true
+    approvalRequired: false
+  - id: uat-plan
+    title: User Acceptance Test Plan
+    format:
+    - markdown
+    - json
+    evidenceRequired: true
+    approvalRequired: false
+  - id: uat-scenario-pack
+    title: UAT Scenario Pack
+    format:
+    - markdown
+    - json
+    evidenceRequired: true
+    approvalRequired: false
+  - id: business-acceptance-report
+    title: Business Acceptance Report
+    format:
+    - markdown
+    - json
+    evidenceRequired: true
+    approvalRequired: true
+  - id: solution-evaluation-report
+    title: Solution Evaluation Report
+    format:
+    - markdown
+    - json
+    evidenceRequired: true
+    approvalRequired: false
+  - id: decision-and-action-log
+    title: Decision and Action Log
+    format:
+    - markdown
+    - json
+    evidenceRequired: true
+    approvalRequired: false
+  - id: business-analysis-handoff
+    title: Business Analysis Handoff Package
+    format:
+    - markdown
+    - json
+    evidenceRequired: true
+    approvalRequired: true

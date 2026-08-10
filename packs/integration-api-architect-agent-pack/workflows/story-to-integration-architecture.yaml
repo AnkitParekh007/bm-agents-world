@@ -1,0 +1,81 @@
+apiVersion: integration-api-architect-agent-pack/v1
+kind: AgentWorkflow
+metadata:
+  name: story-to-integration-architecture
+  title: Story to Integration Architecture
+  version: 1.0.0
+spec:
+  trigger:
+  - new_integration
+  - new_api
+  - cross_system_story
+  - integration_epic
+  objective: Create a governed integration architecture and implementation handoff from business need through contract
+    strategy and cross-team alignment
+  supervisor: integration-api-architect-supervisor
+  execution:
+    mode: stateful
+    defaultPolicy: deny
+    evidenceRequired: true
+    approvalBinding: payload-hash
+    resumeFromCheckpoint: true
+  stages:
+  - id: scope
+    agent: business-product-context
+    skills:
+    - integration.context.jira-and-requirement-context
+    - integration.context.consumer-and-stakeholder-mapping
+    - integration.context.scope-and-assumption-baseline
+    gate: authorization
+  - id: landscape
+    agent: integration-landscape-discovery
+    skills:
+    - integration.discovery.api-inventory-discovery
+    - integration.discovery.integration-dependency-graph
+    - integration.discovery.service-ownership-discovery
+  - id: boundaries
+    agent: domain-service-boundary
+    skills:
+    - integration.domain.bounded-context-mapping
+    - integration.domain.service-responsibility-definition
+    - integration.domain.source-of-truth-mapping
+  - id: strategy
+    agent: api-strategy-governance
+    skills:
+    - integration.api_strategy.api-style-selection
+    - integration.api_strategy.naming-convention-governance
+    - integration.api_strategy.design-first-governance
+  - id: security
+    agent: api-security
+    skills:
+    - integration.security.owasp-api-threat-modeling
+    - integration.security.sensitive-data-exposure-review
+  - id: reliability
+    agent: resiliency-reliability
+    skills:
+    - integration.resiliency.timeout-budget-design
+    - integration.resiliency.dependency-failure-mode-analysis
+  - id: review
+    agent: architecture-review
+    skills:
+    - integration.review.independent-contract-review
+    - integration.review.consumer-impact-review
+    - integration.review.evidence-completeness-review
+    gate: approve-architecture
+  - id: handoff
+    agent: implementation-alignment
+    skills:
+    - integration.handoff.frontend-integration-handoff
+    - integration.handoff.java-service-handoff
+    - integration.handoff.qa-contract-test-handoff
+    - integration.handoff.devops-gateway-handoff
+  outputs:
+  - integration-architecture-document
+  - service-dependency-map
+  - architecture-decision-record
+  - implementation-handoff
+  terminalStates:
+  - completed
+  - rejected
+  - blocked
+  - cancelled

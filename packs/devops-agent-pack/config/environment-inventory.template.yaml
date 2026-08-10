@@ -1,0 +1,47 @@
+version: 1.0.0
+environments:
+- id: local-sandbox
+  classification: isolated
+  allowed:
+  - local-build
+  - iac-plan
+  - container-build
+  - manifest-render
+  - security-scan
+  - ephemeral-resource-test
+  approval: none-within-quota
+  production_data: false
+  ttl_required: true
+- id: playground
+  classification: non-production
+  allowed:
+  - read
+  - diagnostics
+  - approved-deploy
+  - approved-iac-apply
+  - approved-gitops-sync
+  approval: required-for-shared-mutation
+  production_data: false
+  autonomous_mutation: false
+- id: qa
+  classification: shared-non-production
+  allowed:
+  - read
+  - diagnostics
+  - approved-deploy
+  - approved-rollback
+  - approved-infrastructure-change
+  approval: required
+  production_data: false
+  autonomous_mutation: false
+- id: production
+  classification: production
+  allowed:
+  - bounded-read
+  - deployment-observation
+  - post-change-verification
+  - approved-screenshot-redacted
+  approval: independent-and-payload-bound
+  production_data: true
+  autonomous_mutation: false
+  executor: deterministic-pipeline-or-human

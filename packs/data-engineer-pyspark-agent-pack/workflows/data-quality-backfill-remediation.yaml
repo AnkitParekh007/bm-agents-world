@@ -1,0 +1,49 @@
+name: data-quality-backfill-remediation
+version: 1.0.0
+trigger: Data quality incident, reconciliation failure, missing partition, or approved historical correction
+scope_binding:
+- project
+- datasets
+- partitions
+- time_range
+- consumers
+- environment
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: verify incident, data, partition, time, consumer, and mutation scope
+- id: diagnose
+  agent: data-incident-backfill-agent
+  action: identify affected data, cause hypotheses, consumer impact, and repair options
+- id: quality
+  agent: data-quality-agent
+  action: quantify failed rules, exceptions, and source versus pipeline responsibility
+- id: reconcile
+  agent: reconciliation-agent
+  action: establish source-of-truth controls and expected corrected results
+- id: plan
+  agent: data-incident-backfill-agent
+  action: create bounded backfill or repair plan with stop, rollback, and verification controls
+- id: capacity
+  agent: spark-performance-agent
+  action: estimate source load, compute, storage, duration, concurrency, and cost
+- id: security
+  agent: data-security-governance-agent
+  action: review privacy, access, retention, and evidence handling
+- id: review
+  agent: data-engineering-independent-reviewer-agent
+  action: independently challenge scope, source of truth, mutation safety, and recovery
+- id: request
+  agent: data-engineer-pyspark-supervisor
+  action: prepare immutable approval-bound production action request
+- id: verify
+  agent: data-incident-backfill-agent
+  action: perform bounded read-only post-execution validation and closeout evidence
+outputs:
+- data-incident-report
+- backfill-plan
+- reconciliation-report
+- production-action-request
+- data-quality-report
+failure_behavior: stop on control mismatch, unexpected scope, source overload, consumer harm, privacy risk, or triggered
+  stop condition

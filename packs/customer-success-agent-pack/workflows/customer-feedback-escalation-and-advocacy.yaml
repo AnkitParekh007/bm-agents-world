@@ -1,0 +1,44 @@
+name: customer-feedback-escalation-and-advocacy
+version: 1.0.0
+trigger: Customer feedback, complaint, escalation, incident follow-up, reference signal, or advocacy opportunity
+scope_binding:
+- organization
+- project
+- customer_id
+- account_owner
+- purpose
+- environment
+- requester
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: verify customer-contact, consent, account, privacy, and publication scope
+- id: feedback
+  agent: feedback-voice-of-customer-agent
+  action: normalize feedback, preserve provenance, identify themes, and separate quotes from interpretation
+- id: support
+  agent: support-coordination-agent
+  action: correlate support history, repeated issues, and existing known problems
+- id: incident
+  agent: incident-customer-agent
+  action: if applicable, use authoritative incident facts and prepare customer follow-up
+- id: risk
+  agent: risk-detection-agent
+  action: assess impact on customer outcomes, health, relationship, and recovery plan
+- id: advocacy
+  agent: advocacy-agent
+  action: if positive and eligible, prepare consent-aware advocacy candidate brief
+- id: communication
+  agent: customer-communication-agent
+  action: draft accurate customer-safe response or follow-up
+- id: review
+  agent: customer-success-reviewer-agent
+  action: validate evidence, consent, promises, confidentiality, and next-step ownership
+outputs:
+- voice-of-customer-digest
+- feedback-action-log
+- incident-customer-brief
+- advocacy-candidate-brief
+- customer-communication-plan
+failure_behavior: stop, preserve evidence, identify the unresolved decision or missing authorization, and route
+  to the accountable human owner

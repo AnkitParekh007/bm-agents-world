@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/customer-success/qbr-ebr.schema.json",
+  "title": "QBR EBR Pack",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "customer_id",
+    "period",
+    "goals",
+    "value",
+    "decisions_needed"
+  ],
+  "properties": {
+    "customer_id": {
+      "type": "string"
+    },
+    "period": {
+      "type": "string"
+    },
+    "goals": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "value": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "adoption": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "support": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "releases": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "decisions_needed": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

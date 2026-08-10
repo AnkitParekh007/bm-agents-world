@@ -1,0 +1,56 @@
+id: database-release-and-rollout
+name: Database Release and Rollout
+version: 1.0.0
+trigger: Approved pull request or release candidate
+production_mutation: false
+steps:
+- id: collect
+  agent: database-pipeline-release
+  action: collect SQL previews, tests, reviews and artifact hashes
+  approval: none
+  on_failure: stop-and-preserve-evidence
+- id: drift
+  agent: database-estate-discovery
+  action: verify target metadata and migration history
+  approval: none
+  on_failure: stop-and-preserve-evidence
+- id: readiness
+  agent: database-architect-developer-supervisor
+  action: assess lock, duration, backup, compatibility and monitoring
+  approval: none
+  on_failure: stop-and-preserve-evidence
+- id: approve
+  agent: policy-enforcer
+  action: verify payload-bound release approval
+  approval: required
+  on_failure: stop-and-preserve-evidence
+- id: publish
+  agent: database-pipeline-release
+  action: publish signed release bundle and runbook
+  approval: required
+  on_failure: stop-and-preserve-evidence
+- id: execute
+  agent: database-pipeline-release
+  action: hand off production execution to operator or approved deployment system
+  approval: required-human-operator
+  on_failure: stop-and-preserve-evidence
+- id: verify
+  agent: database-test-engineer
+  action: run approved read-only post-change validation
+  approval: none
+  on_failure: stop-and-preserve-evidence
+- id: observe
+  agent: observability-capacity-engineer
+  action: compare health and performance to baseline
+  approval: none
+  on_failure: stop-and-preserve-evidence
+- id: close
+  agent: database-documentation
+  action: publish approved Jira/Teams summary and update runbooks
+  approval: required-for-external-write
+  on_failure: stop-and-preserve-evidence
+- id: audit
+  agent: evidence-manager
+  action: seal final evidence bundle
+  approval: none
+  on_failure: stop-and-preserve-evidence

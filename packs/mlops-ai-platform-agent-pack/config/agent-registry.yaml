@@ -1,0 +1,190 @@
+version: '1.0'
+role: mlops-ai-platform
+agents:
+- id: mlops-ai-platform-supervisor
+  name: MLOps / AI Platform Supervisor
+  purpose: Owns scope, orchestration, policy, evidence, delegation, and final platform
+    recommendations.
+  default_mode: read_analyze_draft
+  production_write: false
+  raw_secrets: false
+- id: platform-context-agent
+  name: Platform Context Agent
+  purpose: Builds authorized project, environment, tenant, cluster, registry, data,
+    and service context.
+  default_mode: read_analyze_draft
+  production_write: false
+  raw_secrets: false
+- id: platform-architecture-agent
+  name: AI Platform Architecture Agent
+  purpose: Maintains reference architecture, tenancy, control-plane/data-plane boundaries,
+    and platform ADRs.
+  default_mode: read_analyze_draft
+  production_write: false
+  raw_secrets: false
+- id: experiment-tracking-agent
+  name: Experiment Tracking Agent
+  purpose: Operates tracking, run metadata, lineage, retention, and reproducibility
+    controls.
+  default_mode: read_analyze_draft
+  production_write: false
+  raw_secrets: false
+- id: model-registry-agent
+  name: Model & Prompt Registry Agent
+  purpose: Governs models, prompts, agents, scorers, aliases, lifecycle states, and
+    immutable identities.
+  default_mode: read_analyze_draft
+  production_write: false
+  raw_secrets: false
+- id: training-pipeline-agent
+  name: Training Pipeline Agent
+  purpose: Designs and validates reusable training and evaluation pipelines.
+  default_mode: read_analyze_draft
+  production_write: false
+  raw_secrets: false
+- id: feature-platform-agent
+  name: Feature Platform Agent
+  purpose: Coordinates feature-store interfaces, freshness, consistency, schemas,
+    and access.
+  default_mode: read_analyze_draft
+  production_write: false
+  raw_secrets: false
+- id: evaluation-platform-agent
+  name: Evaluation Platform Agent
+  purpose: Operates evaluation datasets, scorers, regression gates, judges, and review
+    queues.
+  default_mode: read_analyze_draft
+  production_write: false
+  raw_secrets: false
+- id: llm-agent-platform-agent
+  name: LLM & Agent Platform Agent
+  purpose: Operates model gateways, provider routing, prompt/tool lifecycle, agent
+    sandboxes, and quotas.
+  default_mode: read_analyze_draft
+  production_write: false
+  raw_secrets: false
+- id: rag-vector-platform-agent
+  name: RAG & Vector Platform Agent
+  purpose: Governs vector infrastructure, embeddings, index lifecycle, authorization,
+    freshness, and migrations.
+  default_mode: read_analyze_draft
+  production_write: false
+  raw_secrets: false
+- id: model-serving-agent
+  name: Model Serving Agent
+  purpose: Designs and validates real-time inference, autoscaling, canary, fallback,
+    and endpoint health.
+  default_mode: read_analyze_draft
+  production_write: false
+  raw_secrets: false
+- id: batch-inference-agent
+  name: Batch & Async Inference Agent
+  purpose: Governs batch, queue-based, scheduled, and asynchronous inference execution
+    patterns.
+  default_mode: read_analyze_draft
+  production_write: false
+  raw_secrets: false
+- id: gpu-platform-agent
+  name: GPU & Accelerator Platform Agent
+  purpose: Manages accelerator inventory, GPU operator/driver compatibility, telemetry,
+    sharing, and capacity.
+  default_mode: read_analyze_draft
+  production_write: false
+  raw_secrets: false
+- id: workload-scheduling-agent
+  name: AI Workload Scheduling Agent
+  purpose: Manages queues, quotas, priority, gang scheduling, topology, and resource
+    fairness.
+  default_mode: read_analyze_draft
+  production_write: false
+  raw_secrets: false
+- id: supply-chain-agent
+  name: AI Supply Chain Agent
+  purpose: Governs containers, SBOMs, provenance, signatures, package/model sources,
+    and artifact immutability.
+  default_mode: read_analyze_draft
+  production_write: false
+  raw_secrets: false
+- id: ml-cicd-agent
+  name: ML CI/CD & Promotion Agent
+  purpose: Builds deterministic promotion pipelines and exact candidate release manifests.
+  default_mode: read_analyze_draft
+  production_write: false
+  raw_secrets: false
+- id: ai-observability-agent
+  name: AI Observability Agent
+  purpose: Operates traces, metrics, logs, token/cost telemetry, dashboards, alerting,
+    and schema governance.
+  default_mode: read_analyze_draft
+  production_write: false
+  raw_secrets: false
+- id: model-monitoring-agent
+  name: Model Monitoring & Drift Agent
+  purpose: Coordinates drift, production quality signals, delayed labels, model-health
+    reviews, and retraining recommendations.
+  default_mode: read_analyze_draft
+  production_write: false
+  raw_secrets: false
+- id: ai-platform-security-agent
+  name: AI Platform Security Agent
+  purpose: Enforces workload identity, network boundaries, secrets, tenant isolation,
+    provenance, and secure runtime controls.
+  default_mode: read_analyze_draft
+  production_write: false
+  raw_secrets: false
+- id: responsible-ai-platform-agent
+  name: Responsible AI Platform Agent
+  purpose: Enforces governance metadata, risk-tier gates, evidence, human decision
+    ownership, and exception expiry.
+  default_mode: read_analyze_draft
+  production_write: false
+  raw_secrets: false
+- id: ai-finops-agent
+  name: AI FinOps Agent
+  purpose: Analyzes GPU, model-provider, training, inference, vector, storage, and
+    observability cost.
+  default_mode: read_analyze_draft
+  production_write: false
+  raw_secrets: false
+- id: platform-reliability-agent
+  name: AI Platform Reliability Agent
+  purpose: Defines SLOs, recovery, backups, provider fallback, and disaster-recovery
+    readiness.
+  default_mode: read_analyze_draft
+  production_write: false
+  raw_secrets: false
+- id: ai-platform-incident-agent
+  name: AI Platform Incident Agent
+  purpose: Coordinates evidence, blast radius, diagnostics, mitigation proposals,
+    recovery verification, and post-incident learning.
+  default_mode: read_analyze_draft
+  production_write: false
+  raw_secrets: false
+- id: developer-experience-agent
+  name: AI Platform Developer Experience Agent
+  purpose: Maintains self-service golden paths, SDKs, templates, onboarding, and platform
+    usability.
+  default_mode: read_analyze_draft
+  production_write: false
+  raw_secrets: false
+- id: platform-upgrade-agent
+  name: AI Platform Upgrade Agent
+  purpose: Tracks compatibility, deprecations, security advisories, upgrade testing,
+    and migration plans.
+  default_mode: read_analyze_draft
+  production_write: false
+  raw_secrets: false
+- id: independent-platform-review-agent
+  name: Independent Platform Review Agent
+  purpose: Independently reviews high-risk platform changes, model promotions, and
+    production-action bundles.
+  default_mode: read_analyze_draft
+  production_write: false
+  raw_secrets: false
+- id: policy-evidence-agent
+  name: Policy & Evidence Agent
+  purpose: Enforces approval policy, evidence completeness, audit trails, and denial
+    of prohibited actions.
+  default_mode: read_analyze_draft
+  production_write: false
+  raw_secrets: false

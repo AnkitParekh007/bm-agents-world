@@ -1,0 +1,53 @@
+name: product-security-incident-and-exception-management
+version: 1.0.0
+trigger: suspected exploit, credential exposure, dependency compromise, private disclosure, or urgent exception
+scope_binding:
+- project
+- incident_or_exception
+- assets
+- versions
+- environments
+- audience
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: validate sensitive-case role, evidence, audience, active testing, and production boundaries
+- id: incident
+  agent: product-security-incident-agent
+  action: assemble affected scope, evidence, exposure, containment, remediation, and disclosure inputs
+- id: secrets
+  agent: secrets-security-agent
+  action: prepare redacted containment and rotation requests when credentials are implicated
+  parallel_group: response
+- id: supply-chain
+  agent: supply-chain-provenance-agent
+  action: analyze artifact, source, dependency, signature, and provenance compromise
+  parallel_group: response
+- id: triage
+  agent: vulnerability-triage-agent
+  action: assess severity, exploitation, affected versions, and customer impact
+  parallel_group: response
+- id: remediation
+  agent: remediation-coordination-agent
+  action: prepare patch, workaround, rollout, verification, and variant-analysis plan
+- id: exception
+  agent: security-exception-agent
+  action: prepare emergency exception only with explicit scope, controls, owner, and expiry
+- id: review
+  agent: security-assurance-reviewer-agent
+  action: review facts, sensitive disclosure, self-approval, and unsupported root-cause claims
+- id: decision
+  agent: application-security-devsecops-supervisor
+  action: route containment, exception, communication, and production requests to accountable humans
+- id: lessons
+  agent: secure-sdlc-governance-agent
+  action: update requirements, tests, rules, training, and improvement backlog from validated lessons
+outputs:
+- product-security-incident-package
+- security-exception-request
+- security-remediation-plan
+- security-status-update
+- security-assurance-report
+- security-audit-evidence-bundle
+failure_behavior: restrict distribution, preserve evidence, and escalate uncertainty; never expose exploit details
+  or make unsupported claims

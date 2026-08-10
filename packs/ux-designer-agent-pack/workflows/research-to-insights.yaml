@@ -1,0 +1,45 @@
+name: research-to-insights
+version: 1.0.0
+trigger: Approved research question or usability risk
+scope_binding:
+- organization
+- project
+- jira_item
+- figma_file
+- environment
+- requester
+steps:
+- id: authorize
+  agent: policy-enforcer
+  action: verify consent, purpose limitation, data handling, and participant safeguards
+- id: plan
+  agent: research-planner
+  action: create questions, method, sample, protocol, analysis and privacy plan
+- id: ops
+  agent: research-operations
+  action: prepare screener, consent, scheduling, repository, and retention controls
+- id: approval
+  agent: ux-designer-supervisor
+  action: obtain required human approvals before recruitment or recording
+- id: conduct
+  agent: user-researcher
+  action: conduct or assist approved sessions and capture bounded evidence
+- id: redact
+  agent: evidence-manager
+  action: redact identifiers and create evidence references
+- id: synthesize
+  agent: insight-synthesizer
+  action: code, cluster, triangulate, rate evidence, and produce findings
+- id: model
+  agent: persona-journey-modeler
+  action: update evidence-backed jobs, personas, journeys, or opportunities
+- id: review
+  agent: design-reviewer
+  action: review rigor, bias, contradictory evidence, and recommendation strength
+outputs:
+- research-plan
+- redacted-research-notes
+- research-insight-report
+- persona-jtbd-pack
+- journey-map
+failure_behavior: stop, preserve evidence, and request human resolution

@@ -1,0 +1,48 @@
+name: roadmap-and-quarterly-planning
+version: 1.0.0
+trigger: Approved objectives, strategic themes, candidate initiatives, and capacity assumptions
+scope_binding:
+- organization
+- project
+- product_area
+- jira_item
+- environment
+- requester
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: verify roadmap scope, decision owners, planning horizon, and publication permissions
+- id: objectives
+  agent: product-strategy-agent
+  action: translate strategy into measurable objectives and outcome hypotheses
+- id: candidate-set
+  agent: prioritization-agent
+  action: assemble approved and candidate initiatives with evidence and confidence
+- id: capacity
+  agent: portfolio-agent
+  action: model capacity, mandatory work, maintenance, discovery, and contingency ranges
+- id: sequence
+  agent: roadmap-agent
+  action: create sequencing scenarios using dependencies, risk, learning value, and release constraints
+- id: delivery-check
+  agent: delivery-coordination-agent
+  action: validate ownership, cross-team dependencies, critical paths, and readiness assumptions
+- id: risk
+  agent: risk-compliance-agent
+  action: identify regulatory, privacy, security, accessibility, operational, and commercial gates
+- id: views
+  agent: stakeholder-alignment-agent
+  action: prepare executive, team, customer-safe, and delivery views with confidence language
+- id: review
+  agent: product-reviewer-agent
+  action: review outcome orientation, overcommitment, hidden dependencies, and missing contingency
+- id: publish-approval
+  agent: product-manager-supervisor
+  action: request payload-bound approval for roadmap publication
+outputs:
+- roadmap-plan
+- portfolio-allocation-plan
+- dependency-risk-map
+- product-risk-register
+- stakeholder-decision-memo
+failure_behavior: stop, preserve evidence, identify the unresolved decision, and request human resolution

@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Team Health Summary",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "team",
+    "time_window",
+    "aggregation_size",
+    "signals",
+    "limitations",
+    "approval_status"
+  ],
+  "properties": {
+    "team": {
+      "type": "string",
+      "minLength": 1
+    },
+    "time_window": {
+      "type": "string",
+      "minLength": 1
+    },
+    "aggregation_size": {
+      "type": "integer",
+      "minimum": 5
+    },
+    "signals": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "themes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "recommendations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "individual_data_present": {
+      "const": false
+    },
+    "protected_attribute_inference": {
+      "const": false
+    },
+    "approval_status": {
+      "enum": [
+        "draft",
+        "team-approved",
+        "not-for-publication"
+      ]
+    }
+  }
+}

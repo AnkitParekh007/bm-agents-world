@@ -1,0 +1,28 @@
+id: platform-onboarding-and-baseline
+trigger: new project, team, workload class or environment
+steps:
+- authorize scope
+- resolve project/platform context
+- classify workload and data
+- design tenancy and identity
+- select tracking/registry/evaluation/serving services
+- define quotas and cost ownership
+- define SLOs and observability
+- security/governance review
+- independent review
+- human-approved shared-platform onboarding
+- read-only verification
+agents:
+- mlops-ai-platform-supervisor
+- platform-context-agent
+- platform-architecture-agent
+- ai-platform-security-agent
+- responsible-ai-platform-agent
+- ai-finops-agent
+- platform-reliability-agent
+- independent-platform-review-agent
+- policy-evidence-agent
+artifacts:
+- platform-readiness-assessment
+- tenancy-isolation-model
+- platform-service-catalog

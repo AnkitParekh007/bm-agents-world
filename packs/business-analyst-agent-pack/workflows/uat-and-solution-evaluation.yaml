@@ -1,0 +1,73 @@
+apiVersion: business-analyst-agent-pack/v1
+kind: AgentWorkflow
+metadata:
+  name: uat-and-solution-evaluation
+  title: UAT and Solution Evaluation
+  version: 1.0.0
+spec:
+  trigger:
+  - uat_request
+  - release_validation
+  - post_implementation_review
+  objective: Plan business validation, coordinate evidence, prepare a human-owned acceptance decision, and evaluate
+    realized outcomes.
+  supervisor: business-analysis-supervisor
+  execution:
+    mode: stateful
+    defaultPolicy: deny
+    evidenceRequired: true
+    approvalBinding: payload-hash
+    resumeFromCheckpoint: true
+  stages:
+  - id: scope
+    agent: uat-planning
+    skills:
+    - business-analysis.uat-scope
+    - business-analysis.uat-entry-criteria
+    - business-analysis.uat-exit-criteria
+    gate: authorization
+  - id: scenario-pack
+    agent: uat-planning
+    skills:
+    - business-analysis.uat-scenario
+    - business-analysis.uat-data-plan
+    - business-analysis.uat-evidence-plan
+  - id: trace-check
+    agent: traceability-lifecycle
+    skills:
+    - business-analysis.requirement-to-test-trace
+    - business-analysis.coverage-analysis
+    - business-analysis.approval-lineage
+  - id: execution-support
+    agent: uat-planning
+    skills:
+    - business-analysis.uat-defect-triage
+    - business-analysis.business-acceptance-report
+  - id: evaluation
+    agent: solution-evaluation
+    skills:
+    - business-analysis.requirement-outcome-comparison
+    - business-analysis.benefit-realization-check
+    - business-analysis.limitation-analysis
+  - id: independent-review
+    agent: independent-ba-review
+    skills:
+    - business-analysis.evidence-confidence
+    - business-analysis.testability-review
+    - business-analysis.decision-boundary-check
+  - id: human-acceptance
+    agent: business-analysis-supervisor
+    skills:
+    - business-analysis.payload-hash-approval
+    - business-analysis.audit-record
+    gate: business-owner-approval
+  outputs:
+  - uat-plan
+  - uat-scenario-pack
+  - business-acceptance-report
+  - solution-evaluation-report
+  terminalStates:
+  - completed
+  - rejected
+  - blocked
+  - cancelled

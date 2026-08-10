@@ -1,0 +1,83 @@
+apiVersion: python-developer-agent-pack/v1
+kind: PluginRegistry
+plugins:
+- id: bitbucket-adapter
+  purpose: Bitbucket Cloud/Data Center repository, PR, and pipeline operations
+  status: planned
+  credentials: brokered-if-required
+- id: jira-confluence-adapter
+  purpose: Atlassian context and controlled writes
+  status: planned
+  credentials: brokered-if-required
+- id: python-profile-detector
+  purpose: Python/framework/dependency/test convention detection
+  status: planned
+  credentials: brokered-if-required
+- id: virtualenv-runner
+  purpose: Isolated venv creation and command execution
+  status: planned
+  credentials: brokered-if-required
+- id: dependency-manager-adapter
+  purpose: pip, uv, Poetry, PDM, pip-tools, and Conda command mapping
+  status: planned
+  credentials: brokered-if-required
+- id: pytest-adapter
+  purpose: pytest selection, execution, structured results, and evidence
+  status: planned
+  credentials: brokered-if-required
+- id: ruff-adapter
+  purpose: Ruff lint and format integration when configured
+  status: planned
+  credentials: brokered-if-required
+- id: typing-adapter
+  purpose: mypy, Pyright, or repository-specific type checker
+  status: planned
+  credentials: brokered-if-required
+- id: security-scanner-adapter
+  purpose: Bandit-compatible SAST, dependency audit, and secret scanning
+  status: planned
+  credentials: brokered-if-required
+- id: database-adapter
+  purpose: Dialect-aware schema and read-only diagnostic access
+  status: planned
+  credentials: brokered-if-required
+- id: migration-adapter
+  purpose: Alembic/Django/custom migration inspection and sandbox testing
+  status: planned
+  credentials: brokered-if-required
+- id: openapi-adapter
+  purpose: OpenAPI validation and contract generation
+  status: planned
+  credentials: brokered-if-required
+- id: queue-worker-adapter
+  purpose: Celery/RQ/custom queue metadata and test harness
+  status: planned
+  credentials: brokered-if-required
+- id: pyspark-adapter
+  purpose: Bounded PySpark execution and data-quality evidence
+  status: planned
+  credentials: brokered-if-required
+- id: container-adapter
+  purpose: Rootless isolated image build and SBOM
+  status: planned
+  credentials: brokered-if-required
+- id: observability-adapter
+  purpose: Vendor-specific logs, metrics, and traces
+  status: planned
+  credentials: brokered-if-required
+- id: secret-manager-adapter
+  purpose: Vault, cloud key manager, or enterprise secret manager
+  status: planned
+  credentials: brokered-if-required
+- id: approval-adapter
+  purpose: Payload-bound human approvals
+  status: planned
+  credentials: brokered-if-required
+- id: artifact-adapter
+  purpose: Immutable evidence storage and retrieval
+  status: planned
+  credentials: brokered-if-required
+- id: teams-adapter
+  purpose: Approved collaboration publication
+  status: planned
+  credentials: brokered-if-required

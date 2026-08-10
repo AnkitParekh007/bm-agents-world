@@ -1,0 +1,222 @@
+version: 1.0.0
+supervisor: product-owner-supervisor
+agents:
+- id: product-owner-supervisor
+  description: Coordinates Product Goal, Product Backlog, refinement, Sprint readiness, release acceptance, outcome
+    review, approvals, and evidence.
+  capabilities:
+  - orchestration
+  - value-maximization
+  - backlog
+  - decision-quality
+  status: enabled
+  external_writes: approval-controlled
+- id: work-context-agent
+  description: Retrieves approved Jira, Confluence, product, design, architecture, support, analytics, and delivery
+    context.
+  capabilities:
+  - jira
+  - context
+  - traceability
+  status: enabled
+  external_writes: approval-controlled
+- id: product-goal-agent
+  description: Maintains evidence-backed Product Goal proposals, value hypotheses, and alignment checks.
+  capabilities:
+  - product-goal
+  - value
+  - outcomes
+  status: enabled
+  external_writes: approval-controlled
+- id: stakeholder-alignment-agent
+  description: Maps stakeholders, prepares decisions, captures conflicts, and maintains communication plans.
+  capabilities:
+  - stakeholders
+  - alignment
+  - decisions
+  status: enabled
+  external_writes: approval-controlled
+- id: customer-value-agent
+  description: Synthesizes approved customer, user, support, research, and usage evidence.
+  capabilities:
+  - customer-value
+  - insights
+  - evidence
+  status: enabled
+  external_writes: approval-controlled
+- id: backlog-ownership-agent
+  description: Maintains transparent, ordered, traceable Product Backlog proposals and governance.
+  capabilities:
+  - backlog
+  - ordering
+  - transparency
+  status: enabled
+  external_writes: approval-controlled
+- id: backlog-refinement-agent
+  description: Prepares and facilitates backlog refinement, slicing, examples, questions, and readiness checks.
+  capabilities:
+  - refinement
+  - slicing
+  - readiness
+  status: enabled
+  external_writes: approval-controlled
+- id: story-requirements-agent
+  description: Drafts user stories, functional requirements, business rules, data and integration expectations.
+  capabilities:
+  - stories
+  - requirements
+  - business-rules
+  status: enabled
+  external_writes: approval-controlled
+- id: acceptance-criteria-agent
+  description: Creates testable scenario-based acceptance criteria and detects ambiguity.
+  capabilities:
+  - acceptance-criteria
+  - examples
+  - testability
+  status: enabled
+  external_writes: approval-controlled
+- id: prioritization-agent
+  description: Evaluates value, risk, urgency, learning, dependencies, effort, and strategic fit.
+  capabilities:
+  - prioritization
+  - tradeoffs
+  - cost-of-delay
+  status: enabled
+  external_writes: approval-controlled
+- id: sprint-goal-agent
+  description: Prepares coherent Sprint Goal options and value narratives without owning the Sprint Backlog.
+  capabilities:
+  - sprint-goal
+  - planning
+  - value
+  status: enabled
+  external_writes: approval-controlled
+- id: sprint-collaboration-agent
+  description: Provides timely product decisions and manages in-Sprint scope questions.
+  capabilities:
+  - sprint-collaboration
+  - decisions
+  - scope
+  status: enabled
+  external_writes: approval-controlled
+- id: dependency-coordination-agent
+  description: Maps and coordinates cross-team, API, data, design, and release dependencies.
+  capabilities:
+  - dependencies
+  - cross-team
+  - sequencing
+  status: enabled
+  external_writes: approval-controlled
+- id: ux-readiness-agent
+  description: Checks journey, design, content, accessibility, state, and handoff readiness.
+  capabilities:
+  - ux
+  - design-readiness
+  - accessibility
+  status: enabled
+  external_writes: approval-controlled
+- id: technical-readiness-agent
+  description: Checks architecture, API, data, security, observability, migration, and feasibility readiness.
+  capabilities:
+  - technical-readiness
+  - architecture
+  - feasibility
+  status: enabled
+  external_writes: approval-controlled
+- id: qa-readiness-agent
+  description: Checks testability, QA scope, defect impact, evidence, and regression implications.
+  capabilities:
+  - quality
+  - testability
+  - defects
+  status: enabled
+  external_writes: approval-controlled
+- id: uat-business-acceptance-agent
+  description: Coordinates UAT plans, evidence, findings, and human-owned business acceptance.
+  capabilities:
+  - uat
+  - business-acceptance
+  - traceability
+  status: enabled
+  external_writes: approval-controlled
+- id: release-acceptance-agent
+  description: Prepares release scope, readiness, risk, communication, and acceptance recommendations.
+  capabilities:
+  - release
+  - readiness
+  - acceptance
+  status: enabled
+  external_writes: approval-controlled
+- id: analytics-outcome-agent
+  description: Defines outcome measures, validates instrumentation, and reviews post-release evidence.
+  capabilities:
+  - analytics
+  - outcomes
+  - measurement
+  status: enabled
+  external_writes: approval-controlled
+- id: feedback-learning-agent
+  description: Converts approved feedback and product learning into backlog options.
+  capabilities:
+  - feedback
+  - learning
+  - continuous-discovery
+  status: enabled
+  external_writes: approval-controlled
+- id: risk-compliance-agent
+  description: Routes privacy, security, legal, accessibility, operational, and regulatory reviews.
+  capabilities:
+  - risk
+  - compliance
+  - governance
+  status: enabled
+  external_writes: approval-controlled
+- id: decision-log-agent
+  description: Maintains immutable decision, assumption, dependency, and approval records.
+  capabilities:
+  - decisions
+  - provenance
+  - audit
+  status: enabled
+  external_writes: approval-controlled
+- id: agile-collaboration-agent
+  description: Prepares Product Owner inputs for Scrum or team ceremonies without directing Developers.
+  capabilities:
+  - scrum
+  - ceremonies
+  - collaboration
+  status: enabled
+  external_writes: approval-controlled
+- id: cross-pack-coordination-agent
+  description: Coordinates Product Manager, Business Analyst, UX, Architecture, Engineering, QA, and DevOps packs.
+  capabilities:
+  - multi-agent
+  - handoff
+  - coordination
+  status: enabled
+  external_writes: approval-controlled
+- id: product-owner-reviewer-agent
+  description: Independently challenges backlog quality, value evidence, readiness, assumptions, and risks.
+  capabilities:
+  - review
+  - challenge
+  - quality
+  status: enabled
+  external_writes: approval-controlled
+- id: evidence-manager-agent
+  description: Hashes, versions, redacts, stores, and links context, decisions, approvals, and artifacts.
+  capabilities:
+  - artifacts
+  - provenance
+  - retention
+  status: enabled
+  external_writes: approval-controlled
+- id: policy-enforcer-agent
+  description: Enforces scope, permissions, approval, customer contact, publication, and production prohibitions.
+  capabilities:
+  - opa
+  - authorization
+  - guardrails
+  status: enabled
+  external_writes: approval-controlled

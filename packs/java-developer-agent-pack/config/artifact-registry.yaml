@@ -1,0 +1,83 @@
+apiVersion: java-developer-agent-pack/v1
+kind: ArtifactRegistry
+artifacts:
+- id: story-context
+  purpose: Normalized story, acceptance criteria, dependencies and open questions
+  immutable: true
+  contentAddressed: true
+- id: repository-profile
+  purpose: JDK, framework, modules, build, tests, owners and commands
+  immutable: true
+  contentAddressed: true
+- id: architecture-impact
+  purpose: Affected components, contracts, data, risks and blast radius
+  immutable: true
+  contentAddressed: true
+- id: implementation-plan
+  purpose: Ordered implementation, validation, migration and approval plan
+  immutable: true
+  contentAddressed: true
+- id: code-change-manifest
+  purpose: Files, symbols, dependencies, contracts and migrations changed
+  immutable: true
+  contentAddressed: true
+- id: api-contract-diff
+  purpose: OpenAPI or RPC compatibility report
+  immutable: true
+  contentAddressed: true
+- id: database-migration-plan
+  purpose: Forward, compatibility, validation and rollback/roll-forward plan
+  immutable: true
+  contentAddressed: true
+- id: event-contract-diff
+  purpose: Event schema and consumer compatibility report
+  immutable: true
+  contentAddressed: true
+- id: test-plan
+  purpose: Unit, integration, contract, migration, messaging and regression scope
+  immutable: true
+  contentAddressed: true
+- id: test-results
+  purpose: Structured JUnit and integration test evidence
+  immutable: true
+  contentAddressed: true
+- id: quality-gate-report
+  purpose: Compile, static analysis, tests, scans, package and policy results
+  immutable: true
+  contentAddressed: true
+- id: security-review
+  purpose: Threats, findings, reachability, mitigations and residual risk
+  immutable: true
+  contentAddressed: true
+- id: performance-review
+  purpose: Latency, allocation, GC, pool and load-test findings
+  immutable: true
+  contentAddressed: true
+- id: dependency-report
+  purpose: Tree, conflicts, vulnerabilities, licenses and upgrade notes
+  immutable: true
+  contentAddressed: true
+- id: sbom-provenance
+  purpose: SBOM, checksums, build provenance and image digest
+  immutable: true
+  contentAddressed: true
+- id: pull-request-draft
+  purpose: Traceable PR title, description, evidence and reviewer guidance
+  immutable: true
+  contentAddressed: true
+- id: release-readiness
+  purpose: Deployment, compatibility, flags, migration and rollback readiness
+  immutable: true
+  contentAddressed: true
+- id: operational-runbook
+  purpose: Health, dashboards, alerts, failure modes and recovery actions
+  immutable: true
+  contentAddressed: true
+- id: daily-summary
+  purpose: Completed work, blockers, evidence and next actions
+  immutable: true
+  contentAddressed: true
+- id: audit-record
+  purpose: Immutable run, identity, policy, tool and approval history
+  immutable: true
+  contentAddressed: true

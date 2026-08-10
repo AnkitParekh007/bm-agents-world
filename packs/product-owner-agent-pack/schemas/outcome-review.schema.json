@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bm-agent-foundry.local/schemas/product-outcome-review.schema.json",
+  "title": "Product Outcome Review",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "initiative",
+    "hypothesis",
+    "metrics",
+    "findings",
+    "recommendation"
+  ],
+  "properties": {
+    "initiative": {
+      "type": "string"
+    },
+    "hypothesis": {
+      "type": "string"
+    },
+    "metrics": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "unintended_effects": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "recommendation": {
+      "enum": [
+        "continue",
+        "iterate",
+        "expand",
+        "pause",
+        "retire",
+        "collect-more-evidence"
+      ]
+    },
+    "backlog_actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

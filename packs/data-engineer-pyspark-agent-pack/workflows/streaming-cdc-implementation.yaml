@@ -1,0 +1,47 @@
+name: streaming-cdc-implementation
+version: 1.0.0
+trigger: Approved streaming, event, or CDC change
+scope_binding:
+- project
+- stream
+- topic
+- consumer_group
+- checkpoint
+- target_dataset
+- environment
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: verify streaming scope, data classification, topic, checkpoint, sink, and execution boundary
+- id: contract
+  agent: data-contract-agent
+  action: validate event and schema compatibility and consumer ownership
+- id: cdc
+  agent: ingestion-cdc-agent
+  action: design keys, ordering, operations, deduplication, replay, and reconciliation
+- id: streaming
+  agent: structured-streaming-agent
+  action: implement watermarks, state, triggers, checkpoints, sources, and sinks
+- id: table
+  agent: lakehouse-table-agent
+  action: validate sink table, concurrency, evolution, retention, and recovery behavior
+- id: tests
+  agent: data-testing-agent
+  action: run late, duplicate, restart, replay, schema, state, and sink-failure tests
+- id: reliability
+  agent: pipeline-reliability-agent
+  action: review restartability, checkpoint safety, monitoring, and stop conditions
+- id: review
+  agent: data-engineering-independent-reviewer-agent
+  action: challenge correctness, state growth, replay safety, and operational readiness
+- id: release
+  agent: pipeline-release-agent
+  action: prepare approval-controlled streaming candidate and runbook
+outputs:
+- streaming-job-specification
+- cdc-ingestion-specification
+- data-contract
+- pipeline-runbook
+- release-evidence-bundle
+failure_behavior: block release on incompatible schemas, unsafe checkpoints, unbounded state, or unverified replay
+  behavior

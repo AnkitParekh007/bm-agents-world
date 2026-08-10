@@ -1,0 +1,50 @@
+name: release-acceptance-and-rollout
+version: 1.0.0
+trigger: Release candidate or approved release window
+scope_binding:
+- project
+- product
+- release
+- environment
+- requester
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: verify release scope, evidence access, decision authority, and production prohibitions
+- id: context
+  agent: work-context-agent
+  action: collect included items, changes, approvals, quality, incidents, support, rollout, and decision history
+- id: parallel-readiness
+  parallel:
+  - agent: qa-readiness-agent
+    action: collect test, regression, defect, and environment evidence
+  - agent: ux-readiness-agent
+    action: collect UX, content, accessibility, and design-QA evidence
+  - agent: technical-readiness-agent
+    action: collect architecture, API, data, migration, security, and operability evidence
+  - agent: uat-business-acceptance-agent
+    action: collect UAT findings and business-acceptance recommendation
+  - agent: risk-compliance-agent
+    action: verify mandatory approvals and unresolved risks
+  - agent: analytics-outcome-agent
+    action: verify instrumentation, baselines, success, and guardrail measures
+- id: synthesize
+  agent: release-acceptance-agent
+  action: prepare release scope, known risks, rollout, monitoring, support, rollback, and recommendation
+- id: review
+  agent: product-owner-reviewer-agent
+  action: independently challenge evidence completeness and recommendation
+- id: human-decision
+  agent: product-owner-supervisor
+  action: request named accountable human release and business decision
+- id: observe
+  agent: analytics-outcome-agent
+  action: perform read-only post-release observation after authorized execution
+outputs:
+- release-acceptance-pack
+- business-acceptance-report
+- release-notes-draft
+- analytics-measurement-plan
+- approval-record
+failure_behavior: recommend no-go or defer when mandatory evidence or approval is absent; never execute production
+  changes

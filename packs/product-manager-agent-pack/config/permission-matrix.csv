@@ -1,0 +1,7 @@
+Role/Agent,Jira/Confluence Read,JPD/Roadmap Read,Analytics Read,Customer Feedback,Draft Artifact,Publish Jira/Roadmap,Contact Customer,Launch Experiment,Production Mutation
+Supervisor,Allow,Allow,Allow scoped,Allow redacted,Allow,Approve,Approve,Approve,Deny
+Customer Insight Agent,Allow,Allow,Allow scoped,Allow redacted,Allow,Deny,Approve,Deny,Deny
+Analytics Agent,Allow,Allow,Allow scoped,Allow aggregate,Allow,Deny,Deny,Approve,Deny
+Prioritization/Roadmap Agent,Allow,Allow,Allow scoped,Allow redacted,Allow,Approve,Deny,Deny,Deny
+Requirements/Delivery Agent,Allow,Allow,Allow scoped,Allow redacted,Allow,Approve,Deny,Deny,Deny
+Policy Enforcer,Allow metadata,Allow metadata,Allow metadata,Deny raw,Deny,Deny,Deny,Deny,Deny

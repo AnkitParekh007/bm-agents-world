@@ -1,0 +1,74 @@
+version: '1.0'
+servers:
+- id: atlassian-mcp
+  purpose: Jira/Confluence work context
+  access: read + approved write
+  raw_secret_exposure: false
+- id: bitbucket-mcp
+  purpose: Repositories, pull requests, pipeline metadata
+  access: read + approved write
+  raw_secret_exposure: false
+- id: mlflow-mcp
+  purpose: Experiments, traces, registry, prompts, evaluations
+  access: scoped
+  raw_secret_exposure: false
+- id: kubeflow-mcp
+  purpose: Pipeline, training, notebook and model-registry metadata
+  access: scoped
+  raw_secret_exposure: false
+- id: kserve-mcp
+  purpose: InferenceService and LLMInferenceService metadata
+  access: read + approved change request
+  raw_secret_exposure: false
+- id: kubernetes-mcp
+  purpose: Cluster, workload, quota and event metadata
+  access: bounded read
+  raw_secret_exposure: false
+- id: container-registry-mcp
+  purpose: Images, digests, attestations, SBOM references
+  access: read
+  raw_secret_exposure: false
+- id: artifact-store-mcp
+  purpose: Model/checkpoint/evaluation artifact metadata
+  access: bounded read
+  raw_secret_exposure: false
+- id: feature-store-mcp
+  purpose: Feature definitions, freshness, ownership and materialization state
+  access: bounded read
+  raw_secret_exposure: false
+- id: vector-platform-mcp
+  purpose: Index metadata, embedding versions, freshness and tenancy
+  access: bounded read
+  raw_secret_exposure: false
+- id: model-gateway-mcp
+  purpose: Provider catalog, quotas, routing and usage metadata
+  access: read + approved policy change
+  raw_secret_exposure: false
+- id: observability-mcp
+  purpose: Metrics, logs, traces and dashboards
+  access: bounded read
+  raw_secret_exposure: false
+- id: gpu-platform-mcp
+  purpose: GPU inventory, allocation and telemetry
+  access: bounded read
+  raw_secret_exposure: false
+- id: cloud-platform-mcp
+  purpose: Cloud capacity, quotas and managed AI service metadata
+  access: bounded read
+  raw_secret_exposure: false
+- id: cost-management-mcp
+  purpose: Cost and budget data
+  access: bounded read
+  raw_secret_exposure: false
+- id: security-assurance-mcp
+  purpose: Vulnerability, provenance and policy evidence
+  access: read
+  raw_secret_exposure: false
+- id: key-vault-mcp
+  purpose: Secret references and capability leases
+  access: broker-only
+  raw_secret_exposure: false
+- id: policy-approval-mcp
+  purpose: OPA decisions, approval records and immutable action bundles
+  access: policy/approval
+  raw_secret_exposure: false

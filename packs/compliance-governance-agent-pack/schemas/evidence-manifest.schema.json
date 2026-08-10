@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.internal/schemas/evidence-manifest.schema.json",
+  "title": "Evidence Manifest",
+  "type": "object",
+  "required": [
+    "evidence_id",
+    "source",
+    "collected_at",
+    "hash",
+    "classification"
+  ],
+  "properties": {
+    "evidence_id": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "collected_at": {
+      "type": "string"
+    },
+    "hash": {
+      "type": "string"
+    },
+    "classification": {
+      "type": "string"
+    },
+    "redactions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

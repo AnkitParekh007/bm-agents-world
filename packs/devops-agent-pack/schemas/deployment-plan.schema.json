@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/devops-agent/deployment-plan.schema.json",
+  "title": "Deployment Plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "service",
+    "environment",
+    "artifact_digest",
+    "strategy",
+    "prechecks",
+    "success_criteria",
+    "stop_conditions",
+    "rollback"
+  ],
+  "properties": {
+    "service": {
+      "type": "string",
+      "minLength": 1
+    },
+    "environment": {
+      "type": "string",
+      "minLength": 1
+    },
+    "artifact_digest": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_revision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "strategy": {
+      "type": "string",
+      "enum": [
+        "rolling",
+        "canary",
+        "blue-green",
+        "recreate",
+        "feature-flag",
+        "custom"
+      ]
+    },
+    "prechecks": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "success_criteria": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "stop_conditions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "rollback": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "approvals": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "observation_window": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

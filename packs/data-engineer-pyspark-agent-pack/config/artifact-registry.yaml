@@ -1,0 +1,200 @@
+version: 1.0.0
+artifact_count: 28
+artifacts:
+- id: data-product-brief
+  description: Purpose, users, outcomes, owners, sources, consumers, service levels, risks, and boundaries.
+  formats:
+  - markdown
+  - json
+  retention: project-data-and-audit-policy
+  publication: approval-controlled
+- id: source-system-inventory
+  description: Source ownership, schemas, extraction methods, volumes, freshness, quality, and constraints.
+  formats:
+  - markdown
+  - json
+  retention: project-data-and-audit-policy
+  publication: approval-controlled
+- id: source-to-target-mapping
+  description: Field-level source, transformation, target, rule, default, quality, and lineage mapping.
+  formats:
+  - markdown
+  - json
+  retention: project-data-and-audit-policy
+  publication: approval-controlled
+- id: data-contract
+  description: Versioned schema, semantics, ownership, service levels, compatibility, quality, and change policy.
+  formats:
+  - markdown
+  - json
+  retention: project-data-and-audit-policy
+  publication: approval-controlled
+- id: schema-registry-record
+  description: Approved schema identity, version, format, compatibility mode, subjects, and consumers.
+  formats:
+  - markdown
+  - json
+  retention: project-data-and-audit-policy
+  publication: approval-controlled
+- id: logical-data-model
+  description: Entities, relationships, grain, keys, business terms, and semantic definitions.
+  formats:
+  - markdown
+  - json
+  retention: project-data-and-audit-policy
+  publication: approval-controlled
+- id: physical-dataset-design
+  description: Tables, columns, types, partitioning, clustering, file format, retention, and access design.
+  formats:
+  - markdown
+  - json
+  retention: project-data-and-audit-policy
+  publication: approval-controlled
+- id: pipeline-architecture-design
+  description: Sources, stages, compute, storage, orchestration, quality, lineage, security, and operations.
+  formats:
+  - markdown
+  - json
+  retention: project-data-and-audit-policy
+  publication: approval-controlled
+- id: batch-job-specification
+  description: Inputs, transformations, outputs, partitions, dependencies, retries, controls, and success criteria.
+  formats:
+  - markdown
+  - json
+  retention: project-data-and-audit-policy
+  publication: approval-controlled
+- id: streaming-job-specification
+  description: Sources, sinks, offsets, watermarks, state, checkpoints, triggers, late data, and recovery.
+  formats:
+  - markdown
+  - json
+  retention: project-data-and-audit-policy
+  publication: approval-controlled
+- id: cdc-ingestion-specification
+  description: Keys, sequence, operation handling, deduplication, ordering, deletes, replay, and reconciliation.
+  formats:
+  - markdown
+  - json
+  retention: project-data-and-audit-policy
+  publication: approval-controlled
+- id: data-quality-specification
+  description: Rules, dimensions, thresholds, severity, quarantine, ownership, and enforcement behavior.
+  formats:
+  - markdown
+  - json
+  retention: project-data-and-audit-policy
+  publication: approval-controlled
+- id: data-quality-report
+  description: Run-bound rule results, invalid samples, trends, thresholds, actions, and evidence.
+  formats:
+  - markdown
+  - json
+  retention: project-data-and-audit-policy
+  publication: approval-controlled
+- id: reconciliation-report
+  description: Source and target totals, counts, hashes, exceptions, tolerance, and disposition.
+  formats:
+  - markdown
+  - json
+  retention: project-data-and-audit-policy
+  publication: approval-controlled
+- id: data-test-plan
+  description: Unit, contract, integration, quality, regression, scale, recovery, and acceptance tests.
+  formats:
+  - markdown
+  - json
+  retention: project-data-and-audit-policy
+  publication: approval-controlled
+- id: spark-performance-report
+  description: Plans, stages, scans, shuffles, skew, partitions, memory, runtime, cost, and recommendations.
+  formats:
+  - markdown
+  - json
+  retention: project-data-and-audit-policy
+  publication: approval-controlled
+- id: lineage-and-impact-map
+  description: Job, run, dataset, field, upstream, downstream, consumer, and change-impact relationships.
+  formats:
+  - markdown
+  - json
+  retention: project-data-and-audit-policy
+  publication: approval-controlled
+- id: pipeline-runbook
+  description: Operations, schedules, monitoring, failure modes, restart, replay, escalation, and recovery.
+  formats:
+  - markdown
+  - json
+  retention: project-data-and-audit-policy
+  publication: approval-controlled
+- id: backfill-plan
+  description: Scope, partitions, ordering, concurrency, validation, stop conditions, rollback, and reconciliation.
+  formats:
+  - markdown
+  - json
+  retention: project-data-and-audit-policy
+  publication: approval-controlled
+- id: data-migration-plan
+  description: Current and target state, compatibility, dual run, cutover, validation, and retirement.
+  formats:
+  - markdown
+  - json
+  retention: project-data-and-audit-policy
+  publication: approval-controlled
+- id: deployment-plan
+  description: Candidate identity, environments, sequencing, configuration, gates, monitoring, and owners.
+  formats:
+  - markdown
+  - json
+  retention: project-data-and-audit-policy
+  publication: approval-controlled
+- id: rollback-and-recovery-plan
+  description: Reversion, restore, checkpoint, replay, table snapshot, validation, and communication steps.
+  formats:
+  - markdown
+  - json
+  retention: project-data-and-audit-policy
+  publication: approval-controlled
+- id: data-incident-report
+  description: Impact, affected datasets, timeline, diagnosis, mitigation, correction, and follow-up.
+  formats:
+  - markdown
+  - json
+  retention: project-data-and-audit-policy
+  publication: approval-controlled
+- id: data-issue-defect
+  description: Reproduction, expected and actual data, affected partitions, evidence, severity, and ownership.
+  formats:
+  - markdown
+  - json
+  retention: project-data-and-audit-policy
+  publication: approval-controlled
+- id: release-evidence-bundle
+  description: Source revision, artifacts, contracts, tests, quality, performance, security, approvals, and hashes.
+  formats:
+  - markdown
+  - json
+  retention: project-data-and-audit-policy
+  publication: approval-controlled
+- id: cost-and-capacity-report
+  description: Current and forecast compute, storage, file, state, concurrency, and cost evidence.
+  formats:
+  - markdown
+  - json
+  retention: project-data-and-audit-policy
+  publication: approval-controlled
+- id: data-privacy-impact-assessment
+  description: Classification, purpose, minimization, access, retention, residency, masking, and deletion controls.
+  formats:
+  - markdown
+  - json
+  retention: project-data-and-audit-policy
+  publication: approval-controlled
+- id: production-action-request
+  description: Exact pipeline or data action, target, scope, payload hash, controls, approval, stop conditions,
+    and verification.
+  formats:
+  - markdown
+  - json
+  retention: project-data-and-audit-policy
+  publication: approval-controlled

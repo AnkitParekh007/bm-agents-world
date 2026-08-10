@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Database Design",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "engine_profile": {
+      "type": "object"
+    },
+    "domain_model": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "logical_model": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "physical_objects": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "security_controls": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "tradeoffs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "decision": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "run_id",
+    "engine_profile",
+    "logical_model",
+    "physical_objects",
+    "decision"
+  ]
+}

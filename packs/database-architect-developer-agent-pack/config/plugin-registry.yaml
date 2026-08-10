@@ -1,0 +1,122 @@
+version: 1.0.0
+plugins:
+- id: bitbucket-adapter
+  description: Bitbucket Cloud/Data Center repositories, pull requests, diffs, and pipeline operations
+  pinned: true
+  sandboxed: true
+  secret_access: brokered-only
+  status: planned
+- id: jira-confluence-adapter
+  description: Atlassian context and controlled writes
+  pinned: true
+  sandboxed: true
+  secret_access: brokered-only
+  status: planned
+- id: postgresql-adapter
+  description: PostgreSQL catalog, EXPLAIN, statistics, roles, RLS, and sandbox operations
+  pinned: true
+  sandboxed: true
+  secret_access: brokered-only
+  status: planned
+- id: oracle-database-adapter
+  description: Oracle catalog, SQL/PLSQL, plans, privileges, AWR-compatible evidence, and sandbox operations
+  pinned: true
+  sandboxed: true
+  secret_access: brokered-only
+  status: planned
+- id: sql-server-adapter
+  description: SQL Server catalog, Query Store, plans, permissions, RLS, and sandbox operations
+  pinned: true
+  sandboxed: true
+  secret_access: brokered-only
+  status: planned
+- id: mysql-mariadb-adapter
+  description: MySQL/MariaDB catalog, EXPLAIN, Performance Schema, roles, and sandbox operations
+  pinned: true
+  sandboxed: true
+  secret_access: brokered-only
+  status: planned
+- id: generic-jdbc-odbc-adapter
+  description: Allowlisted metadata and query operations for other supported relational engines
+  pinned: true
+  sandboxed: true
+  secret_access: brokered-only
+  status: planned
+- id: flyway-adapter
+  description: Flyway info, validate, SQL preview, migrate-in-sandbox, and history evidence
+  pinned: true
+  sandboxed: true
+  secret_access: brokered-only
+  status: planned
+- id: liquibase-adapter
+  description: Liquibase status, checks, update-sql, rollback-sql, sandbox update, and changelog evidence
+  pinned: true
+  sandboxed: true
+  secret_access: brokered-only
+  status: planned
+- id: schema-diff-adapter
+  description: Engine-aware object diff, dependency ordering, and drift classification
+  pinned: true
+  sandboxed: true
+  secret_access: brokered-only
+  status: planned
+- id: query-plan-adapter
+  description: Normalizes estimated/actual plans, operators, estimates, waits, and regressions
+  pinned: true
+  sandboxed: true
+  secret_access: brokered-only
+  status: planned
+- id: data-profiler-adapter
+  description: Bounded profiling, quality rules, reconciliation, and redaction
+  pinned: true
+  sandboxed: true
+  secret_access: brokered-only
+  status: planned
+- id: synthetic-data-adapter
+  description: Relationship-aware synthetic test-data generation
+  pinned: true
+  sandboxed: true
+  secret_access: brokered-only
+  status: planned
+- id: backup-recovery-adapter
+  description: Backup, restore, replication, and recovery metadata without destructive controls
+  pinned: true
+  sandboxed: true
+  secret_access: brokered-only
+  status: planned
+- id: observability-adapter
+  description: Metrics, logs, traces, query statistics, capacity, and alert retrieval
+  pinned: true
+  sandboxed: true
+  secret_access: brokered-only
+  status: planned
+- id: ci-database-adapter
+  description: Migration checks, disposable database tests, SQL linting, and release evidence
+  pinned: true
+  sandboxed: true
+  secret_access: brokered-only
+  status: planned
+- id: secret-manager-adapter
+  description: Vault, cloud key manager, or enterprise secret-manager integration
+  pinned: true
+  sandboxed: true
+  secret_access: brokered-only
+  status: planned
+- id: approval-adapter
+  description: Payload-bound, expiring human approvals with separation of duties
+  pinned: true
+  sandboxed: true
+  secret_access: brokered-only
+  status: planned
+- id: artifact-adapter
+  description: Immutable evidence storage and retrieval
+  pinned: true
+  sandboxed: true
+  secret_access: brokered-only
+  status: planned
+- id: teams-adapter
+  description: Approved collaboration publication
+  pinned: true
+  sandboxed: true
+  secret_access: brokered-only
+  status: planned

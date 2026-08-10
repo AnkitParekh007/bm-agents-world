@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Test Execution Result",
+  "type": "object",
+  "required": [
+    "runId",
+    "testCaseId",
+    "status",
+    "build",
+    "evidenceIds"
+  ],
+  "properties": {
+    "runId": {
+      "type": "string"
+    },
+    "testCaseId": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "passed",
+        "failed",
+        "blocked",
+        "skipped",
+        "error"
+      ]
+    },
+    "build": {
+      "type": "string"
+    },
+    "startedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "finishedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "evidenceIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "failure": {
+      "type": [
+        "object",
+        "null"
+      ]
+    }
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bm-agent-foundry.local/schemas/architecture-option.schema.json",
+  "title": "Architecture Option Evaluation",
+  "type": "object",
+  "required": [
+    "decisionId",
+    "criteria",
+    "options",
+    "recommendation",
+    "reviewStatus"
+  ],
+  "properties": {
+    "decisionId": {
+      "type": "string"
+    },
+    "criteria": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "weight",
+          "measurement"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "weight": {
+            "type": "number",
+            "minimum": 0
+          },
+          "measurement": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "options": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "summary",
+          "scores",
+          "benefits",
+          "risks",
+          "cost",
+          "reversibility",
+          "evidenceRefs"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "scores": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "number"
+            }
+          },
+          "benefits": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "risks": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "cost": {
+            "type": "object"
+          },
+          "reversibility": {
+            "enum": [
+              "easy",
+              "moderate",
+              "difficult",
+              "irreversible"
+            ]
+          },
+          "assumptions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "evidenceRefs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "recommendation": {
+      "type": "object",
+      "required": [
+        "optionId",
+        "rationale",
+        "conditions"
+      ],
+      "properties": {
+        "optionId": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "reviewStatus": {
+      "enum": [
+        "draft",
+        "independent-review",
+        "approved",
+        "rejected",
+        "superseded"
+      ]
+    },
+    "approvalReference": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

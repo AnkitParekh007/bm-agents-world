@@ -1,0 +1,92 @@
+version: 1.0.0
+servers:
+- id: atlassian-rovo-mcp
+  purpose: Jira and Confluence context and approved publication
+  access: read/write-approved
+  authentication: capability-broker
+  production: read-only unless separately approved
+- id: bitbucket-mcp
+  purpose: Repositories, pull requests, diffs, pipelines, deployments, and approved writes
+  access: read/write-approved
+  authentication: capability-broker
+  production: read-only unless separately approved
+- id: workspace-git-mcp
+  purpose: Scoped filesystem, worktree, Git diff, validation, and patch operations
+  access: sandbox-write
+  authentication: capability-broker
+  production: read-only unless separately approved
+- id: cloud-control-plane-mcp
+  purpose: Provider-neutral adapter over approved AWS, Azure, GCP, or private-cloud APIs
+  access: read/approved-write
+  authentication: capability-broker
+  production: read-only unless separately approved
+- id: terraform-opentofu-mcp
+  purpose: Format, validate, plan, show, graph, test, and approved apply brokerage
+  access: plan/approved-apply
+  authentication: capability-broker
+  production: read-only unless separately approved
+- id: ansible-automation-mcp
+  purpose: Inventory, lint, check mode, playbook execution, and approved operations
+  access: check/approved-run
+  authentication: capability-broker
+  production: read-only unless separately approved
+- id: kubernetes-mcp
+  purpose: Scoped Kubernetes discovery, diff, events, logs, and approved non-production actions
+  access: read/approved-write
+  authentication: capability-broker
+  production: read-only unless separately approved
+- id: helm-kustomize-mcp
+  purpose: Chart, template, lint, dependency, Kustomize, and manifest rendering tools
+  access: local-render
+  authentication: capability-broker
+  production: read-only unless separately approved
+- id: gitops-mcp
+  purpose: Argo CD or approved GitOps status, diff, history, and approved sync/rollback
+  access: read/approved-write
+  authentication: capability-broker
+  production: read-only unless separately approved
+- id: container-build-registry-mcp
+  purpose: BuildKit/Docker build, SBOM, scan, sign, verify, and registry promotion
+  access: sandbox/approved-publish
+  authentication: capability-broker
+  production: read-only unless separately approved
+- id: cicd-runner-mcp
+  purpose: Pipeline validation, run status, logs, artifacts, retries, and approved triggers
+  access: read/approved-trigger
+  authentication: capability-broker
+  production: read-only unless separately approved
+- id: observability-mcp
+  purpose: Bounded metrics, logs, traces, dashboards, alerts, and service-health queries
+  access: read/approved-config
+  authentication: capability-broker
+  production: read-only unless separately approved
+- id: incident-management-mcp
+  purpose: Incident records, paging context, timelines, communications, and approved actions
+  access: read/write-approved
+  authentication: capability-broker
+  production: read-only unless separately approved
+- id: vault-identity-mcp
+  purpose: Capability leases, workload identity, dynamic credentials, and secret references
+  access: adapter-only
+  authentication: capability-broker
+  production: read-only unless separately approved
+- id: security-scanner-mcp
+  purpose: Secret, dependency, container, IaC, Kubernetes, SBOM, signature, and policy scans
+  access: local/read
+  authentication: capability-broker
+  production: read-only unless separately approved
+- id: finops-mcp
+  purpose: Cost, usage, allocation, budgets, anomalies, and approved forecasts
+  access: read
+  authentication: capability-broker
+  production: read-only unless separately approved
+- id: artifact-evidence-mcp
+  purpose: Immutable evidence, reports, hashes, provenance, and retention metadata
+  access: write-artifacts
+  authentication: capability-broker
+  production: read-only unless separately approved
+- id: policy-approval-mcp
+  purpose: OPA decisions, human approvals, payload binding, expiry, and audit
+  access: decision
+  authentication: capability-broker
+  production: read-only unless separately approved

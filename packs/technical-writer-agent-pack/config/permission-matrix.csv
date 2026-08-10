@@ -1,0 +1,11 @@
+role,resource,action,environment,mode,approval
+technical-writer-supervisor,approved-context,read,all,bounded-read,none
+docs-as-code-agent,isolated-workspace,write,sandbox,draft-and-validate,none
+code-sample-agent,isolated-test-worker,execute,sandbox,version-pinned,none
+documentation-reviewer-agent,drafts-and-evidence,read,all,independent-review,none
+technical-writer-supervisor,bitbucket-documentation,create-pr,nonproduction,protected-write,content-owner
+technical-writer-supervisor,documentation-platform,publish,public-or-internal,protected-write,target-owner
+release-documentation-agent,release-notes,publish,public-or-internal,protected-write,release-and-product-owner
+runbook-and-operations-agent,production-runbook,publish,production,protected-write,service-and-operations-owner
+all-agents,production-systems,mutate,production,deny,prohibited
+all-agents,raw-secrets-or-unredacted-customer-data,read,all,deny,prohibited

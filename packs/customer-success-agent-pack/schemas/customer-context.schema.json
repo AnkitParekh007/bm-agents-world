@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/customer-success/customer-context.schema.json",
+  "title": "Customer Context",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "project",
+    "customer_id",
+    "purpose",
+    "requester",
+    "sources",
+    "constraints"
+  ],
+  "properties": {
+    "project": {
+      "type": "string"
+    },
+    "customer_id": {
+      "type": "string"
+    },
+    "customer_name": {
+      "type": "string"
+    },
+    "lifecycle_stage": {
+      "type": "string"
+    },
+    "segment": {
+      "type": "string"
+    },
+    "products": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "requester": {
+      "type": "string"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "data_classification": {
+      "type": "string"
+    },
+    "account_owner": {
+      "type": "string"
+    },
+    "environment": {
+      "type": "string"
+    }
+  }
+}

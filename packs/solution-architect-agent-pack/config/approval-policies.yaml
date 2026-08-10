@@ -1,0 +1,88 @@
+apiVersion: solution-architect-agent-pack/v1
+kind: ApprovalPolicyRegistry
+metadata:
+  name: solution-architect-approval-policies
+  version: 1.0.0
+spec:
+  principles:
+  - Approvals are bound to immutable payload hashes.
+  - The authoring agent cannot approve its own high-risk output.
+  - Changed payloads invalidate prior approvals.
+  - Production execution is performed by an approved deterministic pipeline or authorized operator.
+  policies:
+  - id: publish-architecture-decision
+    actions:
+    - publish_adr
+    - supersede_adr
+    - approve_architecture_standard
+    approvers:
+    - accountable-solution-architect
+    - engineering-owner
+    minimumApprovals: 1
+    independentReviewRequired: true
+  - id: approve-high-risk-architecture
+    actions:
+    - approve_high_risk_architecture
+    - accept_residual_risk
+    - approve_security_exception
+    approvers:
+    - architecture-review-board
+    - security-owner
+    - business-risk-owner
+    minimumApprovals: 2
+    independentReviewRequired: true
+  - id: publish-integration-contract
+    actions:
+    - publish_openapi
+    - publish_asyncapi
+    - publish_data_contract
+    approvers:
+    - producer-owner
+    - consumer-owner
+    - solution-architect
+    minimumApprovals: 2
+    independentReviewRequired: true
+  - id: external-system-write
+    actions:
+    - jira_write
+    - confluence_publish
+    - teams_post
+    - bitbucket_write
+    - create_pull_request
+    approvers:
+    - request-owner
+    minimumApprovals: 1
+    independentReviewRequired: false
+  - id: nonproduction-poc
+    actions:
+    - provision_nonproduction_poc
+    - run_bounded_load_test
+    - deploy_nonproduction_reference
+    approvers:
+    - environment-owner
+    - security-owner
+    minimumApprovals: 1
+    independentReviewRequired: true
+  - id: vendor-or-commercial-recommendation
+    actions:
+    - publish_vendor_recommendation
+    - publish_tco_model
+    - start_vendor_trial
+    approvers:
+    - procurement-owner
+    - security-owner
+    - budget-owner
+    minimumApprovals: 2
+    independentReviewRequired: true
+  - id: production-change-request
+    actions:
+    - request_production_change
+    - request_production_migration
+    - request_production_cutover
+    approvers:
+    - change-owner
+    - service-owner
+    - security-or-risk-owner
+    minimumApprovals: 2
+    independentReviewRequired: true
+    agentExecutionAllowed: false

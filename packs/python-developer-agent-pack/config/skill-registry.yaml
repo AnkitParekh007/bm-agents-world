@@ -1,0 +1,578 @@
+apiVersion: python-developer-agent-pack/v1
+kind: SkillRegistry
+skills:
+- id: python.story-context
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Context and planning
+- id: python.acceptance-criteria
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Context and planning
+- id: python.dependency-analysis
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Context and planning
+- id: python.risk-scoring
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Context and planning
+- id: python.implementation-plan
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Context and planning
+- id: python.rollback-plan
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Context and planning
+- id: python.adr-draft
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Context and planning
+- id: python.map-repository
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Repository discovery
+- id: python.detect-python-version
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Repository discovery
+- id: python.detect-framework
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Repository discovery
+- id: python.detect-dependency-manager
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Repository discovery
+- id: python.detect-test-stack
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Repository discovery
+- id: python.detect-quality-gates
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Repository discovery
+- id: python.detect-protected-paths
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Repository discovery
+- id: python.find-related-code
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Repository discovery
+- id: python.typed-functions
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Python language
+- id: python.dataclasses-and-models
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Python language
+- id: python.protocols-and-generics
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Python language
+- id: python.exceptions
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Python language
+- id: python.context-managers
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Python language
+- id: python.iterators-generators
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Python language
+- id: python.filesystem-pathlib
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Python language
+- id: python.serialization
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Python language
+- id: python.logging
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Python language
+- id: python.configuration
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Python language
+- id: python.openapi-read
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: API services
+- id: python.endpoint-design
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: API services
+- id: python.schema-validation
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: API services
+- id: python.authn-authz
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: API services
+- id: python.pagination-filtering
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: API services
+- id: python.idempotency
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: API services
+- id: python.middleware
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: API services
+- id: python.webhooks
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: API services
+- id: python.error-contracts
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: API services
+- id: python.api-versioning
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: API services
+- id: python.schema-read
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Persistence
+- id: python.orm-mapping
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Persistence
+- id: python.query-design
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Persistence
+- id: python.transaction-design
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Persistence
+- id: python.migration-draft
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Persistence
+- id: python.index-review
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Persistence
+- id: python.concurrency-control
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Persistence
+- id: python.read-only-diagnostics
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Persistence
+- id: python.data-reconciliation
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Persistence
+- id: python.asyncio-design
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Async and workers
+- id: python.blocking-call-detection
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Async and workers
+- id: python.cancellation-cleanup
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Async and workers
+- id: python.bounded-concurrency
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Async and workers
+- id: python.timeouts-retries
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Async and workers
+- id: python.queue-consumer
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Async and workers
+- id: python.idempotent-job
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Async and workers
+- id: python.scheduler-timezones
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Async and workers
+- id: python.graceful-shutdown
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Async and workers
+- id: python.data-contracts
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Data engineering
+- id: python.pyspark-transformations
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Data engineering
+- id: python.batch-pipelines
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Data engineering
+- id: python.streaming-pipelines
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Data engineering
+- id: python.schema-drift
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Data engineering
+- id: python.data-quality
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Data engineering
+- id: python.partitioning
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Data engineering
+- id: python.checkpointing
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Data engineering
+- id: python.lineage
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Data engineering
+- id: python.reconciliation
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Data engineering
+- id: python.cli-design
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Automation and CLI
+- id: python.dry-run
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Automation and CLI
+- id: python.idempotent-automation
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Automation and CLI
+- id: python.exit-codes
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Automation and CLI
+- id: python.resumability
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Automation and CLI
+- id: python.safe-filesystem
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Automation and CLI
+- id: python.subprocess-safety
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Automation and CLI
+- id: python.runbook-generation
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Automation and CLI
+- id: python.pytest-unit
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Testing
+- id: python.pytest-fixtures
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Testing
+- id: python.pytest-parametrize
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Testing
+- id: python.async-tests
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Testing
+- id: python.integration-tests
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Testing
+- id: python.contract-tests
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Testing
+- id: python.property-tests
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Testing
+- id: python.migration-tests
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Testing
+- id: python.concurrency-tests
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Testing
+- id: python.flaky-test-analysis
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Testing
+- id: python.coverage-analysis
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Testing
+- id: python.format
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Quality and security
+- id: python.lint
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Quality and security
+- id: python.typecheck
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Quality and security
+- id: python.complexity-review
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Quality and security
+- id: python.secret-scan
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Quality and security
+- id: python.dependency-audit
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Quality and security
+- id: python.static-security
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Quality and security
+- id: python.unsafe-deserialization
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Quality and security
+- id: python.injection-review
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Quality and security
+- id: python.path-traversal
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Quality and security
+- id: python.ssrf-review
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Quality and security
+- id: python.privacy-review
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Quality and security
+- id: python.profiling
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Performance and operations
+- id: python.query-performance
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Performance and operations
+- id: python.memory-review
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Performance and operations
+- id: python.load-test-plan
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Performance and operations
+- id: python.caching
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Performance and operations
+- id: python.resilience
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Performance and operations
+- id: python.health-checks
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Performance and operations
+- id: python.structured-logging
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Performance and operations
+- id: python.metrics
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Performance and operations
+- id: python.tracing
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Performance and operations
+- id: python.runbook
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Performance and operations
+- id: python.pyproject
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Packaging and release
+- id: python.dependency-groups
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Packaging and release
+- id: python.lockfile-update
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Packaging and release
+- id: python.wheel-sdist-build
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Packaging and release
+- id: python.clean-install-test
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Packaging and release
+- id: python.python-matrix-test
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Packaging and release
+- id: python.container-build
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Packaging and release
+- id: python.sbom
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Packaging and release
+- id: python.release-notes
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Packaging and release
+- id: python.pr-draft
+  version: 1.0.0
+  status: planned
+  compatibilityProfile: repository-resolved
+  category: Packaging and release

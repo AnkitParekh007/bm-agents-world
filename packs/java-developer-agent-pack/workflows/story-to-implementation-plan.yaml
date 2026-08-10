@@ -1,0 +1,74 @@
+apiVersion: java-developer-agent-pack/v1
+kind: Workflow
+metadata:
+  name: story-to-implementation-plan
+  version: 1.0.0
+spec:
+  trigger: jira-item-selected
+  initialState: requested
+  steps:
+  - id: authorize
+    agent: policy-enforcer
+    outputs:
+    - scope-decision
+  - id: load-story
+    agent: story-context
+    uses:
+    - java.jira-context
+    - java.requirement-decomposition
+    outputs:
+    - story-context
+    dependsOn:
+    - authorize
+  - id: profile-repository
+    agent: repository-context
+    uses:
+    - java.repo-profile
+    - java.module-graph
+    - java.configuration-map
+    outputs:
+    - repository-profile
+    dependsOn:
+    - authorize
+  - id: resolve-compatibility
+    agent: java-runtime-compatibility
+    uses:
+    - java.version-detection
+    - java.framework-versioning
+    - java.jvm-toolchains
+    outputs:
+    - compatibility-profile
+    dependsOn:
+    - profile-repository
+  - id: analyze
+    parallel: true
+    agents:
+    - architecture-impact
+    - api-service
+    - persistence-data
+    - messaging-integration
+    - test-engineer
+    - security-reviewer
+    - performance-reliability
+    outputs:
+    - specialist-analysis
+    dependsOn:
+    - load-story
+    - resolve-compatibility
+  - id: plan
+    agent: java-developer-supervisor
+    uses:
+    - java.architecture-impact
+    - java.traceability-map
+    - java.risk-classification
+    outputs:
+    - implementation-plan
+    - approval-requirements
+    dependsOn:
+    - analyze
+  - id: store-evidence
+    agent: evidence-manager
+    outputs:
+    - artifact-references
+    dependsOn:
+    - plan

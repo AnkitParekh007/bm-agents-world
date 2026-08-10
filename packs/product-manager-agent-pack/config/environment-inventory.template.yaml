@@ -1,0 +1,44 @@
+version: 1.0.0
+environments:
+- id: product-sandbox
+  classification: isolated
+  allowed:
+  - drafts
+  - scoring
+  - scenario-planning
+  - synthetic-analysis
+  approval: none
+  production_data: false
+- id: planning
+  classification: internal
+  allowed:
+  - roadmap-drafts
+  - portfolio-scenarios
+  - approved-aggregate-insights
+  approval: conditional
+  production_data: false
+- id: playground
+  classification: non-production
+  allowed:
+  - prototype-review
+  - instrumentation-validation
+  - beta-planning
+  approval: conditional
+  production_data: false
+- id: qa
+  classification: non-production
+  allowed:
+  - release-readiness
+  - acceptance-review
+  - measurement-validation
+  approval: conditional
+  production_data: false
+- id: production
+  classification: production
+  allowed:
+  - read-only-privacy-thresholded-analytics
+  - release-status-read
+  - approved-observation
+  approval: required
+  production_data: true
+  autonomous_mutation: false

@@ -1,0 +1,93 @@
+version: 1.0.0
+plugin_count: 22
+plugins:
+- id: repository-documentation-inventory
+  description: Scans approved repositories for README, docs, ADR, API, runbook, changelog, and contribution content.
+  execution: deterministic-isolated-worker
+  status: template
+- id: content-structure-parser
+  description: Parses Markdown, MDX, AsciiDoc, reStructuredText, HTML, and DITA metadata into a normalized model.
+  execution: deterministic-isolated-worker
+  status: template
+- id: markdown-and-markup-linter
+  description: Checks markup syntax, heading structure, lists, tables, code fences, and front matter.
+  execution: deterministic-isolated-worker
+  status: template
+- id: vale-prose-linter
+  description: Runs project-configured prose, terminology, voice, and inclusivity rules.
+  execution: deterministic-isolated-worker
+  status: template
+- id: spell-and-term-checker
+  description: Checks spelling, approved terminology, product names, acronyms, and forbidden variants.
+  execution: deterministic-isolated-worker
+  status: template
+- id: readability-and-scanability-analyzer
+  description: Calculates sentence, paragraph, heading, list, and cognitive-load indicators without replacing human
+    judgment.
+  execution: deterministic-isolated-worker
+  status: template
+- id: link-and-anchor-checker
+  description: Validates internal links, external links, anchors, redirects, and orphan pages.
+  execution: deterministic-isolated-worker
+  status: template
+- id: code-snippet-extractor
+  description: Extracts version-bound examples from source, tests, OpenAPI, CLI help, and configuration.
+  execution: deterministic-isolated-worker
+  status: template
+- id: code-snippet-test-runner
+  description: Executes approved snippets in isolated, version-pinned sandboxes.
+  execution: deterministic-isolated-worker
+  status: template
+- id: openapi-validator-and-differ
+  description: Validates OpenAPI syntax and detects contract and documentation changes.
+  execution: deterministic-isolated-worker
+  status: template
+- id: asyncapi-validator-and-differ
+  description: Validates AsyncAPI syntax and detects event-contract documentation changes.
+  execution: deterministic-isolated-worker
+  status: template
+- id: documentation-build-and-preview
+  description: Builds the configured documentation site and produces isolated previews.
+  execution: deterministic-isolated-worker
+  status: template
+- id: screenshot-and-annotation-tool
+  description: Captures approved non-sensitive screens and creates accessible annotations.
+  execution: deterministic-isolated-worker
+  status: template
+- id: diagram-renderer
+  description: Renders Mermaid, PlantUML, Graphviz, and SVG outputs with source preservation.
+  execution: deterministic-isolated-worker
+  status: template
+- id: accessibility-content-checker
+  description: Checks headings, links, alt text, captions, table headers, language, and keyboard-readable output.
+  execution: deterministic-isolated-worker
+  status: template
+- id: duplicate-and-overlap-detector
+  description: Finds duplicate, conflicting, fragmented, and near-duplicate content.
+  execution: deterministic-isolated-worker
+  status: template
+- id: documentation-change-impact-analyzer
+  description: Maps product, code, API, UI, config, and release changes to affected documentation.
+  execution: deterministic-isolated-worker
+  status: template
+- id: metadata-and-content-model-validator
+  description: Validates owners, audience, content type, status, version, product, dates, and taxonomy fields.
+  execution: deterministic-isolated-worker
+  status: template
+- id: search-index-and-zero-result-analyzer
+  description: Analyzes approved search queries, zero results, ranking, and synonym opportunities.
+  execution: deterministic-isolated-worker
+  status: template
+- id: localization-readiness-checker
+  description: Flags idioms, ambiguous references, concatenated text, locale-specific assumptions, and hard-coded
+    variables.
+  execution: deterministic-isolated-worker
+  status: template
+- id: pii-and-secret-redactor
+  description: Detects and redacts personal data, credentials, tokens, internal hosts, and unsafe examples.
+  execution: deterministic-isolated-worker
+  status: template
+- id: documentation-diff-and-review-bundler
+  description: Creates review-ready diffs, previews, validation results, evidence, and payload hashes.
+  execution: deterministic-isolated-worker
+  status: template

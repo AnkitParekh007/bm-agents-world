@@ -1,0 +1,12 @@
+Resource,Read,Draft,External write,Production mutation,Approval notes
+Jira/Backlog,Yes,Yes,Approval controlled,N/A,"Create, edit, transition, or reorder requires payload-bound approval"
+Confluence,Yes,Yes,Approval controlled,N/A,Official pages require owner approval
+Bitbucket/GitHub,Yes,No code edits,No,No,Context only; delegate implementation to engineering packs
+Figma,Yes,Comment draft only,Approval controlled,No,Shared design edits remain UX-owned
+Analytics,Curated/thresholded,Query plans,No metric-definition change,No,Semantic metrics and privacy thresholds required
+Research/Feedback,Redacted summaries,Study drafts,Approval controlled,No,Participant contact and raw recordings restricted
+Databases,Metadata/bounded read,Query draft,No,No,No DDL/DML
+CI/CD and Deployments,Status only,Release request draft,No direct trigger,No,DevOps/release workflow owns execution
+Feature flags/Experiments,Metadata only,Experiment plan,Approval controlled launch request,No direct change,Dedicated experiment system executes
+Teams/Email,Approved context,Draft,Approval controlled,N/A,Audience and payload bound
+Vault,Opaque references,No,No,No,Raw secrets never exposed

@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bm-agent-foundry.local/schemas/product-owner-context.schema.json",
+  "title": "Product Owner Context",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "context_id",
+    "project",
+    "product",
+    "team",
+    "scope",
+    "source_refs"
+  ],
+  "properties": {
+    "context_id": {
+      "type": "string"
+    },
+    "project": {
+      "type": "string"
+    },
+    "product": {
+      "type": "string"
+    },
+    "team": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "string"
+    },
+    "product_goal": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,62 @@
+name: release-readiness-and-go-no-go
+version: 1.0.0
+trigger: candidate build available or go/no-go checkpoint
+scope_binding:
+- release
+- candidate_hash
+- projects
+- services
+- environments
+- window
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: validate candidate, environment, evidence, approval, and separation-of-duties scope
+- id: artifacts
+  agent: artifact-integrity-agent
+  action: validate manifest, versions, digests, signatures, provenance, and candidate immutability
+- id: quality
+  agent: quality-evidence-agent
+  action: aggregate candidate-bound test, defect, UAT, and known-limitation evidence
+- id: security
+  agent: security-and-supply-chain-agent
+  action: review scans, exceptions, SBOM, licenses, signatures, and trusted-build evidence
+- id: architecture
+  agent: architecture-compatibility-agent
+  action: validate contracts, dependencies, supported combinations, and rollback compatibility
+- id: database
+  agent: database-migration-readiness-agent
+  action: validate migration, data, rollback, restore, monitoring, and operator readiness
+- id: platform
+  agent: infrastructure-readiness-agent
+  action: validate infrastructure, capacity, network, backup, identity, and platform readiness
+- id: environment
+  agent: environment-and-config-agent
+  action: validate target health, drift, configuration, feature state, and observability
+- id: business
+  agent: business-and-support-readiness-agent
+  action: validate documentation, training, support, customer, and business readiness
+- id: governance
+  agent: change-governance-agent
+  action: validate change record, risk, approvals, payload binding, window, and expiry
+- id: rollback
+  agent: rollback-and-recovery-agent
+  action: validate rollback triggers, steps, artifacts, data safety, and accountable operators
+- id: decision-pack
+  agent: go-no-go-readiness-agent
+  action: assemble readiness, blockers, conditions, dissent, risk, and decision options
+- id: independent-review
+  agent: release-reviewer-agent
+  action: review factuality, missing evidence, self-approval, commitments, and policy compliance
+- id: decision
+  agent: release-manager-supervisor
+  action: record the accountable human decision; never make final production approval
+outputs:
+- release-bill-of-materials
+- quality-evidence-package
+- security-and-compliance-package
+- environment-readiness-report
+- database-migration-readiness-package
+- go-no-go-decision-pack
+- release-risk-register
+failure_behavior: unknown or stale evidence is not ready; do not infer approval or success

@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.internal/schemas/change-impact-assessment.schema.json",
+  "title": "Change Impact Assessment",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "changeSummary",
+    "impacts",
+    "readiness",
+    "risks"
+  ],
+  "properties": {
+    "changeSummary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "impacts": {
+      "type": "object",
+      "properties": {
+        "people": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "process": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "systems": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "controls": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "operations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "readiness": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "decisionRequests": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

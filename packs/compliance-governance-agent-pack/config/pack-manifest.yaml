@@ -1,0 +1,14 @@
+pack: compliance-governance-agent-pack
+version: 1.0.0
+role: Compliance / Governance Agent
+counts:
+  tasks: 240
+  agents: 27
+  skills: 240
+  mcp_servers: 18
+  plugins: 22
+  artifacts: 28
+  workflows: 5
+  schemas: 7
+production_policy: read_only_model_context; mutations via approved owning systems
+  only

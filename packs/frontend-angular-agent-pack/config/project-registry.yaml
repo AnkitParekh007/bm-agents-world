@@ -1,0 +1,156 @@
+apiVersion: frontend-angular-agent-pack/v1
+kind: ProjectRegistry
+projects:
+- id: PCC
+  displayName: PCC
+  jira:
+    projectKey: ''
+    deploymentType: unknown
+  source:
+    provider: bitbucket
+    deploymentType: unknown
+    workspaceOrProject: ''
+    repositories:
+      frontend:
+        url: ''
+        technology: Angular 12
+        defaultBranch: ''
+        protectedPaths: []
+      backend:
+        url: ''
+        technology: Java
+        access: read-only-context
+  toolchain:
+    framework: angular
+    angularVersion: 12.x
+    nodeVersion: resolve-from-repository-and-compatibility-matrix
+    packageManager: detect
+    testFramework: detect
+    executionProfile: angular-12-legacy
+  design:
+    figmaRefs: []
+    storybookUrl: ''
+    designSystemRepo: ''
+  commands:
+    install: ''
+    formatCheck: ''
+    lint: ''
+    typecheck: ''
+    unitTest: ''
+    build: ''
+    e2e: ''
+  environments:
+    playground:
+      url: ''
+      apiBaseUrl: ''
+      featureFlagProfile: ''
+    qa:
+      url: ''
+      apiBaseUrl: ''
+      featureFlagProfile: ''
+    prod:
+      url: ''
+      apiBaseUrl: ''
+      mode: read-only
+- id: SOP
+  displayName: SOP
+  jira:
+    projectKey: ''
+    deploymentType: unknown
+  source:
+    provider: bitbucket
+    deploymentType: unknown
+    workspaceOrProject: ''
+    repositories:
+      frontend:
+        url: ''
+        technology: Angular 15
+        defaultBranch: ''
+        protectedPaths: []
+      backend:
+        url: ''
+        technology: Java
+        access: read-only-context
+  toolchain:
+    framework: angular
+    angularVersion: 15.x
+    nodeVersion: resolve-from-repository-and-compatibility-matrix
+    packageManager: detect
+    testFramework: detect
+    executionProfile: angular-15
+  design:
+    figmaRefs: []
+    storybookUrl: ''
+    designSystemRepo: ''
+  commands:
+    install: ''
+    formatCheck: ''
+    lint: ''
+    typecheck: ''
+    unitTest: ''
+    build: ''
+    e2e: ''
+  environments:
+    playground:
+      url: ''
+      apiBaseUrl: ''
+      featureFlagProfile: ''
+    qa:
+      url: ''
+      apiBaseUrl: ''
+      featureFlagProfile: ''
+    prod:
+      url: ''
+      apiBaseUrl: ''
+      mode: read-only
+- id: DataBridge
+  displayName: DataBridge
+  jira:
+    projectKey: ''
+    deploymentType: unknown
+  source:
+    provider: bitbucket
+    deploymentType: unknown
+    workspaceOrProject: ''
+    repositories:
+      frontend:
+        url: ''
+        technology: AngularJS 1.x
+        defaultBranch: ''
+        protectedPaths: []
+      backend:
+        url: ''
+        technology: Java
+        access: read-only-context
+  toolchain:
+    framework: angularjs
+    angularVersion: 1.x
+    nodeVersion: resolve-from-repository
+    packageManager: detect
+    testFramework: detect
+    executionProfile: angularjs-maintenance
+  design:
+    figmaRefs: []
+    storybookUrl: ''
+    designSystemRepo: ''
+  commands:
+    install: ''
+    formatCheck: ''
+    lint: ''
+    typecheck: ''
+    unitTest: ''
+    build: ''
+    e2e: ''
+  environments:
+    playground:
+      url: ''
+      apiBaseUrl: ''
+      featureFlagProfile: ''
+    qa:
+      url: ''
+      apiBaseUrl: ''
+      featureFlagProfile: ''
+    prod:
+      url: ''
+      apiBaseUrl: ''
+      mode: read-only

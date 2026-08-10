@@ -1,0 +1,112 @@
+pack: "ai-ml-engineer-agent-pack"
+plugins:
+  - id: "python-runtime"
+    name: Python Runtime Adapter
+    description: Executes approved Python commands in isolated environments.
+    deterministic: true
+    production_write: false
+  - id: "notebook-runner"
+    name: Notebook Runner
+    description: Executes parameterized notebooks reproducibly and exports results.
+    deterministic: true
+    production_write: false
+  - id: pytest
+    name: pytest Adapter
+    description: "Runs unit, integration, data, model, and regression tests."
+    deterministic: true
+    production_write: false
+  - id: sklearn
+    name: "scikit-learn Adapter"
+    description: "Runs repository-pinned classical ML training and evaluation."
+    deterministic: true
+    production_write: false
+  - id: pytorch
+    name: PyTorch Adapter
+    description: "Runs repository-pinned deep-learning training and inference."
+    deterministic: true
+    production_write: false
+  - id: tensorflow
+    name: TensorFlow Adapter
+    description: "Runs repository-pinned TensorFlow/Keras workloads when the project uses them."
+    deterministic: true
+    production_write: false
+  - id: transformers
+    name: Transformers Adapter
+    description: "Loads approved pretrained models and runs fine-tuning/inference with pinned versions."
+    deterministic: true
+    production_write: false
+  - id: mlflow
+    name: MLflow Adapter
+    description: "Tracks experiments, evaluations, traces, and model candidate metadata where adopted."
+    deterministic: true
+    production_write: false
+  - id: "data-profiler"
+    name: Data Profiling Adapter
+    description: "Profiles schemas, distributions, missingness, duplicates, and leakage indicators."
+    deterministic: true
+    production_write: false
+  - id: "evaluation-runner"
+    name: Evaluation Runner
+    description: "Executes versioned golden sets, rubrics, regression suites, and deterministic validators."
+    deterministic: true
+    production_write: false
+  - id: "rag-evaluator"
+    name: RAG Evaluation Adapter
+    description: "Measures retrieval, grounding, citation, and answer-quality metrics."
+    deterministic: true
+    production_write: false
+  - id: "model-benchmark"
+    name: Model Benchmark Adapter
+    description: "Benchmarks latency, throughput, memory, tokens, and quality-cost tradeoffs."
+    deterministic: true
+    production_write: false
+  - id: "model-scanner"
+    name: Model Artifact Scanner
+    description: "Checks artifact formats, provenance, hashes, unsafe serialization, and policy metadata."
+    deterministic: true
+    production_write: false
+  - id: "security-suite"
+    name: Security Suite
+    description: "Runs approved code, dependency, container, IaC, secret, and AI-security scans."
+    deterministic: true
+    production_write: false
+  - id: "sbom-provenance"
+    name: SBOM and Provenance Adapter
+    description: "Generates and verifies software/model supply-chain evidence."
+    deterministic: true
+    production_write: false
+  - id: "container-builder"
+    name: Container Build Adapter
+    description: "Builds non-production model images from approved bases and lockfiles."
+    deterministic: true
+    production_write: false
+  - id: "k8s-readonly"
+    name: "Kubernetes Read-Only Adapter"
+    description: Reads approved ML workload metadata and telemetry; no direct mutations.
+    deterministic: true
+    production_write: false
+  - id: "cost-estimator"
+    name: AI Cost Estimator
+    description: Computes bounded training and inference cost scenarios.
+    deterministic: true
+    production_write: false
+  - id: "drift-analyzer"
+    name: Drift Analyzer
+    description: "Computes approved distribution, performance, and task-success drift measures."
+    deterministic: true
+    production_write: false
+  - id: redaction
+    name: Sensitive Data Redaction Adapter
+    description: Redacts secrets and configured sensitive fields before model context or artifact publication.
+    deterministic: true
+    production_write: false
+  - id: "hash-signer"
+    name: Evidence Hash Adapter
+    description: "Creates digests for datasets, models, prompts, reports, and approval payloads."
+    deterministic: true
+    production_write: false
+  - id: "diagram-renderer"
+    name: Diagram Renderer
+    description: "Validates and renders Mermaid/Graphviz-style architecture and lifecycle diagrams."
+    deterministic: true
+    production_write: false

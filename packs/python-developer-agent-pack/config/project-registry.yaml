@@ -1,0 +1,72 @@
+apiVersion: python-developer-agent-pack/v1
+kind: ProjectRegistry
+projects:
+- id: python-service-template
+  displayName: Python API Service Template
+  repositories:
+  - REPLACE_BITBUCKET_REPO
+  profiles:
+  - api-service
+  environments:
+  - playground
+  - qa
+  - prod
+  python:
+    version: DETECT_FROM_REPO
+    framework: DETECT_FROM_REPO
+    dependencyManager: DETECT_FROM_REPO
+  databaseRefs:
+  - REPLACE_DB_REF
+  owners:
+  - REPLACE_OWNER
+- id: python-automation-template
+  displayName: Python Automation/CLI Template
+  repositories:
+  - REPLACE_BITBUCKET_REPO
+  profiles:
+  - cli-automation
+  environments:
+  - local
+  - playground
+  - qa
+  python:
+    version: DETECT_FROM_REPO
+    framework: none-or-detect
+    dependencyManager: DETECT_FROM_REPO
+  owners:
+  - REPLACE_OWNER
+- id: python-data-template
+  displayName: Python Data/PySpark Template
+  repositories:
+  - REPLACE_BITBUCKET_REPO
+  profiles:
+  - data-pipeline
+  environments:
+  - playground
+  - qa
+  - prod
+  python:
+    version: DETECT_FROM_REPO
+    framework: pyspark-or-detect
+    dependencyManager: DETECT_FROM_REPO
+  dataRefs:
+  - REPLACE_DATA_PLATFORM_REF
+  owners:
+  - REPLACE_OWNER
+- id: python-mcp-template
+  displayName: Python MCP Server Template
+  repositories:
+  - REPLACE_BITBUCKET_REPO
+  profiles:
+  - mcp-server
+  environments:
+  - local
+  - playground
+  - qa
+  - prod
+  python:
+    version: DETECT_FROM_REPO
+    framework: mcp-python-sdk-or-detect
+    dependencyManager: DETECT_FROM_REPO
+  owners:
+  - REPLACE_OWNER

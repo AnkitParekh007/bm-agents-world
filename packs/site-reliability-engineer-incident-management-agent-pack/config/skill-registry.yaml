@@ -1,0 +1,1923 @@
+version: 1.0.0
+skill_count: 240
+skills:
+- id: review-assigned-services-owners-users-business-criticality-and-support-tiers
+  name: Review assigned services, owners, users, business criticality, and support tiers
+  category: Service Ownership and Reliability Context
+  description: Perform review assigned services, owners, users, business criticality, and support tiers using scoped
+    evidence, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: confirm-production-qa-playground-and-disaster-recovery-topology
+  name: Confirm production, QA, playground, and disaster-recovery topology
+  category: Service Ownership and Reliability Context
+  description: Perform confirm production, qa, playground, and disaster-recovery topology using scoped evidence,
+    explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: map-upstream-and-downstream-service-dependencies
+  name: Map upstream and downstream service dependencies
+  category: Service Ownership and Reliability Context
+  description: Perform map upstream and downstream service dependencies using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: review-architecture-decisions-and-known-reliability-constraints
+  name: Review architecture decisions and known reliability constraints
+  category: Service Ownership and Reliability Context
+  description: Perform review architecture decisions and known reliability constraints using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: identify-critical-user-journeys-and-business-transactions
+  name: Identify critical user journeys and business transactions
+  category: Service Ownership and Reliability Context
+  description: Perform identify critical user journeys and business transactions using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: verify-service-ownership-escalation-paths-and-operational-contacts
+  name: Verify service ownership, escalation paths, and operational contacts
+  category: Service Ownership and Reliability Context
+  description: Perform verify service ownership, escalation paths, and operational contacts using scoped evidence,
+    explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: review-recent-deployments-incidents-risks-and-unresolved-actions
+  name: Review recent deployments, incidents, risks, and unresolved actions
+  category: Service Ownership and Reliability Context
+  description: Perform review recent deployments, incidents, risks, and unresolved actions using scoped evidence,
+    explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: inspect-service-configuration-feature-states-and-environment-differences
+  name: Inspect service configuration, feature states, and environment differences
+  category: Service Ownership and Reliability Context
+  description: Perform inspect service configuration, feature states, and environment differences using scoped evidence,
+    explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: confirm-data-stores-queues-caches-schedulers-and-external-providers
+  name: Confirm data stores, queues, caches, schedulers, and external providers
+  category: Service Ownership and Reliability Context
+  description: Perform confirm data stores, queues, caches, schedulers, and external providers using scoped evidence,
+    explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: review-support-hours-on-call-expectations-and-regional-coverage
+  name: Review support hours, on-call expectations, and regional coverage
+  category: Service Ownership and Reliability Context
+  description: Perform review support hours, on-call expectations, and regional coverage using scoped evidence,
+    explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: classify-service-criticality-and-acceptable-degradation-modes
+  name: Classify service criticality and acceptable degradation modes
+  category: Service Ownership and Reliability Context
+  description: Perform classify service criticality and acceptable degradation modes using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: identify-single-points-of-failure-and-hidden-operational-dependencies
+  name: Identify single points of failure and hidden operational dependencies
+  category: Service Ownership and Reliability Context
+  description: Perform identify single points of failure and hidden operational dependencies using scoped evidence,
+    explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: review-maintenance-windows-freeze-periods-and-change-restrictions
+  name: Review maintenance windows, freeze periods, and change restrictions
+  category: Service Ownership and Reliability Context
+  description: Perform review maintenance windows, freeze periods, and change restrictions using scoped evidence,
+    explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: maintain-an-evidence-backed-reliability-profile-for-each-service
+  name: Maintain an evidence-backed reliability profile for each service
+  category: Service Ownership and Reliability Context
+  description: Perform maintain an evidence-backed reliability profile for each service using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: escalate-missing-ownership-telemetry-runbook-or-recovery-information
+  name: Escalate missing ownership, telemetry, runbook, or recovery information
+  category: Service Ownership and Reliability Context
+  description: Perform escalate missing ownership, telemetry, runbook, or recovery information using scoped evidence,
+    explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: define-user-centered-service-level-indicators
+  name: Define user-centered service level indicators
+  category: SLIs, SLOs, and Error Budgets
+  description: Perform define user-centered service level indicators using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: select-availability-latency-correctness-freshness-durability-and-throughput-indicators
+  name: Select availability, latency, correctness, freshness, durability, and throughput indicators
+  category: SLIs, SLOs, and Error Budgets
+  description: Perform select availability, latency, correctness, freshness, durability, and throughput indicators
+    using scoped evidence, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: validate-sli-data-sources-and-measurement-integrity
+  name: Validate SLI data sources and measurement integrity
+  category: SLIs, SLOs, and Error Budgets
+  description: Perform validate sli data sources and measurement integrity using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: define-slo-targets-and-rolling-measurement-windows
+  name: Define SLO targets and rolling measurement windows
+  category: SLIs, SLOs, and Error Budgets
+  description: Perform define slo targets and rolling measurement windows using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: document-exclusions-and-valid-maintenance-handling
+  name: Document exclusions and valid maintenance handling
+  category: SLIs, SLOs, and Error Budgets
+  description: Perform document exclusions and valid maintenance handling using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: calculate-remaining-error-budget
+  name: Calculate remaining error budget
+  category: SLIs, SLOs, and Error Budgets
+  description: Perform calculate remaining error budget using scoped evidence, explicit uncertainty, and the pack's
+    approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: analyze-error-budget-consumption-and-burn-rate
+  name: Analyze error-budget consumption and burn rate
+  category: SLIs, SLOs, and Error Budgets
+  description: Perform analyze error-budget consumption and burn rate using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: create-multi-window-multi-burn-rate-alert-proposals
+  name: Create multi-window multi-burn-rate alert proposals
+  category: SLIs, SLOs, and Error Budgets
+  description: Perform create multi-window multi-burn-rate alert proposals using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: review-low-traffic-service-measurement-limitations
+  name: Review low-traffic service measurement limitations
+  category: SLIs, SLOs, and Error Budgets
+  description: Perform review low-traffic service measurement limitations using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: define-error-budget-policy-and-decision-thresholds
+  name: Define error-budget policy and decision thresholds
+  category: SLIs, SLOs, and Error Budgets
+  description: Perform define error-budget policy and decision thresholds using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: connect-slos-to-release-and-reliability-decisions
+  name: Connect SLOs to release and reliability decisions
+  category: SLIs, SLOs, and Error Budgets
+  description: Perform connect slos to release and reliability decisions using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: review-slo-suitability-after-architecture-or-traffic-changes
+  name: Review SLO suitability after architecture or traffic changes
+  category: SLIs, SLOs, and Error Budgets
+  description: Perform review slo suitability after architecture or traffic changes using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: identify-services-without-meaningful-user-centered-objectives
+  name: Identify services without meaningful user-centered objectives
+  category: SLIs, SLOs, and Error Budgets
+  description: Perform identify services without meaningful user-centered objectives using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: prepare-service-level-reviews-for-product-and-engineering-leadership
+  name: Prepare service-level reviews for Product and Engineering leadership
+  category: SLIs, SLOs, and Error Budgets
+  description: Perform prepare service-level reviews for product and engineering leadership using scoped evidence,
+    explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: recommend-target-changes-using-evidence-and-human-approval
+  name: Recommend target changes using evidence and human approval
+  category: SLIs, SLOs, and Error Budgets
+  description: Perform recommend target changes using evidence and human approval using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: review-metrics-logs-traces-profiles-events-and-exemplars
+  name: Review metrics, logs, traces, profiles, events, and exemplars
+  category: Observability Engineering
+  description: Perform review metrics, logs, traces, profiles, events, and exemplars using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: validate-telemetry-coverage-across-critical-user-journeys
+  name: Validate telemetry coverage across critical user journeys
+  category: Observability Engineering
+  description: Perform validate telemetry coverage across critical user journeys using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: define-consistent-service-and-resource-attributes
+  name: Define consistent service and resource attributes
+  category: Observability Engineering
+  description: Perform define consistent service and resource attributes using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: correlate-logs-metrics-and-traces-using-request-and-trace-identifiers
+  name: Correlate logs, metrics, and traces using request and trace identifiers
+  category: Observability Engineering
+  description: Perform correlate logs, metrics, and traces using request and trace identifiers using scoped evidence,
+    explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: design-operational-dashboards-for-symptoms-and-causes
+  name: Design operational dashboards for symptoms and causes
+  category: Observability Engineering
+  description: Perform design operational dashboards for symptoms and causes using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: validate-telemetry-retention-cardinality-sampling-and-cost
+  name: Validate telemetry retention, cardinality, sampling, and cost
+  category: Observability Engineering
+  description: Perform validate telemetry retention, cardinality, sampling, and cost using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: detect-missing-instrumentation-and-blind-spots
+  name: Detect missing instrumentation and blind spots
+  category: Observability Engineering
+  description: Perform detect missing instrumentation and blind spots using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: review-distributed-tracing-propagation-across-service-boundaries
+  name: Review distributed tracing propagation across service boundaries
+  category: Observability Engineering
+  description: Perform review distributed tracing propagation across service boundaries using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: validate-redaction-of-secrets-and-sensitive-customer-data
+  name: Validate redaction of secrets and sensitive customer data
+  category: Observability Engineering
+  description: Perform validate redaction of secrets and sensitive customer data using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: review-telemetry-pipeline-health-and-dropped-data-indicators
+  name: Review telemetry pipeline health and dropped-data indicators
+  category: Observability Engineering
+  description: Perform review telemetry pipeline health and dropped-data indicators using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: define-golden-signals-and-service-specific-diagnostic-signals
+  name: Define golden signals and service-specific diagnostic signals
+  category: Observability Engineering
+  description: Perform define golden signals and service-specific diagnostic signals using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: create-observability-acceptance-criteria-for-new-features
+  name: Create observability acceptance criteria for new features
+  category: Observability Engineering
+  description: Perform create observability acceptance criteria for new features using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: compare-telemetry-across-releases-and-environments
+  name: Compare telemetry across releases and environments
+  category: Observability Engineering
+  description: Perform compare telemetry across releases and environments using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: review-dashboard-ownership-freshness-and-actionability
+  name: Review dashboard ownership, freshness, and actionability
+  category: Observability Engineering
+  description: Perform review dashboard ownership, freshness, and actionability using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: prepare-instrumentation-improvement-proposals
+  name: Prepare instrumentation improvement proposals
+  category: Observability Engineering
+  description: Perform prepare instrumentation improvement proposals using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: review-firing-alerts-and-current-service-impact
+  name: Review firing alerts and current service impact
+  category: Alerting and Event Management
+  description: Perform review firing alerts and current service impact using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: deduplicate-and-correlate-related-alerts
+  name: Deduplicate and correlate related alerts
+  category: Alerting and Event Management
+  description: Perform deduplicate and correlate related alerts using scoped evidence, explicit uncertainty, and
+    the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: identify-noisy-stale-flapping-or-non-actionable-alerts
+  name: Identify noisy, stale, flapping, or non-actionable alerts
+  category: Alerting and Event Management
+  description: Perform identify noisy, stale, flapping, or non-actionable alerts using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: validate-alert-ownership-severity-routing-and-escalation
+  name: Validate alert ownership, severity, routing, and escalation
+  category: Alerting and Event Management
+  description: Perform validate alert ownership, severity, routing, and escalation using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: review-alert-thresholds-against-slos-and-user-impact
+  name: Review alert thresholds against SLOs and user impact
+  category: Alerting and Event Management
+  description: Perform review alert thresholds against slos and user impact using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: define-symptoms-before-causes-for-paging-alerts
+  name: Define symptoms before causes for paging alerts
+  category: Alerting and Event Management
+  description: Perform define symptoms before causes for paging alerts using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: separate-pages-tickets-notifications-and-dashboard-only-signals
+  name: Separate pages, tickets, notifications, and dashboard-only signals
+  category: Alerting and Event Management
+  description: Perform separate pages, tickets, notifications, and dashboard-only signals using scoped evidence,
+    explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: evaluate-false-positive-and-false-negative-alert-behavior
+  name: Evaluate false-positive and false-negative alert behavior
+  category: Alerting and Event Management
+  description: Perform evaluate false-positive and false-negative alert behavior using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: review-alert-inhibition-grouping-and-maintenance-handling
+  name: Review alert inhibition, grouping, and maintenance handling
+  category: Alerting and Event Management
+  description: Perform review alert inhibition, grouping, and maintenance handling using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: verify-alert-runbook-links-and-responder-context
+  name: Verify alert runbook links and responder context
+  category: Alerting and Event Management
+  description: Perform verify alert runbook links and responder context using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: analyze-time-to-acknowledge-and-responder-engagement
+  name: Analyze time to acknowledge and responder engagement
+  category: Alerting and Event Management
+  description: Perform analyze time to acknowledge and responder engagement using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: recommend-alert-consolidation-or-retirement
+  name: Recommend alert consolidation or retirement
+  category: Alerting and Event Management
+  description: Perform recommend alert consolidation or retirement using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: validate-synthetic-and-black-box-monitoring-coverage
+  name: Validate synthetic and black-box monitoring coverage
+  category: Alerting and Event Management
+  description: Perform validate synthetic and black-box monitoring coverage using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: test-alert-delivery-in-approved-non-production-exercises
+  name: Test alert delivery in approved non-production exercises
+  category: Alerting and Event Management
+  description: Perform test alert delivery in approved non-production exercises using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: publish-approval-controlled-alert-quality-reports
+  name: Publish approval-controlled alert-quality reports
+  category: Alerting and Event Management
+  description: Perform publish approval-controlled alert-quality reports using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: review-on-call-schedules-rotations-backups-and-coverage-gaps
+  name: Review on-call schedules, rotations, backups, and coverage gaps
+  category: On-Call Readiness and Operations
+  description: Perform review on-call schedules, rotations, backups, and coverage gaps using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: prepare-shift-handoff-summaries
+  name: Prepare shift handoff summaries
+  category: On-Call Readiness and Operations
+  description: Perform prepare shift handoff summaries using scoped evidence, explicit uncertainty, and the pack's
+    approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: review-active-incidents-risks-changes-and-follow-up-obligations
+  name: Review active incidents, risks, changes, and follow-up obligations
+  category: On-Call Readiness and Operations
+  description: Perform review active incidents, risks, changes, and follow-up obligations using scoped evidence,
+    explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: verify-responder-access-through-approved-readiness-checks
+  name: Verify responder access through approved readiness checks
+  category: On-Call Readiness and Operations
+  description: Perform verify responder access through approved readiness checks using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: review-runbook-availability-and-applicability
+  name: Review runbook availability and applicability
+  category: On-Call Readiness and Operations
+  description: Perform review runbook availability and applicability using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: validate-incident-channels-bridges-and-contact-paths
+  name: Validate incident channels, bridges, and contact paths
+  category: On-Call Readiness and Operations
+  description: Perform validate incident channels, bridges, and contact paths using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: prepare-service-and-dependency-quick-reference-material
+  name: Prepare service and dependency quick-reference material
+  category: On-Call Readiness and Operations
+  description: Perform prepare service and dependency quick-reference material using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: review-paging-load-and-after-hours-burden-at-team-level
+  name: Review paging load and after-hours burden at team level
+  category: On-Call Readiness and Operations
+  description: Perform review paging load and after-hours burden at team level using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: identify-repeat-pages-and-automation-opportunities
+  name: Identify repeat pages and automation opportunities
+  category: On-Call Readiness and Operations
+  description: Perform identify repeat pages and automation opportunities using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: coordinate-training-and-incident-simulations
+  name: Coordinate training and incident simulations
+  category: On-Call Readiness and Operations
+  description: Perform coordinate training and incident simulations using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: review-escalation-delays-and-ownership-confusion
+  name: Review escalation delays and ownership confusion
+  category: On-Call Readiness and Operations
+  description: Perform review escalation delays and ownership confusion using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: maintain-on-call-readiness-checklists
+  name: Maintain on-call readiness checklists
+  category: On-Call Readiness and Operations
+  description: Perform maintain on-call readiness checklists using scoped evidence, explicit uncertainty, and the
+    pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: identify-fatigue-risks-without-evaluating-individual-performance
+  name: Identify fatigue risks without evaluating individual performance
+  category: On-Call Readiness and Operations
+  description: Perform identify fatigue risks without evaluating individual performance using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: prepare-bounded-diagnostic-queries-for-common-incidents
+  name: Prepare bounded diagnostic queries for common incidents
+  category: On-Call Readiness and Operations
+  description: Perform prepare bounded diagnostic queries for common incidents using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: escalate-unsafe-or-unsupported-operational-expectations
+  name: Escalate unsafe or unsupported operational expectations
+  category: On-Call Readiness and Operations
+  description: Perform escalate unsafe or unsupported operational expectations using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: assess-whether-an-alert-or-report-represents-an-incident
+  name: Assess whether an alert or report represents an incident
+  category: Incident Detection and Declaration
+  description: Perform assess whether an alert or report represents an incident using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: confirm-affected-services-users-regions-tenants-and-environments
+  name: Confirm affected services, users, regions, tenants, and environments
+  category: Incident Detection and Declaration
+  description: Perform confirm affected services, users, regions, tenants, and environments using scoped evidence,
+    explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: classify-incident-severity-using-approved-criteria
+  name: Classify incident severity using approved criteria
+  category: Incident Detection and Declaration
+  description: Perform classify incident severity using approved criteria using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: estimate-impact-with-explicit-confidence-and-evidence
+  name: Estimate impact with explicit confidence and evidence
+  category: Incident Detection and Declaration
+  description: Perform estimate impact with explicit confidence and evidence using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: declare-incidents-through-approval-controlled-workflows
+  name: Declare incidents through approval-controlled workflows
+  category: Incident Detection and Declaration
+  description: Perform declare incidents through approval-controlled workflows using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: assign-or-recommend-incident-command-roles
+  name: Assign or recommend incident-command roles
+  category: Incident Detection and Declaration
+  description: Perform assign or recommend incident-command roles using scoped evidence, explicit uncertainty, and
+    the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: create-the-incident-channel-bridge-and-evidence-workspace
+  name: Create the incident channel, bridge, and evidence workspace
+  category: Incident Detection and Declaration
+  description: Perform create the incident channel, bridge, and evidence workspace using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: establish-communication-cadence-and-stakeholder-groups
+  name: Establish communication cadence and stakeholder groups
+  category: Incident Detection and Declaration
+  description: Perform establish communication cadence and stakeholder groups using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: define-incident-objectives-and-immediate-priorities
+  name: Define incident objectives and immediate priorities
+  category: Incident Detection and Declaration
+  description: Perform define incident objectives and immediate priorities using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: start-an-immutable-incident-timeline
+  name: Start an immutable incident timeline
+  category: Incident Detection and Declaration
+  description: Perform start an immutable incident timeline using scoped evidence, explicit uncertainty, and the
+    pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: record-hypotheses-decisions-actions-and-owners
+  name: Record hypotheses, decisions, actions, and owners
+  category: Incident Detection and Declaration
+  description: Perform record hypotheses, decisions, actions, and owners using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: identify-security-privacy-safety-or-compliance-escalation-needs
+  name: Identify security, privacy, safety, or compliance escalation needs
+  category: Incident Detection and Declaration
+  description: Perform identify security, privacy, safety, or compliance escalation needs using scoped evidence,
+    explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: detect-duplicate-or-related-incidents
+  name: Detect duplicate or related incidents
+  category: Incident Detection and Declaration
+  description: Perform detect duplicate or related incidents using scoped evidence, explicit uncertainty, and the
+    pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: link-changes-releases-support-tickets-and-customer-reports
+  name: Link changes, releases, support tickets, and customer reports
+  category: Incident Detection and Declaration
+  description: Perform link changes, releases, support tickets, and customer reports using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: escalate-uncertainty-rather-than-understate-user-impact
+  name: Escalate uncertainty rather than understate user impact
+  category: Incident Detection and Declaration
+  description: Perform escalate uncertainty rather than understate user impact using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: support-the-incident-commander-with-concise-situation-summaries
+  name: Support the Incident Commander with concise situation summaries
+  category: Incident Command and Coordination
+  description: Perform support the incident commander with concise situation summaries using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: maintain-clear-operational-communication-and-investigation-workstreams
+  name: Maintain clear operational, communication, and investigation workstreams
+  category: Incident Command and Coordination
+  description: Perform maintain clear operational, communication, and investigation workstreams using scoped evidence,
+    explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: track-action-owners-deadlines-and-completion-evidence
+  name: Track action owners, deadlines, and completion evidence
+  category: Incident Command and Coordination
+  description: Perform track action owners, deadlines, and completion evidence using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: prevent-conflicting-or-repeated-remediation-actions
+  name: Prevent conflicting or repeated remediation actions
+  category: Incident Command and Coordination
+  description: Perform prevent conflicting or repeated remediation actions using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: coordinate-specialists-across-application-database-infrastructure-and-security-teams
+  name: Coordinate specialists across application, database, infrastructure, and security teams
+  category: Incident Command and Coordination
+  description: Perform coordinate specialists across application, database, infrastructure, and security teams using
+    scoped evidence, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: preserve-decision-authority-and-role-separation
+  name: Preserve decision authority and role separation
+  category: Incident Command and Coordination
+  description: Perform preserve decision authority and role separation using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: manage-responder-handoffs-and-continuity
+  name: Manage responder handoffs and continuity
+  category: Incident Command and Coordination
+  description: Perform manage responder handoffs and continuity using scoped evidence, explicit uncertainty, and
+    the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: maintain-stakeholder-and-customer-communication-cadence
+  name: Maintain stakeholder and customer communication cadence
+  category: Incident Command and Coordination
+  description: Perform maintain stakeholder and customer communication cadence using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: track-unresolved-risks-and-competing-hypotheses
+  name: Track unresolved risks and competing hypotheses
+  category: Incident Command and Coordination
+  description: Perform track unresolved risks and competing hypotheses using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: record-exact-production-action-requests-and-approvals
+  name: Record exact production action requests and approvals
+  category: Incident Command and Coordination
+  description: Perform record exact production action requests and approvals using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: escalate-stop-conditions-and-safety-concerns
+  name: Escalate stop conditions and safety concerns
+  category: Incident Command and Coordination
+  description: Perform escalate stop conditions and safety concerns using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: identify-when-additional-incident-command-support-is-needed
+  name: Identify when additional incident-command support is needed
+  category: Incident Command and Coordination
+  description: Perform identify when additional incident-command support is needed using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: coordinate-vendors-and-external-providers-through-approved-channels
+  name: Coordinate vendors and external providers through approved channels
+  category: Incident Command and Coordination
+  description: Perform coordinate vendors and external providers through approved channels using scoped evidence,
+    explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: prepare-executive-summaries-without-unsupported-claims
+  name: Prepare executive summaries without unsupported claims
+  category: Incident Command and Coordination
+  description: Perform prepare executive summaries without unsupported claims using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: recommend-de-escalation-only-after-verified-recovery
+  name: Recommend de-escalation only after verified recovery
+  category: Incident Command and Coordination
+  description: Perform recommend de-escalation only after verified recovery using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: build-evidence-driven-diagnostic-hypotheses
+  name: Build evidence-driven diagnostic hypotheses
+  category: Diagnosis and Technical Investigation
+  description: Perform build evidence-driven diagnostic hypotheses using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: define-bounded-time-windows-and-comparison-baselines
+  name: Define bounded time windows and comparison baselines
+  category: Diagnosis and Technical Investigation
+  description: Perform define bounded time windows and comparison baselines using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: correlate-incident-onset-with-deployments-and-configuration-changes
+  name: Correlate incident onset with deployments and configuration changes
+  category: Diagnosis and Technical Investigation
+  description: Perform correlate incident onset with deployments and configuration changes using scoped evidence,
+    explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: analyze-request-rate-errors-latency-and-saturation
+  name: Analyze request rate, errors, latency, and saturation
+  category: Diagnosis and Technical Investigation
+  description: Perform analyze request rate, errors, latency, and saturation using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: trace-failing-requests-across-distributed-dependencies
+  name: Trace failing requests across distributed dependencies
+  category: Diagnosis and Technical Investigation
+  description: Perform trace failing requests across distributed dependencies using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: inspect-bounded-redacted-logs-for-signatures-and-anomalies
+  name: Inspect bounded redacted logs for signatures and anomalies
+  category: Diagnosis and Technical Investigation
+  description: Perform inspect bounded redacted logs for signatures and anomalies using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: analyze-database-latency-locks-connections-and-replication-lag
+  name: Analyze database latency, locks, connections, and replication lag
+  category: Diagnosis and Technical Investigation
+  description: Perform analyze database latency, locks, connections, and replication lag using scoped evidence,
+    explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: analyze-queue-depth-consumer-lag-retries-and-dead-letters
+  name: Analyze queue depth, consumer lag, retries, and dead letters
+  category: Diagnosis and Technical Investigation
+  description: Perform analyze queue depth, consumer lag, retries, and dead letters using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: analyze-cache-hit-rate-eviction-and-stampede-indicators
+  name: Analyze cache hit rate, eviction, and stampede indicators
+  category: Diagnosis and Technical Investigation
+  description: Perform analyze cache hit rate, eviction, and stampede indicators using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: analyze-infrastructure-capacity-and-resource-pressure
+  name: Analyze infrastructure capacity and resource pressure
+  category: Diagnosis and Technical Investigation
+  description: Perform analyze infrastructure capacity and resource pressure using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: compare-healthy-and-unhealthy-regions-tenants-or-versions
+  name: Compare healthy and unhealthy regions, tenants, or versions
+  category: Diagnosis and Technical Investigation
+  description: Perform compare healthy and unhealthy regions, tenants, or versions using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: validate-hypotheses-through-safe-read-only-checks
+  name: Validate hypotheses through safe read-only checks
+  category: Diagnosis and Technical Investigation
+  description: Perform validate hypotheses through safe read-only checks using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: separate-contributing-factors-from-evidence-supported-causes
+  name: Separate contributing factors from evidence-supported causes
+  category: Diagnosis and Technical Investigation
+  description: Perform separate contributing factors from evidence-supported causes using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: identify-missing-evidence-and-instrumentation-gaps
+  name: Identify missing evidence and instrumentation gaps
+  category: Diagnosis and Technical Investigation
+  description: Perform identify missing evidence and instrumentation gaps using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: prepare-specialist-escalation-packages-when-investigation-exceeds-scope
+  name: Prepare specialist escalation packages when investigation exceeds scope
+  category: Diagnosis and Technical Investigation
+  description: Perform prepare specialist escalation packages when investigation exceeds scope using scoped evidence,
+    explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: generate-reversible-mitigation-options
+  name: Generate reversible mitigation options
+  category: Mitigation, Containment, and Recovery
+  description: Perform generate reversible mitigation options using scoped evidence, explicit uncertainty, and the
+    pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: compare-rollback-roll-forward-traffic-shift-scaling-throttling-and-feature-disable-options
+  name: Compare rollback, roll-forward, traffic shift, scaling, throttling, and feature-disable options
+  category: Mitigation, Containment, and Recovery
+  description: Perform compare rollback, roll-forward, traffic shift, scaling, throttling, and feature-disable options
+    using scoped evidence, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: assess-blast-radius-dependencies-and-secondary-effects
+  name: Assess blast radius, dependencies, and secondary effects
+  category: Mitigation, Containment, and Recovery
+  description: Perform assess blast radius, dependencies, and secondary effects using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: define-exact-preconditions-and-stop-conditions
+  name: Define exact preconditions and stop conditions
+  category: Mitigation, Containment, and Recovery
+  description: Perform define exact preconditions and stop conditions using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: validate-that-a-runbook-applies-to-the-current-service-and-version
+  name: Validate that a runbook applies to the current service and version
+  category: Mitigation, Containment, and Recovery
+  description: Perform validate that a runbook applies to the current service and version using scoped evidence,
+    explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: prepare-immutable-production-action-requests
+  name: Prepare immutable production action requests
+  category: Mitigation, Containment, and Recovery
+  description: Perform prepare immutable production action requests using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: confirm-independent-approval-for-non-routine-actions
+  name: Confirm independent approval for non-routine actions
+  category: Mitigation, Containment, and Recovery
+  description: Perform confirm independent approval for non-routine actions using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: coordinate-execution-by-an-authorized-operator-or-deterministic-pipeline
+  name: Coordinate execution by an authorized operator or deterministic pipeline
+  category: Mitigation, Containment, and Recovery
+  description: Perform coordinate execution by an authorized operator or deterministic pipeline using scoped evidence,
+    explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: monitor-technical-and-business-recovery-signals
+  name: Monitor technical and business recovery signals
+  category: Mitigation, Containment, and Recovery
+  description: Perform monitor technical and business recovery signals using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: verify-that-error-rates-latency-saturation-and-user-journeys-recover
+  name: Verify that error rates, latency, saturation, and user journeys recover
+  category: Mitigation, Containment, and Recovery
+  description: Perform verify that error rates, latency, saturation, and user journeys recover using scoped evidence,
+    explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: detect-partial-or-temporary-recovery
+  name: Detect partial or temporary recovery
+  category: Mitigation, Containment, and Recovery
+  description: Perform detect partial or temporary recovery using scoped evidence, explicit uncertainty, and the
+    pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: prevent-repeated-unsafe-actions-when-evidence-conflicts
+  name: Prevent repeated unsafe actions when evidence conflicts
+  category: Mitigation, Containment, and Recovery
+  description: Perform prevent repeated unsafe actions when evidence conflicts using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: plan-restoration-of-temporarily-disabled-functionality
+  name: Plan restoration of temporarily disabled functionality
+  category: Mitigation, Containment, and Recovery
+  description: Perform plan restoration of temporarily disabled functionality using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: record-all-actions-approvals-outputs-and-timestamps
+  name: Record all actions, approvals, outputs, and timestamps
+  category: Mitigation, Containment, and Recovery
+  description: Perform record all actions, approvals, outputs, and timestamps using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: recommend-incident-resolution-only-after-sustained-verification
+  name: Recommend incident resolution only after sustained verification
+  category: Mitigation, Containment, and Recovery
+  description: Perform recommend incident resolution only after sustained verification using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: draft-internal-incident-acknowledgements
+  name: Draft internal incident acknowledgements
+  category: Communication and Stakeholder Management
+  description: Perform draft internal incident acknowledgements using scoped evidence, explicit uncertainty, and
+    the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: prepare-customer-safe-status-updates
+  name: Prepare customer-safe status updates
+  category: Communication and Stakeholder Management
+  description: Perform prepare customer-safe status updates using scoped evidence, explicit uncertainty, and the
+    pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: state-impact-scope-actions-and-uncertainty-accurately
+  name: State impact, scope, actions, and uncertainty accurately
+  category: Communication and Stakeholder Management
+  description: Perform state impact, scope, actions, and uncertainty accurately using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: avoid-unsupported-root-cause-and-restoration-time-claims
+  name: Avoid unsupported root-cause and restoration-time claims
+  category: Communication and Stakeholder Management
+  description: Perform avoid unsupported root-cause and restoration-time claims using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: tailor-updates-for-responders-executives-support-and-customers
+  name: Tailor updates for responders, executives, support, and customers
+  category: Communication and Stakeholder Management
+  description: Perform tailor updates for responders, executives, support, and customers using scoped evidence,
+    explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: maintain-agreed-communication-cadence
+  name: Maintain agreed communication cadence
+  category: Communication and Stakeholder Management
+  description: Perform maintain agreed communication cadence using scoped evidence, explicit uncertainty, and the
+    pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: track-message-approvals-and-publication-evidence
+  name: Track message approvals and publication evidence
+  category: Communication and Stakeholder Management
+  description: Perform track message approvals and publication evidence using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: coordinate-status-page-updates-through-approved-workflows
+  name: Coordinate status-page updates through approved workflows
+  category: Communication and Stakeholder Management
+  description: Perform coordinate status-page updates through approved workflows using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: prepare-service-restoration-and-monitoring-notices
+  name: Prepare service-restoration and monitoring notices
+  category: Communication and Stakeholder Management
+  description: Perform prepare service-restoration and monitoring notices using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: document-known-limitations-and-workarounds
+  name: Document known limitations and workarounds
+  category: Communication and Stakeholder Management
+  description: Perform document known limitations and workarounds using scoped evidence, explicit uncertainty, and
+    the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: prepare-cross-shift-and-cross-region-handoffs
+  name: Prepare cross-shift and cross-region handoffs
+  category: Communication and Stakeholder Management
+  description: Perform prepare cross-shift and cross-region handoffs using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: coordinate-with-product-support-security-and-release-management
+  name: Coordinate with Product, Support, Security, and Release Management
+  category: Communication and Stakeholder Management
+  description: Perform coordinate with product, support, security, and release management using scoped evidence,
+    explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: identify-legal-regulatory-or-contractual-communication-needs
+  name: Identify legal, regulatory, or contractual communication needs
+  category: Communication and Stakeholder Management
+  description: Perform identify legal, regulatory, or contractual communication needs using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: maintain-a-consistent-source-of-truth
+  name: Maintain a consistent source of truth
+  category: Communication and Stakeholder Management
+  description: Perform maintain a consistent source of truth using scoped evidence, explicit uncertainty, and the
+    pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: close-communication-loops-after-recovery-and-review
+  name: Close communication loops after recovery and review
+  category: Communication and Stakeholder Management
+  description: Perform close communication loops after recovery and review using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: determine-whether-a-post-incident-review-is-required
+  name: Determine whether a post-incident review is required
+  category: Post-Incident Review and Learning
+  description: Perform determine whether a post-incident review is required using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: build-a-factual-incident-timeline-from-immutable-evidence
+  name: Build a factual incident timeline from immutable evidence
+  category: Post-Incident Review and Learning
+  description: Perform build a factual incident timeline from immutable evidence using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: document-customer-and-business-impact
+  name: Document customer and business impact
+  category: Post-Incident Review and Learning
+  description: Perform document customer and business impact using scoped evidence, explicit uncertainty, and the
+    pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: separate-triggers-contributing-factors-and-systemic-conditions
+  name: Separate triggers, contributing factors, and systemic conditions
+  category: Post-Incident Review and Learning
+  description: Perform separate triggers, contributing factors, and systemic conditions using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: describe-detection-response-mitigation-and-recovery-performance
+  name: Describe detection, response, mitigation, and recovery performance
+  category: Post-Incident Review and Learning
+  description: Perform describe detection, response, mitigation, and recovery performance using scoped evidence,
+    explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: identify-what-went-well-poorly-and-where-the-organization-was-fortunate
+  name: Identify what went well, poorly, and where the organization was fortunate
+  category: Post-Incident Review and Learning
+  description: Perform identify what went well, poorly, and where the organization was fortunate using scoped evidence,
+    explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: facilitate-blameless-review-practices
+  name: Facilitate blameless review practices
+  category: Post-Incident Review and Learning
+  description: Perform facilitate blameless review practices using scoped evidence, explicit uncertainty, and the
+    pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: avoid-personal-judgments-and-unsupported-certainty
+  name: Avoid personal judgments and unsupported certainty
+  category: Post-Incident Review and Learning
+  description: Perform avoid personal judgments and unsupported certainty using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: identify-reliability-process-documentation-and-tooling-gaps
+  name: Identify reliability, process, documentation, and tooling gaps
+  category: Post-Incident Review and Learning
+  description: Perform identify reliability, process, documentation, and tooling gaps using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: create-specific-corrective-actions-with-owners-and-success-measures
+  name: Create specific corrective actions with owners and success measures
+  category: Post-Incident Review and Learning
+  description: Perform create specific corrective actions with owners and success measures using scoped evidence,
+    explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: prioritize-actions-by-risk-reduction-and-effort
+  name: Prioritize actions by risk reduction and effort
+  category: Post-Incident Review and Learning
+  description: Perform prioritize actions by risk reduction and effort using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: link-actions-to-jira-and-reliability-roadmaps
+  name: Link actions to Jira and reliability roadmaps
+  category: Post-Incident Review and Learning
+  description: Perform link actions to jira and reliability roadmaps using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: track-action-completion-and-effectiveness
+  name: Track action completion and effectiveness
+  category: Post-Incident Review and Learning
+  description: Perform track action completion and effectiveness using scoped evidence, explicit uncertainty, and
+    the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: share-approved-lessons-across-teams
+  name: Share approved lessons across teams
+  category: Post-Incident Review and Learning
+  description: Perform share approved lessons across teams using scoped evidence, explicit uncertainty, and the
+    pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: update-runbooks-alerts-tests-architecture-and-training
+  name: Update runbooks, alerts, tests, architecture, and training
+  category: Post-Incident Review and Learning
+  description: Perform update runbooks, alerts, tests, architecture, and training using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: review-service-architecture-for-reliability-risks
+  name: Review service architecture for reliability risks
+  category: Reliability Engineering and Risk Reduction
+  description: Perform review service architecture for reliability risks using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: analyze-failure-domains-and-fault-containment
+  name: Analyze failure domains and fault containment
+  category: Reliability Engineering and Risk Reduction
+  description: Perform analyze failure domains and fault containment using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: evaluate-redundancy-and-graceful-degradation
+  name: Evaluate redundancy and graceful degradation
+  category: Reliability Engineering and Risk Reduction
+  description: Perform evaluate redundancy and graceful degradation using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: review-retry-timeout-circuit-breaker-and-backpressure-behavior
+  name: Review retry, timeout, circuit-breaker, and backpressure behavior
+  category: Reliability Engineering and Risk Reduction
+  description: Perform review retry, timeout, circuit-breaker, and backpressure behavior using scoped evidence,
+    explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: analyze-dependency-criticality-and-fallback-strategies
+  name: Analyze dependency criticality and fallback strategies
+  category: Reliability Engineering and Risk Reduction
+  description: Perform analyze dependency criticality and fallback strategies using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: review-data-durability-consistency-and-recovery-requirements
+  name: Review data durability, consistency, and recovery requirements
+  category: Reliability Engineering and Risk Reduction
+  description: Perform review data durability, consistency, and recovery requirements using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: identify-cascading-failure-and-retry-storm-risks
+  name: Identify cascading-failure and retry-storm risks
+  category: Reliability Engineering and Risk Reduction
+  description: Perform identify cascading-failure and retry-storm risks using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: assess-load-shedding-and-admission-control
+  name: Assess load shedding and admission control
+  category: Reliability Engineering and Risk Reduction
+  description: Perform assess load shedding and admission control using scoped evidence, explicit uncertainty, and
+    the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: review-multi-region-or-multi-zone-reliability-assumptions
+  name: Review multi-region or multi-zone reliability assumptions
+  category: Reliability Engineering and Risk Reduction
+  description: Perform review multi-region or multi-zone reliability assumptions using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: recommend-reliability-acceptance-criteria
+  name: Recommend reliability acceptance criteria
+  category: Reliability Engineering and Risk Reduction
+  description: Perform recommend reliability acceptance criteria using scoped evidence, explicit uncertainty, and
+    the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: create-reliability-risk-registers
+  name: Create reliability risk registers
+  category: Reliability Engineering and Risk Reduction
+  description: Perform create reliability risk registers using scoped evidence, explicit uncertainty, and the pack's
+    approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: evaluate-new-designs-against-quality-attributes
+  name: Evaluate new designs against quality attributes
+  category: Reliability Engineering and Risk Reduction
+  description: Perform evaluate new designs against quality attributes using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: track-recurring-failure-modes
+  name: Track recurring failure modes
+  category: Reliability Engineering and Risk Reduction
+  description: Perform track recurring failure modes using scoped evidence, explicit uncertainty, and the pack's
+    approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: coordinate-reliability-improvements-with-architecture-and-engineering-teams
+  name: Coordinate reliability improvements with architecture and engineering teams
+  category: Reliability Engineering and Risk Reduction
+  description: Perform coordinate reliability improvements with architecture and engineering teams using scoped
+    evidence, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: measure-whether-reliability-changes-reduce-user-risk
+  name: Measure whether reliability changes reduce user risk
+  category: Reliability Engineering and Risk Reduction
+  description: Perform measure whether reliability changes reduce user risk using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: review-traffic-throughput-latency-and-resource-trends
+  name: Review traffic, throughput, latency, and resource trends
+  category: Capacity, Performance, and Scalability
+  description: Perform review traffic, throughput, latency, and resource trends using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: forecast-capacity-using-approved-demand-assumptions
+  name: Forecast capacity using approved demand assumptions
+  category: Capacity, Performance, and Scalability
+  description: Perform forecast capacity using approved demand assumptions using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: identify-saturation-and-resource-exhaustion-risks
+  name: Identify saturation and resource-exhaustion risks
+  category: Capacity, Performance, and Scalability
+  description: Perform identify saturation and resource-exhaustion risks using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: analyze-headroom-by-service-and-dependency
+  name: Analyze headroom by service and dependency
+  category: Capacity, Performance, and Scalability
+  description: Perform analyze headroom by service and dependency using scoped evidence, explicit uncertainty, and
+    the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: review-autoscaling-thresholds-and-stabilization-behavior
+  name: Review autoscaling thresholds and stabilization behavior
+  category: Capacity, Performance, and Scalability
+  description: Perform review autoscaling thresholds and stabilization behavior using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: analyze-connection-pools-thread-pools-queues-and-worker-capacity
+  name: Analyze connection pools, thread pools, queues, and worker capacity
+  category: Capacity, Performance, and Scalability
+  description: Perform analyze connection pools, thread pools, queues, and worker capacity using scoped evidence,
+    explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: review-database-and-storage-growth
+  name: Review database and storage growth
+  category: Capacity, Performance, and Scalability
+  description: Perform review database and storage growth using scoped evidence, explicit uncertainty, and the pack's
+    approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: identify-hot-partitions-tenants-keys-or-workloads
+  name: Identify hot partitions, tenants, keys, or workloads
+  category: Capacity, Performance, and Scalability
+  description: Perform identify hot partitions, tenants, keys, or workloads using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: plan-safe-load-and-stress-tests-in-approved-environments
+  name: Plan safe load and stress tests in approved environments
+  category: Capacity, Performance, and Scalability
+  description: Perform plan safe load and stress tests in approved environments using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: validate-performance-regressions-against-baselines
+  name: Validate performance regressions against baselines
+  category: Capacity, Performance, and Scalability
+  description: Perform validate performance regressions against baselines using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: define-capacity-thresholds-and-operational-actions
+  name: Define capacity thresholds and operational actions
+  category: Capacity, Performance, and Scalability
+  description: Perform define capacity thresholds and operational actions using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: prepare-peak-event-readiness-plans
+  name: Prepare peak-event readiness plans
+  category: Capacity, Performance, and Scalability
+  description: Perform prepare peak-event readiness plans using scoped evidence, explicit uncertainty, and the pack's
+    approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: review-third-party-quota-and-rate-limit-constraints
+  name: Review third-party quota and rate-limit constraints
+  category: Capacity, Performance, and Scalability
+  description: Perform review third-party quota and rate-limit constraints using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: coordinate-cost-and-capacity-tradeoffs
+  name: Coordinate cost and capacity tradeoffs
+  category: Capacity, Performance, and Scalability
+  description: Perform coordinate cost and capacity tradeoffs using scoped evidence, explicit uncertainty, and the
+    pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: publish-evidence-backed-capacity-recommendations
+  name: Publish evidence-backed capacity recommendations
+  category: Capacity, Performance, and Scalability
+  description: Perform publish evidence-backed capacity recommendations using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: review-recovery-time-and-recovery-point-objectives
+  name: Review recovery time and recovery point objectives
+  category: Resilience, Disaster Recovery, and Continuity
+  description: Perform review recovery time and recovery point objectives using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: map-critical-dependencies-and-recovery-order
+  name: Map critical dependencies and recovery order
+  category: Resilience, Disaster Recovery, and Continuity
+  description: Perform map critical dependencies and recovery order using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: validate-backup-coverage-freshness-and-restore-evidence
+  name: Validate backup coverage, freshness, and restore evidence
+  category: Resilience, Disaster Recovery, and Continuity
+  description: Perform validate backup coverage, freshness, and restore evidence using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: review-failover-failback-and-degraded-mode-runbooks
+  name: Review failover, failback, and degraded-mode runbooks
+  category: Resilience, Disaster Recovery, and Continuity
+  description: Perform review failover, failback, and degraded-mode runbooks using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: plan-game-days-and-resilience-exercises
+  name: Plan game days and resilience exercises
+  category: Resilience, Disaster Recovery, and Continuity
+  description: Perform plan game days and resilience exercises using scoped evidence, explicit uncertainty, and
+    the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: define-safe-fault-injection-scope-and-stop-conditions
+  name: Define safe fault-injection scope and stop conditions
+  category: Resilience, Disaster Recovery, and Continuity
+  description: Perform define safe fault-injection scope and stop conditions using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: coordinate-disaster-recovery-simulations
+  name: Coordinate disaster-recovery simulations
+  category: Resilience, Disaster Recovery, and Continuity
+  description: Perform coordinate disaster-recovery simulations using scoped evidence, explicit uncertainty, and
+    the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: measure-detection-decision-recovery-and-verification-times
+  name: Measure detection, decision, recovery, and verification times
+  category: Resilience, Disaster Recovery, and Continuity
+  description: Perform measure detection, decision, recovery, and verification times using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: validate-data-reconciliation-after-recovery
+  name: Validate data reconciliation after recovery
+  category: Resilience, Disaster Recovery, and Continuity
+  description: Perform validate data reconciliation after recovery using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: identify-manual-dependencies-and-access-gaps
+  name: Identify manual dependencies and access gaps
+  category: Resilience, Disaster Recovery, and Continuity
+  description: Perform identify manual dependencies and access gaps using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: review-regional-provider-and-network-failure-scenarios
+  name: Review regional, provider, and network failure scenarios
+  category: Resilience, Disaster Recovery, and Continuity
+  description: Perform review regional, provider, and network failure scenarios using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: track-exercise-findings-and-corrective-actions
+  name: Track exercise findings and corrective actions
+  category: Resilience, Disaster Recovery, and Continuity
+  description: Perform track exercise findings and corrective actions using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: maintain-recovery-architecture-and-contact-information
+  name: Maintain recovery architecture and contact information
+  category: Resilience, Disaster Recovery, and Continuity
+  description: Perform maintain recovery architecture and contact information using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: prepare-continuity-evidence-for-audits-and-leadership
+  name: Prepare continuity evidence for audits and leadership
+  category: Resilience, Disaster Recovery, and Continuity
+  description: Perform prepare continuity evidence for audits and leadership using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: require-human-approval-for-production-resilience-tests-and-failovers
+  name: Require human approval for production resilience tests and failovers
+  category: Resilience, Disaster Recovery, and Continuity
+  description: Perform require human approval for production resilience tests and failovers using scoped evidence,
+    explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: review-release-candidates-for-reliability-risk
+  name: Review release candidates for reliability risk
+  category: Change, Release, and Operational Readiness
+  description: Perform review release candidates for reliability risk using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: validate-monitoring-alerts-runbooks-rollback-and-ownership-before-release
+  name: Validate monitoring, alerts, runbooks, rollback, and ownership before release
+  category: Change, Release, and Operational Readiness
+  description: Perform validate monitoring, alerts, runbooks, rollback, and ownership before release using scoped
+    evidence, explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: review-database-infrastructure-and-configuration-dependencies
+  name: Review database, infrastructure, and configuration dependencies
+  category: Change, Release, and Operational Readiness
+  description: Perform review database, infrastructure, and configuration dependencies using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: confirm-slo-and-error-budget-implications
+  name: Confirm SLO and error-budget implications
+  category: Change, Release, and Operational Readiness
+  description: Perform confirm slo and error-budget implications using scoped evidence, explicit uncertainty, and
+    the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: assess-progressive-delivery-and-canary-strategies
+  name: Assess progressive-delivery and canary strategies
+  category: Change, Release, and Operational Readiness
+  description: Perform assess progressive-delivery and canary strategies using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: define-release-health-signals-and-abort-conditions
+  name: Define release health signals and abort conditions
+  category: Change, Release, and Operational Readiness
+  description: Perform define release health signals and abort conditions using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: review-freeze-window-and-high-risk-change-requirements
+  name: Review freeze-window and high-risk change requirements
+  category: Change, Release, and Operational Readiness
+  description: Perform review freeze-window and high-risk change requirements using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: correlate-incidents-with-recent-changes
+  name: Correlate incidents with recent changes
+  category: Change, Release, and Operational Readiness
+  description: Perform correlate incidents with recent changes using scoped evidence, explicit uncertainty, and
+    the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: participate-in-go-no-go-decision-support
+  name: Participate in go/no-go decision support
+  category: Change, Release, and Operational Readiness
+  description: Perform participate in go/no-go decision support using scoped evidence, explicit uncertainty, and
+    the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: verify-post-deployment-health-using-read-only-evidence
+  name: Verify post-deployment health using read-only evidence
+  category: Change, Release, and Operational Readiness
+  description: Perform verify post-deployment health using read-only evidence using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: recommend-rollback-or-pause-when-objective-conditions-are-met
+  name: Recommend rollback or pause when objective conditions are met
+  category: Change, Release, and Operational Readiness
+  description: Perform recommend rollback or pause when objective conditions are met using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: review-emergency-and-hotfix-operational-risk
+  name: Review emergency and hotfix operational risk
+  category: Change, Release, and Operational Readiness
+  description: Perform review emergency and hotfix operational risk using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: maintain-operational-readiness-checklists
+  name: Maintain operational-readiness checklists
+  category: Change, Release, and Operational Readiness
+  description: Perform maintain operational-readiness checklists using scoped evidence, explicit uncertainty, and
+    the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: track-change-failure-and-recovery-trends
+  name: Track change failure and recovery trends
+  category: Change, Release, and Operational Readiness
+  description: Perform track change failure and recovery trends using scoped evidence, explicit uncertainty, and
+    the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: high
+  approval: required-for-side-effects
+- id: feed-release-learnings-into-reliability-standards
+  name: Feed release learnings into reliability standards
+  category: Change, Release, and Operational Readiness
+  description: Perform feed release learnings into reliability standards using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: identify-repetitive-manual-operational-work
+  name: Identify repetitive manual operational work
+  category: Toil Reduction, Automation, and Continuous Improvement
+  description: Perform identify repetitive manual operational work using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: measure-toil-volume-interruption-and-reliability-impact-at-team-level
+  name: Measure toil volume, interruption, and reliability impact at team level
+  category: Toil Reduction, Automation, and Continuous Improvement
+  description: Perform measure toil volume, interruption, and reliability impact at team level using scoped evidence,
+    explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: prioritize-automation-by-risk-frequency-and-effort
+  name: Prioritize automation by risk, frequency, and effort
+  category: Toil Reduction, Automation, and Continuous Improvement
+  description: Perform prioritize automation by risk, frequency, and effort using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: convert-safe-repetitive-checks-into-deterministic-tools
+  name: Convert safe repetitive checks into deterministic tools
+  category: Toil Reduction, Automation, and Continuous Improvement
+  description: Perform convert safe repetitive checks into deterministic tools using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: create-bounded-diagnostic-and-verification-automation
+  name: Create bounded diagnostic and verification automation
+  category: Toil Reduction, Automation, and Continuous Improvement
+  description: Perform create bounded diagnostic and verification automation using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: improve-runbook-clarity-and-executability
+  name: Improve runbook clarity and executability
+  category: Toil Reduction, Automation, and Continuous Improvement
+  description: Perform improve runbook clarity and executability using scoped evidence, explicit uncertainty, and
+    the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: automate-evidence-collection-and-correlation
+  name: Automate evidence collection and correlation
+  category: Toil Reduction, Automation, and Continuous Improvement
+  description: Perform automate evidence collection and correlation using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: reduce-alert-noise-and-duplicate-notifications
+  name: Reduce alert noise and duplicate notifications
+  category: Toil Reduction, Automation, and Continuous Improvement
+  description: Perform reduce alert noise and duplicate notifications using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: standardize-service-templates-and-reliability-controls
+  name: Standardize service templates and reliability controls
+  category: Toil Reduction, Automation, and Continuous Improvement
+  description: Perform standardize service templates and reliability controls using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: improve-developer-self-service-for-operational-readiness
+  name: Improve developer self-service for operational readiness
+  category: Toil Reduction, Automation, and Continuous Improvement
+  description: Perform improve developer self-service for operational readiness using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: track-automation-effectiveness-and-failure-modes
+  name: Track automation effectiveness and failure modes
+  category: Toil Reduction, Automation, and Continuous Improvement
+  description: Perform track automation effectiveness and failure modes using scoped evidence, explicit uncertainty,
+    and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: retire-obsolete-scripts-and-dashboards
+  name: Retire obsolete scripts and dashboards
+  category: Toil Reduction, Automation, and Continuous Improvement
+  description: Perform retire obsolete scripts and dashboards using scoped evidence, explicit uncertainty, and the
+    pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: document-ownership-and-maintenance-for-operational-automation
+  name: Document ownership and maintenance for operational automation
+  category: Toil Reduction, Automation, and Continuous Improvement
+  description: Perform document ownership and maintenance for operational automation using scoped evidence, explicit
+    uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: create-reliability-improvement-roadmaps
+  name: Create reliability improvement roadmaps
+  category: Toil Reduction, Automation, and Continuous Improvement
+  description: Perform create reliability improvement roadmaps using scoped evidence, explicit uncertainty, and
+    the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects
+- id: review-whether-sre-effort-is-reducing-operational-load-and-user-risk
+  name: Review whether SRE effort is reducing operational load and user risk
+  category: Toil Reduction, Automation, and Continuous Improvement
+  description: Perform review whether sre effort is reducing operational load and user risk using scoped evidence,
+    explicit uncertainty, and the pack's approval and production-safety controls.
+  execution: reasoning-plus-deterministic-tools
+  risk: standard
+  approval: required-for-side-effects

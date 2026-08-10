@@ -1,0 +1,31 @@
+id: evaluation-and-promotion-gates
+trigger: candidate proposed for production promotion or significant traffic increase
+steps:
+- freeze candidate identity
+- validate evaluation-set and scorer versions
+- run quality regression gates
+- validate security and supply chain
+- validate responsible-AI evidence
+- validate capacity/cost/reliability
+- independent review
+- policy evaluation
+- human go/no-go decision
+- payload-bound promotion request
+- deterministic promotion
+- read-only verification
+agents:
+- evaluation-platform-agent
+- supply-chain-agent
+- ai-platform-security-agent
+- responsible-ai-platform-agent
+- ai-finops-agent
+- platform-reliability-agent
+- model-monitoring-agent
+- independent-platform-review-agent
+- policy-evidence-agent
+artifacts:
+- evaluation-gate-specification
+- ai-platform-security-review
+- ai-governance-evidence-pack
+- ai-finops-report
+- model-promotion-request

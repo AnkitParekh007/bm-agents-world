@@ -1,0 +1,196 @@
+version: 1.0.0
+supervisor: database-architect-developer-supervisor
+agents:
+- id: database-architect-developer-supervisor
+  description: Coordinates bounded database architecture and development workflows, selects specialists, manages approvals,
+    and preserves evidence.
+  capabilities:
+  - orchestration
+  - risk
+  - evidence
+  status: enabled
+  external_writes: none
+- id: work-context
+  description: Reads Jira, Confluence, service contracts, incidents, data policies, and acceptance criteria.
+  capabilities:
+  - jira
+  - requirements
+  - traceability
+  status: enabled
+  external_writes: none
+- id: database-estate-discovery
+  description: Profiles database engines, versions, schemas, ownership, workloads, topology, migration tooling, and repository
+    conventions.
+  capabilities:
+  - catalog
+  - metadata
+  - discovery
+  status: enabled
+  external_writes: none
+- id: data-domain-modeler
+  description: Defines business entities, relationships, lifecycle, ownership, invariants, and canonical terms.
+  capabilities:
+  - domain-modeling
+  - glossary
+  - governance
+  status: enabled
+  external_writes: none
+- id: logical-model-architect
+  description: Creates normalized logical models, keys, cardinality, temporal rules, and data contracts independent of
+    an engine.
+  capabilities:
+  - logical-model
+  - normalization
+  - constraints
+  status: enabled
+  external_writes: none
+- id: physical-schema-architect
+  description: Creates engine-aware tables, types, keys, indexes, partitions, storage, naming, and physical design.
+  capabilities:
+  - physical-model
+  - ddl
+  - indexing
+  status: enabled
+  external_writes: none
+- id: sql-developer
+  description: Implements safe SQL, views, procedures, functions, triggers, and reusable query patterns within repository
+    conventions.
+  capabilities:
+  - sql
+  - stored-code
+  - review
+  status: enabled
+  external_writes: none
+- id: migration-engineer
+  description: Designs versioned migrations, expand-contract sequencing, compatibility windows, validation, and rollback
+    or roll-forward strategies.
+  capabilities:
+  - flyway
+  - liquibase
+  - zero-downtime
+  status: enabled
+  external_writes: none
+- id: data-movement-engineer
+  description: Designs backfills, transformations, reconciliation, archival, imports, exports, and resumable data movement.
+  capabilities:
+  - backfill
+  - etl
+  - reconciliation
+  status: enabled
+  external_writes: none
+- id: query-performance-engineer
+  description: Analyzes plans, statistics, cardinality, indexing, waits, locking, and workload regressions.
+  capabilities:
+  - explain
+  - query-store
+  - tuning
+  status: enabled
+  external_writes: none
+- id: transaction-concurrency-engineer
+  description: Designs transaction boundaries, isolation, locking, idempotency, consistency, and deadlock prevention.
+  capabilities:
+  - transactions
+  - locking
+  - concurrency
+  status: enabled
+  external_writes: none
+- id: database-security-governance
+  description: Designs identities, roles, grants, row or column security, masking, encryption, auditing, and data-classification
+    controls.
+  capabilities:
+  - least-privilege
+  - rls
+  - audit
+  status: enabled
+  external_writes: none
+- id: data-quality-steward
+  description: Defines profiling, validation, quality rules, anomaly checks, lineage, retention, and reconciliation evidence.
+  capabilities:
+  - data-quality
+  - profiling
+  - lineage
+  status: enabled
+  external_writes: none
+- id: integration-contract-engineer
+  description: Reviews ORM mappings, API/event contracts, CDC, replication consumers, and schema compatibility.
+  capabilities:
+  - contracts
+  - cdc
+  - orm
+  status: enabled
+  external_writes: none
+- id: ha-dr-architect
+  description: Designs backup, restore, replication, failover, RPO/RTO, maintenance, and disaster-recovery validation.
+  capabilities:
+  - backup
+  - replication
+  - recovery
+  status: enabled
+  external_writes: none
+- id: observability-capacity-engineer
+  description: Defines database metrics, logs, traces, capacity forecasts, SLOs, alerts, and operational dashboards.
+  capabilities:
+  - observability
+  - capacity
+  - slo
+  status: enabled
+  external_writes: none
+- id: database-platform-compatibility
+  description: Resolves engine/version/edition/cloud-service capabilities, SQL dialects, extensions, and upgrade constraints.
+  capabilities:
+  - postgresql
+  - oracle
+  - sql-server
+  - mysql
+  status: enabled
+  external_writes: none
+- id: database-test-engineer
+  description: Builds schema, migration, query, constraint, concurrency, performance, and recovery tests in disposable
+    environments.
+  capabilities:
+  - testcontainers
+  - migration-test
+  - performance-test
+  status: enabled
+  external_writes: none
+- id: database-change-reviewer
+  description: Reviews DDL, DML, stored code, migration ordering, data risk, compatibility, and evidence sufficiency.
+  capabilities:
+  - review
+  - quality
+  - risk
+  status: enabled
+  external_writes: none
+- id: database-pipeline-release
+  description: Runs deterministic validation and prepares controlled database release and deployment artifacts.
+  capabilities:
+  - ci
+  - release
+  - gates
+  status: enabled
+  external_writes: approval_required
+- id: database-documentation
+  description: Maintains ERDs, dictionaries, ADRs, runbooks, migration notes, ownership, and operational documentation.
+  capabilities:
+  - docs
+  - erd
+  - adr
+  status: enabled
+  external_writes: approval_required
+- id: evidence-manager
+  description: Hashes, stores, links, and retains plans, diffs, tests, approvals, and operational evidence.
+  capabilities:
+  - artifacts
+  - provenance
+  - audit
+  status: enabled
+  external_writes: none
+- id: policy-enforcer
+  description: Evaluates project scope, environment, SQL classification, permissions, approvals, secret leases, and production
+    prohibitions.
+  capabilities:
+  - opa
+  - authorization
+  - guardrails
+  status: enabled
+  external_writes: none

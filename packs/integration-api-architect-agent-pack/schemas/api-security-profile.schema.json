@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/api-security-profile.schema.json",
+  "title": "Api Security Profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "interface",
+    "authn",
+    "authz",
+    "data_classification",
+    "threats",
+    "controls"
+  ],
+  "properties": {
+    "interface": {
+      "type": "string"
+    },
+    "authn": {
+      "type": "object"
+    },
+    "authz": {
+      "type": "object"
+    },
+    "data_classification": {
+      "type": "string"
+    },
+    "threats": {
+      "type": "array"
+    },
+    "controls": {
+      "type": "array"
+    },
+    "exceptions": {
+      "type": "array"
+    }
+  }
+}

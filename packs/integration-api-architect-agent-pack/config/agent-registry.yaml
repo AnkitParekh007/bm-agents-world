@@ -1,0 +1,197 @@
+apiVersion: integration-api-architect-agent-pack/v1
+kind: AgentRegistry
+metadata:
+  name: integration-api-architect-agents
+  version: 1.0.0
+spec:
+  supervisor: integration-api-architect-supervisor
+  agents:
+  - id: integration-api-architect-supervisor
+    description: Coordinates bounded integration and API architecture workflows, resolves cross-domain tradeoffs,
+      and enforces contract, evidence, security, compatibility, and approval rules.
+    specialization: orchestration, integration governance, architecture
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: business-product-context
+    description: Reads product goals, Jira epics, business processes, consumer needs, SLAs, and constraints that
+      drive integrations.
+    specialization: business context, requirements, outcomes
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: integration-landscape-discovery
+    description: Discovers applications, repositories, APIs, events, queues, gateways, databases, vendors, ownership,
+      and environment topology.
+    specialization: inventory, dependency mapping, reverse engineering
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: domain-service-boundary
+    description: Defines domain ownership, service boundaries, source-of-truth systems, responsibilities, and cross-domain
+      dependencies.
+    specialization: DDD, service boundaries, ownership
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: api-strategy-governance
+    description: Defines API principles, styles, lifecycle states, standards, naming, discoverability, ownership,
+      and governance.
+    specialization: API strategy, standards, governance
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: rest-http-api
+    description: Designs resource-oriented HTTP APIs, methods, status codes, pagination, filtering, idempotency,
+      caching, and problem details.
+    specialization: REST, HTTP, OpenAPI
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: graphql-api
+    description: Designs GraphQL schemas, operations, federation boundaries, pagination, authorization, performance
+      controls, and evolution.
+    specialization: GraphQL, schema design, federation
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: grpc-rpc
+    description: Designs gRPC/protobuf contracts, RPC semantics, deadlines, retries, health, reflection, compatibility,
+      and generated clients.
+    specialization: gRPC, protobuf, RPC
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: event-driven-messaging
+    description: Designs events, commands, topics, channels, envelopes, delivery semantics, ordering, replay, retention,
+      and AsyncAPI contracts.
+    specialization: event-driven architecture, AsyncAPI, CloudEvents
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: api-gateway-edge
+    description: Designs gateway routes, policies, quotas, throttles, transformations, WAF boundaries, ingress,
+      egress, and API management controls.
+    specialization: API gateway, edge, traffic policy
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: identity-authorization
+    description: Designs OAuth/OIDC profiles, workload identity, scopes, claims, service authentication, token audience,
+      and delegated authorization.
+    specialization: OAuth, OIDC, identity, authorization
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: api-security
+    description: Threat-models APIs and integrations and defines object/function authorization, rate controls, input
+      validation, secrets boundaries, and abuse controls.
+    specialization: API security, threat modeling, OWASP
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: data-contract-schema
+    description: Designs payload schemas, canonical models, JSON Schema, protobuf schemas, event schemas, semantics,
+      ownership, and classification.
+    specialization: data contracts, schemas, semantics
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: versioning-compatibility
+    description: Defines additive-change policy, compatibility matrices, consumer impact, deprecation, sunset, migration,
+      and breaking-change governance.
+    specialization: versioning, compatibility, deprecation
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: consumer-experience-sdk
+    description: Optimizes developer experience, documentation, examples, SDK strategy, sandboxing, discoverability,
+      and onboarding.
+    specialization: DX, SDKs, documentation
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: resiliency-reliability
+    description: Defines timeouts, retries, backoff, circuit breaking, bulkheads, idempotency, delivery guarantees,
+      failover, and graceful degradation.
+    specialization: resilience, reliability, distributed systems
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: performance-capacity
+    description: Models throughput, latency, payload size, concurrency, rate limits, connection pools, streaming
+      behavior, and capacity.
+    specialization: performance, capacity, scalability
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: observability-operability
+    description: Defines traces, metrics, logs, correlation, API analytics, SLOs, dashboards, alerts, runbooks,
+      and support diagnostics.
+    specialization: OpenTelemetry, observability, operations
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: integration-testing
+    description: Defines contract tests, consumer-driven tests, mocks, virtual services, negative tests, fault tests,
+      conformance, and certification.
+    specialization: contract testing, conformance, test strategy
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: legacy-modernization
+    description: Plans façade, strangler, anti-corruption, protocol bridging, ESB decomposition, SOAP modernization,
+      and coexistence.
+    specialization: legacy integration, modernization, migration
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: third-party-partner
+    description: Designs partner/vendor integrations, trust boundaries, SLAs, onboarding, certificates, sandboxing,
+      quotas, and exit strategies.
+    specialization: B2B, partner APIs, vendor integration
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: platform-developer-experience
+    description: Defines API platform golden paths, templates, catalogs, schema registries, generators, self-service,
+      and governance automation.
+    specialization: platform engineering, API platform, DevEx
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: cost-governance
+    description: Models API/integration cost drivers, egress, gateway/broker costs, quotas, chargeback, retention,
+      and optimization tradeoffs.
+    specialization: FinOps, cost, governance
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: architecture-review
+    description: Performs independent contract, security, reliability, compatibility, consumer-impact, and architecture
+      readiness reviews.
+    specialization: independent review, tradeoffs, risk
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: implementation-alignment
+    description: Creates role-specific handoffs and verifies delivery conformance across frontend, backend, data,
+      QA, DevOps, and support teams.
+    specialization: handoff, conformance, delivery
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: evidence-manager
+    description: Stores immutable contracts, diffs, test evidence, reviews, approvals, dependency graphs, and publication
+      hashes.
+    specialization: artifacts, provenance, audit
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: policy-enforcer
+    description: Evaluates authorization, project scope, environment, data classification, tool permissions, contract
+      publication, and payload-bound approvals.
+    specialization: OPA, authorization, guardrails
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false

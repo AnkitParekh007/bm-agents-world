@@ -1,0 +1,27 @@
+pack: "ai-ml-engineer-agent-pack"
+projects:
+  - id: pcc
+    name: PCC
+    repository_system: bitbucket
+    ai_ml_profile: "discover-from-repository"
+    notes: Do not assume AI/ML components exist; authorize per work item.
+  - id: sop
+    name: SOP
+    repository_system: bitbucket
+    ai_ml_profile: "discover-from-repository"
+    notes: Do not introduce AI/ML without approved product and architecture context.
+  - id: databridge
+    name: DataBridge
+    repository_system: bitbucket
+    ai_ml_profile: "data-intensive-candidate"
+    notes: Coordinate data workloads with Data Engineer and Database Architect packs.
+  - id: "bm-agent-foundry"
+    name: BM Agent Foundry
+    repository_system: "github-or-approved-mirror"
+    ai_ml_profile: "agentic-ai-platform"
+    notes: "Apply LLM, tool-use, evaluation, agent security, and model-provider governance."
+  - id: "generic-ml-sandbox"
+    name: Generic ML Sandbox
+    repository_system: "approved-source-control"
+    ai_ml_profile: sandbox
+    notes: "Non-production experimentation with synthetic or approved datasets."

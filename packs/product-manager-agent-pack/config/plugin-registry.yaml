@@ -1,0 +1,90 @@
+version: 1.0.0
+plugins:
+- id: jira-product-discovery-adapter
+  description: Connects ideas, insights, prioritization fields, views, and roadmaps.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: productboard-adapter
+  description: Optional adapter for Productboard insights, features, objectives, and roadmaps.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: atlassian-jira-confluence-adapter
+  description: Reads delivery context and publishes approved product updates.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: bitbucket-read-adapter
+  description: Reads code and delivery history for feasibility and release context.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: figma-context-adapter
+  description: Reads approved UX artifacts, prototypes, components, and design decisions.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: amplitude-analytics-adapter
+  description: Reads privacy-thresholded product analytics and experiment results.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: mixpanel-analytics-adapter
+  description: Optional read-only product analytics integration where used by the organization.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: launchdarkly-adapter
+  description: Reads feature flags and experiments; mutations require approved deterministic action.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: optimizely-adapter
+  description: Optional experiment catalog and results integration.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: crm-insights-adapter
+  description: Provides minimized CRM and win-loss themes without broad customer-record exposure.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: support-feedback-adapter
+  description: Aggregates approved support cases, feature requests, and customer pain themes.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: survey-research-adapter
+  description: Drafts approved surveys and reads sanitized aggregate responses.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: data-warehouse-reader
+  description: Executes bounded read-only queries against curated product datasets.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: market-research-browser
+  description: Captures public competitive and regulatory evidence with source provenance.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: prioritization-calculator
+  description: Calculates RICE, WSJF, value-effort, cost-of-delay, and configurable scoring models.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: roadmap-renderer
+  description: Produces outcome, theme, now-next-later, scenario, and stakeholder roadmap views.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: experiment-statistics-reviewer
+  description: Checks metric definitions, exposure, sample assumptions, guardrails, and readout quality.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: meeting-decision-capture
+  description: Extracts decisions, owners, dates, open questions, and actions from approved meeting artifacts.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: teams-publisher
+  description: Publishes approved stakeholder, roadmap, release, and outcome updates.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: privacy-redactor
+  description: Removes direct identifiers and sensitive commercial or customer data before model processing.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: artifact-signer
+  description: Hashes and signs immutable product decision and release evidence bundles.
+  status: enabled
+  secrets_exposed_to_model: false
+- id: opa-policy-client
+  description: Evaluates scope, data use, publication, experiment, and commitment policies.
+  status: enabled
+  secrets_exposed_to_model: false

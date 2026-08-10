@@ -1,0 +1,26 @@
+id: regulatory-change-and-policy-lifecycle
+name: Regulatory change and policy lifecycle
+supervisor: compliance-governance-supervisor
+steps:
+- order: 1
+  action: retrieve authoritative change
+- order: 2
+  action: validate source/version
+- order: 3
+  action: applicability triage
+- order: 4
+  action: impact analysis
+- order: 5
+  action: policy/control change proposal
+- order: 6
+  action: legal or specialist review
+- order: 7
+  action: independent assurance
+- order: 8
+  action: human approval
+- order: 9
+  action: publish approved changes
+- order: 10
+  action: track implementation
+production_mutation: false
+human_decision_required: true

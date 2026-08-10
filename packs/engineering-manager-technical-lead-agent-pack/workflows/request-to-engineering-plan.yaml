@@ -1,0 +1,76 @@
+apiVersion: engineering-manager-technical-lead-agent-pack/v1
+kind: AgentWorkflow
+metadata:
+  name: request-to-engineering-plan
+  title: Request to Engineering Plan
+  version: 1.0.0
+spec:
+  trigger:
+  - new_epic
+  - new_initiative
+  - major_change
+  objective: Produce an evidence-backed engineering plan, capacity scenarios, dependencies, risks, and decision
+    requests.
+  supervisor: engineering-leadership-supervisor
+  execution:
+    mode: stateful
+    defaultPolicy: deny
+    evidenceRequired: true
+    approvalBinding: payload-hash
+    resumeFromCheckpoint: true
+  stages:
+  - id: intake
+    agent: work-product-context
+    skills:
+    - engineering-leadership.jira-context
+    - engineering-leadership.product-goal-traceability
+    - engineering-leadership.project-scope-resolution
+    gate: authorization
+  - id: capacity
+    agent: team-capacity
+    skills:
+    - engineering-leadership.capacity-scenario
+    - engineering-leadership.operational-load-allocation
+    - engineering-leadership.skills-gap-analysis
+  - id: delivery-plan
+    agent: delivery-planning
+    skills:
+    - engineering-leadership.engineering-workstream-design
+    - engineering-leadership.vertical-slice-planning
+    - engineering-leadership.confidence-forecast
+  - id: technical-input
+    agent: technical-direction
+    skills:
+    - engineering-leadership.repository-profile
+    - engineering-leadership.implementation-option-analysis
+    - engineering-leadership.technical-risk-register
+  - id: dependencies
+    agent: dependency-coordination
+    skills:
+    - engineering-leadership.critical-path-analysis
+    - engineering-leadership.dependency-aging
+    - engineering-leadership.escalation-brief
+  - id: independent-review
+    agent: independent-engineering-review
+    skills:
+    - engineering-leadership.commitment-boundary-check
+    - engineering-leadership.metric-data-quality
+    - engineering-leadership.evidence-confidence
+  - id: decision-and-publish
+    agent: engineering-leadership-supervisor
+    skills:
+    - engineering-leadership.stakeholder-action-log
+    - engineering-leadership.payload-hash-approval
+    - engineering-leadership.daily-engineering-summary
+    gate: payload-bound-approval
+  outputs:
+  - engineering-delivery-plan
+  - capacity-scenario
+  - dependency-map
+  - engineering-risk-register
+  - stakeholder-engineering-update
+  terminalStates:
+  - completed
+  - rejected
+  - blocked
+  - cancelled

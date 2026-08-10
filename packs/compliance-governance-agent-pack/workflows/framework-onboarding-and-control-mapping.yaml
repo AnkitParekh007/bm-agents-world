@@ -1,0 +1,26 @@
+id: framework-onboarding-and-control-mapping
+name: Framework onboarding and control mapping
+supervisor: compliance-governance-supervisor
+steps:
+- order: 1
+  action: authorize scope
+- order: 2
+  action: resolve framework/version
+- order: 3
+  action: identify applicable obligations
+- order: 4
+  action: map to normalized controls
+- order: 5
+  action: assign owners/frequency
+- order: 6
+  action: identify evidence sources
+- order: 7
+  action: gap analysis
+- order: 8
+  action: independent review
+- order: 9
+  action: human approval
+- order: 10
+  action: publish mapping
+production_mutation: false
+human_decision_required: true

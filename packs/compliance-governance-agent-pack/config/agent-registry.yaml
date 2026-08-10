@@ -1,0 +1,158 @@
+agents:
+- id: compliance-governance-supervisor
+  name: Compliance Governance Supervisor
+  description: Coordinates scoped governance work, delegates specialists, assembles
+    evidence-backed recommendations, and enforces approvals.
+  default_mode: read_only_analysis
+  approval_for_writes: true
+- id: regulatory-intelligence-agent
+  name: Regulatory Intelligence Agent
+  description: Tracks authoritative regulatory and standards changes and identifies
+    potential applicability changes.
+  default_mode: read_only_analysis
+  approval_for_writes: true
+- id: framework-scoping-agent
+  name: Framework Scoping Agent
+  description: Determines organizational, product, system, jurisdiction and customer
+    scope.
+  default_mode: read_only_analysis
+  approval_for_writes: true
+- id: policy-governance-agent
+  name: Policy Governance Agent
+  description: Maintains policy lifecycle, mapping, approvals, review dates and supersession.
+  default_mode: read_only_analysis
+  approval_for_writes: true
+- id: control-library-agent
+  name: Control Library Agent
+  description: Maintains normalized controls, mappings, ownership, frequency and inheritance.
+  default_mode: read_only_analysis
+  approval_for_writes: true
+- id: risk-management-agent
+  name: Risk Management Agent
+  description: Maintains evidence-backed risks, treatments, tolerances and expiry-aware
+    acceptance requests.
+  default_mode: read_only_analysis
+  approval_for_writes: true
+- id: audit-readiness-agent
+  name: Audit Readiness Agent
+  description: Plans audits, evidence requests, walkthroughs and closeout packages.
+  default_mode: read_only_analysis
+  approval_for_writes: true
+- id: evidence-assurance-agent
+  name: Evidence Assurance Agent
+  description: Validates evidence provenance, freshness, completeness, redaction and
+    chain of custody.
+  default_mode: read_only_analysis
+  approval_for_writes: true
+- id: access-governance-agent
+  name: Access Governance Agent
+  description: Coordinates access reviews, SoD checks, privileged access evidence
+    and identity governance.
+  default_mode: read_only_analysis
+  approval_for_writes: true
+- id: privacy-governance-agent
+  name: Privacy Governance Agent
+  description: Coordinates privacy inventories, DPIAs, retention, data rights, consent
+    and processor governance.
+  default_mode: read_only_analysis
+  approval_for_writes: true
+- id: ai-governance-agent
+  name: AI Governance Agent
+  description: Maintains AI inventory, classification, transparency, oversight and
+    AI-risk governance evidence.
+  default_mode: read_only_analysis
+  approval_for_writes: true
+- id: third-party-risk-agent
+  name: Third Party Risk Agent
+  description: Coordinates vendor due diligence, reassessment, findings and contractual
+    control evidence.
+  default_mode: read_only_analysis
+  approval_for_writes: true
+- id: contractual-compliance-agent
+  name: Contractual Compliance Agent
+  description: Maps approved customer commitments to internal controls without making
+    legal interpretations.
+  default_mode: read_only_analysis
+  approval_for_writes: true
+- id: security-compliance-agent
+  name: Security Compliance Agent
+  description: Coordinates security control evidence with AppSec, DevSecOps, SRE and
+    DevOps packs.
+  default_mode: read_only_analysis
+  approval_for_writes: true
+- id: change-compliance-agent
+  name: Change Compliance Agent
+  description: Assesses control impacts of system, release, architecture, data and
+    AI changes.
+  default_mode: read_only_analysis
+  approval_for_writes: true
+- id: resilience-governance-agent
+  name: Resilience Governance Agent
+  description: Coordinates BCP, DR, backup, recovery and resilience control evidence.
+  default_mode: read_only_analysis
+  approval_for_writes: true
+- id: data-governance-agent
+  name: Data Governance Agent
+  description: Coordinates classification, lineage, retention, ownership, quality
+    and handling controls.
+  default_mode: read_only_analysis
+  approval_for_writes: true
+- id: training-awareness-agent
+  name: Training and Awareness Agent
+  description: Coordinates role-based training requirements and aggregate completion
+    evidence.
+  default_mode: read_only_analysis
+  approval_for_writes: true
+- id: findings-remediation-agent
+  name: Findings and Remediation Agent
+  description: Normalizes findings and tracks corrective actions and independent validation.
+  default_mode: read_only_analysis
+  approval_for_writes: true
+- id: exceptions-agent
+  name: Compliance Exceptions Agent
+  description: Prepares time-bound exception packages with compensating controls and
+    expiry.
+  default_mode: read_only_analysis
+  approval_for_writes: true
+- id: metrics-reporting-agent
+  name: Compliance Metrics Agent
+  description: Calculates bounded governance metrics and prepares management reporting
+    with limitations.
+  default_mode: read_only_analysis
+  approval_for_writes: true
+- id: customer-assurance-agent
+  name: Customer Assurance Agent
+  description: Prepares evidence-backed questionnaire and assurance responses for
+    approval.
+  default_mode: read_only_analysis
+  approval_for_writes: true
+- id: records-retention-agent
+  name: Records and Retention Agent
+  description: Coordinates evidence and governance record retention, legal-hold routing
+    and deletion schedules.
+  default_mode: read_only_analysis
+  approval_for_writes: true
+- id: compliance-automation-agent
+  name: Compliance Automation Agent
+  description: Designs deterministic evidence collection and control-testing automation
+    without bypassing owners.
+  default_mode: read_only_analysis
+  approval_for_writes: true
+- id: independent-assurance-agent
+  name: Independent Assurance Agent
+  description: Performs independent review of material compliance conclusions and
+    closure recommendations.
+  default_mode: read_only_analysis
+  approval_for_writes: true
+- id: governance-evidence-agent
+  name: Governance Evidence Agent
+  description: Creates immutable evidence manifests and audit trails for governance
+    decisions.
+  default_mode: read_only_analysis
+  approval_for_writes: true
+- id: policy-enforcement-agent
+  name: Policy Enforcement Agent
+  description: Evaluates requests against policy-as-code, approvals, environment and
+    data-access constraints.
+  default_mode: read_only_analysis
+  approval_for_writes: true

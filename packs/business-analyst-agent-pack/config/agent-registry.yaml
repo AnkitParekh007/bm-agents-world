@@ -1,0 +1,221 @@
+apiVersion: business-analyst-agent-pack/v1
+kind: AgentRegistry
+metadata:
+  name: business-analysis-agents
+  version: 1.0.0
+spec:
+  supervisor: business-analysis-supervisor
+  agents:
+  - id: business-analysis-supervisor
+    description: Coordinates bounded business-analysis workflows, delegates specialist analysis, preserves traceability,
+      and enforces decision and publication boundaries.
+    specialization: orchestration, business analysis, governance
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    sensitiveDataAccess: none
+  - id: work-context
+    description: Reads product goals, Jira work, Confluence decisions, policies, prior requirements, and delivery
+      constraints.
+    specialization: work intake, context, scope
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    sensitiveDataAccess: none
+  - id: stakeholder-analysis
+    description: Identifies stakeholder groups, influence, decision rights, needs, conflicts, and engagement strategies.
+    specialization: stakeholders, RACI, engagement
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    sensitiveDataAccess: purpose-bound-minimum-necessary
+  - id: business-needs
+    description: Frames business problems, opportunities, outcomes, constraints, assumptions, and measurable success
+      criteria.
+    specialization: problem framing, outcomes, business needs
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    sensitiveDataAccess: none
+  - id: strategy-context
+    description: Connects requested change to capabilities, objectives, operating model, policies, and portfolio
+      direction.
+    specialization: strategy, capability, alignment
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    sensitiveDataAccess: none
+  - id: process-discovery
+    description: Discovers current workflows through evidence, interviews, system behavior, handoffs, exceptions,
+      and controls.
+    specialization: current state, discovery, operations
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    sensitiveDataAccess: none
+  - id: process-modeling
+    description: Creates BPMN-compatible current-state and future-state process models, SIPOCs, journeys, and exception
+      paths.
+    specialization: BPMN, process design, optimization
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    sensitiveDataAccess: none
+  - id: requirements-elicitation
+    description: Plans and conducts structured elicitation using interviews, workshops, observation, document analysis,
+      surveys, and prototypes.
+    specialization: elicitation, facilitation, collaboration
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    sensitiveDataAccess: purpose-bound-minimum-necessary
+  - id: requirements-analysis
+    description: Classifies, decomposes, models, validates, prioritizes, and quality-checks business and solution
+      requirements.
+    specialization: requirements, analysis, specification
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    sensitiveDataAccess: none
+  - id: business-rules
+    description: Discovers, formalizes, validates, and traces policies, decisions, calculations, eligibility, and
+      operational rules.
+    specialization: business rules, decision tables, policy
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    sensitiveDataAccess: none
+  - id: data-requirements
+    description: Defines data concepts, ownership, quality, lifecycle, privacy, lineage, reporting, and migration
+      requirements.
+    specialization: data requirements, glossary, governance
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    sensitiveDataAccess: none
+  - id: interface-integration
+    description: Defines system, API, event, file, user-interface, and external-party interaction requirements.
+    specialization: interfaces, APIs, integrations
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    sensitiveDataAccess: none
+  - id: nonfunctional-requirements
+    description: Elicits and quantifies security, privacy, accessibility, performance, resilience, audit, support,
+      and compliance needs.
+    specialization: quality attributes, NFRs, controls
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    sensitiveDataAccess: none
+  - id: user-story-acceptance
+    description: Creates implementation-ready stories, use cases, scenarios, acceptance criteria, examples, and
+      edge cases.
+    specialization: stories, use cases, acceptance criteria
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    sensitiveDataAccess: none
+  - id: traceability-lifecycle
+    description: Maintains requirement identifiers, baselines, relationships, versions, approvals, changes, and
+      end-to-end traceability.
+    specialization: traceability, lifecycle, change control
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    sensitiveDataAccess: none
+  - id: solution-options
+    description: Compares solution and process options, benefits, costs, risks, assumptions, and transition implications
+      without selecting autonomously.
+    specialization: options, business case, tradeoffs
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    sensitiveDataAccess: none
+  - id: impact-analysis
+    description: Analyzes people, process, system, data, policy, controls, vendors, operations, support, and release
+      impacts.
+    specialization: change impact, dependencies, risk
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    sensitiveDataAccess: none
+  - id: change-readiness
+    description: Assesses organizational readiness, communication, training, procedure, support, adoption, and resistance
+      considerations.
+    specialization: change readiness, adoption, training
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    sensitiveDataAccess: purpose-bound-minimum-necessary
+  - id: uat-planning
+    description: Defines UAT scope, participants, scenarios, data, environments, evidence, defect handling, and
+      sign-off criteria.
+    specialization: UAT, business validation, sign-off
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    sensitiveDataAccess: purpose-bound-minimum-necessary
+  - id: solution-evaluation
+    description: Evaluates delivered or operational solutions against outcomes, requirements, adoption, quality,
+      and residual limitations.
+    specialization: solution evaluation, benefits, outcomes
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    sensitiveDataAccess: none
+  - id: product-owner-collaboration
+    description: Supports backlog refinement, priority clarification, story readiness, scope decisions, and product-owner
+      handoffs.
+    specialization: backlog, refinement, product ownership
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    sensitiveDataAccess: none
+  - id: delivery-readiness
+    description: Checks requirement, design, data, integration, test, operations, training, and decision readiness
+      before implementation or release.
+    specialization: readiness, dependencies, handoff
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    sensitiveDataAccess: none
+  - id: documentation-governance
+    description: Maintains controlled requirements documents, glossaries, templates, naming, versions, baselines,
+      and archival rules.
+    specialization: documentation, governance, standards
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    sensitiveDataAccess: none
+  - id: stakeholder-communication
+    description: Drafts evidence-backed workshop outputs, decision requests, status, risk, scope, UAT, and change
+      communications.
+    specialization: communication, facilitation, alignment
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    sensitiveDataAccess: none
+  - id: independent-ba-review
+    description: Performs independent quality, ambiguity, testability, traceability, stakeholder, and decision-boundary
+      review.
+    specialization: independent review, assurance, challenge
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    sensitiveDataAccess: none
+  - id: evidence-management
+    description: Creates immutable evidence references, lineage, citations, redaction, retention, and audit bundles.
+    specialization: evidence, provenance, audit
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    sensitiveDataAccess: none
+  - id: policy-enforcement
+    description: Evaluates authorization, data classification, approvals, purpose, environment restrictions, and
+      prohibited actions.
+    specialization: OPA, approvals, safety
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    sensitiveDataAccess: none

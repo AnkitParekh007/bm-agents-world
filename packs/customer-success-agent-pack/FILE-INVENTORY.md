@@ -1,0 +1,52 @@
+# Customer Success Agent Pack — File Inventory
+
+Total files: **48** (including this inventory)
+
+- `FILE-INVENTORY.md`
+- `README.md`
+- `SOURCES.md`
+- `checklists/mvp-readiness.md`
+- `checklists/project-onboarding.md`
+- `config/agent-registry.yaml`
+- `config/approval-policies.yaml`
+- `config/artifact-registry.yaml`
+- `config/environment-inventory.template.yaml`
+- `config/mcp-registry.yaml`
+- `config/pack-manifest.yaml`
+- `config/permission-matrix.csv`
+- `config/plugin-registry.yaml`
+- `config/project-registry.yaml`
+- `config/secret-references.template.yaml`
+- `config/skill-registry.yaml`
+- `docs/01-customer-success-daily-task-catalog.md`
+- `docs/02-project-access-and-environment-model.md`
+- `docs/03-agent-and-subagent-architecture.md`
+- `docs/04-skills-catalog.md`
+- `docs/05-mcp-servers-tools-and-plugins.md`
+- `docs/06-artifacts-and-knowledge-assets.md`
+- `docs/07-orchestration-and-workflows.md`
+- `docs/08-key-vault-identity-and-secrets.md`
+- `docs/09-permissions-approvals-and-guardrails.md`
+- `docs/10-observability-audit-and-evaluation.md`
+- `docs/11-deployment-runtime-and-networking.md`
+- `docs/12-implementation-roadmap.md`
+- `docs/13-diagram-input-specification.md`
+- `docs/14-research-and-standards-notes.md`
+- `schemas/customer-context.schema.json`
+- `schemas/escalation-plan.schema.json`
+- `schemas/health-assessment.schema.json`
+- `schemas/qbr-ebr.schema.json`
+- `schemas/renewal-risk.schema.json`
+- `schemas/success-plan.schema.json`
+- `schemas/value-realization.schema.json`
+- `security/opa/customer-success-agent-policy.rego`
+- `templates/customer-daily-summary.md`
+- `templates/customer-health-review.md`
+- `templates/customer-risk-escalation.md`
+- `templates/customer-success-plan.md`
+- `templates/qbr-ebr-pack.md`
+- `workflows/customer-feedback-escalation-and-advocacy.yaml`
+- `workflows/customer-health-and-risk-management.yaml`
+- `workflows/customer-onboarding-and-success-plan.yaml`
+- `workflows/qbr-ebr-and-value-realization.yaml`
+- `workflows/renewal-expansion-readiness.yaml`

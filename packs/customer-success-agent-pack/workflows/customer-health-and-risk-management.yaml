@@ -1,0 +1,43 @@
+name: customer-health-and-risk-management
+version: 1.0.0
+trigger: Scheduled health review, risk signal, stakeholder change, support trend, or adoption decline
+scope_binding:
+- organization
+- project
+- customer_id
+- account_owner
+- purpose
+- environment
+- requester
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: verify authorized account scope and allowed health/risk inputs
+- id: context
+  agent: work-context-agent
+  action: read current goals, stakeholders, support, releases, incidents, and prior risks
+- id: adoption
+  agent: adoption-agent
+  action: analyze approved account-scoped usage and adoption trends
+- id: health
+  agent: customer-health-agent
+  action: calculate explainable health dimensions, confidence, trends, and drivers
+- id: risk
+  agent: risk-detection-agent
+  action: classify risks, impact, urgency, evidence, owner, and recovery options
+- id: support
+  agent: support-coordination-agent
+  action: correlate open cases, recurring issues, SLA context, and known problems
+- id: recovery
+  agent: success-plan-agent
+  action: align recovery actions with customer goals and existing success plan
+- id: review
+  agent: customer-success-reviewer-agent
+  action: review score logic, risk evidence, customer claims, and escalation necessity
+outputs:
+- customer-health-assessment
+- customer-risk-register
+- customer-recovery-plan
+- customer-decision-log
+failure_behavior: stop, preserve evidence, identify the unresolved decision or missing authorization, and route
+  to the accountable human owner

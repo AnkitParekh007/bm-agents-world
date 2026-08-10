@@ -1,0 +1,209 @@
+apiVersion: engineering-manager-technical-lead-agent-pack/v1
+kind: AgentRegistry
+metadata:
+  name: engineering-leadership-agents
+  version: 1.0.0
+spec:
+  supervisor: engineering-leadership-supervisor
+  agents:
+  - id: engineering-leadership-supervisor
+    description: Coordinates bounded engineering-management and technical-leadership workflows, delegates specialist
+      analysis, and enforces decision and approval boundaries.
+    specialization: orchestration, engineering leadership, governance
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    employeeDataAccess: none
+  - id: work-product-context
+    description: Reads product goals, Jira work, roadmap context, stakeholder decisions, and delivery constraints.
+    specialization: product context, requirements, scope
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    employeeDataAccess: none
+  - id: portfolio-priority
+    description: Analyzes priorities, engineering investment options, sequencing, and portfolio tradeoffs without
+      making business commitments.
+    specialization: portfolio, prioritization, investment
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    employeeDataAccess: none
+  - id: team-capacity
+    description: Builds capacity and allocation scenarios using approved aggregate availability and operational-load
+      data.
+    specialization: capacity, staffing scenarios, allocation
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    employeeDataAccess: none
+  - id: delivery-planning
+    description: Creates milestones, delivery slices, estimates, dependencies, and confidence-aware forecasts.
+    specialization: planning, estimation, forecasting
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    employeeDataAccess: none
+  - id: execution-flow
+    description: Analyzes sprint flow, work-item aging, WIP, blockers, carryover, and process bottlenecks.
+    specialization: agile flow, delivery health, blockers
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    employeeDataAccess: none
+  - id: dependency-coordination
+    description: Maps and coordinates cross-team, system, vendor, and environment dependencies.
+    specialization: dependencies, coordination, escalation
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    employeeDataAccess: none
+  - id: technical-direction
+    description: Provides repository-aware technical direction, implementation options, standards alignment, and
+      technical decision drafts.
+    specialization: technical leadership, options, standards
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    employeeDataAccess: none
+  - id: architecture-alignment
+    description: Checks proposed work against approved solution architecture, ADRs, contracts, and modernization
+      direction.
+    specialization: architecture conformance, ADRs, boundaries
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    employeeDataAccess: none
+  - id: code-quality-lead
+    description: Reviews pull-request evidence, maintainability, ownership, static analysis, and review readiness.
+    specialization: code quality, review, maintainability
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    employeeDataAccess: none
+  - id: quality-engineering-lead
+    description: Coordinates QA strategy, test coverage, defect trends, environments, and quality gates.
+    specialization: testing, defects, quality risk
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    employeeDataAccess: none
+  - id: reliability-operability-lead
+    description: Reviews SLOs, error budgets, observability, runbooks, capacity, operational readiness, and resilience.
+    specialization: SRE, operability, reliability
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    employeeDataAccess: none
+  - id: security-risk-lead
+    description: Coordinates security, privacy, compliance, vulnerability remediation, and exception handling.
+    specialization: security, privacy, compliance
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    employeeDataAccess: none
+  - id: developer-experience
+    description: Analyzes engineering-system friction, onboarding, tooling, platform enablement, and AI-assisted
+      development outcomes.
+    specialization: DevEx, platform, tooling
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    employeeDataAccess: none
+  - id: technical-debt-modernization
+    description: Maintains debt evidence and creates incremental modernization, upgrade, and decommissioning plans.
+    specialization: technical debt, modernization, lifecycle
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    employeeDataAccess: none
+  - id: incident-escalation
+    description: Coordinates bounded incident triage, timelines, stakeholder updates, corrective actions, and post-incident
+      review.
+    specialization: incidents, escalation, PIR
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    employeeDataAccess: none
+  - id: release-readiness
+    description: Aggregates code, test, security, database, infrastructure, and operational evidence for release
+      recommendations.
+    specialization: release, change readiness, rollback
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    employeeDataAccess: none
+  - id: engineering-metrics
+    description: Builds balanced DORA, SPACE, DevEx, flow, quality, and reliability analyses with interpretation
+      limits.
+    specialization: metrics, analytics, decision support
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    employeeDataAccess: none
+  - id: team-health
+    description: Produces privacy-preserving team-health and collaboration assessments using aggregate, consented
+      evidence.
+    specialization: team health, collaboration, culture
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    employeeDataAccess: purpose-bound-minimum-necessary
+  - id: coaching-growth
+    description: Prepares coaching questions, feedback drafts, growth plans, mentoring opportunities, and recognition
+      evidence.
+    specialization: coaching, growth, feedback
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    employeeDataAccess: purpose-bound-minimum-necessary
+  - id: one-on-one-preparation
+    description: Prepares confidential one-on-one agendas and action tracking with strict data minimization.
+    specialization: one-on-ones, actions, confidentiality
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    employeeDataAccess: purpose-bound-minimum-necessary
+  - id: hiring-onboarding
+    description: Supports structured hiring and onboarding workflows without making hiring or compensation decisions.
+    specialization: hiring process, onboarding, role design
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    employeeDataAccess: purpose-bound-minimum-necessary
+  - id: stakeholder-communication
+    description: Drafts evidence-backed status, risk, escalation, decision, release, and incident communications.
+    specialization: communication, alignment, reporting
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    employeeDataAccess: none
+  - id: process-improvement
+    description: Designs and evaluates bounded improvements to engineering practices, governance, and team workflows.
+    specialization: continuous improvement, experiments, governance
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    employeeDataAccess: none
+  - id: independent-engineering-review
+    description: Performs independent review of high-risk delivery, technical, people-process, or production recommendations.
+    specialization: independent review, challenge, assurance
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    employeeDataAccess: none
+  - id: evidence-management
+    description: Creates immutable evidence references, lineage, redaction, retention, and audit bundles.
+    specialization: evidence, provenance, audit
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    employeeDataAccess: none
+  - id: policy-enforcement
+    description: Evaluates authorization, data classification, approvals, environment restrictions, and prohibited
+      actions.
+    specialization: OPA, approvals, safety
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+    employeeDataAccess: none

@@ -1,0 +1,42 @@
+name: release-intake-and-planning
+version: 1.0.0
+trigger: approved release request, Jira version, release train milestone, or Product Owner request
+scope_binding:
+- release
+- project
+- services
+- repositories
+- environments
+- candidate
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: validate requester, project, environment, data, connector, and publication scope
+- id: context
+  agent: release-context-agent
+  action: retrieve approved product, service, repository, release, calendar, change, and policy context
+- id: qualify
+  agent: release-intake-agent
+  action: classify release type, owners, purpose, window, constraints, and missing information
+- id: scope
+  agent: scope-and-version-agent
+  action: build exact scope, versions, candidate identity, exclusions, and release bill of materials
+- id: dependencies
+  agent: dependency-coordination-agent
+  action: map team, service, contract, data, platform, vendor, and sequencing dependencies
+- id: calendar
+  agent: release-calendar-agent
+  action: check milestones, freezes, blackouts, conflicts, support windows, and timezones
+- id: review
+  agent: release-reviewer-agent
+  action: independently review traceability, feasibility, ambiguity, and ownership
+- id: publish
+  agent: release-manager-supervisor
+  action: request release-owner approval before Jira, calendar, Confluence, or Teams publication
+outputs:
+- release-context-package
+- release-scope-baseline
+- release-plan
+- release-calendar-entry
+- dependency-and-compatibility-map
+failure_behavior: do not schedule or publish incomplete, conflicting, or unauthorized release plans

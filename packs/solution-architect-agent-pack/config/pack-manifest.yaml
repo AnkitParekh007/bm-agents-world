@@ -1,0 +1,34 @@
+apiVersion: solution-architect-agent-pack/v1
+kind: AgentPack
+metadata:
+  name: solution-architect-agent-pack
+  version: 1.0.0
+  created: '2026-08-06'
+  role: Solution Architect
+  maintainer: Engineering Architecture
+spec:
+  purpose: Govern evidence-backed, cross-system solution architecture from business problem through implementation
+    alignment.
+  coordinatesRolePacks:
+  - product-manager-agent-pack
+  - ux-designer-agent-pack
+  - frontend-angular-agent-pack
+  - java-developer-agent-pack
+  - python-developer-agent-pack
+  - database-architect-developer-agent-pack
+  - qa-agent-pack
+  - devops-agent-pack
+  counts:
+    agents: 27
+    skills: 227
+    mcpServers: 18
+    plugins: 22
+    artifacts: 27
+    workflows: 5
+    schemas: 7
+  defaultMode: proposal-first
+  decisionBoundary: Humans own final architecture decisions, residual-risk acceptance, vendor commitments, and production
+    changes.
+  policy:
+    engine: OPA-compatible
+    file: security/opa/solution-architect-agent-policy.rego

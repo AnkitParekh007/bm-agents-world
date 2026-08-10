@@ -1,0 +1,67 @@
+apiVersion: frontend-angular-agent-pack/v1
+kind: Workflow
+metadata:
+  name: pull-request-and-release
+  version: 1.0.0
+spec:
+  trigger: validated-code-change
+  initialState: review-ready
+  steps:
+  - id: draft-pr
+    agent: pr-release
+    uses:
+    - frontend.git.pr-draft
+    - frontend.report.release-notes
+    outputs:
+    - pull-request-draft
+  - id: prepare-approval
+    agent: policy-guard
+    uses:
+    - frontend.policy.prepare-approval
+    outputs:
+    - approval-request
+    dependsOn:
+    - draft-pr
+  - id: human-approval
+    type: human-approval
+    level: L3
+    dependsOn:
+    - prepare-approval
+  - id: commit
+    agent: pr-release
+    uses:
+    - frontend.git.commit-draft
+    dependsOn:
+    - human-approval
+  - id: push
+    agent: pr-release
+    action: git.push
+    dependsOn:
+    - commit
+  - id: create-pr
+    agent: pr-release
+    action: bitbucket.pullrequest.create
+    dependsOn:
+    - push
+  - id: update-jira
+    agent: pr-release
+    uses:
+    - frontend.jira.comment-draft
+    action: jira.write
+    dependsOn:
+    - create-pr
+  - id: verify
+    agent: policy-guard
+    uses:
+    - frontend.policy.verify-write
+    outputs:
+    - publication-result
+    dependsOn:
+    - update-jira
+  - id: release-prep-only
+    agent: pr-release
+    outputs:
+    - release-readiness
+    dependsOn:
+    - verify
+    note: Agent does not merge or deploy production

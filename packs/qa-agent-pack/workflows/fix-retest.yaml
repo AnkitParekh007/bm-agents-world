@@ -1,0 +1,14 @@
+apiVersion: qa-agent-pack/v1
+kind: Workflow
+metadata: { id: fix-retest, version: 1.0.0 }
+trigger: jira-ready-for-retest
+inputs: [bugIssueKey, fixBuild, project, environment]
+steps:
+  - { id: context, agent: story-context, skill: qa.story.read-context }
+  - { id: impact, agent: change-impact, skill: qa.change.backend-impact, dependsOn: [context] }
+  - { id: retest-plan, agent: regression-planner, skill: qa.retest.targeted-regression, dependsOn: [impact] }
+  - { id: approve, type: human-approval, dependsOn: [retest-plan] }
+  - { id: execute, agent: browser-qa, skill: qa.retest.verify-fix, dependsOn: [approve] }
+  - { id: evidence, agent: evidence-curator, skill: qa.evidence.build-manifest, dependsOn: [execute] }
+  - { id: report, agent: qa-reporter, skill: qa.report.story-result, dependsOn: [evidence] }
+outputs: [retest-report, evidence-manifest]

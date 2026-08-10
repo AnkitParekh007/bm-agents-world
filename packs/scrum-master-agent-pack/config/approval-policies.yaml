@@ -1,0 +1,80 @@
+version: 1.0.0
+default: deny
+policies:
+- action: read-approved-context
+  risk: low
+  approval: not-required
+  conditions:
+  - scope binding valid
+  - connector read permission
+  - minimum necessary data
+- action: draft-facilitation-or-analysis-artifact
+  risk: low
+  approval: not-required
+  conditions:
+  - isolated artifact workspace
+  - no external publication
+- action: schedule-or-update-scrum-event
+  risk: medium
+  approval: scrum-team-or-event-owner
+  binding:
+  - team
+  - event
+  - time
+  - participants
+  - payload_hash
+  - expiry
+- action: publish-jira-confluence-or-teams
+  risk: medium
+  approval: accountable-owner
+  binding:
+  - project
+  - destination
+  - payload_hash
+  - audience
+  - expiry
+- action: record-or-escalate-impediment
+  risk: medium
+  approval: impediment-owner-or-team-representative
+  binding:
+  - impediment
+  - impact
+  - owner
+  - destination
+  - payload_hash
+  - expiry
+- action: launch-team-survey
+  risk: high
+  approval: team-and-privacy-owner-when-required
+  binding:
+  - purpose
+  - population
+  - questions
+  - retention
+  - anonymity
+  - expiry
+- action: publish-team-health-or-retrospective-summary
+  risk: high
+  approval: scrum-team
+  binding:
+  - team
+  - aggregation
+  - redaction
+  - payload_hash
+  - audience
+  - expiry
+- action: modify-workflow-or-wip-policy
+  risk: high
+  approval: scrum-team-and-accountable-system-owner
+  binding:
+  - workflow
+  - before_hash
+  - after_hash
+  - rationale
+  - review_date
+- action: employment-or-performance-decision
+  risk: critical
+  approval: prohibited-for-agent
+- action: production-or-engineering-mutation
+  risk: critical
+  approval: prohibited-for-agent

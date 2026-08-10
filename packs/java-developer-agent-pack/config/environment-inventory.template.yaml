@@ -1,0 +1,25 @@
+apiVersion: java-developer-agent-pack/v1
+kind: EnvironmentInventory
+project: REPLACE
+environments:
+- id: playground
+  classification: non-production
+  serviceEndpoints:
+  - REPLACE
+  databaseAccess: approved-read-and-bounded-test-writes
+  messagingAccess: metadata-and-approved-test-publish
+  deployment: approval-controlled
+- id: qa
+  classification: non-production-shared
+  serviceEndpoints:
+  - REPLACE
+  databaseAccess: read-only-by-default
+  messagingAccess: metadata-by-default
+  deployment: approval-controlled
+- id: prod
+  classification: production
+  serviceEndpoints:
+  - REPLACE
+  databaseAccess: read-only-diagnostics-only
+  messagingAccess: metadata-only
+  deployment: external-release-process

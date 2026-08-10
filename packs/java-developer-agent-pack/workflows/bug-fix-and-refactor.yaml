@@ -1,0 +1,62 @@
+apiVersion: java-developer-agent-pack/v1
+kind: Workflow
+metadata:
+  name: bug-fix-and-refactor
+  version: 1.0.0
+spec:
+  trigger: bug-or-refactor-approved
+  steps:
+  - id: reproduce
+    agent: test-engineer
+    outputs:
+    - reproduction-evidence
+    - failing-test
+  - id: trace
+    agent: repository-context
+    uses:
+    - java.call-flow
+    - java.git-history
+    outputs:
+    - root-cause-hypotheses
+    dependsOn:
+    - reproduce
+  - id: analyze-root-cause
+    parallel: true
+    agents:
+    - architecture-impact
+    - persistence-data
+    - concurrency-runtime
+    - security-reviewer
+    outputs:
+    - root-cause-analysis
+    dependsOn:
+    - trace
+  - id: patch
+    agent: domain-implementation
+    outputs:
+    - bounded-patch
+    dependsOn:
+    - analyze-root-cause
+  - id: regression-tests
+    agent: test-engineer
+    uses:
+    - java.junit-unit
+    - java.testcontainers
+    - java.flaky-test
+    outputs:
+    - regression-tests
+    dependsOn:
+    - patch
+  - id: quality-gates
+    agent: build-pipeline
+    outputs:
+    - quality-gate-report
+    dependsOn:
+    - regression-tests
+  - id: review
+    agent: code-review
+    outputs:
+    - review-report
+    - pull-request-draft
+    dependsOn:
+    - quality-gates

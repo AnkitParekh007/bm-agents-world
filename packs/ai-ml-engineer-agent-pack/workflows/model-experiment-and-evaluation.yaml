@@ -1,0 +1,17 @@
+id: "model-experiment-and-evaluation"
+name: Model Experiment and Evaluation
+trigger: approved experiment plan
+steps:
+  - "('freeze-data', 'data-readiness-agent', ['ai-ml.data-readiness.dataset-snapshotting'])"
+  - "('train-candidates', 'experiment-agent', ['ai-ml.experimentation.experiment-tracking', 'ai-ml.experimentation.holdout-governance'])"
+  - "('evaluate', 'evaluation-agent', ['ai-ml.evaluation.regression-suite-design', 'ai-ml.evaluation.promotion-gate-design'])"
+  - "('responsible-ai', 'responsible-ai-agent', ['ai-ml.responsible-ai.fairness-assessment', 'ai-ml.responsible-ai.abstention-policy'])"
+  - "('security', 'ai-security-agent', ['ai-ml.ai-security.ai-threat-modeling', 'ai-ml.ai-security.model-provenance-verification'])"
+  - "('performance', 'performance-cost-agent', ['ai-ml.performance-cost.quality-cost-frontier'])"
+  - "('independent-review', 'independent-review-agent', ['ai-ml.governance.independent-review-routing'])"
+outputs:
+  - "experiment-report"
+  - "evaluation-report"
+  - "responsible-ai-assessment"
+  - "security-review"
+  - "performance-cost-report"

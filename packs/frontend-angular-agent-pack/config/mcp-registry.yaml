@@ -1,0 +1,92 @@
+apiVersion: frontend-angular-agent-pack/v1
+kind: MCPRegistry
+servers:
+- id: atlassian-rovo
+  ownership: vendor
+  transport: remote
+  auth: oauth-2.1
+  systems:
+  - jira
+  - confluence
+  - bitbucket
+  enabledTools: []
+  writePolicy: approval-required
+- id: bitbucket-adapter
+  ownership: organization
+  transport: streamable-http
+  auth: workload-identity-to-scoped-token
+  systems:
+  - bitbucket-cloud
+  - bitbucket-data-center
+  writePolicy: approval-required
+- id: workspace-git
+  ownership: organization
+  transport: stdio-in-worker
+  auth: run-capability
+  systems:
+  - filesystem
+  - git
+  - command-runner
+  rootPolicy: authorized-workspace-only
+  writePolicy: local-workspace-allowed-remote-approval
+- id: angular-docs
+  ownership: organization
+  transport: streamable-http
+  mode: read-only
+  versionPinned: true
+  sources:
+  - angular.dev
+  - docs.angularjs.org
+- id: figma
+  ownership: figma
+  transport: remote-or-local
+  auth: oauth-or-scoped-token
+  mode: read-only-default
+  writePolicy: approval-required
+- id: playwright
+  ownership: microsoft
+  transport: stdio-or-http
+  runtime: sandboxed-browser-worker
+  networkPolicy: project-origin-allowlist
+  writePolicy: browser-session-only
+- id: chrome-devtools
+  ownership: google
+  transport: stdio-or-http
+  runtime: sandboxed-browser-worker
+  networkPolicy: project-origin-allowlist
+  writePolicy: browser-session-only
+- id: sonarqube
+  ownership: sonarsource
+  transport: stdio-or-http
+  mode: read-analysis
+  writePolicy: issue-status-changes-approval
+- id: storybook
+  ownership: project-vendor
+  transport: http
+  required: false
+  compatibilityNote: Preview AI MCP is not currently required for Angular; enable
+    only after verification
+  writePolicy: workspace-only
+- id: openapi-contract
+  ownership: organization
+  transport: streamable-http
+  mode: read-only
+  generationPolicy: workspace-only
+- id: package-registry
+  ownership: organization
+  transport: streamable-http
+  mode: metadata-and-read
+  publishPolicy: deny
+- id: environment
+  ownership: organization
+  transport: streamable-http
+  mode: read-mostly
+  writePolicy: approval-required
+- id: observability
+  ownership: organization
+  transport: streamable-http
+  mode: read-only
+- id: artifact
+  ownership: organization
+  transport: streamable-http
+  writePolicy: run-scoped

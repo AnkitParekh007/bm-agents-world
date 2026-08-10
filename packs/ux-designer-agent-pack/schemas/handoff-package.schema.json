@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/ux-agent/developer-handoff-package.schema.json",
+  "title": "Developer Handoff Package",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "scope",
+    "design_refs",
+    "flows",
+    "components",
+    "acceptance_criteria",
+    "accessibility"
+  ],
+  "properties": {
+    "scope": {
+      "type": "string",
+      "minLength": 1
+    },
+    "design_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "flows": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "components": {
+      "type": "array"
+    },
+    "tokens": {
+      "type": "array"
+    },
+    "assets": {
+      "type": "array"
+    },
+    "content": {
+      "type": "array"
+    },
+    "responsive": {
+      "type": "object"
+    },
+    "accessibility": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "open_decisions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}

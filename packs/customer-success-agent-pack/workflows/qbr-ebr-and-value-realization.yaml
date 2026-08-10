@@ -1,0 +1,43 @@
+name: qbr-ebr-and-value-realization
+version: 1.0.0
+trigger: Scheduled quarterly or executive business review, strategic checkpoint, or value review
+scope_binding:
+- organization
+- project
+- customer_id
+- account_owner
+- purpose
+- environment
+- requester
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: verify customer-facing publication authority and data scope
+- id: context
+  agent: work-context-agent
+  action: collect period-specific customer, product, support, release, and decision context
+- id: value
+  agent: value-realization-agent
+  action: compare approved baselines and current customer outcome evidence with attribution caveats
+- id: health
+  agent: customer-health-agent
+  action: summarize explainable account health and drivers
+- id: stakeholders
+  agent: stakeholder-map-agent
+  action: identify attendees, relationship changes, executive concerns, and decisions needed
+- id: review-pack
+  agent: qbr-ebr-agent
+  action: draft business review narrative, progress, value, risks, priorities, and decision asks
+- id: fact-check
+  agent: customer-communication-agent
+  action: validate technical, release, support, roadmap, and commitment language
+- id: independent-review
+  agent: customer-success-reviewer-agent
+  action: challenge evidence, value claims, risks, and decision readiness
+outputs:
+- qbr-ebr-pack
+- value-scorecard
+- executive-account-brief
+- customer-meeting-brief
+failure_behavior: stop, preserve evidence, identify the unresolved decision or missing authorization, and route
+  to the accountable human owner

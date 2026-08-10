@@ -1,0 +1,183 @@
+apiVersion: solution-architect-agent-pack/v1
+kind: AgentRegistry
+metadata:
+  name: solution-architect-agents
+  version: 1.0.0
+spec:
+  supervisor: solution-architect-supervisor
+  agents:
+  - id: solution-architect-supervisor
+    description: Coordinates bounded solution-architecture workflows, resolves conflicts, and enforces evidence,
+      decision, and approval rules.
+    specialization: orchestration, tradeoffs, governance
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: business-product-context
+    description: Reads product strategy, business capabilities, Jira epics, requirements, roadmaps, constraints,
+      and stakeholder decisions.
+    specialization: business, product, requirements
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: current-state-discovery
+    description: Discovers applications, repositories, integrations, databases, infrastructure, ownership, environments,
+      and operations.
+    specialization: inventory, dependency mapping, reverse engineering
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: enterprise-context
+    description: Maps capabilities, value streams, shared platforms, standards, portfolio dependencies, and strategic
+      constraints.
+    specialization: enterprise architecture, portfolio, capabilities
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: quality-attribute-analysis
+    description: Elicits measurable availability, performance, security, data, operability, cost, and changeability
+      scenarios.
+    specialization: NFRs, scenarios, evidence
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: domain-boundary
+    description: Models domains, bounded contexts, ownership, aggregates, terminology, and cross-domain dependencies.
+    specialization: DDD, boundaries, ownership
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: application-architecture
+    description: Designs application decomposition, module/service boundaries, patterns, responsibilities, and component
+      interactions.
+    specialization: application architecture, patterns, components
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: integration-api-architecture
+    description: Designs APIs, events, messaging, gateways, contracts, versioning, retries, and integration governance.
+    specialization: OpenAPI, AsyncAPI, integration
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: data-architecture
+    description: Designs data models, ownership, storage choices, consistency, lineage, lifecycle, migration, and
+      analytics interfaces.
+    specialization: data, storage, lineage
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: cloud-infrastructure-architecture
+    description: Designs cloud/on-prem topology, compute, network, storage, regions, zones, platforms, and deployment
+      boundaries.
+    specialization: cloud, infrastructure, topology
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: security-architecture
+    description: Designs trust boundaries, threat mitigations, encryption, secure defaults, and security controls.
+    specialization: security, threat modeling, zero trust
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: identity-access-architecture
+    description: Designs identity federation, service identities, authorization, privileged access, and secrets
+      boundaries.
+    specialization: identity, authorization, secrets
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: privacy-compliance-architecture
+    description: Maps data classification, privacy, retention, residency, audit, and regulatory controls.
+    specialization: privacy, compliance, governance
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: reliability-resilience
+    description: Designs availability, redundancy, failure isolation, recovery, disaster recovery, and graceful
+      degradation.
+    specialization: reliability, resilience, DR
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: performance-scalability
+    description: Models latency, throughput, capacity, concurrency, caching, scaling, and bottlenecks.
+    specialization: performance, capacity, scalability
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: observability-operability
+    description: Defines telemetry, SLOs, dashboards, alerting, runbooks, supportability, and incident diagnostics.
+    specialization: observability, SRE, operations
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: network-edge-architecture
+    description: Designs ingress, egress, DNS, TLS, service networking, segmentation, CDN, and load balancing.
+    specialization: network, edge, connectivity
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: platform-developer-experience
+    description: Designs platforms, golden paths, templates, self-service environments, and engineering experience.
+    specialization: platform engineering, DevEx, standards
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: cost-sustainability
+    description: Estimates cost, identifies cost drivers, models unit economics, and assesses sustainability tradeoffs.
+    specialization: FinOps, cost, sustainability
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: migration-modernization
+    description: Plans strangler, replatform, refactor, rewrite, coexistence, cutover, rollback, and decommissioning.
+    specialization: migration, modernization, transition
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: vendor-technology-evaluation
+    description: Evaluates products, cloud services, frameworks, licenses, support, lock-in, exit strategy, and
+      POCs.
+    specialization: vendor, technology selection, risk
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: architecture-modeling
+    description: Creates C4, deployment, sequence, data-flow, trust-boundary, capability, and ArchiMate-compatible
+      views.
+    specialization: C4, diagrams, models
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: decision-governance
+    description: Maintains ADRs, principles, standards, exceptions, technology radar entries, and decision traceability.
+    specialization: ADR, governance, standards
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: architecture-review
+    description: Performs independent tradeoff, sensitivity, risk, and readiness reviews.
+    specialization: ATAM, review, risk
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: implementation-alignment
+    description: Creates role-specific handoffs and verifies implementation drift across engineering agent packs.
+    specialization: handoff, conformance, delivery
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: evidence-manager
+    description: Stores immutable architecture inputs, models, decisions, reviews, approvals, and hashes.
+    specialization: artifacts, audit, provenance
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false
+  - id: policy-enforcer
+    description: Evaluates authorization, project scope, environment, data classification, tools, and payload-bound
+      approvals.
+    specialization: OPA, authorization, guardrails
+    executionMode: bounded
+    outputPolicy: evidence-linked
+    mayApproveOwnWork: false

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/product-manager/product-context.schema.json",
+  "title": "Product Context",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "project",
+    "product_area",
+    "requester",
+    "purpose",
+    "sources",
+    "constraints"
+  ],
+  "properties": {
+    "project": {
+      "type": "string"
+    },
+    "product_area": {
+      "type": "string"
+    },
+    "requester": {
+      "type": "string"
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "data_classification": {
+      "type": "string"
+    },
+    "decision_owner": {
+      "type": "string"
+    },
+    "environment": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,115 @@
+apiVersion: integration-api-architect-agent-pack/v1
+kind: MCPRegistry
+metadata:
+  name: integration-api-architect-mcps
+  version: 1.0.0
+spec:
+  servers:
+  - id: atlassian-rovo
+    purpose: Jira/Confluence context and approved publication
+    accessMode: read-mostly
+    target: Jira, Confluence
+    credentials: vault-reference-only
+    productionMutation: false
+  - id: bitbucket-enterprise
+    purpose: Repository, pull request and contract-file access
+    accessMode: read-mostly
+    target: Bitbucket
+    credentials: vault-reference-only
+    productionMutation: false
+  - id: api-catalog
+    purpose: API catalog and service ownership metadata
+    accessMode: read-write-approved
+    target: Backstage or enterprise API catalog
+    credentials: vault-reference-only
+    productionMutation: false
+  - id: openapi-registry
+    purpose: OpenAPI contract search, validation and publication
+    accessMode: read-write-approved
+    target: OpenAPI registry
+    credentials: vault-reference-only
+    productionMutation: false
+  - id: asyncapi-registry
+    purpose: AsyncAPI contract search, validation and publication
+    accessMode: read-write-approved
+    target: AsyncAPI registry
+    credentials: vault-reference-only
+    productionMutation: false
+  - id: schema-registry
+    purpose: JSON/Avro/Protobuf schema lookup and compatibility checks
+    accessMode: read-write-approved
+    target: Schema Registry
+    credentials: vault-reference-only
+    productionMutation: false
+  - id: graphql-registry
+    purpose: GraphQL schema, graph, federation and change checks
+    accessMode: read-write-approved
+    target: GraphQL registry
+    credentials: vault-reference-only
+    productionMutation: false
+  - id: protobuf-registry
+    purpose: Proto packages, descriptors and generated client metadata
+    accessMode: read-write-approved
+    target: Proto registry
+    credentials: vault-reference-only
+    productionMutation: false
+  - id: api-gateway-management
+    purpose: Gateway routes, products, quotas and policy metadata
+    accessMode: production-readonly
+    target: Kong/Apigee/Azure API Management/AWS API Gateway
+    credentials: vault-reference-only
+    productionMutation: false
+  - id: event-platform
+    purpose: Topics, consumer groups, ACL metadata and broker health
+    accessMode: production-readonly
+    target: Kafka/Pulsar/event platform
+    credentials: vault-reference-only
+    productionMutation: false
+  - id: identity-provider
+    purpose: OAuth/OIDC clients, scopes, claims and service identities
+    accessMode: production-readonly
+    target: Enterprise IdP
+    credentials: vault-reference-only
+    productionMutation: false
+  - id: observability
+    purpose: Bounded traces, metrics, logs and API analytics
+    accessMode: production-readonly
+    target: OpenTelemetry/APM
+    credentials: vault-reference-only
+    productionMutation: false
+  - id: database-metadata
+    purpose: Read-only schemas, ownership and integration metadata
+    accessMode: production-readonly
+    target: Database catalogs
+    credentials: vault-reference-only
+    productionMutation: false
+  - id: environment-runtime
+    purpose: Service endpoints, versions, health and deployment metadata
+    accessMode: production-readonly
+    target: Runtime/platform catalog
+    credentials: vault-reference-only
+    productionMutation: false
+  - id: security-assurance
+    purpose: API security findings, threat models and exceptions
+    accessMode: read-mostly
+    target: AppSec platform
+    credentials: vault-reference-only
+    productionMutation: false
+  - id: partner-integration
+    purpose: Approved partner/vendor integration metadata and limits
+    accessMode: read-mostly
+    target: Vendor integration catalog
+    credentials: vault-reference-only
+    productionMutation: false
+  - id: artifact-store
+    purpose: Immutable architecture evidence and review artifacts
+    accessMode: read-write-approved
+    target: Artifact repository
+    credentials: vault-reference-only
+    productionMutation: false
+  - id: policy-approval-vault
+    purpose: Policy decisions, approval tokens and secret references
+    accessMode: controlled
+    target: OPA + approval + vault broker
+    credentials: vault-reference-only
+    productionMutation: false

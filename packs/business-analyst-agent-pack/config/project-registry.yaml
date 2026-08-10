@@ -1,0 +1,52 @@
+apiVersion: business-analyst-agent-pack/v1
+kind: ProjectRegistry
+metadata:
+  name: business-analysis-projects
+  version: 1.0.0
+spec:
+  projects:
+  - id: pcc
+    name: PCC
+    technologyContext:
+    - Angular 12
+    - Java
+    - enterprise database
+    analysisProfile: legacy-compatible
+    environments:
+    - playground
+    - qa
+    - production-readonly
+  - id: sop
+    name: SOP
+    technologyContext:
+    - Angular 15
+    - Java
+    - enterprise database
+    analysisProfile: version-aware
+    environments:
+    - playground
+    - qa
+    - production-readonly
+  - id: databridge
+    name: DataBridge
+    technologyContext:
+    - AngularJS
+    - Java
+    - data integrations
+    analysisProfile: conservative-change
+    environments:
+    - playground
+    - qa
+    - production-readonly
+  - id: bm-agent-foundry
+    name: BM Agent Foundry
+    technologyContext:
+    - React
+    - Supabase
+    - GKE
+    - agent runtimes
+    analysisProfile: platform-product
+    environments:
+    - development
+    - qa
+    - production-readonly

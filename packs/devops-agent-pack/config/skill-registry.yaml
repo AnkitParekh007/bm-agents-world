@@ -1,0 +1,738 @@
+version: 1.0.0
+skills:
+- id: jira-context
+  group: Context and governance
+  description: Jira context
+  risk: standard
+- id: change-classification
+  group: Context and governance
+  description: Change classification
+  risk: standard
+- id: service-ownership-resolution
+  group: Context and governance
+  description: Service ownership resolution
+  risk: standard
+- id: environment-scope-resolution
+  group: Context and governance
+  description: Environment scope resolution
+  risk: standard
+- id: maintenance-window-check
+  group: Context and governance
+  description: Maintenance window check
+  risk: standard
+- id: freeze-period-check
+  group: Context and governance
+  description: Freeze period check
+  risk: standard
+- id: risk-classification
+  group: Context and governance
+  description: Risk classification
+  risk: standard
+- id: blast-radius-analysis
+  group: Context and governance
+  description: Blast radius analysis
+  risk: standard
+- id: approval-resolution
+  group: Context and governance
+  description: Approval resolution
+  risk: standard
+- id: dependency-mapping
+  group: Context and governance
+  description: Dependency mapping
+  risk: standard
+- id: change-record-drafting
+  group: Context and governance
+  description: Change record drafting
+  risk: standard
+- id: evidence-traceability
+  group: Context and governance
+  description: Evidence traceability
+  risk: standard
+- id: repo-discovery
+  group: Repository and CI/CD
+  description: Repo discovery
+  risk: standard
+- id: branch-policy-analysis
+  group: Repository and CI/CD
+  description: Branch policy analysis
+  risk: standard
+- id: pipeline-discovery
+  group: Repository and CI/CD
+  description: Pipeline discovery
+  risk: standard
+- id: bitbucket-pipelines-authoring
+  group: Repository and CI/CD
+  description: Bitbucket pipelines authoring
+  risk: standard
+- id: jenkinsfile-analysis
+  group: Repository and CI/CD
+  description: Jenkinsfile analysis
+  risk: standard
+- id: pipeline-yaml-validation
+  group: Repository and CI/CD
+  description: Pipeline yaml validation
+  risk: standard
+- id: pipeline-cache-design
+  group: Repository and CI/CD
+  description: Pipeline cache design
+  risk: standard
+- id: parallel-stage-design
+  group: Repository and CI/CD
+  description: Parallel stage design
+  risk: standard
+- id: artifact-promotion
+  group: Repository and CI/CD
+  description: Artifact promotion
+  risk: standard
+- id: pipeline-failure-triage
+  group: Repository and CI/CD
+  description: Pipeline failure triage
+  risk: standard
+- id: runner-isolation
+  group: Repository and CI/CD
+  description: Runner isolation
+  risk: standard
+- id: pipeline-secret-protection
+  group: Repository and CI/CD
+  description: Pipeline secret protection
+  risk: standard
+- id: pipeline-template-design
+  group: Repository and CI/CD
+  description: Pipeline template design
+  risk: standard
+- id: bitbucket-pipe-design
+  group: Repository and CI/CD
+  description: Bitbucket pipe design
+  risk: standard
+- id: build-metadata-capture
+  group: Repository and CI/CD
+  description: Build metadata capture
+  risk: standard
+- id: terraform-plan-analysis
+  group: IaC and cloud
+  description: Terraform plan analysis
+  risk: standard
+- id: opentofu-plan-analysis
+  group: IaC and cloud
+  description: Opentofu plan analysis
+  risk: standard
+- id: terraform-module-design
+  group: IaC and cloud
+  description: Terraform module design
+  risk: standard
+- id: provider-lock-review
+  group: IaC and cloud
+  description: Provider lock review
+  risk: standard
+- id: remote-state-design
+  group: IaC and cloud
+  description: Remote state design
+  risk: high
+- id: state-refactor-plan
+  group: IaC and cloud
+  description: State refactor plan
+  risk: high
+- id: drift-detection
+  group: IaC and cloud
+  description: Drift detection
+  risk: standard
+- id: iac-security-scan
+  group: IaC and cloud
+  description: Iac security scan
+  risk: standard
+- id: iac-policy-validation
+  group: IaC and cloud
+  description: Iac policy validation
+  risk: standard
+- id: cloud-account-architecture
+  group: IaC and cloud
+  description: Cloud account architecture
+  risk: standard
+- id: landing-zone-design
+  group: IaC and cloud
+  description: Landing zone design
+  risk: standard
+- id: resource-tagging
+  group: IaC and cloud
+  description: Resource tagging
+  risk: standard
+- id: quota-analysis
+  group: IaC and cloud
+  description: Quota analysis
+  risk: standard
+- id: private-endpoint-design
+  group: IaC and cloud
+  description: Private endpoint design
+  risk: standard
+- id: cloud-service-deprecation-analysis
+  group: IaC and cloud
+  description: Cloud service deprecation analysis
+  risk: standard
+- id: infrastructure-cost-estimation
+  group: IaC and cloud
+  description: Infrastructure cost estimation
+  risk: standard
+- id: dockerfile-design
+  group: Containers and registries
+  description: Dockerfile design
+  risk: standard
+- id: multi-stage-build
+  group: Containers and registries
+  description: Multi stage build
+  risk: standard
+- id: base-image-pinning
+  group: Containers and registries
+  description: Base image pinning
+  risk: standard
+- id: non-root-container
+  group: Containers and registries
+  description: Non root container
+  risk: standard
+- id: build-secret-handling
+  group: Containers and registries
+  description: Build secret handling
+  risk: standard
+- id: image-sbom
+  group: Containers and registries
+  description: Image sbom
+  risk: standard
+- id: image-vulnerability-triage
+  group: Containers and registries
+  description: Image vulnerability triage
+  risk: standard
+- id: image-signing
+  group: Containers and registries
+  description: Image signing
+  risk: standard
+- id: provenance-generation
+  group: Containers and registries
+  description: Provenance generation
+  risk: standard
+- id: multi-architecture-build
+  group: Containers and registries
+  description: Multi architecture build
+  risk: standard
+- id: registry-promotion
+  group: Containers and registries
+  description: Registry promotion
+  risk: standard
+- id: registry-retention
+  group: Containers and registries
+  description: Registry retention
+  risk: standard
+- id: container-runtime-diagnostics
+  group: Containers and registries
+  description: Container runtime diagnostics
+  risk: standard
+- id: kubernetes-resource-authoring
+  group: Kubernetes and GitOps
+  description: Kubernetes resource authoring
+  risk: standard
+- id: workload-resource-sizing
+  group: Kubernetes and GitOps
+  description: Workload resource sizing
+  risk: standard
+- id: probe-design
+  group: Kubernetes and GitOps
+  description: Probe design
+  risk: standard
+- id: pod-disruption-budget
+  group: Kubernetes and GitOps
+  description: Pod disruption budget
+  risk: standard
+- id: hpa-vpa-analysis
+  group: Kubernetes and GitOps
+  description: Hpa vpa analysis
+  risk: standard
+- id: kubernetes-rbac
+  group: Kubernetes and GitOps
+  description: Kubernetes rbac
+  risk: high
+- id: pod-security-context
+  group: Kubernetes and GitOps
+  description: Pod security context
+  risk: standard
+- id: network-policy-design
+  group: Kubernetes and GitOps
+  description: Network policy design
+  risk: standard
+- id: namespace-tenancy
+  group: Kubernetes and GitOps
+  description: Namespace tenancy
+  risk: standard
+- id: helm-chart-authoring
+  group: Kubernetes and GitOps
+  description: Helm chart authoring
+  risk: standard
+- id: helm-template-validation
+  group: Kubernetes and GitOps
+  description: Helm template validation
+  risk: standard
+- id: kustomize-overlay-design
+  group: Kubernetes and GitOps
+  description: Kustomize overlay design
+  risk: standard
+- id: manifest-schema-validation
+  group: Kubernetes and GitOps
+  description: Manifest schema validation
+  risk: standard
+- id: admission-policy-validation
+  group: Kubernetes and GitOps
+  description: Admission policy validation
+  risk: standard
+- id: argocd-application-design
+  group: Kubernetes and GitOps
+  description: Argocd application design
+  risk: standard
+- id: applicationset-design
+  group: Kubernetes and GitOps
+  description: Applicationset design
+  risk: standard
+- id: sync-wave-design
+  group: Kubernetes and GitOps
+  description: Sync wave design
+  risk: standard
+- id: gitops-drift-analysis
+  group: Kubernetes and GitOps
+  description: Gitops drift analysis
+  risk: standard
+- id: kubernetes-rollout-diagnostics
+  group: Kubernetes and GitOps
+  description: Kubernetes rollout diagnostics
+  risk: standard
+- id: cluster-upgrade-planning
+  group: Kubernetes and GitOps
+  description: Cluster upgrade planning
+  risk: standard
+- id: configuration-schema-design
+  group: Configuration, identity, and secrets
+  description: Configuration schema design
+  risk: standard
+- id: environment-overlay-review
+  group: Configuration, identity, and secrets
+  description: Environment overlay review
+  risk: standard
+- id: feature-configuration-governance
+  group: Configuration, identity, and secrets
+  description: Feature configuration governance
+  risk: standard
+- id: workload-identity-design
+  group: Configuration, identity, and secrets
+  description: Workload identity design
+  risk: high
+- id: oidc-federation
+  group: Configuration, identity, and secrets
+  description: Oidc federation
+  risk: standard
+- id: vault-policy-design
+  group: Configuration, identity, and secrets
+  description: Vault policy design
+  risk: high
+- id: dynamic-secret-design
+  group: Configuration, identity, and secrets
+  description: Dynamic secret design
+  risk: standard
+- id: secret-reference-validation
+  group: Configuration, identity, and secrets
+  description: Secret reference validation
+  risk: standard
+- id: credential-rotation-plan
+  group: Configuration, identity, and secrets
+  description: Credential rotation plan
+  risk: high
+- id: certificate-rotation-plan
+  group: Configuration, identity, and secrets
+  description: Certificate rotation plan
+  risk: high
+- id: secret-leak-detection
+  group: Configuration, identity, and secrets
+  description: Secret leak detection
+  risk: standard
+- id: least-privilege-review
+  group: Configuration, identity, and secrets
+  description: Least privilege review
+  risk: standard
+- id: access-lease-validation
+  group: Configuration, identity, and secrets
+  description: Access lease validation
+  risk: standard
+- id: vpc-vnet-design
+  group: Network, DNS, and TLS
+  description: Vpc vnet design
+  risk: standard
+- id: subnet-and-routing-review
+  group: Network, DNS, and TLS
+  description: Subnet and routing review
+  risk: standard
+- id: firewall-rule-analysis
+  group: Network, DNS, and TLS
+  description: Firewall rule analysis
+  risk: high
+- id: security-group-analysis
+  group: Network, DNS, and TLS
+  description: Security group analysis
+  risk: standard
+- id: load-balancer-design
+  group: Network, DNS, and TLS
+  description: Load balancer design
+  risk: standard
+- id: ingress-design
+  group: Network, DNS, and TLS
+  description: Ingress design
+  risk: standard
+- id: service-mesh-routing
+  group: Network, DNS, and TLS
+  description: Service mesh routing
+  risk: standard
+- id: dns-record-planning
+  group: Network, DNS, and TLS
+  description: Dns record planning
+  risk: standard
+- id: dns-cutover-plan
+  group: Network, DNS, and TLS
+  description: Dns cutover plan
+  risk: high
+- id: tls-certificate-validation
+  group: Network, DNS, and TLS
+  description: Tls certificate validation
+  risk: standard
+- id: connectivity-diagnostics
+  group: Network, DNS, and TLS
+  description: Connectivity diagnostics
+  risk: standard
+- id: network-flow-documentation
+  group: Network, DNS, and TLS
+  description: Network flow documentation
+  risk: standard
+- id: public-exposure-risk
+  group: Network, DNS, and TLS
+  description: Public exposure risk
+  risk: standard
+- id: sli-definition
+  group: Observability and SRE
+  description: Sli definition
+  risk: standard
+- id: slo-design
+  group: Observability and SRE
+  description: Slo design
+  risk: standard
+- id: error-budget-analysis
+  group: Observability and SRE
+  description: Error budget analysis
+  risk: standard
+- id: promql-analysis
+  group: Observability and SRE
+  description: Promql analysis
+  risk: standard
+- id: dashboard-design
+  group: Observability and SRE
+  description: Dashboard design
+  risk: standard
+- id: alert-rule-design
+  group: Observability and SRE
+  description: Alert rule design
+  risk: standard
+- id: alert-noise-reduction
+  group: Observability and SRE
+  description: Alert noise reduction
+  risk: standard
+- id: structured-logging
+  group: Observability and SRE
+  description: Structured logging
+  risk: standard
+- id: log-redaction
+  group: Observability and SRE
+  description: Log redaction
+  risk: standard
+- id: distributed-tracing
+  group: Observability and SRE
+  description: Distributed tracing
+  risk: standard
+- id: otel-collector-design
+  group: Observability and SRE
+  description: Otel collector design
+  risk: standard
+- id: telemetry-cardinality-review
+  group: Observability and SRE
+  description: Telemetry cardinality review
+  risk: standard
+- id: capacity-forecasting
+  group: Observability and SRE
+  description: Capacity forecasting
+  risk: standard
+- id: resilience-analysis
+  group: Observability and SRE
+  description: Resilience analysis
+  risk: standard
+- id: graceful-degradation-design
+  group: Observability and SRE
+  description: Graceful degradation design
+  risk: standard
+- id: timeout-retry-analysis
+  group: Observability and SRE
+  description: Timeout retry analysis
+  risk: standard
+- id: toil-analysis
+  group: Observability and SRE
+  description: Toil analysis
+  risk: standard
+- id: game-day-planning
+  group: Observability and SRE
+  description: Game day planning
+  risk: standard
+- id: incident-severity-classification
+  group: Incident and recovery
+  description: Incident severity classification
+  risk: standard
+- id: incident-timeline
+  group: Incident and recovery
+  description: Incident timeline
+  risk: standard
+- id: bounded-log-query
+  group: Incident and recovery
+  description: Bounded log query
+  risk: standard
+- id: bounded-metric-query
+  group: Incident and recovery
+  description: Bounded metric query
+  risk: standard
+- id: bounded-trace-query
+  group: Incident and recovery
+  description: Bounded trace query
+  risk: standard
+- id: change-correlation
+  group: Incident and recovery
+  description: Change correlation
+  risk: standard
+- id: mitigation-option-analysis
+  group: Incident and recovery
+  description: Mitigation option analysis
+  risk: standard
+- id: rollback-decision-support
+  group: Incident and recovery
+  description: Rollback decision support
+  risk: high
+- id: traffic-shift-plan
+  group: Incident and recovery
+  description: Traffic shift plan
+  risk: standard
+- id: incident-communication-draft
+  group: Incident and recovery
+  description: Incident communication draft
+  risk: standard
+- id: recovery-verification
+  group: Incident and recovery
+  description: Recovery verification
+  risk: standard
+- id: post-incident-review
+  group: Incident and recovery
+  description: Post incident review
+  risk: standard
+- id: corrective-action-tracking
+  group: Incident and recovery
+  description: Corrective action tracking
+  risk: standard
+- id: backup-policy-review
+  group: Incident and recovery
+  description: Backup policy review
+  risk: standard
+- id: restore-plan
+  group: Incident and recovery
+  description: Restore plan
+  risk: standard
+- id: dr-failover-plan
+  group: Incident and recovery
+  description: Dr failover plan
+  risk: high
+- id: rto-rpo-analysis
+  group: Incident and recovery
+  description: Rto rpo analysis
+  risk: standard
+- id: secret-scanning
+  group: Security and compliance
+  description: Secret scanning
+  risk: standard
+- id: dependency-scanning
+  group: Security and compliance
+  description: Dependency scanning
+  risk: standard
+- id: container-scanning
+  group: Security and compliance
+  description: Container scanning
+  risk: standard
+- id: iac-scanning
+  group: Security and compliance
+  description: Iac scanning
+  risk: standard
+- id: kubernetes-scanning
+  group: Security and compliance
+  description: Kubernetes scanning
+  risk: standard
+- id: license-compliance
+  group: Security and compliance
+  description: License compliance
+  risk: standard
+- id: sbom-validation
+  group: Security and compliance
+  description: Sbom validation
+  risk: standard
+- id: signature-verification
+  group: Security and compliance
+  description: Signature verification
+  risk: standard
+- id: slsa-provenance-review
+  group: Security and compliance
+  description: Slsa provenance review
+  risk: standard
+- id: ci-supply-chain-review
+  group: Security and compliance
+  description: Ci supply chain review
+  risk: standard
+- id: iam-escalation-analysis
+  group: Security and compliance
+  description: Iam escalation analysis
+  risk: standard
+- id: policy-as-code
+  group: Security and compliance
+  description: Policy as code
+  risk: standard
+- id: security-exception-management
+  group: Security and compliance
+  description: Security exception management
+  risk: standard
+- id: control-evidence-mapping
+  group: Security and compliance
+  description: Control evidence mapping
+  risk: standard
+- id: audit-record-redaction
+  group: Security and compliance
+  description: Audit record redaction
+  risk: standard
+- id: retention-policy-check
+  group: Security and compliance
+  description: Retention policy check
+  risk: standard
+- id: deployment-strategy-selection
+  group: Release, cost, and platform engineering
+  description: Deployment strategy selection
+  risk: high
+- id: canary-analysis
+  group: Release, cost, and platform engineering
+  description: Canary analysis
+  risk: standard
+- id: blue-green-plan
+  group: Release, cost, and platform engineering
+  description: Blue green plan
+  risk: standard
+- id: rolling-update-plan
+  group: Release, cost, and platform engineering
+  description: Rolling update plan
+  risk: standard
+- id: smoke-test-plan
+  group: Release, cost, and platform engineering
+  description: Smoke test plan
+  risk: standard
+- id: rollback-plan
+  group: Release, cost, and platform engineering
+  description: Rollback plan
+  risk: high
+- id: release-manifest
+  group: Release, cost, and platform engineering
+  description: Release manifest
+  risk: standard
+- id: deployment-stop-conditions
+  group: Release, cost, and platform engineering
+  description: Deployment stop conditions
+  risk: high
+- id: post-deployment-verification
+  group: Release, cost, and platform engineering
+  description: Post deployment verification
+  risk: high
+- id: cost-allocation
+  group: Release, cost, and platform engineering
+  description: Cost allocation
+  risk: standard
+- id: idle-resource-detection
+  group: Release, cost, and platform engineering
+  description: Idle resource detection
+  risk: standard
+- id: rightsizing-analysis
+  group: Release, cost, and platform engineering
+  description: Rightsizing analysis
+  risk: standard
+- id: budget-anomaly-analysis
+  group: Release, cost, and platform engineering
+  description: Budget anomaly analysis
+  risk: standard
+- id: golden-path-design
+  group: Release, cost, and platform engineering
+  description: Golden path design
+  risk: standard
+- id: self-service-template
+  group: Release, cost, and platform engineering
+  description: Self service template
+  risk: standard
+- id: platform-api-design
+  group: Release, cost, and platform engineering
+  description: Platform api design
+  risk: standard
+- id: automation-idempotency
+  group: Release, cost, and platform engineering
+  description: Automation idempotency
+  risk: standard
+- id: automation-dry-run
+  group: Release, cost, and platform engineering
+  description: Automation dry run
+  risk: standard
+- id: developer-experience-metrics
+  group: Release, cost, and platform engineering
+  description: Developer experience metrics
+  risk: standard
+- id: architecture-diagram
+  group: Documentation and quality
+  description: Architecture diagram
+  risk: standard
+- id: runbook-authoring
+  group: Documentation and quality
+  description: Runbook authoring
+  risk: standard
+- id: operational-readme
+  group: Documentation and quality
+  description: Operational readme
+  risk: standard
+- id: change-plan-authoring
+  group: Documentation and quality
+  description: Change plan authoring
+  risk: standard
+- id: deployment-runbook
+  group: Documentation and quality
+  description: Deployment runbook
+  risk: high
+- id: incident-report-authoring
+  group: Documentation and quality
+  description: Incident report authoring
+  risk: standard
+- id: quality-gate-report
+  group: Documentation and quality
+  description: Quality gate report
+  risk: standard
+- id: independent-change-review
+  group: Documentation and quality
+  description: Independent change review
+  risk: standard
+- id: assumption-tracking
+  group: Documentation and quality
+  description: Assumption tracking
+  risk: standard
+- id: risk-register
+  group: Documentation and quality
+  description: Risk register
+  risk: standard
+- id: artifact-hashing
+  group: Documentation and quality
+  description: Artifact hashing
+  risk: standard
+- id: daily-summary
+  group: Documentation and quality
+  description: Daily summary
+  risk: standard

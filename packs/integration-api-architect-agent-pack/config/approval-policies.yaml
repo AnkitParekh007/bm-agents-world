@@ -1,0 +1,52 @@
+apiVersion: integration-api-architect-agent-pack/v1
+kind: ApprovalPolicyRegistry
+metadata:
+  name: integration-api-approvals
+spec:
+  default: deny
+  approvalBinding: payload-sha256
+  actions:
+  - id: publish_contract
+    required: true
+    expires: true
+    requireIndependentReviewer: true
+  - id: create_or_update_jira
+    required: true
+    expires: true
+    requireIndependentReviewer: false
+  - id: publish_confluence
+    required: true
+    expires: true
+    requireIndependentReviewer: false
+  - id: create_pull_request
+    required: true
+    expires: true
+    requireIndependentReviewer: false
+  - id: change_gateway_policy
+    required: true
+    expires: true
+    requireIndependentReviewer: false
+  - id: change_schema_compatibility
+    required: true
+    expires: true
+    requireIndependentReviewer: false
+  - id: create_topic_or_subscription
+    required: true
+    expires: true
+    requireIndependentReviewer: false
+  - id: change_identity_client
+    required: true
+    expires: true
+    requireIndependentReviewer: false
+  - id: publish_partner_contract
+    required: true
+    expires: true
+    requireIndependentReviewer: false
+  - id: deprecate_or_sunset_contract
+    required: true
+    expires: true
+    requireIndependentReviewer: true
+  - id: production_change_request
+    required: true
+    expires: true
+    requireIndependentReviewer: true

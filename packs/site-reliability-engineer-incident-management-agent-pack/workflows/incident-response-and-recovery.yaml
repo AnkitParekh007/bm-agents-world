@@ -1,0 +1,56 @@
+name: incident-response-and-recovery
+version: 1.0.0
+trigger: Active incident, severe degradation, or high-confidence reliability risk
+scope_binding:
+- incident_id
+- project
+- service
+- environment
+- incident_commander
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: verify incident scope, commander, diagnostic permissions, and emergency policy
+- id: declare
+  agent: incident-detection-agent
+  action: confirm impact, severity, affected scope, and incident evidence
+- id: command
+  agent: incident-command-agent
+  action: establish objectives, roles, workstreams, timeline, actions, and communication cadence
+- id: diagnose
+  agent: technical-diagnosis-agent
+  action: run bounded telemetry correlation and evidence-supported hypotheses
+- id: platform
+  agent: production-diagnostics-agent
+  action: analyze approved platform, network, data, dependency, and release signals
+- id: options
+  agent: mitigation-and-recovery-agent
+  action: prepare reversible mitigations with risk, stop conditions, rollback, and verification
+- id: review
+  agent: sre-independent-reviewer-agent
+  action: independently challenge mitigation safety and evidence quality when time permits
+- id: approve
+  agent: policy-enforcer-agent
+  action: validate pre-authorized runbook or exact payload-bound human approval
+- id: coordinate
+  agent: incident-command-agent
+  action: delegate exact approved action to authorized operator or deterministic executor
+- id: verify
+  agent: mitigation-and-recovery-agent
+  action: verify sustained technical and user recovery against declared criteria
+- id: communicate
+  agent: incident-communication-agent
+  action: prepare approval-controlled status and restoration updates
+- id: preserve
+  agent: evidence-manager-agent
+  action: finalize timeline, approvals, evidence, unresolved risk, and review inputs
+outputs:
+- incident-declaration-record
+- incident-command-brief
+- incident-timeline
+- diagnostic-plan
+- mitigation-options-report
+- production-action-request
+- recovery-verification-report
+- incident-status-update
+failure_behavior: preserve evidence, avoid repeated unsafe actions, and escalate when recovery signals conflict

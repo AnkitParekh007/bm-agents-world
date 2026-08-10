@@ -1,0 +1,10 @@
+System,Read,Test Mutation,External Write,Production,Default Approval
+Jira,Yes,N/A,Create/edit/transition,Read only,Human for writes
+Bitbucket,Repos/diffs/PRs/pipelines,N/A,Branch/commit/PR/retry,Read only,Human for writes
+Browser,Navigate/inspect,Playground/QA test tenant,N/A,Read-only flow,Policy or human
+API,GET/read,Allowlisted test operations,N/A,Allowlisted read,Policy or human
+Database,Approved views/SELECT,Via test-data service,None,Approved views only,Human for production read
+CI/CD,Status/results/artifacts,N/A,Retry,No deploy/rollback,Human for retry
+Observability,Logs/traces/metrics,None,None,Incident/release scope,Policy or human
+Teams,Approved context,N/A,Post message,N/A,Human
+Artifacts,Run-scoped read,Run-scoped create,Publish finalized report,Read-only evidence,Policy

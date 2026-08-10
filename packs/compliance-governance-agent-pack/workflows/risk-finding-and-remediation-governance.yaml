@@ -1,0 +1,26 @@
+id: risk-finding-and-remediation-governance
+name: Risk finding and remediation governance
+supervisor: compliance-governance-supervisor
+steps:
+- order: 1
+  action: normalize finding/risk
+- order: 2
+  action: assess impact with approved method
+- order: 3
+  action: identify affected controls
+- order: 4
+  action: prepare treatment
+- order: 5
+  action: delegate remediation
+- order: 6
+  action: collect fix evidence
+- order: 7
+  action: retest
+- order: 8
+  action: independent validation
+- order: 9
+  action: human closure/risk decision
+- order: 10
+  action: update registers
+production_mutation: false
+human_decision_required: true

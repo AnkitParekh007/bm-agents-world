@@ -1,0 +1,107 @@
+version: 1.0.0
+plugin_count: 22
+plugins:
+- id: repository-security-profiler
+  description: Detects languages, frameworks, build tools, entry points, authentication, data access, dependencies,
+    and existing security controls.
+  execution: deterministic-isolated-worker
+  status: template
+- id: threat-model-engine
+  description: Builds structured assets, actors, trust boundaries, data flows, threats, abuse cases, mitigations,
+    and test mappings.
+  execution: deterministic-isolated-worker
+  status: template
+- id: asvs-control-mapper
+  description: Maps requirements and evidence to versioned OWASP ASVS controls and organization policies.
+  execution: deterministic-isolated-worker
+  status: template
+- id: sast-orchestrator
+  description: Runs repository-approved static analyzers, preserves tool versions, normalizes results, and binds
+    findings to source revisions.
+  execution: deterministic-isolated-worker
+  status: template
+- id: sca-vulnerability-scanner
+  description: Builds dependency graphs and identifies vulnerabilities, unsupported versions, malicious packages,
+    and risky licenses.
+  execution: deterministic-isolated-worker
+  status: template
+- id: secret-detection-engine
+  description: Scans source, history, artifacts, logs, and configuration for credential material using approved
+    detectors and redaction.
+  execution: deterministic-isolated-worker
+  status: template
+- id: dependency-reachability-analyzer
+  description: Estimates whether vulnerable code paths are imported, invoked, exposed, or blocked by configuration
+    and compensating controls.
+  execution: deterministic-isolated-worker
+  status: template
+- id: license-policy-evaluator
+  description: Evaluates package licenses, notices, attribution, prohibited terms, and organization policy.
+  execution: deterministic-isolated-worker
+  status: template
+- id: sbom-generator
+  description: Creates CycloneDX or SPDX SBOMs for source, build, package, image, and release candidates.
+  execution: deterministic-isolated-worker
+  status: template
+- id: vex-generator
+  description: Creates evidence-backed vulnerability status statements with justification, impact, action, and expiry.
+  execution: deterministic-isolated-worker
+  status: template
+- id: artifact-signature-verifier
+  description: Verifies package, image, provenance, and attestation signatures against configured trusted identities.
+  execution: deterministic-isolated-worker
+  status: template
+- id: container-image-scanner
+  description: Scans OS and application packages, malware indicators, image configuration, secrets, and base-image
+    provenance.
+  execution: deterministic-isolated-worker
+  status: template
+- id: dockerfile-security-linter
+  description: Checks Dockerfile construction, users, capabilities, package pinning, downloads, checksums, secrets,
+    and attack surface.
+  execution: deterministic-isolated-worker
+  status: template
+- id: iac-security-scanner
+  description: Evaluates Terraform, OpenTofu, cloud templates, Helm, and configuration against security and compliance
+    rules.
+  execution: deterministic-isolated-worker
+  status: template
+- id: kubernetes-policy-scanner
+  description: Checks workload privileges, RBAC, network policy, resources, secrets, admission, Pod Security, and
+    supply-chain policy.
+  execution: deterministic-isolated-worker
+  status: template
+- id: cloud-policy-evaluator
+  description: Evaluates identity, network, storage, encryption, logging, public exposure, and service configuration
+    from approved plans or metadata.
+  execution: deterministic-isolated-worker
+  status: template
+- id: api-security-linter
+  description: Checks contracts and implementations for authorization, authentication, validation, mass assignment,
+    rate limits, inventory, and unsafe integrations.
+  execution: deterministic-isolated-worker
+  status: template
+- id: dast-orchestrator
+  description: Runs approved passive and active scans with explicit target, rate, method, authentication, and stop
+    conditions.
+  execution: deterministic-isolated-worker
+  status: template
+- id: fuzz-test-runner
+  description: Executes bounded fuzz and property-based security tests in isolated environments and records minimized
+    failing inputs.
+  execution: deterministic-isolated-worker
+  status: template
+- id: cvss-and-risk-enricher
+  description: Calculates CVSS v4 vectors and combines them with exposure, reachability, KEV, exploitability, asset,
+    and business context.
+  execution: deterministic-isolated-worker
+  status: template
+- id: remediation-sla-calculator
+  description: Applies configured vulnerability SLAs, freeze rules, exceptions, exploit status, and asset criticality.
+  execution: deterministic-isolated-worker
+  status: template
+- id: security-evidence-bundler
+  description: Packages scans, hashes, tool versions, decisions, approvals, redaction reports, and verification
+    evidence.
+  execution: deterministic-isolated-worker
+  status: template

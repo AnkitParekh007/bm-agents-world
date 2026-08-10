@@ -1,0 +1,77 @@
+apiVersion: frontend-angular-agent-pack/v1
+kind: Workflow
+metadata:
+  name: dependency-upgrade
+  version: 1.0.0
+spec:
+  trigger: approved-upgrade-request
+  initialState: authorized
+  risk: high
+  steps:
+  - id: inventory
+    agent: dependency-upgrade
+    uses:
+    - frontend.upgrade.inventory
+    - frontend.angular.compatibility-check
+    outputs:
+    - dependency-inventory
+  - id: baseline
+    agent: build-pipeline
+    uses:
+    - frontend.quality.lint
+    - frontend.quality.typecheck
+    - frontend.quality.build
+    outputs:
+    - baseline-quality
+  - id: plan
+    agent: dependency-upgrade
+    uses:
+    - frontend.upgrade.angular-plan
+    - frontend.plan.rollback
+    outputs:
+    - implementation-plan
+    dependsOn:
+    - inventory
+    - baseline
+  - id: approve-plan
+    agent: policy-guard
+    approvalLevel: L2
+    dependsOn:
+    - plan
+  - id: migrate
+    agent: dependency-upgrade
+    uses:
+    - frontend.upgrade.execute-migrations
+    - frontend.upgrade.lockfile-review
+    outputs:
+    - upgrade-patch
+    dependsOn:
+    - approve-plan
+  - id: regression
+    agent: test-engineer
+    uses:
+    - frontend.test.unit-generate
+    - frontend.test.browser-playwright
+    - frontend.test.coverage
+    outputs:
+    - test-gates
+    dependsOn:
+    - migrate
+  - id: quality
+    parallel: true
+    agents:
+    - build-pipeline
+    - security
+    - performance
+    - code-review
+    outputs:
+    - quality-gate-report
+    dependsOn:
+    - regression
+  - id: report
+    agent: dependency-upgrade
+    outputs:
+    - upgrade-report
+    - pull-request-draft
+    dependsOn:
+    - quality

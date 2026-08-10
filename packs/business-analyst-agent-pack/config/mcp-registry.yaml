@@ -1,0 +1,79 @@
+apiVersion: business-analyst-agent-pack/v1
+kind: McpRegistry
+metadata:
+  name: business-analysis-mcp
+  version: 1.0.0
+spec:
+  servers:
+  - id: atlassian-rovo
+    purpose: Jira and Confluence context, search, issue and page operations
+    access: read; writes through approval
+    enabledByDefault: true
+  - id: bitbucket-context
+    purpose: Repository, pull-request, diff, ownership, and change evidence
+    access: read-only by default
+    enabledByDefault: false
+  - id: document-repository
+    purpose: Policies, procedures, specifications, decisions, and templates
+    access: purpose-scoped read
+    enabledByDefault: true
+  - id: bpmn-modeling
+    purpose: BPMN process-model validation, rendering, and controlled storage
+    access: draft write only
+    enabledByDefault: false
+  - id: diagram-modeling
+    purpose: Mermaid, C4, UML, flow, context, and data-flow rendering
+    access: sandboxed
+    enabledByDefault: false
+  - id: figma-design-context
+    purpose: Approved design frames, components, annotations, and prototypes
+    access: read-only by default
+    enabledByDefault: false
+  - id: product-analytics
+    purpose: Curated metrics, funnels, adoption, and outcome evidence
+    access: aggregate read-only
+    enabledByDefault: false
+  - id: research-feedback
+    purpose: Redacted research, support themes, feedback, and survey evidence
+    access: redacted read-only
+    enabledByDefault: false
+  - id: data-catalog
+    purpose: Business glossary, schemas, ownership, classification, and lineage
+    access: metadata read-only
+    enabledByDefault: false
+  - id: database-query
+    purpose: Approved bounded read-only SQL for validation and analysis
+    access: read-only, row-limited
+    enabledByDefault: false
+  - id: api-contracts
+    purpose: OpenAPI, AsyncAPI, schema, endpoint, and contract context
+    access: read-only; publication approved
+    enabledByDefault: false
+  - id: integration-catalog
+    purpose: Systems, interfaces, events, files, owners, and dependencies
+    access: read-only
+    enabledByDefault: false
+  - id: requirements-traceability
+    purpose: Requirement graph, baselines, links, coverage, and change impact
+    access: controlled writes
+    enabledByDefault: true
+  - id: microsoft-teams
+    purpose: Meeting context and approved communications
+    access: draft by default
+    enabledByDefault: false
+  - id: artifact-service
+    purpose: Structured artifacts, evidence bundles, versions, and retention
+    access: scoped write
+    enabledByDefault: true
+  - id: identity-vault
+    purpose: Workload identity, capability leases, and secret references
+    access: no raw secrets
+    enabledByDefault: false
+  - id: approval-service
+    purpose: Payload-bound human approvals and decision records
+    access: deterministic
+    enabledByDefault: true
+  - id: policy-engine
+    purpose: OPA-compatible authorization and prohibited-action checks
+    access: deterministic
+    enabledByDefault: true

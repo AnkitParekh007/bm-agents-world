@@ -1,0 +1,39 @@
+name: slo-error-budget-operations
+version: 1.0.0
+trigger: Scheduled reliability review, burn alert, release decision, or SLO reassessment
+scope_binding:
+- project
+- service
+- slo_id
+- measurement_window
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: validate SLO scope, telemetry source, window, and minimum-necessary access
+- id: measure
+  agent: sli-slo-agent
+  action: validate SLI data and calculate objective attainment
+- id: budget
+  agent: error-budget-agent
+  action: calculate remaining error budget, burn rates, and threshold state
+- id: changes
+  agent: change-reliability-agent
+  action: correlate burn with releases, configurations, traffic, and dependencies
+- id: diagnose
+  agent: technical-diagnosis-agent
+  action: identify evidence-supported reliability drivers and gaps
+- id: options
+  agent: reliability-architecture-agent
+  action: prepare reliability, release, capacity, and risk-reduction options
+- id: review
+  agent: sre-independent-reviewer-agent
+  action: verify calculation integrity and challenge recommendations
+- id: decision-pack
+  agent: sre-incident-management-supervisor
+  action: prepare human decision pack without autonomously changing release policy
+outputs:
+- reliability-scorecard
+- error-budget-policy
+- capacity-and-scalability-plan
+- reliability-improvement-roadmap
+failure_behavior: label telemetry uncertainty and prohibit policy decisions when SLI integrity is insufficient

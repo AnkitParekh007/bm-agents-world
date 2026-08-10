@@ -1,0 +1,237 @@
+version: 1.0.0
+supervisor: customer-success-supervisor
+agents:
+- id: customer-success-supervisor
+  description: Coordinates bounded customer-success work, account context, lifecycle orchestration, approvals, evidence,
+    and cross-functional handoffs.
+  capabilities:
+  - orchestration
+  - customer-success
+  - risk
+  - evidence
+  status: enabled
+  external_writes: approval-controlled
+- id: work-context-agent
+  description: Reads approved CRM, CS platform, Jira, Confluence, support, release, incident, usage, and account
+    history.
+  capabilities:
+  - context
+  - traceability
+  - account-360
+  status: enabled
+  external_writes: approval-controlled
+- id: customer-profile-agent
+  description: Resolves customer lifecycle, segment, products, entitlements, service model, goals, and account metadata.
+  capabilities:
+  - customer-profile
+  - segmentation
+  - lifecycle
+  status: enabled
+  external_writes: approval-controlled
+- id: stakeholder-map-agent
+  description: Maintains approved relationship maps and identifies sponsor, champion, administrator, and decision-maker
+    changes.
+  capabilities:
+  - stakeholders
+  - relationships
+  - engagement
+  status: enabled
+  external_writes: approval-controlled
+- id: onboarding-agent
+  description: Coordinates handoff, prerequisites, onboarding milestones, time-to-value, blockers, and onboarding
+    completion.
+  capabilities:
+  - onboarding
+  - milestones
+  - time-to-value
+  status: enabled
+  external_writes: approval-controlled
+- id: success-plan-agent
+  description: Drafts and maintains outcome-oriented success plans and mutual action plans with measurable value
+    evidence.
+  capabilities:
+  - success-plans
+  - outcomes
+  - milestones
+  status: enabled
+  external_writes: approval-controlled
+- id: adoption-agent
+  description: Analyzes privacy-safe product usage, adoption, enablement gaps, and intervention outcomes.
+  capabilities:
+  - adoption
+  - usage
+  - enablement
+  status: enabled
+  external_writes: approval-controlled
+- id: customer-health-agent
+  description: Computes transparent, explainable health components and detects health changes and data-quality issues.
+  capabilities:
+  - health
+  - scorecards
+  - explainability
+  status: enabled
+  external_writes: approval-controlled
+- id: risk-detection-agent
+  description: Detects, classifies, prioritizes, and tracks customer risks and recovery actions.
+  capabilities:
+  - risk
+  - alerts
+  - recovery
+  status: enabled
+  external_writes: approval-controlled
+- id: value-realization-agent
+  description: Defines baselines, measures value realization, and prepares evidence-backed value scorecards.
+  capabilities:
+  - value
+  - outcomes
+  - measurement
+  status: enabled
+  external_writes: approval-controlled
+- id: qbr-ebr-agent
+  description: Prepares executive and quarterly business review packs, decisions, actions, and follow-up.
+  capabilities:
+  - qbr
+  - ebr
+  - executive-communication
+  status: enabled
+  external_writes: approval-controlled
+- id: renewal-readiness-agent
+  description: Prepares non-binding renewal readiness, risk, evidence, and dependency inputs for authorized commercial
+    owners.
+  capabilities:
+  - renewal
+  - readiness
+  - risk
+  status: enabled
+  external_writes: approval-controlled
+- id: expansion-signal-agent
+  description: Identifies value-backed growth signals and routes them to authorized commercial owners without making
+    commitments.
+  capabilities:
+  - expansion
+  - growth
+  - value
+  status: enabled
+  external_writes: approval-controlled
+- id: customer-communication-agent
+  description: Drafts customer-safe communications and validates claims, commitments, audience, and approval requirements.
+  capabilities:
+  - communication
+  - drafting
+  - fact-validation
+  status: enabled
+  external_writes: approval-controlled
+- id: executive-engagement-agent
+  description: Prepares executive sponsor briefs, escalation requests, strategic meeting context, and decision asks.
+  capabilities:
+  - executive-engagement
+  - briefing
+  - stakeholders
+  status: enabled
+  external_writes: approval-controlled
+- id: support-coordination-agent
+  description: Correlates support cases, SLA context, recurring issues, and customer impact while preserving Support
+    ownership.
+  capabilities:
+  - support
+  - sla
+  - escalation
+  status: enabled
+  external_writes: approval-controlled
+- id: incident-customer-agent
+  description: Coordinates account-specific incident context, customer communication drafts, impact tracking, and
+    recovery follow-up.
+  capabilities:
+  - incidents
+  - customer-impact
+  - communication
+  status: enabled
+  external_writes: approval-controlled
+- id: feedback-voice-of-customer-agent
+  description: Synthesizes approved feedback into evidence-backed themes and routes actionable signals to product
+    teams.
+  capabilities:
+  - feedback
+  - voc
+  - themes
+  status: enabled
+  external_writes: approval-controlled
+- id: advocacy-agent
+  description: Identifies advocacy candidates and prepares reference or case-study requests under consent and approval
+    controls.
+  capabilities:
+  - advocacy
+  - references
+  - consent
+  status: enabled
+  external_writes: approval-controlled
+- id: training-enablement-agent
+  description: Designs role-based customer enablement and measures training effectiveness against adoption and outcomes.
+  capabilities:
+  - training
+  - enablement
+  - learning
+  status: enabled
+  external_writes: approval-controlled
+- id: customer-journey-agent
+  description: Maps lifecycle journeys and designs governed digital-success plays and human-touch escalation rules.
+  capabilities:
+  - journey
+  - digital-success
+  - playbooks
+  status: enabled
+  external_writes: approval-controlled
+- id: cs-operations-agent
+  description: Maintains CS playbooks, data definitions, portfolio reporting, health governance, templates, and
+    automation quality.
+  capabilities:
+  - cs-ops
+  - governance
+  - data-quality
+  status: enabled
+  external_writes: approval-controlled
+- id: data-privacy-agent
+  description: Enforces minimum-necessary customer data, tenant isolation, consent, retention, redaction, and privacy
+    routing.
+  capabilities:
+  - privacy
+  - governance
+  - tenant-isolation
+  status: enabled
+  external_writes: approval-controlled
+- id: customer-success-reviewer-agent
+  description: Independently reviews evidence, health logic, risks, customer claims, value attribution, and decision
+    readiness.
+  capabilities:
+  - review
+  - quality
+  - challenge
+  status: enabled
+  external_writes: approval-controlled
+- id: evidence-manager-agent
+  description: Hashes, redacts, stores, links, versions, and retains customer-success artifacts, approvals, and
+    evidence.
+  capabilities:
+  - evidence
+  - provenance
+  - audit
+  status: enabled
+  external_writes: approval-controlled
+- id: policy-enforcer-agent
+  description: Evaluates scope, account authorization, permissions, customer contact, commercial boundaries, publication,
+    and production prohibitions.
+  capabilities:
+  - opa
+  - authorization
+  - guardrails
+  status: enabled
+  external_writes: approval-controlled
+- id: cross-pack-coordinator-agent
+  description: Routes work to Product, Support, SRE, Engineering, QA, Release, Compliance, Security, and Technical
+    Writing packs.
+  capabilities:
+  - delegation
+  - cross-functional
+  - routing
+  status: enabled
+  external_writes: approval-controlled

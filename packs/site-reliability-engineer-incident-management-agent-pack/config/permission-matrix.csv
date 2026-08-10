@@ -1,0 +1,13 @@
+Capability,Playground,QA,Production,Approval,Notes
+Service catalog and documentation read,allow,allow,allow,no,Project and service scoped
+Metrics/logs/traces read,allow,allow,bounded redacted,no,"Time-, service-, tenant-, and row-bounded"
+Kubernetes/cloud/network read,allow,allow,bounded read-only,no,No shell or mutation
+Synthetic checks,allow,allow,approved low-risk only,conditional,Rate and target bounded
+Load or chaos testing,approved,approved,deny by default,yes,Production only under separate exercise authority
+Incident declaration,approved,approved,approved,yes,Exact incident and severity
+Jira/Confluence/Teams/status-page publish,approved,approved,approved,yes,Payload-bound
+Alert/on-call/SLO policy changes,approved,approved,approved,yes,Owner and independent review
+Production action request,prepare,prepare,prepare,yes,Agent does not execute
+Production deploy/rollback/restart/scale/failover,n/a,n/a,deny,human/operator,Trusted deterministic executor only
+Database write or migration,deny,deny,deny,human/operator,Database pack and release process own execution
+Secret read,deny,deny,deny,n/a,Adapter consumes opaque lease

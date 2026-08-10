@@ -1,0 +1,103 @@
+apiVersion: frontend-angular-agent-pack/v1
+kind: AgentRegistry
+agents:
+- id: frontend-angular-supervisor
+  role: Supervisor
+  purpose: Coordinate scope, state, policies, approvals, specialists, and final result
+  enabled: true
+  toolPolicy: least-privilege
+- id: story-context
+  role: Specialist
+  purpose: Read Jira, Confluence, requirements, and decisions
+  enabled: true
+  toolPolicy: least-privilege
+- id: repository-context
+  role: Specialist
+  purpose: Map repository, commands, conventions, protected paths, and dependencies
+  enabled: true
+  toolPolicy: least-privilege
+- id: architecture-analyzer
+  role: Specialist
+  purpose: Analyze change boundaries, coupling, risks, and implementation options
+  enabled: true
+  toolPolicy: least-privilege
+- id: angular-version
+  role: Control
+  purpose: Enforce Angular, AngularJS, Node.js, TypeScript, and RxJS compatibility
+  enabled: true
+  toolPolicy: least-privilege
+- id: ui-implementation
+  role: Engineer
+  purpose: Create components, templates, routes, forms, and styles
+  enabled: true
+  toolPolicy: least-privilege
+- id: state-rxjs
+  role: Engineer
+  purpose: Design and implement state, streams, cancellation, and cleanup
+  enabled: true
+  toolPolicy: least-privilege
+- id: api-integration
+  role: Engineer
+  purpose: Implement typed API clients, services, interceptors, and error handling
+  enabled: true
+  toolPolicy: least-privilege
+- id: design-system
+  role: Specialist
+  purpose: Resolve Figma context, design tokens, and component reuse
+  enabled: true
+  toolPolicy: least-privilege
+- id: accessibility
+  role: Reviewer
+  purpose: Validate semantics, keyboard, focus, ARIA, and contrast
+  enabled: true
+  toolPolicy: least-privilege
+- id: performance
+  role: Reviewer
+  purpose: Validate bundle, rendering, network, and runtime performance
+  enabled: true
+  toolPolicy: least-privilege
+- id: security
+  role: Reviewer
+  purpose: Review frontend security, dependencies, secrets, and unsafe output
+  enabled: true
+  toolPolicy: least-privilege
+- id: test-engineer
+  role: Engineer
+  purpose: Create and run unit, component, and browser tests
+  enabled: true
+  toolPolicy: least-privilege
+- id: dependency-upgrade
+  role: Engineer
+  purpose: Plan and execute approved dependency or Angular upgrades
+  enabled: true
+  toolPolicy: least-privilege
+- id: code-review
+  role: Reviewer
+  purpose: Review correctness, maintainability, scope, and project conventions
+  enabled: true
+  toolPolicy: least-privilege
+- id: build-pipeline
+  role: Executor
+  purpose: Run deterministic quality gates and interpret CI results
+  enabled: true
+  toolPolicy: least-privilege
+- id: documentation
+  role: Publisher
+  purpose: Prepare documentation, ADR, component, and release updates
+  enabled: true
+  toolPolicy: least-privilege
+- id: pr-release
+  role: Publisher
+  purpose: Prepare and publish approved branch, PR, Jira, and release artifacts
+  enabled: true
+  toolPolicy: least-privilege
+- id: evidence-curator
+  role: Control
+  purpose: Redact, hash, validate, and retain artifacts and evidence
+  enabled: true
+  toolPolicy: least-privilege
+- id: policy-guard
+  role: Control
+  purpose: Evaluate tool, path, environment, and action policies
+  enabled: true
+  toolPolicy: least-privilege

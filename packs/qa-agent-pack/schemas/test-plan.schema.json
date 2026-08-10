@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Test Plan",
+  "type": "object",
+  "required": [
+    "artifactId",
+    "scope",
+    "environment",
+    "testTypes",
+    "entryCriteria",
+    "exitCriteria"
+  ],
+  "properties": {
+    "artifactId": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "outOfScope": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "environment": {
+      "type": "string"
+    },
+    "testTypes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "entryCriteria": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "exitCriteria": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "approvalLevel": {
+      "type": "string"
+    }
+  }
+}

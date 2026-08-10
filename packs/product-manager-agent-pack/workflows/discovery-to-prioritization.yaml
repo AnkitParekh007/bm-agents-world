@@ -1,0 +1,47 @@
+name: discovery-to-prioritization
+version: 1.0.0
+trigger: Set of product opportunities, ideas, defects, compliance work, or platform investments
+scope_binding:
+- organization
+- project
+- product_area
+- jira_item
+- environment
+- requester
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: verify portfolio, project, evidence sources, scoring model, and decision authority
+- id: normalize
+  agent: problem-framing-agent
+  action: normalize candidates into comparable problem and outcome statements
+- id: evidence
+  agent: customer-insight-agent
+  action: attach customer, support, sales, and research evidence with confidence
+- id: analytics
+  agent: product-analytics-agent
+  action: attach usage, funnel, retention, quality, and segment evidence
+- id: strategy
+  agent: product-strategy-agent
+  action: score strategic fit, target segment relevance, and outcome contribution
+- id: dependencies
+  agent: delivery-coordination-agent
+  action: identify design, engineering, data, security, legal, operational, and vendor dependencies
+- id: score
+  agent: prioritization-agent
+  action: apply configured scoring model and produce sensitivity analysis and tradeoffs
+- id: portfolio
+  agent: portfolio-agent
+  action: test investment balance, mandatory work, capacity assumptions, and scenarios
+- id: review
+  agent: product-reviewer-agent
+  action: challenge score manipulation, missing evidence, double counting, and unjustified certainty
+- id: approval
+  agent: product-manager-supervisor
+  action: request human decision before publishing priority or roadmap changes
+outputs:
+- prioritization-scorecard
+- portfolio-allocation-plan
+- dependency-risk-map
+- stakeholder-decision-memo
+failure_behavior: stop, preserve evidence, identify the unresolved decision, and request human resolution

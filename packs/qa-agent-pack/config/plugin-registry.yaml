@@ -1,0 +1,23 @@
+apiVersion: qa-agent-pack/v1
+kind: PluginRegistry
+plugins:
+  - { id: atlassian-connector, category: connector, required: true }
+  - { id: bitbucket-connector, category: connector, required: true }
+  - { id: playwright-session, category: execution, required: true }
+  - { id: openapi-test, category: execution, required: true }
+  - { id: database-guard, category: security, required: true }
+  - { id: environment-registry, category: resolution, required: true }
+  - { id: secret-provider, category: security, required: true }
+  - { id: identity-broker, category: security, required: true }
+  - { id: policy-engine, category: governance, required: true }
+  - { id: approval-service, category: governance, required: true }
+  - { id: artifact-renderer, category: artifact, required: true }
+  - { id: evidence-redaction, category: security, required: true }
+  - { id: teams-publisher, category: collaboration, required: false }
+  - { id: opentelemetry, category: observability, required: true }
+  - { id: prompt-injection-defense, category: security, required: true }
+  - { id: llm-provider-router, category: model, required: true }
+  - { id: evaluation, category: quality, required: true }
+  - { id: test-data-service, category: data, required: true }
+  - { id: notification, category: collaboration, required: true }
+  - { id: retention, category: governance, required: true }

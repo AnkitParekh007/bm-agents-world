@@ -1,0 +1,39 @@
+apiVersion: engineering-manager-technical-lead-agent-pack/v1
+kind: EnvironmentInventory
+metadata:
+  name: replace-me
+  projectId: replace-me
+spec:
+  environments:
+  - id: sandbox
+    classification: nonproduction
+    autonomousRead: true
+    autonomousWrite: isolated-workspace-only
+    productionDataAllowed: false
+  - id: playground
+    classification: nonproduction
+    autonomousRead: true
+    autonomousWrite: false
+    approvalControlledWrite: true
+    productionDataAllowed: false
+  - id: qa
+    classification: nonproduction
+    autonomousRead: true
+    autonomousWrite: false
+    approvalControlledWrite: true
+    productionDataAllowed: false
+  - id: production
+    classification: production
+    autonomousRead: redacted-and-scoped
+    autonomousWrite: false
+    approvalControlledWrite: request-only
+    productionDataAllowed: minimum-necessary-through-trusted-adapter
+  requiredMetadata:
+  - owner
+  - serviceTier
+  - repositories
+  - deploymentSystem
+  - onCall
+  - dataClassification
+  - changeWindow
+  - rollbackOwner

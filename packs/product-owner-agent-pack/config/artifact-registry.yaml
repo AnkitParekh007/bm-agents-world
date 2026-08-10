@@ -1,0 +1,213 @@
+version: 1.0.0
+artifact_count: 27
+artifacts:
+- id: product-owner-context
+  name: Product Owner context snapshot
+  formats:
+  - markdown
+  - json
+  purpose: approved project, product, team, and decision context
+  classification: internal
+  publication: approval-controlled
+- id: product-goal-brief
+  name: Product Goal brief
+  formats:
+  - markdown
+  purpose: goal, value, evidence, measures, constraints, review condition
+  classification: internal
+  publication: approval-controlled
+- id: product-backlog
+  name: Product Backlog export
+  formats:
+  - json
+  - csv
+  purpose: ordered, transparent backlog with traceability and decisions
+  classification: internal
+  publication: approval-controlled
+- id: backlog-item-specification
+  name: Backlog item specification
+  formats:
+  - markdown
+  - json
+  purpose: purpose, outcome, requirements, acceptance, dependencies, evidence
+  classification: internal
+  publication: approval-controlled
+- id: backlog-health-report
+  name: Backlog health report
+  formats:
+  - markdown
+  - json
+  purpose: readiness, aging, duplication, dependencies, stale assumptions
+  classification: internal
+  publication: approval-controlled
+- id: refinement-pack
+  name: Backlog refinement pack
+  formats:
+  - markdown
+  purpose: candidate items, questions, examples, risks, decisions
+  classification: internal
+  publication: approval-controlled
+- id: user-story-map
+  name: User story map
+  formats:
+  - markdown
+  - diagram
+  purpose: journey, activities, tasks, slices, releases, MVP boundary
+  classification: internal
+  publication: approval-controlled
+- id: acceptance-criteria-pack
+  name: Acceptance criteria pack
+  formats:
+  - markdown
+  - json
+  purpose: scenario-based acceptance examples and unresolved decisions
+  classification: internal
+  publication: approval-controlled
+- id: prioritization-decision
+  name: Prioritization decision record
+  formats:
+  - markdown
+  - json
+  purpose: criteria, scores, evidence, assumptions, human decision
+  classification: internal
+  publication: approval-controlled
+- id: sprint-planning-brief
+  name: Sprint Planning brief
+  formats:
+  - markdown
+  purpose: goal options, ordered candidates, value, risks, dependencies
+  classification: internal
+  publication: approval-controlled
+- id: sprint-goal
+  name: Sprint Goal record
+  formats:
+  - markdown
+  - json
+  purpose: agreed goal, value narrative, evidence links, review notes
+  classification: internal
+  publication: approval-controlled
+- id: sprint-decision-log
+  name: Sprint product decision log
+  formats:
+  - markdown
+  - json
+  purpose: scope and behavior decisions made during the Sprint
+  classification: internal
+  publication: approval-controlled
+- id: dependency-map
+  name: Dependency and sequencing map
+  formats:
+  - markdown
+  - diagram
+  purpose: cross-team, system, API, data, design, and release dependencies
+  classification: internal
+  publication: approval-controlled
+- id: design-readiness-report
+  name: Design readiness report
+  formats:
+  - markdown
+  - json
+  purpose: journeys, states, accessibility, content, handoff gaps
+  classification: internal
+  publication: approval-controlled
+- id: technical-readiness-report
+  name: Technical readiness report
+  formats:
+  - markdown
+  - json
+  purpose: architecture, contracts, data, security, operability, feasibility
+  classification: internal
+  publication: approval-controlled
+- id: qa-readiness-report
+  name: QA readiness report
+  formats:
+  - markdown
+  - json
+  purpose: testability, coverage, evidence, environments, regression scope
+  classification: internal
+  publication: approval-controlled
+- id: uat-plan
+  name: UAT plan and scenarios
+  formats:
+  - markdown
+  - json
+  purpose: scope, users, data, scenarios, schedule, evidence, decision owner
+  classification: internal
+  publication: approval-controlled
+- id: business-acceptance-report
+  name: Business acceptance report
+  formats:
+  - markdown
+  - json
+  purpose: UAT results, unresolved issues, recommendation, human decision
+  classification: internal
+  publication: approval-controlled
+- id: release-acceptance-pack
+  name: Release acceptance pack
+  formats:
+  - markdown
+  - json
+  purpose: scope, readiness, risks, rollout, support, rollback, approvals
+  classification: internal
+  publication: approval-controlled
+- id: release-notes-draft
+  name: Release notes draft
+  formats:
+  - markdown
+  purpose: user-facing and internal release summary
+  classification: internal
+  publication: approval-controlled
+- id: analytics-measurement-plan
+  name: Analytics and measurement plan
+  formats:
+  - markdown
+  - json
+  purpose: events, metrics, baselines, success, guardrails, ownership
+  classification: internal
+  publication: approval-controlled
+- id: outcome-review
+  name: Product outcome review
+  formats:
+  - markdown
+  - json
+  purpose: hypothesis, results, uncertainty, unintended effects, options
+  classification: internal
+  publication: approval-controlled
+- id: stakeholder-decision-record
+  name: Stakeholder decision record
+  formats:
+  - markdown
+  - json
+  purpose: options, evidence, decision, owner, conditions
+  classification: internal
+  publication: approval-controlled
+- id: product-owner-daily-summary
+  name: Product Owner daily summary
+  formats:
+  - markdown
+  purpose: priorities, decisions, questions, risks, next actions
+  classification: internal
+  publication: approval-controlled
+- id: traceability-matrix
+  name: Product traceability matrix
+  formats:
+  - csv
+  - json
+  purpose: goal-to-backlog-to-design-to-code-to-test-to-release-to-outcome
+  classification: internal
+  publication: approval-controlled
+- id: approval-record
+  name: Payload-bound approval record
+  formats:
+  - json
+  purpose: actor, action, object hash, scope, expiry, decision
+  classification: internal
+  publication: approval-controlled
+- id: evidence-bundle
+  name: Immutable evidence bundle
+  formats:
+  - zip
+  - manifest
+  purpose: source references, hashes, outputs, approvals, evaluation
+  classification: internal
+  publication: approval-controlled

@@ -1,0 +1,75 @@
+version: 1.0.0
+mcp_count: 18
+servers:
+- id: atlassian-rovo-mcp
+  purpose: Jira/Confluence work, requirements, product, and delivery context.
+  access: read-mostly; writes approval-controlled
+  status: enabled
+- id: crm-mcp
+  purpose: CRM accounts, contacts, opportunities, renewal metadata, ownership, and approved activity context.
+  access: minimum-necessary; writes approval-controlled
+  status: enabled
+- id: gainsight-customer-success-mcp
+  purpose: Optional Gainsight Customer 360, health, success plans, risks, renewal timelines, and CS workflows.
+  access: minimum-necessary; writes approval-controlled
+  status: enabled
+- id: support-service-mcp
+  purpose: Support cases, customer-impact queues, SLA status, known issues, and support history.
+  access: read-mostly
+  status: enabled
+- id: product-analytics-mcp
+  purpose: Approved aggregate or account-scoped product usage and adoption telemetry.
+  access: read-only; privacy thresholds
+  status: enabled
+- id: usage-telemetry-mcp
+  purpose: Bounded customer/account usage metrics from governed telemetry or warehouse views.
+  access: read-only; row and time bounded
+  status: enabled
+- id: billing-entitlement-mcp
+  purpose: Contract-safe product entitlements, licensed capacity, dates, and non-sensitive billing metadata.
+  access: read-only; no payment data
+  status: enabled
+- id: customer-feedback-mcp
+  purpose: Approved surveys, research summaries, community feedback, and customer-feedback repositories.
+  access: read-only; consent aware
+  status: enabled
+- id: calendar-meeting-mcp
+  purpose: Approved customer meeting schedules, participants, and meeting metadata.
+  access: read; scheduling approval-controlled
+  status: enabled
+- id: email-collaboration-mcp
+  purpose: Approved customer and internal communication context and draft/send workflows.
+  access: read minimum necessary; send approval-controlled
+  status: enabled
+- id: microsoft-teams-mcp
+  purpose: Internal team channels, customer-success coordination, and approved publication.
+  access: read scoped; writes approval-controlled
+  status: enabled
+- id: knowledge-documentation-mcp
+  purpose: Product documentation, runbooks, FAQs, enablement, release notes, and technical guidance.
+  access: read-only
+  status: enabled
+- id: release-status-mcp
+  purpose: Release candidates, deployment status, known limitations, and release evidence.
+  access: read-only
+  status: enabled
+- id: incident-observability-mcp
+  purpose: Declared incident status and bounded read-only customer-impact observability.
+  access: read-only; redacted
+  status: enabled
+- id: customer-assurance-mcp
+  purpose: Approved security, compliance, privacy, and customer-assurance artifacts.
+  access: read-only; classification aware
+  status: enabled
+- id: artifact-store-mcp
+  purpose: Immutable storage for plans, QBRs, reviews, approvals, and evidence.
+  access: write artifacts; no raw secrets
+  status: enabled
+- id: key-vault-capability-mcp
+  purpose: Capability broker for short-lived adapter credentials; never exposes raw secrets to the model.
+  access: adapter-only
+  status: enabled
+- id: policy-approval-mcp
+  purpose: OPA/policy decisions, approval capture, payload hashing, and decision audit.
+  access: deterministic governance
+  status: enabled

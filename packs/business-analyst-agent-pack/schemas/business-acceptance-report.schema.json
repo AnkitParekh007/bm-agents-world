@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.internal/schemas/business-acceptance-report.schema.json",
+  "title": "Business Acceptance Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "scope",
+    "coverage",
+    "result",
+    "decisionOwner"
+  ],
+  "properties": {
+    "scope": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "coverage": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "executedScenarios": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "openDefects": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "result": {
+      "enum": [
+        "recommend-accept",
+        "recommend-conditional-accept",
+        "recommend-reject",
+        "blocked"
+      ]
+    },
+    "decisionOwner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidenceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

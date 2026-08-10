@@ -1,0 +1,88 @@
+apiVersion: python-developer-agent-pack/v1
+kind: ApprovalPolicyRegistry
+policies:
+- id: external-repository-write
+  actions:
+  - git.commit
+  - git.push
+  - bitbucket.pr.create
+  - bitbucket.pr.update
+  approvers:
+  - repository-owner-or-code-owner
+  binding:
+  - run_id
+  - repository
+  - base_commit
+  - payload_hash
+  expires: 30m
+- id: work-management-write
+  actions:
+  - jira.write
+  - teams.post
+  approvers:
+  - requester-or-designated-owner
+  binding:
+  - run_id
+  - target
+  - payload_hash
+  expires: 30m
+- id: data-mutation
+  actions:
+  - database.write.nonprod
+  - queue.publish.nonprod
+  - cache.invalidate.nonprod
+  - object.mutate.nonprod
+  approvers:
+  - system-owner
+  - data-owner-when-required
+  binding:
+  - run_id
+  - environment
+  - resource
+  - payload_hash
+  expires: 15m
+- id: dependency-change
+  actions:
+  - dependency.add
+  - dependency.lockfile.update
+  approvers:
+  - repository-owner
+  binding:
+  - run_id
+  - repository
+  - payload_hash
+  expires: 60m
+- id: pipeline-or-deployment
+  actions:
+  - pipeline.trigger
+  - deployment.request
+  - migration.execute
+  approvers:
+  - devops-or-release-manager
+  binding:
+  - run_id
+  - environment
+  - commit
+  - payload_hash
+  expires: 15m
+- id: package-publication
+  actions:
+  - package.publish
+  approvers:
+  - package-owner
+  - release-manager
+  binding:
+  - run_id
+  - package
+  - version
+  - artifact_hash
+  expires: 15m
+prohibited:
+- git.force-push
+- bitbucket.merge
+- production.database.write
+- production.queue.mutate
+- production.cache.mutate
+- secret.read-value
+- policy.disable
+- public-package.publish-without-enterprise-process

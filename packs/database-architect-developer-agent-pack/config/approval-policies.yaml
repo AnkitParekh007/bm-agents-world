@@ -1,0 +1,79 @@
+version: 1.0.0
+policies:
+- id: repository-write
+  actions:
+  - commit
+  - push
+  - create-pr
+  - update-pr
+  approvers:
+  - code-owner
+  binding:
+  - run-id
+  - repository
+  - branch
+  - base-commit
+  - artifact-hash
+  expires_minutes: 60
+- id: nonprod-database-mutation
+  actions:
+  - ddl
+  - dml
+  - grant
+  - migration
+  - backfill
+  environments:
+  - playground
+  - qa
+  approvers:
+  - database-owner
+  additional_approvers_when_high_risk:
+  - application-owner
+  - security
+  - operations
+  binding:
+  - run-id
+  - engine
+  - database
+  - schema
+  - normalized-sql-hash
+  - artifact-hash
+  - expected-rows
+  - max-duration
+  expires_minutes: 30
+- id: collaboration-write
+  actions:
+  - jira-comment
+  - jira-transition
+  - teams-message
+  approvers:
+  - requester-or-owner
+  binding:
+  - run-id
+  - payload-hash
+  expires_minutes: 120
+- id: production-execution
+  actions:
+  - production-ddl
+  - production-dml
+  - production-grant
+  - restore
+  - failover
+  decision: autonomous-deny
+  execution: human-or-approved-deployment-system
+  requires:
+  - change-record
+  - dual-approval
+  - runbook
+  - backup-evidence
+  - monitoring
+  - recovery-plan
+- id: destructive
+  actions:
+  - drop-database
+  - truncate
+  - migration-clean
+  - history-repair
+  - backup-delete
+  decision: deny-by-default
+  exception_process: specialized-human-change

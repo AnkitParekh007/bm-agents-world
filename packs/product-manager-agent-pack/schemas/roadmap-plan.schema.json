@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/product-manager/roadmap-plan.schema.json",
+  "title": "Roadmap Plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "objectives",
+    "initiatives",
+    "horizon",
+    "assumptions",
+    "dependencies",
+    "risks"
+  ],
+  "properties": {
+    "objectives": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "initiatives": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "horizon": {
+      "type": "string"
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "capacity_ranges": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "stakeholder_views": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "approval_status": {
+      "type": "string"
+    }
+  }
+}

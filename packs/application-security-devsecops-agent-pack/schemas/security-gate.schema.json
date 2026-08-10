@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Security Gate Decision Pack",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "candidate_hash",
+    "status",
+    "required_checks",
+    "blockers",
+    "decision_options"
+  ],
+  "properties": {
+    "candidate_hash": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ready",
+        "conditional",
+        "blocked",
+        "unknown"
+      ]
+    },
+    "required_checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "status",
+          "evidence_refs"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pass",
+              "conditional",
+              "fail",
+              "not-applicable",
+              "unknown"
+            ]
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "gaps": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "blockers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "exceptions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "decision_options": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "final_human_decision": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

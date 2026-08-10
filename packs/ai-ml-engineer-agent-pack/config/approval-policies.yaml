@@ -1,0 +1,36 @@
+pack: "ai-ml-engineer-agent-pack"
+policies:
+  - id: "external-write"
+    actions:
+      - jira.write
+      - confluence.write
+      - bitbucket.write
+      - "model-registry.promote"
+    approval: "payload-bound-human"
+  - id: "production-model-action"
+    actions:
+      - model.promote
+      - endpoint.change
+      - traffic.change
+      - "vector-index.write"
+      - "feature-store.write"
+    approval: "payload-bound-human-or-preapproved-deterministic-runbook"
+  - id: "high-impact-ai"
+    actions:
+      - "high-impact-model-release"
+      - "risk-acceptance"
+      - "fairness-exception"
+      - "safety-exception"
+    approval: "accountable-human-plus-independent-review"
+  - id: "active-security-testing"
+    actions:
+      - "red-team.active"
+      - "model-extraction-test"
+      - "membership-inference-test"
+      - "data-exfiltration-test"
+    approval: "security-owner-explicit-scope"
+  - id: "customer-or-sensitive-training-data"
+    actions:
+      - "train.on-sensitive-data"
+      - "fine-tune.on-customer-data"
+    approval: "data-owner-privacy-security"

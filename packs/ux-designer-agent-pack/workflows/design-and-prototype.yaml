@@ -1,0 +1,47 @@
+name: design-and-prototype
+version: 1.0.0
+trigger: Approved design brief
+scope_binding:
+- organization
+- project
+- jira_item
+- figma_file
+- environment
+- requester
+steps:
+- id: authorize
+  agent: policy-enforcer
+  action: verify file, branch, library, asset, and publication scope
+- id: ia
+  agent: information-architect
+  action: design taxonomy, navigation, sitemap, labels, and information hierarchy
+- id: flow
+  agent: interaction-designer
+  action: design task flows, states, permissions, errors, recovery, and responsive behavior
+- id: content
+  agent: content-designer
+  action: draft interface content, instructions, errors, empty states, and terminology
+- id: system
+  agent: design-system-architect
+  action: reuse or propose tokens, components, patterns, and variants
+- id: inclusive
+  agent: accessibility-inclusive-designer
+  action: define semantics, keyboard, focus, contrast, target, motion, and cognitive requirements
+- id: visual
+  agent: visual-ui-designer
+  action: create responsive visual design using approved system and brand assets
+- id: prototype
+  agent: prototype-builder
+  action: build realistic prototype with key paths, states, and test instrumentation
+- id: review
+  agent: design-reviewer
+  action: review usability, consistency, feasibility, evidence, accessibility, and risks
+outputs:
+- information-architecture
+- task-flow
+- wireframe-set
+- high-fidelity-design
+- interactive-prototype
+- content-specification
+- accessibility-annotation
+failure_behavior: stop, preserve evidence, and request human resolution

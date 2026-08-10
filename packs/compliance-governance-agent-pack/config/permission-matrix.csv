@@ -1,0 +1,9 @@
+resource,sandbox,qa,production,write_rule
+Jira/Confluence,read,read,read,approval for official writes
+GRC,read/draft,read/draft,read,approval for writes
+SIEM/logs,synthetic,bounded read,bounded redacted read,no mutation
+IAM,synthetic,metadata read,metadata read,no direct entitlement changes
+Database,synthetic,metadata/read-only,bounded metadata/read-only,no DDL/DML
+Cloud/Kubernetes,read,read,read,delegate changes
+Vault,reference only,reference only,reference only,raw secrets never exposed
+Vendor/contract,approved extracts,approved extracts,approved extracts,no legal commitments

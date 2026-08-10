@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Improvement Experiment",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "problem",
+    "hypothesis",
+    "intervention",
+    "measures",
+    "owner",
+    "review_date",
+    "status"
+  ],
+  "properties": {
+    "problem": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "hypothesis": {
+      "type": "string",
+      "minLength": 1
+    },
+    "intervention": {
+      "type": "string",
+      "minLength": 1
+    },
+    "measures": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "guardrails": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "review_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "status": {
+      "enum": [
+        "proposed",
+        "approved",
+        "running",
+        "completed",
+        "stopped"
+      ]
+    },
+    "result": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "learning": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

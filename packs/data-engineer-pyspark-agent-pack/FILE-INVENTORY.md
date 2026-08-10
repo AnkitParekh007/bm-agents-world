@@ -1,0 +1,52 @@
+# File Inventory
+
+The pack contains **48 files**.
+
+1. `README.md`
+2. `SOURCES.md`
+3. `checklists/mvp-readiness.md`
+4. `checklists/project-onboarding.md`
+5. `config/agent-registry.yaml`
+6. `config/approval-policies.yaml`
+7. `config/artifact-registry.yaml`
+8. `config/environment-inventory.template.yaml`
+9. `config/mcp-registry.yaml`
+10. `config/pack-manifest.yaml`
+11. `config/permission-matrix.csv`
+12. `config/plugin-registry.yaml`
+13. `config/project-registry.yaml`
+14. `config/secret-references.template.yaml`
+15. `config/skill-registry.yaml`
+16. `docs/01-data-engineer-pyspark-daily-task-catalog.md`
+17. `docs/02-project-access-and-environment-model.md`
+18. `docs/03-agent-and-subagent-architecture.md`
+19. `docs/04-skills-catalog.md`
+20. `docs/05-mcp-servers-tools-and-plugins.md`
+21. `docs/06-artifacts-and-knowledge-assets.md`
+22. `docs/07-orchestration-and-workflows.md`
+23. `docs/08-key-vault-identity-and-secrets.md`
+24. `docs/09-permissions-approvals-and-guardrails.md`
+25. `docs/10-observability-audit-and-evaluation.md`
+26. `docs/11-deployment-runtime-and-networking.md`
+27. `docs/12-implementation-roadmap.md`
+28. `docs/13-diagram-input-specification.md`
+29. `docs/14-research-and-standards-notes.md`
+30. `schemas/backfill-plan.schema.json`
+31. `schemas/data-contract.schema.json`
+32. `schemas/data-engineering-context.schema.json`
+33. `schemas/data-quality-report.schema.json`
+34. `schemas/pipeline-design.schema.json`
+35. `schemas/production-action-request.schema.json`
+36. `schemas/spark-performance-review.schema.json`
+37. `security/opa/data-engineer-pyspark-agent-policy.rego`
+38. `templates/data-contract.md`
+39. `templates/data-product-brief.md`
+40. `templates/data-quality-report.md`
+41. `templates/pipeline-design.md`
+42. `templates/production-action-request.md`
+43. `workflows/batch-pipeline-implementation.yaml`
+44. `workflows/data-quality-backfill-remediation.yaml`
+45. `workflows/release-and-production-operations.yaml`
+46. `workflows/story-to-data-pipeline-design.yaml`
+47. `workflows/streaming-cdc-implementation.yaml`
+48. `FILE-INVENTORY.md`

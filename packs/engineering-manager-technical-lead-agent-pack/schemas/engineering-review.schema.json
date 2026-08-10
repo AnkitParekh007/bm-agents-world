@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bm-agent-foundry.local/schemas/engineering-review.schema.json",
+  "title": "Engineering Review",
+  "type": "object",
+  "required": [
+    "scope",
+    "reviewType",
+    "findings",
+    "risks",
+    "recommendation",
+    "requiredActions",
+    "reviewers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "scope": {
+      "type": "string"
+    },
+    "reviewType": {
+      "enum": [
+        "delivery",
+        "technical",
+        "quality",
+        "security",
+        "reliability",
+        "release",
+        "process",
+        "people-process"
+      ]
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "recommendation": {
+      "enum": [
+        "proceed",
+        "proceed-with-conditions",
+        "revise",
+        "block",
+        "escalate"
+      ]
+    },
+    "requiredActions": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "reviewers": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "conflictsOfInterest": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidenceReferences": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

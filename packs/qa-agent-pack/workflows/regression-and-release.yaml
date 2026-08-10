@@ -1,0 +1,13 @@
+apiVersion: qa-agent-pack/v1
+kind: Workflow
+metadata: { id: regression-and-release, version: 1.0.0 }
+inputs: [releaseId, projects, environments, includedIssues]
+steps:
+  - { id: impact, agent: change-impact, skill: qa.plan.regression-selection }
+  - { id: plan, agent: regression-planner, skill: qa.plan.regression-selection, dependsOn: [impact] }
+  - { id: approve, type: human-approval, dependsOn: [plan] }
+  - { id: execute, agent: regression-planner, skill: qa.retest.targeted-regression, dependsOn: [approve] }
+  - { id: evidence, agent: evidence-curator, skill: qa.evidence.build-manifest, dependsOn: [execute] }
+  - { id: readiness, agent: release-readiness, skill: qa.report.release-readiness, dependsOn: [evidence] }
+  - { id: publish-approval, type: human-approval, action: teams.post, dependsOn: [readiness] }
+outputs: [regression-report, release-readiness]

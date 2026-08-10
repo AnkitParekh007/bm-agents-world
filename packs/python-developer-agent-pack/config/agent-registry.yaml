@@ -1,0 +1,108 @@
+apiVersion: python-developer-agent-pack/v1
+kind: AgentRegistry
+agents:
+- id: python-developer-supervisor
+  role: Supervisor
+  purpose: Coordinate scope, state, policy, approvals, specialists, and final results
+  enabled: true
+  toolPolicy: least-privilege
+- id: story-context
+  role: Specialist
+  purpose: Read Jira, Confluence, requirements, incidents, and contracts
+  enabled: true
+  toolPolicy: least-privilege
+- id: repository-context
+  role: Specialist
+  purpose: Map repository, Python profile, commands, conventions, and protected paths
+  enabled: true
+  toolPolicy: least-privilege
+- id: architecture-analyzer
+  role: Specialist
+  purpose: Analyze boundaries, dependencies, options, and change risk
+  enabled: true
+  toolPolicy: least-privilege
+- id: python-compatibility
+  role: Control
+  purpose: Enforce Python, framework, platform, dependency, and packaging compatibility
+  enabled: true
+  toolPolicy: least-privilege
+- id: domain-implementation
+  role: Engineer
+  purpose: Implement domain logic, models, services, and configuration
+  enabled: true
+  toolPolicy: least-privilege
+- id: api-service
+  role: Engineer
+  purpose: Implement API endpoints, schemas, middleware, auth hooks, and contracts
+  enabled: true
+  toolPolicy: least-privilege
+- id: data-access
+  role: Engineer
+  purpose: Implement persistence, queries, transactions, and migration drafts
+  enabled: true
+  toolPolicy: least-privilege
+- id: async-workers
+  role: Engineer
+  purpose: Implement asyncio, queues, schedulers, retries, and graceful shutdown
+  enabled: true
+  toolPolicy: least-privilege
+- id: data-pipeline
+  role: Engineer
+  purpose: Implement PySpark, ETL, streaming, data quality, and reconciliation
+  enabled: true
+  toolPolicy: least-privilege
+- id: cli-automation
+  role: Engineer
+  purpose: Implement safe CLI tools and operational automation
+  enabled: true
+  toolPolicy: least-privilege
+- id: test-engineer
+  role: Reviewer
+  purpose: Create and run unit, integration, contract, async, and property tests
+  enabled: true
+  toolPolicy: least-privilege
+- id: security-reviewer
+  role: Reviewer
+  purpose: Review trust boundaries, dependencies, secrets, and unsafe Python behavior
+  enabled: true
+  toolPolicy: least-privilege
+- id: performance-reliability
+  role: Reviewer
+  purpose: Review profiling, latency, memory, I/O, concurrency, and resilience
+  enabled: true
+  toolPolicy: least-privilege
+- id: dependency-packaging
+  role: Specialist
+  purpose: Manage dependencies, lockfiles, builds, packages, and compatibility matrix
+  enabled: true
+  toolPolicy: least-privilege
+- id: code-review
+  role: Reviewer
+  purpose: Review correctness, scope, maintainability, typing, tests, and compatibility
+  enabled: true
+  toolPolicy: least-privilege
+- id: build-pipeline
+  role: Control
+  purpose: Run deterministic gates and interpret CI/CD results
+  enabled: true
+  toolPolicy: least-privilege
+- id: documentation
+  role: Specialist
+  purpose: Update setup, API, architecture, operations, and ADR documentation
+  enabled: true
+  toolPolicy: least-privilege
+- id: pr-release
+  role: Specialist
+  purpose: Draft PR, release, migration, rollout, smoke, and rollback artifacts
+  enabled: true
+  toolPolicy: least-privilege
+- id: evidence-curator
+  role: Control
+  purpose: Redact, hash, index, and retain run evidence
+  enabled: true
+  toolPolicy: least-privilege
+- id: policy-guard
+  role: Control
+  purpose: Evaluate every capability request and approval
+  enabled: true
+  toolPolicy: least-privilege

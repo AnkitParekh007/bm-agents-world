@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/product-manager/outcome-review.schema.json",
+  "title": "Outcome Review",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "baseline",
+    "shipped_scope",
+    "results",
+    "quality",
+    "customer_impact",
+    "decision",
+    "learning"
+  ],
+  "properties": {
+    "baseline": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "shipped_scope": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "quality": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "customer_impact": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "business_impact": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "unintended_effects": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "decision": {
+      "type": "string"
+    },
+    "learning": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "follow_up": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  }
+}

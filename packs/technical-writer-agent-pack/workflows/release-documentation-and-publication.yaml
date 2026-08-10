@@ -1,0 +1,50 @@
+name: release-documentation-and-publication
+version: 1.0.0
+trigger: release candidate, approved release scope, hotfix, or deprecation milestone
+scope_binding:
+- project
+- documentation_collection
+- audience
+- product_version
+- source_revision
+- publication_target
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: validate release, candidate hash, audiences, destinations, and data classification
+- id: context
+  agent: documentation-context-agent
+  action: retrieve release manifest, Jira scope, pull requests, contracts, QA, Support, and known issues
+- id: impact
+  agent: release-documentation-agent
+  action: map exact candidate changes to required release notes, guides, references, and support content
+- id: author
+  agent: technical-writer-supervisor
+  action: draft audience-specific release notes, upgrade actions, known issues, and linked documentation
+- id: technical-review
+  agent: cross-pack-coordination-agent
+  action: obtain Product, Engineering, QA, Support, Security, Database, DevOps, and Release evidence as required
+- id: quality
+  agent: content-quality-agent
+  action: validate candidate binding, factuality, confidentiality, links, and migration safety
+- id: independent-review
+  agent: documentation-reviewer-agent
+  action: independently review unsupported claims, omissions, risk, and audience suitability
+- id: bundle
+  agent: evidence-management-agent
+  action: create immutable candidate-bound publication bundle and payload hash
+- id: decision
+  agent: technical-writer-supervisor
+  action: request accountable release and content-owner approval
+- id: publish
+  agent: docs-as-code-agent
+  action: publish only through the trusted connector matching the approved payload
+- id: verify
+  agent: search-and-discoverability-agent
+  action: verify pages, links, redirects, metadata, and discoverability after publication
+outputs:
+- release-notes
+- upgrade-and-migration-guide
+- documentation-review-report
+- publication-and-evidence-bundle
+failure_behavior: never publish release claims that are not bound to the approved release candidate

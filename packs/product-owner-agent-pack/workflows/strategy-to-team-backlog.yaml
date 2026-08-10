@@ -1,0 +1,45 @@
+name: strategy-to-team-backlog
+version: 1.0.0
+trigger: Approved product strategy, roadmap theme, outcome, opportunity, or business priority
+scope_binding:
+- organization
+- project
+- product
+- team
+- requester
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: verify product, team, source, data, and publication scope
+- id: context
+  agent: work-context-agent
+  action: collect approved strategy, research, analytics, designs, architecture, delivery, and decision context
+- id: goal
+  agent: product-goal-agent
+  action: draft Product Goal and measurable value hypothesis options
+- id: customer-value
+  agent: customer-value-agent
+  action: map customer problems, evidence, assumptions, and affected segments
+- id: backlog-options
+  agent: backlog-ownership-agent
+  action: create transparent backlog options including features, defects, enablers, research, compliance, and technical
+    work
+- id: prioritize
+  agent: prioritization-agent
+  action: compare ordering scenarios using approved criteria and dependencies
+- id: cross-pack
+  agent: cross-pack-coordination-agent
+  action: request BA, UX, architecture, engineering, QA, database, and DevOps readiness inputs as needed
+- id: review
+  agent: product-owner-reviewer-agent
+  action: challenge evidence, Product Goal alignment, ordering rationale, completeness, and risk
+- id: decision
+  agent: product-owner-supervisor
+  action: request accountable Product Owner decision and approval before official backlog publication
+outputs:
+- product-goal-brief
+- product-backlog
+- prioritization-decision
+- dependency-map
+- approval-record
+failure_behavior: stop, preserve evidence, identify missing authority or evidence, and request human resolution

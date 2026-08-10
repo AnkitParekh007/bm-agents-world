@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Documentation Review",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "review_id",
+    "reviewer",
+    "findings",
+    "recommendation"
+  ],
+  "properties": {
+    "review_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reviewer": {
+      "type": "string",
+      "minLength": 1
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "recommendation": {
+      "enum": [
+        "approve",
+        "approve-with-conditions",
+        "revise",
+        "block"
+      ]
+    },
+    "unresolved_claims": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

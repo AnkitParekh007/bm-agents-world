@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/customer-success/success-plan.schema.json",
+  "title": "Success Plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "customer_id",
+    "objectives",
+    "owners",
+    "review_cadence"
+  ],
+  "properties": {
+    "customer_id": {
+      "type": "string"
+    },
+    "objectives": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "outcome",
+          "measure"
+        ],
+        "properties": {
+          "outcome": {
+            "type": "string"
+          },
+          "measure": {
+            "type": "string"
+          },
+          "baseline": {
+            "type": "string"
+          },
+          "target": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "owners": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "review_cadence": {
+      "type": "string"
+    }
+  }
+}

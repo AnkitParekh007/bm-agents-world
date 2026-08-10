@@ -1,0 +1,41 @@
+apiVersion: integration-api-architect-agent-pack/v1
+kind: AgentPack
+metadata:
+  name: integration-api-architect-agent-pack
+  version: 1.0.0
+  created: '2026-08-08'
+  role: Integration / API Architect
+  maintainer: Integration Architecture / Engineering Architecture
+spec:
+  purpose: Govern evidence-backed API and integration architecture from business intent through compatible contracts,
+    implementation handoff, release governance, and lifecycle evolution.
+  coordinatesRolePacks:
+  - product-manager-agent-pack
+  - product-owner-agent-pack
+  - business-analyst-agent-pack
+  - solution-architect-agent-pack
+  - frontend-angular-agent-pack
+  - java-developer-agent-pack
+  - python-developer-agent-pack
+  - database-architect-developer-agent-pack
+  - data-engineer-pyspark-agent-pack
+  - qa-agent-pack
+  - application-security-devsecops-agent-pack
+  - devops-agent-pack
+  - site-reliability-engineer-incident-management-agent-pack
+  - support-l2-agent-pack
+  - technical-writer-agent-pack
+  counts:
+    agents: 27
+    skills: 240
+    mcpServers: 18
+    plugins: 22
+    artifacts: 28
+    workflows: 5
+    schemas: 7
+  defaultMode: proposal-first
+  decisionBoundary: Humans own final breaking-contract approval, external commitments, residual-risk acceptance,
+    and production gateway/broker/identity changes.
+  policy:
+    engine: OPA-compatible
+    file: security/opa/integration-api-architect-agent-policy.rego

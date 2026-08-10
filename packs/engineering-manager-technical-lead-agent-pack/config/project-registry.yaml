@@ -1,0 +1,64 @@
+apiVersion: engineering-manager-technical-lead-agent-pack/v1
+kind: ProjectRegistry
+metadata:
+  name: engineering-organization-projects
+  version: 1.0.0
+spec:
+  projects:
+  - id: pcc
+    name: PCC
+    technology:
+    - Angular 12
+    - Java
+    - relational database
+    workManagement: Jira
+    sourceControl: Bitbucket
+    leadershipMode: legacy-compatible delivery and modernization
+    environments:
+    - playground
+    - qa
+    - production
+  - id: sop
+    name: SOP
+    technology:
+    - Angular 15
+    - Java
+    - relational database
+    workManagement: Jira
+    sourceControl: Bitbucket
+    leadershipMode: product delivery and platform alignment
+    environments:
+    - playground
+    - qa
+    - production
+  - id: databridge
+    name: DataBridge
+    technology:
+    - AngularJS
+    - Java
+    - data integrations
+    workManagement: Jira
+    sourceControl: Bitbucket
+    leadershipMode: conservative maintenance and incremental modernization
+    environments:
+    - playground
+    - qa
+    - production
+  - id: bm-agent-foundry
+    name: BM Agent Foundry
+    technology:
+    - React/Angular
+    - Supabase
+    - GKE
+    - agent runtimes
+    - MCP
+    workManagement: Jira or GitHub issues
+    sourceControl: GitHub/Bitbucket as configured
+    leadershipMode: AI platform, security, runtime, and governance
+    environments:
+    - sandbox
+    - playground
+    - qa
+    - production
+  selectionRule: The user or authoritative work item must select the project; never infer production scope from
+    repository name alone.

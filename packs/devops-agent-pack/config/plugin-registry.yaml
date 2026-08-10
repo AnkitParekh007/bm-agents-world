@@ -1,0 +1,90 @@
+version: 1.0.0
+plugins:
+- id: bitbucket-connector
+  purpose: Repository, PR, pipeline, deployment, and reviewer integration
+  credential_exposure: adapter-only
+  status: planned
+- id: jira-confluence-connector
+  purpose: Work item, change record, runbook, and decision integration
+  credential_exposure: adapter-only
+  status: planned
+- id: aws-adapter
+  purpose: Approved AWS control-plane operations through workload identity
+  credential_exposure: adapter-only
+  status: planned
+- id: azure-adapter
+  purpose: Approved Azure control-plane operations through managed identity
+  credential_exposure: adapter-only
+  status: planned
+- id: gcp-adapter
+  purpose: Approved Google Cloud control-plane operations through federation
+  credential_exposure: adapter-only
+  status: planned
+- id: private-cloud-adapter
+  purpose: Approved VMware/OpenStack/private-cloud operations
+  credential_exposure: adapter-only
+  status: planned
+- id: terraform-runner
+  purpose: Pinned Terraform execution in isolated workers
+  credential_exposure: adapter-only
+  status: planned
+- id: opentofu-runner
+  purpose: Pinned OpenTofu execution in isolated workers
+  credential_exposure: adapter-only
+  status: planned
+- id: ansible-runner
+  purpose: Pinned Ansible lint, check, and approved execution
+  credential_exposure: adapter-only
+  status: planned
+- id: kubernetes-adapter
+  purpose: Scoped cluster and namespace operations
+  credential_exposure: adapter-only
+  status: planned
+- id: helm-kustomize-runner
+  purpose: Local manifest rendering and validation
+  credential_exposure: adapter-only
+  status: planned
+- id: argocd-adapter
+  purpose: GitOps diff, health, history, and approved sync
+  credential_exposure: adapter-only
+  status: planned
+- id: docker-buildkit-runner
+  purpose: Reproducible isolated container builds
+  credential_exposure: adapter-only
+  status: planned
+- id: registry-adapter
+  purpose: Container and artifact registry promotion
+  credential_exposure: adapter-only
+  status: planned
+- id: observability-adapter
+  purpose: Prometheus, logs, traces, dashboards, and alert integrations
+  credential_exposure: adapter-only
+  status: planned
+- id: incident-adapter
+  purpose: Pager/incident-management integration
+  credential_exposure: adapter-only
+  status: planned
+- id: vault-adapter
+  purpose: Secret manager and dynamic credential brokerage
+  credential_exposure: adapter-only
+  status: planned
+- id: security-scanner-adapter
+  purpose: Trivy, Checkov, tfsec, scanners, and policy tools
+  credential_exposure: adapter-only
+  status: planned
+- id: sigstore-adapter
+  purpose: Artifact signing and verification
+  credential_exposure: adapter-only
+  status: planned
+- id: finops-adapter
+  purpose: Cloud cost and usage data
+  credential_exposure: adapter-only
+  status: planned
+- id: teams-publisher
+  purpose: Approved Microsoft Teams updates
+  credential_exposure: adapter-only
+  status: planned
+- id: artifact-store-adapter
+  purpose: Immutable reports, logs, plans, and evidence bundles
+  credential_exposure: adapter-only
+  status: planned

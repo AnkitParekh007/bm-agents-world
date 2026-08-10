@@ -1,0 +1,17 @@
+pack_id: "ai-ml-engineer-agent-pack"
+display_name: AI/ML Engineer Agent Pack
+version: 1.0.0
+generated_at: "2026-08-07"
+counts:
+  tasks: 252
+  agents: 27
+  skills: 240
+  mcp_servers: 18
+  plugins: 22
+  artifacts: 28
+  workflows: 5
+  json_schemas: 7
+  yaml_files: 15
+production_free_form_mutation: false
+raw_secrets_in_model_context: false
+high_impact_decision_owner: "accountable-human"

@@ -1,0 +1,192 @@
+version: 1.0.0
+artifact_count: 27
+artifacts:
+- id: scrum-team-charter
+  description: Team purpose, Product Goal context, membership, working boundaries, and review cadence.
+  format:
+  - markdown
+  - json
+  retention: project-policy
+  publication: approval-controlled
+- id: working-agreement
+  description: Team-created agreements for collaboration, communication, quality, meetings, and conflict.
+  format:
+  - markdown
+  - json
+  retention: project-policy
+  publication: approval-controlled
+- id: scrum-establishment-assessment
+  description: Evidence-based assessment of accountabilities, events, artifacts, commitments, values, and impediments.
+  format:
+  - markdown
+  - json
+  retention: project-policy
+  publication: approval-controlled
+- id: sprint-event-calendar
+  description: Cadence, timeboxes, participants, objectives, and logistics for Scrum events.
+  format:
+  - markdown
+  - json
+  retention: project-policy
+  publication: approval-controlled
+- id: sprint-planning-pack
+  description: Sprint Planning context, Product Goal, ordered candidates, readiness, risks, and facilitation prompts.
+  format:
+  - markdown
+  - json
+  retention: project-policy
+  publication: approval-controlled
+- id: sprint-goal-facilitation-brief
+  description: Goal options and prompts prepared for Product Owner and Developers without deciding the goal.
+  format:
+  - markdown
+  - json
+  retention: project-policy
+  publication: approval-controlled
+- id: daily-scrum-coaching-guide
+  description: Prompts and coaching notes for inspecting progress toward the Sprint Goal.
+  format:
+  - markdown
+  - json
+  retention: project-policy
+  publication: approval-controlled
+- id: sprint-review-pack
+  description: Increment evidence, outcome measures, stakeholder map, feedback prompts, and decisions.
+  format:
+  - markdown
+  - json
+  retention: project-policy
+  publication: approval-controlled
+- id: retrospective-facilitation-pack
+  description: Safety check, activity design, evidence, prompts, timebox, and fallback method.
+  format:
+  - markdown
+  - json
+  retention: project-policy
+  publication: approval-controlled
+- id: retrospective-summary
+  description: De-identified themes, decisions, actions, experiments, owners, and review dates.
+  format:
+  - markdown
+  - json
+  retention: project-policy
+  publication: approval-controlled
+- id: impediment-register
+  description: Impediments, impact, owner, escalation path, age, status, and evidence.
+  format:
+  - markdown
+  - json
+  retention: project-policy
+  publication: approval-controlled
+- id: organizational-impediment-brief
+  description: Systemic impediment evidence, affected teams, options, and executive decision request.
+  format:
+  - markdown
+  - json
+  retention: project-policy
+  publication: approval-controlled
+- id: flow-health-report
+  description: Cycle time, throughput, WIP, age, blocked time, flow distribution, and interpretation.
+  format:
+  - markdown
+  - json
+  retention: project-policy
+  publication: approval-controlled
+- id: sprint-health-report
+  description: Sprint Goal confidence, scope movement, blockers, dependencies, quality, and forecast.
+  format:
+  - markdown
+  - json
+  retention: project-policy
+  publication: approval-controlled
+- id: delivery-risk-register
+  description: Team-level delivery risks, triggers, mitigations, owners, and review dates.
+  format:
+  - markdown
+  - json
+  retention: project-policy
+  publication: approval-controlled
+- id: dependency-map
+  description: Cross-team and cross-system dependencies, milestones, owners, and status.
+  format:
+  - markdown
+  - json
+  retention: project-policy
+  publication: approval-controlled
+- id: stakeholder-engagement-plan
+  description: Stakeholders, needs, event participation, feedback channels, and communication cadence.
+  format:
+  - markdown
+  - json
+  retention: project-policy
+  publication: approval-controlled
+- id: team-effectiveness-assessment
+  description: Outcome, quality, collaboration, learning, and flow assessment without individual ranking.
+  format:
+  - markdown
+  - json
+  retention: project-policy
+  publication: approval-controlled
+- id: team-health-summary
+  description: Aggregated, privacy-preserving team health signals and facilitation recommendations.
+  format:
+  - markdown
+  - json
+  retention: project-policy
+  publication: approval-controlled
+- id: coaching-plan
+  description: Coaching objective, observations, hypotheses, intervention options, boundaries, and review date.
+  format:
+  - markdown
+  - json
+  retention: project-policy
+  publication: approval-controlled
+- id: conflict-facilitation-plan
+  description: Neutral issue framing, participants, agreements, methods, safety, and escalation.
+  format:
+  - markdown
+  - json
+  retention: project-policy
+  publication: approval-controlled
+- id: improvement-backlog
+  description: Ordered improvement opportunities with evidence, hypotheses, owners, and status.
+  format:
+  - markdown
+  - json
+  retention: project-policy
+  publication: approval-controlled
+- id: improvement-experiment
+  description: Problem, hypothesis, intervention, measures, guardrails, owner, and review date.
+  format:
+  - markdown
+  - json
+  retention: project-policy
+  publication: approval-controlled
+- id: metrics-definition-catalog
+  description: Metric purpose, formula, source, scope, limitations, privacy, and anti-gaming notes.
+  format:
+  - markdown
+  - json
+  retention: project-policy
+  publication: approval-controlled
+- id: scrum-master-daily-summary
+  description: Events, risks, impediments, flow signals, decisions, and next actions.
+  format:
+  - markdown
+  - json
+  retention: project-policy
+  publication: approval-controlled
+- id: cross-team-coordination-pack
+  description: Shared goals, dependencies, integration points, impediments, and coordination decisions.
+  format:
+  - markdown
+  - json
+  retention: project-policy
+  publication: approval-controlled
+- id: scrum-master-handoff-package
+  description: Context, active impediments, event cadence, experiments, risks, and pending decisions.
+  format:
+  - markdown
+  - json
+  retention: project-policy
+  publication: approval-controlled

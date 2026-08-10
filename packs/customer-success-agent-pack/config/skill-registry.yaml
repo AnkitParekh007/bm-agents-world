@@ -1,0 +1,1203 @@
+version: 1.0.0
+skill_count: 240
+skills:
+- id: crm-context-retrieval
+  category: account-context
+  description: Crm context retrieval
+  risk: low
+  status: enabled
+- id: customer-360-reading
+  category: account-context
+  description: Customer 360 reading
+  risk: medium
+  status: enabled
+- id: contract-metadata-reading
+  category: account-context
+  description: Contract metadata reading
+  risk: low
+  status: enabled
+- id: product-entitlement-reading
+  category: account-context
+  description: Product entitlement reading
+  risk: low
+  status: enabled
+- id: jira-customer-impact-reading
+  category: account-context
+  description: Jira customer impact reading
+  risk: medium
+  status: enabled
+- id: confluence-account-context
+  category: account-context
+  description: Confluence account context
+  risk: low
+  status: enabled
+- id: support-history-correlation
+  category: account-context
+  description: Support history correlation
+  risk: low
+  status: enabled
+- id: release-history-correlation
+  category: account-context
+  description: Release history correlation
+  risk: low
+  status: enabled
+- id: account-data-quality-check
+  category: account-context
+  description: Account data quality check
+  risk: low
+  status: enabled
+- id: decision-history-traceability
+  category: account-context
+  description: Decision history traceability
+  risk: low
+  status: enabled
+- id: lifecycle-stage-resolution
+  category: lifecycle-segmentation
+  description: Lifecycle stage resolution
+  risk: low
+  status: enabled
+- id: service-model-resolution
+  category: lifecycle-segmentation
+  description: Service model resolution
+  risk: low
+  status: enabled
+- id: segment-classification
+  category: lifecycle-segmentation
+  description: Segment classification
+  risk: low
+  status: enabled
+- id: playbook-selection
+  category: lifecycle-segmentation
+  description: Playbook selection
+  risk: low
+  status: enabled
+- id: lifecycle-trigger-detection
+  category: lifecycle-segmentation
+  description: Lifecycle trigger detection
+  risk: low
+  status: enabled
+- id: benchmark-selection
+  category: lifecycle-segmentation
+  description: Benchmark selection
+  risk: low
+  status: enabled
+- id: coverage-model-analysis
+  category: lifecycle-segmentation
+  description: Coverage model analysis
+  risk: low
+  status: enabled
+- id: account-transition-planning
+  category: lifecycle-segmentation
+  description: Account transition planning
+  risk: low
+  status: enabled
+- id: segment-policy-validation
+  category: lifecycle-segmentation
+  description: Segment policy validation
+  risk: low
+  status: enabled
+- id: lifecycle-playbook-improvement
+  category: lifecycle-segmentation
+  description: Lifecycle playbook improvement
+  risk: low
+  status: enabled
+- id: sales-handoff-validation
+  category: onboarding
+  description: Sales handoff validation
+  risk: low
+  status: enabled
+- id: onboarding-readiness
+  category: onboarding
+  description: Onboarding readiness
+  risk: low
+  status: enabled
+- id: onboarding-plan-design
+  category: onboarding
+  description: Onboarding plan design
+  risk: low
+  status: enabled
+- id: kickoff-briefing
+  category: onboarding
+  description: Kickoff briefing
+  risk: low
+  status: enabled
+- id: onboarding-stakeholder-map
+  category: onboarding
+  description: Onboarding stakeholder map
+  risk: low
+  status: enabled
+- id: milestone-tracking
+  category: onboarding
+  description: Milestone tracking
+  risk: low
+  status: enabled
+- id: blocker-analysis
+  category: onboarding
+  description: Blocker analysis
+  risk: low
+  status: enabled
+- id: cross-functional-onboarding-coordination
+  category: onboarding
+  description: Cross functional onboarding coordination
+  risk: low
+  status: enabled
+- id: time-to-first-value-analysis
+  category: onboarding
+  description: Time to first value analysis
+  risk: low
+  status: enabled
+- id: onboarding-exit-criteria
+  category: onboarding
+  description: Onboarding exit criteria
+  risk: low
+  status: enabled
+- id: outcome-definition
+  category: success-planning
+  description: Outcome definition
+  risk: low
+  status: enabled
+- id: success-plan-authoring
+  category: success-planning
+  description: Success plan authoring
+  risk: low
+  status: enabled
+- id: feature-vs-outcome-separation
+  category: success-planning
+  description: Feature vs outcome separation
+  risk: low
+  status: enabled
+- id: value-measure-mapping
+  category: success-planning
+  description: Value measure mapping
+  risk: low
+  status: enabled
+- id: assumption-registering
+  category: success-planning
+  description: Assumption registering
+  risk: low
+  status: enabled
+- id: mutual-action-plan-drafting
+  category: success-planning
+  description: Mutual action plan drafting
+  risk: low
+  status: enabled
+- id: success-plan-progress-review
+  category: success-planning
+  description: Success plan progress review
+  risk: low
+  status: enabled
+- id: success-plan-replanning
+  category: success-planning
+  description: Success plan replanning
+  risk: low
+  status: enabled
+- id: goal-adoption-traceability
+  category: success-planning
+  description: Goal adoption traceability
+  risk: low
+  status: enabled
+- id: success-objective-closure-review
+  category: success-planning
+  description: Success objective closure review
+  risk: low
+  status: enabled
+- id: stakeholder-mapping
+  category: stakeholder-management
+  description: Stakeholder mapping
+  risk: low
+  status: enabled
+- id: sponsor-gap-analysis
+  category: stakeholder-management
+  description: Sponsor gap analysis
+  risk: low
+  status: enabled
+- id: champion-change-detection
+  category: stakeholder-management
+  description: Champion change detection
+  risk: low
+  status: enabled
+- id: relationship-risk-analysis
+  category: stakeholder-management
+  description: Relationship risk analysis
+  risk: low
+  status: enabled
+- id: meeting-persona-briefing
+  category: stakeholder-management
+  description: Meeting persona briefing
+  risk: low
+  status: enabled
+- id: follow-up-tracking
+  category: stakeholder-management
+  description: Follow up tracking
+  risk: low
+  status: enabled
+- id: stakeholder-concern-routing
+  category: stakeholder-management
+  description: Stakeholder concern routing
+  risk: low
+  status: enabled
+- id: executive-engagement-planning
+  category: stakeholder-management
+  description: Executive engagement planning
+  risk: low
+  status: enabled
+- id: privacy-safe-relationship-analysis
+  category: stakeholder-management
+  description: Privacy safe relationship analysis
+  risk: medium
+  status: enabled
+- id: professional-account-note-writing
+  category: stakeholder-management
+  description: Professional account note writing
+  risk: low
+  status: enabled
+- id: usage-metric-reading
+  category: adoption
+  description: Usage metric reading
+  risk: low
+  status: enabled
+- id: activation-analysis
+  category: adoption
+  description: Activation analysis
+  risk: low
+  status: enabled
+- id: adoption-depth-analysis
+  category: adoption
+  description: Adoption depth analysis
+  risk: low
+  status: enabled
+- id: adoption-breadth-analysis
+  category: adoption
+  description: Adoption breadth analysis
+  risk: low
+  status: enabled
+- id: adoption-decline-detection
+  category: adoption
+  description: Adoption decline detection
+  risk: low
+  status: enabled
+- id: capability-gap-mapping
+  category: adoption
+  description: Capability gap mapping
+  risk: low
+  status: enabled
+- id: enablement-recommendation
+  category: adoption
+  description: Enablement recommendation
+  risk: low
+  status: enabled
+- id: instrumentation-quality-check
+  category: adoption
+  description: Instrumentation quality check
+  risk: low
+  status: enabled
+- id: privacy-safe-usage-analysis
+  category: adoption
+  description: Privacy safe usage analysis
+  risk: medium
+  status: enabled
+- id: adoption-intervention-measurement
+  category: adoption
+  description: Adoption intervention measurement
+  risk: low
+  status: enabled
+- id: health-score-calculation
+  category: health-scoring
+  description: Health score calculation
+  risk: low
+  status: enabled
+- id: health-component-explainability
+  category: health-scoring
+  description: Health component explainability
+  risk: low
+  status: enabled
+- id: health-dimension-analysis
+  category: health-scoring
+  description: Health dimension analysis
+  risk: low
+  status: enabled
+- id: health-change-detection
+  category: health-scoring
+  description: Health change detection
+  risk: low
+  status: enabled
+- id: health-data-confidence
+  category: health-scoring
+  description: Health data confidence
+  risk: low
+  status: enabled
+- id: health-driver-explanation
+  category: health-scoring
+  description: Health driver explanation
+  risk: low
+  status: enabled
+- id: health-score-fairness-check
+  category: health-scoring
+  description: Health score fairness check
+  risk: low
+  status: enabled
+- id: health-trend-analysis
+  category: health-scoring
+  description: Health trend analysis
+  risk: low
+  status: enabled
+- id: next-best-action-proposal
+  category: health-scoring
+  description: Next best action proposal
+  risk: low
+  status: enabled
+- id: health-override-governance
+  category: health-scoring
+  description: Health override governance
+  risk: medium
+  status: enabled
+- id: risk-signal-detection
+  category: risk-management
+  description: Risk signal detection
+  risk: low
+  status: enabled
+- id: risk-taxonomy-classification
+  category: risk-management
+  description: Risk taxonomy classification
+  risk: low
+  status: enabled
+- id: risk-confidence-scoring
+  category: risk-management
+  description: Risk confidence scoring
+  risk: low
+  status: enabled
+- id: customer-risk-register
+  category: risk-management
+  description: Customer risk register
+  risk: medium
+  status: enabled
+- id: recovery-plan-design
+  category: risk-management
+  description: Recovery plan design
+  risk: low
+  status: enabled
+- id: risk-owner-routing
+  category: risk-management
+  description: Risk owner routing
+  risk: low
+  status: enabled
+- id: critical-risk-escalation
+  category: risk-management
+  description: Critical risk escalation
+  risk: low
+  status: enabled
+- id: mitigation-tracking
+  category: risk-management
+  description: Mitigation tracking
+  risk: low
+  status: enabled
+- id: risk-reassessment
+  category: risk-management
+  description: Risk reassessment
+  risk: low
+  status: enabled
+- id: risk-closure-review
+  category: risk-management
+  description: Risk closure review
+  risk: low
+  status: enabled
+- id: value-metric-definition
+  category: value-realization
+  description: Value metric definition
+  risk: low
+  status: enabled
+- id: value-baseline-establishment
+  category: value-realization
+  description: Value baseline establishment
+  risk: low
+  status: enabled
+- id: outcome-progress-tracking
+  category: value-realization
+  description: Outcome progress tracking
+  risk: low
+  status: enabled
+- id: causal-claim-calibration
+  category: value-realization
+  description: Causal claim calibration
+  risk: low
+  status: enabled
+- id: value-confidence-documentation
+  category: value-realization
+  description: Value confidence documentation
+  risk: low
+  status: enabled
+- id: value-scorecard-authoring
+  category: value-realization
+  description: Value scorecard authoring
+  risk: low
+  status: enabled
+- id: adoption-value-gap-analysis
+  category: value-realization
+  description: Adoption value gap analysis
+  risk: low
+  status: enabled
+- id: value-opportunity-analysis
+  category: value-realization
+  description: Value opportunity analysis
+  risk: low
+  status: enabled
+- id: measurement-gap-routing
+  category: value-realization
+  description: Measurement gap routing
+  risk: low
+  status: enabled
+- id: customer-confirmed-value-capture
+  category: value-realization
+  description: Customer confirmed value capture
+  risk: medium
+  status: enabled
+- id: qbr-purpose-definition
+  category: business-reviews
+  description: Qbr purpose definition
+  risk: low
+  status: enabled
+- id: ebr-executive-summary
+  category: business-reviews
+  description: Ebr executive summary
+  risk: low
+  status: enabled
+- id: customer-safe-health-narrative
+  category: business-reviews
+  description: Customer safe health narrative
+  risk: medium
+  status: enabled
+- id: release-support-summary
+  category: business-reviews
+  description: Release support summary
+  risk: low
+  status: enabled
+- id: success-plan-review
+  category: business-reviews
+  description: Success plan review
+  risk: low
+  status: enabled
+- id: future-focus-option-design
+  category: business-reviews
+  description: Future focus option design
+  risk: low
+  status: enabled
+- id: executive-question-design
+  category: business-reviews
+  description: Executive question design
+  risk: low
+  status: enabled
+- id: business-review-fact-validation
+  category: business-reviews
+  description: Business review fact validation
+  risk: low
+  status: enabled
+- id: business-review-action-capture
+  category: business-reviews
+  description: Business review action capture
+  risk: low
+  status: enabled
+- id: post-review-plan-update
+  category: business-reviews
+  description: Post review plan update
+  risk: low
+  status: enabled
+- id: renewal-calendar-tracking
+  category: renewal-readiness
+  description: Renewal calendar tracking
+  risk: medium
+  status: enabled
+- id: renewal-readiness-assessment
+  category: renewal-readiness
+  description: Renewal readiness assessment
+  risk: medium
+  status: enabled
+- id: renewal-evidence-gap-analysis
+  category: renewal-readiness
+  description: Renewal evidence gap analysis
+  risk: medium
+  status: enabled
+- id: commercial-owner-coordination
+  category: renewal-readiness
+  description: Commercial owner coordination
+  risk: low
+  status: enabled
+- id: renewal-value-summary
+  category: renewal-readiness
+  description: Renewal value summary
+  risk: medium
+  status: enabled
+- id: pre-renewal-risk-mitigation
+  category: renewal-readiness
+  description: Pre renewal risk mitigation
+  risk: medium
+  status: enabled
+- id: renewal-risk-scenario-analysis
+  category: renewal-readiness
+  description: Renewal risk scenario analysis
+  risk: medium
+  status: enabled
+- id: procurement-dependency-tracking
+  category: renewal-readiness
+  description: Procurement dependency tracking
+  risk: low
+  status: enabled
+- id: renewal-forecast-input-drafting
+  category: renewal-readiness
+  description: Renewal forecast input drafting
+  risk: medium
+  status: enabled
+- id: commercial-boundary-enforcement
+  category: renewal-readiness
+  description: Commercial boundary enforcement
+  risk: low
+  status: enabled
+- id: growth-signal-detection
+  category: expansion-readiness
+  description: Growth signal detection
+  risk: low
+  status: enabled
+- id: value-first-expansion-framing
+  category: expansion-readiness
+  description: Value first expansion framing
+  risk: medium
+  status: enabled
+- id: expansion-signal-validation
+  category: expansion-readiness
+  description: Expansion signal validation
+  risk: medium
+  status: enabled
+- id: growth-evidence-scoring
+  category: expansion-readiness
+  description: Growth evidence scoring
+  risk: low
+  status: enabled
+- id: sales-handoff-preparation
+  category: expansion-readiness
+  description: Sales handoff preparation
+  risk: low
+  status: enabled
+- id: pricing-boundary-enforcement
+  category: expansion-readiness
+  description: Pricing boundary enforcement
+  risk: low
+  status: enabled
+- id: expansion-question-routing
+  category: expansion-readiness
+  description: Expansion question routing
+  risk: medium
+  status: enabled
+- id: solution-feasibility-routing
+  category: expansion-readiness
+  description: Solution feasibility routing
+  risk: low
+  status: enabled
+- id: post-expansion-value-review
+  category: expansion-readiness
+  description: Post expansion value review
+  risk: medium
+  status: enabled
+- id: growth-playbook-calibration
+  category: expansion-readiness
+  description: Growth playbook calibration
+  risk: low
+  status: enabled
+- id: support-case-context
+  category: support-coordination
+  description: Support case context
+  risk: low
+  status: enabled
+- id: support-theme-analysis
+  category: support-coordination
+  description: Support theme analysis
+  risk: low
+  status: enabled
+- id: support-ownership-preservation
+  category: support-coordination
+  description: Support ownership preservation
+  risk: low
+  status: enabled
+- id: technical-status-translation
+  category: support-coordination
+  description: Technical status translation
+  risk: low
+  status: enabled
+- id: support-follow-up-tracking
+  category: support-coordination
+  description: Support follow up tracking
+  risk: low
+  status: enabled
+- id: support-escalation-preparation
+  category: support-coordination
+  description: Support escalation preparation
+  risk: low
+  status: enabled
+- id: knowledge-gap-identification
+  category: support-coordination
+  description: Knowledge gap identification
+  risk: low
+  status: enabled
+- id: support-blocker-verification
+  category: support-coordination
+  description: Support blocker verification
+  risk: low
+  status: enabled
+- id: support-trend-business-review
+  category: support-coordination
+  description: Support trend business review
+  risk: low
+  status: enabled
+- id: sla-boundary-enforcement
+  category: support-coordination
+  description: Sla boundary enforcement
+  risk: low
+  status: enabled
+- id: customer-impact-identification
+  category: incident-customer-management
+  description: Customer impact identification
+  risk: medium
+  status: enabled
+- id: incident-account-briefing
+  category: incident-customer-management
+  description: Incident account briefing
+  risk: medium
+  status: enabled
+- id: authoritative-status-use
+  category: incident-customer-management
+  description: Authoritative status use
+  risk: low
+  status: enabled
+- id: incident-communication-drafting
+  category: incident-customer-management
+  description: Incident communication drafting
+  risk: medium
+  status: enabled
+- id: customer-impact-tracking
+  category: incident-customer-management
+  description: Customer impact tracking
+  risk: medium
+  status: enabled
+- id: executive-incident-engagement
+  category: incident-customer-management
+  description: Executive incident engagement
+  risk: medium
+  status: enabled
+- id: incident-commitment-tracking
+  category: incident-customer-management
+  description: Incident commitment tracking
+  risk: medium
+  status: enabled
+- id: customer-recovery-verification
+  category: incident-customer-management
+  description: Customer recovery verification
+  risk: medium
+  status: enabled
+- id: post-incident-customer-followup
+  category: incident-customer-management
+  description: Post incident customer followup
+  risk: medium
+  status: enabled
+- id: incident-learning-to-success-plan
+  category: incident-customer-management
+  description: Incident learning to success plan
+  risk: medium
+  status: enabled
+- id: feedback-ingestion
+  category: voice-of-customer
+  description: Feedback ingestion
+  risk: low
+  status: enabled
+- id: feedback-normalization
+  category: voice-of-customer
+  description: Feedback normalization
+  risk: low
+  status: enabled
+- id: quote-vs-interpretation-separation
+  category: voice-of-customer
+  description: Quote vs interpretation separation
+  risk: low
+  status: enabled
+- id: theme-detection
+  category: voice-of-customer
+  description: Theme detection
+  risk: low
+  status: enabled
+- id: privacy-safe-theme-quantification
+  category: voice-of-customer
+  description: Privacy safe theme quantification
+  risk: medium
+  status: enabled
+- id: product-feedback-routing
+  category: voice-of-customer
+  description: Product feedback routing
+  risk: low
+  status: enabled
+- id: feedback-loop-closure
+  category: voice-of-customer
+  description: Feedback loop closure
+  risk: low
+  status: enabled
+- id: roadmap-promise-prevention
+  category: voice-of-customer
+  description: Roadmap promise prevention
+  risk: low
+  status: enabled
+- id: feedback-decision-traceability
+  category: voice-of-customer
+  description: Feedback decision traceability
+  risk: low
+  status: enabled
+- id: feedback-outcome-review
+  category: voice-of-customer
+  description: Feedback outcome review
+  risk: low
+  status: enabled
+- id: role-based-learning-needs
+  category: enablement
+  description: Role based learning needs
+  risk: low
+  status: enabled
+- id: training-gap-analysis
+  category: enablement
+  description: Training gap analysis
+  risk: low
+  status: enabled
+- id: enablement-plan-design
+  category: enablement
+  description: Enablement plan design
+  risk: low
+  status: enabled
+- id: learning-resource-routing
+  category: enablement
+  description: Learning resource routing
+  risk: low
+  status: enabled
+- id: admin-champion-enablement
+  category: enablement
+  description: Admin champion enablement
+  risk: low
+  status: enabled
+- id: training-outcome-tracking
+  category: enablement
+  description: Training outcome tracking
+  risk: low
+  status: enabled
+- id: knowledge-reuse-detection
+  category: enablement
+  description: Knowledge reuse detection
+  risk: low
+  status: enabled
+- id: digital-enablement-design
+  category: enablement
+  description: Digital enablement design
+  risk: low
+  status: enabled
+- id: version-aware-guidance
+  category: enablement
+  description: Version aware guidance
+  risk: low
+  status: enabled
+- id: enablement-effectiveness-review
+  category: enablement
+  description: Enablement effectiveness review
+  risk: low
+  status: enabled
+- id: customer-email-drafting
+  category: communications
+  description: Customer email drafting
+  risk: medium
+  status: enabled
+- id: communication-preference-validation
+  category: communications
+  description: Communication preference validation
+  risk: medium
+  status: enabled
+- id: fact-source-validation
+  category: communications
+  description: Fact source validation
+  risk: low
+  status: enabled
+- id: commitment-language-guardrail
+  category: communications
+  description: Commitment language guardrail
+  risk: low
+  status: enabled
+- id: audience-adaptive-writing
+  category: communications
+  description: Audience adaptive writing
+  risk: low
+  status: enabled
+- id: decision-action-formatting
+  category: communications
+  description: Decision action formatting
+  risk: low
+  status: enabled
+- id: proactive-communication-prep
+  category: communications
+  description: Proactive communication prep
+  risk: medium
+  status: enabled
+- id: internal-vs-external-separation
+  category: communications
+  description: Internal vs external separation
+  risk: low
+  status: enabled
+- id: sensitive-message-routing
+  category: communications
+  description: Sensitive message routing
+  risk: low
+  status: enabled
+- id: communication-recording
+  category: communications
+  description: Communication recording
+  risk: medium
+  status: enabled
+- id: advocacy-candidate-identification
+  category: advocacy
+  description: Advocacy candidate identification
+  risk: medium
+  status: enabled
+- id: advocacy-eligibility-check
+  category: advocacy
+  description: Advocacy eligibility check
+  risk: medium
+  status: enabled
+- id: reference-request-drafting
+  category: advocacy
+  description: Reference request drafting
+  risk: low
+  status: enabled
+- id: consent-boundary-check
+  category: advocacy
+  description: Consent boundary check
+  risk: low
+  status: enabled
+- id: advocacy-permission-tracking
+  category: advocacy
+  description: Advocacy permission tracking
+  risk: medium
+  status: enabled
+- id: customer-story-coordination
+  category: advocacy
+  description: Customer story coordination
+  risk: medium
+  status: enabled
+- id: confidentiality-safe-storytelling
+  category: advocacy
+  description: Confidentiality safe storytelling
+  risk: low
+  status: enabled
+- id: incentive-boundary-check
+  category: advocacy
+  description: Incentive boundary check
+  risk: low
+  status: enabled
+- id: outreach-frequency-governance
+  category: advocacy
+  description: Outreach frequency governance
+  risk: low
+  status: enabled
+- id: advocacy-health-decoupling
+  category: advocacy
+  description: Advocacy health decoupling
+  risk: medium
+  status: enabled
+- id: customer-journey-mapping
+  category: digital-success
+  description: Customer journey mapping
+  risk: medium
+  status: enabled
+- id: journey-friction-analysis
+  category: digital-success
+  description: Journey friction analysis
+  risk: low
+  status: enabled
+- id: digital-play-design
+  category: digital-success
+  description: Digital play design
+  risk: low
+  status: enabled
+- id: digital-eligibility-rules
+  category: digital-success
+  description: Digital eligibility rules
+  risk: low
+  status: enabled
+- id: in-product-engagement-coordination
+  category: digital-success
+  description: In product engagement coordination
+  risk: low
+  status: enabled
+- id: communication-consent-controls
+  category: digital-success
+  description: Communication consent controls
+  risk: medium
+  status: enabled
+- id: digital-play-measurement
+  category: digital-success
+  description: Digital play measurement
+  risk: low
+  status: enabled
+- id: human-touch-escalation
+  category: digital-success
+  description: Human touch escalation
+  risk: low
+  status: enabled
+- id: sensitive-automation-guardrail
+  category: digital-success
+  description: Sensitive automation guardrail
+  risk: low
+  status: enabled
+- id: journey-playbook-improvement
+  category: digital-success
+  description: Journey playbook improvement
+  risk: low
+  status: enabled
+- id: playbook-governance
+  category: cs-operations
+  description: Playbook governance
+  risk: low
+  status: enabled
+- id: cs-data-quality
+  category: cs-operations
+  description: Cs data quality
+  risk: low
+  status: enabled
+- id: record-deduplication
+  category: cs-operations
+  description: Record deduplication
+  risk: low
+  status: enabled
+- id: health-definition-governance
+  category: cs-operations
+  description: Health definition governance
+  risk: low
+  status: enabled
+- id: template-governance
+  category: cs-operations
+  description: Template governance
+  risk: low
+  status: enabled
+- id: automation-quality-review
+  category: cs-operations
+  description: Automation quality review
+  risk: low
+  status: enabled
+- id: coverage-analysis
+  category: cs-operations
+  description: Coverage analysis
+  risk: low
+  status: enabled
+- id: portfolio-reporting
+  category: cs-operations
+  description: Portfolio reporting
+  risk: low
+  status: enabled
+- id: cs-data-dictionary
+  category: cs-operations
+  description: Cs data dictionary
+  risk: low
+  status: enabled
+- id: cs-process-improvement
+  category: cs-operations
+  description: Cs process improvement
+  risk: low
+  status: enabled
+- id: portfolio-metric-calculation
+  category: analytics
+  description: Portfolio metric calculation
+  risk: low
+  status: enabled
+- id: cohort-analysis
+  category: analytics
+  description: Cohort analysis
+  risk: low
+  status: enabled
+- id: health-calibration-analysis
+  category: analytics
+  description: Health calibration analysis
+  risk: low
+  status: enabled
+- id: intervention-effectiveness
+  category: analytics
+  description: Intervention effectiveness
+  risk: low
+  status: enabled
+- id: time-to-value-analysis
+  category: analytics
+  description: Time to value analysis
+  risk: low
+  status: enabled
+- id: renewal-readiness-analytics
+  category: analytics
+  description: Renewal readiness analytics
+  risk: medium
+  status: enabled
+- id: retention-expansion-analysis
+  category: analytics
+  description: Retention expansion analysis
+  risk: medium
+  status: enabled
+- id: cs-program-outcome-analysis
+  category: analytics
+  description: Cs program outcome analysis
+  risk: low
+  status: enabled
+- id: metric-definition-governance
+  category: analytics
+  description: Metric definition governance
+  risk: low
+  status: enabled
+- id: metric-quality-escalation
+  category: analytics
+  description: Metric quality escalation
+  risk: low
+  status: enabled
+- id: minimum-necessary-access
+  category: privacy-governance
+  description: Minimum necessary access
+  risk: low
+  status: enabled
+- id: tenant-isolation
+  category: privacy-governance
+  description: Tenant isolation
+  risk: low
+  status: enabled
+- id: customer-data-redaction
+  category: privacy-governance
+  description: Customer data redaction
+  risk: medium
+  status: enabled
+- id: retention-policy-application
+  category: privacy-governance
+  description: Retention policy application
+  risk: low
+  status: enabled
+- id: consent-preference-check
+  category: privacy-governance
+  description: Consent preference check
+  risk: low
+  status: enabled
+- id: privacy-question-routing
+  category: privacy-governance
+  description: Privacy question routing
+  risk: medium
+  status: enabled
+- id: sensitive-attribute-exclusion
+  category: privacy-governance
+  description: Sensitive attribute exclusion
+  risk: low
+  status: enabled
+- id: approval-audit-trail
+  category: privacy-governance
+  description: Approval audit trail
+  risk: low
+  status: enabled
+- id: workload-identity-use
+  category: privacy-governance
+  description: Workload identity use
+  risk: low
+  status: enabled
+- id: privacy-incident-escalation
+  category: privacy-governance
+  description: Privacy incident escalation
+  risk: medium
+  status: enabled
+- id: product-manager-coordination
+  category: cross-functional
+  description: Product manager coordination
+  risk: low
+  status: enabled
+- id: product-owner-coordination
+  category: cross-functional
+  description: Product owner coordination
+  risk: low
+  status: enabled
+- id: support-l2-coordination
+  category: cross-functional
+  description: Support l2 coordination
+  risk: low
+  status: enabled
+- id: sre-incident-coordination
+  category: cross-functional
+  description: Sre incident coordination
+  risk: medium
+  status: enabled
+- id: solution-engineering-coordination
+  category: cross-functional
+  description: Solution engineering coordination
+  risk: low
+  status: enabled
+- id: qa-coordination
+  category: cross-functional
+  description: Qa coordination
+  risk: low
+  status: enabled
+- id: release-manager-coordination
+  category: cross-functional
+  description: Release manager coordination
+  risk: low
+  status: enabled
+- id: compliance-security-coordination
+  category: cross-functional
+  description: Compliance security coordination
+  risk: low
+  status: enabled
+- id: technical-writer-coordination
+  category: cross-functional
+  description: Technical writer coordination
+  risk: low
+  status: enabled
+- id: sales-account-coordination
+  category: cross-functional
+  description: Sales account coordination
+  risk: low
+  status: enabled
+- id: cs-outcome-retrospective
+  category: continuous-improvement
+  description: Cs outcome retrospective
+  risk: low
+  status: enabled
+- id: failed-onboarding-review
+  category: continuous-improvement
+  description: Failed onboarding review
+  risk: low
+  status: enabled
+- id: playbook-effectiveness-analysis
+  category: continuous-improvement
+  description: Playbook effectiveness analysis
+  risk: low
+  status: enabled
+- id: health-signal-retirement
+  category: continuous-improvement
+  description: Health signal retirement
+  risk: low
+  status: enabled
+- id: success-plan-template-improvement
+  category: continuous-improvement
+  description: Success plan template improvement
+  risk: low
+  status: enabled
+- id: meeting-template-improvement
+  category: continuous-improvement
+  description: Meeting template improvement
+  risk: low
+  status: enabled
+- id: privacy-safe-knowledge-reuse
+  category: continuous-improvement
+  description: Privacy safe knowledge reuse
+  risk: medium
+  status: enabled
+- id: corrective-action-tracking
+  category: continuous-improvement
+  description: Corrective action tracking
+  risk: low
+  status: enabled
+- id: agent-recommendation-calibration
+  category: continuous-improvement
+  description: Agent recommendation calibration
+  risk: low
+  status: enabled
+- id: cs-improvement-backlog
+  category: continuous-improvement
+  description: Cs improvement backlog
+  risk: low
+  status: enabled

@@ -1,0 +1,42 @@
+name: post-release-validation-and-closure
+version: 1.0.0
+trigger: deployment complete, rollout stage complete, rollback complete, or observation window elapsed
+scope_binding:
+- release
+- candidate_hash
+- deployed_targets
+- observation_window
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: validate read-only production scope, telemetry bounds, customer data, and publication permissions
+- id: state
+  agent: post-release-validation-agent
+  action: verify deployed versions, migrations, configuration, feature state, rollout stages, and smoke checks
+- id: signals
+  agent: post-release-validation-agent
+  action: correlate logs, metrics, traces, alerts, SLOs, incidents, tickets, and customer signals
+- id: support
+  agent: business-and-support-readiness-agent
+  action: confirm handoff, known issues, runbooks, owners, and support readiness
+- id: metrics
+  agent: release-metrics-agent
+  action: calculate governed outcome, stability, rework, recovery, scope, and timing metrics
+- id: review
+  agent: release-reviewer-agent
+  action: review success claims, unresolved risk, follow-up, and closure readiness
+- id: closure
+  agent: release-manager-supervisor
+  action: request approval to close Jira version, change record, release status, and publish final notes
+- id: learning
+  agent: cross-pack-coordination-agent
+  action: route defects, incidents, architecture, quality, platform, support, and product learnings to owners
+- id: archive
+  agent: evidence-management-agent
+  action: create immutable audit bundle with retention, provenance, hashes, and access controls
+outputs:
+- post-release-validation-report
+- release-notes
+- post-release-review
+- release-audit-evidence-bundle
+failure_behavior: do not close while success criteria, incidents, rollout, evidence, or ownership remain unresolved

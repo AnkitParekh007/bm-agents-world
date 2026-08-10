@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Impediment",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "summary",
+    "category",
+    "impact",
+    "owner",
+    "status",
+    "review_date"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "category": {
+      "enum": [
+        "team",
+        "product",
+        "technical",
+        "environment",
+        "organizational",
+        "external"
+      ]
+    },
+    "impact": {
+      "type": "string",
+      "minLength": 1
+    },
+    "affected_goals": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "new",
+        "investigating",
+        "owned",
+        "escalated",
+        "resolved",
+        "closed"
+      ]
+    },
+    "age_days": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "escalation_threshold": {
+      "type": "string"
+    },
+    "review_date": {
+      "type": "string",
+      "format": "date"
+    }
+  }
+}

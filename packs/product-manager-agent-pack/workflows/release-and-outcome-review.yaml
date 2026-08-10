@@ -1,0 +1,49 @@
+name: release-and-outcome-review
+version: 1.0.0
+trigger: Release candidate, phased rollout, beta, experiment, or recently shipped product change
+scope_binding:
+- organization
+- project
+- product_area
+- jira_item
+- environment
+- requester
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: verify release, environment, analytics, customer communication, and experiment permissions
+- id: scope
+  agent: release-planning-agent
+  action: confirm release scope, target segments, rollout, flags, support, communications, monitoring, and rollback
+- id: readiness
+  agent: delivery-coordination-agent
+  action: read quality gates, dependencies, incidents, operational readiness, and unresolved risks
+- id: gtm
+  agent: go-to-market-agent
+  action: prepare approved positioning, enablement, launch tier, adoption, and feedback loop
+- id: measurement
+  agent: product-analytics-agent
+  action: capture baseline and prepare outcome, adoption, quality, and guardrail monitoring
+- id: experiment
+  agent: experiment-design-agent
+  action: validate approved experiment or phased rollout design and decision rules
+- id: release-review
+  agent: product-reviewer-agent
+  action: review overclaiming, missing support, measurement gaps, and residual risks
+- id: approval
+  agent: product-manager-supervisor
+  action: request human release and communication decisions; agent does not approve production release
+- id: observe
+  agent: outcome-review-agent
+  action: after release, compare outcomes with hypotheses and identify unintended effects and learning
+- id: closeout
+  agent: product-operations-agent
+  action: update decision log, roadmap learning, backlog, follow-up experiments, and approved stakeholder summary
+outputs:
+- release-plan
+- go-to-market-brief
+- experiment-plan
+- release-outcome-review
+- product-decision-log
+- product-daily-summary
+failure_behavior: stop, preserve evidence, identify the unresolved decision, and request human resolution

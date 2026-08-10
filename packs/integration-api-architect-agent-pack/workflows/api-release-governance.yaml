@@ -1,0 +1,83 @@
+apiVersion: integration-api-architect-agent-pack/v1
+kind: AgentWorkflow
+metadata:
+  name: api-release-governance
+  title: API Release Governance
+  version: 1.0.0
+spec:
+  trigger:
+  - release_candidate
+  - contract_publication
+  - gateway_policy_release
+  - partner_api_release
+  objective: Verify that a contract release is immutable, compatible, secure, observable, tested, documented, and
+    approved before publication or production change request
+  supervisor: integration-api-architect-supervisor
+  execution:
+    mode: stateful
+    defaultPolicy: deny
+    evidenceRequired: true
+    approvalBinding: payload-hash
+    resumeFromCheckpoint: true
+  stages:
+  - id: candidate
+    agent: integration-landscape-discovery
+    skills:
+    - integration.discovery.repository-contract-discovery
+    - integration.discovery.environment-endpoint-inventory
+    gate: authorization
+  - id: compatibility
+    agent: versioning-compatibility
+    skills:
+    - integration.versioning.breaking-change-detection
+    - integration.versioning.compatibility-matrix-maintenance
+  - id: security
+    agent: api-security
+    skills:
+    - integration.security.owasp-api-threat-modeling
+    - integration.security.sensitive-data-exposure-review
+  - id: reliability
+    agent: resiliency-reliability
+    skills:
+    - integration.resiliency.timeout-budget-design
+    - integration.resiliency.circuit-breaker-policy
+  - id: performance
+    agent: performance-capacity
+    skills:
+    - integration.performance.latency-budget-allocation
+    - integration.performance.load-test-target-definition
+  - id: observability
+    agent: observability-operability
+    skills:
+    - integration.observability.trace-context-propagation
+    - integration.observability.integration-slo-definition
+    - integration.observability.dashboard-and-alert-specification
+  - id: tests
+    agent: integration-testing
+    skills:
+    - integration.testing.provider-contract-test-plan
+    - integration.testing.compatibility-certification
+    - integration.testing.release-contract-evidence
+  - id: review
+    agent: architecture-review
+    skills:
+    - integration.review.independent-contract-review
+    - integration.review.production-readiness-review
+    gate: release-go-no-go
+  - id: handoff
+    agent: implementation-alignment
+    skills:
+    - integration.handoff.devops-gateway-handoff
+    - integration.handoff.sre-observability-handoff
+    - integration.handoff.support-troubleshooting-handoff
+  outputs:
+  - contract-publication-request
+  - api-security-review
+  - contract-test-plan
+  - observability-specification
+  - implementation-handoff
+  terminalStates:
+  - completed
+  - rejected
+  - blocked
+  - cancelled

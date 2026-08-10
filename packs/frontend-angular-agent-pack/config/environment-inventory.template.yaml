@@ -1,0 +1,37 @@
+apiVersion: frontend-angular-agent-pack/v1
+kind: EnvironmentInventory
+project: PCC
+repository: frontend
+workspace:
+  allowedPaths: []
+  protectedPaths: []
+  commandProfile: angular-12-legacy
+environments:
+  local:
+    applicationUrl: http://localhost:<port>
+    apiBaseUrl: ""
+    allowedOrigins: [http://localhost:<port>]
+    browserIdentityRef: ""
+  playground:
+    applicationUrl: ""
+    apiBaseUrl: ""
+    healthUrl: ""
+    allowedOrigins: []
+    featureFlagProfile: ""
+    browserIdentityRef: ""
+    observabilitySource: ""
+  qa:
+    applicationUrl: ""
+    apiBaseUrl: ""
+    healthUrl: ""
+    allowedOrigins: []
+    featureFlagProfile: ""
+    browserIdentityRef: ""
+    observabilitySource: ""
+  prod:
+    applicationUrl: ""
+    apiBaseUrl: ""
+    healthUrl: ""
+    allowedOrigins: []
+    mode: read-only
+    approvalPolicy: production-read

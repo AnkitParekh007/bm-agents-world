@@ -1,0 +1,8 @@
+Role/Agent,Jira/Confluence Read,Figma Read,Personal Draft Write,Shared Figma Write,Research PII,Analytics Read,Browser Review,Publish Updates,Launch Study/Experiment
+Supervisor,Allow,Allow,Allow,Approve,Deny,Allow scoped,Allow,Approve,Approve
+User Researcher,Allow,Allow,Allow,Deny,Adapter-only redacted,Allow scoped,Allow,Approve,Approve
+Interaction/Visual Designer,Allow,Allow,Allow,Approve,Deny,Allow scoped,Allow,Approve,Deny
+Design System Architect,Allow,Allow,Allow,Approve,Deny,Allow scoped,Allow,Approve,Deny
+Accessibility Specialist,Allow,Allow,Allow,Deny,Deny,Allow scoped,Allow,Approve,Deny
+Design QA Specialist,Allow,Allow,Allow,Deny,Deny,Allow scoped,Allow,Approve,Deny
+Policy Enforcer,Allow metadata,Allow metadata,Deny,Deny,Deny,Allow metadata,Deny,Deny,Deny

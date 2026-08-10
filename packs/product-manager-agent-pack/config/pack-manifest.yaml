@@ -1,0 +1,18 @@
+name: product-manager-agent-pack
+version: 1.0.0
+generated_on: '2026-08-06'
+profile: Product Manager
+production_autonomy: read-only
+directories:
+- docs
+- config
+- workflows
+- schemas
+- templates
+- security/opa
+- checklists
+validation:
+  yaml: true
+  json_schema: true
+  archive: true
+  secret_scan: true

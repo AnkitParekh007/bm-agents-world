@@ -1,0 +1,14 @@
+apiVersion: qa-agent-pack/v1
+kind: Workflow
+metadata: { id: bug-draft-and-publish, version: 1.0.0 }
+inputs: [failedTestResult, evidenceManifest, parentStory]
+steps:
+  - { id: duplicate-search, agent: defect-investigator, skill: qa.defect.duplicate-search }
+  - { id: reproduce, agent: defect-investigator, skill: qa.defect.reproduce, dependsOn: [duplicate-search] }
+  - { id: severity, agent: defect-investigator, skill: qa.defect.severity-recommendation, dependsOn: [reproduce] }
+  - { id: draft, agent: defect-investigator, skill: qa.defect.draft-jira-bug, dependsOn: [severity] }
+  - { id: redact, agent: evidence-curator, skill: qa.evidence.redact-sensitive-data, dependsOn: [draft] }
+  - { id: approve, type: human-approval, action: jira.create_issue, dependsOn: [redact] }
+  - { id: publish, tool: jira.execute_approved_write, dependsOn: [approve], idempotent: true }
+  - { id: verify, agent: qa-supervisor, skill: qa.policy.verify-action-result, dependsOn: [publish] }
+outputs: [bug-draft, jiraIssueId]

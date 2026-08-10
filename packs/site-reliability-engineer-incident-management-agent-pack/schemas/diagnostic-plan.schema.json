@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Diagnostic Plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "incident_or_review",
+    "time_window",
+    "hypotheses",
+    "checks",
+    "safety"
+  ],
+  "properties": {
+    "incident_or_review": {
+      "type": "string",
+      "minLength": 1
+    },
+    "time_window": {
+      "type": "string",
+      "minLength": 1
+    },
+    "hypotheses": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object"
+      }
+    },
+    "checks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object"
+      }
+    },
+    "safety": {
+      "type": "object"
+    },
+    "redacted": {
+      "const": true
+    },
+    "read_only": {
+      "const": true
+    }
+  }
+}

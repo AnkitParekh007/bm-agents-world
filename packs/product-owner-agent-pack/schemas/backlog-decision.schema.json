@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bm-agent-foundry.local/schemas/backlog-decision.schema.json",
+  "title": "Backlog Decision",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "decision_id",
+    "project",
+    "item_ids",
+    "options",
+    "decision",
+    "decision_owner",
+    "evidence_hash"
+  ],
+  "properties": {
+    "decision_id": {
+      "type": "string"
+    },
+    "project": {
+      "type": "string"
+    },
+    "item_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "options": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "decision": {
+      "type": "string"
+    },
+    "rationale": {
+      "type": "string"
+    },
+    "decision_owner": {
+      "type": "string"
+    },
+    "evidence_hash": {
+      "type": "string"
+    },
+    "approved_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    }
+  }
+}

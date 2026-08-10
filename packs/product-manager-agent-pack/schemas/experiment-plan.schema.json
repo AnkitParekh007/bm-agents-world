@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/product-manager/experiment-plan.schema.json",
+  "title": "Experiment Plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "hypothesis",
+    "population",
+    "variants",
+    "primary_metric",
+    "guardrails",
+    "decision_rules"
+  ],
+  "properties": {
+    "hypothesis": {
+      "type": "string"
+    },
+    "population": {
+      "type": "object"
+    },
+    "variants": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "primary_metric": {
+      "type": "object"
+    },
+    "secondary_metrics": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "guardrails": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "exposure_plan": {
+      "type": "object"
+    },
+    "sample_assumptions": {
+      "type": "object"
+    },
+    "decision_rules": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "approvals": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  }
+}

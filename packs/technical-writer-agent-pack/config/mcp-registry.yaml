@@ -1,0 +1,93 @@
+version: 1.0.0
+server_count: 18
+servers:
+- id: atlassian-context-mcp
+  description: Jira and Confluence read access plus approval-controlled documentation publication.
+  mode: mixed
+  credentials: workload-identity-or-vault-reference
+  status: template
+- id: bitbucket-docs-mcp
+  description: Repository, pull request, branch, commit, and documentation-file access for Bitbucket projects.
+  mode: mixed
+  credentials: workload-identity-or-vault-reference
+  status: template
+- id: workspace-files-mcp
+  description: Scoped read/write access to isolated documentation workspaces and generated artifacts.
+  mode: mixed
+  credentials: workload-identity-or-vault-reference
+  status: template
+- id: source-code-intelligence-mcp
+  description: Read-only symbols, APIs, configuration, tests, comments, and dependency context from approved repositories.
+  mode: read-only
+  credentials: workload-identity-or-vault-reference
+  status: template
+- id: documentation-platform-mcp
+  description: Documentation-site or CMS navigation, metadata, preview, and approval-controlled publication.
+  mode: mixed
+  credentials: workload-identity-or-vault-reference
+  status: template
+- id: openapi-contract-mcp
+  description: Read, validate, diff, and render approved OpenAPI descriptions.
+  mode: read-only
+  credentials: workload-identity-or-vault-reference
+  status: template
+- id: asyncapi-contract-mcp
+  description: Read, validate, diff, and render approved AsyncAPI descriptions.
+  mode: read-only
+  credentials: workload-identity-or-vault-reference
+  status: template
+- id: storybook-design-system-mcp
+  description: Read component stories, props, states, accessibility notes, and usage examples.
+  mode: read-only
+  credentials: workload-identity-or-vault-reference
+  status: template
+- id: figma-design-context-mcp
+  description: Read approved UI designs, labels, components, flows, annotations, and screenshots.
+  mode: read-only
+  credentials: workload-identity-or-vault-reference
+  status: template
+- id: browser-preview-mcp
+  description: Render documentation and product flows in isolated Playwright browser workers.
+  mode: isolated-execution
+  credentials: workload-identity-or-vault-reference
+  status: template
+- id: support-and-feedback-mcp
+  description: Read redacted support trends, known issues, FAQs, and feedback summaries.
+  mode: read-only
+  credentials: workload-identity-or-vault-reference
+  status: template
+- id: documentation-analytics-mcp
+  description: Read privacy-safe search, page, feedback, and task-success analytics.
+  mode: read-only
+  credentials: workload-identity-or-vault-reference
+  status: template
+- id: localization-tms-mcp
+  description: Read terminology and translation status; approval-controlled handoff to the translation system.
+  mode: mixed
+  credentials: workload-identity-or-vault-reference
+  status: template
+- id: terminology-and-glossary-mcp
+  description: Read approved terms, product names, acronyms, banned terms, and definitions.
+  mode: read-only
+  credentials: workload-identity-or-vault-reference
+  status: template
+- id: diagram-rendering-mcp
+  description: Render Mermaid, PlantUML, Graphviz, and approved image assets in an isolated worker.
+  mode: isolated-execution
+  credentials: workload-identity-or-vault-reference
+  status: template
+- id: artifact-and-evidence-mcp
+  description: Store versioned drafts, previews, review reports, manifests, and immutable evidence bundles.
+  mode: mixed
+  credentials: workload-identity-or-vault-reference
+  status: template
+- id: vault-capability-mcp
+  description: Provides short-lived connector capabilities to trusted adapters without exposing secrets to the model.
+  mode: broker-only
+  credentials: workload-identity-or-vault-reference
+  status: template
+- id: policy-and-approval-mcp
+  description: Evaluates OPA policy and obtains payload-bound approval for protected publication actions.
+  mode: control-plane
+  credentials: workload-identity-or-vault-reference
+  status: template

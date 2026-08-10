@@ -1,0 +1,27 @@
+apiVersion: qa-agent-pack/v1
+kind: AgentPack
+metadata:
+  name: qa-agent-pack
+  version: 1.0.0
+  owner: qa-platform
+spec:
+  supervisor: qa-supervisor
+  projects:
+    - PCC
+    - SOP
+    - DataBridge
+  environments:
+    - playground
+    - qa
+    - prod
+  registries:
+    agents: agent-registry.yaml
+    skills: skill-registry.yaml
+    mcpServers: mcp-registry.yaml
+    plugins: plugin-registry.yaml
+    projects: project-registry.yaml
+    policies: approval-policies.yaml
+  defaultPolicy:
+    production: read-only-and-explicit-approval
+    externalWrites: explicit-human-approval
+    secretValuesVisibleToModel: false

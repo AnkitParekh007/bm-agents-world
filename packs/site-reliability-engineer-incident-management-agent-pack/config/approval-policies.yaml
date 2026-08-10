@@ -1,0 +1,20 @@
+version: 1.0.0
+principles:
+- Approvals bind to exact service, environment, action, target, payload hash, source revision, incident, approver,
+  and expiry.
+- The proposing agent cannot approve its own action.
+- Production execution occurs only through authorized operators or deterministic systems.
+- Emergency authority must be predefined, time-bounded, audited, and reviewed.
+approval_required:
+- incident declaration and severity publication
+- status-page, Teams, Jira, email, or customer publication
+- alert or on-call configuration changes
+- SLO and error-budget policy publication
+- non-production load, chaos, or failover exercises
+- production action requests, rollback, failover, restore, traffic shifts, scaling, or feature changes
+- post-incident review publication and corrective-action baselines
+human_only:
+- final production action authorization
+- residual reliability, security, privacy, legal, or business risk acceptance
+- final incident severity disputes and executive commitments
+- production failover, destructive recovery, backup deletion, or data-loss acceptance

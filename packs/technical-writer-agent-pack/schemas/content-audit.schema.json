@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Content Audit",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "collection",
+    "inventory_date",
+    "items",
+    "summary",
+    "remediation_plan"
+  ],
+  "properties": {
+    "collection": {
+      "type": "string",
+      "minLength": 1
+    },
+    "inventory_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "summary": {
+      "type": "object"
+    },
+    "remediation_plan": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,91 @@
+version: 1.0.0
+plugin_count: 22
+plugins:
+- id: jira-read-adapter
+  description: Reads boards, backlog, issues, links, comments, status, history, blockers, and Sprint metadata
+  mode: read-only
+  status: enabled
+- id: jira-write-adapter
+  description: Publishes approved comments, labels, impediment links, and status updates
+  mode: approval-controlled
+  status: enabled
+- id: confluence-read-adapter
+  description: Reads team agreements, product context, decisions, retrospectives, and standards
+  mode: read-only
+  status: enabled
+- id: confluence-publish-adapter
+  description: Publishes approved event summaries and improvement artifacts
+  mode: approval-controlled
+  status: enabled
+- id: calendar-event-adapter
+  description: Reads cadence and schedules approved Scrum events
+  mode: approval-controlled
+  status: enabled
+- id: teams-publication-adapter
+  description: Posts approved reminders, summaries, decisions, and escalation updates
+  mode: approval-controlled
+  status: enabled
+- id: event-facilitation-engine
+  description: Builds agendas, timeboxes, prompts, activities, and contingency paths
+  mode: deterministic
+  status: enabled
+- id: flow-metrics-engine
+  description: Calculates cycle time, throughput, WIP, age, blocked time, and service-level expectations
+  mode: deterministic
+  status: enabled
+- id: sprint-health-engine
+  description: Aggregates Sprint Goal, scope change, blockers, quality, dependencies, and forecast confidence
+  mode: deterministic
+  status: enabled
+- id: impediment-tracker
+  description: Classifies impediments, assigns accountable owners, tracks age, and flags escalation thresholds
+  mode: deterministic
+  status: enabled
+- id: dependency-graph-engine
+  description: Builds and analyzes cross-team and cross-system dependency graphs
+  mode: deterministic
+  status: enabled
+- id: retrospective-pattern-engine
+  description: Clusters de-identified themes and detects recurring improvement topics
+  mode: deterministic
+  status: enabled
+- id: experiment-tracker
+  description: Tracks improvement hypotheses, measures, owners, review dates, and outcomes
+  mode: scoped write
+  status: enabled
+- id: working-agreement-validator
+  description: Checks clarity, ownership, review dates, and internal consistency of team agreements
+  mode: deterministic
+  status: enabled
+- id: privacy-redaction-adapter
+  description: Redacts names and sensitive people data from analytics and retrospective evidence
+  mode: deterministic
+  status: enabled
+- id: metrics-anti-gaming-validator
+  description: Flags metric misuse, proxy risks, individual scoring, and unsupported causal claims
+  mode: deterministic
+  status: enabled
+- id: release-readiness-reader
+  description: Aggregates approved quality, deployment, dependency, and operational evidence
+  mode: read-only
+  status: enabled
+- id: document-renderer
+  description: Renders markdown, JSON, CSV, and Mermaid artifacts
+  mode: deterministic
+  status: enabled
+- id: schema-validator
+  description: Validates structured outputs against JSON Schema
+  mode: deterministic
+  status: enabled
+- id: evidence-hasher
+  description: Hashes inputs, outputs, decisions, approvals, and event evidence
+  mode: deterministic
+  status: enabled
+- id: policy-client
+  description: Requests OPA decisions for every privileged action
+  mode: deterministic
+  status: enabled
+- id: capability-broker-client
+  description: Obtains scoped short-lived connector capabilities
+  mode: deterministic
+  status: enabled

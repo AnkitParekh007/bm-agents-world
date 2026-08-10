@@ -1,0 +1,49 @@
+name: infrastructure-change
+version: 1.0.0
+trigger: Approved infrastructure change plan
+scope_binding:
+- project
+- work_item
+- repository
+- cloud_target
+- environment
+- requester
+steps:
+- id: authorize
+  agent: policy-enforcer
+  action: verify repository, state/backend, target, environment, and sandbox capabilities
+- id: implement
+  agent: iac-engineer
+  action: create minimal version-compatible IaC patch in isolated worktree
+- id: platform
+  agent: cloud-platform-engineer
+  action: review provider behavior, quotas, availability, identity, and managed-service constraints
+- id: network
+  agent: network-dns-engineer
+  action: review connectivity, public exposure, DNS, TLS, firewall, and rollback impact
+- id: plan
+  agent: iac-engineer
+  action: format, validate, lint, test, and create redacted speculative plan
+- id: security
+  agent: security-supply-chain-agent
+  action: scan IaC, IAM, secrets, provenance, and policy violations
+- id: cost
+  agent: cost-capacity-agent
+  action: estimate cost, capacity, limits, and expiry impact
+- id: review
+  agent: change-reviewer
+  action: verify plan actions, destruction, replacement, state risk, rollback, and evidence
+- id: approve
+  agent: policy-enforcer
+  action: request payload-bound approval for repository or environment write
+- id: publish
+  agent: devops-supervisor
+  action: publish approved PR or non-production execution request
+outputs:
+- iac-plan
+- cost-impact-report
+- security-gate-report
+- quality-gate-report
+- change-plan
+failure_behavior: stop on unexpected destroy/replacement, public exposure, privilege escalation, state mismatch,
+  or expired approval

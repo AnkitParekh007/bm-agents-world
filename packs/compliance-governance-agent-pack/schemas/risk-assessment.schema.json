@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.internal/schemas/risk-assessment.schema.json",
+  "title": "Risk Assessment",
+  "type": "object",
+  "required": [
+    "risk_id",
+    "statement",
+    "impact",
+    "likelihood",
+    "owner"
+  ],
+  "properties": {
+    "risk_id": {
+      "type": "string"
+    },
+    "statement": {
+      "type": "string"
+    },
+    "impact": {
+      "type": "string"
+    },
+    "likelihood": {
+      "type": "string"
+    },
+    "owner": {
+      "type": "string"
+    },
+    "treatment": {
+      "type": "string"
+    },
+    "expiry": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

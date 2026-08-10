@@ -1,0 +1,56 @@
+version: 1.0.0
+policies:
+- action: read_project_context
+  approval: none
+  conditions:
+  - authorized project
+  - minimum necessary data
+  - read-only
+- action: read_aggregate_product_analytics
+  approval: none
+  conditions:
+  - privacy threshold met
+  - approved metrics
+  - read-only
+- action: create_isolated_draft_artifact
+  approval: none
+  conditions:
+  - not externally published
+  - clearly marked draft
+- action: create_or_update_jira_item
+  approval: required
+  approvers:
+  - product owner or requester
+- action: publish_jpd_or_roadmap_change
+  approval: required
+  approvers:
+  - product lead or delegated roadmap owner
+- action: publish_confluence_or_teams_update
+  approval: required
+  approvers:
+  - requester or designated owner
+- action: contact_customer_or_prospect
+  approval: required
+  approvers:
+  - account owner
+  - research or product lead
+  - privacy when required
+- action: launch_survey_beta_or_experiment
+  approval: required
+  approvers:
+  - product owner
+  - analytics/research owner
+  - engineering or release owner
+  - privacy when required
+- action: change_production_feature_flag
+  approval: prohibited
+  reason: The PM agent drafts rollout requests; an authorized release system or operator performs production mutation.
+- action: make_external_commitment
+  approval: prohibited
+  reason: The agent cannot commit dates, prices, contracts, SLAs, legal positions, or roadmap guarantees.
+- action: export_raw_customer_or_commercial_data
+  approval: prohibited
+  reason: Only minimized, redacted, or aggregate evidence may enter model context.
+- action: approve_release
+  approval: prohibited
+  reason: Final release authority remains with designated human and operational owners.

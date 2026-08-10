@@ -1,0 +1,3960 @@
+apiVersion: engineering-manager-technical-lead-agent-pack/v1
+kind: SkillRegistry
+metadata:
+  name: engineering-leadership-skills
+  version: 1.0.0
+spec:
+  skills:
+  - id: engineering-leadership.jira-context
+    name: Jira Context
+    category: context
+    description: Perform jira context using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - jira_context
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.product-goal-traceability
+    name: Product Goal Traceability
+    category: context
+    description: Perform product goal traceability using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - product_goal_traceability
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.stakeholder-map
+    name: Stakeholder Map
+    category: context
+    description: Perform stakeholder map using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - stakeholder_map
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.project-scope-resolution
+    name: Project Scope Resolution
+    category: context
+    description: Perform project scope resolution using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - project_scope_resolution
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.repository-scope-resolution
+    name: Repository Scope Resolution
+    category: context
+    description: Perform repository scope resolution using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - repository_scope_resolution
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.environment-scope-resolution
+    name: Environment Scope Resolution
+    category: context
+    description: Perform environment scope resolution using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - environment_scope_resolution
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.decision-rights-map
+    name: Decision Rights Map
+    category: context
+    description: Perform decision rights map using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - decision_rights_map
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.assumption-register
+    name: Assumption Register
+    category: context
+    description: Perform assumption register using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - assumption_register
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.constraint-register
+    name: Constraint Register
+    category: context
+    description: Perform constraint register using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - constraint_register
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.data-classification
+    name: Data Classification
+    category: context
+    description: Perform data classification using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - data_classification
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.ownership-map
+    name: Ownership Map
+    category: context
+    description: Perform ownership map using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - ownership_map
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.work-readiness-check
+    name: Work Readiness Check
+    category: context
+    description: Perform work readiness check using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - work_readiness_check
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.engineering-workstream-design
+    name: Engineering Workstream Design
+    category: planning
+    description: Perform engineering workstream design using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - engineering_workstream_design
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.vertical-slice-planning
+    name: Vertical Slice Planning
+    category: planning
+    description: Perform vertical slice planning using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - vertical_slice_planning
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.milestone-planning
+    name: Milestone Planning
+    category: planning
+    description: Perform milestone planning using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - milestone_planning
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.capacity-scenario
+    name: Capacity Scenario
+    category: planning
+    description: Perform capacity scenario using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - capacity_scenario
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.operational-load-allocation
+    name: Operational Load Allocation
+    category: planning
+    description: Perform operational load allocation using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - operational_load_allocation
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.uncertainty-aware-estimation
+    name: Uncertainty Aware Estimation
+    category: planning
+    description: Perform uncertainty aware estimation using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - uncertainty_aware_estimation
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.confidence-forecast
+    name: Confidence Forecast
+    category: planning
+    description: Perform confidence forecast using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - confidence_forecast
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.critical-path-analysis
+    name: Critical Path Analysis
+    category: planning
+    description: Perform critical path analysis using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - critical_path_analysis
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.buffer-and-contingency-plan
+    name: Buffer And Contingency Plan
+    category: planning
+    description: Perform buffer and contingency plan using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - buffer_and_contingency_plan
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.skills-gap-analysis
+    name: Skills Gap Analysis
+    category: planning
+    description: Perform skills gap analysis using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - skills_gap_analysis
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.resource-contention-analysis
+    name: Resource Contention Analysis
+    category: planning
+    description: Perform resource contention analysis using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - resource_contention_analysis
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.planning-assumption-log
+    name: Planning Assumption Log
+    category: planning
+    description: Perform planning assumption log using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - planning_assumption_log
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.delivery-option-comparison
+    name: Delivery Option Comparison
+    category: planning
+    description: Perform delivery option comparison using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - delivery_option_comparison
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.commitment-boundary-check
+    name: Commitment Boundary Check
+    category: planning
+    description: Perform commitment boundary check using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - commitment_boundary_check
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.replanning-trigger-design
+    name: Replanning Trigger Design
+    category: planning
+    description: Perform replanning trigger design using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - replanning_trigger_design
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.sprint-goal-check
+    name: Sprint Goal Check
+    category: flow
+    description: Perform sprint goal check using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - sprint_goal_check
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.definition-of-ready-check
+    name: Definition Of Ready Check
+    category: flow
+    description: Perform definition of ready check using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - definition_of_ready_check
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.definition-of-done-check
+    name: Definition Of Done Check
+    category: flow
+    description: Perform definition of done check using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - definition_of_done_check
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.work-item-aging
+    name: Work Item Aging
+    category: flow
+    description: Perform work item aging using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - work_item_aging
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.wip-analysis
+    name: Wip Analysis
+    category: flow
+    description: Perform wip analysis using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - wip_analysis
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.queue-time-analysis
+    name: Queue Time Analysis
+    category: flow
+    description: Perform queue time analysis using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - queue_time_analysis
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.blocked-work-analysis
+    name: Blocked Work Analysis
+    category: flow
+    description: Perform blocked work analysis using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - blocked_work_analysis
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.carryover-analysis
+    name: Carryover Analysis
+    category: flow
+    description: Perform carryover analysis using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - carryover_analysis
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.scope-change-detection
+    name: Scope Change Detection
+    category: flow
+    description: Perform scope change detection using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - scope_change_detection
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.story-splitting
+    name: Story Splitting
+    category: flow
+    description: Perform story splitting using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - story_splitting
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.dependency-aging
+    name: Dependency Aging
+    category: flow
+    description: Perform dependency aging using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - dependency_aging
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.standup-insight
+    name: Standup Insight
+    category: flow
+    description: Perform standup insight using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - standup_insight
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.retrospective-evidence
+    name: Retrospective Evidence
+    category: flow
+    description: Perform retrospective evidence using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - retrospective_evidence
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.improvement-action-tracking
+    name: Improvement Action Tracking
+    category: flow
+    description: Perform improvement action tracking using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - improvement_action_tracking
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.cycle-time-analysis
+    name: Cycle Time Analysis
+    category: flow
+    description: Perform cycle time analysis using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - cycle_time_analysis
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.lead-time-analysis
+    name: Lead Time Analysis
+    category: flow
+    description: Perform lead time analysis using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - lead_time_analysis
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.repository-profile
+    name: Repository Profile
+    category: technical
+    description: Perform repository profile using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - repository_profile
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.implementation-option-analysis
+    name: Implementation Option Analysis
+    category: technical
+    description: Perform implementation option analysis using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - implementation_option_analysis
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.technical-decision-record
+    name: Technical Decision Record
+    category: technical
+    description: Perform technical decision record using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - technical_decision_record
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.coding-standard-conformance
+    name: Coding Standard Conformance
+    category: technical
+    description: Perform coding standard conformance using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - coding_standard_conformance
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.api-contract-alignment
+    name: Api Contract Alignment
+    category: technical
+    description: Perform api contract alignment using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - api_contract_alignment
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.event-contract-alignment
+    name: Event Contract Alignment
+    category: technical
+    description: Perform event contract alignment using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - event_contract_alignment
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.data-contract-alignment
+    name: Data Contract Alignment
+    category: technical
+    description: Perform data contract alignment using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - data_contract_alignment
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.backward-compatibility-review
+    name: Backward Compatibility Review
+    category: technical
+    description: Perform backward compatibility review using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - backward_compatibility_review
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.migration-compatibility-review
+    name: Migration Compatibility Review
+    category: technical
+    description: Perform migration compatibility review using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - migration_compatibility_review
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.proof-of-concept-design
+    name: Proof Of Concept Design
+    category: technical
+    description: Perform proof of concept design using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - proof_of_concept_design
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.complexity-risk-review
+    name: Complexity Risk Review
+    category: technical
+    description: Perform complexity risk review using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - complexity_risk_review
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.cross-cutting-concern-review
+    name: Cross Cutting Concern Review
+    category: technical
+    description: Perform cross cutting concern review using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - cross_cutting_concern_review
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.technical-risk-register
+    name: Technical Risk Register
+    category: technical
+    description: Perform technical risk register using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - technical_risk_register
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.technology-lifecycle-review
+    name: Technology Lifecycle Review
+    category: technical
+    description: Perform technology lifecycle review using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - technology_lifecycle_review
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.architecture-context-read
+    name: Architecture Context Read
+    category: architecture
+    description: Perform architecture context read using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - architecture_context_read
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.adr-conformance
+    name: Adr Conformance
+    category: architecture
+    description: Perform adr conformance using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - adr_conformance
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.system-boundary-review
+    name: System Boundary Review
+    category: architecture
+    description: Perform system boundary review using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - system_boundary_review
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.service-ownership-review
+    name: Service Ownership Review
+    category: architecture
+    description: Perform service ownership review using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - service_ownership_review
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.integration-dependency-map
+    name: Integration Dependency Map
+    category: architecture
+    description: Perform integration dependency map using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - integration_dependency_map
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.data-ownership-review
+    name: Data Ownership Review
+    category: architecture
+    description: Perform data ownership review using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - data_ownership_review
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.quality-attribute-alignment
+    name: Quality Attribute Alignment
+    category: architecture
+    description: Perform quality attribute alignment using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - quality_attribute_alignment
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.architecture-exception-draft
+    name: Architecture Exception Draft
+    category: architecture
+    description: Perform architecture exception draft using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - architecture_exception_draft
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: true
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.solution-architect-handoff
+    name: Solution Architect Handoff
+    category: architecture
+    description: Perform solution architect handoff using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - solution_architect_handoff
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.implementation-conformance-check
+    name: Implementation Conformance Check
+    category: architecture
+    description: Perform implementation conformance check using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - implementation_conformance_check
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.modernization-roadmap-alignment
+    name: Modernization Roadmap Alignment
+    category: architecture
+    description: Perform modernization roadmap alignment using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - modernization_roadmap_alignment
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.architecture-drift-detection
+    name: Architecture Drift Detection
+    category: architecture
+    description: Perform architecture drift detection using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - architecture_drift_detection
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.pull-request-readiness
+    name: Pull Request Readiness
+    category: code-quality
+    description: Perform pull request readiness using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - pull_request_readiness
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.change-scope-analysis
+    name: Change Scope Analysis
+    category: code-quality
+    description: Perform change scope analysis using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - change_scope_analysis
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.reviewer-selection
+    name: Reviewer Selection
+    category: code-quality
+    description: Perform reviewer selection using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - reviewer_selection
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.code-ownership-check
+    name: Code Ownership Check
+    category: code-quality
+    description: Perform code ownership check using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - code_ownership_check
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.static-analysis-review
+    name: Static Analysis Review
+    category: code-quality
+    description: Perform static analysis review using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - static_analysis_review
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.build-evidence-review
+    name: Build Evidence Review
+    category: code-quality
+    description: Perform build evidence review using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - build_evidence_review
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.maintainability-review
+    name: Maintainability Review
+    category: code-quality
+    description: Perform maintainability review using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - maintainability_review
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.error-handling-review
+    name: Error Handling Review
+    category: code-quality
+    description: Perform error handling review using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - error_handling_review
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.observability-code-review
+    name: Observability Code Review
+    category: code-quality
+    description: Perform observability code review using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - observability_code_review
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.generated-code-review
+    name: Generated Code Review
+    category: code-quality
+    description: Perform generated code review using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - generated_code_review
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.review-queue-analysis
+    name: Review Queue Analysis
+    category: code-quality
+    description: Perform review queue analysis using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - review_queue_analysis
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.protected-branch-check
+    name: Protected Branch Check
+    category: code-quality
+    description: Perform protected branch check using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - protected_branch_check
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.change-decomposition
+    name: Change Decomposition
+    category: code-quality
+    description: Perform change decomposition using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - change_decomposition
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.review-summary
+    name: Review Summary
+    category: code-quality
+    description: Perform review summary using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - review_summary
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.acceptance-test-traceability
+    name: Acceptance Test Traceability
+    category: quality
+    description: Perform acceptance test traceability using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - acceptance_test_traceability
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.test-strategy-review
+    name: Test Strategy Review
+    category: quality
+    description: Perform test strategy review using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - test_strategy_review
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.unit-test-evidence
+    name: Unit Test Evidence
+    category: quality
+    description: Perform unit test evidence using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - unit_test_evidence
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.integration-test-evidence
+    name: Integration Test Evidence
+    category: quality
+    description: Perform integration test evidence using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - integration_test_evidence
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.contract-test-evidence
+    name: Contract Test Evidence
+    category: quality
+    description: Perform contract test evidence using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - contract_test_evidence
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.browser-test-evidence
+    name: Browser Test Evidence
+    category: quality
+    description: Perform browser test evidence using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - browser_test_evidence
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.performance-test-evidence
+    name: Performance Test Evidence
+    category: quality
+    description: Perform performance test evidence using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - performance_test_evidence
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.accessibility-test-evidence
+    name: Accessibility Test Evidence
+    category: quality
+    description: Perform accessibility test evidence using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - accessibility_test_evidence
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.security-test-evidence
+    name: Security Test Evidence
+    category: quality
+    description: Perform security test evidence using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - security_test_evidence
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.regression-risk-analysis
+    name: Regression Risk Analysis
+    category: quality
+    description: Perform regression risk analysis using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - regression_risk_analysis
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.defect-trend-analysis
+    name: Defect Trend Analysis
+    category: quality
+    description: Perform defect trend analysis using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - defect_trend_analysis
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.escaped-defect-analysis
+    name: Escaped Defect Analysis
+    category: quality
+    description: Perform escaped defect analysis using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - escaped_defect_analysis
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.flaky-test-analysis
+    name: Flaky Test Analysis
+    category: quality
+    description: Perform flaky test analysis using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - flaky_test_analysis
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.quality-gate-review
+    name: Quality Gate Review
+    category: quality
+    description: Perform quality gate review using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - quality_gate_review
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.test-environment-readiness
+    name: Test Environment Readiness
+    category: quality
+    description: Perform test environment readiness using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - test_environment_readiness
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.security-requirement-check
+    name: Security Requirement Check
+    category: security
+    description: Perform security requirement check using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - security_requirement_check
+    allowedTools:
+    - security-evidence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.threat-model-coordination
+    name: Threat Model Coordination
+    category: security
+    description: Perform threat model coordination using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - threat_model_coordination
+    allowedTools:
+    - security-evidence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.authn-authz-review
+    name: Authn Authz Review
+    category: security
+    description: Perform authn authz review using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - authn_authz_review
+    allowedTools:
+    - security-evidence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.secret-handling-review
+    name: Secret Handling Review
+    category: security
+    description: Perform secret handling review using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - secret_handling_review
+    allowedTools:
+    - security-evidence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.data-minimization-review
+    name: Data Minimization Review
+    category: security
+    description: Perform data minimization review using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - data_minimization_review
+    allowedTools:
+    - security-evidence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.vulnerability-triage
+    name: Vulnerability Triage
+    category: security
+    description: Perform vulnerability triage using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - vulnerability_triage
+    allowedTools:
+    - security-evidence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.dependency-scan-review
+    name: Dependency Scan Review
+    category: security
+    description: Perform dependency scan review using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - dependency_scan_review
+    allowedTools:
+    - security-evidence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.container-scan-review
+    name: Container Scan Review
+    category: security
+    description: Perform container scan review using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - container_scan_review
+    allowedTools:
+    - security-evidence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.infrastructure-scan-review
+    name: Infrastructure Scan Review
+    category: security
+    description: Perform infrastructure scan review using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - infrastructure_scan_review
+    allowedTools:
+    - security-evidence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.security-exception-check
+    name: Security Exception Check
+    category: security
+    description: Perform security exception check using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - security_exception_check
+    allowedTools:
+    - security-evidence
+    approvalRequired: true
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.compliance-evidence-review
+    name: Compliance Evidence Review
+    category: security
+    description: Perform compliance evidence review using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - compliance_evidence_review
+    allowedTools:
+    - security-evidence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.security-remediation-plan
+    name: Security Remediation Plan
+    category: security
+    description: Perform security remediation plan using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - security_remediation_plan
+    allowedTools:
+    - security-evidence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.slo-review
+    name: Slo Review
+    category: reliability
+    description: Perform slo review using scoped, evidence-linked inputs and declare assumptions, confidence, and
+      required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - slo_review
+    allowedTools:
+    - observability
+    - incident-management
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.error-budget-analysis
+    name: Error Budget Analysis
+    category: reliability
+    description: Perform error budget analysis using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - error_budget_analysis
+    allowedTools:
+    - observability
+    - incident-management
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.operational-readiness-review
+    name: Operational Readiness Review
+    category: reliability
+    description: Perform operational readiness review using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - operational_readiness_review
+    allowedTools:
+    - observability
+    - incident-management
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.observability-coverage
+    name: Observability Coverage
+    category: reliability
+    description: Perform observability coverage using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - observability_coverage
+    allowedTools:
+    - observability
+    - incident-management
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.runbook-readiness
+    name: Runbook Readiness
+    category: reliability
+    description: Perform runbook readiness using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - runbook_readiness
+    allowedTools:
+    - observability
+    - incident-management
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.capacity-risk-review
+    name: Capacity Risk Review
+    category: reliability
+    description: Perform capacity risk review using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - capacity_risk_review
+    allowedTools:
+    - observability
+    - incident-management
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.resilience-review
+    name: Resilience Review
+    category: reliability
+    description: Perform resilience review using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - resilience_review
+    allowedTools:
+    - observability
+    - incident-management
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.disaster-recovery-review
+    name: Disaster Recovery Review
+    category: reliability
+    description: Perform disaster recovery review using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - disaster_recovery_review
+    allowedTools:
+    - observability
+    - incident-management
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.alert-quality-review
+    name: Alert Quality Review
+    category: reliability
+    description: Perform alert quality review using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - alert_quality_review
+    allowedTools:
+    - observability
+    - incident-management
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.toil-analysis
+    name: Toil Analysis
+    category: reliability
+    description: Perform toil analysis using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - toil_analysis
+    allowedTools:
+    - observability
+    - incident-management
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.service-health-summary
+    name: Service Health Summary
+    category: reliability
+    description: Perform service health summary using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - service_health_summary
+    allowedTools:
+    - observability
+    - incident-management
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.reliability-improvement-plan
+    name: Reliability Improvement Plan
+    category: reliability
+    description: Perform reliability improvement plan using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - reliability_improvement_plan
+    allowedTools:
+    - observability
+    - incident-management
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.incident-intake
+    name: Incident Intake
+    category: incident
+    description: Perform incident intake using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - incident_intake
+    allowedTools:
+    - observability
+    - incident-management
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.severity-assessment-support
+    name: Severity Assessment Support
+    category: incident
+    description: Perform severity assessment support using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - severity_assessment_support
+    allowedTools:
+    - observability
+    - incident-management
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.incident-role-map
+    name: Incident Role Map
+    category: incident
+    description: Perform incident role map using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - incident_role_map
+    allowedTools:
+    - observability
+    - incident-management
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.incident-timeline
+    name: Incident Timeline
+    category: incident
+    description: Perform incident timeline using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - incident_timeline
+    allowedTools:
+    - observability
+    - incident-management
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.impact-summary
+    name: Impact Summary
+    category: incident
+    description: Perform impact summary using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - impact_summary
+    allowedTools:
+    - observability
+    - incident-management
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.mitigation-option-review
+    name: Mitigation Option Review
+    category: incident
+    description: Perform mitigation option review using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - mitigation_option_review
+    allowedTools:
+    - observability
+    - incident-management
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.rollback-readiness
+    name: Rollback Readiness
+    category: incident
+    description: Perform rollback readiness using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - rollback_readiness
+    allowedTools:
+    - observability
+    - incident-management
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.incident-communication
+    name: Incident Communication
+    category: incident
+    description: Perform incident communication using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - incident_communication
+    allowedTools:
+    - observability
+    - incident-management
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.escalation-brief
+    name: Escalation Brief
+    category: incident
+    description: Perform escalation brief using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - escalation_brief
+    allowedTools:
+    - observability
+    - incident-management
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.post-incident-review
+    name: Post Incident Review
+    category: incident
+    description: Perform post incident review using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - post_incident_review
+    allowedTools:
+    - observability
+    - incident-management
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.corrective-action-tracking
+    name: Corrective Action Tracking
+    category: incident
+    description: Perform corrective action tracking using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - corrective_action_tracking
+    allowedTools:
+    - observability
+    - incident-management
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.recurrence-analysis
+    name: Recurrence Analysis
+    category: incident
+    description: Perform recurrence analysis using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - recurrence_analysis
+    allowedTools:
+    - observability
+    - incident-management
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.release-scope-review
+    name: Release Scope Review
+    category: release
+    description: Perform release scope review using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - release_scope_review
+    allowedTools:
+    - observability
+    - incident-management
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.release-dependency-map
+    name: Release Dependency Map
+    category: release
+    description: Perform release dependency map using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - release_dependency_map
+    allowedTools:
+    - observability
+    - incident-management
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.release-evidence-aggregation
+    name: Release Evidence Aggregation
+    category: release
+    description: Perform release evidence aggregation using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - release_evidence_aggregation
+    allowedTools:
+    - observability
+    - incident-management
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.rollback-plan-review
+    name: Rollback Plan Review
+    category: release
+    description: Perform rollback plan review using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - rollback_plan_review
+    allowedTools:
+    - observability
+    - incident-management
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.roll-forward-plan-review
+    name: Roll Forward Plan Review
+    category: release
+    description: Perform roll forward plan review using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - roll_forward_plan_review
+    allowedTools:
+    - observability
+    - incident-management
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.feature-flag-plan-review
+    name: Feature Flag Plan Review
+    category: release
+    description: Perform feature flag plan review using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - feature_flag_plan_review
+    allowedTools:
+    - observability
+    - incident-management
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.data-migration-readiness
+    name: Data Migration Readiness
+    category: release
+    description: Perform data migration readiness using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - data_migration_readiness
+    allowedTools:
+    - observability
+    - incident-management
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.deployment-readiness
+    name: Deployment Readiness
+    category: release
+    description: Perform deployment readiness using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - deployment_readiness
+    allowedTools:
+    - observability
+    - incident-management
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.go-no-go-recommendation
+    name: Go No Go Recommendation
+    category: release
+    description: Perform go no go recommendation using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - go_no_go_recommendation
+    allowedTools:
+    - observability
+    - incident-management
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.post-deploy-validation
+    name: Post Deploy Validation
+    category: release
+    description: Perform post deploy validation using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - post_deploy_validation
+    allowedTools:
+    - observability
+    - incident-management
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.hotfix-governance
+    name: Hotfix Governance
+    category: release
+    description: Perform hotfix governance using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - hotfix_governance
+    allowedTools:
+    - observability
+    - incident-management
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.release-outcome-review
+    name: Release Outcome Review
+    category: release
+    description: Perform release outcome review using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - release_outcome_review
+    allowedTools:
+    - observability
+    - incident-management
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.technical-debt-capture
+    name: Technical Debt Capture
+    category: debt
+    description: Perform technical debt capture using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - technical_debt_capture
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.debt-classification
+    name: Debt Classification
+    category: debt
+    description: Perform debt classification using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - debt_classification
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.debt-impact-analysis
+    name: Debt Impact Analysis
+    category: debt
+    description: Perform debt impact analysis using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - debt_impact_analysis
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.debt-prioritization
+    name: Debt Prioritization
+    category: debt
+    description: Perform debt prioritization using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - debt_prioritization
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.deprecation-risk
+    name: Deprecation Risk
+    category: debt
+    description: Perform deprecation risk using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - deprecation_risk
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.unsupported-technology-detection
+    name: Unsupported Technology Detection
+    category: debt
+    description: Perform unsupported technology detection using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - unsupported_technology_detection
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.modernization-option
+    name: Modernization Option
+    category: debt
+    description: Perform modernization option using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - modernization_option
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.incremental-migration-plan
+    name: Incremental Migration Plan
+    category: debt
+    description: Perform incremental migration plan using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - incremental_migration_plan
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.refactoring-success-measures
+    name: Refactoring Success Measures
+    category: debt
+    description: Perform refactoring success measures using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - refactoring_success_measures
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.decommission-plan
+    name: Decommission Plan
+    category: debt
+    description: Perform decommission plan using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - decommission_plan
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.debt-trend
+    name: Debt Trend
+    category: debt
+    description: Perform debt trend using scoped, evidence-linked inputs and declare assumptions, confidence, and
+      required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - debt_trend
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.sustainability-capacity-plan
+    name: Sustainability Capacity Plan
+    category: debt
+    description: Perform sustainability capacity plan using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - sustainability_capacity_plan
+    allowedTools:
+    - bitbucket
+    - repository-intelligence
+    - ci-cd
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.developer-journey-map
+    name: Developer Journey Map
+    category: devex
+    description: Perform developer journey map using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - developer_journey_map
+    allowedTools:
+    - engineering-analytics
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.setup-friction-analysis
+    name: Setup Friction Analysis
+    category: devex
+    description: Perform setup friction analysis using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - setup_friction_analysis
+    allowedTools:
+    - engineering-analytics
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.build-time-analysis
+    name: Build Time Analysis
+    category: devex
+    description: Perform build time analysis using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - build_time_analysis
+    allowedTools:
+    - engineering-analytics
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.test-feedback-time
+    name: Test Feedback Time
+    category: devex
+    description: Perform test feedback time using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - test_feedback_time
+    allowedTools:
+    - engineering-analytics
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.review-wait-analysis
+    name: Review Wait Analysis
+    category: devex
+    description: Perform review wait analysis using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - review_wait_analysis
+    allowedTools:
+    - engineering-analytics
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.environment-wait-analysis
+    name: Environment Wait Analysis
+    category: devex
+    description: Perform environment wait analysis using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - environment_wait_analysis
+    allowedTools:
+    - engineering-analytics
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.cognitive-load-assessment
+    name: Cognitive Load Assessment
+    category: devex
+    description: Perform cognitive load assessment using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - cognitive_load_assessment
+    allowedTools:
+    - engineering-analytics
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.onboarding-friction
+    name: Onboarding Friction
+    category: devex
+    description: Perform onboarding friction using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - onboarding_friction
+    allowedTools:
+    - engineering-analytics
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.platform-adoption-analysis
+    name: Platform Adoption Analysis
+    category: devex
+    description: Perform platform adoption analysis using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - platform_adoption_analysis
+    allowedTools:
+    - engineering-analytics
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.ai-development-evaluation
+    name: Ai Development Evaluation
+    category: devex
+    description: Perform ai development evaluation using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - ai_development_evaluation
+    allowedTools:
+    - engineering-analytics
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.golden-path-assessment
+    name: Golden Path Assessment
+    category: devex
+    description: Perform golden path assessment using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - golden_path_assessment
+    allowedTools:
+    - engineering-analytics
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.tool-retirement-analysis
+    name: Tool Retirement Analysis
+    category: devex
+    description: Perform tool retirement analysis using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - tool_retirement_analysis
+    allowedTools:
+    - engineering-analytics
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.metric-definition
+    name: Metric Definition
+    category: metrics
+    description: Perform metric definition using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - metric_definition
+    allowedTools:
+    - engineering-analytics
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.metric-data-quality
+    name: Metric Data Quality
+    category: metrics
+    description: Perform metric data quality using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - metric_data_quality
+    allowedTools:
+    - engineering-analytics
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.dora-metrics-analysis
+    name: Dora Metrics Analysis
+    category: metrics
+    description: Perform dora metrics analysis using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - dora_metrics_analysis
+    allowedTools:
+    - engineering-analytics
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.space-framework-assessment
+    name: Space Framework Assessment
+    category: metrics
+    description: Perform space framework assessment using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - space_framework_assessment
+    allowedTools:
+    - engineering-analytics
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.devex-framework-assessment
+    name: Devex Framework Assessment
+    category: metrics
+    description: Perform devex framework assessment using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - devex_framework_assessment
+    allowedTools:
+    - engineering-analytics
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.flow-metrics-analysis
+    name: Flow Metrics Analysis
+    category: metrics
+    description: Perform flow metrics analysis using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - flow_metrics_analysis
+    allowedTools:
+    - engineering-analytics
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.quality-metrics-analysis
+    name: Quality Metrics Analysis
+    category: metrics
+    description: Perform quality metrics analysis using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - quality_metrics_analysis
+    allowedTools:
+    - engineering-analytics
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.reliability-metrics-analysis
+    name: Reliability Metrics Analysis
+    category: metrics
+    description: Perform reliability metrics analysis using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - reliability_metrics_analysis
+    allowedTools:
+    - engineering-analytics
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.guardrail-metrics
+    name: Guardrail Metrics
+    category: metrics
+    description: Perform guardrail metrics using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - guardrail_metrics
+    allowedTools:
+    - engineering-analytics
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.leading-lagging-indicators
+    name: Leading Lagging Indicators
+    category: metrics
+    description: Perform leading lagging indicators using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - leading_lagging_indicators
+    allowedTools:
+    - engineering-analytics
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.trend-analysis
+    name: Trend Analysis
+    category: metrics
+    description: Perform trend analysis using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - trend_analysis
+    allowedTools:
+    - engineering-analytics
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.comparison-context-check
+    name: Comparison Context Check
+    category: metrics
+    description: Perform comparison context check using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - comparison_context_check
+    allowedTools:
+    - engineering-analytics
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.metric-gaming-detection
+    name: Metric Gaming Detection
+    category: metrics
+    description: Perform metric gaming detection using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - metric_gaming_detection
+    allowedTools:
+    - engineering-analytics
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.dashboard-specification
+    name: Dashboard Specification
+    category: metrics
+    description: Perform dashboard specification using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - dashboard_specification
+    allowedTools:
+    - engineering-analytics
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.improvement-experiment-metrics
+    name: Improvement Experiment Metrics
+    category: metrics
+    description: Perform improvement experiment metrics using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - improvement_experiment_metrics
+    allowedTools:
+    - engineering-analytics
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.role-clarity-assessment
+    name: Role Clarity Assessment
+    category: team
+    description: Perform role clarity assessment using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - role_clarity_assessment
+    allowedTools:
+    - people-safe-context
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.decision-rights-assessment
+    name: Decision Rights Assessment
+    category: team
+    description: Perform decision rights assessment using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - decision_rights_assessment
+    allowedTools:
+    - people-safe-context
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.team-health-summary
+    name: Team Health Summary
+    category: team
+    description: Perform team health summary using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - team_health_summary
+    allowedTools:
+    - people-safe-context
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.collaboration-network-assessment
+    name: Collaboration Network Assessment
+    category: team
+    description: Perform collaboration network assessment using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - collaboration_network_assessment
+    allowedTools:
+    - people-safe-context
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.meeting-load-analysis
+    name: Meeting Load Analysis
+    category: team
+    description: Perform meeting load analysis using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - meeting_load_analysis
+    allowedTools:
+    - people-safe-context
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.interrupt-load-analysis
+    name: Interrupt Load Analysis
+    category: team
+    description: Perform interrupt load analysis using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - interrupt_load_analysis
+    allowedTools:
+    - people-safe-context
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.psychological-safety-prompting
+    name: Psychological Safety Prompting
+    category: team
+    description: Perform psychological safety prompting using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - psychological_safety_prompting
+    allowedTools:
+    - people-safe-context
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.sustainable-pace-check
+    name: Sustainable Pace Check
+    category: team
+    description: Perform sustainable pace check using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - sustainable_pace_check
+    allowedTools:
+    - people-safe-context
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.team-working-agreement
+    name: Team Working Agreement
+    category: team
+    description: Perform team working agreement using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - team_working_agreement
+    allowedTools:
+    - people-safe-context
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.conflict-escalation-route
+    name: Conflict Escalation Route
+    category: team
+    description: Perform conflict escalation route using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - conflict_escalation_route
+    allowedTools:
+    - people-safe-context
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.team-improvement-proposal
+    name: Team Improvement Proposal
+    category: team
+    description: Perform team improvement proposal using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - team_improvement_proposal
+    allowedTools:
+    - people-safe-context
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.sensitive-data-minimization
+    name: Sensitive Data Minimization
+    category: team
+    description: Perform sensitive data minimization using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - sensitive_data_minimization
+    allowedTools:
+    - people-safe-context
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.one-on-one-agenda
+    name: One On One Agenda
+    category: coaching
+    description: Perform one on one agenda using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - one_on_one_agenda
+    allowedTools:
+    - people-safe-context
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.one-on-one-action-tracking
+    name: One On One Action Tracking
+    category: coaching
+    description: Perform one on one action tracking using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - one_on_one_action_tracking
+    allowedTools:
+    - people-safe-context
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.accomplishment-evidence
+    name: Accomplishment Evidence
+    category: coaching
+    description: Perform accomplishment evidence using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - accomplishment_evidence
+    allowedTools:
+    - people-safe-context
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.feedback-situation-behavior-impact
+    name: Feedback Situation Behavior Impact
+    category: coaching
+    description: Perform feedback situation behavior impact using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - feedback_situation_behavior_impact
+    allowedTools:
+    - people-safe-context
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.coaching-question-design
+    name: Coaching Question Design
+    category: coaching
+    description: Perform coaching question design using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - coaching_question_design
+    allowedTools:
+    - people-safe-context
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.growth-goal-draft
+    name: Growth Goal Draft
+    category: coaching
+    description: Perform growth goal draft using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - growth_goal_draft
+    allowedTools:
+    - people-safe-context
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.mentoring-opportunity
+    name: Mentoring Opportunity
+    category: coaching
+    description: Perform mentoring opportunity using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - mentoring_opportunity
+    allowedTools:
+    - people-safe-context
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.pairing-opportunity
+    name: Pairing Opportunity
+    category: coaching
+    description: Perform pairing opportunity using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - pairing_opportunity
+    allowedTools:
+    - people-safe-context
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.stretch-assignment-option
+    name: Stretch Assignment Option
+    category: coaching
+    description: Perform stretch assignment option using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - stretch_assignment_option
+    allowedTools:
+    - people-safe-context
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.recognition-draft
+    name: Recognition Draft
+    category: coaching
+    description: Perform recognition draft using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - recognition_draft
+    allowedTools:
+    - people-safe-context
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.career-framework-alignment
+    name: Career Framework Alignment
+    category: coaching
+    description: Perform career framework alignment using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - career_framework_alignment
+    allowedTools:
+    - people-safe-context
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.bus-factor-capability-map
+    name: Bus Factor Capability Map
+    category: coaching
+    description: Perform bus factor capability map using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - bus_factor_capability_map
+    allowedTools:
+    - people-safe-context
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.role-capability-profile
+    name: Role Capability Profile
+    category: hiring
+    description: Perform role capability profile using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - role_capability_profile
+    allowedTools:
+    - people-safe-context
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.inclusive-job-description
+    name: Inclusive Job Description
+    category: hiring
+    description: Perform inclusive job description using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - inclusive_job_description
+    allowedTools:
+    - people-safe-context
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.structured-interview-plan
+    name: Structured Interview Plan
+    category: hiring
+    description: Perform structured interview plan using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - structured_interview_plan
+    allowedTools:
+    - people-safe-context
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.interview-scorecard
+    name: Interview Scorecard
+    category: hiring
+    description: Perform interview scorecard using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - interview_scorecard
+    allowedTools:
+    - people-safe-context
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.technical-exercise-design
+    name: Technical Exercise Design
+    category: hiring
+    description: Perform technical exercise design using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - technical_exercise_design
+    allowedTools:
+    - people-safe-context
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.panel-coverage-check
+    name: Panel Coverage Check
+    category: hiring
+    description: Perform panel coverage check using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - panel_coverage_check
+    allowedTools:
+    - people-safe-context
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.candidate-evidence-summary
+    name: Candidate Evidence Summary
+    category: hiring
+    description: Perform candidate evidence summary using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - candidate_evidence_summary
+    allowedTools:
+    - people-safe-context
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.evidence-gap-check
+    name: Evidence Gap Check
+    category: hiring
+    description: Perform evidence gap check using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - evidence_gap_check
+    allowedTools:
+    - people-safe-context
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.onboarding-plan
+    name: Onboarding Plan
+    category: hiring
+    description: Perform onboarding plan using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - onboarding_plan
+    allowedTools:
+    - people-safe-context
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.onboarding-progress
+    name: Onboarding Progress
+    category: hiring
+    description: Perform onboarding progress using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - onboarding_progress
+    allowedTools:
+    - people-safe-context
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.access-onboarding-check
+    name: Access Onboarding Check
+    category: hiring
+    description: Perform access onboarding check using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - access_onboarding_check
+    allowedTools:
+    - people-safe-context
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.hiring-decision-boundary
+    name: Hiring Decision Boundary
+    category: hiring
+    description: Perform hiring decision boundary using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - hiring_decision_boundary
+    allowedTools:
+    - people-safe-context
+    approvalRequired: true
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.daily-engineering-summary
+    name: Daily Engineering Summary
+    category: communication
+    description: Perform daily engineering summary using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - daily_engineering_summary
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.sprint-status-update
+    name: Sprint Status Update
+    category: communication
+    description: Perform sprint status update using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - sprint_status_update
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.quarterly-engineering-update
+    name: Quarterly Engineering Update
+    category: communication
+    description: Perform quarterly engineering update using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - quarterly_engineering_update
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.risk-communication
+    name: Risk Communication
+    category: communication
+    description: Perform risk communication using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - risk_communication
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.escalation-message
+    name: Escalation Message
+    category: communication
+    description: Perform escalation message using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - escalation_message
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.decision-summary
+    name: Decision Summary
+    category: communication
+    description: Perform decision summary using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - decision_summary
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.technical-tradeoff-translation
+    name: Technical Tradeoff Translation
+    category: communication
+    description: Perform technical tradeoff translation using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - technical_tradeoff_translation
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.release-status-update
+    name: Release Status Update
+    category: communication
+    description: Perform release status update using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - release_status_update
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.incident-status-update
+    name: Incident Status Update
+    category: communication
+    description: Perform incident status update using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - incident_status_update
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.stakeholder-action-log
+    name: Stakeholder Action Log
+    category: communication
+    description: Perform stakeholder action log using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - stakeholder_action_log
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.forecast-communication
+    name: Forecast Communication
+    category: communication
+    description: Perform forecast communication using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - forecast_communication
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.commitment-boundary-review
+    name: Commitment Boundary Review
+    category: communication
+    description: Perform commitment boundary review using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - commitment_boundary_review
+    allowedTools:
+    - jira
+    - confluence
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.engineering-cost-driver-analysis
+    name: Engineering Cost Driver Analysis
+    category: finance-vendor
+    description: Perform engineering cost driver analysis using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - engineering_cost_driver_analysis
+    allowedTools: []
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.build-vs-buy-support
+    name: Build Vs Buy Support
+    category: finance-vendor
+    description: Perform build vs buy support using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - build_vs_buy_support
+    allowedTools: []
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.vendor-dependency-map
+    name: Vendor Dependency Map
+    category: finance-vendor
+    description: Perform vendor dependency map using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - vendor_dependency_map
+    allowedTools: []
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.renewal-risk
+    name: Renewal Risk
+    category: finance-vendor
+    description: Perform renewal risk using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - renewal_risk
+    allowedTools: []
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.license-obligation-review
+    name: License Obligation Review
+    category: finance-vendor
+    description: Perform license obligation review using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - license_obligation_review
+    allowedTools: []
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.staffing-scenario
+    name: Staffing Scenario
+    category: finance-vendor
+    description: Perform staffing scenario using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - staffing_scenario
+    allowedTools: []
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.budget-assumption-draft
+    name: Budget Assumption Draft
+    category: finance-vendor
+    description: Perform budget assumption draft using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - budget_assumption_draft
+    allowedTools: []
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.cost-risk-tradeoff
+    name: Cost Risk Tradeoff
+    category: finance-vendor
+    description: Perform cost risk tradeoff using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - cost_risk_tradeoff
+    allowedTools: []
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.investment-benefit-tracking
+    name: Investment Benefit Tracking
+    category: finance-vendor
+    description: Perform investment benefit tracking using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - investment_benefit_tracking
+    allowedTools: []
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.vendor-exit-risk
+    name: Vendor Exit Risk
+    category: finance-vendor
+    description: Perform vendor exit risk using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - vendor_exit_risk
+    allowedTools: []
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.policy-conformance
+    name: Policy Conformance
+    category: governance
+    description: Perform policy conformance using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - policy_conformance
+    allowedTools:
+    - artifact-store
+    - approval-policy
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.approval-requirement-resolution
+    name: Approval Requirement Resolution
+    category: governance
+    description: Perform approval requirement resolution using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - approval_requirement_resolution
+    allowedTools:
+    - artifact-store
+    - approval-policy
+    approvalRequired: true
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.payload-hash-approval
+    name: Payload Hash Approval
+    category: governance
+    description: Perform payload hash approval using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - payload_hash_approval
+    allowedTools:
+    - artifact-store
+    - approval-policy
+    approvalRequired: true
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.independent-review-routing
+    name: Independent Review Routing
+    category: governance
+    description: Perform independent review routing using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - independent_review_routing
+    allowedTools:
+    - artifact-store
+    - approval-policy
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.exception-expiry-tracking
+    name: Exception Expiry Tracking
+    category: governance
+    description: Perform exception expiry tracking using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - exception_expiry_tracking
+    allowedTools:
+    - artifact-store
+    - approval-policy
+    approvalRequired: true
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.audit-evidence-bundle
+    name: Audit Evidence Bundle
+    category: governance
+    description: Perform audit evidence bundle using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - audit_evidence_bundle
+    allowedTools:
+    - artifact-store
+    - approval-policy
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.process-value-review
+    name: Process Value Review
+    category: governance
+    description: Perform process value review using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - process_value_review
+    allowedTools:
+    - artifact-store
+    - approval-policy
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.governance-automation-candidate
+    name: Governance Automation Candidate
+    category: governance
+    description: Perform governance automation candidate using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - governance_automation_candidate
+    allowedTools:
+    - artifact-store
+    - approval-policy
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.agent-output-quality-review
+    name: Agent Output Quality Review
+    category: governance
+    description: Perform agent output quality review using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - agent_output_quality_review
+    allowedTools:
+    - artifact-store
+    - approval-policy
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.agent-bias-risk-review
+    name: Agent Bias Risk Review
+    category: governance
+    description: Perform agent bias risk review using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - agent_bias_risk_review
+    allowedTools:
+    - artifact-store
+    - approval-policy
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.retention-policy-check
+    name: Retention Policy Check
+    category: governance
+    description: Perform retention policy check using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - retention_policy_check
+    allowedTools:
+    - artifact-store
+    - approval-policy
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.authoritative-system-write-check
+    name: Authoritative System Write Check
+    category: governance
+    description: Perform authoritative system write check using scoped, evidence-linked inputs and declare assumptions,
+      confidence, and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - authoritative_system_write_check
+    allowedTools:
+    - artifact-store
+    - approval-policy
+    approvalRequired: true
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.evidence-reference
+    name: Evidence Reference
+    category: evidence
+    description: Perform evidence reference using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - evidence_reference
+    allowedTools:
+    - artifact-store
+    - approval-policy
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.evidence-lineage
+    name: Evidence Lineage
+    category: evidence
+    description: Perform evidence lineage using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - evidence_lineage
+    allowedTools:
+    - artifact-store
+    - approval-policy
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.evidence-redaction
+    name: Evidence Redaction
+    category: evidence
+    description: Perform evidence redaction using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - evidence_redaction
+    allowedTools:
+    - artifact-store
+    - approval-policy
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.evidence-freshness
+    name: Evidence Freshness
+    category: evidence
+    description: Perform evidence freshness using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - evidence_freshness
+    allowedTools:
+    - artifact-store
+    - approval-policy
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.evidence-confidence
+    name: Evidence Confidence
+    category: evidence
+    description: Perform evidence confidence using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - evidence_confidence
+    allowedTools:
+    - artifact-store
+    - approval-policy
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.conflict-resolution
+    name: Conflict Resolution
+    category: evidence
+    description: Perform conflict resolution using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - conflict_resolution
+    allowedTools:
+    - artifact-store
+    - approval-policy
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.immutable-bundle
+    name: Immutable Bundle
+    category: evidence
+    description: Perform immutable bundle using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - immutable_bundle
+    allowedTools:
+    - artifact-store
+    - approval-policy
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values
+  - id: engineering-leadership.decision-provenance
+    name: Decision Provenance
+    category: evidence
+    description: Perform decision provenance using scoped, evidence-linked inputs and declare assumptions, confidence,
+      and required human decisions.
+    inputs:
+    - authorized context
+    - evidence references
+    outputs:
+    - decision_provenance
+    allowedTools:
+    - artifact-store
+    - approval-policy
+    approvalRequired: false
+    dataHandling: minimum-necessary; redact employee-sensitive and production-sensitive values

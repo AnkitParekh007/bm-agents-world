@@ -1,0 +1,1201 @@
+skills:
+- id: skill-001
+  domain: Framework & Regulatory
+  name: framework applicability analysis
+  level: core
+  requires_scope: true
+- id: skill-002
+  domain: Framework & Regulatory
+  name: advanced framework applicability analysis
+  level: advanced
+  requires_scope: true
+- id: skill-003
+  domain: Framework & Regulatory
+  name: regulatory change triage
+  level: core
+  requires_scope: true
+- id: skill-004
+  domain: Framework & Regulatory
+  name: advanced regulatory change triage
+  level: advanced
+  requires_scope: true
+- id: skill-005
+  domain: Framework & Regulatory
+  name: obligation decomposition
+  level: core
+  requires_scope: true
+- id: skill-006
+  domain: Framework & Regulatory
+  name: advanced obligation decomposition
+  level: advanced
+  requires_scope: true
+- id: skill-007
+  domain: Framework & Regulatory
+  name: jurisdiction mapping
+  level: core
+  requires_scope: true
+- id: skill-008
+  domain: Framework & Regulatory
+  name: advanced jurisdiction mapping
+  level: advanced
+  requires_scope: true
+- id: skill-009
+  domain: Framework & Regulatory
+  name: customer requirement mapping
+  level: core
+  requires_scope: true
+- id: skill-010
+  domain: Framework & Regulatory
+  name: advanced customer requirement mapping
+  level: advanced
+  requires_scope: true
+- id: skill-011
+  domain: Framework & Regulatory
+  name: framework version tracking
+  level: core
+  requires_scope: true
+- id: skill-012
+  domain: Framework & Regulatory
+  name: advanced framework version tracking
+  level: advanced
+  requires_scope: true
+- id: skill-013
+  domain: Framework & Regulatory
+  name: cross-framework mapping
+  level: core
+  requires_scope: true
+- id: skill-014
+  domain: Framework & Regulatory
+  name: advanced cross-framework mapping
+  level: advanced
+  requires_scope: true
+- id: skill-015
+  domain: Framework & Regulatory
+  name: scope boundary definition
+  level: core
+  requires_scope: true
+- id: skill-016
+  domain: Framework & Regulatory
+  name: advanced scope boundary definition
+  level: advanced
+  requires_scope: true
+- id: skill-017
+  domain: Framework & Regulatory
+  name: legal interpretation escalation
+  level: core
+  requires_scope: true
+- id: skill-018
+  domain: Framework & Regulatory
+  name: advanced legal interpretation escalation
+  level: advanced
+  requires_scope: true
+- id: skill-019
+  domain: Framework & Regulatory
+  name: authoritative source verification
+  level: core
+  requires_scope: true
+- id: skill-020
+  domain: Framework & Regulatory
+  name: advanced authoritative source verification
+  level: advanced
+  requires_scope: true
+- id: skill-021
+  domain: Policy & Controls
+  name: policy lifecycle management
+  level: core
+  requires_scope: true
+- id: skill-022
+  domain: Policy & Controls
+  name: advanced policy lifecycle management
+  level: advanced
+  requires_scope: true
+- id: skill-023
+  domain: Policy & Controls
+  name: policy gap analysis
+  level: core
+  requires_scope: true
+- id: skill-024
+  domain: Policy & Controls
+  name: advanced policy gap analysis
+  level: advanced
+  requires_scope: true
+- id: skill-025
+  domain: Policy & Controls
+  name: control normalization
+  level: core
+  requires_scope: true
+- id: skill-026
+  domain: Policy & Controls
+  name: advanced control normalization
+  level: advanced
+  requires_scope: true
+- id: skill-027
+  domain: Policy & Controls
+  name: control objective writing
+  level: core
+  requires_scope: true
+- id: skill-028
+  domain: Policy & Controls
+  name: advanced control objective writing
+  level: advanced
+  requires_scope: true
+- id: skill-029
+  domain: Policy & Controls
+  name: control implementation statement review
+  level: core
+  requires_scope: true
+- id: skill-030
+  domain: Policy & Controls
+  name: advanced control implementation statement review
+  level: advanced
+  requires_scope: true
+- id: skill-031
+  domain: Policy & Controls
+  name: control ownership mapping
+  level: core
+  requires_scope: true
+- id: skill-032
+  domain: Policy & Controls
+  name: advanced control ownership mapping
+  level: advanced
+  requires_scope: true
+- id: skill-033
+  domain: Policy & Controls
+  name: control frequency design
+  level: core
+  requires_scope: true
+- id: skill-034
+  domain: Policy & Controls
+  name: advanced control frequency design
+  level: advanced
+  requires_scope: true
+- id: skill-035
+  domain: Policy & Controls
+  name: control inheritance mapping
+  level: core
+  requires_scope: true
+- id: skill-036
+  domain: Policy & Controls
+  name: advanced control inheritance mapping
+  level: advanced
+  requires_scope: true
+- id: skill-037
+  domain: Policy & Controls
+  name: compensating control analysis
+  level: core
+  requires_scope: true
+- id: skill-038
+  domain: Policy & Controls
+  name: advanced compensating control analysis
+  level: advanced
+  requires_scope: true
+- id: skill-039
+  domain: Policy & Controls
+  name: control testing design
+  level: core
+  requires_scope: true
+- id: skill-040
+  domain: Policy & Controls
+  name: advanced control testing design
+  level: advanced
+  requires_scope: true
+- id: skill-041
+  domain: Risk
+  name: risk statement writing
+  level: core
+  requires_scope: true
+- id: skill-042
+  domain: Risk
+  name: advanced risk statement writing
+  level: advanced
+  requires_scope: true
+- id: skill-043
+  domain: Risk
+  name: likelihood impact analysis
+  level: core
+  requires_scope: true
+- id: skill-044
+  domain: Risk
+  name: advanced likelihood impact analysis
+  level: advanced
+  requires_scope: true
+- id: skill-045
+  domain: Risk
+  name: risk treatment planning
+  level: core
+  requires_scope: true
+- id: skill-046
+  domain: Risk
+  name: advanced risk treatment planning
+  level: advanced
+  requires_scope: true
+- id: skill-047
+  domain: Risk
+  name: risk tolerance mapping
+  level: core
+  requires_scope: true
+- id: skill-048
+  domain: Risk
+  name: advanced risk tolerance mapping
+  level: advanced
+  requires_scope: true
+- id: skill-049
+  domain: Risk
+  name: residual risk preparation
+  level: core
+  requires_scope: true
+- id: skill-050
+  domain: Risk
+  name: advanced residual risk preparation
+  level: advanced
+  requires_scope: true
+- id: skill-051
+  domain: Risk
+  name: risk acceptance expiry design
+  level: core
+  requires_scope: true
+- id: skill-052
+  domain: Risk
+  name: advanced risk acceptance expiry design
+  level: advanced
+  requires_scope: true
+- id: skill-053
+  domain: Risk
+  name: risk-control linking
+  level: core
+  requires_scope: true
+- id: skill-054
+  domain: Risk
+  name: advanced risk-control linking
+  level: advanced
+  requires_scope: true
+- id: skill-055
+  domain: Risk
+  name: risk trend analysis
+  level: core
+  requires_scope: true
+- id: skill-056
+  domain: Risk
+  name: advanced risk trend analysis
+  level: advanced
+  requires_scope: true
+- id: skill-057
+  domain: Risk
+  name: risk escalation
+  level: core
+  requires_scope: true
+- id: skill-058
+  domain: Risk
+  name: advanced risk escalation
+  level: advanced
+  requires_scope: true
+- id: skill-059
+  domain: Risk
+  name: risk committee reporting
+  level: core
+  requires_scope: true
+- id: skill-060
+  domain: Risk
+  name: advanced risk committee reporting
+  level: advanced
+  requires_scope: true
+- id: skill-061
+  domain: Audit & Evidence
+  name: audit planning
+  level: core
+  requires_scope: true
+- id: skill-062
+  domain: Audit & Evidence
+  name: advanced audit planning
+  level: advanced
+  requires_scope: true
+- id: skill-063
+  domain: Audit & Evidence
+  name: PBC list management
+  level: core
+  requires_scope: true
+- id: skill-064
+  domain: Audit & Evidence
+  name: advanced PBC list management
+  level: advanced
+  requires_scope: true
+- id: skill-065
+  domain: Audit & Evidence
+  name: evidence provenance validation
+  level: core
+  requires_scope: true
+- id: skill-066
+  domain: Audit & Evidence
+  name: advanced evidence provenance validation
+  level: advanced
+  requires_scope: true
+- id: skill-067
+  domain: Audit & Evidence
+  name: evidence freshness validation
+  level: core
+  requires_scope: true
+- id: skill-068
+  domain: Audit & Evidence
+  name: advanced evidence freshness validation
+  level: advanced
+  requires_scope: true
+- id: skill-069
+  domain: Audit & Evidence
+  name: evidence redaction
+  level: core
+  requires_scope: true
+- id: skill-070
+  domain: Audit & Evidence
+  name: advanced evidence redaction
+  level: advanced
+  requires_scope: true
+- id: skill-071
+  domain: Audit & Evidence
+  name: evidence hashing
+  level: core
+  requires_scope: true
+- id: skill-072
+  domain: Audit & Evidence
+  name: advanced evidence hashing
+  level: advanced
+  requires_scope: true
+- id: skill-073
+  domain: Audit & Evidence
+  name: walkthrough preparation
+  level: core
+  requires_scope: true
+- id: skill-074
+  domain: Audit & Evidence
+  name: advanced walkthrough preparation
+  level: advanced
+  requires_scope: true
+- id: skill-075
+  domain: Audit & Evidence
+  name: auditor response coordination
+  level: core
+  requires_scope: true
+- id: skill-076
+  domain: Audit & Evidence
+  name: advanced auditor response coordination
+  level: advanced
+  requires_scope: true
+- id: skill-077
+  domain: Audit & Evidence
+  name: finding normalization
+  level: core
+  requires_scope: true
+- id: skill-078
+  domain: Audit & Evidence
+  name: advanced finding normalization
+  level: advanced
+  requires_scope: true
+- id: skill-079
+  domain: Audit & Evidence
+  name: audit closure preparation
+  level: core
+  requires_scope: true
+- id: skill-080
+  domain: Audit & Evidence
+  name: advanced audit closure preparation
+  level: advanced
+  requires_scope: true
+- id: skill-081
+  domain: Access Governance
+  name: access review orchestration
+  level: core
+  requires_scope: true
+- id: skill-082
+  domain: Access Governance
+  name: advanced access review orchestration
+  level: advanced
+  requires_scope: true
+- id: skill-083
+  domain: Access Governance
+  name: privileged access review
+  level: core
+  requires_scope: true
+- id: skill-084
+  domain: Access Governance
+  name: advanced privileged access review
+  level: advanced
+  requires_scope: true
+- id: skill-085
+  domain: Access Governance
+  name: SoD analysis
+  level: core
+  requires_scope: true
+- id: skill-086
+  domain: Access Governance
+  name: advanced SoD analysis
+  level: advanced
+  requires_scope: true
+- id: skill-087
+  domain: Access Governance
+  name: orphan account detection
+  level: core
+  requires_scope: true
+- id: skill-088
+  domain: Access Governance
+  name: advanced orphan account detection
+  level: advanced
+  requires_scope: true
+- id: skill-089
+  domain: Access Governance
+  name: service identity review
+  level: core
+  requires_scope: true
+- id: skill-090
+  domain: Access Governance
+  name: advanced service identity review
+  level: advanced
+  requires_scope: true
+- id: skill-091
+  domain: Access Governance
+  name: MFA evidence review
+  level: core
+  requires_scope: true
+- id: skill-092
+  domain: Access Governance
+  name: advanced MFA evidence review
+  level: advanced
+  requires_scope: true
+- id: skill-093
+  domain: Access Governance
+  name: joiner mover leaver evidence
+  level: core
+  requires_scope: true
+- id: skill-094
+  domain: Access Governance
+  name: advanced joiner mover leaver evidence
+  level: advanced
+  requires_scope: true
+- id: skill-095
+  domain: Access Governance
+  name: break glass governance
+  level: core
+  requires_scope: true
+- id: skill-096
+  domain: Access Governance
+  name: advanced break glass governance
+  level: advanced
+  requires_scope: true
+- id: skill-097
+  domain: Access Governance
+  name: credential lifecycle evidence
+  level: core
+  requires_scope: true
+- id: skill-098
+  domain: Access Governance
+  name: advanced credential lifecycle evidence
+  level: advanced
+  requires_scope: true
+- id: skill-099
+  domain: Access Governance
+  name: identity exception management
+  level: core
+  requires_scope: true
+- id: skill-100
+  domain: Access Governance
+  name: advanced identity exception management
+  level: advanced
+  requires_scope: true
+- id: skill-101
+  domain: Privacy
+  name: data inventory governance
+  level: core
+  requires_scope: true
+- id: skill-102
+  domain: Privacy
+  name: advanced data inventory governance
+  level: advanced
+  requires_scope: true
+- id: skill-103
+  domain: Privacy
+  name: processing purpose mapping
+  level: core
+  requires_scope: true
+- id: skill-104
+  domain: Privacy
+  name: advanced processing purpose mapping
+  level: advanced
+  requires_scope: true
+- id: skill-105
+  domain: Privacy
+  name: retention mapping
+  level: core
+  requires_scope: true
+- id: skill-106
+  domain: Privacy
+  name: advanced retention mapping
+  level: advanced
+  requires_scope: true
+- id: skill-107
+  domain: Privacy
+  name: DPIA preparation
+  level: core
+  requires_scope: true
+- id: skill-108
+  domain: Privacy
+  name: advanced DPIA preparation
+  level: advanced
+  requires_scope: true
+- id: skill-109
+  domain: Privacy
+  name: privacy-by-design review
+  level: core
+  requires_scope: true
+- id: skill-110
+  domain: Privacy
+  name: advanced privacy-by-design review
+  level: advanced
+  requires_scope: true
+- id: skill-111
+  domain: Privacy
+  name: data subject rights control review
+  level: core
+  requires_scope: true
+- id: skill-112
+  domain: Privacy
+  name: advanced data subject rights control review
+  level: advanced
+  requires_scope: true
+- id: skill-113
+  domain: Privacy
+  name: consent governance
+  level: core
+  requires_scope: true
+- id: skill-114
+  domain: Privacy
+  name: advanced consent governance
+  level: advanced
+  requires_scope: true
+- id: skill-115
+  domain: Privacy
+  name: processor governance
+  level: core
+  requires_scope: true
+- id: skill-116
+  domain: Privacy
+  name: advanced processor governance
+  level: advanced
+  requires_scope: true
+- id: skill-117
+  domain: Privacy
+  name: cross-border transfer evidence
+  level: core
+  requires_scope: true
+- id: skill-118
+  domain: Privacy
+  name: advanced cross-border transfer evidence
+  level: advanced
+  requires_scope: true
+- id: skill-119
+  domain: Privacy
+  name: breach notification control mapping
+  level: core
+  requires_scope: true
+- id: skill-120
+  domain: Privacy
+  name: advanced breach notification control mapping
+  level: advanced
+  requires_scope: true
+- id: skill-121
+  domain: AI Governance
+  name: AI inventory management
+  level: core
+  requires_scope: true
+- id: skill-122
+  domain: AI Governance
+  name: advanced AI inventory management
+  level: advanced
+  requires_scope: true
+- id: skill-123
+  domain: AI Governance
+  name: AI risk classification
+  level: core
+  requires_scope: true
+- id: skill-124
+  domain: AI Governance
+  name: advanced AI risk classification
+  level: advanced
+  requires_scope: true
+- id: skill-125
+  domain: AI Governance
+  name: AI transparency control review
+  level: core
+  requires_scope: true
+- id: skill-126
+  domain: AI Governance
+  name: advanced AI transparency control review
+  level: advanced
+  requires_scope: true
+- id: skill-127
+  domain: AI Governance
+  name: AI provider deployer role mapping
+  level: core
+  requires_scope: true
+- id: skill-128
+  domain: AI Governance
+  name: advanced AI provider deployer role mapping
+  level: advanced
+  requires_scope: true
+- id: skill-129
+  domain: AI Governance
+  name: human oversight review
+  level: core
+  requires_scope: true
+- id: skill-130
+  domain: AI Governance
+  name: advanced human oversight review
+  level: advanced
+  requires_scope: true
+- id: skill-131
+  domain: AI Governance
+  name: AI literacy evidence
+  level: core
+  requires_scope: true
+- id: skill-132
+  domain: AI Governance
+  name: advanced AI literacy evidence
+  level: advanced
+  requires_scope: true
+- id: skill-133
+  domain: AI Governance
+  name: model documentation governance
+  level: core
+  requires_scope: true
+- id: skill-134
+  domain: AI Governance
+  name: advanced model documentation governance
+  level: advanced
+  requires_scope: true
+- id: skill-135
+  domain: AI Governance
+  name: AI incident governance
+  level: core
+  requires_scope: true
+- id: skill-136
+  domain: AI Governance
+  name: advanced AI incident governance
+  level: advanced
+  requires_scope: true
+- id: skill-137
+  domain: AI Governance
+  name: NIST AI RMF mapping
+  level: core
+  requires_scope: true
+- id: skill-138
+  domain: AI Governance
+  name: advanced NIST AI RMF mapping
+  level: advanced
+  requires_scope: true
+- id: skill-139
+  domain: AI Governance
+  name: AI Act applicability triage
+  level: core
+  requires_scope: true
+- id: skill-140
+  domain: AI Governance
+  name: advanced AI Act applicability triage
+  level: advanced
+  requires_scope: true
+- id: skill-141
+  domain: Third Party
+  name: vendor inherent risk classification
+  level: core
+  requires_scope: true
+- id: skill-142
+  domain: Third Party
+  name: advanced vendor inherent risk classification
+  level: advanced
+  requires_scope: true
+- id: skill-143
+  domain: Third Party
+  name: vendor due diligence
+  level: core
+  requires_scope: true
+- id: skill-144
+  domain: Third Party
+  name: advanced vendor due diligence
+  level: advanced
+  requires_scope: true
+- id: skill-145
+  domain: Third Party
+  name: SOC report review
+  level: core
+  requires_scope: true
+- id: skill-146
+  domain: Third Party
+  name: advanced SOC report review
+  level: advanced
+  requires_scope: true
+- id: skill-147
+  domain: Third Party
+  name: certification evidence review
+  level: core
+  requires_scope: true
+- id: skill-148
+  domain: Third Party
+  name: advanced certification evidence review
+  level: advanced
+  requires_scope: true
+- id: skill-149
+  domain: Third Party
+  name: subprocessor review
+  level: core
+  requires_scope: true
+- id: skill-150
+  domain: Third Party
+  name: advanced subprocessor review
+  level: advanced
+  requires_scope: true
+- id: skill-151
+  domain: Third Party
+  name: vendor finding tracking
+  level: core
+  requires_scope: true
+- id: skill-152
+  domain: Third Party
+  name: advanced vendor finding tracking
+  level: advanced
+  requires_scope: true
+- id: skill-153
+  domain: Third Party
+  name: vendor access governance
+  level: core
+  requires_scope: true
+- id: skill-154
+  domain: Third Party
+  name: advanced vendor access governance
+  level: advanced
+  requires_scope: true
+- id: skill-155
+  domain: Third Party
+  name: vendor reassessment
+  level: core
+  requires_scope: true
+- id: skill-156
+  domain: Third Party
+  name: advanced vendor reassessment
+  level: advanced
+  requires_scope: true
+- id: skill-157
+  domain: Third Party
+  name: contract control mapping
+  level: core
+  requires_scope: true
+- id: skill-158
+  domain: Third Party
+  name: advanced contract control mapping
+  level: advanced
+  requires_scope: true
+- id: skill-159
+  domain: Third Party
+  name: vendor offboarding governance
+  level: core
+  requires_scope: true
+- id: skill-160
+  domain: Third Party
+  name: advanced vendor offboarding governance
+  level: advanced
+  requires_scope: true
+- id: skill-161
+  domain: Security & Resilience
+  name: security control evidence review
+  level: core
+  requires_scope: true
+- id: skill-162
+  domain: Security & Resilience
+  name: advanced security control evidence review
+  level: advanced
+  requires_scope: true
+- id: skill-163
+  domain: Security & Resilience
+  name: vulnerability governance
+  level: core
+  requires_scope: true
+- id: skill-164
+  domain: Security & Resilience
+  name: advanced vulnerability governance
+  level: advanced
+  requires_scope: true
+- id: skill-165
+  domain: Security & Resilience
+  name: patch compliance review
+  level: core
+  requires_scope: true
+- id: skill-166
+  domain: Security & Resilience
+  name: advanced patch compliance review
+  level: advanced
+  requires_scope: true
+- id: skill-167
+  domain: Security & Resilience
+  name: incident evidence review
+  level: core
+  requires_scope: true
+- id: skill-168
+  domain: Security & Resilience
+  name: advanced incident evidence review
+  level: advanced
+  requires_scope: true
+- id: skill-169
+  domain: Security & Resilience
+  name: backup evidence review
+  level: core
+  requires_scope: true
+- id: skill-170
+  domain: Security & Resilience
+  name: advanced backup evidence review
+  level: advanced
+  requires_scope: true
+- id: skill-171
+  domain: Security & Resilience
+  name: restore test review
+  level: core
+  requires_scope: true
+- id: skill-172
+  domain: Security & Resilience
+  name: advanced restore test review
+  level: advanced
+  requires_scope: true
+- id: skill-173
+  domain: Security & Resilience
+  name: DR governance
+  level: core
+  requires_scope: true
+- id: skill-174
+  domain: Security & Resilience
+  name: advanced DR governance
+  level: advanced
+  requires_scope: true
+- id: skill-175
+  domain: Security & Resilience
+  name: BCP evidence review
+  level: core
+  requires_scope: true
+- id: skill-176
+  domain: Security & Resilience
+  name: advanced BCP evidence review
+  level: advanced
+  requires_scope: true
+- id: skill-177
+  domain: Security & Resilience
+  name: security exception coordination
+  level: core
+  requires_scope: true
+- id: skill-178
+  domain: Security & Resilience
+  name: advanced security exception coordination
+  level: advanced
+  requires_scope: true
+- id: skill-179
+  domain: Security & Resilience
+  name: supply chain control mapping
+  level: core
+  requires_scope: true
+- id: skill-180
+  domain: Security & Resilience
+  name: advanced supply chain control mapping
+  level: advanced
+  requires_scope: true
+- id: skill-181
+  domain: Change & Release
+  name: compliance change impact
+  level: core
+  requires_scope: true
+- id: skill-182
+  domain: Change & Release
+  name: advanced compliance change impact
+  level: advanced
+  requires_scope: true
+- id: skill-183
+  domain: Change & Release
+  name: release control review
+  level: core
+  requires_scope: true
+- id: skill-184
+  domain: Change & Release
+  name: advanced release control review
+  level: advanced
+  requires_scope: true
+- id: skill-185
+  domain: Change & Release
+  name: emergency change governance
+  level: core
+  requires_scope: true
+- id: skill-186
+  domain: Change & Release
+  name: advanced emergency change governance
+  level: advanced
+  requires_scope: true
+- id: skill-187
+  domain: Change & Release
+  name: database change governance
+  level: core
+  requires_scope: true
+- id: skill-188
+  domain: Change & Release
+  name: advanced database change governance
+  level: advanced
+  requires_scope: true
+- id: skill-189
+  domain: Change & Release
+  name: architecture change governance
+  level: core
+  requires_scope: true
+- id: skill-190
+  domain: Change & Release
+  name: advanced architecture change governance
+  level: advanced
+  requires_scope: true
+- id: skill-191
+  domain: Change & Release
+  name: AI model release governance
+  level: core
+  requires_scope: true
+- id: skill-192
+  domain: Change & Release
+  name: advanced AI model release governance
+  level: advanced
+  requires_scope: true
+- id: skill-193
+  domain: Change & Release
+  name: pipeline segregation review
+  level: core
+  requires_scope: true
+- id: skill-194
+  domain: Change & Release
+  name: advanced pipeline segregation review
+  level: advanced
+  requires_scope: true
+- id: skill-195
+  domain: Change & Release
+  name: rollback evidence review
+  level: core
+  requires_scope: true
+- id: skill-196
+  domain: Change & Release
+  name: advanced rollback evidence review
+  level: advanced
+  requires_scope: true
+- id: skill-197
+  domain: Change & Release
+  name: configuration governance
+  level: core
+  requires_scope: true
+- id: skill-198
+  domain: Change & Release
+  name: advanced configuration governance
+  level: advanced
+  requires_scope: true
+- id: skill-199
+  domain: Change & Release
+  name: change approval evidence
+  level: core
+  requires_scope: true
+- id: skill-200
+  domain: Change & Release
+  name: advanced change approval evidence
+  level: advanced
+  requires_scope: true
+- id: skill-201
+  domain: Automation & Data
+  name: control automation design
+  level: core
+  requires_scope: true
+- id: skill-202
+  domain: Automation & Data
+  name: advanced control automation design
+  level: advanced
+  requires_scope: true
+- id: skill-203
+  domain: Automation & Data
+  name: read-only evidence collection
+  level: core
+  requires_scope: true
+- id: skill-204
+  domain: Automation & Data
+  name: advanced read-only evidence collection
+  level: advanced
+  requires_scope: true
+- id: skill-205
+  domain: Automation & Data
+  name: bounded SQL evidence queries
+  level: core
+  requires_scope: true
+- id: skill-206
+  domain: Automation & Data
+  name: advanced bounded SQL evidence queries
+  level: advanced
+  requires_scope: true
+- id: skill-207
+  domain: Automation & Data
+  name: API evidence retrieval
+  level: core
+  requires_scope: true
+- id: skill-208
+  domain: Automation & Data
+  name: advanced API evidence retrieval
+  level: advanced
+  requires_scope: true
+- id: skill-209
+  domain: Automation & Data
+  name: log evidence filtering
+  level: core
+  requires_scope: true
+- id: skill-210
+  domain: Automation & Data
+  name: advanced log evidence filtering
+  level: advanced
+  requires_scope: true
+- id: skill-211
+  domain: Automation & Data
+  name: metrics computation
+  level: core
+  requires_scope: true
+- id: skill-212
+  domain: Automation & Data
+  name: advanced metrics computation
+  level: advanced
+  requires_scope: true
+- id: skill-213
+  domain: Automation & Data
+  name: evidence manifest generation
+  level: core
+  requires_scope: true
+- id: skill-214
+  domain: Automation & Data
+  name: advanced evidence manifest generation
+  level: advanced
+  requires_scope: true
+- id: skill-215
+  domain: Automation & Data
+  name: schema validation
+  level: core
+  requires_scope: true
+- id: skill-216
+  domain: Automation & Data
+  name: advanced schema validation
+  level: advanced
+  requires_scope: true
+- id: skill-217
+  domain: Automation & Data
+  name: policy-as-code evaluation
+  level: core
+  requires_scope: true
+- id: skill-218
+  domain: Automation & Data
+  name: advanced policy-as-code evaluation
+  level: advanced
+  requires_scope: true
+- id: skill-219
+  domain: Automation & Data
+  name: drift detection
+  level: core
+  requires_scope: true
+- id: skill-220
+  domain: Automation & Data
+  name: advanced drift detection
+  level: advanced
+  requires_scope: true
+- id: skill-221
+  domain: Reporting & Communication
+  name: executive compliance brief
+  level: core
+  requires_scope: true
+- id: skill-222
+  domain: Reporting & Communication
+  name: advanced executive compliance brief
+  level: advanced
+  requires_scope: true
+- id: skill-223
+  domain: Reporting & Communication
+  name: board risk indicators
+  level: core
+  requires_scope: true
+- id: skill-224
+  domain: Reporting & Communication
+  name: advanced board risk indicators
+  level: advanced
+  requires_scope: true
+- id: skill-225
+  domain: Reporting & Communication
+  name: audit status reporting
+  level: core
+  requires_scope: true
+- id: skill-226
+  domain: Reporting & Communication
+  name: advanced audit status reporting
+  level: advanced
+  requires_scope: true
+- id: skill-227
+  domain: Reporting & Communication
+  name: finding aging reporting
+  level: core
+  requires_scope: true
+- id: skill-228
+  domain: Reporting & Communication
+  name: advanced finding aging reporting
+  level: advanced
+  requires_scope: true
+- id: skill-229
+  domain: Reporting & Communication
+  name: exception reporting
+  level: core
+  requires_scope: true
+- id: skill-230
+  domain: Reporting & Communication
+  name: advanced exception reporting
+  level: advanced
+  requires_scope: true
+- id: skill-231
+  domain: Reporting & Communication
+  name: framework coverage reporting
+  level: core
+  requires_scope: true
+- id: skill-232
+  domain: Reporting & Communication
+  name: advanced framework coverage reporting
+  level: advanced
+  requires_scope: true
+- id: skill-233
+  domain: Reporting & Communication
+  name: customer assurance drafting
+  level: core
+  requires_scope: true
+- id: skill-234
+  domain: Reporting & Communication
+  name: advanced customer assurance drafting
+  level: advanced
+  requires_scope: true
+- id: skill-235
+  domain: Reporting & Communication
+  name: governance meeting pack
+  level: core
+  requires_scope: true
+- id: skill-236
+  domain: Reporting & Communication
+  name: advanced governance meeting pack
+  level: advanced
+  requires_scope: true
+- id: skill-237
+  domain: Reporting & Communication
+  name: decision log maintenance
+  level: core
+  requires_scope: true
+- id: skill-238
+  domain: Reporting & Communication
+  name: advanced decision log maintenance
+  level: advanced
+  requires_scope: true
+- id: skill-239
+  domain: Reporting & Communication
+  name: metric limitation documentation
+  level: core
+  requires_scope: true
+- id: skill-240
+  domain: Reporting & Communication
+  name: advanced metric limitation documentation
+  level: advanced
+  requires_scope: true

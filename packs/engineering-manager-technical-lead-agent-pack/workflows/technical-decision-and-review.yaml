@@ -1,0 +1,69 @@
+apiVersion: engineering-manager-technical-lead-agent-pack/v1
+kind: AgentWorkflow
+metadata:
+  name: technical-decision-and-review
+  title: Technical Decision and Review
+  version: 1.0.0
+spec:
+  trigger:
+  - technical_decision_needed
+  - architecture_deviation
+  - high_risk_pull_request
+  objective: Produce reviewed technical options and a human-owned decision with implementation controls.
+  supervisor: engineering-leadership-supervisor
+  execution:
+    mode: stateful
+    defaultPolicy: deny
+    evidenceRequired: true
+    approvalBinding: payload-hash
+    resumeFromCheckpoint: true
+  stages:
+  - id: context
+    agent: technical-direction
+    skills:
+    - engineering-leadership.repository-profile
+    - engineering-leadership.technical-risk-register
+    - engineering-leadership.constraint-register
+    gate: authorization
+  - id: architecture
+    agent: architecture-alignment
+    skills:
+    - engineering-leadership.adr-conformance
+    - engineering-leadership.system-boundary-review
+    - engineering-leadership.quality-attribute-alignment
+  - id: options
+    agent: technical-direction
+    skills:
+    - engineering-leadership.implementation-option-analysis
+    - engineering-leadership.proof-of-concept-design
+    - engineering-leadership.technical-decision-record
+  - id: parallel-reviews
+    agent: independent-engineering-review
+    skills:
+    - engineering-leadership.security-requirement-check
+    - engineering-leadership.slo-review
+    - engineering-leadership.test-strategy-review
+    - engineering-leadership.cost-risk-tradeoff
+  - id: decision-request
+    agent: engineering-leadership-supervisor
+    skills:
+    - engineering-leadership.payload-hash-approval
+    - engineering-leadership.decision-summary
+    - engineering-leadership.commitment-boundary-check
+    gate: payload-bound-approval
+  - id: implementation-handoff
+    agent: technical-direction
+    skills:
+    - engineering-leadership.change-decomposition
+    - engineering-leadership.reviewer-selection
+    - engineering-leadership.implementation-conformance-check
+  outputs:
+  - technical-decision-record
+  - architecture-alignment-report
+  - engineering-risk-register
+  - approval-request
+  terminalStates:
+  - completed
+  - rejected
+  - blocked
+  - cancelled

@@ -1,0 +1,59 @@
+apiVersion: python-developer-agent-pack/v1
+kind: Workflow
+metadata:
+  name: bug-fix-and-refactor
+  version: 1.0.0
+spec:
+  trigger: bug-or-refactor-approved
+  initialState: requested
+  steps:
+  - id: reproduce
+    agent: test-engineer
+    outputs:
+    - reproduction-artifact
+  - id: root-cause
+    agent: architecture-analyzer
+    outputs:
+    - root-cause-report
+    dependsOn:
+    - reproduce
+  - id: characterization-test
+    agent: test-engineer
+    uses:
+    - python.pytest-unit
+    - python.integration-tests
+    outputs:
+    - failing-test
+    dependsOn:
+    - root-cause
+  - id: patch
+    agent: domain-implementation
+    outputs:
+    - patch
+    dependsOn:
+    - characterization-test
+  - id: regression
+    agent: test-engineer
+    uses:
+    - python.flaky-test-analysis
+    - python.coverage-analysis
+    outputs:
+    - quality-gate-report
+    dependsOn:
+    - patch
+  - id: review
+    parallel: true
+    agents:
+    - security-reviewer
+    - performance-reliability
+    - code-review
+    outputs:
+    - review-reports
+    dependsOn:
+    - regression
+  - id: draft-pr
+    agent: pr-release
+    outputs:
+    - pull-request-draft
+    dependsOn:
+    - review

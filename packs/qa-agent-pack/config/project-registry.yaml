@@ -1,0 +1,48 @@
+apiVersion: qa-agent-pack/v1
+kind: ProjectRegistry
+projects:
+  - id: PCC
+    displayName: PCC
+    jira:
+      projectKey: ""
+      deploymentType: unknown # cloud | data-center
+    source:
+      provider: bitbucket
+      workspaceOrProject: ""
+      repositories:
+        frontend:
+          url: ""
+          technology: Angular 12
+        backend:
+          url: ""
+          technology: Java
+    environments:
+      playground: { url: "", apiBaseUrl: "", databaseRef: "", featureFlagProfile: "" }
+      qa: { url: "", apiBaseUrl: "", databaseRef: "", featureFlagProfile: "" }
+      prod: { url: "", apiBaseUrl: "", databaseRef: "", featureFlagProfile: "", mode: read-only }
+  - id: SOP
+    displayName: SOP
+    jira: { projectKey: "", deploymentType: unknown }
+    source:
+      provider: bitbucket
+      workspaceOrProject: ""
+      repositories:
+        frontend: { url: "", technology: Angular 15 }
+        backend: { url: "", technology: Java }
+    environments:
+      playground: { url: "", apiBaseUrl: "", databaseRef: "" }
+      qa: { url: "", apiBaseUrl: "", databaseRef: "" }
+      prod: { url: "", apiBaseUrl: "", databaseRef: "", mode: read-only }
+  - id: DataBridge
+    displayName: DataBridge
+    jira: { projectKey: "", deploymentType: unknown }
+    source:
+      provider: bitbucket
+      workspaceOrProject: ""
+      repositories:
+        frontend: { url: "", technology: AngularJS }
+        backend: { url: "", technology: Java }
+    environments:
+      playground: { url: "", apiBaseUrl: "", databaseRef: "" }
+      qa: { url: "", apiBaseUrl: "", databaseRef: "" }
+      prod: { url: "", apiBaseUrl: "", databaseRef: "", mode: read-only }

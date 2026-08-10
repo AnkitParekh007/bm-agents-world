@@ -1,0 +1,83 @@
+apiVersion: solution-architect-agent-pack/v1
+kind: AgentWorkflow
+metadata:
+  name: architecture-option-evaluation
+  title: Architecture Option Evaluation
+  version: 1.0.0
+spec:
+  trigger:
+  - technology_choice
+  - platform_choice
+  - buy_vs_build
+  - architecture_tradeoff
+  objective: Compare viable options against explicit quality attributes, constraints, risk, cost, and evidence.
+  supervisor: solution-architect-supervisor
+  execution:
+    mode: stateful
+    defaultPolicy: deny
+    evidenceRequired: true
+    approvalBinding: payload-hash
+    resumeFromCheckpoint: true
+  stages:
+  - id: frame-decision
+    agent: business-product-context
+    skills:
+    - architecture.scope-boundary
+    - architecture.assumption-register
+    - architecture.constraint-register
+    gate: authorization
+  - id: define-criteria
+    agent: quality-attribute-analysis
+    skills:
+    - architecture.quality-attribute-workshop
+    - architecture.acceptance-evidence-plan
+    - architecture.nfr-conflict-analysis
+  - id: generate-options
+    agent: application-architecture
+    skills:
+    - architecture.option-comparison
+    - architecture.poc-design
+    minimumOptions: 2
+  - id: specialist-assessment
+    agent: solution-architect-supervisor
+    skills:
+    - architecture.architecture-risk-register
+    parallelDelegates:
+    - security-architecture
+    - reliability-resilience
+    - performance-scalability
+    - data-architecture
+    - cost-sustainability
+    - platform-developer-experience
+  - id: bounded-poc
+    agent: platform-developer-experience
+    skills:
+    - architecture.poc-design
+    optional: true
+    gate: nonproduction-poc
+  - id: tradeoff-review
+    agent: architecture-review
+    skills:
+    - architecture.atam-review
+    - architecture.evidence-quality-check
+  - id: recommendation
+    agent: vendor-technology-evaluation
+    skills:
+    - architecture.option-comparison
+    - architecture.executive-architecture-summary
+    gate: vendor-or-commercial-recommendation-when-applicable
+  - id: decision
+    agent: decision-governance
+    skills:
+    - architecture.adr-authoring
+    gate: publish-architecture-decision
+  outputs:
+  - architecture-options
+  - poc-evidence
+  - architecture-review-report
+  - architecture-decision-record
+  terminalStates:
+  - completed
+  - rejected
+  - blocked
+  - cancelled

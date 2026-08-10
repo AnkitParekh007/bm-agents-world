@@ -1,0 +1,43 @@
+name: content-audit-and-maintenance
+version: 1.0.0
+trigger: scheduled review, product change, feedback threshold, zero-result pattern, or owner request
+scope_binding:
+- project
+- documentation_collection
+- audience
+- product_version
+- source_revision
+- publication_target
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: validate collection, analytics scope, customer isolation, and remediation permissions
+- id: inventory
+  agent: documentation-context-agent
+  action: inventory pages, owners, products, versions, sources, status, and last verification
+- id: analytics
+  agent: documentation-analytics-agent
+  action: analyze approved usage, search, feedback, support, and task-success evidence
+- id: structure
+  agent: information-architecture-agent
+  action: detect duplicates, orphans, fragmented journeys, taxonomy, and navigation problems
+- id: quality
+  agent: content-quality-agent
+  action: detect stale, inaccurate, incomplete, broken, inaccessible, and unowned content
+- id: prioritize
+  agent: content-strategy-agent
+  action: prioritize remediation by user impact, risk, evidence, effort, and lifecycle
+- id: review
+  agent: documentation-reviewer-agent
+  action: independently review deletion, consolidation, redirect, and high-risk update proposals
+- id: plan
+  agent: technical-writer-supervisor
+  action: create remediation backlog, owners, milestones, and publication requests
+- id: evidence
+  agent: evidence-management-agent
+  action: archive audit inputs, findings, decisions, and payload hashes
+outputs:
+- content-audit-report
+- documentation-plan
+- documentation-status-update
+failure_behavior: do not delete or redirect public content without an accountable owner, impact review, and approval

@@ -1,0 +1,85 @@
+apiVersion: engineering-manager-technical-lead-agent-pack/v1
+kind: ApprovalPolicyRegistry
+metadata:
+  name: engineering-leadership-approval-policies
+  version: 1.0.0
+spec:
+  default: deny
+  policies:
+  - id: publish-work-management
+    actions:
+    - jira_write
+    - confluence_publish
+    - teams_post
+    approvers:
+    - accountable-engineering-manager
+    payloadHashRequired: true
+  - id: repository-write
+    actions:
+    - bitbucket_write
+    - create_pull_request
+    - retry_pipeline
+    approvers:
+    - repository-owner
+    payloadHashRequired: true
+  - id: technical-decision
+    actions:
+    - publish_technical_decision
+    - publish_architecture_exception
+    approvers:
+    - technical-owner
+    - solution-architect-if-cross-system
+    independentReviewFor:
+    - high
+    - critical
+  - id: release-recommendation
+    actions:
+    - publish_release_recommendation
+    - request_production_change
+    approvers:
+    - release-owner
+    - product-owner
+    independentReviewFor:
+    - high
+    - critical
+  - id: people-sensitive-publication
+    actions:
+    - publish_one_on_one_artifact
+    - publish_growth_plan
+    - publish_team_health_summary
+    - publish_candidate_summary
+    approvers:
+    - human-manager
+    purposeBound: true
+    employeeConsentOrPolicyBasisRequired: true
+  - id: hiring-action
+    actions:
+    - schedule_interview
+    - publish_interview_feedback
+    - advance_candidate
+    approvers:
+    - authorized-recruiter
+    - hiring-manager
+    agentMayDecide: false
+  - id: nonproduction-execution
+    actions:
+    - run_bounded_nonproduction_test
+    - provision_nonproduction_workspace
+    approvers:
+    - environment-owner
+    timeBound: true
+  - id: production
+    actions:
+    - production_deploy
+    - production_rollback
+    - production_mutation
+    decision: prohibited-to-free-form-agent
+  - id: employment-decisions
+    actions:
+    - performance_rating
+    - promotion_decision
+    - compensation_decision
+    - disciplinary_action
+    - termination_decision
+    - medical_or_wellbeing_diagnosis
+    decision: human-only-prohibited-to-agent

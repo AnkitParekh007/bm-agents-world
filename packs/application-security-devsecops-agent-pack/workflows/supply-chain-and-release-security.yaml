@@ -1,0 +1,60 @@
+name: supply-chain-and-release-security
+version: 1.0.0
+trigger: release candidate, image, package, infrastructure change, or security gate checkpoint
+scope_binding:
+- project
+- release
+- candidate_hash
+- artifacts
+- environments
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: validate candidate, artifacts, environment, evidence, and gate scope
+- id: pipeline
+  agent: ci-cd-security-agent
+  action: review source controls, runners, identities, build, promotion, and deployment separation
+- id: supply-chain
+  agent: supply-chain-provenance-agent
+  action: verify source, provenance, attestations, signatures, and trusted builds
+- id: sbom
+  agent: sbom-vex-agent
+  action: generate and validate SBOM and evidence-backed VEX
+- id: container
+  agent: container-image-security-agent
+  action: review final image digest, packages, configuration, and provenance
+  parallel_group: platform
+- id: iac
+  agent: iac-security-agent
+  action: review infrastructure code and final plan
+  parallel_group: platform
+- id: kubernetes
+  agent: kubernetes-security-agent
+  action: review manifests, RBAC, network, secrets, and admission controls
+  parallel_group: platform
+- id: cloud
+  agent: cloud-platform-security-agent
+  action: review scoped cloud posture and change impact
+  parallel_group: platform
+- id: triage
+  agent: vulnerability-triage-agent
+  action: validate candidate-bound findings and exceptions
+- id: gate
+  agent: security-assurance-reviewer-agent
+  action: independently review security readiness and evidence gaps
+- id: decision
+  agent: application-security-devsecops-supervisor
+  action: prepare ready, conditional, blocked, or unknown options; final decision is human-owned
+outputs:
+- ci-cd-security-review
+- software-bill-of-materials
+- vulnerability-exploitability-exchange
+- supply-chain-assurance-report
+- container-security-report
+- iac-security-report
+- kubernetes-security-report
+- cloud-security-posture-report
+- security-release-readiness-report
+- security-gate-decision-pack
+failure_behavior: mismatched candidate hashes, unsigned artifacts, missing required scans, or stale exceptions block
+  readiness

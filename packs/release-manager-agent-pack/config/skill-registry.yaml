@@ -1,0 +1,1269 @@
+version: 1.0.0
+skill_count: 253
+skills:
+- id: distinguish-release-management-from-deployment-execution-and-change-approval
+  name: Distinguish release management from deployment execution and change approval
+  category: Release management foundations
+  risk: low
+  requires_human_approval: false
+- id: classify-standard-normal-major-minor-patch-hotfix-emergency-infrastructure-database-and-configuration-releases
+  name: Classify standard, normal, major, minor, patch, hotfix, emergency, infrastructure, database, and configuration
+    releases
+  category: Release management foundations
+  risk: low
+  requires_human_approval: false
+- id: apply-product-service-project-environment-and-customer-boundaries
+  name: Apply product, service, project, environment, and customer boundaries
+  category: Release management foundations
+  risk: low
+  requires_human_approval: false
+- id: use-release-trains-without-forcing-unrelated-changes-into-one-release
+  name: Use release trains without forcing unrelated changes into one release
+  category: Release management foundations
+  risk: low
+  requires_human_approval: false
+- id: maintain-a-single-authoritative-release-identifier
+  name: Maintain a single authoritative release identifier
+  category: Release management foundations
+  risk: low
+  requires_human_approval: false
+- id: separate-planning-status-from-actual-deployed-state
+  name: Separate planning status from actual deployed state
+  category: Release management foundations
+  risk: low
+  requires_human_approval: false
+- id: preserve-accountable-human-decision-ownership
+  name: Preserve accountable human decision ownership
+  category: Release management foundations
+  risk: low
+  requires_human_approval: false
+- id: apply-proportional-governance-based-on-risk
+  name: Apply proportional governance based on risk
+  category: Release management foundations
+  risk: low
+  requires_human_approval: false
+- id: maintain-end-to-end-traceability-from-request-to-production-evidence
+  name: Maintain end-to-end traceability from request to production evidence
+  category: Release management foundations
+  risk: low
+  requires_human_approval: false
+- id: use-release-criteria-rather-than-ticket-status-alone
+  name: Use release criteria rather than ticket status alone
+  category: Release management foundations
+  risk: low
+  requires_human_approval: false
+- id: recognize-release-deployment-change-incident-and-problem-relationships
+  name: Recognize release, deployment, change, incident, and problem relationships
+  category: Release management foundations
+  risk: low
+  requires_human_approval: false
+- id: apply-continual-improvement-to-release-operations
+  name: Apply continual improvement to release operations
+  category: Release management foundations
+  risk: low
+  requires_human_approval: false
+- id: qualify-release-requests
+  name: Qualify release requests
+  category: Release intake and scope
+  risk: low
+  requires_human_approval: false
+- id: identify-accountable-owners
+  name: Identify accountable owners
+  category: Release intake and scope
+  risk: low
+  requires_human_approval: false
+- id: validate-requested-environments-and-windows
+  name: Validate requested environments and windows
+  category: Release intake and scope
+  risk: low
+  requires_human_approval: false
+- id: detect-duplicate-and-overlapping-releases
+  name: Detect duplicate and overlapping releases
+  category: Release intake and scope
+  risk: low
+  requires_human_approval: false
+- id: build-release-scope-from-approved-work-items
+  name: Build release scope from approved work items
+  category: Release intake and scope
+  risk: low
+  requires_human_approval: false
+- id: separate-committed-optional-deferred-and-excluded-scope
+  name: Separate committed, optional, deferred, and excluded scope
+  category: Release intake and scope
+  risk: low
+  requires_human_approval: false
+- id: detect-orphaned-commits-and-artifacts
+  name: Detect orphaned commits and artifacts
+  category: Release intake and scope
+  risk: low
+  requires_human_approval: false
+- id: detect-completed-tickets-missing-from-the-candidate
+  name: Detect completed tickets missing from the candidate
+  category: Release intake and scope
+  risk: low
+  requires_human_approval: false
+- id: control-late-scope-additions
+  name: Control late scope additions
+  category: Release intake and scope
+  risk: low
+  requires_human_approval: false
+- id: record-assumptions-and-missing-information
+  name: Record assumptions and missing information
+  category: Release intake and scope
+  risk: low
+  requires_human_approval: false
+- id: bind-scope-to-immutable-source-references
+  name: Bind scope to immutable source references
+  category: Release intake and scope
+  risk: low
+  requires_human_approval: false
+- id: create-a-release-bill-of-materials
+  name: Create a release bill of materials
+  category: Release intake and scope
+  risk: low
+  requires_human_approval: false
+- id: compare-candidate-scope-with-deployed-baseline
+  name: Compare candidate scope with deployed baseline
+  category: Release intake and scope
+  risk: low
+  requires_human_approval: false
+- id: prepare-a-scope-freeze-decision-package
+  name: Prepare a scope freeze decision package
+  category: Release intake and scope
+  risk: low
+  requires_human_approval: false
+- id: reject-incomplete-release-requests-safely
+  name: Reject incomplete release requests safely
+  category: Release intake and scope
+  risk: low
+  requires_human_approval: false
+- id: apply-semantic-versioning-when-approved
+  name: Apply semantic versioning when approved
+  category: Versioning and artifact identity
+  risk: low
+  requires_human_approval: false
+- id: apply-organization-specific-version-conventions
+  name: Apply organization-specific version conventions
+  category: Versioning and artifact identity
+  risk: low
+  requires_human_approval: false
+- id: map-application-api-database-image-package-and-infrastructure-versions
+  name: Map application, API, database, image, package, and infrastructure versions
+  category: Versioning and artifact identity
+  risk: low
+  requires_human_approval: false
+- id: validate-artifact-names-and-build-numbers
+  name: Validate artifact names and build numbers
+  category: Versioning and artifact identity
+  risk: low
+  requires_human_approval: false
+- id: capture-commit-hashes-and-image-digests
+  name: Capture commit hashes and image digests
+  category: Versioning and artifact identity
+  risk: low
+  requires_human_approval: false
+- id: build-a-machine-readable-artifact-manifest
+  name: Build a machine-readable artifact manifest
+  category: Versioning and artifact identity
+  risk: low
+  requires_human_approval: false
+- id: verify-checksums-and-signatures
+  name: Verify checksums and signatures
+  category: Versioning and artifact identity
+  risk: low
+  requires_human_approval: false
+- id: verify-artifact-provenance
+  name: Verify artifact provenance
+  category: Versioning and artifact identity
+  risk: low
+  requires_human_approval: false
+- id: detect-mutable-tags-and-floating-versions
+  name: Detect mutable tags and floating versions
+  category: Versioning and artifact identity
+  risk: low
+  requires_human_approval: false
+- id: verify-candidate-immutability
+  name: Verify candidate immutability
+  category: Versioning and artifact identity
+  risk: low
+  requires_human_approval: false
+- id: map-release-versions-to-jira-fix-versions
+  name: Map release versions to Jira fix versions
+  category: Versioning and artifact identity
+  risk: low
+  requires_human_approval: false
+- id: identify-deprecations-and-removals
+  name: Identify deprecations and removals
+  category: Versioning and artifact identity
+  risk: low
+  requires_human_approval: false
+- id: prepare-compatibility-and-support-matrices
+  name: Prepare compatibility and support matrices
+  category: Versioning and artifact identity
+  risk: low
+  requires_human_approval: false
+- id: validate-release-notes-against-delivered-artifacts
+  name: Validate release notes against delivered artifacts
+  category: Versioning and artifact identity
+  risk: low
+  requires_human_approval: false
+- id: create-integrated-release-plans
+  name: Create integrated release plans
+  category: Release planning and calendars
+  risk: low
+  requires_human_approval: false
+- id: define-release-milestones-and-gates
+  name: Define release milestones and gates
+  category: Release planning and calendars
+  risk: low
+  requires_human_approval: false
+- id: coordinate-blackout-and-freeze-windows
+  name: Coordinate blackout and freeze windows
+  category: Release planning and calendars
+  risk: low
+  requires_human_approval: false
+- id: coordinate-maintenance-windows
+  name: Coordinate maintenance windows
+  category: Release planning and calendars
+  risk: low
+  requires_human_approval: false
+- id: coordinate-multi-project-release-sequencing
+  name: Coordinate multi-project release sequencing
+  category: Release planning and calendars
+  risk: low
+  requires_human_approval: false
+- id: use-timezone-safe-planning
+  name: Use timezone-safe planning
+  category: Release planning and calendars
+  risk: low
+  requires_human_approval: false
+- id: plan-rehearsals-and-dry-runs
+  name: Plan rehearsals and dry runs
+  category: Release planning and calendars
+  risk: low
+  requires_human_approval: false
+- id: plan-contingency-without-making-guarantees
+  name: Plan contingency without making guarantees
+  category: Release planning and calendars
+  risk: low
+  requires_human_approval: false
+- id: resolve-calendar-conflicts-through-human-decisions
+  name: Resolve calendar conflicts through human decisions
+  category: Release planning and calendars
+  risk: low
+  requires_human_approval: false
+- id: maintain-a-release-train-calendar
+  name: Maintain a release train calendar
+  category: Release planning and calendars
+  risk: low
+  requires_human_approval: false
+- id: plan-regional-and-ring-based-rollouts
+  name: Plan regional and ring-based rollouts
+  category: Release planning and calendars
+  risk: low
+  requires_human_approval: false
+- id: estimate-duration-from-comparable-evidence
+  name: Estimate duration from comparable evidence
+  category: Release planning and calendars
+  risk: low
+  requires_human_approval: false
+- id: coordinate-vendor-support-windows
+  name: Coordinate vendor support windows
+  category: Release planning and calendars
+  risk: low
+  requires_human_approval: false
+- id: maintain-one-authoritative-release-clock
+  name: Maintain one authoritative release clock
+  category: Release planning and calendars
+  risk: low
+  requires_human_approval: false
+- id: manage-schedule-changes-and-approved-notifications
+  name: Manage schedule changes and approved notifications
+  category: Release planning and calendars
+  risk: low
+  requires_human_approval: false
+- id: build-service-dependency-graphs
+  name: Build service dependency graphs
+  category: Dependency and compatibility
+  risk: low
+  requires_human_approval: false
+- id: map-api-consumers-and-providers
+  name: Map API consumers and providers
+  category: Dependency and compatibility
+  risk: low
+  requires_human_approval: false
+- id: map-event-producers-and-consumers
+  name: Map event producers and consumers
+  category: Dependency and compatibility
+  risk: low
+  requires_human_approval: false
+- id: map-database-and-data-dependencies
+  name: Map database and data dependencies
+  category: Dependency and compatibility
+  risk: low
+  requires_human_approval: false
+- id: map-infrastructure-and-network-dependencies
+  name: Map infrastructure and network dependencies
+  category: Dependency and compatibility
+  risk: low
+  requires_human_approval: false
+- id: map-identity-and-certificate-dependencies
+  name: Map identity and certificate dependencies
+  category: Dependency and compatibility
+  risk: low
+  requires_human_approval: false
+- id: map-vendor-and-third-party-dependencies
+  name: Map vendor and third-party dependencies
+  category: Dependency and compatibility
+  risk: low
+  requires_human_approval: false
+- id: validate-backward-compatibility
+  name: Validate backward compatibility
+  category: Dependency and compatibility
+  risk: low
+  requires_human_approval: false
+- id: validate-forward-compatibility
+  name: Validate forward compatibility
+  category: Dependency and compatibility
+  risk: low
+  requires_human_approval: false
+- id: validate-mixed-version-operation
+  name: Validate mixed-version operation
+  category: Dependency and compatibility
+  risk: low
+  requires_human_approval: false
+- id: validate-consumer-readiness
+  name: Validate consumer readiness
+  category: Dependency and compatibility
+  risk: low
+  requires_human_approval: false
+- id: validate-framework-and-runtime-compatibility
+  name: Validate framework and runtime compatibility
+  category: Dependency and compatibility
+  risk: low
+  requires_human_approval: false
+- id: track-dependency-owners-and-required-by-dates
+  name: Track dependency owners and required-by dates
+  category: Dependency and compatibility
+  risk: low
+  requires_human_approval: false
+- id: identify-critical-path-dependencies
+  name: Identify critical path dependencies
+  category: Dependency and compatibility
+  risk: low
+  requires_human_approval: false
+- id: validate-rollback-compatibility
+  name: Validate rollback compatibility
+  category: Dependency and compatibility
+  risk: low
+  requires_human_approval: false
+- id: map-acceptance-criteria-to-evidence
+  name: Map acceptance criteria to evidence
+  category: Quality and acceptance readiness
+  risk: low
+  requires_human_approval: false
+- id: aggregate-unit-and-component-test-evidence
+  name: Aggregate unit and component test evidence
+  category: Quality and acceptance readiness
+  risk: low
+  requires_human_approval: false
+- id: aggregate-integration-and-api-test-evidence
+  name: Aggregate integration and API test evidence
+  category: Quality and acceptance readiness
+  risk: low
+  requires_human_approval: false
+- id: aggregate-database-and-migration-test-evidence
+  name: Aggregate database and migration test evidence
+  category: Quality and acceptance readiness
+  risk: low
+  requires_human_approval: false
+- id: aggregate-end-to-end-and-regression-evidence
+  name: Aggregate end-to-end and regression evidence
+  category: Quality and acceptance readiness
+  risk: low
+  requires_human_approval: false
+- id: aggregate-accessibility-evidence
+  name: Aggregate accessibility evidence
+  category: Quality and acceptance readiness
+  risk: low
+  requires_human_approval: false
+- id: aggregate-performance-and-resilience-evidence
+  name: Aggregate performance and resilience evidence
+  category: Quality and acceptance readiness
+  risk: low
+  requires_human_approval: false
+- id: aggregate-security-test-evidence
+  name: Aggregate security test evidence
+  category: Quality and acceptance readiness
+  risk: low
+  requires_human_approval: false
+- id: evaluate-skipped-and-waived-tests
+  name: Evaluate skipped and waived tests
+  category: Quality and acceptance readiness
+  risk: low
+  requires_human_approval: false
+- id: evaluate-flaky-and-quarantined-tests
+  name: Evaluate flaky and quarantined tests
+  category: Quality and acceptance readiness
+  risk: low
+  requires_human_approval: false
+- id: assess-open-defect-release-impact
+  name: Assess open defect release impact
+  category: Quality and acceptance readiness
+  risk: low
+  requires_human_approval: false
+- id: validate-uat-and-business-acceptance
+  name: Validate UAT and business acceptance
+  category: Quality and acceptance readiness
+  risk: low
+  requires_human_approval: false
+- id: validate-exact-candidate-test-provenance
+  name: Validate exact-candidate test provenance
+  category: Quality and acceptance readiness
+  risk: low
+  requires_human_approval: false
+- id: prepare-a-quality-readiness-scorecard
+  name: Prepare a quality readiness scorecard
+  category: Quality and acceptance readiness
+  risk: low
+  requires_human_approval: false
+- id: identify-quality-evidence-gaps
+  name: Identify quality evidence gaps
+  category: Quality and acceptance readiness
+  risk: low
+  requires_human_approval: false
+- id: prevent-status-only-readiness-claims
+  name: Prevent status-only readiness claims
+  category: Quality and acceptance readiness
+  risk: low
+  requires_human_approval: false
+- id: aggregate-sast-dast-dependency-container-infrastructure-and-secret-scan-results
+  name: Aggregate SAST, DAST, dependency, container, infrastructure, and secret-scan results
+  category: Security and supply chain
+  risk: low
+  requires_human_approval: false
+- id: assess-unresolved-vulnerability-release-impact
+  name: Assess unresolved vulnerability release impact
+  category: Security and supply chain
+  risk: low
+  requires_human_approval: false
+- id: validate-security-exceptions-and-expiry
+  name: Validate security exceptions and expiry
+  category: Security and supply chain
+  risk: low
+  requires_human_approval: false
+- id: validate-software-bills-of-materials
+  name: Validate software bills of materials
+  category: Security and supply chain
+  risk: low
+  requires_human_approval: false
+- id: validate-artifact-signatures-and-provenance
+  name: Validate artifact signatures and provenance
+  category: Security and supply chain
+  risk: low
+  requires_human_approval: false
+- id: validate-license-policy-results
+  name: Validate license policy results
+  category: Security and supply chain
+  risk: low
+  requires_human_approval: false
+- id: detect-unapproved-binaries-and-packages
+  name: Detect unapproved binaries and packages
+  category: Security and supply chain
+  risk: low
+  requires_human_approval: false
+- id: verify-trusted-pipeline-origin
+  name: Verify trusted pipeline origin
+  category: Security and supply chain
+  risk: low
+  requires_human_approval: false
+- id: verify-separation-of-duties
+  name: Verify separation of duties
+  category: Security and supply chain
+  risk: low
+  requires_human_approval: false
+- id: verify-workload-identity-and-vault-references
+  name: Verify workload identity and vault references
+  category: Security and supply chain
+  risk: low
+  requires_human_approval: false
+- id: protect-signing-keys-from-model-context
+  name: Protect signing keys from model context
+  category: Security and supply chain
+  risk: low
+  requires_human_approval: false
+- id: assess-certificate-and-key-rotation-dependencies
+  name: Assess certificate and key rotation dependencies
+  category: Security and supply chain
+  risk: low
+  requires_human_approval: false
+- id: prepare-security-readiness-summaries
+  name: Prepare security readiness summaries
+  category: Security and supply chain
+  risk: low
+  requires_human_approval: false
+- id: escalate-material-security-risk
+  name: Escalate material security risk
+  category: Security and supply chain
+  risk: high
+  requires_human_approval: true
+- id: require-retrospective-controls-for-emergency-bypasses
+  name: Require retrospective controls for emergency bypasses
+  category: Security and supply chain
+  risk: low
+  requires_human_approval: false
+- id: validate-target-environment-health
+  name: Validate target environment health
+  category: Environment and infrastructure readiness
+  risk: low
+  requires_human_approval: false
+- id: validate-environment-inventory
+  name: Validate environment inventory
+  category: Environment and infrastructure readiness
+  risk: low
+  requires_human_approval: false
+- id: compare-configuration-across-environments
+  name: Compare configuration across environments
+  category: Environment and infrastructure readiness
+  risk: low
+  requires_human_approval: false
+- id: detect-configuration-drift
+  name: Detect configuration drift
+  category: Environment and infrastructure readiness
+  risk: low
+  requires_human_approval: false
+- id: validate-feature-flag-prerequisites
+  name: Validate feature-flag prerequisites
+  category: Environment and infrastructure readiness
+  risk: low
+  requires_human_approval: false
+- id: review-infrastructure-plans
+  name: Review infrastructure plans
+  category: Environment and infrastructure readiness
+  risk: low
+  requires_human_approval: false
+- id: review-kubernetes-manifests-and-rollout-configuration
+  name: Review Kubernetes manifests and rollout configuration
+  category: Environment and infrastructure readiness
+  risk: low
+  requires_human_approval: false
+- id: review-network-dns-tls-gateway-and-load-balancer-dependencies
+  name: Review network, DNS, TLS, gateway, and load-balancer dependencies
+  category: Environment and infrastructure readiness
+  risk: low
+  requires_human_approval: false
+- id: validate-capacity-headroom
+  name: Validate capacity headroom
+  category: Environment and infrastructure readiness
+  risk: low
+  requires_human_approval: false
+- id: validate-autoscaling-readiness
+  name: Validate autoscaling readiness
+  category: Environment and infrastructure readiness
+  risk: low
+  requires_human_approval: false
+- id: validate-monitoring-and-alerting-readiness
+  name: Validate monitoring and alerting readiness
+  category: Environment and infrastructure readiness
+  risk: low
+  requires_human_approval: false
+- id: validate-backup-and-restore-prerequisites
+  name: Validate backup and restore prerequisites
+  category: Environment and infrastructure readiness
+  risk: low
+  requires_human_approval: false
+- id: validate-least-privilege-deployment-identity
+  name: Validate least-privilege deployment identity
+  category: Environment and infrastructure readiness
+  risk: low
+  requires_human_approval: false
+- id: validate-platform-support-coverage
+  name: Validate platform support coverage
+  category: Environment and infrastructure readiness
+  risk: low
+  requires_human_approval: false
+- id: prepare-environment-readiness-reports
+  name: Prepare environment readiness reports
+  category: Environment and infrastructure readiness
+  risk: low
+  requires_human_approval: false
+- id: inventory-schema-and-data-changes
+  name: Inventory schema and data changes
+  category: Database and data release readiness
+  risk: low
+  requires_human_approval: false
+- id: validate-migration-ordering
+  name: Validate migration ordering
+  category: Database and data release readiness
+  risk: low
+  requires_human_approval: false
+- id: validate-expand-and-contract-migration-patterns
+  name: Validate expand-and-contract migration patterns
+  category: Database and data release readiness
+  risk: low
+  requires_human_approval: false
+- id: validate-migration-checksums
+  name: Validate migration checksums
+  category: Database and data release readiness
+  risk: low
+  requires_human_approval: false
+- id: validate-forward-sql-previews
+  name: Validate forward SQL previews
+  category: Database and data release readiness
+  risk: low
+  requires_human_approval: false
+- id: validate-rollback-or-restore-plans
+  name: Validate rollback or restore plans
+  category: Database and data release readiness
+  risk: low
+  requires_human_approval: false
+- id: assess-locking-and-transaction-risk
+  name: Assess locking and transaction risk
+  category: Database and data release readiness
+  risk: low
+  requires_human_approval: false
+- id: assess-duration-and-data-volume-risk
+  name: Assess duration and data-volume risk
+  category: Database and data release readiness
+  risk: low
+  requires_human_approval: false
+- id: assess-replication-and-log-growth-impact
+  name: Assess replication and log-growth impact
+  category: Database and data release readiness
+  risk: low
+  requires_human_approval: false
+- id: validate-data-backfill-resumability
+  name: Validate data backfill resumability
+  category: Database and data release readiness
+  risk: low
+  requires_human_approval: false
+- id: validate-reconciliation-queries
+  name: Validate reconciliation queries
+  category: Database and data release readiness
+  risk: low
+  requires_human_approval: false
+- id: validate-mixed-version-database-compatibility
+  name: Validate mixed-version database compatibility
+  category: Database and data release readiness
+  risk: low
+  requires_human_approval: false
+- id: bind-migrations-to-immutable-hashes
+  name: Bind migrations to immutable hashes
+  category: Database and data release readiness
+  risk: low
+  requires_human_approval: false
+- id: coordinate-database-monitoring
+  name: Coordinate database monitoring
+  category: Database and data release readiness
+  risk: low
+  requires_human_approval: false
+- id: prepare-database-readiness-assessments
+  name: Prepare database readiness assessments
+  category: Database and data release readiness
+  risk: low
+  requires_human_approval: false
+- id: create-change-record-drafts
+  name: Create change-record drafts
+  category: Change governance and approvals
+  risk: medium
+  requires_human_approval: true
+- id: classify-release-risk
+  name: Classify release risk
+  category: Change governance and approvals
+  risk: low
+  requires_human_approval: false
+- id: validate-implementation-and-validation-plans
+  name: Validate implementation and validation plans
+  category: Change governance and approvals
+  risk: low
+  requires_human_approval: false
+- id: validate-rollback-and-communication-plans
+  name: Validate rollback and communication plans
+  category: Change governance and approvals
+  risk: low
+  requires_human_approval: false
+- id: validate-required-approvers
+  name: Validate required approvers
+  category: Change governance and approvals
+  risk: low
+  requires_human_approval: false
+- id: bind-approval-to-payload-hash
+  name: Bind approval to payload hash
+  category: Change governance and approvals
+  risk: low
+  requires_human_approval: false
+- id: bind-approval-to-environment-and-window
+  name: Bind approval to environment and window
+  category: Change governance and approvals
+  risk: low
+  requires_human_approval: false
+- id: validate-approval-expiry
+  name: Validate approval expiry
+  category: Change governance and approvals
+  risk: low
+  requires_human_approval: false
+- id: prevent-approval-replay
+  name: Prevent approval replay
+  category: Change governance and approvals
+  risk: low
+  requires_human_approval: false
+- id: prevent-self-approval
+  name: Prevent self-approval
+  category: Change governance and approvals
+  risk: low
+  requires_human_approval: false
+- id: record-conditions-and-dissent
+  name: Record conditions and dissent
+  category: Change governance and approvals
+  risk: low
+  requires_human_approval: false
+- id: manage-emergency-change-authority
+  name: Manage emergency change authority
+  category: Change governance and approvals
+  risk: low
+  requires_human_approval: false
+- id: maintain-immutable-decision-logs
+  name: Maintain immutable decision logs
+  category: Change governance and approvals
+  risk: low
+  requires_human_approval: false
+- id: escalate-missing-or-conflicting-approvals
+  name: Escalate missing or conflicting approvals
+  category: Change governance and approvals
+  risk: low
+  requires_human_approval: false
+- id: close-obsolete-change-records
+  name: Close obsolete change records
+  category: Change governance and approvals
+  risk: low
+  requires_human_approval: false
+- id: create-deterministic-deployment-runbooks
+  name: Create deterministic deployment runbooks
+  category: Deployment and rollback planning
+  risk: low
+  requires_human_approval: false
+- id: define-prechecks-and-stop-conditions
+  name: Define prechecks and stop conditions
+  category: Deployment and rollback planning
+  risk: low
+  requires_human_approval: false
+- id: assign-accountable-operators
+  name: Assign accountable operators
+  category: Deployment and rollback planning
+  risk: low
+  requires_human_approval: false
+- id: sequence-application-database-infrastructure-and-configuration-changes
+  name: Sequence application, database, infrastructure, and configuration changes
+  category: Deployment and rollback planning
+  risk: low
+  requires_human_approval: false
+- id: identify-safe-parallel-steps
+  name: Identify safe parallel steps
+  category: Deployment and rollback planning
+  risk: low
+  requires_human_approval: false
+- id: plan-canary-and-phased-rollout
+  name: Plan canary and phased rollout
+  category: Deployment and rollback planning
+  risk: low
+  requires_human_approval: false
+- id: plan-blue-green-rollout
+  name: Plan blue-green rollout
+  category: Deployment and rollback planning
+  risk: low
+  requires_human_approval: false
+- id: plan-rolling-deployment
+  name: Plan rolling deployment
+  category: Deployment and rollback planning
+  risk: low
+  requires_human_approval: false
+- id: define-promotion-criteria
+  name: Define promotion criteria
+  category: Deployment and rollback planning
+  risk: low
+  requires_human_approval: false
+- id: define-observable-rollback-triggers
+  name: Define observable rollback triggers
+  category: Deployment and rollback planning
+  risk: low
+  requires_human_approval: false
+- id: validate-rollback-artifact-availability
+  name: Validate rollback artifact availability
+  category: Deployment and rollback planning
+  risk: low
+  requires_human_approval: false
+- id: validate-rollback-data-safety
+  name: Validate rollback data safety
+  category: Deployment and rollback planning
+  risk: low
+  requires_human_approval: false
+- id: create-fix-forward-decision-paths
+  name: Create fix-forward decision paths
+  category: Deployment and rollback planning
+  risk: low
+  requires_human_approval: false
+- id: plan-cleanup-and-temporary-control-removal
+  name: Plan cleanup and temporary-control removal
+  category: Deployment and rollback planning
+  risk: low
+  requires_human_approval: false
+- id: rehearse-complex-release-procedures
+  name: Rehearse complex release procedures
+  category: Deployment and rollback planning
+  risk: low
+  requires_human_approval: false
+- id: freeze-runbooks-to-approved-payloads
+  name: Freeze runbooks to approved payloads
+  category: Deployment and rollback planning
+  risk: low
+  requires_human_approval: false
+- id: build-stakeholder-and-audience-maps
+  name: Build stakeholder and audience maps
+  category: Communication and stakeholder coordination
+  risk: low
+  requires_human_approval: false
+- id: draft-internal-release-announcements
+  name: Draft internal release announcements
+  category: Communication and stakeholder coordination
+  risk: medium
+  requires_human_approval: true
+- id: draft-customer-safe-release-notes
+  name: Draft customer-safe release notes
+  category: Communication and stakeholder coordination
+  risk: medium
+  requires_human_approval: true
+- id: draft-maintenance-notifications
+  name: Draft maintenance notifications
+  category: Communication and stakeholder coordination
+  risk: medium
+  requires_human_approval: true
+- id: draft-release-command-updates
+  name: Draft release command updates
+  category: Communication and stakeholder coordination
+  risk: low
+  requires_human_approval: false
+- id: draft-support-handoffs
+  name: Draft support handoffs
+  category: Communication and stakeholder coordination
+  risk: low
+  requires_human_approval: false
+- id: draft-business-readiness-summaries
+  name: Draft business-readiness summaries
+  category: Communication and stakeholder coordination
+  risk: low
+  requires_human_approval: false
+- id: use-a-single-source-of-truth
+  name: Use a single source of truth
+  category: Communication and stakeholder coordination
+  risk: low
+  requires_human_approval: false
+- id: distinguish-release-states-accurately
+  name: Distinguish release states accurately
+  category: Communication and stakeholder coordination
+  risk: low
+  requires_human_approval: false
+- id: avoid-unsupported-timing-commitments
+  name: Avoid unsupported timing commitments
+  category: Communication and stakeholder coordination
+  risk: low
+  requires_human_approval: false
+- id: avoid-unsupported-root-cause-claims
+  name: Avoid unsupported root-cause claims
+  category: Communication and stakeholder coordination
+  risk: low
+  requires_human_approval: false
+- id: coordinate-regional-communications
+  name: Coordinate regional communications
+  category: Communication and stakeholder coordination
+  risk: low
+  requires_human_approval: false
+- id: track-critical-owner-acknowledgements
+  name: Track critical owner acknowledgements
+  category: Communication and stakeholder coordination
+  risk: low
+  requires_human_approval: false
+- id: correct-inaccurate-updates-audibly
+  name: Correct inaccurate updates audibly
+  category: Communication and stakeholder coordination
+  risk: low
+  requires_human_approval: false
+- id: archive-approved-communications
+  name: Archive approved communications
+  category: Communication and stakeholder coordination
+  risk: low
+  requires_human_approval: false
+- id: assemble-go-no-go-packs
+  name: Assemble go/no-go packs
+  category: Go/no-go and release command
+  risk: low
+  requires_human_approval: false
+- id: summarize-blockers-and-conditions
+  name: Summarize blockers and conditions
+  category: Go/no-go and release command
+  risk: low
+  requires_human_approval: false
+- id: represent-uncertainty-and-dissent
+  name: Represent uncertainty and dissent
+  category: Go/no-go and release command
+  risk: low
+  requires_human_approval: false
+- id: validate-candidate-unchanged-since-evidence-collection
+  name: Validate candidate unchanged since evidence collection
+  category: Go/no-go and release command
+  risk: low
+  requires_human_approval: false
+- id: validate-approvals-for-current-payload
+  name: Validate approvals for current payload
+  category: Go/no-go and release command
+  risk: low
+  requires_human_approval: false
+- id: support-go-conditional-go-delay-partial-release-and-no-go-options
+  name: Support go, conditional-go, delay, partial-release, and no-go options
+  category: Go/no-go and release command
+  risk: low
+  requires_human_approval: false
+- id: record-accountable-human-decisions
+  name: Record accountable human decisions
+  category: Go/no-go and release command
+  risk: low
+  requires_human_approval: false
+- id: maintain-release-command-logs
+  name: Maintain release command logs
+  category: Go/no-go and release command
+  risk: low
+  requires_human_approval: false
+- id: track-deployment-stages-and-timestamps
+  name: Track deployment stages and timestamps
+  category: Go/no-go and release command
+  risk: low
+  requires_human_approval: false
+- id: coordinate-stage-gates
+  name: Coordinate stage gates
+  category: Go/no-go and release command
+  risk: low
+  requires_human_approval: false
+- id: coordinate-escalation-checkpoints
+  name: Coordinate escalation checkpoints
+  category: Go/no-go and release command
+  risk: low
+  requires_human_approval: false
+- id: pause-on-stop-conditions
+  name: Pause on stop conditions
+  category: Go/no-go and release command
+  risk: low
+  requires_human_approval: false
+- id: request-approved-rollback-execution
+  name: Request approved rollback execution
+  category: Go/no-go and release command
+  risk: medium
+  requires_human_approval: true
+- id: preserve-immutable-release-timelines
+  name: Preserve immutable release timelines
+  category: Go/no-go and release command
+  risk: low
+  requires_human_approval: false
+- id: prevent-autonomous-final-release-approval
+  name: Prevent autonomous final release approval
+  category: Go/no-go and release command
+  risk: high
+  requires_human_approval: true
+- id: validate-emergency-authority
+  name: Validate emergency authority
+  category: Hotfix and emergency release
+  risk: high
+  requires_human_approval: true
+- id: minimize-emergency-scope
+  name: Minimize emergency scope
+  category: Hotfix and emergency release
+  risk: low
+  requires_human_approval: false
+- id: separate-restoration-from-unrelated-change
+  name: Separate restoration from unrelated change
+  category: Hotfix and emergency release
+  risk: low
+  requires_human_approval: false
+- id: select-proportionate-expedited-tests
+  name: Select proportionate expedited tests
+  category: Hotfix and emergency release
+  risk: low
+  requires_human_approval: false
+- id: validate-emergency-artifact-identity
+  name: Validate emergency artifact identity
+  category: Hotfix and emergency release
+  risk: low
+  requires_human_approval: false
+- id: bind-emergency-approval-to-exact-payload
+  name: Bind emergency approval to exact payload
+  category: Hotfix and emergency release
+  risk: low
+  requires_human_approval: false
+- id: coordinate-incident-and-release-command
+  name: Coordinate incident and release command
+  category: Hotfix and emergency release
+  risk: low
+  requires_human_approval: false
+- id: track-service-and-customer-impact
+  name: Track service and customer impact
+  category: Hotfix and emergency release
+  risk: low
+  requires_human_approval: false
+- id: validate-restoration-evidence
+  name: Validate restoration evidence
+  category: Hotfix and emergency release
+  risk: low
+  requires_human_approval: false
+- id: reconcile-emergency-changes-to-source-control
+  name: Reconcile emergency changes to source control
+  category: Hotfix and emergency release
+  risk: low
+  requires_human_approval: false
+- id: create-permanent-remediation-follow-up
+  name: Create permanent remediation follow-up
+  category: Hotfix and emergency release
+  risk: low
+  requires_human_approval: false
+- id: schedule-retrospective-review
+  name: Schedule retrospective review
+  category: Hotfix and emergency release
+  risk: low
+  requires_human_approval: false
+- id: measure-emergency-release-trends
+  name: Measure emergency release trends
+  category: Hotfix and emergency release
+  risk: low
+  requires_human_approval: false
+- id: prevent-routine-misuse-of-emergency-classification
+  name: Prevent routine misuse of emergency classification
+  category: Hotfix and emergency release
+  risk: low
+  requires_human_approval: false
+- id: close-emergency-changes-with-evidence
+  name: Close emergency changes with evidence
+  category: Hotfix and emergency release
+  risk: low
+  requires_human_approval: false
+- id: coordinate-post-deployment-smoke-validation
+  name: Coordinate post-deployment smoke validation
+  category: Post-release validation and closure
+  risk: low
+  requires_human_approval: false
+- id: verify-deployed-versions-and-digests
+  name: Verify deployed versions and digests
+  category: Post-release validation and closure
+  risk: low
+  requires_human_approval: false
+- id: verify-database-migration-state
+  name: Verify database migration state
+  category: Post-release validation and closure
+  risk: low
+  requires_human_approval: false
+- id: verify-configuration-and-feature-state
+  name: Verify configuration and feature state
+  category: Post-release validation and closure
+  risk: low
+  requires_human_approval: false
+- id: monitor-logs-metrics-traces-alerts-and-slos
+  name: Monitor logs, metrics, traces, alerts, and SLOs
+  category: Post-release validation and closure
+  risk: low
+  requires_human_approval: false
+- id: compare-outcomes-with-baselines
+  name: Compare outcomes with baselines
+  category: Post-release validation and closure
+  risk: low
+  requires_human_approval: false
+- id: monitor-support-and-customer-signals
+  name: Monitor support and customer signals
+  category: Post-release validation and closure
+  risk: low
+  requires_human_approval: false
+- id: verify-regional-and-staged-rollout-completion
+  name: Verify regional and staged rollout completion
+  category: Post-release validation and closure
+  risk: low
+  requires_human_approval: false
+- id: remove-temporary-access-and-controls
+  name: Remove temporary access and controls
+  category: Post-release validation and closure
+  risk: low
+  requires_human_approval: false
+- id: maintain-rollback-availability-through-observation-window
+  name: Maintain rollback availability through observation window
+  category: Post-release validation and closure
+  risk: low
+  requires_human_approval: false
+- id: create-follow-up-defects-and-actions
+  name: Create follow-up defects and actions
+  category: Post-release validation and closure
+  risk: low
+  requires_human_approval: false
+- id: prepare-closure-evidence
+  name: Prepare closure evidence
+  category: Post-release validation and closure
+  risk: low
+  requires_human_approval: false
+- id: close-versions-and-change-records-after-approval
+  name: Close versions and change records after approval
+  category: Post-release validation and closure
+  risk: medium
+  requires_human_approval: true
+- id: publish-final-release-notes-after-approval
+  name: Publish final release notes after approval
+  category: Post-release validation and closure
+  risk: medium
+  requires_human_approval: true
+- id: schedule-post-release-reviews
+  name: Schedule post-release reviews
+  category: Post-release validation and closure
+  risk: low
+  requires_human_approval: false
+- id: calculate-change-lead-time
+  name: Calculate change lead time
+  category: Release metrics and continual improvement
+  risk: low
+  requires_human_approval: false
+- id: calculate-deployment-frequency
+  name: Calculate deployment frequency
+  category: Release metrics and continual improvement
+  risk: low
+  requires_human_approval: false
+- id: calculate-failed-deployment-recovery-time
+  name: Calculate failed deployment recovery time
+  category: Release metrics and continual improvement
+  risk: low
+  requires_human_approval: false
+- id: calculate-change-failure-percentage
+  name: Calculate change failure percentage
+  category: Release metrics and continual improvement
+  risk: low
+  requires_human_approval: false
+- id: calculate-deployment-rework-rate
+  name: Calculate deployment rework rate
+  category: Release metrics and continual improvement
+  risk: low
+  requires_human_approval: false
+- id: calculate-release-predictability-responsibly
+  name: Calculate release predictability responsibly
+  category: Release metrics and continual improvement
+  risk: low
+  requires_human_approval: false
+- id: analyze-scope-churn
+  name: Analyze scope churn
+  category: Release metrics and continual improvement
+  risk: low
+  requires_human_approval: false
+- id: analyze-release-delays-by-cause
+  name: Analyze release delays by cause
+  category: Release metrics and continual improvement
+  risk: low
+  requires_human_approval: false
+- id: analyze-manual-step-concentration
+  name: Analyze manual-step concentration
+  category: Release metrics and continual improvement
+  risk: low
+  requires_human_approval: false
+- id: analyze-rollback-and-hotfix-trends
+  name: Analyze rollback and hotfix trends
+  category: Release metrics and continual improvement
+  risk: low
+  requires_human_approval: false
+- id: analyze-readiness-false-positives
+  name: Analyze readiness false positives
+  category: Release metrics and continual improvement
+  risk: low
+  requires_human_approval: false
+- id: identify-release-automation-opportunities
+  name: Identify release automation opportunities
+  category: Release metrics and continual improvement
+  risk: low
+  requires_human_approval: false
+- id: design-measurable-improvement-experiments
+  name: Design measurable improvement experiments
+  category: Release metrics and continual improvement
+  risk: low
+  requires_human_approval: false
+- id: avoid-individual-performance-scoring
+  name: Avoid individual performance scoring
+  category: Release metrics and continual improvement
+  risk: low
+  requires_human_approval: false
+- id: share-cross-team-release-learnings
+  name: Share cross-team release learnings
+  category: Release metrics and continual improvement
+  risk: low
+  requires_human_approval: false
+- id: create-immutable-release-evidence-bundles
+  name: Create immutable release evidence bundles
+  category: Evidence, audit, and privacy
+  risk: low
+  requires_human_approval: false
+- id: capture-evidence-provenance
+  name: Capture evidence provenance
+  category: Evidence, audit, and privacy
+  risk: low
+  requires_human_approval: false
+- id: redact-sensitive-logs-and-payloads
+  name: Redact sensitive logs and payloads
+  category: Evidence, audit, and privacy
+  risk: low
+  requires_human_approval: false
+- id: apply-minimum-necessary-access
+  name: Apply minimum-necessary access
+  category: Evidence, audit, and privacy
+  risk: low
+  requires_human_approval: false
+- id: apply-retention-policies
+  name: Apply retention policies
+  category: Evidence, audit, and privacy
+  risk: low
+  requires_human_approval: false
+- id: validate-audit-completeness
+  name: Validate audit completeness
+  category: Evidence, audit, and privacy
+  risk: low
+  requires_human_approval: false
+- id: track-evidence-hashes
+  name: Track evidence hashes
+  category: Evidence, audit, and privacy
+  risk: low
+  requires_human_approval: false
+- id: track-source-timestamps
+  name: Track source timestamps
+  category: Evidence, audit, and privacy
+  risk: low
+  requires_human_approval: false
+- id: prevent-cross-customer-evidence-mixing
+  name: Prevent cross-customer evidence mixing
+  category: Evidence, audit, and privacy
+  risk: low
+  requires_human_approval: false
+- id: prevent-raw-secrets-entering-model-context
+  name: Prevent raw secrets entering model context
+  category: Evidence, audit, and privacy
+  risk: low
+  requires_human_approval: false
+- id: detect-fabricated-evidence
+  name: Detect fabricated evidence
+  category: Evidence, audit, and privacy
+  risk: low
+  requires_human_approval: false
+- id: maintain-release-decision-chronology
+  name: Maintain release decision chronology
+  category: Evidence, audit, and privacy
+  risk: low
+  requires_human_approval: false
+- id: support-audit-retrieval
+  name: Support audit retrieval
+  category: Evidence, audit, and privacy
+  risk: low
+  requires_human_approval: false
+- id: protect-customer-and-employee-data
+  name: Protect customer and employee data
+  category: Evidence, audit, and privacy
+  risk: low
+  requires_human_approval: false
+- id: record-policy-decisions-and-denials
+  name: Record policy decisions and denials
+  category: Evidence, audit, and privacy
+  risk: low
+  requires_human_approval: false

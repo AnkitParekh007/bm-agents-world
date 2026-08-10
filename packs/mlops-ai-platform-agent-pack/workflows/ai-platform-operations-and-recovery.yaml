@@ -1,0 +1,29 @@
+id: ai-platform-operations-and-recovery
+trigger: platform alert, capacity issue, provider failure, serving incident or degraded
+  model platform
+steps:
+- triage and blast radius
+- bounded diagnostics
+- correlate releases/config/provider/capacity
+- generate mitigation options
+- security/safety check
+- independent review for risky action
+- approved deterministic mitigation
+- recovery verification
+- customer/team communication input
+- post-incident review
+- corrective actions
+agents:
+- ai-platform-incident-agent
+- ai-observability-agent
+- gpu-platform-agent
+- model-serving-agent
+- llm-agent-platform-agent
+- platform-reliability-agent
+- ai-platform-security-agent
+- independent-platform-review-agent
+- policy-evidence-agent
+artifacts:
+- ai-platform-incident-brief
+- rollback-plan
+- platform-audit-and-improvement-report

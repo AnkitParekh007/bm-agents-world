@@ -1,0 +1,46 @@
+name: idea-to-product-brief
+version: 1.0.0
+trigger: Idea, customer request, business goal, support theme, or Jira discovery item
+scope_binding:
+- organization
+- project
+- product_area
+- jira_item
+- environment
+- requester
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: verify project, purpose, data classification, source permissions, and allowed outputs
+- id: collect-context
+  agent: work-context-agent
+  action: read strategy, Jira, Confluence, design, delivery, incidents, prior decisions, and linked evidence
+- id: customer-evidence
+  agent: customer-insight-agent
+  action: summarize approved customer and support evidence with segment and confidence
+- id: market-context
+  agent: market-intelligence-agent
+  action: collect relevant public market, competitor, substitute, and regulatory evidence
+- id: frame-problem
+  agent: problem-framing-agent
+  action: separate need, symptom, request, constraints, assumptions, risks, and open questions
+- id: map-opportunity
+  agent: opportunity-discovery-agent
+  action: map users, jobs, outcomes, evidence, impact, and solution hypotheses
+- id: measurement
+  agent: product-analytics-agent
+  action: define baseline, measurable outcomes, metrics, data gaps, and instrumentation needs
+- id: draft-brief
+  agent: product-requirements-agent
+  action: produce product brief with options, scope boundaries, requirements direction, and decision request
+- id: review
+  agent: product-reviewer-agent
+  action: challenge evidence, strategy fit, feasibility assumptions, risks, and decision readiness
+outputs:
+- product-brief
+- opportunity-map
+- customer-insight-digest
+- market-competitive-analysis
+- metric-dictionary
+- product-decision-log
+failure_behavior: stop, preserve evidence, identify the unresolved decision, and request human resolution

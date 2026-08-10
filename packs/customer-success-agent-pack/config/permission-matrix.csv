@@ -1,0 +1,7 @@
+Role/Agent,CRM/CS Read,Usage/Health Read,Support/Incident Read,Draft Artifact,Publish CRM/CS,Contact Customer,Commercial Commitment,Production Mutation
+Supervisor,Allow scoped,Allow scoped,Allow scoped,Allow,Approve,Approve,Deny,Deny
+Health/Risk Agents,Allow scoped,Allow scoped,Allow scoped,Allow,Approve,Deny,Deny,Deny
+Onboarding/Success/Value Agents,Allow scoped,Allow scoped,Allow scoped,Allow,Approve,Approve,Deny,Deny
+Renewal/Expansion Agents,Allow scoped,Allow scoped,Allow scoped,Allow,Approve,Approve,Deny,Deny
+Communication/QBR Agents,Allow scoped,Allow scoped,Allow scoped,Allow,Approve,Approve,Deny,Deny
+Privacy/Policy Agents,Allow metadata,Allow metadata,Allow metadata,Deny,Deny,Deny,Deny,Deny

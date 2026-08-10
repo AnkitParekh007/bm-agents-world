@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/ux-agent/research-plan.schema.json",
+  "title": "Research Plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "questions",
+    "method",
+    "participants",
+    "consent",
+    "analysis",
+    "privacy"
+  ],
+  "properties": {
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "method": {
+      "type": "string",
+      "minLength": 1
+    },
+    "participants": {
+      "type": "object"
+    },
+    "consent": {
+      "type": "object"
+    },
+    "protocol": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "measures": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "analysis": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "privacy": {
+      "type": "object"
+    },
+    "approvals": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Retrospective Summary",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "team",
+    "sprint",
+    "themes",
+    "experiments",
+    "redacted",
+    "approval_status"
+  ],
+  "properties": {
+    "team": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sprint": {
+      "type": "string",
+      "minLength": 1
+    },
+    "themes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "experiments": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "open_questions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "redacted": {
+      "const": true
+    },
+    "named_feedback_present": {
+      "const": false
+    },
+    "approval_status": {
+      "enum": [
+        "draft",
+        "team-approved",
+        "rejected"
+      ]
+    }
+  }
+}

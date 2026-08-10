@@ -1,0 +1,1927 @@
+apiVersion: integration-api-architect-agent-pack/v1
+kind: SkillRegistry
+metadata:
+  name: integration-api-architect-skills
+  version: 1.0.0
+spec:
+  skills:
+  - id: integration.context.jira-and-requirement-context
+    name: Jira And Requirement Context
+    category: context
+    agent: business-product-context
+    description: Perform jira and requirement context using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.context.consumer-and-stakeholder-mapping
+    name: Consumer And Stakeholder Mapping
+    category: context
+    agent: business-product-context
+    description: Perform consumer and stakeholder mapping using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.context.business-process-mapping
+    name: Business Process Mapping
+    category: context
+    agent: business-product-context
+    description: Perform business process mapping using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.context.service-level-objective-capture
+    name: Service Level Objective Capture
+    category: context
+    agent: business-product-context
+    description: Perform service level objective capture using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.context.regulatory-and-contractual-constraint-capture
+    name: Regulatory And Contractual Constraint Capture
+    category: context
+    agent: business-product-context
+    description: Perform regulatory and contractual constraint capture using evidence-backed integration architecture
+      practices and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.context.integration-use-case-classification
+    name: Integration Use-Case Classification
+    category: context
+    agent: business-product-context
+    description: Perform integration use-case classification using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.context.system-of-record-identification
+    name: System-Of-Record Identification
+    category: context
+    agent: business-product-context
+    description: Perform system-of-record identification using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.context.data-sensitivity-classification
+    name: Data Sensitivity Classification
+    category: context
+    agent: business-product-context
+    description: Perform data sensitivity classification using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.context.success-metric-definition
+    name: Success Metric Definition
+    category: context
+    agent: business-product-context
+    description: Perform success metric definition using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.context.scope-and-assumption-baseline
+    name: Scope And Assumption Baseline
+    category: context
+    agent: business-product-context
+    description: Perform scope and assumption baseline using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.discovery.api-inventory-discovery
+    name: Api Inventory Discovery
+    category: discovery
+    agent: integration-landscape-discovery
+    description: Perform api inventory discovery using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.discovery.event-and-topic-inventory-discovery
+    name: Event And Topic Inventory Discovery
+    category: discovery
+    agent: integration-landscape-discovery
+    description: Perform event and topic inventory discovery using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.discovery.integration-dependency-graph
+    name: Integration Dependency Graph
+    category: discovery
+    agent: integration-landscape-discovery
+    description: Perform integration dependency graph using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.discovery.gateway-route-inventory
+    name: Gateway Route Inventory
+    category: discovery
+    agent: integration-landscape-discovery
+    description: Perform gateway route inventory using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.discovery.service-ownership-discovery
+    name: Service Ownership Discovery
+    category: discovery
+    agent: integration-landscape-discovery
+    description: Perform service ownership discovery using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.discovery.repository-contract-discovery
+    name: Repository Contract Discovery
+    category: discovery
+    agent: integration-landscape-discovery
+    description: Perform repository contract discovery using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.discovery.environment-endpoint-inventory
+    name: Environment Endpoint Inventory
+    category: discovery
+    agent: integration-landscape-discovery
+    description: Perform environment endpoint inventory using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.discovery.vendor-integration-inventory
+    name: Vendor Integration Inventory
+    category: discovery
+    agent: integration-landscape-discovery
+    description: Perform vendor integration inventory using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.discovery.data-flow-discovery
+    name: Data Flow Discovery
+    category: discovery
+    agent: integration-landscape-discovery
+    description: Perform data flow discovery using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.discovery.shadow-and-duplicate-api-detection
+    name: Shadow And Duplicate Api Detection
+    category: discovery
+    agent: integration-landscape-discovery
+    description: Perform shadow and duplicate api detection using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.domain.bounded-context-mapping
+    name: Bounded Context Mapping
+    category: domain
+    agent: domain-service-boundary
+    description: Perform bounded context mapping using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.domain.service-responsibility-definition
+    name: Service Responsibility Definition
+    category: domain
+    agent: domain-service-boundary
+    description: Perform service responsibility definition using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.domain.source-of-truth-mapping
+    name: Source Of Truth Mapping
+    category: domain
+    agent: domain-service-boundary
+    description: Perform source of truth mapping using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.domain.domain-vocabulary-alignment
+    name: Domain Vocabulary Alignment
+    category: domain
+    agent: domain-service-boundary
+    description: Perform domain vocabulary alignment using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.domain.ownership-matrix-creation
+    name: Ownership Matrix Creation
+    category: domain
+    agent: domain-service-boundary
+    description: Perform ownership matrix creation using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.domain.anti-corruption-boundary-design
+    name: Anti Corruption Boundary Design
+    category: domain
+    agent: domain-service-boundary
+    description: Perform anti corruption boundary design using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.domain.shared-service-dependency-analysis
+    name: Shared Service Dependency Analysis
+    category: domain
+    agent: domain-service-boundary
+    description: Perform shared service dependency analysis using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.domain.orchestration-versus-choreography-decision
+    name: Orchestration Versus Choreography Decision
+    category: domain
+    agent: domain-service-boundary
+    description: Perform orchestration versus choreography decision using evidence-backed integration architecture
+      practices and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.domain.domain-event-identification
+    name: Domain Event Identification
+    category: domain
+    agent: domain-service-boundary
+    description: Perform domain event identification using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.domain.cross-domain-coupling-analysis
+    name: Cross Domain Coupling Analysis
+    category: domain
+    agent: domain-service-boundary
+    description: Perform cross domain coupling analysis using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.api_strategy.api-style-selection
+    name: Api Style Selection
+    category: api_strategy
+    agent: api-strategy-governance
+    description: Perform api style selection using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.api_strategy.api-lifecycle-state-model
+    name: Api Lifecycle State Model
+    category: api_strategy
+    agent: api-strategy-governance
+    description: Perform api lifecycle state model using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.api_strategy.naming-convention-governance
+    name: Naming Convention Governance
+    category: api_strategy
+    agent: api-strategy-governance
+    description: Perform naming convention governance using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.api_strategy.resource-and-operation-convention
+    name: Resource And Operation Convention
+    category: api_strategy
+    agent: api-strategy-governance
+    description: Perform resource and operation convention using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.api_strategy.api-catalog-taxonomy
+    name: Api Catalog Taxonomy
+    category: api_strategy
+    agent: api-strategy-governance
+    description: Perform api catalog taxonomy using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.api_strategy.api-ownership-policy
+    name: Api Ownership Policy
+    category: api_strategy
+    agent: api-strategy-governance
+    description: Perform api ownership policy using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.api_strategy.design-first-governance
+    name: Design First Governance
+    category: api_strategy
+    agent: api-strategy-governance
+    description: Perform design first governance using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.api_strategy.api-review-gate-design
+    name: Api Review Gate Design
+    category: api_strategy
+    agent: api-strategy-governance
+    description: Perform api review gate design using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.api_strategy.api-standard-exception-process
+    name: Api Standard Exception Process
+    category: api_strategy
+    agent: api-strategy-governance
+    description: Perform api standard exception process using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.api_strategy.api-maturity-assessment
+    name: Api Maturity Assessment
+    category: api_strategy
+    agent: api-strategy-governance
+    description: Perform api maturity assessment using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.rest.openapi-contract-design
+    name: Openapi Contract Design
+    category: rest
+    agent: rest-http-api
+    description: Perform openapi contract design using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.rest.resource-modeling
+    name: Resource Modeling
+    category: rest
+    agent: rest-http-api
+    description: Perform resource modeling using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.rest.http-method-semantics
+    name: Http Method Semantics
+    category: rest
+    agent: rest-http-api
+    description: Perform http method semantics using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.rest.status-code-design
+    name: Status Code Design
+    category: rest
+    agent: rest-http-api
+    description: Perform status code design using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.rest.rfc9457-problem-details
+    name: Rfc9457 Problem Details
+    category: rest
+    agent: rest-http-api
+    description: Perform rfc9457 problem details using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.rest.pagination-filtering-sorting
+    name: Pagination Filtering Sorting
+    category: rest
+    agent: rest-http-api
+    description: Perform pagination filtering sorting using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.rest.idempotency-key-design
+    name: Idempotency Key Design
+    category: rest
+    agent: rest-http-api
+    description: Perform idempotency key design using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.rest.conditional-request-and-etag-design
+    name: Conditional Request And Etag Design
+    category: rest
+    agent: rest-http-api
+    description: Perform conditional request and etag design using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.rest.cache-control-design
+    name: Cache Control Design
+    category: rest
+    agent: rest-http-api
+    description: Perform cache control design using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.rest.multipart-and-large-payload-design
+    name: Multipart And Large Payload Design
+    category: rest
+    agent: rest-http-api
+    description: Perform multipart and large payload design using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.graphql.graphql-schema-modeling
+    name: Graphql Schema Modeling
+    category: graphql
+    agent: graphql-api
+    description: Perform graphql schema modeling using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.graphql.query-mutation-subscription-design
+    name: Query Mutation Subscription Design
+    category: graphql
+    agent: graphql-api
+    description: Perform query mutation subscription design using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.graphql.resolver-boundary-design
+    name: Resolver Boundary Design
+    category: graphql
+    agent: graphql-api
+    description: Perform resolver boundary design using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.graphql.connection-pagination-design
+    name: Connection Pagination Design
+    category: graphql
+    agent: graphql-api
+    description: Perform connection pagination design using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.graphql.graphql-authorization-model
+    name: Graphql Authorization Model
+    category: graphql
+    agent: graphql-api
+    description: Perform graphql authorization model using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.graphql.query-complexity-control
+    name: Query Complexity Control
+    category: graphql
+    agent: graphql-api
+    description: Perform query complexity control using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.graphql.n-plus-one-mitigation
+    name: N Plus One Mitigation
+    category: graphql
+    agent: graphql-api
+    description: Perform n plus one mitigation using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.graphql.schema-federation-boundary
+    name: Schema Federation Boundary
+    category: graphql
+    agent: graphql-api
+    description: Perform schema federation boundary using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.graphql.graphql-evolution-policy
+    name: Graphql Evolution Policy
+    category: graphql
+    agent: graphql-api
+    description: Perform graphql evolution policy using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.graphql.persisted-query-strategy
+    name: Persisted Query Strategy
+    category: graphql
+    agent: graphql-api
+    description: Perform persisted query strategy using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.grpc.protobuf-message-design
+    name: Protobuf Message Design
+    category: grpc
+    agent: grpc-rpc
+    description: Perform protobuf message design using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.grpc.grpc-service-design
+    name: Grpc Service Design
+    category: grpc
+    agent: grpc-rpc
+    description: Perform grpc service design using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.grpc.field-numbering-governance
+    name: Field Numbering Governance
+    category: grpc
+    agent: grpc-rpc
+    description: Perform field numbering governance using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.grpc.backward-compatible-proto-evolution
+    name: Backward Compatible Proto Evolution
+    category: grpc
+    agent: grpc-rpc
+    description: Perform backward compatible proto evolution using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.grpc.deadline-propagation
+    name: Deadline Propagation
+    category: grpc
+    agent: grpc-rpc
+    description: Perform deadline propagation using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.grpc.retry-policy-design
+    name: Retry Policy Design
+    category: grpc
+    agent: grpc-rpc
+    description: Perform retry policy design using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.grpc.grpc-health-checking
+    name: Grpc Health Checking
+    category: grpc
+    agent: grpc-rpc
+    description: Perform grpc health checking using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.grpc.grpc-reflection-governance
+    name: Grpc Reflection Governance
+    category: grpc
+    agent: grpc-rpc
+    description: Perform grpc reflection governance using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.grpc.streaming-rpc-design
+    name: Streaming Rpc Design
+    category: grpc
+    agent: grpc-rpc
+    description: Perform streaming rpc design using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.grpc.generated-client-governance
+    name: Generated Client Governance
+    category: grpc
+    agent: grpc-rpc
+    description: Perform generated client governance using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.events.asyncapi-contract-design
+    name: Asyncapi Contract Design
+    category: events
+    agent: event-driven-messaging
+    description: Perform asyncapi contract design using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.events.event-versus-command-classification
+    name: Event Versus Command Classification
+    category: events
+    agent: event-driven-messaging
+    description: Perform event versus command classification using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.events.topic-and-channel-naming
+    name: Topic And Channel Naming
+    category: events
+    agent: event-driven-messaging
+    description: Perform topic and channel naming using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.events.cloudevents-envelope-design
+    name: Cloudevents Envelope Design
+    category: events
+    agent: event-driven-messaging
+    description: Perform cloudevents envelope design using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.events.delivery-semantics-selection
+    name: Delivery Semantics Selection
+    category: events
+    agent: event-driven-messaging
+    description: Perform delivery semantics selection using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.events.ordering-and-partition-key-design
+    name: Ordering And Partition Key Design
+    category: events
+    agent: event-driven-messaging
+    description: Perform ordering and partition key design using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.events.consumer-group-strategy
+    name: Consumer Group Strategy
+    category: events
+    agent: event-driven-messaging
+    description: Perform consumer group strategy using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.events.dead-letter-and-retry-design
+    name: Dead Letter And Retry Design
+    category: events
+    agent: event-driven-messaging
+    description: Perform dead letter and retry design using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.events.replay-and-retention-design
+    name: Replay And Retention Design
+    category: events
+    agent: event-driven-messaging
+    description: Perform replay and retention design using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.events.event-schema-evolution
+    name: Event Schema Evolution
+    category: events
+    agent: event-driven-messaging
+    description: Perform event schema evolution using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.gateway.gateway-route-design
+    name: Gateway Route Design
+    category: gateway
+    agent: api-gateway-edge
+    description: Perform gateway route design using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: medium
+    approvalRequired: true
+  - id: integration.gateway.rate-limit-policy
+    name: Rate Limit Policy
+    category: gateway
+    agent: api-gateway-edge
+    description: Perform rate limit policy using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: medium
+    approvalRequired: true
+  - id: integration.gateway.quota-policy
+    name: Quota Policy
+    category: gateway
+    agent: api-gateway-edge
+    description: Perform quota policy using evidence-backed integration architecture practices and produce a reviewable
+      output.
+    risk: medium
+    approvalRequired: true
+  - id: integration.gateway.request-response-transformation
+    name: Request Response Transformation
+    category: gateway
+    agent: api-gateway-edge
+    description: Perform request response transformation using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: medium
+    approvalRequired: true
+  - id: integration.gateway.api-key-policy
+    name: Api Key Policy
+    category: gateway
+    agent: api-gateway-edge
+    description: Perform api key policy using evidence-backed integration architecture practices and produce a reviewable
+      output.
+    risk: medium
+    approvalRequired: true
+  - id: integration.gateway.waf-and-bot-boundary
+    name: Waf And Bot Boundary
+    category: gateway
+    agent: api-gateway-edge
+    description: Perform waf and bot boundary using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: medium
+    approvalRequired: true
+  - id: integration.gateway.cors-policy-design
+    name: Cors Policy Design
+    category: gateway
+    agent: api-gateway-edge
+    description: Perform cors policy design using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: medium
+    approvalRequired: true
+  - id: integration.gateway.edge-caching-policy
+    name: Edge Caching Policy
+    category: gateway
+    agent: api-gateway-edge
+    description: Perform edge caching policy using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: medium
+    approvalRequired: true
+  - id: integration.gateway.canary-routing-design
+    name: Canary Routing Design
+    category: gateway
+    agent: api-gateway-edge
+    description: Perform canary routing design using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: medium
+    approvalRequired: true
+  - id: integration.gateway.gateway-policy-as-code
+    name: Gateway Policy As Code
+    category: gateway
+    agent: api-gateway-edge
+    description: Perform gateway policy as code using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: medium
+    approvalRequired: true
+  - id: integration.identity.oauth-flow-selection
+    name: Oauth Flow Selection
+    category: identity
+    agent: identity-authorization
+    description: Perform oauth flow selection using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: medium
+    approvalRequired: true
+  - id: integration.identity.oidc-profile-design
+    name: Oidc Profile Design
+    category: identity
+    agent: identity-authorization
+    description: Perform oidc profile design using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: medium
+    approvalRequired: true
+  - id: integration.identity.scope-model-design
+    name: Scope Model Design
+    category: identity
+    agent: identity-authorization
+    description: Perform scope model design using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: medium
+    approvalRequired: true
+  - id: integration.identity.claim-model-design
+    name: Claim Model Design
+    category: identity
+    agent: identity-authorization
+    description: Perform claim model design using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: medium
+    approvalRequired: true
+  - id: integration.identity.token-audience-design
+    name: Token Audience Design
+    category: identity
+    agent: identity-authorization
+    description: Perform token audience design using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: medium
+    approvalRequired: true
+  - id: integration.identity.workload-identity-design
+    name: Workload Identity Design
+    category: identity
+    agent: identity-authorization
+    description: Perform workload identity design using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: medium
+    approvalRequired: true
+  - id: integration.identity.mtls-sender-constraint-design
+    name: Mtls Sender Constraint Design
+    category: identity
+    agent: identity-authorization
+    description: Perform mtls sender constraint design using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: medium
+    approvalRequired: true
+  - id: integration.identity.dpop-assessment
+    name: Dpop Assessment
+    category: identity
+    agent: identity-authorization
+    description: Perform dpop assessment using evidence-backed integration architecture practices and produce a
+      reviewable output.
+    risk: medium
+    approvalRequired: true
+  - id: integration.identity.service-account-boundary
+    name: Service Account Boundary
+    category: identity
+    agent: identity-authorization
+    description: Perform service account boundary using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: medium
+    approvalRequired: true
+  - id: integration.identity.delegation-and-impersonation-control
+    name: Delegation And Impersonation Control
+    category: identity
+    agent: identity-authorization
+    description: Perform delegation and impersonation control using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: medium
+    approvalRequired: true
+  - id: integration.security.owasp-api-threat-modeling
+    name: Owasp Api Threat Modeling
+    category: security
+    agent: api-security
+    description: Perform owasp api threat modeling using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: medium
+    approvalRequired: false
+  - id: integration.security.object-authorization-review
+    name: Object Authorization Review
+    category: security
+    agent: api-security
+    description: Perform object authorization review using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: medium
+    approvalRequired: false
+  - id: integration.security.function-authorization-review
+    name: Function Authorization Review
+    category: security
+    agent: api-security
+    description: Perform function authorization review using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: medium
+    approvalRequired: false
+  - id: integration.security.mass-assignment-prevention
+    name: Mass Assignment Prevention
+    category: security
+    agent: api-security
+    description: Perform mass assignment prevention using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: medium
+    approvalRequired: false
+  - id: integration.security.resource-consumption-abuse-control
+    name: Resource Consumption Abuse Control
+    category: security
+    agent: api-security
+    description: Perform resource consumption abuse control using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: medium
+    approvalRequired: false
+  - id: integration.security.ssrf-boundary-review
+    name: Ssrf Boundary Review
+    category: security
+    agent: api-security
+    description: Perform ssrf boundary review using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: medium
+    approvalRequired: false
+  - id: integration.security.input-schema-validation
+    name: Input Schema Validation
+    category: security
+    agent: api-security
+    description: Perform input schema validation using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: medium
+    approvalRequired: false
+  - id: integration.security.sensitive-data-exposure-review
+    name: Sensitive Data Exposure Review
+    category: security
+    agent: api-security
+    description: Perform sensitive data exposure review using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: medium
+    approvalRequired: false
+  - id: integration.security.inventory-and-shadow-api-risk
+    name: Inventory And Shadow Api Risk
+    category: security
+    agent: api-security
+    description: Perform inventory and shadow api risk using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: medium
+    approvalRequired: false
+  - id: integration.security.unsafe-third-party-consumption-review
+    name: Unsafe Third Party Consumption Review
+    category: security
+    agent: api-security
+    description: Perform unsafe third party consumption review using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: medium
+    approvalRequired: false
+  - id: integration.schemas.json-schema-design
+    name: Json Schema Design
+    category: schemas
+    agent: data-contract-schema
+    description: Perform json schema design using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.schemas.canonical-payload-model
+    name: Canonical Payload Model
+    category: schemas
+    agent: data-contract-schema
+    description: Perform canonical payload model using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.schemas.schema-registry-policy
+    name: Schema Registry Policy
+    category: schemas
+    agent: data-contract-schema
+    description: Perform schema registry policy using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.schemas.semantic-field-definition
+    name: Semantic Field Definition
+    category: schemas
+    agent: data-contract-schema
+    description: Perform semantic field definition using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.schemas.nullability-and-optionality-policy
+    name: Nullability And Optionality Policy
+    category: schemas
+    agent: data-contract-schema
+    description: Perform nullability and optionality policy using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.schemas.identifier-and-timestamp-convention
+    name: Identifier And Timestamp Convention
+    category: schemas
+    agent: data-contract-schema
+    description: Perform identifier and timestamp convention using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.schemas.money-and-precision-convention
+    name: Money And Precision Convention
+    category: schemas
+    agent: data-contract-schema
+    description: Perform money and precision convention using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.schemas.pii-classification-mapping
+    name: Pii Classification Mapping
+    category: schemas
+    agent: data-contract-schema
+    description: Perform pii classification mapping using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.schemas.payload-example-governance
+    name: Payload Example Governance
+    category: schemas
+    agent: data-contract-schema
+    description: Perform payload example governance using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.schemas.schema-ownership-and-stewardship
+    name: Schema Ownership And Stewardship
+    category: schemas
+    agent: data-contract-schema
+    description: Perform schema ownership and stewardship using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.versioning.breaking-change-detection
+    name: Breaking Change Detection
+    category: versioning
+    agent: versioning-compatibility
+    description: Perform breaking change detection using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.versioning.additive-change-assessment
+    name: Additive Change Assessment
+    category: versioning
+    agent: versioning-compatibility
+    description: Perform additive change assessment using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.versioning.api-versioning-strategy
+    name: Api Versioning Strategy
+    category: versioning
+    agent: versioning-compatibility
+    description: Perform api versioning strategy using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.versioning.event-compatibility-policy
+    name: Event Compatibility Policy
+    category: versioning
+    agent: versioning-compatibility
+    description: Perform event compatibility policy using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.versioning.consumer-impact-analysis
+    name: Consumer Impact Analysis
+    category: versioning
+    agent: versioning-compatibility
+    description: Perform consumer impact analysis using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.versioning.deprecation-policy
+    name: Deprecation Policy
+    category: versioning
+    agent: versioning-compatibility
+    description: Perform deprecation policy using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.versioning.sunset-plan-design
+    name: Sunset Plan Design
+    category: versioning
+    agent: versioning-compatibility
+    description: Perform sunset plan design using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.versioning.parallel-version-coexistence
+    name: Parallel Version Coexistence
+    category: versioning
+    agent: versioning-compatibility
+    description: Perform parallel version coexistence using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.versioning.migration-guide-creation
+    name: Migration Guide Creation
+    category: versioning
+    agent: versioning-compatibility
+    description: Perform migration guide creation using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.versioning.compatibility-matrix-maintenance
+    name: Compatibility Matrix Maintenance
+    category: versioning
+    agent: versioning-compatibility
+    description: Perform compatibility matrix maintenance using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.consumer.developer-onboarding-flow
+    name: Developer Onboarding Flow
+    category: consumer
+    agent: consumer-experience-sdk
+    description: Perform developer onboarding flow using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.consumer.api-reference-requirements
+    name: Api Reference Requirements
+    category: consumer
+    agent: consumer-experience-sdk
+    description: Perform api reference requirements using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.consumer.quickstart-design
+    name: Quickstart Design
+    category: consumer
+    agent: consumer-experience-sdk
+    description: Perform quickstart design using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.consumer.sdk-generation-strategy
+    name: Sdk Generation Strategy
+    category: consumer
+    agent: consumer-experience-sdk
+    description: Perform sdk generation strategy using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.consumer.sdk-versioning-policy
+    name: Sdk Versioning Policy
+    category: consumer
+    agent: consumer-experience-sdk
+    description: Perform sdk versioning policy using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.consumer.sandbox-and-mock-strategy
+    name: Sandbox And Mock Strategy
+    category: consumer
+    agent: consumer-experience-sdk
+    description: Perform sandbox and mock strategy using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.consumer.sample-application-design
+    name: Sample Application Design
+    category: consumer
+    agent: consumer-experience-sdk
+    description: Perform sample application design using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.consumer.error-troubleshooting-guidance
+    name: Error Troubleshooting Guidance
+    category: consumer
+    agent: consumer-experience-sdk
+    description: Perform error troubleshooting guidance using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.consumer.developer-portal-taxonomy
+    name: Developer Portal Taxonomy
+    category: consumer
+    agent: consumer-experience-sdk
+    description: Perform developer portal taxonomy using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.consumer.consumer-feedback-loop
+    name: Consumer Feedback Loop
+    category: consumer
+    agent: consumer-experience-sdk
+    description: Perform consumer feedback loop using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.resiliency.timeout-budget-design
+    name: Timeout Budget Design
+    category: resiliency
+    agent: resiliency-reliability
+    description: Perform timeout budget design using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.resiliency.retry-backoff-policy
+    name: Retry Backoff Policy
+    category: resiliency
+    agent: resiliency-reliability
+    description: Perform retry backoff policy using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.resiliency.circuit-breaker-policy
+    name: Circuit Breaker Policy
+    category: resiliency
+    agent: resiliency-reliability
+    description: Perform circuit breaker policy using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.resiliency.bulkhead-isolation
+    name: Bulkhead Isolation
+    category: resiliency
+    agent: resiliency-reliability
+    description: Perform bulkhead isolation using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.resiliency.idempotent-consumer-design
+    name: Idempotent Consumer Design
+    category: resiliency
+    agent: resiliency-reliability
+    description: Perform idempotent consumer design using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.resiliency.deduplication-strategy
+    name: Deduplication Strategy
+    category: resiliency
+    agent: resiliency-reliability
+    description: Perform deduplication strategy using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.resiliency.outbox-inbox-pattern
+    name: Outbox Inbox Pattern
+    category: resiliency
+    agent: resiliency-reliability
+    description: Perform outbox inbox pattern using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.resiliency.saga-compensation-design
+    name: Saga Compensation Design
+    category: resiliency
+    agent: resiliency-reliability
+    description: Perform saga compensation design using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.resiliency.graceful-degradation-plan
+    name: Graceful Degradation Plan
+    category: resiliency
+    agent: resiliency-reliability
+    description: Perform graceful degradation plan using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.resiliency.dependency-failure-mode-analysis
+    name: Dependency Failure Mode Analysis
+    category: resiliency
+    agent: resiliency-reliability
+    description: Perform dependency failure mode analysis using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.performance.latency-budget-allocation
+    name: Latency Budget Allocation
+    category: performance
+    agent: performance-capacity
+    description: Perform latency budget allocation using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.performance.throughput-modeling
+    name: Throughput Modeling
+    category: performance
+    agent: performance-capacity
+    description: Perform throughput modeling using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.performance.payload-size-budget
+    name: Payload Size Budget
+    category: performance
+    agent: performance-capacity
+    description: Perform payload size budget using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.performance.concurrency-limit-design
+    name: Concurrency Limit Design
+    category: performance
+    agent: performance-capacity
+    description: Perform concurrency limit design using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.performance.connection-pool-sizing
+    name: Connection Pool Sizing
+    category: performance
+    agent: performance-capacity
+    description: Perform connection pool sizing using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.performance.compression-policy
+    name: Compression Policy
+    category: performance
+    agent: performance-capacity
+    description: Perform compression policy using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.performance.batch-versus-chatty-call-analysis
+    name: Batch Versus Chatty Call Analysis
+    category: performance
+    agent: performance-capacity
+    description: Perform batch versus chatty call analysis using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.performance.streaming-capacity-analysis
+    name: Streaming Capacity Analysis
+    category: performance
+    agent: performance-capacity
+    description: Perform streaming capacity analysis using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.performance.rate-limit-capacity-model
+    name: Rate Limit Capacity Model
+    category: performance
+    agent: performance-capacity
+    description: Perform rate limit capacity model using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.performance.load-test-target-definition
+    name: Load Test Target Definition
+    category: performance
+    agent: performance-capacity
+    description: Perform load test target definition using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.observability.trace-context-propagation
+    name: Trace Context Propagation
+    category: observability
+    agent: observability-operability
+    description: Perform trace context propagation using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.observability.http-semantic-convention-mapping
+    name: Http Semantic Convention Mapping
+    category: observability
+    agent: observability-operability
+    description: Perform http semantic convention mapping using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.observability.rpc-semantic-convention-mapping
+    name: Rpc Semantic Convention Mapping
+    category: observability
+    agent: observability-operability
+    description: Perform rpc semantic convention mapping using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.observability.messaging-semantic-convention-mapping
+    name: Messaging Semantic Convention Mapping
+    category: observability
+    agent: observability-operability
+    description: Perform messaging semantic convention mapping using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.observability.correlation-id-policy
+    name: Correlation Id Policy
+    category: observability
+    agent: observability-operability
+    description: Perform correlation id policy using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.observability.api-metric-specification
+    name: Api Metric Specification
+    category: observability
+    agent: observability-operability
+    description: Perform api metric specification using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.observability.integration-slo-definition
+    name: Integration Slo Definition
+    category: observability
+    agent: observability-operability
+    description: Perform integration slo definition using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.observability.dashboard-and-alert-specification
+    name: Dashboard And Alert Specification
+    category: observability
+    agent: observability-operability
+    description: Perform dashboard and alert specification using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.observability.log-redaction-policy
+    name: Log Redaction Policy
+    category: observability
+    agent: observability-operability
+    description: Perform log redaction policy using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.observability.runbook-diagnostic-design
+    name: Runbook Diagnostic Design
+    category: observability
+    agent: observability-operability
+    description: Perform runbook diagnostic design using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.testing.provider-contract-test-plan
+    name: Provider Contract Test Plan
+    category: testing
+    agent: integration-testing
+    description: Perform provider contract test plan using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.testing.consumer-driven-contract-test
+    name: Consumer Driven Contract Test
+    category: testing
+    agent: integration-testing
+    description: Perform consumer driven contract test using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.testing.schema-conformance-test
+    name: Schema Conformance Test
+    category: testing
+    agent: integration-testing
+    description: Perform schema conformance test using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.testing.negative-api-test-design
+    name: Negative Api Test Design
+    category: testing
+    agent: integration-testing
+    description: Perform negative api test design using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.testing.authorization-test-matrix
+    name: Authorization Test Matrix
+    category: testing
+    agent: integration-testing
+    description: Perform authorization test matrix using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.testing.fault-injection-test-plan
+    name: Fault Injection Test Plan
+    category: testing
+    agent: integration-testing
+    description: Perform fault injection test plan using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.testing.virtual-service-strategy
+    name: Virtual Service Strategy
+    category: testing
+    agent: integration-testing
+    description: Perform virtual service strategy using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.testing.mock-and-stub-governance
+    name: Mock And Stub Governance
+    category: testing
+    agent: integration-testing
+    description: Perform mock and stub governance using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.testing.compatibility-certification
+    name: Compatibility Certification
+    category: testing
+    agent: integration-testing
+    description: Perform compatibility certification using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.testing.release-contract-evidence
+    name: Release Contract Evidence
+    category: testing
+    agent: integration-testing
+    description: Perform release contract evidence using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.legacy.soap-to-rest-assessment
+    name: Soap To Rest Assessment
+    category: legacy
+    agent: legacy-modernization
+    description: Perform soap to rest assessment using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: medium
+    approvalRequired: true
+  - id: integration.legacy.esb-decomposition-analysis
+    name: Esb Decomposition Analysis
+    category: legacy
+    agent: legacy-modernization
+    description: Perform esb decomposition analysis using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: medium
+    approvalRequired: true
+  - id: integration.legacy.strangler-integration-plan
+    name: Strangler Integration Plan
+    category: legacy
+    agent: legacy-modernization
+    description: Perform strangler integration plan using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: medium
+    approvalRequired: true
+  - id: integration.legacy.facade-api-design
+    name: Facade Api Design
+    category: legacy
+    agent: legacy-modernization
+    description: Perform facade api design using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: medium
+    approvalRequired: true
+  - id: integration.legacy.protocol-bridge-design
+    name: Protocol Bridge Design
+    category: legacy
+    agent: legacy-modernization
+    description: Perform protocol bridge design using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: medium
+    approvalRequired: true
+  - id: integration.legacy.legacy-canonical-model-review
+    name: Legacy Canonical Model Review
+    category: legacy
+    agent: legacy-modernization
+    description: Perform legacy canonical model review using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: medium
+    approvalRequired: true
+  - id: integration.legacy.anti-corruption-layer-plan
+    name: Anti Corruption Layer Plan
+    category: legacy
+    agent: legacy-modernization
+    description: Perform anti corruption layer plan using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: medium
+    approvalRequired: true
+  - id: integration.legacy.parallel-run-strategy
+    name: Parallel Run Strategy
+    category: legacy
+    agent: legacy-modernization
+    description: Perform parallel run strategy using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: medium
+    approvalRequired: true
+  - id: integration.legacy.cutover-rollback-plan
+    name: Cutover Rollback Plan
+    category: legacy
+    agent: legacy-modernization
+    description: Perform cutover rollback plan using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: medium
+    approvalRequired: true
+  - id: integration.legacy.legacy-endpoint-retirement
+    name: Legacy Endpoint Retirement
+    category: legacy
+    agent: legacy-modernization
+    description: Perform legacy endpoint retirement using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: medium
+    approvalRequired: true
+  - id: integration.partner.partner-capability-assessment
+    name: Partner Capability Assessment
+    category: partner
+    agent: third-party-partner
+    description: Perform partner capability assessment using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: medium
+    approvalRequired: false
+  - id: integration.partner.partner-contract-review
+    name: Partner Contract Review
+    category: partner
+    agent: third-party-partner
+    description: Perform partner contract review using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: medium
+    approvalRequired: false
+  - id: integration.partner.partner-authentication-design
+    name: Partner Authentication Design
+    category: partner
+    agent: third-party-partner
+    description: Perform partner authentication design using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: medium
+    approvalRequired: false
+  - id: integration.partner.certificate-rotation-plan
+    name: Certificate Rotation Plan
+    category: partner
+    agent: third-party-partner
+    description: Perform certificate rotation plan using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: medium
+    approvalRequired: false
+  - id: integration.partner.partner-sandbox-plan
+    name: Partner Sandbox Plan
+    category: partner
+    agent: third-party-partner
+    description: Perform partner sandbox plan using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: medium
+    approvalRequired: false
+  - id: integration.partner.sla-and-timeout-mapping
+    name: Sla And Timeout Mapping
+    category: partner
+    agent: third-party-partner
+    description: Perform sla and timeout mapping using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: medium
+    approvalRequired: false
+  - id: integration.partner.external-dependency-risk
+    name: External Dependency Risk
+    category: partner
+    agent: third-party-partner
+    description: Perform external dependency risk using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: medium
+    approvalRequired: false
+  - id: integration.partner.vendor-quota-and-limit-mapping
+    name: Vendor Quota And Limit Mapping
+    category: partner
+    agent: third-party-partner
+    description: Perform vendor quota and limit mapping using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: medium
+    approvalRequired: false
+  - id: integration.partner.data-sharing-boundary
+    name: Data Sharing Boundary
+    category: partner
+    agent: third-party-partner
+    description: Perform data sharing boundary using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: medium
+    approvalRequired: false
+  - id: integration.partner.vendor-exit-and-substitution-plan
+    name: Vendor Exit And Substitution Plan
+    category: partner
+    agent: third-party-partner
+    description: Perform vendor exit and substitution plan using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: medium
+    approvalRequired: false
+  - id: integration.platform.api-template-golden-path
+    name: Api Template Golden Path
+    category: platform
+    agent: platform-developer-experience
+    description: Perform api template golden path using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.platform.contract-lint-rule-design
+    name: Contract Lint Rule Design
+    category: platform
+    agent: platform-developer-experience
+    description: Perform contract lint rule design using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.platform.code-generation-governance
+    name: Code Generation Governance
+    category: platform
+    agent: platform-developer-experience
+    description: Perform code generation governance using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.platform.api-catalog-integration
+    name: Api Catalog Integration
+    category: platform
+    agent: platform-developer-experience
+    description: Perform api catalog integration using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.platform.schema-registry-integration
+    name: Schema Registry Integration
+    category: platform
+    agent: platform-developer-experience
+    description: Perform schema registry integration using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.platform.gateway-automation-pattern
+    name: Gateway Automation Pattern
+    category: platform
+    agent: platform-developer-experience
+    description: Perform gateway automation pattern using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.platform.self-service-onboarding
+    name: Self Service Onboarding
+    category: platform
+    agent: platform-developer-experience
+    description: Perform self service onboarding using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.platform.policy-as-code-integration
+    name: Policy As Code Integration
+    category: platform
+    agent: platform-developer-experience
+    description: Perform policy as code integration using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.platform.portal-publishing-workflow
+    name: Portal Publishing Workflow
+    category: platform
+    agent: platform-developer-experience
+    description: Perform portal publishing workflow using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.platform.api-platform-maturity-plan
+    name: Api Platform Maturity Plan
+    category: platform
+    agent: platform-developer-experience
+    description: Perform api platform maturity plan using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.governance.integration-cost-model
+    name: Integration Cost Model
+    category: governance
+    agent: cost-governance
+    description: Perform integration cost model using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.governance.gateway-cost-analysis
+    name: Gateway Cost Analysis
+    category: governance
+    agent: cost-governance
+    description: Perform gateway cost analysis using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.governance.broker-retention-cost-analysis
+    name: Broker Retention Cost Analysis
+    category: governance
+    agent: cost-governance
+    description: Perform broker retention cost analysis using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.governance.network-egress-assessment
+    name: Network Egress Assessment
+    category: governance
+    agent: cost-governance
+    description: Perform network egress assessment using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.governance.consumer-quota-economics
+    name: Consumer Quota Economics
+    category: governance
+    agent: cost-governance
+    description: Perform consumer quota economics using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.governance.vendor-api-cost-model
+    name: Vendor Api Cost Model
+    category: governance
+    agent: cost-governance
+    description: Perform vendor api cost model using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.governance.unit-cost-definition
+    name: Unit Cost Definition
+    category: governance
+    agent: cost-governance
+    description: Perform unit cost definition using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.governance.capacity-cost-tradeoff
+    name: Capacity Cost Tradeoff
+    category: governance
+    agent: cost-governance
+    description: Perform capacity cost tradeoff using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.governance.cost-anomaly-guardrail
+    name: Cost Anomaly Guardrail
+    category: governance
+    agent: cost-governance
+    description: Perform cost anomaly guardrail using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.governance.architecture-exception-register
+    name: Architecture Exception Register
+    category: governance
+    agent: cost-governance
+    description: Perform architecture exception register using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.review.independent-contract-review
+    name: Independent Contract Review
+    category: review
+    agent: architecture-review
+    description: Perform independent contract review using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.review.independent-security-review
+    name: Independent Security Review
+    category: review
+    agent: architecture-review
+    description: Perform independent security review using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.review.independent-compatibility-review
+    name: Independent Compatibility Review
+    category: review
+    agent: architecture-review
+    description: Perform independent compatibility review using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.review.independent-reliability-review
+    name: Independent Reliability Review
+    category: review
+    agent: architecture-review
+    description: Perform independent reliability review using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.review.independent-performance-review
+    name: Independent Performance Review
+    category: review
+    agent: architecture-review
+    description: Perform independent performance review using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.review.consumer-impact-review
+    name: Consumer Impact Review
+    category: review
+    agent: architecture-review
+    description: Perform consumer impact review using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.review.evidence-completeness-review
+    name: Evidence Completeness Review
+    category: review
+    agent: architecture-review
+    description: Perform evidence completeness review using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.review.architecture-decision-quality-review
+    name: Architecture Decision Quality Review
+    category: review
+    agent: architecture-review
+    description: Perform architecture decision quality review using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.review.production-readiness-review
+    name: Production Readiness Review
+    category: review
+    agent: architecture-review
+    description: Perform production readiness review using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.review.exception-and-residual-risk-review
+    name: Exception And Residual Risk Review
+    category: review
+    agent: architecture-review
+    description: Perform exception and residual risk review using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.handoff.frontend-integration-handoff
+    name: Frontend Integration Handoff
+    category: handoff
+    agent: implementation-alignment
+    description: Perform frontend integration handoff using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.handoff.java-service-handoff
+    name: Java Service Handoff
+    category: handoff
+    agent: implementation-alignment
+    description: Perform java service handoff using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.handoff.python-service-handoff
+    name: Python Service Handoff
+    category: handoff
+    agent: implementation-alignment
+    description: Perform python service handoff using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.handoff.database-integration-handoff
+    name: Database Integration Handoff
+    category: handoff
+    agent: implementation-alignment
+    description: Perform database integration handoff using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.handoff.qa-contract-test-handoff
+    name: Qa Contract Test Handoff
+    category: handoff
+    agent: implementation-alignment
+    description: Perform qa contract test handoff using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.handoff.devops-gateway-handoff
+    name: Devops Gateway Handoff
+    category: handoff
+    agent: implementation-alignment
+    description: Perform devops gateway handoff using evidence-backed integration architecture practices and produce
+      a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.handoff.sre-observability-handoff
+    name: Sre Observability Handoff
+    category: handoff
+    agent: implementation-alignment
+    description: Perform sre observability handoff using evidence-backed integration architecture practices and
+      produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.handoff.support-troubleshooting-handoff
+    name: Support Troubleshooting Handoff
+    category: handoff
+    agent: implementation-alignment
+    description: Perform support troubleshooting handoff using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.handoff.technical-writer-documentation-handoff
+    name: Technical Writer Documentation Handoff
+    category: handoff
+    agent: implementation-alignment
+    description: Perform technical writer documentation handoff using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false
+  - id: integration.handoff.implementation-conformance-review
+    name: Implementation Conformance Review
+    category: handoff
+    agent: implementation-alignment
+    description: Perform implementation conformance review using evidence-backed integration architecture practices
+      and produce a reviewable output.
+    risk: low
+    approvalRequired: false

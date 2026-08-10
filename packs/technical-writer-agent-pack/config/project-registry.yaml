@@ -1,0 +1,78 @@
+version: 1.0.0
+projects:
+- id: pcc
+  name: PCC
+  documentation_profile: legacy-enterprise-product
+  components:
+  - Angular 12 frontend
+  - Java backend
+  - database
+  - infrastructure
+  source_control: Bitbucket
+  content_targets:
+  - repository docs
+  - Confluence
+  - product help
+  - support knowledge
+  constraints:
+  - pinned legacy versions
+  - version-specific screenshots
+  - conservative procedure changes
+- id: sop
+  name: SOP
+  documentation_profile: enterprise-web-product
+  components:
+  - Angular 15 frontend
+  - Java backend
+  - database
+  - infrastructure
+  source_control: Bitbucket
+  content_targets:
+  - repository docs
+  - Confluence
+  - product help
+  - release notes
+  constraints:
+  - shared terminology
+  - accessibility review
+  - version-aware developer docs
+- id: databridge
+  name: DataBridge
+  documentation_profile: legacy-integration-product
+  components:
+  - AngularJS frontend
+  - Java backend
+  - database
+  - integration jobs
+  source_control: Bitbucket
+  content_targets:
+  - integration docs
+  - runbooks
+  - support knowledge
+  - migration guides
+  constraints:
+  - legacy behavior
+  - cross-system sequencing
+  - extended troubleshooting and rollback
+- id: bm-agent-foundry
+  name: BM Agent Foundry
+  documentation_profile: ai-agent-platform
+  components:
+  - web applications
+  - agent services
+  - MCP servers
+  - policies
+  - schemas
+  - artifact store
+  source_control: Bitbucket-or-GitHub
+  content_targets:
+  - developer portal
+  - repository docs
+  - architecture docs
+  - operator docs
+  - agent-pack catalog
+  constraints:
+  - AI governance
+  - prompt and policy versioning
+  - security redaction
+  - model and connector compatibility

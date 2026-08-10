@@ -1,0 +1,899 @@
+version: 1.0.0
+skill_count: 224
+skills:
+- id: parse-documentation-request
+  category: context-and-discovery
+  description: Parse documentation request.
+  risk: low
+- id: retrieve-jira-and-confluence-context
+  category: context-and-discovery
+  description: Retrieve jira and confluence context.
+  risk: low
+- id: inspect-repository-documentation
+  category: context-and-discovery
+  description: Inspect repository documentation.
+  risk: low
+- id: inspect-product-and-architecture-context
+  category: context-and-discovery
+  description: Inspect product and architecture context.
+  risk: low
+- id: identify-authoritative-sources
+  category: context-and-discovery
+  description: Identify authoritative sources.
+  risk: low
+- id: map-source-versions
+  category: context-and-discovery
+  description: Map source versions.
+  risk: low
+- id: detect-missing-evidence
+  category: context-and-discovery
+  description: Detect missing evidence.
+  risk: low
+- id: identify-content-owners
+  category: context-and-discovery
+  description: Identify content owners.
+  risk: low
+- id: identify-smes-and-reviewers
+  category: context-and-discovery
+  description: Identify smes and reviewers.
+  risk: low
+- id: build-documentation-inventory
+  category: context-and-discovery
+  description: Build documentation inventory.
+  risk: low
+- id: compare-current-and-target-behavior
+  category: context-and-discovery
+  description: Compare current and target behavior.
+  risk: low
+- id: trace-claims-to-sources
+  category: context-and-discovery
+  description: Trace claims to sources.
+  risk: low
+- id: separate-fact-from-assumption
+  category: context-and-discovery
+  description: Separate fact from assumption.
+  risk: low
+- id: record-unresolved-questions
+  category: context-and-discovery
+  description: Record unresolved questions.
+  risk: low
+- id: identify-primary-audience
+  category: audience-and-content-strategy
+  description: Identify primary audience.
+  risk: low
+- id: identify-secondary-audience
+  category: audience-and-content-strategy
+  description: Identify secondary audience.
+  risk: low
+- id: model-user-goals
+  category: audience-and-content-strategy
+  description: Model user goals.
+  risk: low
+- id: analyze-reader-prerequisites
+  category: audience-and-content-strategy
+  description: Analyze reader prerequisites.
+  risk: low
+- id: analyze-reading-context
+  category: audience-and-content-strategy
+  description: Analyze reading context.
+  risk: low
+- id: define-documentation-outcomes
+  category: audience-and-content-strategy
+  description: Define documentation outcomes.
+  risk: low
+- id: choose-documentation-channels
+  category: audience-and-content-strategy
+  description: Choose documentation channels.
+  risk: low
+- id: define-content-coverage
+  category: audience-and-content-strategy
+  description: Define content coverage.
+  risk: low
+- id: define-content-lifecycle
+  category: audience-and-content-strategy
+  description: Define content lifecycle.
+  risk: low
+- id: define-ownership-model
+  category: audience-and-content-strategy
+  description: Define ownership model.
+  risk: low
+- id: define-documentation-success-measures
+  category: audience-and-content-strategy
+  description: Define documentation success measures.
+  risk: low
+- id: prioritize-documentation-backlog
+  category: audience-and-content-strategy
+  description: Prioritize documentation backlog.
+  risk: low
+- id: plan-deprecation-communication
+  category: audience-and-content-strategy
+  description: Plan deprecation communication.
+  risk: low
+- id: create-content-governance
+  category: audience-and-content-strategy
+  description: Create content governance.
+  risk: low
+- id: design-content-hierarchy
+  category: information-architecture
+  description: Design content hierarchy.
+  risk: low
+- id: design-navigation
+  category: information-architecture
+  description: Design navigation.
+  risk: low
+- id: create-taxonomy
+  category: information-architecture
+  description: Create taxonomy.
+  risk: low
+- id: create-labeling-system
+  category: information-architecture
+  description: Create labeling system.
+  risk: low
+- id: create-metadata-model
+  category: information-architecture
+  description: Create metadata model.
+  risk: low
+- id: map-related-content
+  category: information-architecture
+  description: Map related content.
+  risk: low
+- id: design-cross-links
+  category: information-architecture
+  description: Design cross-links.
+  risk: low
+- id: design-redirects
+  category: information-architecture
+  description: Design redirects.
+  risk: low
+- id: identify-orphan-content
+  category: information-architecture
+  description: Identify orphan content.
+  risk: low
+- id: reduce-navigation-depth
+  category: information-architecture
+  description: Reduce navigation depth.
+  risk: low
+- id: design-landing-pages
+  category: information-architecture
+  description: Design landing pages.
+  risk: low
+- id: structure-large-guides
+  category: information-architecture
+  description: Structure large guides.
+  risk: low
+- id: plan-versioned-documentation
+  category: information-architecture
+  description: Plan versioned documentation.
+  risk: low
+- id: validate-findability
+  category: information-architecture
+  description: Validate findability.
+  risk: low
+- id: write-tutorials
+  category: content-types
+  description: Write tutorials.
+  risk: low
+- id: write-how-to-guides
+  category: content-types
+  description: Write how-to guides.
+  risk: low
+- id: write-conceptual-topics
+  category: content-types
+  description: Write conceptual topics.
+  risk: low
+- id: write-reference-topics
+  category: content-types
+  description: Write reference topics.
+  risk: low
+- id: write-faqs
+  category: content-types
+  description: Write faqs.
+  risk: low
+- id: write-administrator-guides
+  category: content-types
+  description: Write administrator guides.
+  risk: low
+- id: write-onboarding-guides
+  category: content-types
+  description: Write onboarding guides.
+  risk: low
+- id: write-contribution-guides
+  category: content-types
+  description: Write contribution guides.
+  risk: low
+- id: write-troubleshooting-guides
+  category: content-types
+  description: Write troubleshooting guides.
+  risk: low
+- id: write-runbooks
+  category: content-types
+  description: Write runbooks.
+  risk: low
+- id: write-release-notes
+  category: content-types
+  description: Write release notes.
+  risk: low
+- id: write-upgrade-guides
+  category: content-types
+  description: Write upgrade guides.
+  risk: low
+- id: write-migration-guides
+  category: content-types
+  description: Write migration guides.
+  risk: low
+- id: write-known-issue-notices
+  category: content-types
+  description: Write known-issue notices.
+  risk: low
+- id: document-local-setup
+  category: developer-documentation
+  description: Document local setup.
+  risk: low
+- id: document-repository-structure
+  category: developer-documentation
+  description: Document repository structure.
+  risk: low
+- id: document-architecture
+  category: developer-documentation
+  description: Document architecture.
+  risk: low
+- id: document-configuration
+  category: developer-documentation
+  description: Document configuration.
+  risk: low
+- id: document-cli-commands
+  category: developer-documentation
+  description: Document cli commands.
+  risk: low
+- id: document-sdk-usage
+  category: developer-documentation
+  description: Document sdk usage.
+  risk: low
+- id: document-authentication
+  category: developer-documentation
+  description: Document authentication.
+  risk: low
+- id: document-error-handling
+  category: developer-documentation
+  description: Document error handling.
+  risk: low
+- id: document-logging-and-observability
+  category: developer-documentation
+  description: Document logging and observability.
+  risk: low
+- id: document-testing
+  category: developer-documentation
+  description: Document testing.
+  risk: low
+- id: document-deployment-prerequisites
+  category: developer-documentation
+  description: Document deployment prerequisites.
+  risk: low
+- id: document-contribution-workflow
+  category: developer-documentation
+  description: Document contribution workflow.
+  risk: low
+- id: document-extension-points
+  category: developer-documentation
+  description: Document extension points.
+  risk: low
+- id: document-compatibility
+  category: developer-documentation
+  description: Document compatibility.
+  risk: low
+- id: document-rest-apis
+  category: api-documentation
+  description: Document rest apis.
+  risk: low
+- id: document-event-apis
+  category: api-documentation
+  description: Document event apis.
+  risk: low
+- id: document-webhooks
+  category: api-documentation
+  description: Document webhooks.
+  risk: low
+- id: document-graphql-apis
+  category: api-documentation
+  description: Document graphql apis.
+  risk: low
+- id: document-request-parameters
+  category: api-documentation
+  description: Document request parameters.
+  risk: low
+- id: document-response-schemas
+  category: api-documentation
+  description: Document response schemas.
+  risk: low
+- id: document-authentication-flows
+  category: api-documentation
+  description: Document authentication flows.
+  risk: low
+- id: document-pagination
+  category: api-documentation
+  description: Document pagination.
+  risk: low
+- id: document-filtering-and-sorting
+  category: api-documentation
+  description: Document filtering and sorting.
+  risk: low
+- id: document-errors
+  category: api-documentation
+  description: Document errors.
+  risk: low
+- id: document-idempotency
+  category: api-documentation
+  description: Document idempotency.
+  risk: low
+- id: document-rate-limits
+  category: api-documentation
+  description: Document rate limits.
+  risk: low
+- id: document-versioning
+  category: api-documentation
+  description: Document versioning.
+  risk: low
+- id: document-deprecations
+  category: api-documentation
+  description: Document deprecations.
+  risk: low
+- id: define-task-goal
+  category: procedural-writing
+  description: Define task goal.
+  risk: low
+- id: state-prerequisites
+  category: procedural-writing
+  description: State prerequisites.
+  risk: low
+- id: prepare-safe-test-data
+  category: procedural-writing
+  description: Prepare safe test data.
+  risk: low
+- id: write-ordered-steps
+  category: procedural-writing
+  description: Write ordered steps.
+  risk: low
+- id: use-consistent-ui-terminology
+  category: procedural-writing
+  description: Use consistent ui terminology.
+  risk: low
+- id: include-commands-safely
+  category: procedural-writing
+  description: Include commands safely.
+  risk: low
+- id: add-expected-results
+  category: procedural-writing
+  description: Add expected results.
+  risk: low
+- id: add-verification-steps
+  category: procedural-writing
+  description: Add verification steps.
+  risk: low
+- id: add-stop-conditions
+  category: procedural-writing
+  description: Add stop conditions.
+  risk: low
+- id: add-rollback-steps
+  category: procedural-writing
+  description: Add rollback steps.
+  risk: low
+- id: add-troubleshooting-branches
+  category: procedural-writing
+  description: Add troubleshooting branches.
+  risk: low
+- id: add-next-actions
+  category: procedural-writing
+  description: Add next actions.
+  risk: low
+- id: test-procedures-end-to-end
+  category: procedural-writing
+  description: Test procedures end to end.
+  risk: low
+- id: minimize-destructive-actions
+  category: procedural-writing
+  description: Minimize destructive actions.
+  risk: low
+- id: explain-mental-models
+  category: concept-and-reference
+  description: Explain mental models.
+  risk: low
+- id: explain-system-boundaries
+  category: concept-and-reference
+  description: Explain system boundaries.
+  risk: low
+- id: explain-lifecycle-states
+  category: concept-and-reference
+  description: Explain lifecycle states.
+  risk: low
+- id: explain-architecture-tradeoffs
+  category: concept-and-reference
+  description: Explain architecture tradeoffs.
+  risk: low
+- id: create-configuration-reference
+  category: concept-and-reference
+  description: Create configuration reference.
+  risk: low
+- id: create-field-reference
+  category: concept-and-reference
+  description: Create field reference.
+  risk: low
+- id: create-command-reference
+  category: concept-and-reference
+  description: Create command reference.
+  risk: low
+- id: create-error-reference
+  category: concept-and-reference
+  description: Create error reference.
+  risk: low
+- id: create-limits-reference
+  category: concept-and-reference
+  description: Create limits reference.
+  risk: low
+- id: create-permissions-reference
+  category: concept-and-reference
+  description: Create permissions reference.
+  risk: low
+- id: create-status-reference
+  category: concept-and-reference
+  description: Create status reference.
+  risk: low
+- id: create-terminology-definitions
+  category: concept-and-reference
+  description: Create terminology definitions.
+  risk: low
+- id: create-comparison-tables
+  category: concept-and-reference
+  description: Create comparison tables.
+  risk: low
+- id: separate-concepts-from-procedures
+  category: concept-and-reference
+  description: Separate concepts from procedures.
+  risk: low
+- id: extract-examples-from-tests
+  category: code-samples
+  description: Extract examples from tests.
+  risk: low
+- id: write-minimal-examples
+  category: code-samples
+  description: Write minimal examples.
+  risk: low
+- id: pin-language-and-dependency-versions
+  category: code-samples
+  description: Pin language and dependency versions.
+  risk: low
+- id: avoid-unsafe-credentials
+  category: code-samples
+  description: Avoid unsafe credentials.
+  risk: low
+- id: use-synthetic-data
+  category: code-samples
+  description: Use synthetic data.
+  risk: low
+- id: test-snippets
+  category: code-samples
+  description: Test snippets.
+  risk: low
+- id: explain-placeholders
+  category: code-samples
+  description: Explain placeholders.
+  risk: low
+- id: explain-expected-output
+  category: code-samples
+  description: Explain expected output.
+  risk: low
+- id: handle-errors-in-examples
+  category: code-samples
+  description: Handle errors in examples.
+  risk: low
+- id: keep-examples-copyable
+  category: code-samples
+  description: Keep examples copyable.
+  risk: low
+- id: maintain-sample-repositories
+  category: code-samples
+  description: Maintain sample repositories.
+  risk: low
+- id: validate-shell-commands
+  category: code-samples
+  description: Validate shell commands.
+  risk: low
+- id: validate-configuration-examples
+  category: code-samples
+  description: Validate configuration examples.
+  risk: low
+- id: link-examples-to-source
+  category: code-samples
+  description: Link examples to source.
+  risk: low
+- id: choose-appropriate-diagram-type
+  category: visual-communication
+  description: Choose appropriate diagram type.
+  risk: low
+- id: create-context-diagrams
+  category: visual-communication
+  description: Create context diagrams.
+  risk: low
+- id: create-component-diagrams
+  category: visual-communication
+  description: Create component diagrams.
+  risk: low
+- id: create-sequence-diagrams
+  category: visual-communication
+  description: Create sequence diagrams.
+  risk: low
+- id: create-workflow-diagrams
+  category: visual-communication
+  description: Create workflow diagrams.
+  risk: low
+- id: create-data-flow-diagrams
+  category: visual-communication
+  description: Create data-flow diagrams.
+  risk: low
+- id: create-deployment-diagrams
+  category: visual-communication
+  description: Create deployment diagrams.
+  risk: low
+- id: create-decision-trees
+  category: visual-communication
+  description: Create decision trees.
+  risk: low
+- id: create-annotated-screenshots
+  category: visual-communication
+  description: Create annotated screenshots.
+  risk: low
+- id: create-accessible-alt-text
+  category: visual-communication
+  description: Create accessible alt text.
+  risk: low
+- id: write-long-descriptions
+  category: visual-communication
+  description: Write long descriptions.
+  risk: low
+- id: keep-diagrams-versioned
+  category: visual-communication
+  description: Keep diagrams versioned.
+  risk: low
+- id: validate-visual-consistency
+  category: visual-communication
+  description: Validate visual consistency.
+  risk: low
+- id: avoid-sensitive-visual-data
+  category: visual-communication
+  description: Avoid sensitive visual data.
+  risk: low
+- id: write-in-active-voice
+  category: style-and-language
+  description: Write in active voice.
+  risk: low
+- id: write-directly-to-the-reader
+  category: style-and-language
+  description: Write directly to the reader.
+  risk: low
+- id: use-concise-sentences
+  category: style-and-language
+  description: Use concise sentences.
+  risk: low
+- id: front-load-key-information
+  category: style-and-language
+  description: Front-load key information.
+  risk: low
+- id: use-sentence-case-headings
+  category: style-and-language
+  description: Use sentence-case headings.
+  risk: low
+- id: use-parallel-structure
+  category: style-and-language
+  description: Use parallel structure.
+  risk: low
+- id: use-consistent-terminology
+  category: style-and-language
+  description: Use consistent terminology.
+  risk: low
+- id: avoid-ambiguous-pronouns
+  category: style-and-language
+  description: Avoid ambiguous pronouns.
+  risk: low
+- id: avoid-unnecessary-jargon
+  category: style-and-language
+  description: Avoid unnecessary jargon.
+  risk: low
+- id: expand-acronyms-appropriately
+  category: style-and-language
+  description: Expand acronyms appropriately.
+  risk: low
+- id: write-inclusive-language
+  category: style-and-language
+  description: Write inclusive language.
+  risk: low
+- id: write-bias-free-examples
+  category: style-and-language
+  description: Write bias-free examples.
+  risk: low
+- id: use-scannable-lists
+  category: style-and-language
+  description: Use scannable lists.
+  risk: low
+- id: apply-project-style-exceptions
+  category: style-and-language
+  description: Apply project style exceptions.
+  risk: low
+- id: write-descriptive-link-text
+  category: accessibility-and-globalization
+  description: Write descriptive link text.
+  risk: low
+- id: write-meaningful-headings
+  category: accessibility-and-globalization
+  description: Write meaningful headings.
+  risk: low
+- id: write-useful-alt-text
+  category: accessibility-and-globalization
+  description: Write useful alt text.
+  risk: low
+- id: write-table-headers
+  category: accessibility-and-globalization
+  description: Write table headers.
+  risk: low
+- id: avoid-color-only-meaning
+  category: accessibility-and-globalization
+  description: Avoid color-only meaning.
+  risk: low
+- id: support-screen-reader-flow
+  category: accessibility-and-globalization
+  description: Support screen-reader flow.
+  risk: low
+- id: support-keyboard-readable-procedures
+  category: accessibility-and-globalization
+  description: Support keyboard-readable procedures.
+  risk: low
+- id: avoid-spatial-only-references
+  category: accessibility-and-globalization
+  description: Avoid spatial-only references.
+  risk: low
+- id: avoid-idioms
+  category: accessibility-and-globalization
+  description: Avoid idioms.
+  risk: low
+- id: use-locale-neutral-dates
+  category: accessibility-and-globalization
+  description: Use locale-neutral dates.
+  risk: low
+- id: use-locale-neutral-examples
+  category: accessibility-and-globalization
+  description: Use locale-neutral examples.
+  risk: low
+- id: prepare-translatable-strings
+  category: accessibility-and-globalization
+  description: Prepare translatable strings.
+  risk: low
+- id: provide-context-for-translators
+  category: accessibility-and-globalization
+  description: Provide context for translators.
+  risk: low
+- id: validate-cognitive-accessibility
+  category: accessibility-and-globalization
+  description: Validate cognitive accessibility.
+  risk: low
+- id: create-documentation-branch
+  category: docs-as-code
+  description: Create documentation branch.
+  risk: medium
+- id: edit-markdown-safely
+  category: docs-as-code
+  description: Edit markdown safely.
+  risk: medium
+- id: edit-mdx-safely
+  category: docs-as-code
+  description: Edit mdx safely.
+  risk: medium
+- id: edit-asciidoc-safely
+  category: docs-as-code
+  description: Edit asciidoc safely.
+  risk: medium
+- id: edit-restructuredtext-safely
+  category: docs-as-code
+  description: Edit restructuredtext safely.
+  risk: medium
+- id: edit-dita-safely
+  category: docs-as-code
+  description: Edit dita safely.
+  risk: medium
+- id: validate-front-matter
+  category: docs-as-code
+  description: Validate front matter.
+  risk: medium
+- id: run-documentation-build
+  category: docs-as-code
+  description: Run documentation build.
+  risk: medium
+- id: run-prose-lint
+  category: docs-as-code
+  description: Run prose lint.
+  risk: medium
+- id: run-link-checks
+  category: docs-as-code
+  description: Run link checks.
+  risk: medium
+- id: review-documentation-diff
+  category: docs-as-code
+  description: Review documentation diff.
+  risk: medium
+- id: prepare-documentation-pull-request
+  category: docs-as-code
+  description: Prepare documentation pull request.
+  risk: medium
+- id: resolve-review-comments
+  category: docs-as-code
+  description: Resolve review comments.
+  risk: medium
+- id: preserve-source-history
+  category: docs-as-code
+  description: Preserve source history.
+  risk: medium
+- id: fact-check-claims
+  category: quality-and-review
+  description: Fact-check claims.
+  risk: low
+- id: validate-version-accuracy
+  category: quality-and-review
+  description: Validate version accuracy.
+  risk: low
+- id: validate-task-completeness
+  category: quality-and-review
+  description: Validate task completeness.
+  risk: low
+- id: validate-reference-completeness
+  category: quality-and-review
+  description: Validate reference completeness.
+  risk: low
+- id: validate-link-health
+  category: quality-and-review
+  description: Validate link health.
+  risk: low
+- id: validate-code-samples
+  category: quality-and-review
+  description: Validate code samples.
+  risk: low
+- id: validate-screenshots
+  category: quality-and-review
+  description: Validate screenshots.
+  risk: low
+- id: validate-accessibility
+  category: quality-and-review
+  description: Validate accessibility.
+  risk: low
+- id: validate-terminology
+  category: quality-and-review
+  description: Validate terminology.
+  risk: low
+- id: detect-contradictions
+  category: quality-and-review
+  description: Detect contradictions.
+  risk: low
+- id: detect-duplicate-content
+  category: quality-and-review
+  description: Detect duplicate content.
+  risk: low
+- id: detect-stale-content
+  category: quality-and-review
+  description: Detect stale content.
+  risk: low
+- id: assign-finding-severity
+  category: quality-and-review
+  description: Assign finding severity.
+  risk: low
+- id: prepare-publication-recommendation
+  category: quality-and-review
+  description: Prepare publication recommendation.
+  risk: low
+- id: perform-documentation-impact-analysis
+  category: release-and-maintenance
+  description: Perform documentation impact analysis.
+  risk: medium
+- id: map-code-changes-to-docs
+  category: release-and-maintenance
+  description: Map code changes to docs.
+  risk: medium
+- id: map-api-changes-to-docs
+  category: release-and-maintenance
+  description: Map api changes to docs.
+  risk: medium
+- id: map-ui-changes-to-docs
+  category: release-and-maintenance
+  description: Map ui changes to docs.
+  risk: medium
+- id: map-release-scope-to-docs
+  category: release-and-maintenance
+  description: Map release scope to docs.
+  risk: medium
+- id: write-candidate-bound-release-notes
+  category: release-and-maintenance
+  description: Write candidate-bound release notes.
+  risk: medium
+- id: maintain-known-issues
+  category: release-and-maintenance
+  description: Maintain known issues.
+  risk: medium
+- id: maintain-deprecation-notices
+  category: release-and-maintenance
+  description: Maintain deprecation notices.
+  risk: medium
+- id: schedule-content-review
+  category: release-and-maintenance
+  description: Schedule content review.
+  risk: medium
+- id: calculate-freshness-status
+  category: release-and-maintenance
+  description: Calculate freshness status.
+  risk: medium
+- id: archive-obsolete-content
+  category: release-and-maintenance
+  description: Archive obsolete content.
+  risk: medium
+- id: plan-redirects
+  category: release-and-maintenance
+  description: Plan redirects.
+  risk: medium
+- id: manage-version-selectors
+  category: release-and-maintenance
+  description: Manage version selectors.
+  risk: medium
+- id: close-documentation-debt
+  category: release-and-maintenance
+  description: Close documentation debt.
+  risk: medium
+- id: analyze-documentation-feedback
+  category: analytics-and-governance
+  description: Analyze documentation feedback.
+  risk: medium
+- id: analyze-search-queries
+  category: analytics-and-governance
+  description: Analyze search queries.
+  risk: medium
+- id: analyze-zero-result-searches
+  category: analytics-and-governance
+  description: Analyze zero-result searches.
+  risk: medium
+- id: analyze-page-usage
+  category: analytics-and-governance
+  description: Analyze page usage.
+  risk: medium
+- id: analyze-task-success
+  category: analytics-and-governance
+  description: Analyze task success.
+  risk: medium
+- id: analyze-support-deflection
+  category: analytics-and-governance
+  description: Analyze support deflection.
+  risk: medium
+- id: identify-content-gaps
+  category: analytics-and-governance
+  description: Identify content gaps.
+  risk: medium
+- id: prioritize-remediation
+  category: analytics-and-governance
+  description: Prioritize remediation.
+  risk: medium
+- id: maintain-review-audit-trail
+  category: analytics-and-governance
+  description: Maintain review audit trail.
+  risk: medium
+- id: maintain-source-provenance
+  category: analytics-and-governance
+  description: Maintain source provenance.
+  risk: medium
+- id: maintain-approval-records
+  category: analytics-and-governance
+  description: Maintain approval records.
+  risk: medium
+- id: apply-retention-policy
+  category: analytics-and-governance
+  description: Apply retention policy.
+  risk: medium
+- id: redact-sensitive-evidence
+  category: analytics-and-governance
+  description: Redact sensitive evidence.
+  risk: medium
+- id: evaluate-documentation-quality
+  category: analytics-and-governance
+  description: Evaluate documentation quality.
+  risk: medium

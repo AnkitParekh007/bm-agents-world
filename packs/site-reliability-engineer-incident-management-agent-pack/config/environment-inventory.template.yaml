@@ -1,0 +1,30 @@
+version: 1.0.0
+project: <project-id>
+service: <service-id>
+environments:
+  playground:
+    criticality: low
+    agent_access: read plus approved safe execute
+    data: synthetic
+  qa:
+    criticality: medium
+    agent_access: read plus approved safe execute
+    data: masked-or-synthetic
+  production:
+    criticality: high
+    agent_access: bounded redacted read-only
+    execution: human-or-deterministic-approved-only
+  disaster_recovery:
+    criticality: high
+    agent_access: read-only until exercise approval
+    execution: operator-controlled
+required:
+- owners
+- service_tier
+- regions
+- dependencies
+- slo_ids
+- observability
+- runbooks
+- rto
+- rpo

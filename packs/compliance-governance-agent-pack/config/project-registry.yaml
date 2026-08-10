@@ -1,0 +1,52 @@
+projects:
+- id: pcc
+  stack:
+  - Angular 12
+  - Java
+  compliance_profile:
+  - security
+  - privacy
+  - customer-contracts
+  environments:
+  - playground
+  - qa
+  - production
+- id: sop
+  stack:
+  - Angular 15
+  - Java
+  compliance_profile:
+  - security
+  - privacy
+  - customer-contracts
+  environments:
+  - playground
+  - qa
+  - production
+- id: databridge
+  stack:
+  - AngularJS
+  - Java
+  - data integrations
+  compliance_profile:
+  - security
+  - privacy
+  - data-governance
+  environments:
+  - playground
+  - qa
+  - production
+- id: bm-agent-foundry
+  stack:
+  - AI agents
+  - MCP
+  - cloud runtime
+  compliance_profile:
+  - security
+  - privacy
+  - ai-governance
+  - customer-contracts
+  environments:
+  - sandbox
+  - qa
+  - production

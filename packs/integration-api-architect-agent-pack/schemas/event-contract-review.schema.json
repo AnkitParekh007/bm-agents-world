@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/event-contract-review.schema.json",
+  "title": "Event Contract Review",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_id",
+    "channel",
+    "delivery_semantics",
+    "schema",
+    "compatibility",
+    "decision"
+  ],
+  "properties": {
+    "contract_id": {
+      "type": "string"
+    },
+    "channel": {
+      "type": "string"
+    },
+    "delivery_semantics": {
+      "type": "string"
+    },
+    "schema": {
+      "type": "object"
+    },
+    "compatibility": {
+      "type": "object"
+    },
+    "replay": {
+      "type": "object"
+    },
+    "decision": {
+      "type": "string"
+    }
+  }
+}

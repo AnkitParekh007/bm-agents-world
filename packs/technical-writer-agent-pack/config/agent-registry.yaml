@@ -1,0 +1,241 @@
+version: 1.0.0
+supervisor: technical-writer-supervisor
+agent_count: 27
+agents:
+- id: technical-writer-supervisor
+  description: Coordinates documentation intake, planning, authoring, review, validation, publication requests,
+    maintenance, and evidence.
+  capabilities:
+  - orchestration
+  - documentation-governance
+  - content-operations
+  status: enabled
+  external_writes: approval-controlled
+- id: documentation-context-agent
+  description: Retrieves approved product, repository, Jira, architecture, API, UX, support, release, and existing-documentation
+    context.
+  capabilities:
+  - context
+  - traceability
+  - knowledge-retrieval
+  status: enabled
+  external_writes: approval-controlled
+- id: documentation-intake-agent
+  description: Classifies documentation requests, urgency, audience, content type, owner, publication target, and
+    missing information.
+  capabilities:
+  - intake
+  - classification
+  - routing
+  status: enabled
+  external_writes: approval-controlled
+- id: audience-and-task-analysis-agent
+  description: Models audiences, roles, goals, prerequisites, environments, jobs, pain points, and reading contexts.
+  capabilities:
+  - audience-analysis
+  - task-analysis
+  - personas
+  status: enabled
+  external_writes: approval-controlled
+- id: content-strategy-agent
+  description: Defines documentation goals, coverage, channels, ownership, lifecycle, success measures, and governance.
+  capabilities:
+  - content-strategy
+  - portfolio
+  - governance
+  status: enabled
+  external_writes: approval-controlled
+- id: information-architecture-agent
+  description: Designs navigation, hierarchy, taxonomy, labels, content models, cross-links, and findability.
+  capabilities:
+  - information-architecture
+  - taxonomy
+  - navigation
+  status: enabled
+  external_writes: approval-controlled
+- id: developer-documentation-agent
+  description: Creates onboarding, architecture, SDK, CLI, integration, contribution, and troubleshooting content
+    for developers.
+  capabilities:
+  - developer-docs
+  - onboarding
+  - integration
+  status: enabled
+  external_writes: approval-controlled
+- id: api-documentation-agent
+  description: Creates and validates REST, event, webhook, SDK, authentication, error, pagination, and versioning
+    documentation.
+  capabilities:
+  - api-docs
+  - openapi
+  - asyncapi
+  status: enabled
+  external_writes: approval-controlled
+- id: product-help-agent
+  description: Creates task-based product help, administrator guides, in-product assistance, FAQs, and troubleshooting
+    content.
+  capabilities:
+  - product-docs
+  - help-center
+  - administration
+  status: enabled
+  external_writes: approval-controlled
+- id: procedure-authoring-agent
+  description: Designs tested, goal-oriented procedures with prerequisites, steps, verification, recovery, and next
+    actions.
+  capabilities:
+  - procedures
+  - how-to
+  - validation
+  status: enabled
+  external_writes: approval-controlled
+- id: concept-and-reference-agent
+  description: Creates conceptual explanations, architecture overviews, glossaries, configuration references, and
+    factual reference content.
+  capabilities:
+  - concepts
+  - reference
+  - glossary
+  status: enabled
+  external_writes: approval-controlled
+- id: release-documentation-agent
+  description: Produces candidate-bound release notes, upgrade guidance, deprecations, known issues, and migration
+    notices.
+  capabilities:
+  - release-notes
+  - upgrade-guides
+  - deprecations
+  status: enabled
+  external_writes: approval-controlled
+- id: runbook-and-operations-agent
+  description: Creates operational runbooks, incident procedures, support playbooks, maintenance guides, and recovery
+    instructions.
+  capabilities:
+  - runbooks
+  - operations
+  - support
+  status: enabled
+  external_writes: approval-controlled
+- id: code-sample-agent
+  description: Extracts, writes, tests, secures, versions, and explains minimal code samples and command-line examples.
+  capabilities:
+  - code-samples
+  - snippet-testing
+  - security
+  status: enabled
+  external_writes: approval-controlled
+- id: diagram-and-visual-agent
+  description: Creates architecture, sequence, workflow, data-flow, annotated screenshot, and conceptual diagrams.
+  capabilities:
+  - diagrams
+  - visuals
+  - mermaid
+  status: enabled
+  external_writes: approval-controlled
+- id: style-and-terminology-agent
+  description: Enforces project style, voice, grammar, terminology, naming, inclusive language, and consistency.
+  capabilities:
+  - style
+  - terminology
+  - voice
+  status: enabled
+  external_writes: approval-controlled
+- id: accessibility-and-inclusive-content-agent
+  description: Reviews headings, links, tables, images, alternatives, cognitive load, inclusive language, and accessible
+    formats.
+  capabilities:
+  - accessibility
+  - inclusive-content
+  - wcag
+  status: enabled
+  external_writes: approval-controlled
+- id: localization-readiness-agent
+  description: Prepares global-ready content, locale-neutral examples, terminology, variables, segmentation, and
+    translation handoff.
+  capabilities:
+  - localization
+  - globalization
+  - translation
+  status: enabled
+  external_writes: approval-controlled
+- id: docs-as-code-agent
+  description: Manages documentation branches, Markdown or DITA sources, builds, previews, linting, link checks,
+    and approved pull-request drafts.
+  capabilities:
+  - docs-as-code
+  - builds
+  - version-control
+  status: enabled
+  external_writes: approval-controlled
+- id: content-quality-agent
+  description: Checks accuracy, completeness, clarity, consistency, usability, freshness, links, samples, metadata,
+    and policy compliance.
+  capabilities:
+  - content-qa
+  - review
+  - validation
+  status: enabled
+  external_writes: approval-controlled
+- id: search-and-discoverability-agent
+  description: Improves titles, summaries, keywords, metadata, cross-linking, navigation, search results, and zero-result
+    coverage.
+  capabilities:
+  - search
+  - discoverability
+  - metadata
+  status: enabled
+  external_writes: approval-controlled
+- id: documentation-analytics-agent
+  description: Analyzes approved feedback, searches, page usage, support deflection, task success, freshness, and
+    content gaps.
+  capabilities:
+  - analytics
+  - feedback
+  - content-health
+  status: enabled
+  external_writes: approval-controlled
+- id: sme-and-review-coordination-agent
+  description: Coordinates subject-matter experts, reviewers, comments, decisions, due dates, and unresolved factual
+    disputes.
+  capabilities:
+  - sme-coordination
+  - reviews
+  - decisions
+  status: enabled
+  external_writes: approval-controlled
+- id: cross-pack-coordination-agent
+  description: Delegates evidence and review to Product, BA, UX, Architecture, Development, QA, DevOps, Release,
+    and Support packs.
+  capabilities:
+  - cross-pack
+  - delegation
+  - coordination
+  status: enabled
+  external_writes: approval-controlled
+- id: documentation-reviewer-agent
+  description: Independently reviews factuality, audience fit, testability, safety, accessibility, style, and unsupported
+    claims.
+  capabilities:
+  - independent-review
+  - factuality
+  - quality
+  status: enabled
+  external_writes: approval-controlled
+- id: evidence-management-agent
+  description: Creates attributable, redacted, immutable evidence bundles with sources, versions, approvals, and
+    retention metadata.
+  capabilities:
+  - evidence
+  - provenance
+  - retention
+  status: enabled
+  external_writes: approval-controlled
+- id: policy-enforcer-agent
+  description: Evaluates scope, permissions, data minimization, publication approvals, customer exposure, and prohibited
+    actions.
+  capabilities:
+  - policy
+  - authorization
+  - guardrails
+  status: enabled
+  external_writes: approval-controlled

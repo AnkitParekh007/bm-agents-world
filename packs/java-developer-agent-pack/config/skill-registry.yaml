@@ -1,0 +1,483 @@
+apiVersion: java-developer-agent-pack/v1
+kind: SkillRegistry
+skills:
+- id: java.jira-context
+  category: Work intake and context
+  description: Read and normalize Jira story, bug, subtasks, comments, links and acceptance criteria
+  risk: standard
+- id: java.requirement-decomposition
+  category: Work intake and context
+  description: Convert requirements into testable implementation obligations
+  risk: standard
+- id: java.traceability-map
+  category: Work intake and context
+  description: Map acceptance criteria to code changes, tests and evidence
+  risk: standard
+- id: java.risk-classification
+  category: Work intake and context
+  description: Score data, security, compatibility, migration and operational risk
+  risk: standard
+- id: java.change-scope
+  category: Work intake and context
+  description: Define allowed modules, packages, files and environments
+  risk: standard
+- id: java.repo-profile
+  category: Repository and architecture
+  description: Detect Maven/Gradle modules, source sets, framework, conventions and commands
+  risk: standard
+- id: java.module-graph
+  category: Repository and architecture
+  description: Build module and dependency graph
+  risk: standard
+- id: java.symbol-search
+  category: Repository and architecture
+  description: Find classes, interfaces, records, annotations, beans and usages
+  risk: standard
+- id: java.call-flow
+  category: Repository and architecture
+  description: Trace controller-to-service-to-repository and asynchronous flows
+  risk: standard
+- id: java.configuration-map
+  category: Repository and architecture
+  description: Map profiles, properties, YAML, environment variables and secret references
+  risk: standard
+- id: java.architecture-impact
+  category: Repository and architecture
+  description: Assess bounded contexts, layering, coupling and blast radius
+  risk: standard
+- id: java.git-history
+  category: Repository and architecture
+  description: Inspect relevant commits, blame, pull requests and regressions
+  risk: standard
+- id: java.version-detection
+  category: Java language and JVM
+  description: Resolve JDK, source, target, release and runtime constraints
+  risk: standard
+- id: java.language-compatibility
+  category: Java language and JVM
+  description: Use only language features supported by the repository
+  risk: standard
+- id: java.records-sealed-patterns
+  category: Java language and JVM
+  description: Apply records, sealed types and pattern matching only when compatible
+  risk: standard
+- id: java.generics
+  category: Java language and JVM
+  description: Design type-safe generics and variance boundaries
+  risk: standard
+- id: java.nullability
+  category: Java language and JVM
+  description: Model nullability, Optional usage and validation boundaries
+  risk: standard
+- id: java.exceptions
+  category: Java language and JVM
+  description: Design checked/unchecked exceptions and stable error translation
+  risk: standard
+- id: java.collections-streams
+  category: Java language and JVM
+  description: Use collections and streams without hidden complexity or side effects
+  risk: standard
+- id: java.immutability
+  category: Java language and JVM
+  description: Prefer immutable value objects and safe publication
+  risk: standard
+- id: java.serialization
+  category: Java language and JVM
+  description: Control JSON/binary serialization, compatibility and unsafe polymorphism
+  risk: standard
+- id: java.jvm-toolchains
+  category: Java language and JVM
+  description: Select pinned JDK toolchains for build and test matrices
+  risk: standard
+- id: java.spring-bean-design
+  category: Spring, Jakarta and application frameworks
+  description: Design component boundaries, injection and lifecycle
+  risk: standard
+- id: java.spring-configuration
+  category: Spring, Jakarta and application frameworks
+  description: Implement typed configuration and profile-safe defaults
+  risk: standard
+- id: java.spring-web
+  category: Spring, Jakarta and application frameworks
+  description: Implement Spring MVC/WebFlux endpoints and filters
+  risk: standard
+- id: java.spring-security
+  category: Spring, Jakarta and application frameworks
+  description: Implement authentication and authorization within repository conventions
+  risk: standard
+- id: java.spring-validation
+  category: Spring, Jakarta and application frameworks
+  description: Apply Bean Validation and consistent error responses
+  risk: standard
+- id: java.spring-actuator
+  category: Spring, Jakarta and application frameworks
+  description: Configure health, readiness, metrics and safe management endpoints
+  risk: standard
+- id: java.jakarta-rest
+  category: Spring, Jakarta and application frameworks
+  description: Implement Jakarta REST resources and providers
+  risk: standard
+- id: java.jakarta-cdi
+  category: Spring, Jakarta and application frameworks
+  description: Implement CDI scopes, qualifiers and interceptors
+  risk: standard
+- id: java.application-server
+  category: Spring, Jakarta and application frameworks
+  description: Respect application-server packaging, descriptors and classloading constraints
+  risk: standard
+- id: java.framework-versioning
+  category: Spring, Jakarta and application frameworks
+  description: Load version-matched Spring/Jakarta/vendor documentation
+  risk: standard
+- id: java.domain-modeling
+  category: Domain and API implementation
+  description: Implement entities, aggregates, value objects and invariants
+  risk: standard
+- id: java.service-layer
+  category: Domain and API implementation
+  description: Implement application services and transaction boundaries
+  risk: standard
+- id: java.endpoint-design
+  category: Domain and API implementation
+  description: Design REST/RPC operations, status codes and pagination
+  risk: standard
+- id: java.openapi-contract
+  category: Domain and API implementation
+  description: Validate and update OpenAPI contracts
+  risk: standard
+- id: java.request-validation
+  category: Domain and API implementation
+  description: Validate request shape, semantics and authorization context
+  risk: standard
+- id: java.error-contracts
+  category: Domain and API implementation
+  description: Produce stable machine-readable errors and correlation identifiers
+  risk: standard
+- id: java.backward-compatibility
+  category: Domain and API implementation
+  description: Preserve consumer compatibility and deprecation paths
+  risk: standard
+- id: java.idempotency
+  category: Domain and API implementation
+  description: Implement idempotency keys and duplicate suppression
+  risk: standard
+- id: java.client-integration
+  category: Domain and API implementation
+  description: Implement resilient HTTP/RPC clients with timeouts and observability
+  risk: standard
+- id: java.jdbc
+  category: Persistence and database
+  description: Implement safe parameterized JDBC and resource management
+  risk: standard
+- id: java.jpa-mapping
+  category: Persistence and database
+  description: Design entities, relationships, fetching and cascades
+  risk: standard
+- id: java.hibernate-query
+  category: Persistence and database
+  description: Implement JPQL, Criteria or native queries with bounded loading
+  risk: standard
+- id: java.spring-data
+  category: Persistence and database
+  description: Implement repository queries, projections and specifications
+  risk: standard
+- id: java.transaction-design
+  category: Persistence and database
+  description: Define atomicity, isolation, retries and propagation
+  risk: standard
+- id: java.n-plus-one
+  category: Persistence and database
+  description: Detect N+1 queries and fetch-plan issues
+  risk: standard
+- id: java.migration-draft
+  category: Persistence and database
+  description: Draft Flyway/Liquibase migrations and rollback/forward plans
+  risk: standard
+- id: java.schema-compatibility
+  category: Persistence and database
+  description: Assess zero-downtime and mixed-version schema compatibility
+  risk: standard
+- id: java.query-plan
+  category: Persistence and database
+  description: Review EXPLAIN plans through read-only database access
+  risk: standard
+- id: java.data-privacy
+  category: Persistence and database
+  description: Protect sensitive fields, retention and audit requirements
+  risk: standard
+- id: java.kafka
+  category: Messaging, batch and scheduling
+  description: Implement Kafka producers, consumers, schemas and offset behavior
+  risk: standard
+- id: java.jms-rabbitmq
+  category: Messaging, batch and scheduling
+  description: Implement JMS/RabbitMQ messaging and acknowledgement behavior
+  risk: standard
+- id: java.event-contract
+  category: Messaging, batch and scheduling
+  description: Version event schemas and compatibility rules
+  risk: standard
+- id: java.retry-dead-letter
+  category: Messaging, batch and scheduling
+  description: Implement bounded retries, backoff and dead-letter handling
+  risk: standard
+- id: java.outbox-inbox
+  category: Messaging, batch and scheduling
+  description: Apply transactional outbox/inbox patterns where justified
+  risk: standard
+- id: java.spring-batch
+  category: Messaging, batch and scheduling
+  description: Implement chunk/tasklet jobs, checkpoints and restartability
+  risk: standard
+- id: java.scheduler
+  category: Messaging, batch and scheduling
+  description: Implement Quartz or scheduled jobs with locking and observability
+  risk: standard
+- id: java.reconciliation
+  category: Messaging, batch and scheduling
+  description: Create reconciliation and replay-safe workflows
+  risk: standard
+- id: java.executor-design
+  category: Concurrency and resilience
+  description: Configure executors, queue bounds and rejection policies
+  risk: standard
+- id: java.virtual-threads
+  category: Concurrency and resilience
+  description: Use virtual threads only on compatible JDK/framework stacks
+  risk: standard
+- id: java.completable-future
+  category: Concurrency and resilience
+  description: Compose asynchronous stages with explicit failure and cancellation
+  risk: standard
+- id: java.reactive-streams
+  category: Concurrency and resilience
+  description: Implement backpressure-aware Reactor or reactive flows
+  risk: standard
+- id: java.thread-safety
+  category: Concurrency and resilience
+  description: Review shared state, locking, atomicity and safe publication
+  risk: standard
+- id: java.timeouts-retries
+  category: Concurrency and resilience
+  description: Apply end-to-end time budgets and bounded retries
+  risk: standard
+- id: java.circuit-breaker
+  category: Concurrency and resilience
+  description: Configure resilience patterns with measurable thresholds
+  risk: standard
+- id: java.graceful-shutdown
+  category: Concurrency and resilience
+  description: Drain traffic and stop workers safely
+  risk: standard
+- id: java.junit-unit
+  category: Testing and quality
+  description: Create focused JUnit unit tests
+  risk: standard
+- id: java.junit-parameterized
+  category: Testing and quality
+  description: Create parameterized and dynamic tests
+  risk: standard
+- id: java.mockito
+  category: Testing and quality
+  description: Use mocks and spies at stable boundaries without overspecification
+  risk: standard
+- id: java.spring-test
+  category: Testing and quality
+  description: Create Spring slice and context tests
+  risk: standard
+- id: java.testcontainers
+  category: Testing and quality
+  description: Create disposable integration dependencies with Testcontainers
+  risk: standard
+- id: java.contract-test
+  category: Testing and quality
+  description: Create consumer/provider or OpenAPI contract tests
+  risk: standard
+- id: java.database-test
+  category: Testing and quality
+  description: Test transactions, constraints and migrations against real engines
+  risk: standard
+- id: java.messaging-test
+  category: Testing and quality
+  description: Test producer/consumer behavior and failure paths
+  risk: standard
+- id: java.mutation-test
+  category: Testing and quality
+  description: Use mutation testing where configured to assess test strength
+  risk: standard
+- id: java.coverage
+  category: Testing and quality
+  description: Evaluate coverage as evidence, not a correctness substitute
+  risk: standard
+- id: java.flaky-test
+  category: Testing and quality
+  description: Diagnose order, time, concurrency and environment-dependent tests
+  risk: standard
+- id: java.test-data
+  category: Testing and quality
+  description: Create deterministic fixtures, builders and cleanup
+  risk: standard
+- id: java.maven
+  category: Build, packaging and dependencies
+  description: Run and modify Maven builds while preserving parent/BOM conventions
+  risk: standard
+- id: java.gradle
+  category: Build, packaging and dependencies
+  description: Run and modify Gradle builds while preserving wrapper and convention plugins
+  risk: standard
+- id: java.dependency-analysis
+  category: Build, packaging and dependencies
+  description: Resolve dependency trees, convergence and classpath conflicts
+  risk: standard
+- id: java.bom-management
+  category: Build, packaging and dependencies
+  description: Use approved BOMs and dependency-management boundaries
+  risk: standard
+- id: java.plugin-management
+  category: Build, packaging and dependencies
+  description: Pin and configure build plugins reproducibly
+  risk: standard
+- id: java.package-jar-war
+  category: Build, packaging and dependencies
+  description: Build executable JAR, library JAR or WAR according to deployment model
+  risk: standard
+- id: java.reproducible-build
+  category: Build, packaging and dependencies
+  description: Produce reproducible builds and verify checksums
+  risk: standard
+- id: java.sbom
+  category: Build, packaging and dependencies
+  description: Generate and attach SBOM and provenance metadata
+  risk: standard
+- id: java.license-policy
+  category: Build, packaging and dependencies
+  description: Check dependency licenses and organizational policy
+  risk: standard
+- id: java.container-image
+  category: Build, packaging and dependencies
+  description: Build rootless minimal JVM images and scan them
+  risk: standard
+- id: java.authn-authz
+  category: Security
+  description: Verify authentication and authorization at every trust boundary
+  risk: standard
+- id: java.input-security
+  category: Security
+  description: Prevent injection, path traversal and unsafe expression evaluation
+  risk: standard
+- id: java.deserialization-security
+  category: Security
+  description: Restrict polymorphic and native deserialization
+  risk: standard
+- id: java.crypto
+  category: Security
+  description: Use approved cryptographic APIs and key handling
+  risk: standard
+- id: java.secret-handling
+  category: Security
+  description: Use references and brokered credentials; never log secrets
+  risk: standard
+- id: java.dependency-vulnerability
+  category: Security
+  description: Scan dependencies and assess reachable risk
+  risk: standard
+- id: java.sast
+  category: Security
+  description: Run repository-approved static analysis
+  risk: standard
+- id: java.sensitive-logging
+  category: Security
+  description: Prevent tokens, personal data and secrets in logs
+  risk: standard
+- id: java.ssrf-egress
+  category: Security
+  description: Validate outbound destinations and enforce egress policy
+  risk: standard
+- id: java.threat-model
+  category: Security
+  description: Produce lightweight threat analysis for risky changes
+  risk: standard
+- id: java.jfr-profile
+  category: Performance, reliability and observability
+  description: Capture and analyze approved Java Flight Recorder profiles
+  risk: standard
+- id: java.gc-analysis
+  category: Performance, reliability and observability
+  description: Review allocation, heap and garbage-collection behavior
+  risk: standard
+- id: java.connection-pools
+  category: Performance, reliability and observability
+  description: Configure JDBC/HTTP pools with bounded timeouts
+  risk: standard
+- id: java.cache-design
+  category: Performance, reliability and observability
+  description: Implement cache keys, expiry, invalidation and consistency
+  risk: standard
+- id: java.load-test
+  category: Performance, reliability and observability
+  description: Run bounded load tests in approved environments
+  risk: standard
+- id: java.micrometer
+  category: Performance, reliability and observability
+  description: Implement metrics using repository conventions
+  risk: standard
+- id: java.opentelemetry
+  category: Performance, reliability and observability
+  description: Implement traces and context propagation
+  risk: standard
+- id: java.structured-logging
+  category: Performance, reliability and observability
+  description: Create searchable structured logs with correlation IDs
+  risk: standard
+- id: java.health-readiness
+  category: Performance, reliability and observability
+  description: Implement accurate liveness/readiness/dependency health
+  risk: standard
+- id: java.slo-evidence
+  category: Performance, reliability and observability
+  description: Map changes to latency, error and availability objectives
+  risk: standard
+- id: java.jdk-upgrade
+  category: Upgrade, review and release
+  description: Plan source/target/runtime upgrade with compatibility matrix
+  risk: standard
+- id: java.spring-upgrade
+  category: Upgrade, review and release
+  description: Plan Spring Framework/Boot upgrade and migration steps
+  risk: standard
+- id: java.jakarta-migration
+  category: Upgrade, review and release
+  description: Plan javax-to-jakarta namespace and application-server migration
+  risk: standard
+- id: java.dependency-upgrade
+  category: Upgrade, review and release
+  description: Upgrade dependencies with release-note and behavior review
+  risk: standard
+- id: java.code-review
+  category: Upgrade, review and release
+  description: Review correctness, design, tests, security and maintainability
+  risk: standard
+- id: java.change-manifest
+  category: Upgrade, review and release
+  description: Produce file, symbol, contract, dependency and migration manifest
+  risk: standard
+- id: java.pr-draft
+  category: Upgrade, review and release
+  description: Create traceable pull-request description
+  risk: standard
+- id: java.release-notes
+  category: Upgrade, review and release
+  description: Create user-facing and operational release notes
+  risk: standard
+- id: java.rollback-plan
+  category: Upgrade, review and release
+  description: Create rollback, roll-forward and feature-flag plan
+  risk: standard
+- id: java.jira-update
+  category: Upgrade, review and release
+  description: Draft Jira comments and status changes for approval
+  risk: standard
+- id: java.teams-update
+  category: Upgrade, review and release
+  description: Draft Microsoft Teams engineering updates for approval
+  risk: standard

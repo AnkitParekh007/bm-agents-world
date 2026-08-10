@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/ux-agent/ux-quality-gate-report.schema.json",
+  "title": "UX Quality Gate Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "status",
+    "checks",
+    "blocking_findings",
+    "evidence"
+  ],
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "pass",
+        "conditional-pass",
+        "fail",
+        "blocked"
+      ]
+    },
+    "checks": {
+      "type": "array"
+    },
+    "blocking_findings": {
+      "type": "array"
+    },
+    "non_blocking_findings": {
+      "type": "array"
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "approvals": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "recommended_action": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

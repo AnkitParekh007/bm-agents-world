@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/product-manager/release-plan.schema.json",
+  "title": "Release Plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "scope",
+    "target_users",
+    "rollout",
+    "readiness",
+    "monitoring",
+    "rollback"
+  ],
+  "properties": {
+    "scope": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "target_users": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "rollout": {
+      "type": "object"
+    },
+    "readiness": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "communications": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "support_enablement": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "monitoring": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "rollback": {
+      "type": "object"
+    },
+    "approvals": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  }
+}

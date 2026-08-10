@@ -1,0 +1,51 @@
+id: story-to-database-design
+name: Story to Database Design
+version: 1.0.0
+trigger: Jira database-impacting item
+production_mutation: false
+steps:
+- id: context
+  agent: work-context
+  action: normalize requirements and policies
+  approval: none
+  on_failure: stop-and-preserve-evidence
+- id: authorize
+  agent: policy-enforcer
+  action: authorize project, repository, database and read scope
+  approval: none
+  on_failure: stop-and-preserve-evidence
+- id: discover
+  agent: database-estate-discovery
+  action: profile engine, schema, consumers, topology and data
+  approval: none
+  on_failure: stop-and-preserve-evidence
+- id: domain
+  agent: data-domain-modeler
+  action: create domain model and glossary impact
+  approval: none
+  on_failure: stop-and-preserve-evidence
+- id: logical
+  agent: logical-model-architect
+  action: create logical design
+  approval: none
+  on_failure: stop-and-preserve-evidence
+- id: physical
+  agent: physical-schema-architect
+  action: create physical options and tradeoffs
+  approval: none
+  on_failure: stop-and-preserve-evidence
+- id: security
+  agent: database-security-governance
+  action: review classification, roles and controls
+  approval: none
+  on_failure: stop-and-preserve-evidence
+- id: plan
+  agent: database-architect-developer-supervisor
+  action: assemble design, risks, tests and migration strategy
+  approval: required-when-medium-or-high-risk
+  on_failure: stop-and-preserve-evidence
+- id: evidence
+  agent: evidence-manager
+  action: store immutable design bundle
+  approval: none
+  on_failure: stop-and-preserve-evidence

@@ -1,0 +1,77 @@
+apiVersion: solution-architect-agent-pack/v1
+kind: AgentWorkflow
+metadata:
+  name: architecture-review-and-governance
+  title: Architecture Review and Governance
+  version: 1.0.0
+spec:
+  trigger:
+  - architecture_review_request
+  - exception_request
+  - implementation_checkpoint
+  - architecture_drift
+  objective: Perform independent architecture review, record accountable decisions, and verify implementation conformance
+    without replacing delivery ownership.
+  supervisor: solution-architect-supervisor
+  execution:
+    mode: stateful
+    defaultPolicy: deny
+    evidenceRequired: true
+    approvalBinding: payload-hash
+    resumeFromCheckpoint: true
+  stages:
+  - id: submission-intake
+    agent: evidence-manager
+    skills:
+    - architecture.evidence-quality-check
+    - architecture.scope-boundary
+    gate: authorization
+  - id: context-and-standards
+    agent: enterprise-context
+    skills:
+    - architecture.enterprise-standard-check
+    - architecture.cross-project-dependency-map
+    - architecture.constraint-register
+  - id: independent-review
+    agent: architecture-review
+    skills:
+    - architecture.atam-review
+    - architecture.architecture-risk-register
+    - architecture.evidence-quality-check
+    parallelDelegates:
+    - security-architecture
+    - identity-access-architecture
+    - privacy-compliance-architecture
+    - data-architecture
+    - reliability-resilience
+    - performance-scalability
+    - observability-operability
+    - cost-sustainability
+  - id: decision-resolution
+    agent: decision-governance
+    skills:
+    - architecture.adr-authoring
+    - architecture.executive-architecture-summary
+    gate: approve-high-risk-architecture-when-applicable
+  - id: publish
+    agent: evidence-manager
+    skills:
+    - architecture.team-handoff
+    gate: publish-architecture-decision
+  - id: implementation-tracking
+    agent: implementation-alignment
+    skills:
+    - architecture.conformance-checklist
+    - architecture.architecture-drift-detection
+    - architecture.test-strategy-alignment
+  outputs:
+  - architecture-review-report
+  - decision-record
+  - risk-and-exception-register
+  - conformance-report
+  - implementation-handoff
+  terminalStates:
+  - completed
+  - rejected
+  - blocked
+  - cancelled

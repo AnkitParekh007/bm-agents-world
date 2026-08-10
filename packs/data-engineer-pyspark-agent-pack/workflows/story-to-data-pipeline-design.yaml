@@ -1,0 +1,47 @@
+name: story-to-data-pipeline-design
+version: 1.0.0
+trigger: New data product, story, integration, report, or pipeline change
+scope_binding:
+- project
+- data_product
+- sources
+- consumers
+- environment_family
+- owner
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: verify project, data, source, environment, privacy, and evidence scope
+- id: context
+  agent: data-context-agent
+  action: retrieve business, domain, source, consumer, repository, platform, and ownership context
+- id: sources
+  agent: source-discovery-agent
+  action: profile approved sources and document constraints and evidence gaps
+- id: contracts
+  agent: data-contract-agent
+  action: draft schema, semantics, quality, service level, and compatibility contract
+- id: architecture
+  agent: data-architecture-agent
+  action: design batch, streaming, storage, compute, orchestration, quality, lineage, and security architecture
+- id: model
+  agent: data-modeling-agent
+  action: define grain, keys, history, logical model, and physical dataset design
+- id: quality
+  agent: data-quality-agent
+  action: define quality and reconciliation requirements
+- id: review
+  agent: data-engineering-independent-reviewer-agent
+  action: challenge correctness, operability, performance, security, and consumer impact
+- id: publish
+  agent: data-engineer-pyspark-supervisor
+  action: prepare approval-controlled data-product and pipeline design package
+outputs:
+- data-product-brief
+- source-system-inventory
+- data-contract
+- source-to-target-mapping
+- pipeline-architecture-design
+- data-quality-specification
+failure_behavior: record evidence gaps and block implementation when ownership, semantics, contract, or source behavior
+  is unresolved

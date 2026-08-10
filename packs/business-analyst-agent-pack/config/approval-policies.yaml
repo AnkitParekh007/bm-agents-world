@@ -1,0 +1,53 @@
+apiVersion: business-analyst-agent-pack/v1
+kind: ApprovalPolicies
+metadata:
+  name: business-analysis-approvals
+  version: 1.0.0
+spec:
+  default: deny
+  policies:
+  - id: publish-official-requirement
+    actions:
+    - jira.create
+    - jira.update
+    - confluence.publish
+    - requirements.baseline
+    approverRoles:
+    - Business Owner
+    - Product Owner
+    binding: payload-hash
+  - id: change-business-policy-or-rule
+    actions:
+    - business-rule.approve
+    - policy-requirement.publish
+    approverRoles:
+    - Policy Owner
+    - Business Owner
+    binding: payload-hash
+  - id: business-acceptance
+    actions:
+    - uat.signoff
+    - requirement.waiver
+    - business.acceptance
+    approverRoles:
+    - Business Acceptance Owner
+    binding: payload-hash
+  - id: external-communication
+    actions:
+    - teams.send
+    - customer.contact
+    - survey.launch
+    approverRoles:
+    - Product Owner
+    - Business Owner
+    - Communications Owner
+    binding: payload-hash
+  - id: sensitive-data-access
+    actions:
+    - customer-data.read
+    - employee-data.read
+    - research-identifiers.read
+    approverRoles:
+    - Data Owner
+    - Privacy Owner
+    binding: purpose-and-expiry

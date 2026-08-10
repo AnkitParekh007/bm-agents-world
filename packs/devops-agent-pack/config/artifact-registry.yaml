@@ -1,0 +1,102 @@
+version: 1.0.0
+artifacts:
+- id: work-context
+  description: Resolved request, project, environment, ownership, evidence, assumptions, and constraints
+  provenance_required: true
+  schema_required: true
+- id: platform-profile
+  description: Detected CI/CD, cloud, IaC, Kubernetes, registry, observability, and version profile
+  provenance_required: true
+  schema_required: false
+- id: change-plan
+  description: Scope, risk, implementation, validation, rollback, communication, and approval plan
+  provenance_required: true
+  schema_required: true
+- id: architecture-decision
+  description: Infrastructure or platform architecture decision with alternatives and consequences
+  provenance_required: true
+  schema_required: false
+- id: iac-plan
+  description: Redacted machine-readable and human-readable infrastructure plan
+  provenance_required: true
+  schema_required: true
+- id: iac-drift-report
+  description: Observed drift and recommended disposition
+  provenance_required: true
+  schema_required: false
+- id: pipeline-design
+  description: Pipeline stages, triggers, runners, artifacts, caches, gates, and credentials
+  provenance_required: true
+  schema_required: true
+- id: container-build-report
+  description: Image digest, SBOM, vulnerabilities, signature, provenance, and tests
+  provenance_required: true
+  schema_required: false
+- id: kubernetes-manifest-bundle
+  description: Rendered manifests, diffs, policy results, and ownership
+  provenance_required: true
+  schema_required: false
+- id: gitops-diff
+  description: Desired-versus-live diff, health, history, and synchronization recommendation
+  provenance_required: true
+  schema_required: false
+- id: deployment-plan
+  description: Release manifest, strategy, checks, stop conditions, rollback, and communications
+  provenance_required: true
+  schema_required: true
+- id: deployment-evidence
+  description: Immutable timeline of approvals, artifacts, actions, telemetry, and results
+  provenance_required: true
+  schema_required: false
+- id: rollback-plan
+  description: Trigger, prerequisites, commands, validation, and recovery ownership
+  provenance_required: true
+  schema_required: false
+- id: network-change-plan
+  description: Traffic flow, rules, DNS/TLS changes, tests, risk, and rollback
+  provenance_required: true
+  schema_required: false
+- id: secret-rotation-plan
+  description: Secret reference, consumers, order, validation, rollback, and audit
+  provenance_required: true
+  schema_required: false
+- id: observability-spec
+  description: SLIs, dashboards, alerts, logs, traces, retention, and ownership
+  provenance_required: true
+  schema_required: false
+- id: slo-report
+  description: SLO performance, error budget, risks, and recommendations
+  provenance_required: true
+  schema_required: false
+- id: incident-timeline
+  description: Evidence-linked incident chronology
+  provenance_required: true
+  schema_required: false
+- id: incident-report
+  description: Impact, detection, response, recovery, causes, and actions
+  provenance_required: true
+  schema_required: true
+- id: security-gate-report
+  description: Security, supply-chain, IAM, policy, and exception results
+  provenance_required: true
+  schema_required: false
+- id: cost-impact-report
+  description: Estimated or observed cost, allocation, optimization, and tradeoffs
+  provenance_required: true
+  schema_required: false
+- id: backup-recovery-report
+  description: Backup status, restore evidence, RTO/RPO, gaps, and actions
+  provenance_required: true
+  schema_required: false
+- id: quality-gate-report
+  description: Consolidated deterministic and specialist validation results
+  provenance_required: true
+  schema_required: true
+- id: runbook
+  description: Operational procedure with prerequisites, commands, checks, stop conditions, and escalation
+  provenance_required: true
+  schema_required: false
+- id: devops-daily-summary
+  description: Daily work, changes, incidents, risk, blockers, and next actions
+  provenance_required: true
+  schema_required: false

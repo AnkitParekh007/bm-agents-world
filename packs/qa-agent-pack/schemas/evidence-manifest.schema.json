@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Evidence Manifest",
+  "type": "object",
+  "required": [
+    "runId",
+    "items"
+  ],
+  "properties": {
+    "runId": {
+      "type": "string"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "uri",
+          "sha256",
+          "classification"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "uri": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string"
+          },
+          "classification": {
+            "type": "string"
+          },
+          "redacted": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}

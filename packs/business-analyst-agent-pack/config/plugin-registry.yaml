@@ -1,0 +1,117 @@
+apiVersion: business-analyst-agent-pack/v1
+kind: PluginRegistry
+metadata:
+  name: business-analysis-plugins
+  version: 1.0.0
+spec:
+  plugins:
+  - id: jira-context-adapter
+    description: Retrieves bounded Jira items and relationships
+    execution: deterministic
+    networkAccess: adapter-only
+    approvalRequired: false
+  - id: confluence-context-adapter
+    description: Retrieves pages, decisions, and templates
+    execution: deterministic
+    networkAccess: adapter-only
+    approvalRequired: false
+  - id: bitbucket-change-adapter
+    description: Reads diffs and implementation evidence
+    execution: deterministic
+    networkAccess: adapter-only
+    approvalRequired: false
+  - id: bpmn-validator
+    description: Validates BPMN syntax and modeling rules
+    execution: deterministic
+    networkAccess: adapter-only
+    approvalRequired: false
+  - id: diagram-renderer
+    description: Renders Mermaid and supported diagrams
+    execution: deterministic
+    networkAccess: adapter-only
+    approvalRequired: false
+  - id: requirements-linter
+    description: Checks requirement quality and structure
+    execution: deterministic
+    networkAccess: adapter-only
+    approvalRequired: false
+  - id: ambiguity-detector
+    description: Flags vague, subjective, and unverifiable wording
+    execution: deterministic
+    networkAccess: adapter-only
+    approvalRequired: false
+  - id: traceability-engine
+    description: Maintains source-to-release relationship graph
+    execution: deterministic
+    networkAccess: adapter-only
+    approvalRequired: false
+  - id: business-rule-engine
+    description: Builds decision tables and detects rule conflicts
+    execution: deterministic
+    networkAccess: adapter-only
+    approvalRequired: false
+  - id: acceptance-validator
+    description: Checks acceptance criteria testability and examples
+    execution: deterministic
+    networkAccess: adapter-only
+    approvalRequired: false
+  - id: change-diff-engine
+    description: Compares baselines and calculates impacted links
+    execution: deterministic
+    networkAccess: adapter-only
+    approvalRequired: false
+  - id: data-dictionary-adapter
+    description: Retrieves business terms and data ownership
+    execution: deterministic
+    networkAccess: adapter-only
+    approvalRequired: false
+  - id: api-contract-adapter
+    description: Reads OpenAPI and AsyncAPI contracts
+    execution: deterministic
+    networkAccess: adapter-only
+    approvalRequired: false
+  - id: readonly-sql-adapter
+    description: Runs parameterized bounded read-only SQL
+    execution: deterministic
+    networkAccess: adapter-only
+    approvalRequired: false
+  - id: analytics-adapter
+    description: Retrieves approved aggregate metrics
+    execution: deterministic
+    networkAccess: adapter-only
+    approvalRequired: false
+  - id: figma-context-adapter
+    description: Reads approved Figma design context
+    execution: deterministic
+    networkAccess: adapter-only
+    approvalRequired: false
+  - id: teams-draft-adapter
+    description: Drafts but does not auto-send communications
+    execution: deterministic
+    networkAccess: adapter-only
+    approvalRequired: true
+  - id: document-renderer
+    description: Produces Markdown, PDF-ready, and controlled templates
+    execution: deterministic
+    networkAccess: adapter-only
+    approvalRequired: false
+  - id: redaction-plugin
+    description: Removes sensitive or unnecessary content
+    execution: deterministic
+    networkAccess: adapter-only
+    approvalRequired: false
+  - id: evidence-bundler
+    description: Creates immutable evidence and lineage bundles
+    execution: deterministic
+    networkAccess: adapter-only
+    approvalRequired: false
+  - id: vault-capability-adapter
+    description: Uses short-lived capability leases
+    execution: deterministic
+    networkAccess: adapter-only
+    approvalRequired: false
+  - id: opa-policy-adapter
+    description: Evaluates scope, approval, and denial rules
+    execution: deterministic
+    networkAccess: adapter-only
+    approvalRequired: false

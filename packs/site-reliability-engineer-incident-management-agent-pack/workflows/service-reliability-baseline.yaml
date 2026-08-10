@@ -1,0 +1,44 @@
+name: service-reliability-baseline
+version: 1.0.0
+trigger: New service onboarding, ownership change, or reliability baseline review
+scope_binding:
+- project
+- service
+- environment_family
+- service_owner
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: verify service scope, environment, data access, and approved evidence sources
+- id: context
+  agent: service-context-agent
+  action: retrieve service purpose, users, owners, dependencies, architecture, releases, and incidents
+- id: dependencies
+  agent: service-dependency-agent
+  action: build service and failure-domain map with evidence confidence
+- id: slo
+  agent: sli-slo-agent
+  action: draft user-centered SLIs and SLO options from critical journeys
+- id: observability
+  agent: observability-engineering-agent
+  action: assess telemetry, dashboards, alerting, and blind spots
+- id: readiness
+  agent: oncall-readiness-agent
+  action: assess runbooks, access, ownership, escalation, and support readiness
+- id: risk
+  agent: reliability-architecture-agent
+  action: identify failure modes, recovery risks, and reliability requirements
+- id: review
+  agent: sre-independent-reviewer-agent
+  action: challenge assumptions, evidence, SLO suitability, and control gaps
+- id: publish
+  agent: sre-incident-management-supervisor
+  action: prepare approval-controlled reliability baseline and roadmap
+outputs:
+- service-reliability-profile
+- sli-catalog
+- slo-specification
+- alert-inventory
+- reliability-improvement-roadmap
+failure_behavior: record evidence gaps, avoid unsupported SLOs, and block publication until ownership and measurement
+  are resolved

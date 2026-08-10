@@ -1,0 +1,48 @@
+name: api-and-developer-documentation
+version: 1.0.0
+trigger: approved API, SDK, CLI, integration, or developer-onboarding request
+scope_binding:
+- project
+- documentation_collection
+- audience
+- product_version
+- source_revision
+- publication_target
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: validate repository, contract, version, environment, and audience scope
+- id: context
+  agent: documentation-context-agent
+  action: retrieve source, tests, configuration, contracts, examples, and existing docs
+- id: developer-analysis
+  agent: developer-documentation-agent
+  action: define developer journey, setup, architecture, integration, and troubleshooting needs
+- id: api-analysis
+  agent: api-documentation-agent
+  action: document authentication, operations, schemas, errors, limits, versioning, and events
+- id: samples
+  agent: code-sample-agent
+  action: create and test language- and version-bound examples in isolated workers
+- id: ia
+  agent: information-architecture-agent
+  action: integrate tutorials, how-to, concept, and reference content
+- id: validation
+  agent: content-quality-agent
+  action: validate claims against contracts, source, tests, and approved environments
+- id: review
+  agent: documentation-reviewer-agent
+  action: independently review correctness, security, usability, and compatibility
+- id: bundle
+  agent: evidence-management-agent
+  action: create preview, contract reports, sample results, diff, and payload hash
+- id: publish
+  agent: technical-writer-supervisor
+  action: request approval for documentation pull request or portal publication
+outputs:
+- api-documentation-package
+- developer-onboarding-guide
+- documentation-preview-bundle
+- publication-and-evidence-bundle
+failure_behavior: do not publish examples or reference details that cannot be validated against the bound source
+  or contract

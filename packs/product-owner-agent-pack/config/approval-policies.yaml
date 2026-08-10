@@ -1,0 +1,74 @@
+version: 1.0.0
+default: deny
+policies:
+- action: read-approved-context
+  risk: low
+  approval: not-required
+  conditions:
+  - scope binding valid
+  - connector read permission
+  - data minimization
+- action: draft-backlog-artifacts
+  risk: low
+  approval: not-required
+  conditions:
+  - isolated artifact workspace
+  - no external publication
+- action: create-or-update-jira-item
+  risk: medium
+  approval: product-owner-or-delegate
+  binding:
+  - project
+  - issue
+  - payload_hash
+  - expiry
+- action: reorder-product-backlog
+  risk: medium
+  approval: accountable-product-owner
+  binding:
+  - project
+  - before_order_hash
+  - after_order_hash
+  - rationale
+  - expiry
+- action: publish-confluence-or-teams
+  risk: medium
+  approval: accountable-owner
+  binding:
+  - destination
+  - payload_hash
+  - audience
+  - expiry
+- action: launch-customer-research-or-survey
+  risk: high
+  approval: research-owner-and-privacy-when-required
+  binding:
+  - study
+  - participants
+  - script
+  - data_plan
+  - expiry
+- action: launch-experiment
+  risk: high
+  approval: product-owner-and-experiment-owner
+  binding:
+  - flag
+  - population
+  - variants
+  - metrics
+  - guardrails
+  - expiry
+- action: business-or-release-acceptance
+  risk: high
+  approval: named-accountable-human
+  binding:
+  - release
+  - evidence_hash
+  - known_risks
+  - decision
+  - expiry
+- action: production-mutation
+  risk: critical
+  approval: prohibited-for-agent
+  conditions:
+  - use deterministic authorized deployment or operator workflow

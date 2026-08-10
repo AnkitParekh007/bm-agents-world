@@ -1,0 +1,7 @@
+environment: <name>
+project: <project-id>
+data_classification: <public|internal|confidential|restricted>
+evidence_connectors: []
+approved_frameworks: []
+production: false
+read_only_by_default: true

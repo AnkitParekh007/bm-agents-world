@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Spark Performance Review",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "candidate",
+    "workload",
+    "evidence",
+    "findings",
+    "correctness_preserved"
+  ],
+  "properties": {
+    "candidate": {
+      "type": "string"
+    },
+    "workload": {
+      "type": "string"
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "category",
+          "observation",
+          "recommendation"
+        ],
+        "properties": {
+          "category": {
+            "type": "string"
+          },
+          "observation": {
+            "type": "string"
+          },
+          "recommendation": {
+            "type": "string"
+          },
+          "measured": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "correctness_preserved": {
+      "type": "boolean"
+    },
+    "estimated_cost": {
+      "type": "number",
+      "minimum": 0
+    }
+  }
+}

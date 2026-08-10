@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bm-agent-foundry.local/schemas/one-on-one-preparation.schema.json",
+  "title": "One on One Preparation",
+  "type": "object",
+  "required": [
+    "manager",
+    "participant",
+    "purpose",
+    "agenda",
+    "priorActions",
+    "privacyControls",
+    "status"
+  ],
+  "properties": {
+    "manager": {
+      "type": "string"
+    },
+    "participant": {
+      "type": "string"
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "agenda": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "priorActions": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "recognition": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "coachingQuestions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "privacyControls": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "human-reviewed",
+        "completed",
+        "archived"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

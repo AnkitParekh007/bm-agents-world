@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Data Quality Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "run_id",
+    "dataset",
+    "rules",
+    "status",
+    "evidence_redacted"
+  ],
+  "properties": {
+    "run_id": {
+      "type": "string"
+    },
+    "dataset": {
+      "type": "string"
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "status",
+          "evaluated",
+          "failed"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "pass",
+              "warn",
+              "fail",
+              "not_run"
+            ]
+          },
+          "evaluated": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "failed": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "status": {
+      "enum": [
+        "pass",
+        "conditional",
+        "fail"
+      ]
+    },
+    "evidence_redacted": {
+      "const": true
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

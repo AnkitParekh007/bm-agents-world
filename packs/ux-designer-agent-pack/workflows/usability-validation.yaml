@@ -1,0 +1,44 @@
+name: usability-validation
+version: 1.0.0
+trigger: Prototype or implemented experience ready for evaluation
+scope_binding:
+- organization
+- project
+- jira_item
+- figma_file
+- environment
+- requester
+steps:
+- id: authorize
+  agent: policy-enforcer
+  action: verify participant, data, environment, recording, and prototype scope
+- id: plan
+  agent: usability-test-engineer
+  action: create tasks, protocol, metrics, sample, capture, and analysis plan
+- id: accessibility-check
+  agent: accessibility-inclusive-designer
+  action: run design-level accessibility review before participant exposure
+- id: approval
+  agent: ux-designer-supervisor
+  action: obtain study and recording approvals
+- id: execute
+  agent: user-researcher
+  action: conduct moderated or approved unmoderated evaluation
+- id: measure
+  agent: usability-test-engineer
+  action: calculate completion, errors, time, confidence, and qualitative severity
+- id: synthesize
+  agent: insight-synthesizer
+  action: produce evidence-backed findings and prioritized recommendations
+- id: iterate
+  agent: interaction-designer
+  action: prepare revision plan and affected design artifacts
+- id: review
+  agent: design-reviewer
+  action: confirm evidence supports decisions and unresolved risks are explicit
+outputs:
+- usability-test-plan
+- redacted-research-notes
+- research-insight-report
+- design-decision-log
+failure_behavior: stop, preserve evidence, and request human resolution

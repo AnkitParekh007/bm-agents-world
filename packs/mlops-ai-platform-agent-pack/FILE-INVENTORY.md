@@ -1,0 +1,52 @@
+# MLOps / AI Platform Agent Pack — File Inventory
+
+Total files: **48**
+
+1. `FILE-INVENTORY.md`
+2. `README.md`
+3. `SOURCES.md`
+4. `checklists/mvp-readiness.md`
+5. `checklists/project-onboarding.md`
+6. `config/agent-registry.yaml`
+7. `config/approval-policies.yaml`
+8. `config/artifact-registry.yaml`
+9. `config/environment-inventory.template.yaml`
+10. `config/mcp-registry.yaml`
+11. `config/pack-manifest.yaml`
+12. `config/permission-matrix.csv`
+13. `config/plugin-registry.yaml`
+14. `config/project-registry.yaml`
+15. `config/secret-references.template.yaml`
+16. `config/skill-registry.yaml`
+17. `docs/01-mlops-ai-platform-daily-task-catalog.md`
+18. `docs/02-project-access-and-environment-model.md`
+19. `docs/03-agent-and-subagent-architecture.md`
+20. `docs/04-skills-catalog.md`
+21. `docs/05-mcp-servers-tools-and-plugins.md`
+22. `docs/06-artifacts-and-knowledge-assets.md`
+23. `docs/07-orchestration-and-workflows.md`
+24. `docs/08-key-vault-identity-and-secrets.md`
+25. `docs/09-permissions-approvals-and-guardrails.md`
+26. `docs/10-observability-audit-and-evaluation.md`
+27. `docs/11-deployment-runtime-and-networking.md`
+28. `docs/12-implementation-roadmap.md`
+29. `docs/13-diagram-input-specification.md`
+30. `docs/14-research-and-standards-notes.md`
+31. `schemas/evaluation-gate-report.schema.json`
+32. `schemas/gpu-capacity-plan.schema.json`
+33. `schemas/mlops-platform-context.schema.json`
+34. `schemas/model-promotion-request.schema.json`
+35. `schemas/platform-change-request.schema.json`
+36. `schemas/platform-incident-report.schema.json`
+37. `schemas/serving-readiness-report.schema.json`
+38. `security/opa/mlops-ai-platform-agent-policy.rego`
+39. `templates/ai-platform-incident-brief.md`
+40. `templates/ai-platform-use-case-brief.md`
+41. `templates/gpu-capacity-plan.md`
+42. `templates/model-promotion-request.md`
+43. `templates/platform-change-plan.md`
+44. `workflows/ai-platform-operations-and-recovery.yaml`
+45. `workflows/evaluation-and-promotion-gates.yaml`
+46. `workflows/experiment-to-model-registry.yaml`
+47. `workflows/model-and-agent-serving.yaml`
+48. `workflows/platform-onboarding-and-baseline.yaml`

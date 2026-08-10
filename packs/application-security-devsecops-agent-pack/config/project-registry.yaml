@@ -1,0 +1,78 @@
+version: 1.0.0
+projects:
+- id: pcc
+  name: PCC
+  security_profile: legacy-enterprise-web-application
+  components:
+  - Angular 12 frontend
+  - Java backend
+  - database
+  - infrastructure
+  source_control: Bitbucket
+  risk_focus:
+  - legacy dependencies
+  - session and authorization
+  - API and data security
+  - container and deployment controls
+  constraints:
+  - pinned legacy versions
+  - careful scanner tuning
+  - backport-compatible remediation
+- id: sop
+  name: SOP
+  security_profile: enterprise-web-application
+  components:
+  - Angular 15 frontend
+  - Java backend
+  - database
+  - infrastructure
+  source_control: Bitbucket
+  risk_focus:
+  - identity and authorization
+  - API security
+  - dependency and supply chain
+  - cloud and Kubernetes controls
+  constraints:
+  - shared services
+  - environment-specific identity
+  - candidate-bound evidence
+- id: databridge
+  name: DataBridge
+  security_profile: legacy-integration-and-data-movement
+  components:
+  - AngularJS frontend
+  - Java backend
+  - database
+  - integration jobs
+  source_control: Bitbucket
+  risk_focus:
+  - legacy browser risks
+  - file and data processing
+  - service credentials
+  - integration trust and availability
+  constraints:
+  - legacy behavior
+  - sensitive data flows
+  - conservative remediation and rollout
+- id: bm-agent-foundry
+  name: BM Agent Foundry
+  security_profile: ai-agent-platform
+  components:
+  - web applications
+  - agent services
+  - MCP servers
+  - policies
+  - schemas
+  - artifact store
+  source_control: Bitbucket-or-GitHub
+  risk_focus:
+  - tool authorization
+  - prompt injection
+  - data isolation
+  - secrets
+  - supply chain
+  - policy bypass
+  constraints:
+  - LLMSVS and AISVS mapping
+  - connector-specific scopes
+  - model cannot receive raw secrets

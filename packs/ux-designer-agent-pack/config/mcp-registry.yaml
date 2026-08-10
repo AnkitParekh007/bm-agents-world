@@ -1,0 +1,160 @@
+version: 1.0.0
+servers:
+- id: atlassian-rovo-mcp
+  description: Jira and Confluence read access; approved Jira/Confluence publication.
+  tools:
+  - jira_search
+  - jira_read
+  - confluence_search
+  - confluence_read
+  - draft_comment
+  - publish_comment
+  default_mode: read-only
+  status: enabled
+- id: figma-mcp
+  description: Structured Figma design context, variables, components, Dev Mode metadata, Code Connect, and approved
+    canvas writes.
+  tools:
+  - file_read
+  - selection_read
+  - variables_read
+  - components_read
+  - prototype_context
+  - write_to_canvas
+  default_mode: read-only
+  status: enabled
+- id: design-repository-mcp
+  description: Approved research repository, design briefs, decisions, studies, findings, and governance metadata.
+  tools:
+  - search_studies
+  - read_study
+  - search_insights
+  - read_decision
+  - draft_entry
+  default_mode: read-only
+  status: enabled
+- id: bitbucket-design-code-mcp
+  description: Read design-system code, frontend implementations, tokens, pull requests, commits, and change history.
+  tools:
+  - repo_search
+  - file_read
+  - diff_read
+  - pr_read
+  - commit_read
+  default_mode: read-only
+  status: enabled
+- id: storybook-catalog-mcp
+  description: Read implemented component stories, controls, states, documentation, accessibility results, and visual
+    baselines.
+  tools:
+  - story_search
+  - story_read
+  - component_props
+  - a11y_results
+  - visual_baseline
+  default_mode: read-only
+  status: enabled
+- id: browser-research-mcp
+  description: Isolated Playwright browser for product walkthroughs, competitive analysis, screenshots, responsive
+    checks, and approved prototype tests.
+  tools:
+  - navigate
+  - inspect
+  - screenshot
+  - record_flow
+  - responsive_check
+  - console_read
+  default_mode: read-only
+  status: enabled
+- id: accessibility-evaluation-mcp
+  description: Deterministic WCAG/APG mapping, contrast, target-size, focus, and axe-assisted checks.
+  tools:
+  - contrast_check
+  - target_size_check
+  - wcag_map
+  - aria_pattern_lookup
+  - axe_scan
+  default_mode: read-only
+  status: enabled
+- id: product-analytics-mcp
+  description: Read-only funnels, events, feature adoption, cohorts, paths, and experiment results with privacy
+    thresholds.
+  tools:
+  - event_catalog
+  - funnel_read
+  - cohort_read
+  - path_read
+  - experiment_read
+  default_mode: read-only
+  status: enabled
+- id: user-feedback-mcp
+  description: Read approved support themes, survey responses, app feedback, interview notes, and sanitized verbatims.
+  tools:
+  - theme_search
+  - feedback_search
+  - survey_read
+  - verbatim_read
+  default_mode: read-only
+  status: enabled
+- id: content-localization-mcp
+  description: Read terminology, content standards, translation status, locale constraints, and approved copy.
+  tools:
+  - term_search
+  - content_standard_read
+  - locale_read
+  - translation_status
+  default_mode: read-only
+  status: enabled
+- id: asset-library-mcp
+  description: Read approved icons, illustrations, images, fonts metadata, licenses, and brand assets.
+  tools:
+  - asset_search
+  - asset_metadata
+  - license_read
+  - brand_guideline_read
+  default_mode: read-only
+  status: enabled
+- id: experimentation-mcp
+  description: Read experiment catalog and draft hypotheses or measurement plans; launches require human approval.
+  tools:
+  - experiment_search
+  - metric_read
+  - draft_experiment
+  - publish_experiment
+  default_mode: read-only
+  status: enabled
+- id: artifact-evidence-mcp
+  description: Store and retrieve redacted, hashed design and research artifacts with provenance.
+  tools:
+  - artifact_write
+  - artifact_read
+  - hash
+  - redact
+  - retention_tag
+  default_mode: read-only
+  status: enabled
+- id: collaboration-mcp
+  description: Draft and approved publication to Microsoft Teams or organizational collaboration channels.
+  tools:
+  - draft_message
+  - publish_message
+  - thread_read
+  default_mode: read-only
+  status: enabled
+- id: secret-capability-broker-mcp
+  description: Issues short-lived adapter capabilities without exposing credentials to the model.
+  tools:
+  - lease_request
+  - lease_revoke
+  - capability_status
+  default_mode: read-only
+  status: enabled
+- id: policy-approval-mcp
+  description: Evaluates policy and manages payload-bound approvals.
+  tools:
+  - policy_check
+  - approval_request
+  - approval_status
+  - approval_consume
+  default_mode: read-only
+  status: enabled

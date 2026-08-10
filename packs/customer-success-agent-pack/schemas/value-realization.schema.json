@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/customer-success/value-realization.schema.json",
+  "title": "Value Realization",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "customer_id",
+    "outcomes",
+    "evidence",
+    "confidence"
+  ],
+  "properties": {
+    "customer_id": {
+      "type": "string"
+    },
+    "outcomes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "measure"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "baseline": {
+            "type": "string"
+          },
+          "current": {
+            "type": "string"
+          },
+          "measure": {
+            "type": "string"
+          },
+          "attribution_notes": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "confidence": {
+      "type": "string"
+    },
+    "gaps": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "next_actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

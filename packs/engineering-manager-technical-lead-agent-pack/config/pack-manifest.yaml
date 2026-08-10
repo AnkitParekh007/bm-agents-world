@@ -1,0 +1,41 @@
+apiVersion: engineering-manager-technical-lead-agent-pack/v1
+kind: AgentPack
+metadata:
+  name: engineering-manager-technical-lead-agent-pack
+  version: 1.0.0
+  created: '2026-08-06'
+  role: Engineering Manager / Technical Lead
+  maintainer: Engineering Leadership
+spec:
+  purpose: Coordinate healthy teams, sound technical execution, predictable delivery, quality, reliability, and
+    continuous improvement with human-owned people and business decisions.
+  operatingProfiles:
+  - engineering-manager
+  - technical-lead
+  - hybrid-engineering-manager-technical-lead
+  coordinatesRolePacks:
+  - product-manager-agent-pack
+  - solution-architect-agent-pack
+  - ux-designer-agent-pack
+  - frontend-angular-agent-pack
+  - java-developer-agent-pack
+  - python-developer-agent-pack
+  - database-architect-developer-agent-pack
+  - qa-agent-pack
+  - devops-agent-pack
+  counts:
+    agents: 27
+    skills: 263
+    mcpServers: 18
+    plugins: 22
+    artifacts: 27
+    workflows: 5
+    schemas: 7
+  defaultMode: proposal-first
+  peopleDecisionBoundary: Humans own performance ratings, promotion, compensation, hiring, discipline, termination,
+    health and wellbeing interventions, and confidential employee decisions.
+  technicalDecisionBoundary: Humans own high-risk architecture, release, production, security-exception, budget,
+    vendor, and delivery-commitment decisions.
+  policy:
+    engine: OPA-compatible
+    file: security/opa/engineering-manager-technical-lead-agent-policy.rego

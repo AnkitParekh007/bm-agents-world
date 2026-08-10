@@ -1,0 +1,46 @@
+version: 1.0.0
+environments:
+- id: cs-sandbox
+  classification: isolated
+  allowed:
+  - drafts
+  - health-simulation
+  - playbook-testing
+  - synthetic-account-analysis
+  approval: none
+  production_data: false
+- id: internal-planning
+  classification: internal
+  allowed:
+  - portfolio-analysis
+  - success-plan-drafts
+  - risk-review
+  - qbr-drafts
+  approval: conditional
+  production_data: false
+- id: playground
+  classification: non-production
+  allowed:
+  - product-guidance-validation
+  - training-validation
+  - release-preview
+  approval: conditional
+  production_data: false
+- id: qa
+  classification: non-production
+  allowed:
+  - customer-impact-validation
+  - release-readiness
+  - fix-verification
+  approval: conditional
+  production_data: false
+- id: production
+  classification: production
+  allowed:
+  - bounded-account-context-read
+  - privacy-safe-usage-read
+  - support-status-read
+  - release-and-incident-status-read
+  approval: required
+  production_data: true
+  autonomous_mutation: false

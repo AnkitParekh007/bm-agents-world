@@ -1,0 +1,72 @@
+apiVersion: frontend-angular-agent-pack/v1
+kind: Workflow
+metadata:
+  name: story-to-implementation-plan
+  version: 1.0.0
+spec:
+  trigger: jira-story-or-user-request
+  initialState: created
+  steps:
+  - id: authorize
+    agent: policy-guard
+    uses:
+    - frontend.policy.classify-risk
+    outputs:
+    - authorization-decision
+    onFailure: policy-denied
+  - id: resolve-profile
+    agent: angular-version
+    uses:
+    - frontend.angular.resolve-version-profile
+    - frontend.angular.compatibility-check
+    outputs:
+    - framework-profile
+    dependsOn:
+    - authorize
+  - id: read-story
+    agent: story-context
+    uses:
+    - frontend.story.read-context
+    - frontend.story.acceptance-criteria-analysis
+    - frontend.story.ux-state-mapping
+    outputs:
+    - story-context-brief
+    dependsOn:
+    - authorize
+  - id: map-repository
+    agent: repository-context
+    uses:
+    - frontend.repo.map-workspace
+    - frontend.repo.detect-conventions
+    - frontend.repo.detect-protected-paths
+    outputs:
+    - codebase-map
+    dependsOn:
+    - resolve-profile
+  - id: analyze-impact
+    agent: architecture-analyzer
+    uses:
+    - frontend.change.component-impact
+    - frontend.change.api-impact
+    - frontend.change.state-impact
+    - frontend.risk.change-scoring
+    outputs:
+    - change-impact-report
+    dependsOn:
+    - read-story
+    - map-repository
+  - id: plan
+    agent: architecture-analyzer
+    uses:
+    - frontend.plan.implementation
+    - frontend.plan.rollback
+    outputs:
+    - implementation-plan
+    dependsOn:
+    - analyze-impact
+  - id: validate-artifacts
+    agent: evidence-curator
+    outputs:
+    - validated-plan
+    dependsOn:
+    - plan

@@ -1,0 +1,96 @@
+version: 1.0.0
+policies:
+- action: active-dast-fuzz-or-penetration-test
+  risk: high
+  approval: security-owner-and-target-owner
+  binding:
+  - project
+  - target
+  - methods
+  - accounts
+  - time_window
+  - rate_limits
+  - payload_hash
+  - expiry
+- action: jira-or-confluence-security-publication
+  risk: medium
+  approval: security-owner-or-finding-owner
+  binding:
+  - project
+  - finding_or_artifact
+  - audience
+  - payload_hash
+  - expiry
+- action: pull-request-security-comment-or-gate
+  risk: medium
+  approval: security-owner
+  binding:
+  - repository
+  - source_revision
+  - pull_request
+  - payload_hash
+  - expiry
+- action: finding-suppression-or-official-disposition
+  risk: high
+  approval: independent-security-reviewer
+  binding:
+  - finding
+  - asset
+  - source_revision
+  - evidence_hash
+  - payload_hash
+  - expiry
+- action: security-exception-publication
+  risk: critical
+  approval: security-owner-and-accountable-business-or-product-owner
+  binding:
+  - exception
+  - scope
+  - compensating_controls
+  - expiry
+  - payload_hash
+- action: release-security-gate-publication
+  risk: high
+  approval: independent-security-reviewer-and-release-owner
+  binding:
+  - release
+  - candidate_hash
+  - evidence_hash
+  - payload_hash
+  - expiry
+- action: secret-rotation-or-revocation-request
+  risk: critical
+  approval: credential-owner-and-security-owner
+  binding:
+  - credential_fingerprint
+  - systems
+  - action
+  - payload_hash
+  - expiry
+- action: customer-vendor-or-public-vulnerability-communication
+  risk: critical
+  approval: product-security-legal-privacy-and-owner-as-required
+  binding:
+  - case
+  - audience
+  - facts
+  - payload_hash
+  - expiry
+- action: production-security-action-request
+  risk: critical
+  approval: security-owner-and-authorized-operator
+  binding:
+  - target
+  - action
+  - runbook
+  - payload_hash
+  - expiry
+- action: residual-risk-acceptance
+  risk: critical
+  approval: human-only-not-agent
+- action: production-mutation-or-unapproved-exploitation
+  risk: critical
+  approval: prohibited-for-free-form-agent
+- action: access-raw-secrets-or-signing-keys
+  risk: critical
+  approval: prohibited-for-model-context

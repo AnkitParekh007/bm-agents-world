@@ -1,0 +1,26 @@
+id: experiment-to-model-registry
+trigger: candidate experiment ready for registration
+steps:
+- resolve immutable source and dataset lineage
+- validate experiment metadata
+- run/verify evaluation
+- package candidate
+- generate SBOM/provenance
+- security/governance checks
+- register candidate in non-production registry
+- independent review
+- prepare promotion evidence
+agents:
+- experiment-tracking-agent
+- training-pipeline-agent
+- evaluation-platform-agent
+- supply-chain-agent
+- model-registry-agent
+- ai-platform-security-agent
+- responsible-ai-platform-agent
+- independent-platform-review-agent
+artifacts:
+- experiment-tracking-standard
+- evaluation-gate-specification
+- ai-supply-chain-report
+- model-promotion-request

@@ -1,0 +1,65 @@
+apiVersion: python-developer-agent-pack/v1
+kind: Workflow
+metadata:
+  name: dependency-and-python-upgrade
+  version: 1.0.0
+spec:
+  trigger: upgrade-request-approved
+  initialState: requested
+  steps:
+  - id: inventory
+    agent: dependency-packaging
+    uses:
+    - python.detect-python-version
+    - python.detect-dependency-manager
+    outputs:
+    - dependency-inventory
+  - id: compatibility-plan
+    agent: python-compatibility
+    outputs:
+    - compatibility-assessment
+    - implementation-plan
+    dependsOn:
+    - inventory
+  - id: approval
+    agent: python-developer-supervisor
+    outputs:
+    - approval-reference
+    dependsOn:
+    - compatibility-plan
+    approvalRequired: true
+  - id: update
+    agent: dependency-packaging
+    uses:
+    - python.lockfile-update
+    - python.pyproject
+    outputs:
+    - upgrade-patch
+    dependsOn:
+    - approval
+  - id: matrix-tests
+    agent: test-engineer
+    uses:
+    - python.python-matrix-test
+    - python.integration-tests
+    outputs:
+    - matrix-results
+    dependsOn:
+    - update
+  - id: security-package-review
+    parallel: true
+    agents:
+    - security-reviewer
+    - dependency-packaging
+    - code-review
+    outputs:
+    - review-reports
+    dependsOn:
+    - matrix-tests
+  - id: release-artifacts
+    agent: pr-release
+    outputs:
+    - pull-request-draft
+    - rollback-plan
+    dependsOn:
+    - security-package-review

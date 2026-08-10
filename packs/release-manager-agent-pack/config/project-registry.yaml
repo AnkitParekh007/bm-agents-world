@@ -1,0 +1,76 @@
+version: 1.0.0
+projects:
+- id: pcc
+  name: PCC
+  release_profile: legacy-enterprise
+  components:
+  - Angular 12 frontend
+  - Java backend
+  - database
+  - infrastructure
+  source_control: Bitbucket
+  environments:
+  - playground
+  - qa
+  - production
+  constraints:
+  - pinned legacy toolchain
+  - conservative compatibility
+  - operator-led production release
+- id: sop
+  name: SOP
+  release_profile: enterprise-web
+  components:
+  - Angular 15 frontend
+  - Java backend
+  - database
+  - infrastructure
+  source_control: Bitbucket
+  environments:
+  - playground
+  - qa
+  - production
+  constraints:
+  - version-aware builds
+  - shared release calendar
+  - operator-led production release
+- id: databridge
+  name: DataBridge
+  release_profile: legacy-integration
+  components:
+  - AngularJS frontend
+  - Java backend
+  - database
+  - integration jobs
+  - infrastructure
+  source_control: Bitbucket
+  environments:
+  - playground
+  - qa
+  - production
+  constraints:
+  - legacy runtime
+  - integration sequencing
+  - extended rollback and support coverage
+- id: bm-agent-foundry
+  name: BM Agent Foundry
+  release_profile: agent-platform
+  components:
+  - web applications
+  - agent services
+  - MCP servers
+  - policy service
+  - artifact store
+  - databases
+  - infrastructure
+  source_control: Bitbucket-or-GitHub
+  environments:
+  - sandbox
+  - playground
+  - qa
+  - production
+  constraints:
+  - AI governance
+  - prompt and policy versioning
+  - model and connector compatibility
+  - strict approval boundaries

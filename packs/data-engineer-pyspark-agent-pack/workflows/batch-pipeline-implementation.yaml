@@ -1,0 +1,47 @@
+name: batch-pipeline-implementation
+version: 1.0.0
+trigger: Approved batch pipeline design or batch defect
+scope_binding:
+- project
+- repository
+- source_revision
+- data_product
+- target_environment
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: verify repository, source, sink, package, and environment scope
+- id: compatibility
+  agent: data-platform-compatibility-agent
+  action: resolve Python, Spark, JVM, connectors, table formats, and repository conventions
+- id: implement
+  agent: pyspark-batch-agent
+  action: create isolated PySpark and Spark SQL changes
+- id: rules
+  agent: transformation-rules-agent
+  action: validate business rules and source-to-target mapping
+- id: tests
+  agent: data-testing-agent
+  action: run unit, contract, integration, quality, regression, and scale tests
+- id: quality
+  agent: reconciliation-agent
+  action: validate controls, totals, keys, and expected outputs
+- id: performance
+  agent: spark-performance-agent
+  action: review plans, shuffles, joins, skew, partitions, runtime, and cost
+- id: governance
+  agent: data-security-governance-agent
+  action: review classification, access, masking, retention, and supply-chain evidence
+- id: review
+  agent: data-engineering-independent-reviewer-agent
+  action: independently review correctness and release readiness
+- id: release
+  agent: pipeline-release-agent
+  action: prepare approval-controlled commit, pull request, and release evidence bundle
+outputs:
+- batch-job-specification
+- data-test-plan
+- data-quality-report
+- spark-performance-report
+- release-evidence-bundle
+failure_behavior: preserve evidence, avoid partial publication, and return to implementation with bounded findings

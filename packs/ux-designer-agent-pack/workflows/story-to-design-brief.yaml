@@ -1,0 +1,37 @@
+name: story-to-design-brief
+version: 1.0.0
+trigger: Jira story, discovery request, product problem, or design intake
+scope_binding:
+- organization
+- project
+- jira_item
+- figma_file
+- environment
+- requester
+steps:
+- id: authorize
+  agent: policy-enforcer
+  action: verify project, purpose, data classification, and tool scope
+- id: collect-context
+  agent: work-context
+  action: read Jira, product strategy, prior research, analytics, support, code and design history
+- id: identify-gaps
+  agent: research-planner
+  action: separate known facts, assumptions, unanswered questions, and evidence needs
+- id: model-problem
+  agent: persona-journey-modeler
+  action: map users, jobs, scenarios, pain points, and desired outcomes
+- id: architecture-impact
+  agent: information-architect
+  action: identify navigation, content, workflow, and system impacts
+- id: draft-brief
+  agent: ux-designer-supervisor
+  action: produce design brief, research recommendation, risks, measures, and plan
+- id: review
+  agent: design-reviewer
+  action: review evidence, inclusivity, feasibility, and decision readiness
+outputs:
+- design-brief
+- research-plan
+- design-decision-log
+failure_behavior: stop, preserve evidence, and request human resolution

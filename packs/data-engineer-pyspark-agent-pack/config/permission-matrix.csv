@@ -1,0 +1,11 @@
+Action,Playground,QA,Production,Approval,Notes
+Read repository and approved documentation,allow,allow,allow,no,Project-scoped
+Read bounded redacted source or dataset evidence,allow,allow,allow,scope-dependent,No unrestricted row export
+Run local or isolated Spark tests,allow,allow,deny,no,Approved fixtures or isolated cluster
+Run shared non-production pipeline,approval,approval,deny,yes,Exact candidate and target
+Write non-production tables or topics,approval,approval,deny,yes,Bounded target and cleanup
+"Publish contract, schema, catalog, lineage, Jira, or Teams update",approval,approval,approval,yes,Immutable payload hash
+Create commit or pull request,approval,approval,approval,yes,No force push or merge
+"Production pipeline, backfill, replay, repair, migration, table maintenance, or schedule change",deny,deny,request-only,human-only,Executed by deterministic system or operator
+Production destructive mutation or checkpoint deletion,deny,deny,deny,human-only,Outside free-form agent authority
+Read raw secret or unrestricted credential,deny,deny,deny,never,Secrets stay inside trusted adapters

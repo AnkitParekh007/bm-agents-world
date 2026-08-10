@@ -1,0 +1,22 @@
+pack: "ai-ml-engineer-agent-pack"
+environments:
+  - id: local
+    classification: "developer-sandbox"
+    model_access: "approved-development"
+    data_access: "synthetic-or-approved-sample"
+    mutation: "local-only"
+  - id: playground
+    classification: "non-production"
+    model_access: "approved-development"
+    data_access: "project-scoped-nonprod"
+    mutation: "approval-or-policy-bounded"
+  - id: qa
+    classification: "non-production-controlled"
+    model_access: "candidate-validation"
+    data_access: "masked-or-approved-test"
+    mutation: "approval-required"
+  - id: production
+    classification: production
+    model_access: "deployed-model-readonly"
+    data_access: "bounded-redacted-readonly"
+    mutation: "free-form-agent-denied"

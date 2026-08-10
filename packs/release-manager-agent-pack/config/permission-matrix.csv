@@ -1,0 +1,13 @@
+resource,read,draft,write_or_execute,approval,notes
+Jira and Confluence,approved project scope,yes,"comments, versions, pages, transitions",release or content owner,Payload-bound writes only
+Bitbucket repositories,approved repositories,local analysis,"tags, branches, pull requests, merges",repository owner,Merge and force-push prohibited
+CI/CD pipelines,"status, logs, evidence",run plan,trigger or promote,release and environment owner,Production execution outside free-form agent
+Artifact registry,"metadata, digests, signatures",manifest,promote or delete,artifact owner,No signing-key access
+Playground / QA,read and bounded validation,yes,deployment rehearsal,environment owner,Deterministic pipeline only
+Production,redacted read-only telemetry and version state,request package,"deployment, rollback, restart, config change",authorized operator and release decision,Free-form mutation prohibited
+Database,"catalog, migration status, approved read-only evidence",migration package,"DDL, DML, backfill",database owner and operator,No production SQL execution
+Kubernetes and cloud,read-only inventory and health,change package,"apply, delete, scale, restart",platform owner and operator,No cluster-admin or universal credentials
+Feature flags,read state and audit,rollout request,flag changes,Product and operations owner,Production writes outside model
+Observability,bounded redacted query,dashboards and queries,alert or dashboard mutation,service owner,Unbounded exports prohibited
+Microsoft Teams / email,read approved thread context,message draft,send,communications owner,Exact payload approval required
+Vault / secret manager,secret references only,capability request,secret read or write,broker policy,Raw values never enter model context

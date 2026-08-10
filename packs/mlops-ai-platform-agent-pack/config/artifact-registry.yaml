@@ -1,0 +1,114 @@
+version: '1.0'
+artifacts:
+- id: ai-platform-charter
+  name: AI Platform Charter
+  purpose: Platform scope, users, supported workloads, ownership and decision rights.
+  official_publication_requires_approval: true
+- id: platform-reference-architecture
+  name: Platform Reference Architecture
+  purpose: Control plane, data plane, tenancy, lifecycle and integration architecture.
+  official_publication_requires_approval: true
+- id: platform-service-catalog
+  name: Platform Service Catalog
+  purpose: Supported services, SLAs/SLOs, owners and support paths.
+  official_publication_requires_approval: true
+- id: platform-readiness-assessment
+  name: Platform Readiness Assessment
+  purpose: Readiness of a project or workload to use shared AI platform services.
+  official_publication_requires_approval: true
+- id: tenancy-isolation-model
+  name: Tenancy & Isolation Model
+  purpose: Workspace, namespace, data, identity and network isolation.
+  official_publication_requires_approval: true
+- id: experiment-tracking-standard
+  name: Experiment Tracking Standard
+  purpose: Required metadata, lineage, retention and reproducibility rules.
+  official_publication_requires_approval: true
+- id: registry-governance-standard
+  name: Registry Governance Standard
+  purpose: Model/prompt/agent lifecycle, aliases, immutability and retention.
+  official_publication_requires_approval: true
+- id: training-pipeline-blueprint
+  name: Training Pipeline Blueprint
+  purpose: Standard pipeline stages, artifacts, retry and observability patterns.
+  official_publication_requires_approval: true
+- id: evaluation-gate-specification
+  name: Evaluation Gate Specification
+  purpose: Quality, safety, regression and evidence gates for promotion.
+  official_publication_requires_approval: true
+- id: llm-agent-platform-standard
+  name: LLM & Agent Platform Standard
+  purpose: Gateway, provider, prompt, tool, sandbox, quota and tracing standards.
+  official_publication_requires_approval: true
+- id: rag-vector-platform-standard
+  name: RAG & Vector Platform Standard
+  purpose: Embedding, index, authorization, freshness and migration rules.
+  official_publication_requires_approval: true
+- id: serving-readiness-report
+  name: Serving Readiness Report
+  purpose: Endpoint runtime, SLO, autoscaling, fallback and operational readiness.
+  official_publication_requires_approval: true
+- id: inference-capacity-plan
+  name: Inference Capacity Plan
+  purpose: Traffic, concurrency, throughput, latency and compute capacity.
+  official_publication_requires_approval: true
+- id: gpu-capacity-plan
+  name: GPU Capacity Plan
+  purpose: Accelerator inventory, demand, sharing, quota and growth assumptions.
+  official_publication_requires_approval: true
+- id: workload-scheduling-policy
+  name: AI Workload Scheduling Policy
+  purpose: Queues, priority, fair share, gang scheduling and topology placement.
+  official_publication_requires_approval: true
+- id: ai-supply-chain-report
+  name: AI Supply Chain Report
+  purpose: Images, packages, model sources, SBOM, signatures and provenance.
+  official_publication_requires_approval: true
+- id: model-promotion-request
+  name: Model/Agent Promotion Request
+  purpose: Exact candidate identity, evidence, target, payload hash and approval.
+  official_publication_requires_approval: true
+- id: rollback-plan
+  name: Model/Platform Rollback Plan
+  purpose: Rollback candidate, triggers, steps and recovery verification.
+  official_publication_requires_approval: true
+- id: ai-observability-standard
+  name: AI Observability Standard
+  purpose: Metrics, traces, logs, sensitive-content policy and dashboards.
+  official_publication_requires_approval: true
+- id: model-health-review
+  name: Model Health Review
+  purpose: Drift, quality, reliability, fallback, cost and monitoring findings.
+  official_publication_requires_approval: true
+- id: ai-platform-security-review
+  name: AI Platform Security Review
+  purpose: Identity, isolation, egress, secrets, provenance and hardening evidence.
+  official_publication_requires_approval: true
+- id: ai-governance-evidence-pack
+  name: AI Governance Evidence Pack
+  purpose: Risk tier, model/system cards, evaluation, approvals and exceptions.
+  official_publication_requires_approval: true
+- id: ai-finops-report
+  name: AI FinOps Report
+  purpose: Training, inference, GPU, storage, vector and provider-cost analysis.
+  official_publication_requires_approval: true
+- id: platform-slo-and-dr-plan
+  name: Platform SLO & DR Plan
+  purpose: Service objectives, backups, RTO/RPO, failover and recovery tests.
+  official_publication_requires_approval: true
+- id: ai-platform-incident-brief
+  name: AI Platform Incident Brief
+  purpose: Impact, timeline, candidate identity, evidence, mitigation and recovery.
+  official_publication_requires_approval: true
+- id: developer-golden-path
+  name: AI Platform Golden Path
+  purpose: Self-service workflow, templates, SDKs and examples.
+  official_publication_requires_approval: true
+- id: platform-upgrade-plan
+  name: AI Platform Upgrade Plan
+  purpose: Compatibility, deprecations, migration, rollback and validation.
+  official_publication_requires_approval: true
+- id: platform-audit-and-improvement-report
+  name: Platform Audit & Improvement Report
+  purpose: Metrics, exceptions, stale resources, incidents and improvement backlog.
+  official_publication_requires_approval: true

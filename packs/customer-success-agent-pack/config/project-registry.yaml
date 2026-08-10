@@ -1,0 +1,60 @@
+version: 1.0.0
+projects:
+- id: pcc
+  name: PCC
+  products:
+  - Angular 12 frontend
+  - Java services
+  customer_success_mode: legacy-compatible
+  repositories:
+  - <PCC_FRONTEND_REPO>
+  - <PCC_BACKEND_REPO>
+  jira_projects:
+  - <PCC_JIRA_PROJECT>
+  crm_accounts: <PCC_CRM_SCOPE>
+  cs_platform_scope: <PCC_CS_SCOPE>
+  notes: Preserve current customer commitments and distinguish maintenance, modernization, support, and new-value
+    work.
+- id: sop
+  name: SOP
+  products:
+  - Angular 15 frontend
+  - Java services
+  customer_success_mode: version-aware
+  repositories:
+  - <SOP_FRONTEND_REPO>
+  - <SOP_BACKEND_REPO>
+  jira_projects:
+  - <SOP_JIRA_PROJECT>
+  crm_accounts: <SOP_CRM_SCOPE>
+  cs_platform_scope: <SOP_CS_SCOPE>
+  notes: Coordinate adoption, value, release, and shared-platform dependencies with current supported product behavior.
+- id: databridge
+  name: DataBridge
+  products:
+  - AngularJS frontend
+  - Java services
+  customer_success_mode: continuity-and-modernization
+  repositories:
+  - <DATABRIDGE_FRONTEND_REPO>
+  - <DATABRIDGE_BACKEND_REPO>
+  jira_projects:
+  - <DATABRIDGE_JIRA_PROJECT>
+  crm_accounts: <DATABRIDGE_CRM_SCOPE>
+  cs_platform_scope: <DATABRIDGE_CS_SCOPE>
+  notes: Prioritize continuity, customer risk, support burden, migration readiness, and transparent legacy constraints.
+- id: bm-agent-foundry
+  name: BM Agent Foundry
+  products:
+  - Managed AI agents
+  - Agent builder
+  - Runtime and orchestration platform
+  customer_success_mode: ai-product-governed
+  repositories:
+  - <BM_AGENT_FOUNDRY_REPOS>
+  jira_projects:
+  - <BM_AGENT_FOUNDRY_JIRA_PROJECT>
+  crm_accounts: <BM_AGENT_FOUNDRY_CRM_SCOPE>
+  cs_platform_scope: <BM_AGENT_FOUNDRY_CS_SCOPE>
+  notes: Include AI governance, model/provider dependencies, agent safety, usage, adoption, evaluation, and customer
+    assurance in success planning.

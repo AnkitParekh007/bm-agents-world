@@ -1,0 +1,105 @@
+mcp_servers:
+- id: jira-confluence-mcp
+  name: Jira and Confluence
+  description: Read governance work, evidence references, policies and approved issue
+    metadata; writes gated.
+  default_access: read_only
+  write_requires_approval: true
+- id: bitbucket-mcp
+  name: Bitbucket
+  description: Read repositories, pull requests, branches and policy files; write
+    actions gated.
+  default_access: read_only
+  write_requires_approval: true
+- id: identity-governance-mcp
+  name: Identity Governance
+  description: Read users, groups, roles, access-review campaigns and entitlement
+    metadata using least privilege.
+  default_access: read_only
+  write_requires_approval: true
+- id: cloud-inventory-mcp
+  name: Cloud Inventory
+  description: Read approved cloud asset, IAM, logging, encryption and configuration
+    metadata.
+  default_access: read_only
+  write_requires_approval: true
+- id: kubernetes-governance-mcp
+  name: Kubernetes Governance
+  description: Read cluster policy, namespace, admission and workload metadata.
+  default_access: read_only
+  write_requires_approval: true
+- id: database-metadata-mcp
+  name: Database Metadata
+  description: Read catalog, roles, grants and approved aggregated evidence; no unrestricted
+    row access.
+  default_access: read_only
+  write_requires_approval: true
+- id: siem-evidence-mcp
+  name: SIEM and Audit Logs
+  description: Run bounded read-only audit and compliance evidence queries.
+  default_access: read_only
+  write_requires_approval: true
+- id: vulnerability-mcp
+  name: Vulnerability Management
+  description: Read findings, remediation status and scanner evidence.
+  default_access: read_only
+  write_requires_approval: true
+- id: grc-platform-mcp
+  name: GRC Platform
+  description: Read controls, risks, evidence, audits, findings and mappings; controlled
+    writes gated.
+  default_access: read_only
+  write_requires_approval: true
+- id: vendor-risk-mcp
+  name: Vendor Risk
+  description: Read approved vendor assessments, attestations and remediation status.
+  default_access: read_only
+  write_requires_approval: true
+- id: privacy-governance-mcp
+  name: Privacy Governance
+  description: Read processing inventory, DPIA metadata, rights-process evidence and
+    approved data maps.
+  default_access: read_only
+  write_requires_approval: true
+- id: ai-governance-mcp
+  name: AI Governance
+  description: Read AI inventory, classifications, model/system documentation and
+    approval records.
+  default_access: read_only
+  write_requires_approval: true
+- id: artifact-mcp
+  name: Governance Artifact Store
+  description: Read/write isolated evidence bundles, reports and drafts with immutable
+    versions.
+  default_access: read_only
+  write_requires_approval: true
+- id: key-vault-mcp
+  name: Vault and Capability Broker
+  description: Issue short-lived scoped credentials to trusted adapters; never expose
+    raw secret values to model.
+  default_access: read_only
+  write_requires_approval: true
+- id: policy-engine-mcp
+  name: OPA Policy Engine
+  description: Evaluate operation, project, environment, purpose, approval and data-access
+    policy.
+  default_access: read_only
+  write_requires_approval: true
+- id: contract-repository-mcp
+  name: Contract Repository
+  description: Read approved extracted contractual obligations and clause metadata,
+    not unrestricted legal files.
+  default_access: read_only
+  write_requires_approval: true
+- id: training-mcp
+  name: Training Platform
+  description: Read aggregate role-based training assignments and completion evidence;
+    no employment scoring.
+  default_access: read_only
+  write_requires_approval: true
+- id: regulatory-library-mcp
+  name: Regulatory Library
+  description: Retrieve versioned authoritative framework references and organization-approved
+    interpretations.
+  default_access: read_only
+  write_requires_approval: true

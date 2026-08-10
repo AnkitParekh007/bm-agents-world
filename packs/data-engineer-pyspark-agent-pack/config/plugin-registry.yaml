@@ -1,0 +1,120 @@
+version: 1.0.0
+plugin_count: 22
+plugins:
+- id: data-repository-profiler
+  description: Detects Python, Spark, build, orchestration, table-format, connector, testing, packaging, and deployment
+    conventions.
+  execution: deterministic-isolated-worker
+  network: deny-by-default
+  evidence_required: true
+- id: source-schema-profiler
+  description: Computes bounded schema, null, cardinality, distribution, freshness, and volume profiles with redaction.
+  execution: deterministic-isolated-worker
+  network: deny-by-default
+  evidence_required: true
+- id: data-contract-validator
+  description: Validates schema, semantic, ownership, SLA, compatibility, and consumer contract rules.
+  execution: deterministic-isolated-worker
+  network: deny-by-default
+  evidence_required: true
+- id: schema-diff-analyzer
+  description: Compares source, target, registry, table, and contract schemas and classifies compatibility risk.
+  execution: deterministic-isolated-worker
+  network: deny-by-default
+  evidence_required: true
+- id: spark-plan-analyzer
+  description: Parses logical and physical plans, exchanges, joins, scans, predicates, code generation, and adaptive
+    execution evidence.
+  execution: deterministic-isolated-worker
+  network: deny-by-default
+  evidence_required: true
+- id: partition-skew-analyzer
+  description: Detects skew, tiny files, oversized partitions, hotspots, and partition imbalance.
+  execution: deterministic-isolated-worker
+  network: deny-by-default
+  evidence_required: true
+- id: join-strategy-advisor
+  description: Evaluates join cardinality, broadcast suitability, shuffle risk, ordering, and correctness constraints.
+  execution: deterministic-isolated-worker
+  network: deny-by-default
+  evidence_required: true
+- id: streaming-state-analyzer
+  description: Analyzes watermarks, state stores, late data, output modes, triggers, and state-growth risk.
+  execution: deterministic-isolated-worker
+  network: deny-by-default
+  evidence_required: true
+- id: checkpoint-safety-validator
+  description: Validates checkpoint ownership, compatibility, retention, recovery, and prohibited deletion risks.
+  execution: deterministic-isolated-worker
+  network: deny-by-default
+  evidence_required: true
+- id: data-quality-rule-engine
+  description: Runs row, aggregate, relational, freshness, volume, uniqueness, and business-rule validations.
+  execution: deterministic-isolated-worker
+  network: deny-by-default
+  evidence_required: true
+- id: reconciliation-engine
+  description: Computes source-to-target counts, totals, hashes, keys, balances, and exception sets.
+  execution: deterministic-isolated-worker
+  network: deny-by-default
+  evidence_required: true
+- id: synthetic-data-generator
+  description: Creates deterministic, privacy-safe fixtures for edge, boundary, skew, late, duplicate, and invalid
+    cases.
+  execution: deterministic-isolated-worker
+  network: deny-by-default
+  evidence_required: true
+- id: pyspark-test-runner
+  description: Runs unit and integration tests with local Spark or isolated approved clusters and captures deterministic
+    evidence.
+  execution: deterministic-isolated-worker
+  network: deny-by-default
+  evidence_required: true
+- id: orchestration-dag-validator
+  description: Validates DAG parse, dependency cycles, retries, concurrency, schedules, datasets, backfills, and
+    idempotency.
+  execution: deterministic-isolated-worker
+  network: deny-by-default
+  evidence_required: true
+- id: lineage-emitter
+  description: Emits approved OpenLineage-style run, job, dataset, schema, ownership, and quality facets.
+  execution: deterministic-isolated-worker
+  network: deny-by-default
+  evidence_required: true
+- id: pii-classification-redactor
+  description: Detects sensitive fields and redacts or tokenizes evidence before model use.
+  execution: deterministic-isolated-worker
+  network: deny-by-default
+  evidence_required: true
+- id: backfill-planner
+  description: Calculates bounded partitions, ordering, concurrency, checkpoints, controls, duration, and stop conditions.
+  execution: deterministic-isolated-worker
+  network: deny-by-default
+  evidence_required: true
+- id: cost-capacity-estimator
+  description: Estimates compute, storage, shuffle, file, streaming-state, and backfill resource demand.
+  execution: deterministic-isolated-worker
+  network: deny-by-default
+  evidence_required: true
+- id: pipeline-package-builder
+  description: Builds wheels, archives, containers, dependency locks, manifests, and reproducible release candidates.
+  execution: deterministic-isolated-worker
+  network: deny-by-default
+  evidence_required: true
+- id: sbom-provenance-generator
+  description: Creates dependency inventory, SBOM, source revision, build provenance, and artifact hashes.
+  execution: deterministic-isolated-worker
+  network: deny-by-default
+  evidence_required: true
+- id: data-documentation-generator
+  description: Produces source-to-target mappings, contracts, runbooks, lineage summaries, and operational guides
+    from evidence.
+  execution: deterministic-isolated-worker
+  network: deny-by-default
+  evidence_required: true
+- id: evidence-bundle-builder
+  description: Packages redacted inputs, plans, tests, metrics, approvals, hashes, and outputs into immutable evidence
+    bundles.
+  execution: deterministic-isolated-worker
+  network: deny-by-default
+  evidence_required: true

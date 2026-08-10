@@ -1,0 +1,43 @@
+name: pipeline-build-release
+version: 1.0.0
+trigger: Approved CI/CD or release automation change
+scope_binding:
+- project
+- work_item
+- repository
+- pipeline
+- artifact
+- environment
+steps:
+- id: discover
+  agent: repo-pipeline-discovery
+  action: resolve pipeline engine, runner, reusable components, credentials, artifacts, and deployment targets
+- id: implement
+  agent: cicd-engineer
+  action: create minimal pipeline patch with pinned dependencies and explicit gates
+- id: container
+  agent: container-build-engineer
+  action: validate image build, digest, SBOM, vulnerabilities, signature, and provenance when applicable
+- id: security
+  agent: security-supply-chain-agent
+  action: review untrusted code, runner isolation, secret exposure, third-party components, and publication rights
+- id: release
+  agent: release-deployment-engineer
+  action: define promotion, deployment strategy, smoke tests, stop conditions, and rollback
+- id: validate
+  agent: cicd-engineer
+  action: validate configuration and execute safe sandbox pipeline path
+- id: review
+  agent: change-reviewer
+  action: review pipeline diff, artifact flow, permissions, evidence, and failure behavior
+- id: approve
+  agent: policy-enforcer
+  action: request approval for publication or side-effect trigger
+outputs:
+- pipeline-design
+- container-build-report
+- deployment-plan
+- security-gate-report
+- quality-gate-report
+failure_behavior: stop on mutable tags without policy, unpinned external code, secret leakage, gate bypass, or non-reproducible
+  artifact

@@ -1,0 +1,180 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bm-agent-foundry.local/schemas/architecture-review.schema.json",
+  "title": "Architecture Review",
+  "type": "object",
+  "required": [
+    "reviewId",
+    "subject",
+    "reviewers",
+    "findings",
+    "risks",
+    "decision",
+    "evidenceRefs"
+  ],
+  "properties": {
+    "reviewId": {
+      "type": "string"
+    },
+    "subject": {
+      "type": "object",
+      "required": [
+        "type",
+        "reference",
+        "payloadHash"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "solution",
+            "decision",
+            "contract",
+            "migration",
+            "exception",
+            "implementation"
+          ]
+        },
+        "reference": {
+          "type": "string"
+        },
+        "payloadHash": {
+          "type": "string"
+        }
+      }
+    },
+    "reviewers": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "role",
+          "independent"
+        ],
+        "properties": {
+          "role": {
+            "type": "string"
+          },
+          "independent": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "severity",
+          "statement",
+          "disposition"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "severity": {
+            "enum": [
+              "info",
+              "low",
+              "medium",
+              "high",
+              "critical"
+            ]
+          },
+          "statement": {
+            "type": "string"
+          },
+          "evidenceRefs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "disposition": {
+            "enum": [
+              "open",
+              "accepted",
+              "resolved",
+              "rejected",
+              "deferred"
+            ]
+          },
+          "owner": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "likelihood",
+          "impact",
+          "owner"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "likelihood": {
+            "enum": [
+              "rare",
+              "unlikely",
+              "possible",
+              "likely",
+              "almost-certain"
+            ]
+          },
+          "impact": {
+            "enum": [
+              "low",
+              "medium",
+              "high",
+              "critical"
+            ]
+          },
+          "mitigation": {
+            "type": "string"
+          },
+          "owner": {
+            "type": "string"
+          },
+          "acceptanceReference": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "decision": {
+      "enum": [
+        "approve",
+        "approve-with-conditions",
+        "revise",
+        "reject",
+        "escalate"
+      ]
+    },
+    "conditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidenceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "approvalReference": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

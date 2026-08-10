@@ -1,0 +1,143 @@
+apiVersion: solution-architect-agent-pack/v1
+kind: ArtifactRegistry
+metadata:
+  name: solution-architecture-artifacts
+  version: 1.0.0
+spec:
+  defaultClassification: internal
+  artifacts:
+  - id: architecture-context
+    description: Normalized business, product, stakeholder, project, environment, constraint and evidence context
+    format: markdown-or-machine-readable
+    requiresEvidenceLinks: true
+    immutableAfterApproval: false
+  - id: current-state-inventory
+    description: Applications, repositories, integrations, data stores, infrastructure, ownership and lifecycle
+    format: markdown-or-machine-readable
+    requiresEvidenceLinks: true
+    immutableAfterApproval: false
+  - id: capability-map
+    description: Business capabilities mapped to products, applications, teams, data and technology
+    format: markdown-or-machine-readable
+    requiresEvidenceLinks: true
+    immutableAfterApproval: false
+  - id: quality-attribute-scenarios
+    description: Measurable non-functional scenarios and acceptance evidence
+    format: markdown-or-machine-readable
+    requiresEvidenceLinks: true
+    immutableAfterApproval: false
+  - id: architecture-options
+    description: Alternative designs, assumptions, benefits, tradeoffs, cost, risk and reversibility
+    format: markdown-or-machine-readable
+    requiresEvidenceLinks: true
+    immutableAfterApproval: false
+  - id: solution-architecture-document
+    description: Approved end-to-end architecture narrative and views
+    format: markdown-or-machine-readable
+    requiresEvidenceLinks: true
+    immutableAfterApproval: true
+  - id: c4-context-diagram
+    description: People, systems, responsibilities and external dependencies
+    format: markdown-or-machine-readable
+    requiresEvidenceLinks: true
+    immutableAfterApproval: false
+  - id: c4-container-diagram
+    description: Applications, services, data stores, queues and major interfaces
+    format: markdown-or-machine-readable
+    requiresEvidenceLinks: true
+    immutableAfterApproval: false
+  - id: component-diagram
+    description: High-value internal component responsibilities and relationships
+    format: markdown-or-machine-readable
+    requiresEvidenceLinks: true
+    immutableAfterApproval: false
+  - id: deployment-topology
+    description: Environment, region, zone, cluster, runtime, network and failure-domain view
+    format: markdown-or-machine-readable
+    requiresEvidenceLinks: true
+    immutableAfterApproval: false
+  - id: sequence-diagram
+    description: Critical interaction, failure, retry and recovery sequences
+    format: markdown-or-machine-readable
+    requiresEvidenceLinks: true
+    immutableAfterApproval: false
+  - id: data-flow-trust-boundary
+    description: Sensitive data flows, trust boundaries, controls and stores
+    format: markdown-or-machine-readable
+    requiresEvidenceLinks: true
+    immutableAfterApproval: false
+  - id: domain-context-map
+    description: Domains, bounded contexts, ownership and relationship patterns
+    format: markdown-or-machine-readable
+    requiresEvidenceLinks: true
+    immutableAfterApproval: false
+  - id: integration-contract-set
+    description: OpenAPI, AsyncAPI, schema, versioning, ownership and compatibility requirements
+    format: markdown-or-machine-readable
+    requiresEvidenceLinks: true
+    immutableAfterApproval: false
+  - id: data-architecture
+    description: Conceptual/logical models, ownership, storage, lifecycle, lineage and migration
+    format: markdown-or-machine-readable
+    requiresEvidenceLinks: true
+    immutableAfterApproval: false
+  - id: security-architecture
+    description: Threats, controls, identity, network, encryption, audit and residual risk
+    format: markdown-or-machine-readable
+    requiresEvidenceLinks: true
+    immutableAfterApproval: false
+  - id: reliability-resilience-model
+    description: SLOs, failure modes, redundancy, degradation, recovery, RTO and RPO
+    format: markdown-or-machine-readable
+    requiresEvidenceLinks: true
+    immutableAfterApproval: false
+  - id: performance-capacity-model
+    description: Workload, latency, throughput, capacity, bottleneck and scaling assumptions
+    format: markdown-or-machine-readable
+    requiresEvidenceLinks: true
+    immutableAfterApproval: false
+  - id: observability-operability-plan
+    description: Telemetry, dashboards, alerts, runbooks, support and operational readiness
+    format: markdown-or-machine-readable
+    requiresEvidenceLinks: true
+    immutableAfterApproval: false
+  - id: cost-sustainability-model
+    description: Cost scenarios, unit economics, allocation, growth sensitivity and sustainability
+    format: markdown-or-machine-readable
+    requiresEvidenceLinks: true
+    immutableAfterApproval: false
+  - id: migration-transition-roadmap
+    description: Transition architectures, sequencing, coexistence, cutover, rollback and decommissioning
+    format: markdown-or-machine-readable
+    requiresEvidenceLinks: true
+    immutableAfterApproval: false
+  - id: architecture-decision-record
+    description: Context, considered options, decision, consequences, status and review triggers
+    format: markdown-or-machine-readable
+    requiresEvidenceLinks: true
+    immutableAfterApproval: true
+  - id: architecture-risk-register
+    description: Risks, assumptions, triggers, mitigations, owners and residual exposure
+    format: markdown-or-machine-readable
+    requiresEvidenceLinks: true
+    immutableAfterApproval: false
+  - id: architecture-review-report
+    description: Independent review findings, sensitivity points, tradeoffs, actions and decision
+    format: markdown-or-machine-readable
+    requiresEvidenceLinks: true
+    immutableAfterApproval: true
+  - id: implementation-handoff
+    description: Role-specific constraints, interfaces, acceptance evidence and conformance criteria
+    format: markdown-or-machine-readable
+    requiresEvidenceLinks: true
+    immutableAfterApproval: false
+  - id: architecture-conformance-report
+    description: Implementation drift, exceptions, evidence and remediation actions
+    format: markdown-or-machine-readable
+    requiresEvidenceLinks: true
+    immutableAfterApproval: false
+  - id: audit-record
+    description: Immutable run, identity, policy, tool, evidence, decision and approval history
+    format: markdown-or-machine-readable
+    requiresEvidenceLinks: true
+    immutableAfterApproval: false

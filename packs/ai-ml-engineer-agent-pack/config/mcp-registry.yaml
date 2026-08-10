@@ -1,0 +1,110 @@
+pack: "ai-ml-engineer-agent-pack"
+servers:
+  - id: "atlassian-context"
+    name: Atlassian/Jira/Confluence MCP
+    description: "Read approved work items, decisions, requirements, and documentation; writes require approval."
+    default_mode: "read-only"
+    production_mutation: false
+    approval_required_for_external_write: true
+  - id: "bitbucket-repository"
+    name: Bitbucket Repository MCP
+    description: "Read repository trees, diffs, commits, pull requests, and branch metadata; write operations approval-gated."
+    default_mode: "read-only"
+    production_mutation: false
+    approval_required_for_external_write: true
+  - id: "workspace-git"
+    name: Scoped Workspace/Git MCP
+    description: "Operate on an isolated checkout for code, notebooks, configs, and tests."
+    default_mode: "scoped-write"
+    production_mutation: false
+    approval_required_for_external_write: true
+  - id: "data-catalog"
+    name: Data Catalog and Lineage MCP
+    description: "Read approved datasets, schemas, ownership, classification, lineage, and quality metadata."
+    default_mode: "read-only"
+    production_mutation: false
+    approval_required_for_external_write: true
+  - id: "warehouse-readonly"
+    name: "Warehouse / Database Read-Only MCP"
+    description: "Execute approved parameterized, row-bounded, read-only analytical queries."
+    default_mode: "read-only"
+    production_mutation: false
+    approval_required_for_external_write: true
+  - id: "object-storage"
+    name: Dataset and Artifact Storage MCP
+    description: "Read/write project-scoped non-production datasets and artifacts through governed paths."
+    default_mode: "scoped-write"
+    production_mutation: false
+    approval_required_for_external_write: true
+  - id: "experiment-tracking"
+    name: Experiment Tracking MCP
+    description: "Read runs and log approved non-production experiments, metrics, parameters, and artifacts."
+    default_mode: "scoped-write"
+    production_mutation: false
+    approval_required_for_external_write: true
+  - id: "model-registry"
+    name: Model Registry MCP
+    description: "Read model lineage and create candidate registrations; promotion is approval-gated."
+    default_mode: "read-only"
+    production_mutation: false
+    approval_required_for_external_write: true
+  - id: "feature-store"
+    name: Feature Store MCP
+    description: "Read feature definitions and non-production feature metadata; production writes blocked."
+    default_mode: "read-only"
+    production_mutation: false
+    approval_required_for_external_write: true
+  - id: "compute-platform"
+    name: ML Compute Platform MCP
+    description: "Submit approved sandbox/training jobs with bounded compute, images, data mounts, and budgets."
+    default_mode: "scoped-write"
+    production_mutation: false
+    approval_required_for_external_write: true
+  - id: "model-provider"
+    name: Approved Model Provider MCP
+    description: "Invoke approved hosted foundation models through organization policy, budgets, and data controls."
+    default_mode: "read-only"
+    production_mutation: false
+    approval_required_for_external_write: true
+  - id: "vector-search"
+    name: Vector / Retrieval Platform MCP
+    description: "Operate project-scoped development indexes and inspect retrieval behavior."
+    default_mode: "read-only"
+    production_mutation: false
+    approval_required_for_external_write: true
+  - id: "evaluation-platform"
+    name: AI Evaluation MCP
+    description: "Run deterministic and model-assisted evaluation suites with versioned datasets and rubrics."
+    default_mode: "scoped-write"
+    production_mutation: false
+    approval_required_for_external_write: true
+  - id: observability
+    name: AI/ML Observability MCP
+    description: "Read bounded metrics, logs, traces, model-monitoring signals, and cost telemetry."
+    default_mode: "read-only"
+    production_mutation: false
+    approval_required_for_external_write: true
+  - id: "security-scanners"
+    name: Security Scanner MCP
+    description: "Run approved SAST, SCA, secret, container, IaC, and AI-security scanners in safe scope."
+    default_mode: "read-only"
+    production_mutation: false
+    approval_required_for_external_write: true
+  - id: documentation
+    name: Documentation/Artifact MCP
+    description: "Store model cards, dataset cards, diagrams, reports, and evidence bundles."
+    default_mode: "read-only"
+    production_mutation: false
+    approval_required_for_external_write: true
+  - id: "vault-broker"
+    name: Vault / Capability Broker MCP
+    description: "Issues scoped references or short-lived capabilities; never returns raw long-lived secrets to the model."
+    default_mode: "read-only"
+    production_mutation: false
+    approval_required_for_external_write: true
+  - id: "policy-approval"
+    name: Policy and Approval MCP
+    description: "Evaluate OPA-style policy and obtain payload-bound human approvals for protected actions."
+    default_mode: "read-only"
+    production_mutation: false
+    approval_required_for_external_write: true

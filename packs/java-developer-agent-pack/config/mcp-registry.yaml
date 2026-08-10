@@ -1,0 +1,63 @@
+apiVersion: java-developer-agent-pack/v1
+kind: MCPRegistry
+servers:
+- id: atlassian-context
+  purpose: Jira, Confluence and Bitbucket resources plus approval-controlled writes
+  defaultMode: read-mostly
+  enabled: true
+- id: workspace-git
+  purpose: Ephemeral filesystem, semantic search, diff, patch, Git status and allowlisted commands
+  defaultMode: sandbox-write
+  enabled: true
+- id: java-docs
+  purpose: Version-matched Java SE, JDK tool and JVM resources
+  defaultMode: read-only
+  enabled: true
+- id: framework-docs
+  purpose: Version-matched Spring, Jakarta, Hibernate and vendor documentation
+  defaultMode: read-only
+  enabled: true
+- id: openapi-contracts
+  purpose: OpenAPI resources, validation, compatibility and workspace generation
+  defaultMode: read-generate
+  enabled: true
+- id: database-metadata
+  purpose: Schema, migration history, EXPLAIN and bounded SELECT
+  defaultMode: read-only
+  enabled: true
+- id: messaging-metadata
+  purpose: Kafka/JMS/RabbitMQ topics, schemas, consumer groups and dead-letter metadata
+  defaultMode: observe
+  enabled: true
+- id: package-registry
+  purpose: Approved Maven repositories, metadata, provenance and version resolution
+  defaultMode: read-only
+  enabled: true
+- id: ci-cd
+  purpose: Pipeline definitions, logs, test reports, artifacts and approved triggers
+  defaultMode: read-mostly
+  enabled: true
+- id: container-build
+  purpose: Isolated image build, SBOM, provenance and image scanning
+  defaultMode: sandbox
+  enabled: true
+- id: observability
+  purpose: Logs, metrics, traces, JFR artifacts, dashboards and incidents
+  defaultMode: read-only
+  enabled: true
+- id: artifact-evidence
+  purpose: Immutable artifact storage, hashes, retention and retrieval
+  defaultMode: append-read
+  enabled: true
+- id: collaboration
+  purpose: Teams and Jira update drafts and approved publication
+  defaultMode: approval-write
+  enabled: true
+- id: secret-broker
+  purpose: Capability lease requests without exposing raw secret values
+  defaultMode: broker-only
+  enabled: true
+- id: policy
+  purpose: OPA decisions, scope checks and approval verification
+  defaultMode: mandatory
+  enabled: true

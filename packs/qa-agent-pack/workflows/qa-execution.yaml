@@ -1,0 +1,16 @@
+apiVersion: qa-agent-pack/v1
+kind: Workflow
+metadata: { id: qa-execution, version: 1.0.0 }
+inputs: [approvedTestPlan, project, environment, build]
+steps:
+  - { id: readiness, agent: environment-readiness, skill: qa.env.verify-deployment }
+  - id: execution-approval
+    type: policy-and-human-gate
+    dependsOn: [readiness]
+  - { id: browser, agent: browser-qa, skill: qa.browser.execute-scripted-case, dependsOn: [execution-approval], parallelGroup: validation }
+  - { id: api, agent: api-qa, skill: qa.api.execute-contract-suite, dependsOn: [execution-approval], parallelGroup: validation }
+  - { id: database, agent: database-validation, skill: qa.db.execute-readonly-validation, dependsOn: [execution-approval], parallelGroup: validation }
+  - { id: evidence, agent: evidence-curator, skill: qa.evidence.build-manifest, dependsOn: [browser, api, database] }
+  - { id: analyze, agent: defect-investigator, skill: qa.defect.isolate-layer, dependsOn: [evidence] }
+  - { id: report, agent: qa-reporter, skill: qa.report.story-result, dependsOn: [analyze] }
+outputs: [test-execution-result, evidence-manifest, story-result]

@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Evaluation Gate Report",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "candidate_digest": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evaluation_set_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scorer_versions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "gates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pass",
+              "fail",
+              "warn",
+              "not_applicable"
+            ]
+          },
+          "evidence_ref": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "name",
+          "status"
+        ]
+      }
+    },
+    "recommendation": {
+      "type": "string",
+      "enum": [
+        "promote",
+        "conditional",
+        "block",
+        "more_evidence"
+      ]
+    }
+  },
+  "required": [
+    "candidate_digest",
+    "evaluation_set_version",
+    "gates",
+    "recommendation"
+  ]
+}

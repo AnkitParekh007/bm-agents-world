@@ -1,0 +1,93 @@
+version: 1.0.0
+mcp_server_count: 18
+servers:
+- id: atlassian-context-mcp
+  purpose: Jira, Confluence, Jira Service Management, versions, change records, work items, and approved comments.
+  implementation: vendor-or-approved-adapter
+  access: read-mostly; writes approval-controlled
+  status: planned-or-configured
+- id: bitbucket-source-mcp
+  purpose: Repositories, branches, commits, pull requests, tags, build status, and release diffs.
+  implementation: organization-owned-or-approved
+  access: read-only by default
+  status: planned-or-configured
+- id: ci-cd-pipeline-mcp
+  purpose: Pipeline runs, artifacts, quality gates, deployment stages, approvals, and logs.
+  implementation: organization-owned
+  access: read and approval-controlled triggers
+  status: planned-or-configured
+- id: artifact-registry-mcp
+  purpose: Container images, packages, checksums, digests, signatures, retention, and promotion state.
+  implementation: organization-owned
+  access: read-only; promotion approval-controlled
+  status: planned-or-configured
+- id: deployment-orchestrator-mcp
+  purpose: Approved deployment plans, stage status, environment gates, operator handoffs, and rollback requests.
+  implementation: organization-owned
+  access: no free-form production execution
+  status: planned-or-configured
+- id: environment-inventory-mcp
+  purpose: Projects, services, environments, regions, clusters, namespaces, owners, and version state.
+  implementation: organization-owned
+  access: read-only
+  status: planned-or-configured
+- id: kubernetes-platform-mcp
+  purpose: Read-only workload, rollout, event, capacity, and configuration status for approved clusters.
+  implementation: organization-owned
+  access: read-only for model; writes prohibited
+  status: planned-or-configured
+- id: cloud-platform-mcp
+  purpose: Read-only cloud inventory, deployment state, capacity, alarms, backups, and managed-service status.
+  implementation: organization-owned
+  access: read-only for model
+  status: planned-or-configured
+- id: observability-mcp
+  purpose: Bounded redacted logs, metrics, traces, dashboards, alerts, SLOs, and deployment markers.
+  implementation: organization-owned
+  access: read-only
+  status: planned-or-configured
+- id: feature-management-mcp
+  purpose: Feature flags, environments, prerequisites, segments, rollout state, and audit history.
+  implementation: approved-vendor-adapter
+  access: read-only; changes approval-controlled outside model
+  status: planned-or-configured
+- id: database-release-mcp
+  purpose: Migration manifests, checksums, previews, test evidence, operator plans, and read-only migration status.
+  implementation: organization-owned
+  access: production DDL/DML prohibited
+  status: planned-or-configured
+- id: security-evidence-mcp
+  purpose: Vulnerability, dependency, container, IaC, secret, policy, and exception evidence.
+  implementation: organization-owned
+  access: read-only
+  status: planned-or-configured
+- id: sbom-and-provenance-mcp
+  purpose: SBOMs, attestations, signatures, provenance, and software supply-chain evidence.
+  implementation: organization-owned
+  access: read-only
+  status: planned-or-configured
+- id: change-management-mcp
+  purpose: Change calendar, risk, approvals, CAB or peer-review decisions, implementation and closure records.
+  implementation: organization-owned-or-ITSM-adapter
+  access: writes approval-controlled
+  status: planned-or-configured
+- id: service-catalog-mcp
+  purpose: Service ownership, criticality, dependencies, support tiers, SLOs, and operational contacts.
+  implementation: organization-owned
+  access: read-only
+  status: planned-or-configured
+- id: microsoft-teams-mcp
+  purpose: Approved release announcements, command updates, stakeholder messages, and handoff posts.
+  implementation: organization-owned
+  access: all sends approval-controlled
+  status: planned-or-configured
+- id: artifact-store-mcp
+  purpose: Immutable release plans, evidence bundles, logs, reports, notes, and decision records.
+  implementation: organization-owned
+  access: write to isolated workspace; publication controlled
+  status: planned-or-configured
+- id: vault-policy-approval-mcp
+  purpose: Workload identity, capability leases, secret references, policy decisions, and approval validation.
+  implementation: organization-owned
+  access: raw secret values never exposed
+  status: planned-or-configured

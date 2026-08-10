@@ -1,0 +1,111 @@
+version: 1.0.0
+server_count: 18
+servers:
+- id: atlassian-rovo-mcp
+  description: Jira and Confluence context plus approval-controlled issue/page actions
+  transport: remote
+  owner: Atlassian
+  access: read plus approved write
+  status: enabled
+- id: bitbucket-context-mcp
+  description: Repository, pull request, branch, commit, and code-history context
+  transport: remote
+  owner: organization
+  access: read-only by default
+  status: enabled
+- id: product-discovery-mcp
+  description: Approved product strategy, insights, opportunities, and roadmap context
+  transport: remote
+  owner: organization
+  access: read plus approved write
+  status: enabled
+- id: figma-mcp
+  description: Design, FigJam, variables, components, prototypes, and Dev Mode context
+  transport: remote
+  owner: Figma
+  access: read-only by default
+  status: enabled
+- id: analytics-mcp
+  description: Curated privacy-thresholded product metrics and event definitions
+  transport: remote
+  owner: organization
+  access: read-only
+  status: enabled
+- id: feedback-research-mcp
+  description: Approved research findings, support themes, surveys, and feedback summaries
+  transport: remote
+  owner: organization
+  access: redacted read-only
+  status: enabled
+- id: support-mcp
+  description: Support cases, known issues, customer-impact summaries, and escalation status
+  transport: remote
+  owner: organization
+  access: redacted read-only
+  status: enabled
+- id: crm-insights-mcp
+  description: Approved account themes and commercial context without raw exports
+  transport: remote
+  owner: organization
+  access: aggregated read-only
+  status: enabled
+- id: openapi-contract-mcp
+  description: Approved API contracts, schemas, examples, owners, and version history
+  transport: remote
+  owner: organization
+  access: read-only
+  status: enabled
+- id: database-metadata-mcp
+  description: Approved schema metadata and bounded read-only product validation queries
+  transport: remote
+  owner: organization
+  access: metadata-first read-only
+  status: enabled
+- id: ci-cd-status-mcp
+  description: Build, test, deployment, and environment-readiness status
+  transport: remote
+  owner: organization
+  access: read-only
+  status: enabled
+- id: observability-mcp
+  description: Redacted service health, incidents, logs, metrics, traces, and SLO context
+  transport: remote
+  owner: organization
+  access: read-only
+  status: enabled
+- id: feature-management-mcp
+  description: Feature flag and experiment metadata
+  transport: remote
+  owner: organization
+  access: read-only; changes prohibited
+  status: enabled
+- id: release-calendar-mcp
+  description: Release windows, dependencies, change freezes, and approved release records
+  transport: remote
+  owner: organization
+  access: read-only
+  status: enabled
+- id: teams-mcp
+  description: Approved collaboration context and approval-controlled messages
+  transport: remote
+  owner: Microsoft
+  access: read plus approved post
+  status: enabled
+- id: artifact-store-mcp
+  description: Versioned product artifacts, evidence, hashes, and retention
+  transport: remote
+  owner: organization
+  access: scoped read/write
+  status: enabled
+- id: vault-capability-mcp
+  description: Short-lived capability leases and opaque secret references
+  transport: remote
+  owner: organization
+  access: no raw secret exposure
+  status: enabled
+- id: policy-approval-mcp
+  description: OPA decisions, approval requests, signatures, expiry, and audit records
+  transport: remote
+  owner: organization
+  access: policy authority
+  status: enabled

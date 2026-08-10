@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Security Remediation Plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "finding_ids",
+    "owner",
+    "strategy",
+    "actions",
+    "verification"
+  ],
+  "properties": {
+    "finding_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "owner": {
+      "type": "string"
+    },
+    "strategy": {
+      "type": "string"
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "action",
+          "status"
+        ],
+        "properties": {
+          "action": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "due_date": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "owner": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "backports": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "rollout": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "rollback": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "verification": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "residual_risk": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

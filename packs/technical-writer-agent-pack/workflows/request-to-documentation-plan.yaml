@@ -1,0 +1,42 @@
+name: request-to-documentation-plan
+version: 1.0.0
+trigger: approved documentation request, Jira item, product change, support gap, or release milestone
+scope_binding:
+- project
+- documentation_collection
+- audience
+- product_version
+- source_revision
+- publication_target
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: validate requester, project, collection, source, audience, data, and destination scope
+- id: context
+  agent: documentation-context-agent
+  action: retrieve approved product, repository, API, UX, support, release, and existing-content evidence
+- id: intake
+  agent: documentation-intake-agent
+  action: classify request, urgency, content type, owners, targets, and missing information
+- id: audience
+  agent: audience-and-task-analysis-agent
+  action: model readers, goals, prerequisites, contexts, pain points, and success criteria
+- id: strategy
+  agent: content-strategy-agent
+  action: define outcome, scope, channel, lifecycle, measures, and governance
+- id: architecture
+  agent: information-architecture-agent
+  action: define location, hierarchy, taxonomy, metadata, cross-links, and redirects
+- id: review
+  agent: documentation-reviewer-agent
+  action: independently review evidence, scope, audience fit, feasibility, and risk
+- id: publish
+  agent: technical-writer-supervisor
+  action: request owner approval before publishing the plan or creating official records
+outputs:
+- documentation-context-package
+- audience-and-task-model
+- content-strategy
+- documentation-plan
+- content-brief
+failure_behavior: do not proceed when sources, audience, ownership, or publication authority are unresolved

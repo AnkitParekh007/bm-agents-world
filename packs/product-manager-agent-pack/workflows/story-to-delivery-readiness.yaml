@@ -1,0 +1,48 @@
+name: story-to-delivery-readiness
+version: 1.0.0
+trigger: Approved product brief, feature, epic, or Jira story entering delivery
+scope_binding:
+- organization
+- project
+- product_area
+- jira_item
+- environment
+- requester
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: verify project, delivery scope, repositories, environments, and publication permissions
+- id: context
+  agent: work-context-agent
+  action: collect approved brief, design, technical context, prior decisions, dependencies, and constraints
+- id: requirements
+  agent: product-requirements-agent
+  action: produce testable functional, non-functional, data, role, error, analytics, accessibility, and operational requirements
+- id: map
+  agent: story-mapping-agent
+  action: create journey, slices, MVP boundary, spikes, enablers, and incremental delivery options
+- id: backlog
+  agent: backlog-governance-agent
+  action: check duplicates, links, readiness, acceptance criteria, owners, and stale assumptions
+- id: measurement
+  agent: product-analytics-agent
+  action: define instrumentation, baseline, success, quality, and guardrail metrics
+- id: risk
+  agent: risk-compliance-agent
+  action: route privacy, security, legal, accessibility, operational, and data reviews
+- id: delivery
+  agent: delivery-coordination-agent
+  action: confirm dependencies, decisions, environments, rollout, support, and release assumptions
+- id: review
+  agent: product-reviewer-agent
+  action: review scope clarity, testability, evidence, outcome linkage, and unresolved risks
+- id: publish-approval
+  agent: product-manager-supervisor
+  action: request approval before creating or updating Jira delivery items
+outputs:
+- product-requirements-document
+- user-story-map
+- analytics-measurement-plan
+- dependency-risk-map
+- backlog-health-report
+failure_behavior: stop, preserve evidence, identify the unresolved decision, and request human resolution

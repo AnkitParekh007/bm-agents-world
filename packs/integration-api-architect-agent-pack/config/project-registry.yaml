@@ -1,0 +1,56 @@
+apiVersion: integration-api-architect-agent-pack/v1
+kind: ProjectRegistry
+metadata:
+  name: integration-api-projects
+spec:
+  projects:
+  - id: pcc
+    name: PCC
+    technology:
+    - Angular 12
+    - Java
+    integrationProfile: legacy-enterprise
+    sourceControl: Bitbucket
+    workManagement: Jira
+    environments:
+    - playground
+    - qa
+    - production
+  - id: sop
+    name: SOP
+    technology:
+    - Angular 15
+    - Java
+    integrationProfile: enterprise-web-services
+    sourceControl: Bitbucket
+    workManagement: Jira
+    environments:
+    - playground
+    - qa
+    - production
+  - id: databridge
+    name: DataBridge
+    technology:
+    - AngularJS
+    - Java
+    integrationProfile: legacy-data-integration
+    sourceControl: Bitbucket
+    workManagement: Jira
+    environments:
+    - playground
+    - qa
+    - production
+  - id: bm-agent-foundry
+    name: BM Agent Foundry
+    technology:
+    - Agents
+    - MCP
+    - Supabase
+    - GKE
+    integrationProfile: agentic-platform
+    sourceControl: GitHub/Bitbucket as configured
+    workManagement: Jira
+    environments:
+    - development
+    - qa
+    - production

@@ -1,0 +1,52 @@
+# File Inventory
+
+The pack contains 48 files.
+
+- `README.md`
+- `SOURCES.md`
+- `checklists/mvp-readiness.md`
+- `checklists/project-onboarding.md`
+- `config/agent-registry.yaml`
+- `config/approval-policies.yaml`
+- `config/artifact-registry.yaml`
+- `config/environment-inventory.template.yaml`
+- `config/mcp-registry.yaml`
+- `config/pack-manifest.yaml`
+- `config/permission-matrix.csv`
+- `config/plugin-registry.yaml`
+- `config/project-registry.yaml`
+- `config/secret-references.template.yaml`
+- `config/skill-registry.yaml`
+- `docs/01-ai-ml-engineer-daily-task-catalog.md`
+- `docs/02-project-access-and-environment-model.md`
+- `docs/03-agent-and-subagent-architecture.md`
+- `docs/04-skills-catalog.md`
+- `docs/05-mcp-servers-tools-and-plugins.md`
+- `docs/06-artifacts-and-knowledge-assets.md`
+- `docs/07-orchestration-and-workflows.md`
+- `docs/08-key-vault-identity-and-secrets.md`
+- `docs/09-permissions-approvals-and-guardrails.md`
+- `docs/10-observability-audit-and-evaluation.md`
+- `docs/11-deployment-runtime-and-networking.md`
+- `docs/12-implementation-roadmap.md`
+- `docs/13-diagram-input-specification.md`
+- `docs/14-research-and-standards-notes.md`
+- `schemas/ai-ml-context.schema.json`
+- `schemas/evaluation-report.schema.json`
+- `schemas/experiment-plan.schema.json`
+- `schemas/model-card.schema.json`
+- `schemas/model-monitoring-review.schema.json`
+- `schemas/production-model-action-request.schema.json`
+- `schemas/rag-evaluation-report.schema.json`
+- `security/opa/ai-ml-engineer-agent-policy.rego`
+- `templates/ai-use-case-brief.md`
+- `templates/evaluation-report.md`
+- `templates/experiment-plan.md`
+- `templates/model-card.md`
+- `templates/production-model-action-request.md`
+- `workflows/fine-tuning-and-model-adaptation.yaml`
+- `workflows/llm-rag-system-implementation.yaml`
+- `workflows/model-experiment-and-evaluation.yaml`
+- `workflows/model-release-and-monitoring.yaml`
+- `workflows/story-to-ml-solution-design.yaml`
+- `FILE-INVENTORY.md`

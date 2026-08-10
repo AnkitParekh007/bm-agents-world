@@ -1,0 +1,15 @@
+resource,sandbox,playground,qa,production,approval,notes
+Jira/Confluence read,allow,allow,allow,allow,none,Project-scoped.
+Jira/Confluence write,approval,approval,approval,approval,payload-bound,Exact item and payload.
+Bitbucket read,allow,allow,allow,allow,none,Repository-scoped.
+Bitbucket write/PR,approval,approval,approval,approval,repository owner,No force push or merge.
+CI/CD read,allow,allow,allow,allow,none,Redacted evidence.
+CI/CD execute,approval,approval,approval,request only,pipeline owner,No gate bypass.
+Observability read,allow,allow,allow,redacted scoped,none,No unrestricted raw logs.
+Incident update,approval,approval,approval,approval,incident commander,Exact incident and message.
+Team aggregate metrics,allow,allow,allow,n/a,none,No individual ranking.
+One-on-one context,restricted,restricted,restricted,n/a,human manager,Purpose-bound and minimum necessary.
+Candidate evidence,restricted,restricted,restricted,n/a,recruiter/hiring manager,No autonomous decision.
+Performance/promotion/compensation,deny,deny,deny,deny,human only,Agent may not decide or recommend rating.
+Production mutation,deny,deny,deny,deny,human/operator only,Agent may prepare a change request.
+Raw secrets,deny,deny,deny,deny,never,Consumed only inside trusted adapters.

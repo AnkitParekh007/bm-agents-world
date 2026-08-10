@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Release Change Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "change_id",
+    "release_id",
+    "risk",
+    "implementation",
+    "validation",
+    "rollback",
+    "approvals"
+  ],
+  "properties": {
+    "change_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "release_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "risk": {
+      "type": "object"
+    },
+    "implementation": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "validation": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "rollback": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "communication": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "approvals": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "window": {
+      "type": "object"
+    },
+    "status": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

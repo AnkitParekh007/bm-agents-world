@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/ai-ml/ai-ml-context.schema.json",
+  "title": "AI ML Context",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "project_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "work_item": {
+      "type": "string",
+      "minLength": 1
+    },
+    "use_case_type": {
+      "type": "string",
+      "enum": [
+        "classical-ml",
+        "deep-learning",
+        "nlp",
+        "vision",
+        "audio",
+        "multimodal",
+        "llm-genai",
+        "rag",
+        "recommendation",
+        "forecasting",
+        "anomaly-detection",
+        "other"
+      ]
+    },
+    "risk_tier": {
+      "type": "string",
+      "enum": [
+        "low",
+        "moderate",
+        "high",
+        "restricted"
+      ]
+    },
+    "business_outcome": {
+      "type": "string",
+      "minLength": 1
+    },
+    "data_sources": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "owners": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "project_id",
+    "work_item",
+    "use_case_type",
+    "risk_tier",
+    "business_outcome"
+  ]
+}

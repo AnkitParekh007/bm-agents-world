@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "title": "API and Data Contract",
+  "required": [
+    "runId",
+    "contractType",
+    "compatibility",
+    "definitions"
+  ],
+  "properties": {
+    "runId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "contractType": {
+      "enum": [
+        "api",
+        "event",
+        "database",
+        "file",
+        "dataframe"
+      ]
+    },
+    "compatibility": {
+      "enum": [
+        "compatible",
+        "additive",
+        "breaking",
+        "unknown"
+      ]
+    },
+    "definitions": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "validationCommands": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "migrationRequired": {
+      "type": "boolean"
+    }
+  }
+}

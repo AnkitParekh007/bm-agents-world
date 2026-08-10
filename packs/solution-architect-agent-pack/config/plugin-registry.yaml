@@ -1,0 +1,117 @@
+apiVersion: solution-architect-agent-pack/v1
+kind: PluginRegistry
+metadata:
+  name: solution-architect-runtime-plugins
+  version: 1.0.0
+spec:
+  plugins:
+  - id: jira-work-item-adapter
+    description: Read Jira epics/stories and publish approved architecture updates
+    sandboxed: true
+    secretExposure: none
+    writesRequireApproval: true
+  - id: confluence-architecture-adapter
+    description: Read architecture knowledge and publish approved documents
+    sandboxed: true
+    secretExposure: none
+    writesRequireApproval: true
+  - id: bitbucket-context-adapter
+    description: Repository, code, ownership, PR, pipeline and change-history context
+    sandboxed: true
+    secretExposure: none
+    writesRequireApproval: true
+  - id: enterprise-architecture-adapter
+    description: Capability, application, technology, principle and decision repository access
+    sandboxed: true
+    secretExposure: none
+    writesRequireApproval: false
+  - id: code-graph-adapter
+    description: Cross-repository dependency and symbol graph generation
+    sandboxed: true
+    secretExposure: none
+    writesRequireApproval: false
+  - id: structurizr-c4-adapter
+    description: C4 model and diagram generation
+    sandboxed: true
+    secretExposure: none
+    writesRequireApproval: false
+  - id: mermaid-diagram-adapter
+    description: Mermaid flow, sequence, state, ER and architecture diagrams
+    sandboxed: true
+    secretExposure: none
+    writesRequireApproval: false
+  - id: archimate-export-adapter
+    description: ArchiMate-compatible model export without embedding licensed standard text
+    sandboxed: true
+    secretExposure: none
+    writesRequireApproval: false
+  - id: openapi-adapter
+    description: OpenAPI 3.2 validation, diff and documentation
+    sandboxed: true
+    secretExposure: none
+    writesRequireApproval: false
+  - id: asyncapi-adapter
+    description: AsyncAPI validation, schema evolution and documentation
+    sandboxed: true
+    secretExposure: none
+    writesRequireApproval: false
+  - id: schema-registry-adapter
+    description: Event and data-schema metadata and compatibility checks
+    sandboxed: true
+    secretExposure: none
+    writesRequireApproval: false
+  - id: database-catalog-adapter
+    description: Engine-aware metadata, lineage and bounded diagnostics
+    sandboxed: true
+    secretExposure: none
+    writesRequireApproval: false
+  - id: cloud-catalog-adapter
+    description: AWS, Azure, Google Cloud and private-platform service metadata
+    sandboxed: true
+    secretExposure: none
+    writesRequireApproval: false
+  - id: kubernetes-topology-adapter
+    description: Cluster and workload topology read model
+    sandboxed: true
+    secretExposure: none
+    writesRequireApproval: false
+  - id: observability-adapter
+    description: Read-only logs, metrics, traces, SLOs and incident evidence
+    sandboxed: true
+    secretExposure: none
+    writesRequireApproval: false
+  - id: threat-model-adapter
+    description: Trust-boundary, threat, mitigation and residual-risk modeling
+    sandboxed: true
+    secretExposure: none
+    writesRequireApproval: false
+  - id: identity-governance-adapter
+    description: Roles, service identities and policy metadata
+    sandboxed: true
+    secretExposure: none
+    writesRequireApproval: false
+  - id: cost-estimation-adapter
+    description: Architecture cost scenarios and usage-based estimates
+    sandboxed: true
+    secretExposure: none
+    writesRequireApproval: false
+  - id: technology-radar-adapter
+    description: Technology lifecycle and organizational approval metadata
+    sandboxed: true
+    secretExposure: none
+    writesRequireApproval: false
+  - id: artifact-store-adapter
+    description: Immutable content-addressed artifact storage
+    sandboxed: true
+    secretExposure: none
+    writesRequireApproval: false
+  - id: approval-gateway-adapter
+    description: Payload-bound expiring human approvals
+    sandboxed: true
+    secretExposure: none
+    writesRequireApproval: false
+  - id: teams-collaboration-adapter
+    description: Approved architecture summaries and review notifications
+    sandboxed: true
+    secretExposure: none
+    writesRequireApproval: true

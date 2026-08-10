@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Scrum Master Context",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "project",
+    "team",
+    "purpose",
+    "time_window",
+    "sources"
+  ],
+  "properties": {
+    "project": {
+      "type": "string",
+      "minLength": 1
+    },
+    "team": {
+      "type": "string",
+      "minLength": 1
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "time_window": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sprint": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "product_goal": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sprint_goal": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "data_classification": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}

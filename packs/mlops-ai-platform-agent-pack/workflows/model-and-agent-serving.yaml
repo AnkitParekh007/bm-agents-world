@@ -1,0 +1,32 @@
+id: model-and-agent-serving
+trigger: approved model, RAG system or agent requires serving
+steps:
+- resolve candidate and runtime
+- capacity analysis
+- serving manifest generation
+- network/identity/tool policy
+- non-production deploy
+- load and failure tests
+- observability validation
+- security/governance review
+- independent review
+- prepare production action bundle
+- approved deterministic production deploy
+- read-only verification
+agents:
+- model-serving-agent
+- llm-agent-platform-agent
+- rag-vector-platform-agent
+- gpu-platform-agent
+- workload-scheduling-agent
+- ai-observability-agent
+- ai-platform-security-agent
+- platform-reliability-agent
+- independent-platform-review-agent
+- policy-evidence-agent
+artifacts:
+- serving-readiness-report
+- inference-capacity-plan
+- gpu-capacity-plan
+- rollback-plan
+- model-promotion-request

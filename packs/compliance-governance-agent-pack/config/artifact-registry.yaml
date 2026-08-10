@@ -1,0 +1,141 @@
+artifacts:
+- id: governance-charter
+  name: Governance Charter
+  versioned: true
+  evidence_links_required: true
+  approval_state_required: true
+- id: framework-applicability-matrix
+  name: Framework Applicability Matrix
+  versioned: true
+  evidence_links_required: true
+  approval_state_required: true
+- id: control-library
+  name: Normalized Control Library
+  versioned: true
+  evidence_links_required: true
+  approval_state_required: true
+- id: control-mapping-matrix
+  name: Cross-Framework Control Mapping
+  versioned: true
+  evidence_links_required: true
+  approval_state_required: true
+- id: policy-register
+  name: Policy Register
+  versioned: true
+  evidence_links_required: true
+  approval_state_required: true
+- id: policy-document
+  name: Policy Document
+  versioned: true
+  evidence_links_required: true
+  approval_state_required: true
+- id: risk-register
+  name: Risk Register
+  versioned: true
+  evidence_links_required: true
+  approval_state_required: true
+- id: risk-treatment-plan
+  name: Risk Treatment Plan
+  versioned: true
+  evidence_links_required: true
+  approval_state_required: true
+- id: audit-plan
+  name: Audit Plan
+  versioned: true
+  evidence_links_required: true
+  approval_state_required: true
+- id: evidence-request-list
+  name: Evidence Request List
+  versioned: true
+  evidence_links_required: true
+  approval_state_required: true
+- id: evidence-manifest
+  name: Evidence Manifest
+  versioned: true
+  evidence_links_required: true
+  approval_state_required: true
+- id: audit-readiness-report
+  name: Audit Readiness Report
+  versioned: true
+  evidence_links_required: true
+  approval_state_required: true
+- id: audit-finding
+  name: Audit / Control Finding
+  versioned: true
+  evidence_links_required: true
+  approval_state_required: true
+- id: remediation-plan
+  name: Remediation Plan
+  versioned: true
+  evidence_links_required: true
+  approval_state_required: true
+- id: exception-request
+  name: Compliance Exception Request
+  versioned: true
+  evidence_links_required: true
+  approval_state_required: true
+- id: access-review-report
+  name: Access Review Report
+  versioned: true
+  evidence_links_required: true
+  approval_state_required: true
+- id: privacy-impact-assessment
+  name: Privacy Impact / DPIA Package
+  versioned: true
+  evidence_links_required: true
+  approval_state_required: true
+- id: data-processing-inventory
+  name: Data Processing Inventory
+  versioned: true
+  evidence_links_required: true
+  approval_state_required: true
+- id: ai-governance-assessment
+  name: AI Governance Assessment
+  versioned: true
+  evidence_links_required: true
+  approval_state_required: true
+- id: vendor-risk-assessment
+  name: Vendor Risk Assessment
+  versioned: true
+  evidence_links_required: true
+  approval_state_required: true
+- id: customer-assurance-response
+  name: Customer Assurance Response
+  versioned: true
+  evidence_links_required: true
+  approval_state_required: true
+- id: business-continuity-assessment
+  name: BCP / DR Governance Assessment
+  versioned: true
+  evidence_links_required: true
+  approval_state_required: true
+- id: change-compliance-assessment
+  name: Change Compliance Assessment
+  versioned: true
+  evidence_links_required: true
+  approval_state_required: true
+- id: training-compliance-report
+  name: Training Compliance Report
+  versioned: true
+  evidence_links_required: true
+  approval_state_required: true
+- id: compliance-dashboard
+  name: Compliance Metrics Dashboard
+  versioned: true
+  evidence_links_required: true
+  approval_state_required: true
+- id: management-review-pack
+  name: Management Review Pack
+  versioned: true
+  evidence_links_required: true
+  approval_state_required: true
+- id: regulatory-change-brief
+  name: Regulatory Change Brief
+  versioned: true
+  evidence_links_required: true
+  approval_state_required: true
+- id: compliance-decision-log
+  name: Compliance Decision Log
+  versioned: true
+  evidence_links_required: true
+  approval_state_required: true

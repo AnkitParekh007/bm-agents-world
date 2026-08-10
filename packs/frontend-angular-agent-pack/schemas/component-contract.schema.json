@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Angular Component Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "frameworkProfile",
+    "purpose",
+    "states"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "frameworkProfile": {
+      "type": "string",
+      "minLength": 1
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "selector": {
+      "type": "string"
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "type"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "type": {
+            "type": "string",
+            "minLength": 1
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "payloadType"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "payloadType": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "states": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "semantics": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "keyboardBehavior": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "designTokens": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "testScenarios": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

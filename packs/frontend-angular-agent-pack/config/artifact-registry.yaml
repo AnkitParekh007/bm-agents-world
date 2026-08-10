@@ -1,0 +1,33 @@
+apiVersion: frontend-angular-agent-pack/v1
+kind: ArtifactRegistry
+artifacts:
+- id: story-context-brief
+  schema: ../schemas/story-context.schema.json
+  immutableAfterFinalize: true
+- id: codebase-map
+  schema: null
+  immutableAfterFinalize: true
+- id: change-impact-report
+  schema: null
+  immutableAfterFinalize: true
+- id: implementation-plan
+  schema: ../schemas/implementation-plan.schema.json
+  immutableAfterFinalize: true
+- id: component-contract
+  schema: ../schemas/component-contract.schema.json
+  immutableAfterFinalize: true
+- id: code-change-manifest
+  schema: ../schemas/code-change-manifest.schema.json
+  immutableAfterFinalize: true
+- id: quality-gate-report
+  schema: ../schemas/quality-gate-report.schema.json
+  immutableAfterFinalize: true
+- id: pull-request-draft
+  schema: ../schemas/pull-request-draft.schema.json
+  immutableAfterFinalize: true
+- id: approval-request
+  schema: ../schemas/approval-request.schema.json
+  immutableAfterFinalize: true
+- id: agent-run-audit
+  schema: null
+  immutableAfterFinalize: true

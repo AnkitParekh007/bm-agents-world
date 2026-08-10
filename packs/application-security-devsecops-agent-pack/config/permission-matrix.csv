@@ -1,0 +1,10 @@
+role,resource,action,environment,mode,approval
+application-security-devsecops-supervisor,approved-context,read,all,bounded-read,none
+security-scanner-mcp,approved-source,scan,sandbox-or-nonproduction,isolated,none-after-scope-authorization
+dast-and-penetration-agent,approved-target,active-test,playground-or-qa,rate-limited-isolated,security-and-target-owner
+security-context-agent,production-metadata,read,production,redacted-bounded,none-after-scope-authorization
+security-assurance-reviewer-agent,security-evidence,read,all,independent-review,none
+application-security-devsecops-supervisor,jira-confluence-pr,write,all,protected-write,payload-bound-human
+security-exception-agent,official-exception,publish,all,protected-write,security-and-accountable-owner
+application-security-devsecops-supervisor,production-systems,mutate,production,prohibited,not-allowed
+all-agents,raw-secrets-signing-keys,read,all,prohibited,not-allowed

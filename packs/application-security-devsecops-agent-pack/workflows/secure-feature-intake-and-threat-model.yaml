@@ -1,0 +1,52 @@
+name: secure-feature-intake-and-threat-model
+version: 1.0.0
+trigger: new epic, architecture change, sensitive feature, integration, or risk review
+scope_binding:
+- project
+- work_item
+- repositories
+- assets
+- environments
+- data_classification
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: validate project, asset, data, audience, and requested analysis scope
+- id: context
+  agent: security-context-agent
+  action: assemble product, architecture, source, identity, data, environment, and policy context
+- id: requirements
+  agent: security-requirements-agent
+  action: derive versioned security requirements and acceptance evidence
+- id: threat-model
+  agent: threat-modeling-agent
+  action: model assets, trust boundaries, threats, abuse cases, mitigations, and residual risk
+- id: architecture
+  agent: secure-architecture-agent
+  action: review security design and required control decisions
+  parallel_group: design-review
+- id: api
+  agent: api-security-agent
+  action: review API and integration security requirements
+  parallel_group: design-review
+- id: client
+  agent: client-application-security-agent
+  action: review client, browser, and mobile security requirements
+  parallel_group: design-review
+- id: test-plan
+  agent: dast-and-penetration-agent
+  action: create a risk-based security validation plan without executing active tests
+- id: review
+  agent: security-assurance-reviewer-agent
+  action: independently review coverage, unsupported assumptions, and evidence gaps
+- id: decision
+  agent: application-security-devsecops-supervisor
+  action: request accountable approval for official requirements and architecture publication
+outputs:
+- security-context-packet
+- security-requirements-catalog
+- threat-model
+- secure-architecture-review
+- security-test-plan
+- security-assurance-report
+failure_behavior: preserve draft evidence, label unknowns, and do not publish incomplete or unauthorized requirements

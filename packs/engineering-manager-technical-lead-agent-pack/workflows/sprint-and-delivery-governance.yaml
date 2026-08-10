@@ -1,0 +1,75 @@
+apiVersion: engineering-manager-technical-lead-agent-pack/v1
+kind: AgentWorkflow
+metadata:
+  name: sprint-and-delivery-governance
+  title: Sprint and Delivery Governance
+  version: 1.0.0
+spec:
+  trigger:
+  - sprint_start
+  - daily_review
+  - delivery_risk_change
+  objective: Maintain flow, quality, dependencies, and transparent forecasts without individual activity scoring.
+  supervisor: engineering-leadership-supervisor
+  execution:
+    mode: stateful
+    defaultPolicy: deny
+    evidenceRequired: true
+    approvalBinding: payload-hash
+    resumeFromCheckpoint: true
+  stages:
+  - id: goal-and-readiness
+    agent: work-product-context
+    skills:
+    - engineering-leadership.sprint-goal-check
+    - engineering-leadership.definition-of-ready-check
+    - engineering-leadership.work-readiness-check
+    gate: authorization
+  - id: flow-analysis
+    agent: execution-flow
+    skills:
+    - engineering-leadership.wip-analysis
+    - engineering-leadership.work-item-aging
+    - engineering-leadership.blocked-work-analysis
+    - engineering-leadership.scope-change-detection
+  - id: quality-analysis
+    agent: quality-engineering-lead
+    skills:
+    - engineering-leadership.test-strategy-review
+    - engineering-leadership.defect-trend-analysis
+    - engineering-leadership.flaky-test-analysis
+  - id: technical-analysis
+    agent: code-quality-lead
+    skills:
+    - engineering-leadership.pull-request-readiness
+    - engineering-leadership.review-queue-analysis
+    - engineering-leadership.change-decomposition
+  - id: dependency-resolution
+    agent: dependency-coordination
+    skills:
+    - engineering-leadership.dependency-aging
+    - engineering-leadership.critical-path-analysis
+    - engineering-leadership.escalation-brief
+  - id: forecast
+    agent: delivery-planning
+    skills:
+    - engineering-leadership.confidence-forecast
+    - engineering-leadership.replanning-trigger-design
+    - engineering-leadership.forecast-communication
+  - id: publish
+    agent: stakeholder-communication
+    skills:
+    - engineering-leadership.sprint-status-update
+    - engineering-leadership.risk-communication
+    - engineering-leadership.stakeholder-action-log
+    gate: payload-bound-approval
+  outputs:
+  - sprint-health-report
+  - dependency-map
+  - quality-engineering-report
+  - stakeholder-engineering-update
+  terminalStates:
+  - completed
+  - rejected
+  - blocked
+  - cancelled

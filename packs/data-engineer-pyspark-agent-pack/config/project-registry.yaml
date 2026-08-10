@@ -1,0 +1,64 @@
+version: 1.0.0
+projects:
+- id: pcc
+  name: PCC
+  technology:
+  - Angular 12
+  - Java
+  - relational database
+  - batch integrations
+  source_control: Bitbucket
+  environments:
+  - playground
+  - qa
+  - production
+  data_engineering_profile: legacy-compatible batch integration, conservative schema and backfill controls
+- id: sop
+  name: SOP
+  technology:
+  - Angular 15
+  - Java
+  - relational database
+  - reporting pipelines
+  source_control: Bitbucket
+  environments:
+  - playground
+  - qa
+  - production
+  data_engineering_profile: service-oriented ingestion, curated datasets, quality and release governance
+- id: databridge
+  name: DataBridge
+  technology:
+  - AngularJS
+  - Java
+  - PySpark
+  - data integration
+  - relational and file sources
+  source_control: Bitbucket
+  environments:
+  - playground
+  - qa
+  - production
+  data_engineering_profile: primary PySpark, ETL, CDC, reconciliation, batch reliability, and legacy source compatibility
+- id: bm-agent-foundry
+  name: BM Agent Foundry
+  technology:
+  - AI agents
+  - MCP
+  - Python
+  - event and audit data
+  - cloud
+  source_control: GitHub or Bitbucket as configured
+  environments:
+  - local
+  - playground
+  - qa
+  - production
+  data_engineering_profile: agent telemetry, audit, evaluation, cost, policy, and privacy-aware pipelines
+default_denials:
+- cross-project data
+- cross-tenant data
+- unscoped production
+- raw credentials
+- unbounded source or telemetry queries
+- unapproved data mutation

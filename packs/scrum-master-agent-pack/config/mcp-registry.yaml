@@ -1,0 +1,111 @@
+version: 1.0.0
+server_count: 18
+servers:
+- id: atlassian-rovo-mcp
+  description: Jira and Confluence context plus approval-controlled issue, page, and comment actions
+  transport: remote
+  owner: Atlassian
+  access: read plus approved write
+  status: enabled
+- id: bitbucket-context-mcp
+  description: Repository, pull request, branch, commit, review, and pipeline context
+  transport: remote
+  owner: organization
+  access: read-only by default
+  status: enabled
+- id: product-backlog-mcp
+  description: Approved Product Goal, backlog order, refinement status, release context, and product decisions
+  transport: remote
+  owner: organization
+  access: read-only by default
+  status: enabled
+- id: team-calendar-mcp
+  description: Sprint cadence, events, availability, holidays, and approved meeting scheduling
+  transport: remote
+  owner: organization
+  access: read plus approved write
+  status: enabled
+- id: teams-collaboration-mcp
+  description: Microsoft Teams channels, meeting references, and approval-controlled posts
+  transport: remote
+  owner: Microsoft
+  access: read plus approved post
+  status: enabled
+- id: delivery-analytics-mcp
+  description: Curated team-level flow, quality, release, and predictability metrics
+  transport: remote
+  owner: organization
+  access: aggregated read-only
+  status: enabled
+- id: ci-cd-status-mcp
+  description: Build, test, security, deployment, environment, and release status
+  transport: remote
+  owner: organization
+  access: read-only
+  status: enabled
+- id: quality-evidence-mcp
+  description: Test results, defect trends, escaped defects, automation health, and quality risks
+  transport: remote
+  owner: organization
+  access: read-only
+  status: enabled
+- id: observability-mcp
+  description: Redacted service health, incidents, SLOs, alerts, logs, metrics, and traces
+  transport: remote
+  owner: organization
+  access: read-only
+  status: enabled
+- id: incident-management-mcp
+  description: Incident records, timelines, actions, post-incident reviews, and ownership
+  transport: remote
+  owner: organization
+  access: read plus approved write
+  status: enabled
+- id: dependency-graph-mcp
+  description: Cross-team, system, release, vendor, and environment dependency graph
+  transport: remote
+  owner: organization
+  access: read-only
+  status: enabled
+- id: research-feedback-mcp
+  description: Approved team feedback, pulse surveys, retrospective themes, and qualitative evidence
+  transport: remote
+  owner: organization
+  access: redacted aggregated read-only
+  status: enabled
+- id: architecture-decision-mcp
+  description: Approved architecture decisions, constraints, system boundaries, and technical risks
+  transport: remote
+  owner: organization
+  access: read-only
+  status: enabled
+- id: release-calendar-mcp
+  description: Release windows, change freezes, milestones, dependencies, and rollout records
+  transport: remote
+  owner: organization
+  access: read-only
+  status: enabled
+- id: organization-policy-mcp
+  description: Engineering standards, governance, operating model, escalation paths, and policies
+  transport: remote
+  owner: organization
+  access: read-only
+  status: enabled
+- id: artifact-store-mcp
+  description: Versioned facilitation packs, reports, experiments, evidence, hashes, and retention
+  transport: remote
+  owner: organization
+  access: scoped read/write
+  status: enabled
+- id: vault-capability-mcp
+  description: Short-lived capability leases and opaque secret references
+  transport: remote
+  owner: organization
+  access: no raw secret exposure
+  status: enabled
+- id: policy-approval-mcp
+  description: OPA decisions, approval requests, signatures, expiry, and immutable audit records
+  transport: remote
+  owner: organization
+  access: policy authority
+  status: enabled

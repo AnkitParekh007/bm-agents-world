@@ -1,0 +1,24 @@
+project_id: CHANGE_ME
+environments:
+- name: development
+  risk: low
+  cluster_ref: vaultref://...
+  namespace: CHANGE_ME
+  allowed_actions:
+  - read
+  - sandbox-execute
+  - approved-nonprod-write
+- name: qa
+  risk: medium
+  cluster_ref: vaultref://...
+  namespace: CHANGE_ME
+  allowed_actions:
+  - read
+  - approved-write
+- name: production
+  risk: critical
+  cluster_ref: vaultref://...
+  namespace: CHANGE_ME
+  allowed_actions:
+  - bounded-read
+  - approval-request-only

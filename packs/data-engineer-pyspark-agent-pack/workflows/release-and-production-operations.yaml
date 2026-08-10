@@ -1,0 +1,49 @@
+name: release-and-production-operations
+version: 1.0.0
+trigger: Approved data pipeline release candidate
+scope_binding:
+- project
+- candidate
+- pipelines
+- datasets
+- environment
+- release_window
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: verify candidate, targets, approvals, separation of duties, and release window
+- id: candidate
+  agent: pipeline-release-agent
+  action: verify immutable artifacts, hashes, dependencies, configuration, and provenance
+- id: contracts
+  agent: data-contract-agent
+  action: verify approved contract and schema compatibility
+- id: quality
+  agent: data-quality-agent
+  action: verify candidate-bound test, quality, and reconciliation evidence
+- id: performance
+  agent: spark-performance-agent
+  action: verify performance, capacity, and cost evidence
+- id: operations
+  agent: pipeline-reliability-agent
+  action: verify schedule, monitoring, runbook, recovery, rollback, and support readiness
+- id: review
+  agent: data-engineering-independent-reviewer-agent
+  action: prepare independent go, conditional-go, or no-go recommendation
+- id: request
+  agent: data-engineer-pyspark-supervisor
+  action: prepare production action bundle for human decision and deterministic execution
+- id: verify
+  agent: data-observability-agent
+  action: read-only verification of deployment, first runs, freshness, quality, and consumers
+- id: close
+  agent: evidence-management-agent
+  action: archive immutable release, approval, run, and validation evidence
+outputs:
+- deployment-plan
+- rollback-and-recovery-plan
+- release-evidence-bundle
+- production-action-request
+- pipeline-runbook
+failure_behavior: block execution or trigger approved rollback path when identity, evidence, quality, compatibility,
+  capacity, or recovery gates fail

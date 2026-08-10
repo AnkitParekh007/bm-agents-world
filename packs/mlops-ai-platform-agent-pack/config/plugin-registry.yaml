@@ -1,0 +1,68 @@
+version: '1.0'
+plugins:
+- id: git-read-plugin
+  purpose: Resolve commits, diffs and tags without write access.
+  production_mutation: false
+- id: workspace-sandbox-plugin
+  purpose: Create isolated workspaces for manifests and platform code.
+  production_mutation: false
+- id: kubectl-read-plugin
+  purpose: Run allowlisted read-only kubectl queries.
+  production_mutation: false
+- id: helm-render-plugin
+  purpose: Render and lint Helm charts without applying them.
+  production_mutation: false
+- id: kustomize-build-plugin
+  purpose: Build Kustomize overlays without cluster mutation.
+  production_mutation: false
+- id: terraform-plan-plugin
+  purpose: Validate and plan infrastructure without apply.
+  production_mutation: false
+- id: container-build-plugin
+  purpose: Build immutable candidate images in sandboxed builders.
+  production_mutation: false
+- id: sbom-plugin
+  purpose: Generate software bills of materials.
+  production_mutation: false
+- id: vulnerability-scan-plugin
+  purpose: Run approved image/dependency vulnerability scans.
+  production_mutation: false
+- id: cosign-verify-plugin
+  purpose: Verify signatures and attestations.
+  production_mutation: false
+- id: mlflow-cli-plugin
+  purpose: Run scoped MLflow validation and metadata operations.
+  production_mutation: false
+- id: kfp-compile-plugin
+  purpose: Compile and validate Kubeflow pipeline definitions.
+  production_mutation: false
+- id: kserve-validate-plugin
+  purpose: Validate KServe manifests and runtime compatibility.
+  production_mutation: false
+- id: evaluation-runner-plugin
+  purpose: Run deterministic model/agent evaluation suites.
+  production_mutation: false
+- id: load-test-plugin
+  purpose: Run approved bounded non-production serving load tests.
+  production_mutation: false
+- id: otel-analysis-plugin
+  purpose: Analyze OpenTelemetry traces and semantic attributes.
+  production_mutation: false
+- id: prometheus-query-plugin
+  purpose: Execute allowlisted bounded metric queries.
+  production_mutation: false
+- id: gpu-telemetry-plugin
+  purpose: Analyze accelerator utilization and health telemetry.
+  production_mutation: false
+- id: manifest-schema-plugin
+  purpose: Validate YAML/JSON/Kubernetes schemas.
+  production_mutation: false
+- id: network-policy-check-plugin
+  purpose: Validate intended egress and network policy rules.
+  production_mutation: false
+- id: policy-evaluator-plugin
+  purpose: Evaluate OPA/Rego policies against candidate actions.
+  production_mutation: false
+- id: hash-provenance-plugin
+  purpose: Calculate digests and produce provenance manifests.
+  production_mutation: false

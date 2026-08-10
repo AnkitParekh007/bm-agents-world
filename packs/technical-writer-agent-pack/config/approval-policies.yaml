@@ -1,0 +1,92 @@
+version: 1.0.0
+policies:
+- action: create-documentation-branch-or-pull-request
+  risk: medium
+  approval: content-owner-or-repository-owner
+  binding:
+  - project
+  - repository
+  - branch
+  - payload_hash
+  - expiry
+- action: publish-confluence-or-cms-content
+  risk: high
+  approval: content-owner-and-target-owner
+  binding:
+  - project
+  - collection
+  - audience
+  - product_version
+  - payload_hash
+  - expiry
+- action: publish-public-documentation
+  risk: high
+  approval: product-or-service-owner-and-documentation-owner
+  binding:
+  - project
+  - target
+  - audience
+  - product_version
+  - source_revision
+  - payload_hash
+  - expiry
+- action: publish-release-notes-or-known-issues
+  risk: high
+  approval: release-owner-product-owner-and-support-owner-as-required
+  binding:
+  - release
+  - candidate_hash
+  - audience
+  - payload_hash
+  - expiry
+- action: publish-operational-runbook
+  risk: high
+  approval: service-owner-and-operations-owner
+  binding:
+  - service
+  - environment
+  - runbook_hash
+  - payload_hash
+  - expiry
+- action: update-shared-terminology-or-navigation
+  risk: medium
+  approval: documentation-governance-owner
+  binding:
+  - collection
+  - change
+  - payload_hash
+  - expiry
+- action: send-localization-handoff
+  risk: medium
+  approval: content-owner-and-localization-owner
+  binding:
+  - source_version
+  - locales
+  - payload_hash
+  - expiry
+- action: post-jira-confluence-teams-status
+  risk: medium
+  approval: request-or-content-owner
+  binding:
+  - project
+  - destination
+  - payload_hash
+  - expiry
+- action: publish-sensitive-security-or-incident-content
+  risk: critical
+  approval: security-owner-and-service-owner
+  binding:
+  - classification
+  - audience
+  - redaction_report
+  - payload_hash
+  - expiry
+- action: execute-production-mutation
+  risk: critical
+  approval: prohibited-for-free-form-agent
+- action: approve-own-publication
+  risk: critical
+  approval: prohibited-for-agent
+- action: access-raw-secrets-or-unredacted-customer-data
+  risk: critical
+  approval: prohibited-for-model-context

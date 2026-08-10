@@ -1,0 +1,104 @@
+apiVersion: frontend-angular-agent-pack/v1
+kind: Workflow
+metadata:
+  name: angular-feature-implementation
+  version: 1.0.0
+spec:
+  trigger: approved-implementation-plan
+  initialState: plan-approved
+  steps:
+  - id: create-workspace
+    agent: repository-context
+    outputs:
+    - workspace-ref
+    - base-commit
+  - id: design-context
+    agent: design-system
+    uses:
+    - frontend.design.tokens
+    - frontend.design.component-reuse
+    outputs:
+    - component-contract
+    dependsOn:
+    - create-workspace
+  - id: implement-ui
+    agent: ui-implementation
+    uses:
+    - frontend.component.create
+    - frontend.template.implement
+    - frontend.styles.implement
+    - frontend.responsive.implement
+    outputs:
+    - ui-patch
+    dependsOn:
+    - design-context
+  - id: implement-state
+    agent: state-rxjs
+    uses:
+    - frontend.state.rxjs
+    - frontend.state.project-store
+    - frontend.state.cache-and-cancel
+    outputs:
+    - state-patch
+    dependsOn:
+    - create-workspace
+  - id: implement-api
+    agent: api-integration
+    uses:
+    - frontend.api.read-openapi
+    - frontend.api.http-service
+    - frontend.api.error-mapping
+    outputs:
+    - api-patch
+    dependsOn:
+    - create-workspace
+  - id: integrate-patch
+    agent: ui-implementation
+    outputs:
+    - code-change-manifest-draft
+    dependsOn:
+    - implement-ui
+    - implement-state
+    - implement-api
+  - id: deterministic-gates
+    agent: build-pipeline
+    uses:
+    - frontend.quality.format
+    - frontend.quality.lint
+    - frontend.quality.typecheck
+    - frontend.quality.build
+    outputs:
+    - build-gates
+    dependsOn:
+    - integrate-patch
+  - id: tests
+    agent: test-engineer
+    uses:
+    - frontend.test.unit-generate
+    - frontend.test.component-generate
+    - frontend.test.browser-playwright
+    outputs:
+    - test-gates
+    dependsOn:
+    - integrate-patch
+  - id: specialist-review
+    parallel: true
+    agents:
+    - accessibility
+    - performance
+    - security
+    - code-review
+    outputs:
+    - specialist-reports
+    dependsOn:
+    - deterministic-gates
+    - tests
+  - id: aggregate
+    agent: build-pipeline
+    uses:
+    - frontend.quality.aggregate-gates
+    outputs:
+    - quality-gate-report
+    - code-change-manifest
+    dependsOn:
+    - specialist-review

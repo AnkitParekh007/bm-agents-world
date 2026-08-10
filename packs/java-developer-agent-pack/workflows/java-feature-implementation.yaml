@@ -1,0 +1,123 @@
+apiVersion: java-developer-agent-pack/v1
+kind: Workflow
+metadata:
+  name: java-feature-implementation
+  version: 1.0.0
+spec:
+  trigger: approved-implementation-plan
+  initialState: requested
+  steps:
+  - id: create-workspace
+    agent: repository-context
+    outputs:
+    - workspace-ref
+    - base-commit
+  - id: implement-domain
+    agent: domain-implementation
+    uses:
+    - java.domain-modeling
+    - java.service-layer
+    - java.exceptions
+    outputs:
+    - domain-patch
+    dependsOn:
+    - create-workspace
+  - id: implement-api
+    agent: api-service
+    uses:
+    - java.endpoint-design
+    - java.request-validation
+    - java.error-contracts
+    - java.openapi-contract
+    outputs:
+    - api-patch
+    dependsOn:
+    - create-workspace
+    when: plan includes API changes
+  - id: implement-data
+    agent: persistence-data
+    uses:
+    - java.jpa-mapping
+    - java.transaction-design
+    - java.migration-draft
+    outputs:
+    - data-patch
+    - migration-plan
+    dependsOn:
+    - create-workspace
+    when: plan includes persistence changes
+  - id: implement-messaging
+    agent: messaging-integration
+    uses:
+    - java.event-contract
+    - java.retry-dead-letter
+    - java.idempotency
+    outputs:
+    - messaging-patch
+    dependsOn:
+    - create-workspace
+    when: plan includes messaging changes
+  - id: implement-batch
+    agent: batch-scheduler
+    uses:
+    - java.spring-batch
+    - java.scheduler
+    - java.reconciliation
+    outputs:
+    - batch-patch
+    dependsOn:
+    - create-workspace
+    when: plan includes batch or scheduled changes
+  - id: integrate
+    agent: domain-implementation
+    outputs:
+    - code-change-manifest-draft
+    dependsOn:
+    - implement-domain
+    - implement-api
+    - implement-data
+    - implement-messaging
+    - implement-batch
+  - id: deterministic-gates
+    agent: build-pipeline
+    uses:
+    - java.maven
+    - java.gradle
+    - java.junit-unit
+    - java.sast
+    - java.dependency-vulnerability
+    outputs:
+    - gate-results
+    dependsOn:
+    - integrate
+  - id: specialist-review
+    parallel: true
+    agents:
+    - test-engineer
+    - security-reviewer
+    - performance-reliability
+    - concurrency-runtime
+    - code-review
+    - dependency-build
+    outputs:
+    - specialist-reports
+    dependsOn:
+    - deterministic-gates
+  - id: aggregate
+    agent: build-pipeline
+    outputs:
+    - quality-gate-report
+    - code-change-manifest
+    dependsOn:
+    - specialist-review
+  - id: publication-artifacts
+    agent: pr-release
+    uses:
+    - java.pr-draft
+    - java.release-notes
+    - java.rollback-plan
+    outputs:
+    - pull-request-draft
+    - release-readiness
+    dependsOn:
+    - aggregate

@@ -1,0 +1,67 @@
+apiVersion: business-analyst-agent-pack/v1
+kind: AgentWorkflow
+metadata:
+  name: request-to-analysis-plan
+  title: Request to Business Analysis Plan
+  version: 1.0.0
+spec:
+  trigger:
+  - new_request
+  - new_epic
+  - analysis_assignment
+  objective: Create a scoped analysis approach, stakeholder plan, evidence plan, deliverables, risks, and decision
+    requests.
+  supervisor: business-analysis-supervisor
+  execution:
+    mode: stateful
+    defaultPolicy: deny
+    evidenceRequired: true
+    approvalBinding: payload-hash
+    resumeFromCheckpoint: true
+  stages:
+  - id: intake
+    agent: work-context
+    skills:
+    - business-analysis.jira-context
+    - business-analysis.project-scope-resolution
+    - business-analysis.evidence-source-register
+    gate: authorization
+  - id: need-and-scope
+    agent: business-needs
+    skills:
+    - business-analysis.problem-statement
+    - business-analysis.outcome-definition
+    - business-analysis.scope-in-out
+  - id: stakeholders
+    agent: stakeholder-analysis
+    skills:
+    - business-analysis.stakeholder-identification
+    - business-analysis.decision-rights-map
+    - business-analysis.engagement-strategy
+  - id: approach
+    agent: requirements-elicitation
+    skills:
+    - business-analysis.ba-approach-selection
+    - business-analysis.elicitation-objective
+    - business-analysis.deliverable-plan
+  - id: review
+    agent: independent-ba-review
+    skills:
+    - business-analysis.stakeholder-coverage-review
+    - business-analysis.decision-boundary-check
+    - business-analysis.evidence-confidence
+  - id: publish
+    agent: business-analysis-supervisor
+    skills:
+    - business-analysis.analysis-status-report
+    - business-analysis.payload-hash-approval
+    gate: payload-bound-approval
+  outputs:
+  - business-analysis-plan
+  - stakeholder-map
+  - decision-and-action-log
+  terminalStates:
+  - completed
+  - rejected
+  - blocked
+  - cancelled

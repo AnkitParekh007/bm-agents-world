@@ -1,0 +1,12 @@
+resource,read,draft/change-plan,execute-nonprod,execute-prod,notes
+Jira/Confluence,yes,yes,approved,no,Publication approval required.
+Bitbucket/Git,yes,yes,approved branch write,no merge,No force push.
+MLflow tracking,scoped,yes,approved metadata write,approval-bound,No raw credential exposure.
+Model/prompt registry,scoped,yes,approved candidate register,approval-bound alias/promotion,Immutable candidate identity.
+Kubeflow pipelines,scoped,yes,approved run,approval-bound,Production runs through deterministic pipeline.
+KServe/Kubernetes,bounded read,manifest draft,approved nonprod apply,no free-form mutation,Production through approved bundle.
+Vector platform,bounded read,migration plan,approved shadow build,approval-bound swap,No destructive free-form reindex.
+GPU platform,bounded read,capacity plan,approved nonprod change,no free-form mutation,Driver/operator changes governed.
+Observability,bounded read,dashboard/alert draft,approved config,approval-bound,Sensitive content redacted.
+Vault/Secrets,references only,no,no,no,Trusted adapter resolves short-lived lease.
+Risk acceptance,evidence only,recommendation,no,no,Accountable human only.

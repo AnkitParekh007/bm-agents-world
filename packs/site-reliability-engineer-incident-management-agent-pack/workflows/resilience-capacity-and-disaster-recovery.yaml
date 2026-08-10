@@ -1,0 +1,45 @@
+name: resilience-capacity-and-disaster-recovery
+version: 1.0.0
+trigger: Capacity review, peak event, architecture change, game day, or disaster-recovery exercise
+scope_binding:
+- project
+- service
+- environment
+- exercise_or_review_id
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: validate environment, fault scope, safety limits, approvals, and operator roles
+- id: baseline
+  agent: capacity-performance-agent
+  action: measure demand, headroom, saturation, latency, quotas, and growth
+- id: failure-model
+  agent: reliability-architecture-agent
+  action: model failure domains, dependencies, degraded modes, and recovery requirements
+- id: dr
+  agent: disaster-recovery-agent
+  action: review RTO, RPO, backups, restore, failover, reconciliation, and recovery order
+- id: plan
+  agent: resilience-testing-agent
+  action: prepare bounded game-day or fault-injection plan with stop conditions
+- id: review
+  agent: sre-independent-reviewer-agent
+  action: challenge safety, evidence, expected learning, and production boundaries
+- id: approve
+  agent: policy-enforcer-agent
+  action: require payload-bound approval for execution and production-impacting scenarios
+- id: execute
+  agent: resilience-testing-agent
+  action: coordinate approved test through deterministic tool or authorized operator
+- id: verify
+  agent: disaster-recovery-agent
+  action: validate recovery, reconciliation, telemetry, RTO/RPO, and residual risk
+- id: improve
+  agent: sre-incident-management-supervisor
+  action: create approved capacity, resilience, and corrective-action artifacts
+outputs:
+- capacity-and-scalability-plan
+- resilience-test-plan
+- disaster-recovery-exercise-report
+- corrective-action-register
+failure_behavior: stop on safety threshold, preserve state and evidence, and require human recovery authority

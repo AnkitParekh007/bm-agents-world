@@ -1,0 +1,63 @@
+apiVersion: frontend-angular-agent-pack/v1
+kind: Workflow
+metadata:
+  name: bug-fix-and-refactor
+  version: 1.0.0
+spec:
+  trigger: jira-bug-or-approved-refactor
+  initialState: authorized
+  steps:
+  - id: reproduce
+    agent: test-engineer
+    uses:
+    - frontend.debug.defect-reproduce
+    - frontend.debug.console-network
+    outputs:
+    - reproduction-evidence
+  - id: root-cause
+    agent: architecture-analyzer
+    uses:
+    - frontend.debug.root-cause
+    - frontend.repo.find-related-code
+    outputs:
+    - root-cause-report
+    dependsOn:
+    - reproduce
+  - id: characterize
+    agent: test-engineer
+    uses:
+    - frontend.refactor.characterization
+    - frontend.test.unit-generate
+    outputs:
+    - failing-or-characterization-test
+    dependsOn:
+    - root-cause
+  - id: fix
+    agent: ui-implementation
+    uses:
+    - frontend.angularjs.minimal-fix
+    - frontend.component.refactor
+    - frontend.refactor.type-safety
+    outputs:
+    - patch
+    dependsOn:
+    - characterize
+  - id: validate
+    agent: build-pipeline
+    uses:
+    - frontend.quality.lint
+    - frontend.quality.typecheck
+    - frontend.quality.build
+    - frontend.test.browser-playwright
+    outputs:
+    - quality-gate-report
+    dependsOn:
+    - fix
+  - id: review
+    agent: code-review
+    uses:
+    - frontend.review.patch
+    outputs:
+    - review-report
+    dependsOn:
+    - validate

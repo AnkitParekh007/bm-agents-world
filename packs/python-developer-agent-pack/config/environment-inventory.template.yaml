@@ -1,0 +1,36 @@
+apiVersion: python-developer-agent-pack/v1
+kind: EnvironmentInventory
+environments:
+- id: playground
+  classification: non-production
+  mutationPolicy: approval-controlled
+  endpoints:
+  - REPLACE
+  databaseRefs:
+  - REPLACE
+  queueRefs:
+  - REPLACE
+  observabilityRefs:
+  - REPLACE
+- id: qa
+  classification: non-production-shared
+  mutationPolicy: approval-controlled
+  endpoints:
+  - REPLACE
+  databaseRefs:
+  - REPLACE
+  queueRefs:
+  - REPLACE
+  observabilityRefs:
+  - REPLACE
+- id: prod
+  classification: production
+  mutationPolicy: observe-only
+  endpoints:
+  - REPLACE
+  databaseRefs:
+  - approved-read-replica-or-metadata-only
+  queueRefs:
+  - metadata-only
+  observabilityRefs:
+  - REPLACE

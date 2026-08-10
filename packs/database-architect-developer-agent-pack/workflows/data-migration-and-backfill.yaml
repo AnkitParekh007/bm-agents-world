@@ -1,0 +1,61 @@
+id: data-migration-and-backfill
+name: Data Migration and Backfill
+version: 1.0.0
+trigger: Approved data movement requirement
+production_mutation: false
+steps:
+- id: profile
+  agent: data-quality-steward
+  action: profile source, sensitivity and quality
+  approval: none
+  on_failure: stop-and-preserve-evidence
+- id: map
+  agent: data-movement-engineer
+  action: define mapping, chunks, checkpoints and reconciliation
+  approval: none
+  on_failure: stop-and-preserve-evidence
+- id: security
+  agent: database-security-governance
+  action: define masking, access and audit controls
+  approval: none
+  on_failure: stop-and-preserve-evidence
+- id: plan
+  agent: migration-engineer
+  action: define sequencing, compatibility and recovery
+  approval: required
+  on_failure: stop-and-preserve-evidence
+- id: implement
+  agent: data-movement-engineer
+  action: create scripts/jobs in isolated workspace
+  approval: none
+  on_failure: stop-and-preserve-evidence
+- id: sandbox
+  agent: database-test-engineer
+  action: run representative migration and interruption tests
+  approval: none
+  on_failure: stop-and-preserve-evidence
+- id: performance
+  agent: query-performance-engineer
+  action: validate throttling and operational thresholds
+  approval: none
+  on_failure: stop-and-preserve-evidence
+- id: review
+  agent: database-change-reviewer
+  action: review data-loss, lock and consumer risk
+  approval: none
+  on_failure: stop-and-preserve-evidence
+- id: nonprod
+  agent: database-pipeline-release
+  action: execute approved playground/QA run
+  approval: required
+  on_failure: stop-and-preserve-evidence
+- id: production
+  agent: database-pipeline-release
+  action: create operator handoff only
+  approval: required-human-operator
+  on_failure: stop-and-preserve-evidence
+- id: reconcile
+  agent: data-quality-steward
+  action: verify approved read-only reconciliation
+  approval: none
+  on_failure: stop-and-preserve-evidence

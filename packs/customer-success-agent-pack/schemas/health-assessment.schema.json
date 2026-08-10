@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/customer-success/health-assessment.schema.json",
+  "title": "Customer Health Assessment",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "customer_id",
+    "overall_status",
+    "dimensions",
+    "confidence"
+  ],
+  "properties": {
+    "customer_id": {
+      "type": "string"
+    },
+    "overall_status": {
+      "type": "string",
+      "enum": [
+        "healthy",
+        "watch",
+        "at-risk",
+        "critical",
+        "unknown"
+      ]
+    },
+    "dimensions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "status",
+          "evidence"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "score": {
+            "type": "number"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "confidence": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "confidence": {
+      "type": "string"
+    },
+    "drivers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "recommended_actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

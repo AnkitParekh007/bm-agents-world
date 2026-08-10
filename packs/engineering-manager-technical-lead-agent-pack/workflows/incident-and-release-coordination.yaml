@@ -1,0 +1,75 @@
+apiVersion: engineering-manager-technical-lead-agent-pack/v1
+kind: AgentWorkflow
+metadata:
+  name: incident-and-release-coordination
+  title: Incident and Release Coordination
+  version: 1.0.0
+spec:
+  trigger:
+  - incident
+  - release_candidate
+  - hotfix
+  objective: Coordinate operational evidence, communication, release readiness, and corrective actions without unauthorized
+    production execution.
+  supervisor: engineering-leadership-supervisor
+  execution:
+    mode: stateful
+    defaultPolicy: deny
+    evidenceRequired: true
+    approvalBinding: payload-hash
+    resumeFromCheckpoint: true
+  stages:
+  - id: intake
+    agent: incident-escalation
+    skills:
+    - engineering-leadership.incident-intake
+    - engineering-leadership.incident-role-map
+    - engineering-leadership.impact-summary
+    gate: authorization
+  - id: technical-triage
+    agent: reliability-operability-lead
+    skills:
+    - engineering-leadership.service-health-summary
+    - engineering-leadership.observability-coverage
+    - engineering-leadership.capacity-risk-review
+  - id: quality-and-security
+    agent: independent-engineering-review
+    skills:
+    - engineering-leadership.regression-risk-analysis
+    - engineering-leadership.security-requirement-check
+    - engineering-leadership.release-evidence-aggregation
+  - id: communication
+    agent: stakeholder-communication
+    skills:
+    - engineering-leadership.incident-status-update
+    - engineering-leadership.release-status-update
+    - engineering-leadership.escalation-message
+  - id: decision-request
+    agent: release-readiness
+    skills:
+    - engineering-leadership.go-no-go-recommendation
+    - engineering-leadership.rollback-plan-review
+    - engineering-leadership.payload-hash-approval
+    gate: payload-bound-approval
+  - id: verification
+    agent: release-readiness
+    skills:
+    - engineering-leadership.post-deploy-validation
+    - engineering-leadership.release-outcome-review
+    - engineering-leadership.corrective-action-tracking
+  - id: learning
+    agent: process-improvement
+    skills:
+    - engineering-leadership.post-incident-review
+    - engineering-leadership.recurrence-analysis
+    - engineering-leadership.improvement-experiment-metrics
+  outputs:
+  - incident-brief
+  - release-readiness-report
+  - post-incident-review
+  - audit-evidence-bundle
+  terminalStates:
+  - completed
+  - rejected
+  - blocked
+  - cancelled

@@ -1,0 +1,21 @@
+apiVersion: business-analyst-agent-pack/v1
+kind: EnvironmentInventory
+metadata:
+  name: replace-me
+  project: replace-me
+spec:
+  classification: internal
+  environments:
+  - id: playground
+    purpose: safe exploratory validation
+    agentAccess: read-and-approved-test
+  - id: qa
+    purpose: controlled business validation
+    agentAccess: read-and-approved-test
+  - id: production
+    purpose: live operations
+    agentAccess: read-only-metadata-and-approved-evidence
+  systems: []
+  dataSources: []
+  businessOwners: []
+  constraints: []

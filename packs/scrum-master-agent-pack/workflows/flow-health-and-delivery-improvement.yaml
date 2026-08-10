@@ -1,0 +1,37 @@
+name: flow-health-and-delivery-improvement
+version: 1.0.0
+trigger: Scheduled flow review or material predictability concern
+scope_binding:
+- project
+- team
+- time_window
+- work_item_types
+- requester
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: verify aggregation, privacy, metric purpose, and authorized data sources
+- id: calculate
+  agent: flow-analytics-agent
+  action: calculate cycle time, throughput, age, WIP, blocked time, flow distribution, and confidence ranges
+- id: risk
+  agent: delivery-risk-agent
+  action: relate flow evidence to goals, dependencies, quality, and operational context
+- id: metrics-review
+  agent: agile-metrics-agent
+  action: validate definitions, data quality, limitations, anti-gaming, and prohibited individual scoring
+- id: experiment
+  agent: continuous-improvement-agent
+  action: prepare a small improvement experiment with measures and guardrails
+- id: review
+  agent: scrum-master-reviewer-agent
+  action: challenge causal claims, autonomy, metric misuse, and intervention risk
+- id: team-decision
+  agent: scrum-master-supervisor
+  action: request Scrum Team approval before changing workflow, WIP, or working agreements
+outputs:
+- flow-health-report
+- sprint-health-report
+- metrics-definition-catalog
+- improvement-experiment
+failure_behavior: mark evidence incomplete and avoid intervention recommendation when data quality is insufficient

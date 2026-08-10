@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Post Release Review",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "release_id",
+    "outcome",
+    "success_criteria",
+    "incidents",
+    "rework",
+    "lessons",
+    "actions"
+  ],
+  "properties": {
+    "release_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "outcome": {
+      "type": "string",
+      "enum": [
+        "successful",
+        "successful-with-issues",
+        "partial",
+        "rolled-back",
+        "failed",
+        "cancelled"
+      ]
+    },
+    "success_criteria": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "incidents": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "rework": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "metrics": {
+      "type": "object"
+    },
+    "lessons": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}

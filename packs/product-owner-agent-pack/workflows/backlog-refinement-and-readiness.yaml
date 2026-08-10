@@ -1,0 +1,52 @@
+name: backlog-refinement-and-readiness
+version: 1.0.0
+trigger: Ordered Product Backlog items approach refinement horizon
+scope_binding:
+- project
+- product
+- team
+- backlog_item_ids
+- requester
+steps:
+- id: authorize
+  agent: policy-enforcer-agent
+  action: verify item, project, data, and publication scope
+- id: context
+  agent: work-context-agent
+  action: collect source requirements, decisions, designs, architecture, code history, defects, and dependencies
+- id: refine
+  agent: backlog-refinement-agent
+  action: clarify value, split items vertically, add examples, identify spikes, and record questions
+- id: requirements
+  agent: story-requirements-agent
+  action: draft stories, rules, data, integrations, nonfunctional needs, and out-of-scope boundaries
+- id: acceptance
+  agent: acceptance-criteria-agent
+  action: create scenario-based testable acceptance criteria
+- id: parallel-readiness
+  parallel:
+  - agent: ux-readiness-agent
+    action: review journeys, states, content, design system, and accessibility
+  - agent: technical-readiness-agent
+    action: review architecture, APIs, data, security, migration, observability, and feasibility
+  - agent: qa-readiness-agent
+    action: review testability, environments, evidence, data, and regression scope
+  - agent: dependency-coordination-agent
+    action: map cross-team and cross-system dependencies
+  - agent: risk-compliance-agent
+    action: route mandatory specialist reviews
+- id: review
+  agent: product-owner-reviewer-agent
+  action: challenge readiness, value, slicing, ambiguity, assumptions, and unresolved decisions
+- id: publish
+  agent: product-owner-supervisor
+  action: request approval before updating official Jira items
+outputs:
+- refinement-pack
+- backlog-item-specification
+- acceptance-criteria-pack
+- design-readiness-report
+- technical-readiness-report
+- qa-readiness-report
+- dependency-map
+failure_behavior: keep items unready, preserve evidence, and assign decision owners

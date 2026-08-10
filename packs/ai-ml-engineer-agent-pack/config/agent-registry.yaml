@@ -1,0 +1,165 @@
+pack: "ai-ml-engineer-agent-pack"
+version: 1.0.0
+agents:
+  - id: "ai-ml-supervisor"
+    name: AI/ML Engineer Supervisor
+    description: "Coordinates the end-to-end AI/ML lifecycle, authorization, specialist delegation, evidence synthesis, and approvals."
+    mode: supervisor
+    default_access: "read-analysis"
+    human_approval_for_external_writes: true
+  - id: "work-context-agent"
+    name: Work and Product Context Agent
+    description: "Resolves business objective, use case, stakeholders, constraints, and acceptance outcomes."
+    mode: specialist
+    default_access: "read-analysis"
+    human_approval_for_external_writes: true
+  - id: "data-readiness-agent"
+    name: Data Readiness Agent
+    description: "Assesses data sources, labels, quality, provenance, leakage, privacy, and split strategy."
+    mode: specialist
+    default_access: "read-analysis"
+    human_approval_for_external_writes: true
+  - id: "feature-engineering-agent"
+    name: Feature Engineering Agent
+    description: "Designs reproducible features and train-serving-consistent transformations."
+    mode: specialist
+    default_access: "read-analysis"
+    human_approval_for_external_writes: true
+  - id: "classical-ml-agent"
+    name: Classical ML Agent
+    description: "Builds and evaluates statistical, tree-based, ensemble, clustering, and anomaly models."
+    mode: specialist
+    default_access: "read-analysis"
+    human_approval_for_external_writes: true
+  - id: "deep-learning-agent"
+    name: Deep Learning Agent
+    description: "Designs and trains neural models with accelerator-aware reproducibility and optimization."
+    mode: specialist
+    default_access: "read-analysis"
+    human_approval_for_external_writes: true
+  - id: "multimodal-agent"
+    name: NLP / Vision / Audio / Multimodal Agent
+    description: "Handles modality-specific preprocessing, modeling, evaluation, and robustness."
+    mode: specialist
+    default_access: "read-analysis"
+    human_approval_for_external_writes: true
+  - id: "llm-genai-agent"
+    name: LLM and Generative AI Agent
+    description: "Designs prompts, structured generation, model routing, guardrails, and generative workflows."
+    mode: specialist
+    default_access: "read-analysis"
+    human_approval_for_external_writes: true
+  - id: "rag-knowledge-agent"
+    name: RAG and Knowledge Systems Agent
+    description: "Owns ingestion, retrieval, reranking, authorization, grounding, and RAG evaluation."
+    mode: specialist
+    default_access: "read-analysis"
+    human_approval_for_external_writes: true
+  - id: "fine-tuning-agent"
+    name: "Fine-Tuning and Adaptation Agent"
+    description: "Evaluates and implements supervised, preference, adapter, and task-specific adaptation."
+    mode: specialist
+    default_access: "read-analysis"
+    human_approval_for_external_writes: true
+  - id: "experiment-agent"
+    name: Experimentation and Reproducibility Agent
+    description: "Tracks hypotheses, runs, configurations, uncertainty, baselines, and reproducibility."
+    mode: specialist
+    default_access: "read-analysis"
+    human_approval_for_external_writes: true
+  - id: "evaluation-agent"
+    name: Model Evaluation Agent
+    description: "Builds task, safety, regression, robustness, and human/model-judge evaluation suites."
+    mode: specialist
+    default_access: "read-analysis"
+    human_approval_for_external_writes: true
+  - id: "responsible-ai-agent"
+    name: Responsible AI Agent
+    description: "Assesses harms, fairness, explainability, oversight, uncertainty, and system limitations."
+    mode: specialist
+    default_access: "read-analysis"
+    human_approval_for_external_writes: true
+  - id: "ai-security-agent"
+    name: "AI Security and Red-Team Coordination Agent"
+    description: "Threat-models AI surfaces and coordinates authorized adversarial testing with security specialists."
+    mode: specialist
+    default_access: "read-analysis"
+    human_approval_for_external_writes: true
+  - id: "model-registry-agent"
+    name: Model Registry and Artifact Agent
+    description: "Manages immutable model identity, lineage, cards, provenance, and promotion evidence."
+    mode: specialist
+    default_access: "read-analysis"
+    human_approval_for_external_writes: true
+  - id: "serving-agent"
+    name: Inference and Serving Agent
+    description: "Designs model-serving contracts, performance, scaling, health checks, and rollback."
+    mode: specialist
+    default_access: "read-analysis"
+    human_approval_for_external_writes: true
+  - id: "mlops-agent"
+    name: MLOps Pipeline Agent
+    description: "Builds reproducible training, validation, packaging, promotion, and deployment automation."
+    mode: specialist
+    default_access: "read-analysis"
+    human_approval_for_external_writes: true
+  - id: "monitoring-agent"
+    name: Model Monitoring and Drift Agent
+    description: "Monitors model quality, drift, task success, inputs, costs, and delayed ground truth."
+    mode: specialist
+    default_access: "read-analysis"
+    human_approval_for_external_writes: true
+  - id: "performance-cost-agent"
+    name: Performance and Cost Agent
+    description: "Optimizes training/inference efficiency, accelerator use, latency, throughput, and cost."
+    mode: specialist
+    default_access: "read-analysis"
+    human_approval_for_external_writes: true
+  - id: "data-governance-agent"
+    name: Data Governance and Privacy Agent
+    description: "Enforces purpose limitation, minimization, lineage, retention, and governed AI data access."
+    mode: specialist
+    default_access: "read-analysis"
+    human_approval_for_external_writes: true
+  - id: "integration-agent"
+    name: AI Integration Agent
+    description: "Defines application, API, event, tool, feature, and downstream integration contracts."
+    mode: specialist
+    default_access: "read-analysis"
+    human_approval_for_external_writes: true
+  - id: "testing-agent"
+    name: ML Testing Agent
+    description: "Implements deterministic unit, data, model, contract, integration, and regression tests."
+    mode: specialist
+    default_access: "read-analysis"
+    human_approval_for_external_writes: true
+  - id: "documentation-agent"
+    name: AI/ML Documentation Agent
+    description: "Maintains model cards, dataset cards, runbooks, architecture, experiment, and support docs."
+    mode: specialist
+    default_access: "read-analysis"
+    human_approval_for_external_writes: true
+  - id: "release-agent"
+    name: AI/ML Release Readiness Agent
+    description: "Assembles candidate-bound release evidence and staged rollout recommendations."
+    mode: specialist
+    default_access: "read-analysis"
+    human_approval_for_external_writes: true
+  - id: "independent-review-agent"
+    name: Independent AI/ML Review Agent
+    description: "Challenges assumptions, leakage, metric validity, safety, reproducibility, and release claims."
+    mode: specialist
+    default_access: "read-analysis"
+    human_approval_for_external_writes: true
+  - id: "evidence-agent"
+    name: Evidence and Audit Agent
+    description: "Builds immutable evidence bundles with hashes, provenance, approvals, and decision records."
+    mode: specialist
+    default_access: "read-analysis"
+    human_approval_for_external_writes: true
+  - id: "policy-agent"
+    name: Policy Enforcement Agent
+    description: "Applies scope, environment, data, model, security, and production-action guardrails."
+    mode: specialist
+    default_access: "read-analysis"
+    human_approval_for_external_writes: true

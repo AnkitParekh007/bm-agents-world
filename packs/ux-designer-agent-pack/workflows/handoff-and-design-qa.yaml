@@ -1,0 +1,44 @@
+name: handoff-and-design-qa
+version: 1.0.0
+trigger: Approved design ready for implementation or implemented story ready for review
+scope_binding:
+- organization
+- project
+- jira_item
+- figma_file
+- environment
+- requester
+steps:
+- id: authorize
+  agent: policy-enforcer
+  action: verify design, repository, environment, publication, and screenshot permissions
+- id: specify
+  agent: developer-handoff-engineer
+  action: create flows, specs, tokens, assets, behaviors, breakpoints, content, accessibility, and acceptance criteria
+- id: system-check
+  agent: design-system-architect
+  action: confirm component reuse, variants, token mapping, and library implications
+- id: implementation-read
+  agent: design-qa-specialist
+  action: read Storybook, code, PR, and deployed implementation evidence
+- id: browser-qa
+  agent: design-qa-specialist
+  action: review implementation across approved browsers, breakpoints, states, content, and accessibility
+- id: diff
+  agent: design-qa-specialist
+  action: classify differences as defect, acceptable implementation adaptation, or design update
+- id: review
+  agent: design-reviewer
+  action: review release-impacting findings and evidence
+- id: publish-approval
+  agent: policy-enforcer
+  action: require payload-bound approval for Jira, Confluence, Teams, Figma shared file, or library publication
+- id: evidence
+  agent: evidence-manager
+  action: store immutable handoff, QA, decisions, and approvals
+outputs:
+- developer-handoff-package
+- design-qa-report
+- design-decision-log
+- ux-daily-summary
+failure_behavior: stop, preserve evidence, and request human resolution

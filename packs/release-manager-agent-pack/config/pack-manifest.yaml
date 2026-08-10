@@ -1,0 +1,28 @@
+name: release-manager-agent-pack
+version: 1.0.0
+generated_on: '2026-08-07'
+profile: Release Manager
+production_autonomy: redacted-read-only-and-request-only
+counts:
+  tasks: 240
+  agents: 27
+  skills: 253
+  mcp_servers: 18
+  plugins: 22
+  artifacts: 27
+  workflows: 5
+  schemas: 7
+directories:
+- docs
+- config
+- workflows
+- schemas
+- templates
+- security/opa
+- checklists
+validation:
+  yaml: true
+  json_schema: true
+  references: true
+  archive: true
+  secret_scan: true
