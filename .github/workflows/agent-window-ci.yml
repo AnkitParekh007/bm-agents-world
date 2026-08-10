@@ -13,6 +13,7 @@ on:
       - ".dockerignore"
       - "package.json"
       - ".github/workflows/agent-window-ci.yml"
+      - ".github/workflows/qa-pilot-image.yml"
 
 jobs:
   validate:
