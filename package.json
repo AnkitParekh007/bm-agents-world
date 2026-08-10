@@ -1,16 +1,18 @@
 {
-  "name": "agents-via-docs",
+  "name": "bm-agents-world",
   "version": "0.1.0",
   "private": true,
   "workspaces": [
     "apps/*"
   ],
   "scripts": {
-    "dev:agent-window": "npm run dev:all --workspace @agents-via-docs/agent-window",
-    "dev:agent-window:api": "npm run dev --workspace @agents-via-docs/agent-window",
-    "dev:agent-window:ui": "npm run dev:client --workspace @agents-via-docs/agent-window",
-    "build:agent-window": "npm run build --workspace @agents-via-docs/agent-window",
-    "db:push": "npm run db:push --workspace @agents-via-docs/agent-window"
+    "dev": "npm run dev:all --workspace @bm-agents-world/agent-window",
+    "dev:agent-window": "npm run dev:all --workspace @bm-agents-world/agent-window",
+    "dev:agent-window:api": "npm run dev --workspace @bm-agents-world/agent-window",
+    "dev:agent-window:ui": "npm run dev:client --workspace @bm-agents-world/agent-window",
+    "build": "npm run build --workspace @bm-agents-world/agent-window",
+    "build:agent-window": "npm run build --workspace @bm-agents-world/agent-window",
+    "typecheck": "npm run typecheck --workspace @bm-agents-world/agent-window"
   },
   "engines": {
     "node": ">=20.18.0"
