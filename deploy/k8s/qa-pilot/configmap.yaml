@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: bm-agents-world-config
+  namespace: bm-agents-world
+data:
+  NODE_ENV: "production"
+  PORT: "4000"
+  BM_DEPLOYMENT_MODE: "pilot"
+  BM_IDENTITY_MODE: "trusted-headers"
+  BM_STATE_DB_PATH: "/var/lib/bm-agents/state/qa-pilot.sqlite"
+  BM_ARTIFACT_ROOT: "/var/lib/bm-agents"
+  BM_AGENTS_REPO_ROOT: "/workspace"
+  BM_PILOT_REQUIRE_JIRA_WRITE: "false"
+  AI_MODEL: "openai:gpt-5.4-mini"
+  COPILOTKIT_TELEMETRY_DISABLED: "true"
+  QA_PLAYWRIGHT_ENABLED: "true"
+  QA_PLAYWRIGHT_TIMEOUT_MS: "45000"
+  QA_JIRA_WRITE_ENABLED: "false"
+  # Fill the real pilot values in an environment overlay or deployment system.
+  QA_JIRA_BASE_URL: ""
+  QA_BITBUCKET_WORKSPACE: ""
+  QA_PCC_BITBUCKET_REPOS: ""
+  QA_SOP_BITBUCKET_REPOS: ""
+  QA_DATABRIDGE_BITBUCKET_REPOS: ""
+  QA_PCC_PLAYWRIGHT_QA_URL: ""
+  QA_SOP_PLAYWRIGHT_QA_URL: ""
+  QA_DATABRIDGE_PLAYWRIGHT_QA_URL: ""
