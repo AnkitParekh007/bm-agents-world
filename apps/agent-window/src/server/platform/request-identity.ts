@@ -28,7 +28,12 @@ export function localIdentity(): RequestIdentity {
 }
 
 export function currentRequestIdentity(): RequestIdentity {
-  return identityStorage.getStore() ?? localIdentity();
+  const identity = identityStorage.getStore();
+  if (identity) return identity;
+  if (process.env.BM_IDENTITY_MODE?.trim().toLowerCase() === "trusted-headers") {
+    throw new Error("Trusted request identity context is unavailable; refusing local fallback.");
+  }
+  return localIdentity();
 }
 
 export function identityMiddleware(): RequestHandler {
