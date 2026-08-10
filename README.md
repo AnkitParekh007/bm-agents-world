@@ -38,49 +38,71 @@ What is working:
 
 ## Architecture
 
-```text
-Organization Agent Packs
-        |
-        v
-PackRegistry / Pack Compiler
-        |
-        v
-CopilotKit + AG-UI
-        |
-        +--> Agent-run telemetry
-        |       +-- provider/model
-        |       +-- measured tokens
-        |       +-- configured cost estimate
-        |       +-- trace id
-        |
-        v
-Agent Window pods
-        |
-        v
-Capability Broker contract
-   +----+-------------------------------+
-   |                                    |
-   | local development                  | shared pilot
-   v                                    v
-SQLite + filesystem              Postgres + private Storage
-                                        |
-                           +------------+------------+
-                           |                         |
-                           v                         v
-                    durable state              QA evidence
-                    approvals/audit            traces/screenshots
-                    evaluations                bug drafts/results
-                           |
-                           v
-                    Trusted adapters
-                     Jira / Bitbucket /
-                       Playwright
-                           |
-                           v
-                    Pilot Observability
+```mermaid
+flowchart TB
+    Packs["Organization Agent Packs"] --> Registry["PackRegistry / Pack Compiler"]
+    Registry --> Agent["CopilotKit + AG-UI"] --> Pods["Agent Window pods"] --> Broker["Capability Broker contract"]
+
+    subgraph Telemetry["Agent-run telemetry"]
+        Direction["provider / model"]
+        Tokens["measured tokens"]
+        Cost["configured cost estimate"]
+        Trace["trace id"]
+    end
+
+    subgraph Local["Local development"]
+        SQLite["SQLite + filesystem"]
+    end
+
+    subgraph Shared["Shared pilot"]
+        Postgres["Postgres + private Storage"]
+        State["Durable state<br/>approvals / audit<br/>evaluations"]
+        Evidence["QA evidence<br/>traces / screenshots<br/>bug drafts / results"]
+    end
+
+    Agent -.-> Telemetry
+    Broker -->|local development| SQLite
+    Broker -->|shared pilot| Postgres
+    Postgres --> State
+    Postgres --> Evidence
+    State --> Adapters["Trusted adapters<br/>Jira / Bitbucket / Playwright"]
+    Evidence --> Adapters
+    Adapters --> Observability["Pilot Observability"]
+
+    classDef source fill:#eef2ff,stroke:#6366f1,color:#1e1b4b,stroke-width:1.5px;
+    classDef runtime fill:#ecfeff,stroke:#0891b2,color:#164e63,stroke-width:1.5px;
+    classDef governance fill:#fff7ed,stroke:#ea580c,color:#7c2d12,stroke-width:2px;
+    classDef storage fill:#f0fdf4,stroke:#16a34a,color:#14532d,stroke-width:1.5px;
+    classDef external fill:#fdf4ff,stroke:#c026d3,color:#701a75,stroke-width:1.5px;
+
+    class Packs,Registry source;
+    class Agent,Pods,Telemetry,Direction,Tokens,Cost,Trace runtime;
+    class Broker governance;
+    class SQLite,Postgres,State,Evidence storage;
+    class Adapters,Observability external;
 ```
 
 The pack files remain the source material. The core application must not become a separate hard-coded implementation for every organizational role.
+
+### Repository map
+
+```text
+bm-agents-world/
+├── apps/
+│   └── agent-window/                 → CopilotKit + AG-UI application
+│       └── src/
+│           ├── client/               → Agent Window and QA pilot UI
+│           └── server/
+│               ├── platform/         → Capability, policy, persistence, and telemetry
+│               └── qa/               → Jira, Bitbucket, and Playwright adapters
+├── packs/                            → Organization agent-pack source material
+├── config/                           → Approved connector configuration
+├── policies/                         → Central authorization policy
+├── deploy/
+│   ├── k8s/qa-pilot/                 → Shared pilot Kubernetes package
+│   └── supabase/                     → Shared runtime schema
+└── docs/                             → Architecture, operations, and pilot guides
+```
 
 ## Run locally
 
@@ -162,30 +184,28 @@ See [QA Pilot Observability and Evaluation](docs/qa-pilot-observability.md) and 
 
 External capability execution follows:
 
-```text
-Authenticated user
-   ↓
-Trusted gateway
-   ↓
-NetworkPolicy / equivalent isolation
-   ↓
-Tenant / project authorization
-   ↓
-CopilotKit agent
-   ↓
-Capability broker
-   ↓
-Shared durable state / evidence
-   ↓
-Risk / policy
-   ↓
-Payload-bound human approval when required
-   ↓
-Trusted server adapter
-   ↓
-Jira / Bitbucket / Playwright
-   ↓
-Persistent audit + authorized evidence
+```mermaid
+flowchart TD
+    User(["Authenticated user"]) --> Gateway["Trusted gateway"]
+    Gateway --> Network["NetworkPolicy / equivalent isolation"]
+    Network --> Authorization{"Tenant / project<br/>authorization"}
+    Authorization --> Agent["CopilotKit agent"]
+    Agent --> Broker["Capability broker"]
+    Broker --> State[("Shared durable state / evidence")]
+    State --> Policy{"Risk / policy"}
+    Policy --> Approval{"Payload-bound human approval<br/>when required"}
+    Approval --> Adapter["Trusted server adapter"]
+    Adapter --> Systems["Jira / Bitbucket / Playwright"]
+    Systems --> Audit[("Persistent audit +<br/>authorized evidence")]
+
+    classDef identity fill:#eef2ff,stroke:#6366f1,color:#1e1b4b,stroke-width:1.5px;
+    classDef boundary fill:#fff7ed,stroke:#ea580c,color:#7c2d12,stroke-width:2px;
+    classDef trusted fill:#f0fdf4,stroke:#16a34a,color:#14532d,stroke-width:1.5px;
+    classDef external fill:#fdf4ff,stroke:#c026d3,color:#701a75,stroke-width:1.5px;
+    class User,Gateway identity;
+    class Network,Authorization,Broker,Policy,Approval boundary;
+    class Agent,State,Adapter,Audit trusted;
+    class Systems external;
 ```
 
 Postgres credentials, Supabase secret keys, Jira/Bitbucket/model-provider credentials, and Playwright authentication material remain server-side and must not enter model context. Private Storage objects are returned only through the BM authorization boundary; the shared persistence implementation does not expose public or signed evidence URLs to the employee UI.
