@@ -11,6 +11,7 @@ import { JiraReadAdapter } from "./qa/jira-read-adapter.js";
 import { PlaywrightWorkerAdapter } from "./qa/playwright-worker-adapter.js";
 import { QA_CAPABILITIES, QaMockAdapter } from "./qa/qa-capabilities.js";
 import { loadQaIntegrationStatus } from "./qa/qa-integration-config.js";
+import { projectTestCatalogStatus } from "./qa/qa-project-tests.js";
 
 const PORT = Number(process.env.PORT ?? 4000);
 const registry = new PackRegistry();
@@ -45,6 +46,11 @@ app.get("/api/health", (_request, response) => {
       jiraWrite: "mock",
       teams: "mock",
     },
+    qaProjectTests: projectTestCatalogStatus().map((item) => ({
+      projectId: item.projectId,
+      authenticated: item.authenticatedIdentity.configured,
+      suites: item.suites.map((suite) => ({ id: suite.id, cases: suite.cases.length })),
+    })),
   });
 });
 
@@ -55,13 +61,9 @@ app.get("/api/packs", (_request, response) => {
 app.get("/api/packs/:packId", (request, response) => {
   const pack = registry.get(request.params.packId);
   if (!pack) {
-    response.status(404).json({
-      error: "pack_not_found",
-      available: registry.packs.map((item) => item.id),
-    });
+    response.status(404).json({ error: "pack_not_found", available: registry.packs.map((item) => item.id) });
     return;
   }
-
   const { directory: _directory, ...publicPack } = pack;
   response.json(publicPack);
 });
@@ -69,12 +71,17 @@ app.get("/api/packs/:packId", (request, response) => {
 app.get("/api/qa/capabilities", (_request, response) => {
   response.json({
     integrations: loadQaIntegrationStatus(),
+    projectTests: projectTestCatalogStatus(),
     capabilities: qaBroker.listCapabilities(),
   });
 });
 
 app.get("/api/qa/integrations", (_request, response) => {
   response.json(loadQaIntegrationStatus());
+});
+
+app.get("/api/qa/project-tests", (_request, response) => {
+  response.json({ projects: projectTestCatalogStatus() });
 });
 
 app.get("/api/qa/artifacts/:artifactId/metadata", (request, response) => {
@@ -92,14 +99,10 @@ app.get("/api/qa/artifacts/:artifactId", (request, response) => {
     response.status(404).json({ error: "artifact_not_found" });
     return;
   }
-
   response.setHeader("Cache-Control", "private, no-store");
   response.setHeader("X-Content-Type-Options", "nosniff");
   response.setHeader("Content-Type", artifact.record.mediaType);
-  response.setHeader(
-    "Content-Disposition",
-    `${artifact.record.mediaType === "application/zip" ? "attachment" : "inline"}; filename="${artifact.record.filename}"`,
-  );
+  response.setHeader("Content-Disposition", `${artifact.record.mediaType === "application/zip" ? "attachment" : "inline"}; filename="${artifact.record.filename}"`);
   response.sendFile(artifact.diskPath);
 });
 
@@ -118,17 +121,12 @@ app.post("/api/qa/actions/:actionId/decision", (request, response) => {
     response.status(400).json({ error: "decision_must_be_approved_or_rejected" });
     return;
   }
-
   const decidedBy = String(request.header("x-user-id") || "local-dev-user");
   const reason = typeof request.body?.reason === "string" ? request.body.reason : undefined;
-
   try {
     response.json(qaBroker.decideAction(request.params.actionId, decision, decidedBy, reason));
   } catch (error) {
-    response.status(409).json({
-      error: "approval_decision_rejected",
-      message: error instanceof Error ? error.message : String(error),
-    });
+    response.status(409).json({ error: "approval_decision_rejected", message: error instanceof Error ? error.message : String(error) });
   }
 });
 
@@ -138,23 +136,17 @@ app.get("/api/audit", (request, response) => {
   response.json({ events: qaBroker.listAudit(limit) });
 });
 
-app.use(
-  createCopilotExpressHandler({
-    runtime,
-    basePath: "/api/copilotkit",
-    mode: "single-route",
-    cors: process.env.NODE_ENV === "production"
-      ? false
-      : { origin: ["http://localhost:5173", "http://127.0.0.1:5173"] },
-  }),
-);
+app.use(createCopilotExpressHandler({
+  runtime,
+  basePath: "/api/copilotkit",
+  mode: "single-route",
+  cors: process.env.NODE_ENV === "production" ? false : { origin: ["http://localhost:5173", "http://127.0.0.1:5173"] },
+}));
 
 const clientDirectory = resolve(process.cwd(), "dist/client");
 if (existsSync(clientDirectory)) {
   app.use(express.static(clientDirectory));
-  app.get("*path", (_request, response) => {
-    response.sendFile(resolve(clientDirectory, "index.html"));
-  });
+  app.get("*path", (_request, response) => response.sendFile(resolve(clientDirectory, "index.html")));
 }
 
 app.listen(PORT, "0.0.0.0", () => {
