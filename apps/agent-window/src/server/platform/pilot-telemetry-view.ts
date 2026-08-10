@@ -32,7 +32,7 @@ export interface QaRunExecutionTelemetry {
   byCapability: CapabilityLatencyMetric[];
 }
 
-export type EnrichedQaPilotRunMetrics = QaPilotRunMetrics & {
+export type EnrichedQaPilotRunMetrics = Omit<QaPilotRunMetrics, "modelUsage"> & {
   modelUsage: QaRunModelUsage;
   executionTelemetry: QaRunExecutionTelemetry;
 };
@@ -117,11 +117,14 @@ export function enrichQaPilotRuns(
   telemetryStore: AgentTelemetryStore,
   broker: CapabilityBroker,
 ): EnrichedQaPilotRunMetrics[] {
-  return runs.map((run) => ({
-    ...run,
-    modelUsage: aggregateUsage(telemetryStore.listForQaRun(run.runId)),
-    executionTelemetry: executionTelemetry(run.runId, broker),
-  }));
+  return runs.map((run) => {
+    const { modelUsage: _legacyModelUsage, ...base } = run;
+    return {
+      ...base,
+      modelUsage: aggregateUsage(telemetryStore.listForQaRun(run.runId)),
+      executionTelemetry: executionTelemetry(run.runId, broker),
+    };
+  });
 }
 
 export function enrichQaPilotSummary(
@@ -151,9 +154,10 @@ export function enrichQaPilotSummary(
     : costRuns.length === runs.length && runs.every((run) => run.modelUsage.costStatus === "configured_estimate")
       ? "configured_estimate"
       : "partial";
+  const { modelUsageStatus: _legacyModelUsageStatus, ...baseSummary } = summary;
 
   return {
-    ...summary,
+    ...baseSummary,
     modelUsageStatus,
     modelUsageCoverage: runs.length ? Number((runsWithUsage.length / runs.length).toFixed(4)) : null,
     totalModelCalls: runs.reduce((sum, run) => sum + run.modelUsage.modelCalls, 0),
