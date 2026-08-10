@@ -1,0 +1,88 @@
+apiVersion: bm-agents-world/v1
+kind: ApprovedConnectorRegistry
+metadata:
+  owner: bm-agent-platform
+  policy: deny-unregistered
+connectors:
+  - id: jira
+    displayName: Jira Cloud
+    kind: native-or-mcp
+    status: approved
+    systems: [jira]
+    transports: [native-http, streamable-http]
+    auth: server-secret-or-oauth-2.1
+    allowedPacks: [qa]
+    tools:
+      - id: story.read
+        capabilityIds: [qa.jira.story.read]
+        actionClass: read
+        maxRisk: L4
+        environments: [playground, qa, prod]
+      - id: bug.duplicate.search
+        capabilityIds: [qa.jira.duplicate.search]
+        actionClass: read
+        maxRisk: L4
+        environments: [playground, qa, prod]
+      - id: bug.create
+        capabilityIds: [qa.jira.bug.create]
+        actionClass: external-write
+        maxRisk: L3
+        environments: [playground, qa, prod]
+        approval: human
+  - id: bitbucket
+    displayName: Bitbucket
+    kind: native-or-mcp
+    status: approved
+    systems: [bitbucket]
+    transports: [native-http, streamable-http]
+    auth: server-secret-or-workload-identity
+    allowedPacks: [qa]
+    tools:
+      - id: change-impact.read
+        capabilityIds: [qa.bitbucket.change-impact.read]
+        actionClass: read
+        maxRisk: L4
+        environments: [playground, qa, prod]
+  - id: playwright
+    displayName: Playwright Browser Worker
+    kind: native-or-mcp
+    status: approved
+    systems: [playwright]
+    transports: [native-worker, stdio, streamable-http]
+    auth: workload-identity
+    allowedPacks: [qa]
+    tools:
+      - id: test.run
+        capabilityIds: [qa.playwright.test.run]
+        actionClass: test
+        maxRisk: L1
+        environments: [playground, qa]
+  - id: qa-database
+    displayName: QA Database Read Adapter
+    kind: mcp
+    status: approved
+    systems: [database]
+    transports: [streamable-http]
+    auth: workload-identity
+    allowedPacks: [qa]
+    tools:
+      - id: validation.read
+        capabilityIds: [qa.database.validation.read]
+        actionClass: read
+        maxRisk: L4
+        environments: [playground, qa, prod]
+  - id: teams
+    displayName: Microsoft Teams
+    kind: mcp
+    status: pilot
+    systems: [teams]
+    transports: [streamable-http]
+    auth: oauth-2.1
+    allowedPacks: [qa]
+    tools:
+      - id: status.post
+        capabilityIds: [qa.teams.status.post]
+        actionClass: external-write
+        maxRisk: L3
+        environments: [playground, qa, prod]
+        approval: human
