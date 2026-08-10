@@ -15,6 +15,13 @@ export interface DeploymentReadiness {
   checks: ReadinessCheck[];
 }
 
+export interface PersistenceReadiness {
+  mode?: "sqlite-filesystem" | "postgres-supabase";
+  shared?: boolean;
+  stateReady?: boolean;
+  artifactsReady?: boolean;
+}
+
 function booleanEnv(name: string, fallback = false): boolean {
   const raw = process.env[name]?.trim().toLowerCase();
   if (!raw) return fallback;
@@ -41,19 +48,37 @@ function modelCredentialConfigured(): boolean {
 
 export function buildDeploymentReadiness(
   integrations: QaIntegrationStatus,
-  options: { statePath: string; artifactRoot: string; packCount: number },
+  options: {
+    statePath?: string;
+    artifactRoot?: string;
+    packCount: number;
+    persistence?: PersistenceReadiness;
+  },
 ): DeploymentReadiness {
   const mode = process.env.BM_DEPLOYMENT_MODE?.trim().toLowerCase() === "pilot" ? "pilot" : "development";
   const strict = mode === "pilot";
   const requireJiraWrite = booleanEnv("BM_PILOT_REQUIRE_JIRA_WRITE", false);
+  const shared = options.persistence?.shared === true || options.persistence?.mode === "postgres-supabase";
 
   const configuredStatePath = process.env.BM_STATE_DB_PATH?.trim();
   const configuredArtifactRoot = process.env.BM_ARTIFACT_ROOT?.trim();
-  const stateDirectory = dirname(resolve(options.statePath));
-  const artifactRoot = resolve(options.artifactRoot);
+  const stateDirectory = options.statePath ? dirname(resolve(options.statePath)) : undefined;
+  const artifactRoot = options.artifactRoot ? resolve(options.artifactRoot) : undefined;
   const modelReady = modelCredentialConfigured();
-  const stateReady = Boolean(configuredStatePath && isAbsolute(configuredStatePath) && checkWritableDirectory(stateDirectory));
-  const artifactReady = Boolean(configuredArtifactRoot && isAbsolute(configuredArtifactRoot) && checkWritableDirectory(artifactRoot));
+  const localStateReady = Boolean(
+    configuredStatePath
+    && isAbsolute(configuredStatePath)
+    && stateDirectory
+    && checkWritableDirectory(stateDirectory),
+  );
+  const localArtifactReady = Boolean(
+    configuredArtifactRoot
+    && isAbsolute(configuredArtifactRoot)
+    && artifactRoot
+    && checkWritableDirectory(artifactRoot),
+  );
+  const stateReady = shared ? options.persistence?.stateReady === true : localStateReady;
+  const artifactsReady = shared ? options.persistence?.artifactsReady === true : localArtifactReady;
   const trustedIdentityReady = process.env.BM_IDENTITY_MODE?.trim().toLowerCase() === "trusted-headers";
 
   const checks: ReadinessCheck[] = [
@@ -78,20 +103,28 @@ export function buildDeploymentReadiness(
         : "Pilot mode requires BM_IDENTITY_MODE=trusted-headers.",
     },
     {
-      id: "persistent-state-path",
+      id: shared ? "shared-postgres-state" : "persistent-state-path",
       ok: stateReady,
       required: strict,
-      message: stateReady
-        ? "Persistent state directory is configured and writable."
-        : "Pilot mode requires an absolute writable BM_STATE_DB_PATH.",
+      message: shared
+        ? stateReady
+          ? "Shared Postgres runtime state is reachable and schema-compatible."
+          : "Pilot shared mode requires reachable schema-compatible Postgres runtime state."
+        : stateReady
+          ? "Persistent state directory is configured and writable."
+          : "Pilot local mode requires an absolute writable BM_STATE_DB_PATH.",
     },
     {
-      id: "persistent-artifact-root",
-      ok: artifactReady,
+      id: shared ? "shared-artifact-storage" : "persistent-artifact-root",
+      ok: artifactsReady,
       required: strict,
-      message: artifactReady
-        ? "Persistent artifact root is configured and writable."
-        : "Pilot mode requires an absolute writable BM_ARTIFACT_ROOT.",
+      message: shared
+        ? artifactsReady
+          ? "Private shared artifact storage is reachable."
+          : "Pilot shared mode requires reachable private artifact storage."
+        : artifactsReady
+          ? "Persistent artifact root is configured and writable."
+          : "Pilot local mode requires an absolute writable BM_ARTIFACT_ROOT.",
     },
     {
       id: "jira-read-live",
