@@ -2,6 +2,8 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { CapabilityBroker } from "./capability-broker.js";
 import type { ExecutionContext } from "./capability-types.js";
+import { BitbucketReadAdapter } from "../qa/bitbucket-read-adapter.js";
+import { JiraReadAdapter } from "../qa/jira-read-adapter.js";
 import { QA_CAPABILITIES, QaMockAdapter } from "../qa/qa-capabilities.js";
 
 function context(environment: ExecutionContext["environment"] = "qa"): ExecutionContext {
@@ -18,7 +20,12 @@ function context(environment: ExecutionContext["environment"] = "qa"): Execution
 }
 
 function broker() {
-  return new CapabilityBroker(QA_CAPABILITIES, [new QaMockAdapter()]);
+  const mock = new QaMockAdapter();
+  return new CapabilityBroker(QA_CAPABILITIES, [
+    mock,
+    new JiraReadAdapter(mock),
+    new BitbucketReadAdapter(mock),
+  ]);
 }
 
 test("L0 QA reads are immediately executable", async () => {

@@ -17,7 +17,7 @@ export const QA_CAPABILITIES: CapabilityDefinition[] = [
     externalWrite: false,
     productionMutation: false,
     allowedEnvironments: ["playground", "qa", "prod"],
-    adapterId: "qa-mock-adapter",
+    adapterId: "qa-jira-read-adapter",
   },
   {
     id: "qa.bitbucket.change-impact.read",
@@ -30,7 +30,7 @@ export const QA_CAPABILITIES: CapabilityDefinition[] = [
     externalWrite: false,
     productionMutation: false,
     allowedEnvironments: ["playground", "qa", "prod"],
-    adapterId: "qa-mock-adapter",
+    adapterId: "qa-bitbucket-read-adapter",
   },
   {
     id: "qa.database.validation.read",
@@ -98,7 +98,7 @@ function storyFixture(projectId: string, storyId: string) {
       "Existing related behavior remains backward compatible.",
     ],
     source: "mock-adapter",
-    note: "Replace this adapter with the approved Jira MCP/REST adapter in the next integration milestone.",
+    note: "Configure approved server-side Jira credentials to enable the live read adapter.",
   };
 }
 
@@ -131,6 +131,7 @@ export class QaMockAdapter implements CapabilityAdapter {
             impactedAreas: ["frontend", "backend-api", "regression-suite"],
             repositoryProvider: "bitbucket",
             source: "mock-adapter",
+            note: "Configure approved server-side Bitbucket credentials and project repositories to enable the live read adapter.",
           },
         };
       case "qa.database.validation.read":
@@ -174,7 +175,7 @@ export class QaMockAdapter implements CapabilityAdapter {
               severity: payload.severity,
               storyId: payload.storyId,
             },
-            note: "Human approval was verified, but no Jira write occurred because the live Jira adapter is not connected.",
+            note: "Human approval was verified, but no Jira write occurred because the live Jira write adapter is not connected.",
           },
         };
       case "qa.teams.status.post":

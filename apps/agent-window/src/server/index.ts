@@ -5,11 +5,19 @@ import { createCopilotExpressHandler } from "@copilotkit/runtime/v2/express";
 import { buildCopilotRuntime } from "./copilot.js";
 import { PackRegistry } from "./pack-registry.js";
 import { CapabilityBroker } from "./platform/capability-broker.js";
+import { BitbucketReadAdapter } from "./qa/bitbucket-read-adapter.js";
+import { JiraReadAdapter } from "./qa/jira-read-adapter.js";
 import { QA_CAPABILITIES, QaMockAdapter } from "./qa/qa-capabilities.js";
+import { loadQaIntegrationStatus } from "./qa/qa-integration-config.js";
 
 const PORT = Number(process.env.PORT ?? 4000);
 const registry = new PackRegistry();
-const qaBroker = new CapabilityBroker(QA_CAPABILITIES, [new QaMockAdapter()]);
+const qaMockAdapter = new QaMockAdapter();
+const qaBroker = new CapabilityBroker(QA_CAPABILITIES, [
+  qaMockAdapter,
+  new JiraReadAdapter(qaMockAdapter),
+  new BitbucketReadAdapter(qaMockAdapter),
+]);
 const runtime = buildCopilotRuntime(registry, qaBroker);
 const app = express();
 
@@ -17,6 +25,7 @@ app.disable("x-powered-by");
 app.use(express.json({ limit: "1mb" }));
 
 app.get("/api/health", (_request, response) => {
+  const integrations = loadQaIntegrationStatus();
   response.json({
     status: "ok",
     service: "bm-agents-world-agent-window",
@@ -24,7 +33,14 @@ app.get("/api/health", (_request, response) => {
     agents: ["default", ...registry.packs.map((pack) => pack.id)],
     model: process.env.AI_MODEL ?? "openai:gpt-5.4-mini",
     qaCapabilityCount: qaBroker.listCapabilities().length,
-    qaAdapterMode: "mock",
+    qaAdapters: {
+      jira: integrations.jira.mode,
+      bitbucket: integrations.bitbucket.mode,
+      database: "mock",
+      playwright: "mock",
+      jiraWrite: "mock",
+      teams: "mock",
+    },
   });
 });
 
@@ -48,9 +64,13 @@ app.get("/api/packs/:packId", (request, response) => {
 
 app.get("/api/qa/capabilities", (_request, response) => {
   response.json({
-    mode: "mock",
+    integrations: loadQaIntegrationStatus(),
     capabilities: qaBroker.listCapabilities(),
   });
+});
+
+app.get("/api/qa/integrations", (_request, response) => {
+  response.json(loadQaIntegrationStatus());
 });
 
 app.get("/api/qa/actions/:actionId", (request, response) => {
@@ -108,8 +128,10 @@ if (existsSync(clientDirectory)) {
 }
 
 app.listen(PORT, "0.0.0.0", () => {
+  const integrations = loadQaIntegrationStatus();
   console.log(`[bm-agents-world] loaded ${registry.packs.length} agent packs`);
   console.log(`[bm-agents-world] runtime: http://localhost:${PORT}/api/copilotkit`);
   console.log(`[bm-agents-world] packs:   http://localhost:${PORT}/api/packs`);
-  console.log(`[bm-agents-world] qa capabilities: ${qaBroker.listCapabilities().length} (mock adapters)`);
+  console.log(`[bm-agents-world] qa capabilities: ${qaBroker.listCapabilities().length}`);
+  console.log(`[bm-agents-world] qa jira read: ${integrations.jira.mode}; bitbucket read: ${integrations.bitbucket.mode}`);
 });

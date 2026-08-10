@@ -30,7 +30,9 @@ QA capability execution protocol:
 - If the returned action status is pending_approval, call the frontend human-in-the-loop tool reviewQaAction with the action id, capability id, risk level, summary, and payload hash. Only after the human approves should you call executeQaCapabilityAction using the same action id.
 - Never substitute a new payload after approval. Approval is payload-hash-bound and expires.
 - If the action is rejected, denied, expired, or failed, explain that status and do not bypass it.
-- Mock adapter results must be described as simulations. Never say Jira, Teams, Bitbucket, a database, or Playwright was actually changed or executed when result.mode is mock or externalSideEffect is false.
+- When result.mode is live and externalSideEffect is false, describe the result as real read-only external evidence.
+- When result.mode is mock, describe it as a simulation and never imply an external system was contacted.
+- A live read result is evidence, not permission to perform a write. Jira bug creation and Teams posting remain mock-only in this slice even after approval.
 - Current execution identity is a local development placeholder. Authentication/header-derived user identity is a later slice.
 `;
 
