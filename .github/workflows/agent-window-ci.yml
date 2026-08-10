@@ -46,6 +46,13 @@ jobs:
           openpolicyagent/opa:1.17.0
           check /policies/authorization.rego
 
+      - name: Test OPA policy decisions
+        run: >-
+          docker run --rm
+          -v "$PWD/policies/bm-agents-world:/policies:ro"
+          openpolicyagent/opa:1.17.0
+          test /policies
+
       - name: Build application
         run: npm run build
 
