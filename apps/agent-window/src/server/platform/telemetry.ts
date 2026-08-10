@@ -16,6 +16,10 @@ function truthy(value: string | undefined): boolean {
   return ["1", "true", "yes", "on"].includes(value?.trim().toLowerCase() ?? "");
 }
 
+function isPromiseLike(value: unknown): value is PromiseLike<unknown> {
+  return Boolean(value && typeof value === "object" && "then" in value && typeof (value as { then?: unknown }).then === "function");
+}
+
 export function telemetryEnabled(): boolean {
   if (process.env.OTEL_SDK_DISABLED?.trim().toLowerCase() === "true") return false;
   return truthy(process.env.BM_OTEL_ENABLED)
@@ -78,8 +82,8 @@ export function startActiveSpan<T>(
   return tracer.startActiveSpan(name, { attributes: safeAttributes(attributes) }, (span) => {
     try {
       const result = fn(span);
-      if (result && typeof (result as PromiseLike<unknown>).then === "function") {
-        return (Promise.resolve(result as PromiseLike<unknown>)
+      if (isPromiseLike(result)) {
+        return (Promise.resolve(result)
           .then((value) => {
             span.setStatus({ code: SpanStatusCode.OK });
             return value;
