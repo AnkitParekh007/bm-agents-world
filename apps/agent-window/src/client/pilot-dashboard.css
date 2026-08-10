@@ -52,12 +52,13 @@
 }
 .pilot-secondary-metrics strong { color: #dce0ec; }
 .pilot-secondary-metrics .pilot-telemetry-pending { color: #f1c77b; border-color: rgba(241,199,123,.2); }
+.pilot-secondary-metrics .pilot-telemetry-live { color: #89e6ba; border-color: rgba(89,213,152,.22); }
 
 .pilot-run-list { border-top: 1px solid rgba(255,255,255,.065); }
 .pilot-run-header,
 .pilot-run-row {
   display: grid;
-  grid-template-columns: 1.1fr .9fr .8fr .8fr .9fr 1fr;
+  grid-template-columns: 1.05fr .85fr .8fr .75fr 1fr .85fr 1fr;
   gap: 10px;
   align-items: center;
 }
@@ -107,7 +108,7 @@
   .pilot-metric-grid { grid-template-columns: repeat(4, 1fr); }
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 1180px) {
   .pilot-run-header { display: none; }
   .pilot-run-row { grid-template-columns: repeat(3, 1fr); }
 }
