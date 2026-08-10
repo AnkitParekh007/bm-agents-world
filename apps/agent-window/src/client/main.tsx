@@ -13,9 +13,9 @@ createRoot(root).render(
     <CopilotKit
       runtimeUrl="/api/copilotkit"
       useSingleEndpoint
-      showDevConsole="auto"
-      onError={({ error, code }) => {
-        console.error("CopilotKit error", code, error);
+      showDevConsole
+      onError={({ error }) => {
+        console.error("CopilotKit error", error);
       }}
     >
       <App />
