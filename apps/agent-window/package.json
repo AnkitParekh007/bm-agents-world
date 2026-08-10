@@ -9,6 +9,7 @@
     "dev:all": "concurrently -k -n api,ui -c auto \"npm:dev\" \"npm:dev:client\"",
     "build": "npm run typecheck && vite build",
     "typecheck": "tsc --noEmit",
+    "test": "tsx --test src/server/platform/capability-broker.test.ts",
     "start": "tsx src/server/index.ts"
   },
   "dependencies": {
