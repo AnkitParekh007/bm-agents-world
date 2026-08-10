@@ -14,6 +14,23 @@ const MAX_NETWORK_EVENTS = 100;
 const MAX_CONSOLE_ERRORS = 30;
 const ALLOWED_SUITES = new Set(["story-smoke"]);
 
+function redactNetworkUrl(raw: string): string {
+  try {
+    const url = new URL(raw);
+    return `${url.origin}${url.pathname}`.slice(0, 2000);
+  } catch {
+    return raw.split("?", 1)[0]?.slice(0, 2000) ?? "invalid-url";
+  }
+}
+
+function sameOrigin(left: string, right: string): boolean {
+  try {
+    return new URL(left).origin === new URL(right).origin;
+  } catch {
+    return false;
+  }
+}
+
 export interface BrowserRunRequest {
   targetUrl: string;
   timeoutMs: number;
@@ -68,7 +85,7 @@ export class PlaywrightBrowserExecutor implements BrowserExecutor {
         if (network.length >= MAX_NETWORK_EVENTS) return;
         network.push({
           method: response.request().method(),
-          url: response.url().slice(0, 2000),
+          url: redactNetworkUrl(response.url()),
           status: response.status(),
         });
       });
@@ -76,7 +93,7 @@ export class PlaywrightBrowserExecutor implements BrowserExecutor {
         if (network.length >= MAX_NETWORK_EVENTS) return;
         network.push({
           method: requestFailure.method(),
-          url: requestFailure.url().slice(0, 2000),
+          url: redactNetworkUrl(requestFailure.url()),
           failure: requestFailure.failure()?.errorText?.slice(0, 500) ?? "request_failed",
         });
       });
@@ -89,6 +106,7 @@ export class PlaywrightBrowserExecutor implements BrowserExecutor {
 
       const title = await page.title();
       const bodyVisible = await page.locator("body").isVisible().catch(() => false);
+      const finalUrl = page.url();
       const screenshot = await page.screenshot({ fullPage: true, animations: "disabled" });
       await context.tracing.stop({ path: tracePath });
       const trace = readFileSync(tracePath);
@@ -98,6 +116,13 @@ export class PlaywrightBrowserExecutor implements BrowserExecutor {
           id: "document-response",
           passed: status !== undefined && status < 400,
           detail: status === undefined ? "Navigation produced no document response." : `Document returned HTTP ${status}.`,
+        },
+        {
+          id: "target-origin",
+          passed: sameOrigin(request.targetUrl, finalUrl),
+          detail: sameOrigin(request.targetUrl, finalUrl)
+            ? "Top-level navigation remained on the configured target origin."
+            : `Top-level navigation left the configured target origin and ended at ${redactNetworkUrl(finalUrl)}.`,
         },
         {
           id: "body-visible",
@@ -115,8 +140,8 @@ export class PlaywrightBrowserExecutor implements BrowserExecutor {
       return {
         startedAt,
         finishedAt: new Date().toISOString(),
-        targetUrl: request.targetUrl,
-        finalUrl: page.url(),
+        targetUrl: redactNetworkUrl(request.targetUrl),
+        finalUrl: redactNetworkUrl(finalUrl),
         pageTitle: title,
         httpStatus: status,
         checks,
@@ -224,6 +249,7 @@ export class PlaywrightWorkerAdapter implements CapabilityAdapter {
           finalUrl: evidence.finalUrl,
           requests: evidence.network,
           boundedAt: MAX_NETWORK_EVENTS,
+          queryStringsRemoved: true,
         },
         { classification: "internal-qa-evidence", redacted: true },
       ));
