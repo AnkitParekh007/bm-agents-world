@@ -1,0 +1,35 @@
+name: Agent Window CI
+
+on:
+  push:
+    branches:
+      - main
+      - agent/**
+  pull_request:
+    paths:
+      - "apps/agent-window/**"
+      - "packs/**"
+      - "package.json"
+      - ".github/workflows/agent-window-ci.yml"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Build
+        run: npm run build
