@@ -8,7 +8,7 @@ class FakeStorageBucket {
 
   async upload(path: string, value: unknown) {
     const buffer = Buffer.isBuffer(value)
-      ? value
+      ? Buffer.from(value)
       : value instanceof Blob
         ? Buffer.from(await value.arrayBuffer())
         : Buffer.from(String(value));
@@ -20,7 +20,13 @@ class FakeStorageBucket {
   async download(path: string) {
     const value = this.objects.get(path);
     if (!value) return { data: null, error: new Error("not found") };
-    return { data: new Blob([value]), error: null };
+    const bytes = Uint8Array.from(value);
+    return {
+      data: {
+        arrayBuffer: async () => bytes.buffer,
+      } as Blob,
+      error: null,
+    };
   }
 
   async list() {
@@ -85,5 +91,29 @@ test("Supabase artifact repository rejects wrong expected artifact types", async
     fakeClient(bucket),
   );
   const written = await store.writeJson("8edddce4-88ad-4784-8187-a132347334b1", "evidence-manifest", "manifest.json", { items: [] });
+  assert.equal(await store.readJson(written.id, "bug-draft"), undefined);
+});
+
+test("Supabase artifact repository rejects bytes that no longer match immutable metadata", async () => {
+  const bucket = new FakeStorageBucket();
+  const store = new SupabaseArtifactStore(
+    "https://example.supabase.co",
+    "sb_secret_test_only",
+    "bm-agents-world-evidence",
+    fakeClient(bucket),
+  );
+  const written = await store.writeJson(
+    "3edc1058-ae2a-46c6-ad92-258238ef49d5",
+    "bug-draft",
+    "bug-draft.json",
+    { title: "Original", parentIssue: "PCC-303" },
+  );
+
+  bucket.objects.set(
+    `artifacts/${written.id}/bug-draft.json`,
+    Buffer.from(JSON.stringify({ title: "Tampered", parentIssue: "PCC-303" })),
+  );
+
+  assert.equal(await store.readBuffer(written.id), undefined);
   assert.equal(await store.readJson(written.id, "bug-draft"), undefined);
 });
