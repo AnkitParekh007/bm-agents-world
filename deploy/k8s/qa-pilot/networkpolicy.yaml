@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: bm-agents-world-trusted-gateway-only
+  namespace: bm-agents-world
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: bm-agents-world
+      app.kubernetes.io/component: agent-window
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              bm-agents-world.io/trusted-gateway: "true"
+          podSelector:
+            matchLabels:
+              bm-agents-world.io/trusted-gateway: "true"
+      ports:
+        - protocol: TCP
+          port: 4000
