@@ -57,6 +57,14 @@ function liveIntegrations(writeMode: "live" | "mock" = "mock"): QaIntegrationSta
   };
 }
 
+const healthyCentralPolicy = {
+  configured: true,
+  mode: "opa",
+  healthy: true,
+  connectorRegistryReady: true,
+  failClosed: true,
+};
+
 test("pilot readiness requires trusted identity, persistent storage, live reads, browser, and model credential", () => {
   const before = snapshotEnv();
   const root = mkdtempSync(join(tmpdir(), "bm-pilot-ready-"));
@@ -77,13 +85,14 @@ test("pilot readiness requires trusted identity, persistent storage, live reads,
     assert.equal(readiness.mode, "pilot");
     assert.equal(readiness.ready, true);
     assert.equal(readiness.checks.find((item) => item.id === "jira-write")?.required, false);
+    assert.equal(readiness.checks.find((item) => item.id === "central-policy-health")?.required, false);
   } finally {
     restoreEnv(before);
     rmSync(root, { recursive: true, force: true });
   }
 });
 
-test("shared pilot readiness uses Postgres and object-storage health instead of local paths", () => {
+test("shared pilot readiness uses Postgres, object storage, and healthy centralized policy", () => {
   const before = snapshotEnv();
   try {
     process.env.BM_DEPLOYMENT_MODE = "pilot";
@@ -101,10 +110,13 @@ test("shared pilot readiness uses Postgres and object-storage health instead of 
         stateReady: true,
         artifactsReady: true,
       },
+      policy: healthyCentralPolicy,
     });
     assert.equal(ready.ready, true);
     assert.equal(ready.checks.find((item) => item.id === "shared-postgres-state")?.ok, true);
     assert.equal(ready.checks.find((item) => item.id === "shared-artifact-storage")?.ok, true);
+    assert.equal(ready.checks.find((item) => item.id === "central-policy-health")?.ok, true);
+    assert.equal(ready.checks.find((item) => item.id === "approved-connector-registry")?.ok, true);
 
     const unavailable = buildDeploymentReadiness(liveIntegrations(), {
       packCount: 5,
@@ -114,9 +126,44 @@ test("shared pilot readiness uses Postgres and object-storage health instead of 
         stateReady: false,
         artifactsReady: true,
       },
+      policy: healthyCentralPolicy,
     });
     assert.equal(unavailable.ready, false);
     assert.equal(unavailable.checks.find((item) => item.id === "shared-postgres-state")?.required, true);
+  } finally {
+    restoreEnv(before);
+  }
+});
+
+test("shared pilot readiness fails closed when OPA or connector registry health is missing", () => {
+  const before = snapshotEnv();
+  try {
+    process.env.BM_DEPLOYMENT_MODE = "pilot";
+    process.env.BM_IDENTITY_MODE = "trusted-headers";
+    process.env.AI_MODEL = "openai:gpt-5.4-mini";
+    process.env.OPENAI_API_KEY = "test-key-not-real";
+
+    const readiness = buildDeploymentReadiness(liveIntegrations(), {
+      packCount: 5,
+      persistence: {
+        mode: "postgres-supabase",
+        shared: true,
+        stateReady: true,
+        artifactsReady: true,
+      },
+      policy: {
+        configured: true,
+        mode: "opa",
+        healthy: false,
+        connectorRegistryReady: false,
+        failClosed: true,
+      },
+    });
+
+    assert.equal(readiness.ready, false);
+    assert.equal(readiness.checks.find((item) => item.id === "central-policy-health")?.required, true);
+    assert.equal(readiness.checks.find((item) => item.id === "central-policy-health")?.ok, false);
+    assert.equal(readiness.checks.find((item) => item.id === "approved-connector-registry")?.ok, false);
   } finally {
     restoreEnv(before);
   }
