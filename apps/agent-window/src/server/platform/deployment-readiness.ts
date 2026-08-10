@@ -47,8 +47,15 @@ export function buildDeploymentReadiness(
   const strict = mode === "pilot";
   const requireJiraWrite = booleanEnv("BM_PILOT_REQUIRE_JIRA_WRITE", false);
 
+  const configuredStatePath = process.env.BM_STATE_DB_PATH?.trim();
+  const configuredArtifactRoot = process.env.BM_ARTIFACT_ROOT?.trim();
   const stateDirectory = dirname(resolve(options.statePath));
   const artifactRoot = resolve(options.artifactRoot);
+  const modelReady = modelCredentialConfigured();
+  const stateReady = Boolean(configuredStatePath && isAbsolute(configuredStatePath) && checkWritableDirectory(stateDirectory));
+  const artifactReady = Boolean(configuredArtifactRoot && isAbsolute(configuredArtifactRoot) && checkWritableDirectory(artifactRoot));
+  const trustedIdentityReady = process.env.BM_IDENTITY_MODE?.trim().toLowerCase() === "trusted-headers";
+
   const checks: ReadinessCheck[] = [
     {
       id: "packs-loaded",
@@ -58,31 +65,31 @@ export function buildDeploymentReadiness(
     },
     {
       id: "model-credential",
-      ok: modelCredentialConfigured(),
+      ok: modelReady,
       required: strict,
-      message: modelCredentialConfigured() ? "Model provider credential is configured." : "Model provider credential is not configured.",
+      message: modelReady ? "Model provider credential is configured." : "Model provider credential is not configured.",
     },
     {
       id: "trusted-identity",
-      ok: process.env.BM_IDENTITY_MODE?.trim().toLowerCase() === "trusted-headers",
+      ok: trustedIdentityReady,
       required: strict,
-      message: process.env.BM_IDENTITY_MODE?.trim().toLowerCase() === "trusted-headers"
+      message: trustedIdentityReady
         ? "Trusted gateway identity mode is enabled."
         : "Pilot mode requires BM_IDENTITY_MODE=trusted-headers.",
     },
     {
       id: "persistent-state-path",
-      ok: Boolean(process.env.BM_STATE_DB_PATH?.trim()) && isAbsolute(options.statePath) && checkWritableDirectory(stateDirectory),
+      ok: stateReady,
       required: strict,
-      message: Boolean(process.env.BM_STATE_DB_PATH?.trim()) && isAbsolute(options.statePath) && checkWritableDirectory(stateDirectory)
+      message: stateReady
         ? "Persistent state directory is configured and writable."
         : "Pilot mode requires an absolute writable BM_STATE_DB_PATH.",
     },
     {
       id: "persistent-artifact-root",
-      ok: Boolean(process.env.BM_ARTIFACT_ROOT?.trim()) && isAbsolute(options.artifactRoot) && checkWritableDirectory(artifactRoot),
+      ok: artifactReady,
       required: strict,
-      message: Boolean(process.env.BM_ARTIFACT_ROOT?.trim()) && isAbsolute(options.artifactRoot) && checkWritableDirectory(artifactRoot)
+      message: artifactReady
         ? "Persistent artifact root is configured and writable."
         : "Pilot mode requires an absolute writable BM_ARTIFACT_ROOT.",
     },
