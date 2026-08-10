@@ -1,7 +1,7 @@
 import { BuiltInAgent, CopilotRuntime, defineTool } from "@copilotkit/runtime/v2";
 import { z } from "zod";
 import type { AgentTelemetryService } from "./platform/agent-telemetry.js";
-import type { CapabilityBroker } from "./platform/capability-broker.js";
+import type { CapabilityBrokerContract } from "./platform/capability-broker-contract.js";
 import type { AgentPack } from "./pack-registry.js";
 import { PackRegistry } from "./pack-registry.js";
 import { buildQaTools, QA_CAPABILITY_PROMPT } from "./qa/qa-tools.js";
@@ -150,7 +150,7 @@ function worldTools(registry: PackRegistry) {
 
 export function buildCopilotRuntime(
   registry: PackRegistry,
-  qaBroker: CapabilityBroker,
+  qaBroker: CapabilityBrokerContract,
   telemetry?: AgentTelemetryService,
 ): CopilotRuntime {
   const agents: Record<string, BuiltInAgent> = {};
