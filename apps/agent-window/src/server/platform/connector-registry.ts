@@ -1,7 +1,7 @@
 import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import YAML from "yaml";
-import type { ActionStatus, CapabilityDefinition, EnvironmentName, RiskLevel } from "./capability-types.js";
+import type { CapabilityDefinition, EnvironmentName, RiskLevel } from "./capability-types.js";
 
 export type ConnectorStatus = "approved" | "pilot" | "disabled";
 export type ConnectorKind = "mcp" | "native" | "native-or-mcp";
@@ -33,6 +33,8 @@ export interface ConnectorAdmission {
   tool?: ApprovedConnectorTool;
   reason: string;
 }
+
+const RISK_ORDER: RiskLevel[] = ["L0", "L1", "L2", "L3", "L4"];
 
 function repoRoot(): string {
   const candidates = [process.env.BM_AGENTS_REPO_ROOT, resolve(process.cwd(), "../.."), process.cwd()]
@@ -111,6 +113,9 @@ export class ApprovedConnectorRegistry {
     }
     if (tool.actionClass !== definition.actionClass) {
       return { allowed: false, connector, tool, reason: `Connector registry action class does not match ${definition.id}.` };
+    }
+    if (RISK_ORDER.indexOf(definition.riskLevel) > RISK_ORDER.indexOf(tool.maxRisk)) {
+      return { allowed: false, connector, tool, reason: `Capability ${definition.id} exceeds the approved ${tool.maxRisk} risk ceiling for ${connector.id}.${tool.id}.` };
     }
     return { allowed: true, connector, tool, reason: `${connector.id}.${tool.id} is centrally approved.` };
   }
