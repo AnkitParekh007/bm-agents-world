@@ -113,9 +113,15 @@ create table if not exists bm_agents_world.agent_run_usage (
 create index if not exists idx_bm_agent_usage_tenant_started
   on bm_agents_world.agent_run_usage(tenant_id, started_at desc);
 
+-- AG-UI lifecycle telemetry is intentionally fire-and-forget so it cannot
+-- block model streaming. A QA-run link can therefore arrive milliseconds
+-- before either side's persistence callback. Keep this correlation table free
+-- of foreign keys; the application only reads links that successfully join to
+-- an existing agent_run_usage row, so incomplete links are harmless and do not
+-- create a cross-pod ordering race.
 create table if not exists bm_agents_world.qa_run_agent_links (
-  qa_run_id uuid not null references bm_agents_world.runs(run_id) on delete cascade,
-  agent_run_id text not null references bm_agents_world.agent_run_usage(agent_run_id) on delete cascade,
+  qa_run_id uuid not null,
+  agent_run_id text not null,
   linked_at timestamptz not null,
   primary key(qa_run_id, agent_run_id)
 );
