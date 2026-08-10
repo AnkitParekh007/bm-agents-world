@@ -1,0 +1,12 @@
+{
+  "modelUsageStatus": "partial",
+  "modelUsageCoverage": 0.75,
+  "totalModelCalls": 12,
+  "totalInputTokens": 18240,
+  "totalOutputTokens": 3970,
+  "totalTokens": 22210,
+  "estimatedCostUsd": 0.1842,
+  "costStatus": "configured_estimate",
+  "averageCapabilityDurationMs": 1380,
+  "measuredCapabilityExecutions": 21
+}
