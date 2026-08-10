@@ -25,7 +25,7 @@
       button = document.createElement("button");
       button.className = "theme-toggle";
       button.type = "button";
-      document.body.appendChild(button);
+      (document.querySelector(".book-header") || document.body).appendChild(button);
       button.addEventListener("click", function () {
         var current = document.documentElement.dataset.bmThemePreference || "system";
         var next = themes[(themes.indexOf(current) + 1) % themes.length];
@@ -97,17 +97,24 @@
   function buildToc() {
     var old = document.querySelector(".bm-toc");
     if (old) old.remove();
-    var headings = Array.from(document.querySelectorAll(".markdown-section h2[id],.markdown-section h3[id]"));
+    var headings = Array.from(document.querySelectorAll(".markdown-section h1[id],.markdown-section h2[id],.markdown-section h3[id]"));
+    if (!headings.length) {
+      var pageTitle = document.querySelector(".markdown-section h1");
+      if (pageTitle) {
+        if (!pageTitle.id) pageTitle.id = "page-top";
+        headings = [pageTitle];
+      }
+    }
     if (!headings.length) return;
     var toc = document.createElement("nav");
     toc.className = "bm-toc";
     toc.setAttribute("aria-label", "On this page");
-    toc.innerHTML = '<div class="bm-toc-title">On this page</div>';
+    toc.innerHTML = '<div class="bm-toc-title">Page minimap</div><div class="bm-toc-track" aria-hidden="true"><span></span></div>';
     var links = [];
     headings.forEach(function (heading) {
       var link = document.createElement("a");
       link.href = "#" + heading.id;
-      link.className = heading.tagName === "H3" ? "toc-h3" : "toc-h2";
+      link.className = heading.tagName === "H3" ? "toc-h3" : heading.tagName === "H1" ? "toc-h1" : "toc-h2";
       link.textContent = heading.childNodes[0] ? heading.childNodes[0].textContent.trim() : heading.textContent.trim();
       toc.appendChild(link);
       links.push({ heading: heading, link: link });
@@ -119,6 +126,11 @@
         if (item.heading.getBoundingClientRect().top <= 190) current = item;
       });
       links.forEach(function (item) { item.link.classList.toggle("active", item === current); });
+      var progress = toc.querySelector(".bm-toc-track span");
+      if (progress) {
+        var maximum = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+        progress.style.height = Math.min(100, Math.max(4, window.scrollY / maximum * 100)) + "%";
+      }
     }
     if (window.bmTocScrollHandler) window.removeEventListener("scroll", window.bmTocScrollHandler);
     window.bmTocScrollHandler = activateFromPosition;
@@ -211,15 +223,135 @@
     article.appendChild(footer);
   }
 
+  function buildPageNavigation() {
+    var article = document.querySelector(".markdown-section");
+    if (!article || article.querySelector(".bm-page-nav")) return;
+    var links = Array.from(document.querySelectorAll(".book-summary ul.summary li a[href]"));
+    var activeIndex = links.findIndex(function (link) { return link.closest("li") && link.closest("li").classList.contains("active"); });
+    if (activeIndex < 0) return;
+    var previous = links[activeIndex - 1];
+    var next = links[activeIndex + 1];
+    if (!previous && !next) return;
+    var navigation = document.createElement("nav");
+    navigation.className = "bm-page-nav";
+    navigation.setAttribute("aria-label", "Documentation pages");
+    function card(link, direction) {
+      if (!link) return '<span class="bm-page-nav-spacer"></span>';
+      var anchor = document.createElement("a");
+      anchor.className = "bm-page-nav-card bm-page-nav-" + direction;
+      anchor.href = link.href;
+      var eyebrow = document.createElement("span");
+      eyebrow.className = "bm-page-nav-label";
+      eyebrow.textContent = direction === "previous" ? "Previous" : "Next";
+      var title = document.createElement("strong");
+      title.textContent = link.textContent.trim();
+      anchor.appendChild(eyebrow);
+      anchor.appendChild(title);
+      return anchor;
+    }
+    var previousCard = card(previous, "previous");
+    var nextCard = card(next, "next");
+    if (typeof previousCard === "string") navigation.insertAdjacentHTML("beforeend", previousCard); else navigation.appendChild(previousCard);
+    if (typeof nextCard === "string") navigation.insertAdjacentHTML("beforeend", nextCard); else navigation.appendChild(nextCard);
+    var footer = article.querySelector(".bm-doc-footer");
+    article.insertBefore(navigation, footer || null);
+  }
+
+  function installHeaderSearch() {
+    var header = document.querySelector(".book-header");
+    if (!header || header.querySelector(".bm-search-trigger")) return;
+    var trigger = document.createElement("button");
+    trigger.type = "button";
+    trigger.className = "bm-search-trigger";
+    trigger.innerHTML = '<span class="bm-search-icon" aria-hidden="true"></span><span class="bm-search-placeholder">Search documentation...</span><kbd>Ctrl K</kbd>';
+    trigger.setAttribute("aria-label", "Search documentation");
+    header.appendChild(trigger);
+
+    var modal = document.createElement("div");
+    modal.className = "bm-search-modal";
+    modal.hidden = true;
+    modal.innerHTML = '<div class="bm-search-backdrop"></div><section class="bm-search-dialog" role="dialog" aria-modal="true" aria-label="Search documentation"><div class="bm-search-input-row"><span class="bm-search-icon" aria-hidden="true"></span><input type="search" autocomplete="off" placeholder="Search documentation" aria-label="Search documentation"><kbd>Esc</kbd></div><div class="bm-search-results"><div class="bm-search-empty">Start typing to search every documentation page.</div></div><footer><span>Use arrow keys to navigate</span><span>Enter to open</span></footer></section>';
+    document.body.appendChild(modal);
+    var input = modal.querySelector("input");
+    var results = modal.querySelector(".bm-search-results");
+    var searchDocuments = [];
+    var selected = -1;
+
+    function close() {
+      modal.hidden = true;
+      document.body.classList.remove("bm-search-open");
+      trigger.focus();
+    }
+    function open() {
+      modal.hidden = false;
+      document.body.classList.add("bm-search-open");
+      input.focus();
+      input.select();
+      if (!searchDocuments.length) {
+        var basePath = window.gitbook && gitbook.state ? gitbook.state.basePath || "." : ".";
+        fetch(new URL(basePath.replace(/\/$/, "") + "/search_index.json", window.location.href)).then(function (response) { return response.json(); }).then(function (payload) {
+          var store = payload.store || {};
+          searchDocuments = Object.keys(store).map(function (key) { return store[key]; });
+          if (input.value.trim()) render(input.value);
+        }).catch(function () { results.innerHTML = '<div class="bm-search-empty">Search index could not be loaded.</div>'; });
+      }
+    }
+    function render(value) {
+      var terms = value.toLowerCase().trim().split(/\s+/).filter(Boolean);
+      selected = -1;
+      results.innerHTML = "";
+      if (!terms.length) {
+        results.innerHTML = '<div class="bm-search-empty">Start typing to search every documentation page.</div>';
+        return;
+      }
+      var matches = searchDocuments.map(function (document) {
+        var title = (document.title || "Untitled").toLowerCase();
+        var body = (document.body || "").toLowerCase();
+        var score = terms.reduce(function (total, term) { return total + (title.indexOf(term) >= 0 ? 8 : 0) + (body.indexOf(term) >= 0 ? 1 : 0); }, 0);
+        return { document: document, score: score };
+      }).filter(function (item) { return item.score > 0; }).sort(function (a, b) { return b.score - a.score; }).slice(0, 8);
+      if (!matches.length) {
+        results.innerHTML = '<div class="bm-search-empty">No documentation matched your search.</div>';
+        return;
+      }
+      matches.forEach(function (item) {
+        var link = document.createElement("a");
+        link.className = "bm-search-result";
+        var basePath = window.gitbook && gitbook.state ? gitbook.state.basePath || "." : ".";
+        link.href = new URL(basePath.replace(/\/$/, "") + "/" + item.document.url.replace(/^\.\//, ""), window.location.href).href;
+        var title = document.createElement("strong");
+        title.textContent = item.document.title || "Untitled";
+        var excerpt = document.createElement("span");
+        var body = (item.document.body || "").replace(/\s+/g, " ").trim();
+        excerpt.textContent = body.slice(0, 150) + (body.length > 150 ? "..." : "");
+        link.appendChild(title);
+        link.appendChild(excerpt);
+        results.appendChild(link);
+      });
+    }
+    function select(offset) {
+      var options = Array.from(results.querySelectorAll(".bm-search-result"));
+      if (!options.length) return;
+      selected = (selected + offset + options.length) % options.length;
+      options.forEach(function (option, index) { option.classList.toggle("selected", index === selected); });
+      options[selected].scrollIntoView({ block: "nearest" });
+    }
+    trigger.addEventListener("click", open);
+    modal.querySelector(".bm-search-backdrop").addEventListener("click", close);
+    input.addEventListener("input", function () { render(input.value); });
+    input.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") { event.preventDefault(); close(); }
+      if (event.key === "ArrowDown") { event.preventDefault(); select(1); }
+      if (event.key === "ArrowUp") { event.preventDefault(); select(-1); }
+      if (event.key === "Enter" && selected >= 0) { event.preventDefault(); results.querySelectorAll(".bm-search-result")[selected].click(); }
+    });
+    window.bmOpenSearch = open;
+  }
+
   function focusSearch(event) {
     if (!(event.ctrlKey || event.metaKey) || event.key.toLowerCase() !== "k") return;
     event.preventDefault();
-    var searchButton = document.querySelector(".js-toolbar-action[aria-label*='Search'], a[href='#search']");
-    if (searchButton) searchButton.click();
-    window.setTimeout(function () {
-      var input = document.querySelector("#book-search-input input, .book-search input");
-      if (input) input.focus();
-    }, 80);
+    if (window.bmOpenSearch) window.bmOpenSearch();
   }
 
   function loadMermaid() {
@@ -261,6 +393,7 @@
 
   function enhancePage() {
     installThemeToggle();
+    installHeaderSearch();
     enhanceCode();
     enhanceHeadings();
     buildToc();
@@ -268,6 +401,7 @@
     enhanceTabs();
     enhanceExternalLinks();
     buildFooter();
+    buildPageNavigation();
     renderMermaid(false);
   }
 
