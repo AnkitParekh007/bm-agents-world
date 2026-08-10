@@ -3,6 +3,7 @@ import test from "node:test";
 import { AsyncCapabilityBroker, type AsyncCapabilityStore } from "./async-capability-broker.js";
 import type { CapabilityRun } from "./capability-store.js";
 import type { AuditEvent, CapabilityAction, ExecutionContext } from "./capability-types.js";
+import { JiraReadAdapter } from "../qa/jira-read-adapter.js";
 import { QA_CAPABILITIES, QaMockAdapter } from "../qa/qa-capabilities.js";
 
 class MemoryAsyncStore implements AsyncCapabilityStore {
@@ -72,7 +73,11 @@ function context(environment: ExecutionContext["environment"] = "qa"): Execution
 }
 
 function broker(store: AsyncCapabilityStore) {
-  return new AsyncCapabilityBroker(QA_CAPABILITIES, [new QaMockAdapter()], store);
+  const mock = new QaMockAdapter();
+  return new AsyncCapabilityBroker(QA_CAPABILITIES, [
+    mock,
+    new JiraReadAdapter(mock),
+  ], store);
 }
 
 test("shared async broker preserves automatic L0 execution", async () => {
