@@ -4,6 +4,8 @@ apps/agent-window/sandbox/
 apps/agent-window/dist/
 apps/agent-window/.env
 apps/agent-window/.bm-agents-runtime/
+apps/agent-window/.playwright-auth/
+playwright/.auth/
 .bm-agents-runtime/
 *.sqlite
 *.sqlite-*

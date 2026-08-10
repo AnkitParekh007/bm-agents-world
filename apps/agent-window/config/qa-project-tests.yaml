@@ -1,0 +1,48 @@
+version: 1
+projects:
+  PCC:
+    identity:
+      storageStateEnv: QA_PCC_PLAYWRIGHT_STORAGE_STATE
+    suites:
+      story-smoke:
+        cases:
+          - id: pcc-shell
+            title: PCC application shell
+            baseline: true
+            pathPrefixes: []
+            steps:
+              - { type: goto, path: "/" }
+              - { type: expectVisible, selector: "body" }
+  SOP:
+    identity:
+      storageStateEnv: QA_SOP_PLAYWRIGHT_STORAGE_STATE
+    suites:
+      story-smoke:
+        cases:
+          - id: sop-shell
+            title: SOP application shell
+            baseline: true
+            pathPrefixes: []
+            steps:
+              - { type: goto, path: "/" }
+              - { type: expectVisible, selector: "body" }
+  DataBridge:
+    identity:
+      storageStateEnv: QA_DATABRIDGE_PLAYWRIGHT_STORAGE_STATE
+    suites:
+      story-smoke:
+        cases:
+          - id: databridge-shell
+            title: DataBridge application shell
+            baseline: true
+            pathPrefixes: []
+            steps:
+              - { type: goto, path: "/" }
+              - { type: expectVisible, selector: "body" }
+
+# Add project-specific cases under each suite. A case is selected when it is
+# baseline=true or when any changed file starts with one of its pathPrefixes.
+# Supported steps are intentionally declarative and read-oriented:
+#   goto, expectVisible, expectText, expectUrlContains.
+# The agent can select scope via changedFiles, but cannot submit arbitrary code,
+# selectors, URLs, credentials, or test files at runtime.
