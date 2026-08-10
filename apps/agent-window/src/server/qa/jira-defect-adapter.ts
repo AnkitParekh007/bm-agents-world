@@ -5,7 +5,7 @@ import type {
   CapabilityDefinition,
   ExecutionContext,
 } from "../platform/capability-types.js";
-import type { ArtifactStore, StoredArtifact } from "../platform/artifact-store.js";
+import type { ArtifactRepository, StoredArtifact } from "../platform/artifact-store.js";
 import { safeJsonRequest } from "../platform/safe-http.js";
 import { jiraAuthorizationHeader, loadQaIntegrationStatus } from "./qa-integration-config.js";
 
@@ -136,15 +136,15 @@ function bulletList(items: string[]) {
   };
 }
 
-function loadDraft(
-  artifacts: ArtifactStore,
+async function loadDraft(
+  artifacts: ArtifactRepository,
   payload: Record<string, unknown>,
-): { artifact: StoredArtifact; draft: BugDraft } {
+): Promise<{ artifact: StoredArtifact; draft: BugDraft }> {
   const id = cleanText(payload.bugDraftArtifactId, 100);
   const expectedSha = cleanText(payload.bugDraftSha256, 128).toLowerCase();
   if (!id || !expectedSha) throw new Error("bugDraftArtifactId and bugDraftSha256 are required");
 
-  const loaded = artifacts.readJson<BugDraft>(id, "bug-draft");
+  const loaded = await artifacts.readJson<BugDraft>(id, "bug-draft");
   if (!loaded) throw new Error("Bug draft artifact was not found or is not a valid bug-draft JSON artifact");
   if (loaded.record.sha256.toLowerCase() !== expectedSha) {
     throw new Error("Bug draft SHA-256 does not match the immutable artifact");
@@ -171,11 +171,9 @@ function loadDraft(
   return { artifact: loaded.record, draft };
 }
 
-function evidenceDetails(artifacts: ArtifactStore, ids: string[]) {
-  return ids
-    .map((id) => artifacts.find(id)?.record)
-    .filter((item): item is StoredArtifact => Boolean(item))
-    .slice(0, 30);
+async function evidenceDetails(artifacts: ArtifactRepository, ids: string[]) {
+  const found = await Promise.all(ids.slice(0, 30).map(async (id) => (await artifacts.find(id))?.record));
+  return found.filter((item): item is StoredArtifact => Boolean(item));
 }
 
 function descriptionAdf(draft: BugDraft, evidence: StoredArtifact[]) {
@@ -205,13 +203,13 @@ export class JiraDefectAdapter implements CapabilityAdapter {
 
   constructor(
     private readonly fallback: CapabilityAdapter,
-    private readonly artifacts: ArtifactStore,
+    private readonly artifacts: ArtifactRepository,
     private readonly fetchImpl: typeof fetch = fetch,
   ) {}
 
   async previewCreateAction(action: CapabilityAction): Promise<JiraDefectReview> {
     if (action.capabilityId !== "qa.jira.bug.create") throw new Error("Action is not a Jira bug create action");
-    const { artifact, draft } = loadDraft(this.artifacts, action.payload);
+    const { artifact, draft } = await loadDraft(this.artifacts, action.payload);
     const duplicateCandidates = await this.searchDuplicates(action.context, draft);
     return {
       artifact,
@@ -231,7 +229,7 @@ export class JiraDefectAdapter implements CapabilityAdapter {
   ): Promise<AdapterResult> {
     if (definition.id === "qa.jira.duplicate.search") {
       try {
-        const { artifact, draft } = loadDraft(this.artifacts, payload);
+        const { artifact, draft } = await loadDraft(this.artifacts, payload);
         const candidates = await this.searchDuplicates(context, draft);
         return {
           ok: true,
@@ -255,8 +253,8 @@ export class JiraDefectAdapter implements CapabilityAdapter {
     }
 
     try {
-      const { artifact, draft } = loadDraft(this.artifacts, payload);
-      const evidence = evidenceDetails(this.artifacts, draft.evidenceIds);
+      const { artifact, draft } = await loadDraft(this.artifacts, payload);
+      const evidence = await evidenceDetails(this.artifacts, draft.evidenceIds);
 
       if (!this.liveWriteReady()) {
         return {
