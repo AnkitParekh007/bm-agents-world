@@ -1,6 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { defineTool } from "@copilotkit/runtime/v2";
 import { z } from "zod";
+import type { AgentTelemetryService } from "../platform/agent-telemetry.js";
 import type { CapabilityBroker } from "../platform/capability-broker.js";
 import type { EnvironmentName, ExecutionContext } from "../platform/capability-types.js";
 import {
@@ -54,7 +55,9 @@ QA capability execution protocol:
 - Teams posting remains mock-only. Production browser execution and free-form production mutation are unavailable.
 `;
 
-export function buildQaTools(broker: CapabilityBroker) {
+export function buildQaTools(broker: CapabilityBroker, telemetry?: AgentTelemetryService) {
+  const linkRun = (runId: string) => telemetry?.linkCurrentAgentRunToQaRun(runId);
+
   const listCapabilities = defineTool({
     name: "listQaCapabilities",
     description: "List governed QA capabilities, risk levels, environments, and approval requirements.",
@@ -78,6 +81,7 @@ export function buildQaTools(broker: CapabilityBroker) {
     }),
     execute: async ({ projectId, environment }) => {
       const run = broker.startRun(contextFor(projectId, environment as EnvironmentName));
+      linkRun(run.id);
       return {
         runId: run.id,
         projectId: run.context.projectId,
@@ -113,6 +117,7 @@ export function buildQaTools(broker: CapabilityBroker) {
       } else {
         context = contextFor(projectId, environment as EnvironmentName);
       }
+      linkRun(context.runId);
       return broker.requestAction(capabilityId, context, payload);
     },
   });
@@ -121,7 +126,11 @@ export function buildQaTools(broker: CapabilityBroker) {
     name: "getQaCapabilityAction",
     description: "Read the server-side status of one previously requested QA action in the current identity scope.",
     parameters: z.object({ actionId: z.string().uuid() }),
-    execute: async ({ actionId }) => actionForCurrentIdentity(broker, actionId) ?? { error: "action_not_found", actionId },
+    execute: async ({ actionId }) => {
+      const action = actionForCurrentIdentity(broker, actionId);
+      if (action) linkRun(action.context.runId);
+      return action ?? { error: "action_not_found", actionId };
+    },
   });
 
   const executeAction = defineTool({
@@ -131,6 +140,7 @@ export function buildQaTools(broker: CapabilityBroker) {
     execute: async ({ actionId }) => {
       const action = actionForCurrentIdentity(broker, actionId);
       if (!action) throw new Error("Action not found");
+      linkRun(action.context.runId);
       return broker.executeAction(actionId);
     },
   });
