@@ -24,6 +24,24 @@ spec:
         app.kubernetes.io/component: agent-window
     spec:
       terminationGracePeriodSeconds: 30
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels:
+              app.kubernetes.io/name: bm-agents-world
+              app.kubernetes.io/component: agent-window
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                topologyKey: kubernetes.io/hostname
+                labelSelector:
+                  matchLabels:
+                    app.kubernetes.io/name: bm-agents-world
+                    app.kubernetes.io/component: agent-window
       securityContext:
         runAsNonRoot: true
         runAsUser: 1000
