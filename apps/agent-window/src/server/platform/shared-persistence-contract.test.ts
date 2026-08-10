@@ -38,6 +38,13 @@ test("telemetry correlation does not depend on cross-callback foreign-key orderi
   assert.match(linkTable, /primary key\(qa_run_id, agent_run_id\)/i);
 });
 
+test("shared agent usage rejects stale lifecycle updates", () => {
+  const sql = text("deploy/supabase/shared-runtime-schema.sql");
+  assert.match(sql, /create or replace function bm_agents_world\.keep_agent_usage_monotonic\(\)/i);
+  assert.match(sql, /if new\.finished_at < old\.finished_at then\s+return old;/i);
+  assert.match(sql, /create trigger trg_bm_agent_usage_monotonic/i);
+});
+
 test("shared evidence implementation keeps the bucket private behind application authorization", () => {
   const source = text("apps/agent-window/src/server/platform/supabase-artifact-store.ts");
   assert.match(source, /SUPABASE_SECRET_KEY/);
