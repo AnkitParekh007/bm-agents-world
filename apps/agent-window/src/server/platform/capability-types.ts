@@ -50,7 +50,7 @@ export interface CapabilityDefinition {
   adapterId: string;
 }
 
-export interface AppliedPolicyDecision {
+export interface AppliedPolicyDecision extends Record<string, unknown> {
   effect: "allow" | "deny" | "approval";
   source: "local" | "opa" | "legacy";
   decisionId?: string;
