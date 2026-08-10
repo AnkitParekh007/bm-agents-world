@@ -16,10 +16,12 @@ export class SafeHttpError extends Error {
   }
 }
 
-export async function safeGetJson<T>(
+export async function safeJsonRequest<T>(
   url: string,
   options: {
+    method?: "GET" | "POST";
     headers?: Record<string, string>;
+    body?: unknown;
     timeoutMs?: number;
     maxBytes?: number;
     fetchImpl?: typeof fetch;
@@ -31,13 +33,15 @@ export async function safeGetJson<T>(
 
   try {
     const response = await fetchImpl(url, {
-      method: "GET",
+      method: options.method ?? "GET",
       redirect: "follow",
       signal: controller.signal,
       headers: {
         Accept: "application/json",
+        ...(options.body === undefined ? {} : { "Content-Type": "application/json" }),
         ...options.headers,
       },
+      body: options.body === undefined ? undefined : JSON.stringify(options.body),
     });
 
     const contentLength = Number(response.headers.get("content-length") ?? 0);
@@ -52,8 +56,14 @@ export async function safeGetJson<T>(
     }
 
     if (!response.ok) {
-      throw new SafeHttpError(`Upstream read failed with HTTP ${response.status}`, response.status);
+      const detail = text.trim().slice(0, 600);
+      throw new SafeHttpError(
+        `Upstream ${options.method ?? "GET"} failed with HTTP ${response.status}${detail ? `: ${detail}` : ""}`,
+        response.status,
+      );
     }
+
+    if (!text.trim()) return { status: response.status, data: undefined as T };
 
     try {
       return { status: response.status, data: JSON.parse(text) as T };
@@ -63,10 +73,22 @@ export async function safeGetJson<T>(
   } catch (error) {
     if (error instanceof SafeHttpError) throw error;
     if (error instanceof Error && error.name === "AbortError") {
-      throw new SafeHttpError("Upstream read timed out");
+      throw new SafeHttpError("Upstream request timed out");
     }
     throw new SafeHttpError(error instanceof Error ? error.message : String(error));
   } finally {
     clearTimeout(timeout);
   }
+}
+
+export async function safeGetJson<T>(
+  url: string,
+  options: {
+    headers?: Record<string, string>;
+    timeoutMs?: number;
+    maxBytes?: number;
+    fetchImpl?: typeof fetch;
+  } = {},
+): Promise<SafeHttpResponse<T>> {
+  return safeJsonRequest<T>(url, { ...options, method: "GET" });
 }
