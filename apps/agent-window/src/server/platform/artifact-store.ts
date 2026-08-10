@@ -1,5 +1,5 @@
 import { createHash, randomUUID } from "node:crypto";
-import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import { extname, resolve } from "node:path";
 
 export interface StoredArtifact {
@@ -100,11 +100,9 @@ export class ArtifactStore {
   }
 
   find(id: string): { record: StoredArtifact; diskPath: string } | undefined {
-    if (!/^[0-9a-f-]{36}$/i.test(id)) return undefined;
-    if (!existsSync(this.root)) return undefined;
+    if (!/^[0-9a-f-]{36}$/i.test(id) || !existsSync(this.root)) return undefined;
 
-    const runDirectories = require("node:fs").readdirSync(this.root, { withFileTypes: true });
-    for (const runEntry of runDirectories) {
+    for (const runEntry of readdirSync(this.root, { withFileTypes: true })) {
       if (!runEntry.isDirectory()) continue;
       const artifactDirectory = resolve(this.root, runEntry.name, id);
       const metadataPath = resolve(artifactDirectory, "metadata.json");
@@ -112,9 +110,8 @@ export class ArtifactStore {
       try {
         const metadata = JSON.parse(readFileSync(metadataPath, "utf8")) as ArtifactMetadata;
         if (!metadata.diskPath || !existsSync(metadata.diskPath)) return undefined;
-        const size = statSync(metadata.diskPath).size;
         return {
-          record: this.publicRecord({ ...metadata, sizeBytes: size }),
+          record: this.publicRecord({ ...metadata, sizeBytes: statSync(metadata.diskPath).size }),
           diskPath: metadata.diskPath,
         };
       } catch {
