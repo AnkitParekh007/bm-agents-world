@@ -1,0 +1,104 @@
+.qa-workbench {
+  margin-bottom: 16px;
+  border: 1px solid rgba(97, 180, 255, .16);
+  border-radius: 20px;
+  padding: 18px;
+  background:
+    linear-gradient(135deg, rgba(57, 116, 181, .12), rgba(85, 66, 170, .07)),
+    rgba(14, 18, 31, .72);
+  box-shadow: 0 22px 70px rgba(0, 0, 0, .18);
+}
+
+.qa-title { margin-bottom: 14px; }
+.qa-scope-grid {
+  display: grid;
+  grid-template-columns: minmax(150px, .7fr) minmax(180px, .8fr) minmax(260px, 1.5fr);
+  gap: 10px;
+}
+.qa-scope-grid label { display: grid; gap: 6px; }
+.qa-scope-grid label > span {
+  color: #77829d;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.qa-scope-grid input,
+.qa-scope-grid select {
+  width: 100%;
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 11px;
+  background: rgba(5, 9, 18, .68);
+  color: #eef2fa;
+  padding: 10px 11px;
+  outline: none;
+  font: inherit;
+}
+.qa-scope-grid input:focus,
+.qa-scope-grid select:focus { border-color: rgba(104, 146, 255, .55); }
+
+.qa-actions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 12px; }
+.qa-action {
+  min-height: 78px;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 13px;
+  background: rgba(255,255,255,.035);
+  padding: 11px 12px;
+  text-align: left;
+  cursor: pointer;
+}
+.qa-action:hover:not(:disabled) { border-color: rgba(111, 141, 255, .38); background: rgba(95, 111, 220, .09); }
+.qa-action:disabled { opacity: .58; cursor: wait; }
+.qa-action strong, .qa-action span { display: block; }
+.qa-action strong { font-size: 11px; color: #f0f3fa; }
+.qa-action span { margin-top: 6px; font-size: 9px; line-height: 1.45; color: #828da7; }
+.qa-action.approval-demo { border-color: rgba(250, 190, 92, .18); background: rgba(159, 99, 31, .08); }
+
+.risk-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 11px; }
+.risk-row span {
+  border: 1px solid rgba(255,255,255,.075);
+  border-radius: 999px;
+  padding: 4px 7px;
+  color: #8993ab;
+  background: rgba(255,255,255,.025);
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+.approval-card {
+  margin: 10px 0;
+  border: 1px solid rgba(251, 188, 79, .3);
+  border-radius: 15px;
+  background: linear-gradient(145deg, rgba(122, 77, 21, .16), rgba(30, 22, 25, .96));
+  padding: 14px;
+  color: #f5f0e8;
+}
+.approval-card-header { display: flex; align-items: center; gap: 9px; }
+.approval-card-header strong { font-size: 12px; }
+.risk-chip { border-radius: 999px; padding: 4px 7px; background: rgba(250, 185, 73, .16); color: #ffd38a; font-size: 9px; font-weight: 900; }
+.approval-card p { color: #b8ad9c; font-size: 11px; line-height: 1.5; }
+.approval-details { margin: 10px 0; display: grid; gap: 6px; }
+.approval-details div { display: grid; grid-template-columns: 90px minmax(0, 1fr); gap: 8px; }
+.approval-details dt { color: #756d64; font-size: 9px; text-transform: uppercase; }
+.approval-details dd { margin: 0; min-width: 0; overflow: hidden; text-overflow: ellipsis; color: #d9d1c6; font-size: 9px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.approval-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 12px; }
+.primary-button, .secondary-button { border-radius: 10px; padding: 8px 11px; cursor: pointer; font: inherit; font-size: 10px; font-weight: 800; }
+.primary-button { border: 1px solid rgba(110, 219, 164, .25); background: rgba(68, 175, 122, .16); color: #a8f0ca; }
+.secondary-button { border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.035); color: #c6c0b9; }
+.primary-button:disabled, .secondary-button:disabled { opacity: .55; cursor: wait; }
+.approval-error { margin-top: 8px; color: #ff9cae; font-size: 10px; }
+.approval-result { margin-top: 10px; border-radius: 10px; padding: 8px 10px; font-size: 10px; font-weight: 800; }
+.approval-result.approved { background: rgba(61, 170, 115, .12); color: #a7f0ca; }
+.approval-result.rejected { background: rgba(201, 69, 92, .12); color: #ffc0cb; }
+
+@media (max-width: 980px) {
+  .qa-scope-grid { grid-template-columns: 1fr 1fr; }
+  .story-field { grid-column: 1 / -1; }
+  .qa-actions { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 620px) {
+  .qa-scope-grid { grid-template-columns: 1fr; }
+  .story-field { grid-column: auto; }
+}

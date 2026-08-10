@@ -31,5 +31,8 @@ jobs:
       - name: Typecheck
         run: npm run typecheck
 
+      - name: Test capability policies
+        run: npm run test --workspace @bm-agents-world/agent-window
+
       - name: Build
         run: npm run build
