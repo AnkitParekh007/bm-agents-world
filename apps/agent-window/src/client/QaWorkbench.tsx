@@ -17,6 +17,14 @@ interface QaCapability {
   externalWrite: boolean;
 }
 
+interface QaIntegrationStatus {
+  jira: { mode: "live" | "mock" };
+  bitbucket: {
+    mode: "live" | "mock";
+    projects: Record<string, Array<{ label: string; workspace: string; repoSlug: string }>>;
+  };
+}
+
 interface ApprovalDecisionResponse {
   id?: string;
   status?: string;
@@ -134,8 +142,9 @@ export function QaApprovalBridge() {
 export function QaWorkbench() {
   const [projectId, setProjectId] = useState("PCC");
   const [environment, setEnvironment] = useState("qa");
-  const [storyId, setStoryId] = useState("PCC-DEMO-1");
+  const [storyId, setStoryId] = useState("PCC-1");
   const [capabilities, setCapabilities] = useState<QaCapability[]>([]);
+  const [integrations, setIntegrations] = useState<QaIntegrationStatus>();
   const [error, setError] = useState<string>();
   const [activeAction, setActiveAction] = useState<string>();
   const { agent } = useAgent({ agentId: "qa" });
@@ -150,9 +159,12 @@ export function QaWorkbench() {
     void fetch("/api/qa/capabilities")
       .then(async (response) => {
         if (!response.ok) throw new Error(`QA capabilities returned ${response.status}`);
-        return response.json() as Promise<{ capabilities: QaCapability[] }>;
+        return response.json() as Promise<{ capabilities: QaCapability[]; integrations: QaIntegrationStatus }>;
       })
-      .then(({ capabilities: loaded }) => setCapabilities(loaded))
+      .then(({ capabilities: loaded, integrations: status }) => {
+        setCapabilities(loaded);
+        setIntegrations(status);
+      })
       .catch((reason: unknown) => setError(reason instanceof Error ? reason.message : String(reason)));
   }, []);
 
@@ -180,7 +192,7 @@ export function QaWorkbench() {
 
   const analyzeStory = () => run(
     "Analyze story",
-    `Analyze ${storyId} for project ${projectId} in ${environment}. Execute the governed capability flow, not a fictional one: first request and execute qa.jira.story.read, then request and execute qa.bitbucket.change-impact.read. Use the returned evidence to produce a concise QA impact analysis and test approach. Clearly label mock adapter results as simulations.`,
+    `Analyze ${storyId} for project ${projectId} in ${environment}. Execute the governed capability flow, not a fictional one: first request and execute qa.jira.story.read with storyId ${storyId}, then request and execute qa.bitbucket.change-impact.read with storyId ${storyId}. Use only the returned evidence to produce a concise QA impact analysis and test approach. If result.mode is live, identify it as actual read-only evidence. If result.mode is mock, clearly label it as a simulation. Never claim a write occurred.`,
   );
 
   const runSmoke = () => run(
@@ -190,8 +202,10 @@ export function QaWorkbench() {
 
   const approvalDemo = () => run(
     "Create bug",
-    `Demonstrate the governed defect-write flow for ${storyId} in ${projectId}. Request qa.jira.bug.create with summary "QA demo defect for ${storyId}", severity "Major", and storyId "${storyId}". When the server returns pending_approval, call reviewQaAction with the exact action id, capability id, risk level, payload hash, and a clear summary. If I approve, execute that same action id. Be explicit that the current adapter is mock-only and no real Jira issue is created.`,
+    `Demonstrate the governed defect-write flow for ${storyId} in ${projectId}. Request qa.jira.bug.create with summary "QA demo defect for ${storyId}", severity "Major", and storyId "${storyId}". When the server returns pending_approval, call reviewQaAction with the exact action id, capability id, risk level, payload hash, and a clear summary. If I approve, execute that same action id. Be explicit that the current Jira write adapter remains mock-only and no real Jira issue is created.`,
   );
+
+  const configuredRepos = integrations?.bitbucket.projects[projectId]?.length ?? 0;
 
   return (
     <section className="qa-workbench">
@@ -210,7 +224,7 @@ export function QaWorkbench() {
           <span>Project</span>
           <select value={projectId} onChange={(event) => {
             setProjectId(event.target.value);
-            if (!storyId.startsWith(`${event.target.value}-`)) setStoryId(`${event.target.value}-DEMO-1`);
+            if (!storyId.startsWith(`${event.target.value}-`)) setStoryId(`${event.target.value}-1`);
           }}>
             <option>PCC</option>
             <option>SOP</option>
@@ -234,7 +248,7 @@ export function QaWorkbench() {
       <div className="qa-actions">
         <button className="qa-action" disabled={agent.isRunning} onClick={() => void analyzeStory()}>
           <strong>{activeAction === "Analyze story" ? "Analyzing…" : "Analyze story"}</strong>
-          <span>Jira read → change impact → QA plan</span>
+          <span>Jira read → Bitbucket impact → QA plan</span>
         </button>
         <button className="qa-action" disabled={agent.isRunning} onClick={() => void runSmoke()}>
           <strong>{activeAction === "Run smoke" ? "Running…" : "Run smoke simulation"}</strong>
@@ -248,7 +262,9 @@ export function QaWorkbench() {
 
       <div className="risk-row">
         {riskSummary.map(([risk, count]) => <span key={risk}>{risk}: {count}</span>)}
-        <span>Adapter: mock-only</span>
+        <span>Jira read: {integrations?.jira.mode ?? "loading"}</span>
+        <span>Bitbucket read: {integrations?.bitbucket.mode ?? "loading"} · {configuredRepos} repos</span>
+        <span>Writes/Playwright: mock</span>
       </div>
     </section>
   );
