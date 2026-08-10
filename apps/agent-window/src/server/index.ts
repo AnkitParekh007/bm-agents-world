@@ -4,19 +4,21 @@ import express from "express";
 import { createCopilotExpressHandler } from "@copilotkit/runtime/v2/express";
 import { buildCopilotRuntime } from "./copilot.js";
 import { PackRegistry } from "./pack-registry.js";
-import { ArtifactStore } from "./platform/artifact-store.js";
-import { AgentTelemetryService, AgentTelemetryStore } from "./platform/agent-telemetry.js";
+import { AgentTelemetryService } from "./platform/agent-telemetry.js";
+import { AsyncCapabilityBroker } from "./platform/async-capability-broker.js";
+import type { CapabilityBrokerContract } from "./platform/capability-broker-contract.js";
 import { CapabilityBroker } from "./platform/capability-broker.js";
-import { SqliteCapabilityStore } from "./platform/capability-store.js";
 import { buildDeploymentReadiness } from "./platform/deployment-readiness.js";
-import { enrichQaPilotRuns, enrichQaPilotSummary } from "./platform/pilot-telemetry-view.js";
-import { QaPilotObservabilityStore, type PilotRunEvaluationInput } from "./platform/qa-pilot-observability.js";
+import { enrichQaPilotRunsShared } from "./platform/pilot-telemetry-view-async.js";
+import { enrichQaPilotRuns, enrichQaPilotSummary, type EnrichedQaPilotRunMetrics } from "./platform/pilot-telemetry-view.js";
+import type { PilotRunEvaluationInput, QaPilotRunMetrics, QaPilotSummary } from "./platform/qa-pilot-observability.js";
 import {
   canAccessExecutionContext,
   canSelfApprove,
   currentRequestIdentity,
   identityMiddleware,
 } from "./platform/request-identity.js";
+import { createRuntimePersistence } from "./platform/runtime-persistence.js";
 import { initTelemetry, shutdownTelemetry, startActiveSpan, telemetryRuntimeStatus } from "./platform/telemetry.js";
 import { BitbucketReadAdapter } from "./qa/bitbucket-read-adapter.js";
 import { JiraDefectAdapter } from "./qa/jira-defect-adapter.js";
@@ -32,25 +34,53 @@ const DAY_MS = 24 * 60 * 60 * 1000;
 initTelemetry();
 
 const registry = new PackRegistry();
-const artifacts = new ArtifactStore();
-const stateStore = new SqliteCapabilityStore();
-const observabilityStore = new QaPilotObservabilityStore(stateStore.path);
-const agentTelemetryStore = new AgentTelemetryStore(stateStore.path);
-const agentTelemetry = new AgentTelemetryService(agentTelemetryStore);
+const persistence = await createRuntimePersistence();
+const artifacts = persistence.artifacts;
+const agentTelemetry = new AgentTelemetryService(persistence.telemetryServiceStore);
 const qaMockAdapter = new QaMockAdapter();
 const jiraDefectAdapter = new JiraDefectAdapter(qaMockAdapter, artifacts);
-const qaBroker = new CapabilityBroker(QA_CAPABILITIES, [
+const adapters = [
   qaMockAdapter,
   new JiraReadAdapter(qaMockAdapter),
   new BitbucketReadAdapter(qaMockAdapter),
   new PlaywrightWorkerAdapter(qaMockAdapter, artifacts),
   jiraDefectAdapter,
-], stateStore);
+];
+const qaBroker: CapabilityBrokerContract = persistence.shared
+  ? new AsyncCapabilityBroker(QA_CAPABILITIES, adapters, persistence.capabilityStore)
+  : new CapabilityBroker(QA_CAPABILITIES, adapters, persistence.capabilityStore);
 const runtime = buildCopilotRuntime(registry, qaBroker, agentTelemetry);
 const app = express();
 
 app.disable("x-powered-by");
 app.use(express.json({ limit: "1mb" }));
+
+async function currentReadiness() {
+  const integrations = loadQaIntegrationStatus();
+  const health = await persistence.healthCheck();
+  if (persistence.shared) {
+    return buildDeploymentReadiness(integrations, {
+      packCount: registry.packs.length,
+      persistence: {
+        mode: persistence.mode,
+        shared: true,
+        stateReady: health.state,
+        artifactsReady: health.artifacts,
+      },
+    });
+  }
+  return buildDeploymentReadiness(integrations, {
+    statePath: persistence.capabilityStore.path,
+    artifactRoot: persistence.artifacts.root,
+    packCount: registry.packs.length,
+    persistence: {
+      mode: persistence.mode,
+      shared: false,
+      stateReady: health.state,
+      artifactsReady: health.artifacts,
+    },
+  });
+}
 
 // Kubernetes/container probes intentionally live before identity middleware.
 // They expose no user data, credentials, project details, or secret values.
@@ -58,25 +88,21 @@ app.get("/healthz", (_request, response) => {
   response.json({ status: "ok", service: "bm-agents-world-agent-window" });
 });
 
-app.get("/readyz", (_request, response) => {
-  const readiness = buildDeploymentReadiness(loadQaIntegrationStatus(), {
-    statePath: stateStore.path,
-    artifactRoot: artifacts.root,
-    packCount: registry.packs.length,
-  });
+app.get("/readyz", async (_request, response) => {
+  const readiness = await currentReadiness();
   response.status(readiness.ready ? 200 : 503).json(readiness);
 });
 
 app.use(identityMiddleware());
 
-function accessibleRun(runId: string) {
-  const run = qaBroker.getRun(runId);
+async function accessibleRun(runId: string) {
+  const run = await qaBroker.getRun(runId);
   if (!run) return undefined;
   return canAccessExecutionContext(currentRequestIdentity(), run.context) ? run : null;
 }
 
-function accessibleAction(actionId: string) {
-  const action = qaBroker.getAction(actionId);
+async function accessibleAction(actionId: string) {
+  const action = await qaBroker.getAction(actionId);
   if (!action) return undefined;
   return canAccessExecutionContext(currentRequestIdentity(), action.context) ? action : null;
 }
@@ -110,16 +136,61 @@ function observabilityQuery(request: express.Request, response: express.Response
   };
 }
 
-function enrichedMetricsForRun(runId: string) {
-  const run = qaBroker.getRun(runId);
+async function listRunMetrics(scope: {
+  tenantId: string;
+  projectIds: string[];
+  projectId?: string;
+  since?: string;
+  limit?: number;
+}): Promise<QaPilotRunMetrics[]> {
+  return persistence.shared
+    ? persistence.observabilityStore.listRunMetrics(scope)
+    : persistence.observabilityStore.listRunMetrics(scope);
+}
+
+async function pilotSummary(scope: {
+  tenantId: string;
+  projectIds: string[];
+  projectId?: string;
+  since?: string;
+  limit?: number;
+}, periodDays: number): Promise<QaPilotSummary> {
+  return persistence.shared
+    ? persistence.observabilityStore.summary(scope, periodDays)
+    : persistence.observabilityStore.summary(scope, periodDays);
+}
+
+async function getEvaluation(runId: string) {
+  return persistence.shared
+    ? persistence.observabilityStore.getEvaluation(runId)
+    : persistence.observabilityStore.getEvaluation(runId);
+}
+
+async function saveEvaluation(run: Awaited<ReturnType<typeof accessibleRun>> & object, reviewerUserId: string, input: PilotRunEvaluationInput) {
+  if (!("id" in run) || !("context" in run)) throw new Error("Invalid run");
+  return persistence.shared
+    ? persistence.observabilityStore.saveEvaluation(run as any, reviewerUserId, input)
+    : persistence.observabilityStore.saveEvaluation(run as any, reviewerUserId, input);
+}
+
+async function enrichRuns(baseRuns: QaPilotRunMetrics[]): Promise<EnrichedQaPilotRunMetrics[]> {
+  if (persistence.shared) {
+    return enrichQaPilotRunsShared(baseRuns, persistence.telemetryReadStore, qaBroker);
+  }
+  return enrichQaPilotRuns(baseRuns, persistence.telemetryReadStore, qaBroker as CapabilityBroker);
+}
+
+async function enrichedMetricsForRun(runId: string) {
+  const run = await qaBroker.getRun(runId);
   if (!run) return undefined;
-  const metrics = observabilityStore.listRunMetrics({
+  const metrics = (await listRunMetrics({
     tenantId: run.context.tenantId,
     projectIds: [run.context.projectId],
     projectId: run.context.projectId,
     limit: 500,
-  }).find((item) => item.runId === runId);
-  return metrics ? enrichQaPilotRuns([metrics], agentTelemetryStore, qaBroker)[0] : undefined;
+  })).find((item) => item.runId === runId);
+  if (!metrics) return undefined;
+  return (await enrichRuns([metrics]))[0];
 }
 
 app.get("/api/session", (_request, response) => {
@@ -133,13 +204,9 @@ app.get("/api/session", (_request, response) => {
   });
 });
 
-app.get("/api/health", (_request, response) => {
+app.get("/api/health", async (_request, response) => {
   const integrations = loadQaIntegrationStatus();
-  const readiness = buildDeploymentReadiness(integrations, {
-    statePath: stateStore.path,
-    artifactRoot: artifacts.root,
-    packCount: registry.packs.length,
-  });
+  const readiness = await currentReadiness();
   const tokenRatesConfigured = Boolean(
     process.env.BM_MODEL_INPUT_USD_PER_1M_TOKENS?.trim()
     && process.env.BM_MODEL_OUTPUT_USD_PER_1M_TOKENS?.trim(),
@@ -154,10 +221,9 @@ app.get("/api/health", (_request, response) => {
     deploymentMode: readiness.mode,
     ready: readiness.ready,
     identityMode: process.env.BM_IDENTITY_MODE?.trim() || "local-dev",
-    stateStore: { type: "sqlite", path: stateStore.path },
-    artifactRoot: artifacts.root,
+    persistence: persistence.status,
     qaObservability: {
-      evaluationPersistence: "sqlite",
+      evaluationPersistence: persistence.status.state.kind,
       operationalMetrics: "derived-from-run-action-audit",
       modelUsage: "measured-when-provider-metadata-is-present",
       costEstimation: tokenRatesConfigured ? "configured-token-rates" : "not-configured",
@@ -198,31 +264,34 @@ app.get("/api/qa/capabilities", (_request, response) => {
 app.get("/api/qa/integrations", (_request, response) => response.json(loadQaIntegrationStatus()));
 app.get("/api/qa/project-tests", (_request, response) => response.json({ projects: projectTestCatalogStatus() }));
 
-app.get("/api/qa/runs", (request, response) => {
+app.get("/api/qa/runs", async (request, response) => {
   const rawLimit = Number(request.query.limit ?? 50);
   const limit = Number.isFinite(rawLimit) ? Math.max(1, Math.min(rawLimit, 200)) : 50;
   const identity = currentRequestIdentity();
-  const runs = qaBroker.listRuns(500)
+  const visibleRuns = (await qaBroker.listRuns(500))
     .filter((run) => canAccessExecutionContext(identity, run.context))
-    .slice(0, limit)
-    .map((run) => ({ ...run, actionCount: qaBroker.listActionsForRun(run.id).length }));
+    .slice(0, limit);
+  const runs = await Promise.all(visibleRuns.map(async (run) => ({
+    ...run,
+    actionCount: (await qaBroker.listActionsForRun(run.id)).length,
+  })));
   response.json({ runs });
 });
 
-app.get("/api/qa/runs/:runId", (request, response) => {
-  const run = accessibleRun(request.params.runId);
+app.get("/api/qa/runs/:runId", async (request, response) => {
+  const run = await accessibleRun(request.params.runId);
   if (run === undefined) return void response.status(404).json({ error: "run_not_found" });
   if (run === null) return void response.status(403).json({ error: "run_access_denied" });
-  response.json({
-    run,
-    actions: qaBroker.listActionsForRun(run.id),
-    evaluation: observabilityStore.getEvaluation(run.id),
-    telemetry: enrichedMetricsForRun(run.id),
-  });
+  const [actions, evaluation, telemetry] = await Promise.all([
+    qaBroker.listActionsForRun(run.id),
+    getEvaluation(run.id),
+    enrichedMetricsForRun(run.id),
+  ]);
+  response.json({ run, actions, evaluation, telemetry });
 });
 
-app.post("/api/qa/runs/:runId/evaluation", (request, response) => {
-  const run = accessibleRun(request.params.runId);
+app.post("/api/qa/runs/:runId/evaluation", async (request, response) => {
+  const run = await accessibleRun(request.params.runId);
   if (run === undefined) return void response.status(404).json({ error: "run_not_found" });
   if (run === null) return void response.status(403).json({ error: "run_access_denied" });
   const identity = currentRequestIdentity();
@@ -236,67 +305,67 @@ app.post("/api/qa/runs/:runId/evaluation", (request, response) => {
     notes: typeof body.notes === "string" ? body.notes : undefined,
   };
   try {
-    response.json(observabilityStore.saveEvaluation(run, identity.userId, input));
+    response.json(await saveEvaluation(run, identity.userId, input));
   } catch (error) {
     response.status(400).json({ error: "invalid_pilot_evaluation", message: error instanceof Error ? error.message : String(error) });
   }
 });
 
-app.get("/api/qa/observability/summary", (request, response) => {
+app.get("/api/qa/observability/summary", async (request, response) => {
   const query = observabilityQuery(request, response);
   if (!query) return;
   response.setHeader("Cache-Control", "private, no-store");
-  const baseRuns = observabilityStore.listRunMetrics({ ...query.scope, limit: 500 });
-  const runs = enrichQaPilotRuns(baseRuns, agentTelemetryStore, qaBroker);
-  const baseSummary = observabilityStore.summary({ ...query.scope, limit: 500 }, query.periodDays);
+  const baseRuns = await listRunMetrics({ ...query.scope, limit: 500 });
+  const runs = await enrichRuns(baseRuns);
+  const baseSummary = await pilotSummary({ ...query.scope, limit: 500 }, query.periodDays);
   response.json(enrichQaPilotSummary(baseSummary, runs));
 });
 
-app.get("/api/qa/observability/runs", (request, response) => {
+app.get("/api/qa/observability/runs", async (request, response) => {
   const query = observabilityQuery(request, response);
   if (!query) return;
   const limit = boundedNumber(request.query.limit, 50, 1, 200);
   response.setHeader("Cache-Control", "private, no-store");
-  const baseRuns = observabilityStore.listRunMetrics({ ...query.scope, limit });
+  const baseRuns = await listRunMetrics({ ...query.scope, limit });
   response.json({
     periodDays: query.periodDays,
     projectId: query.projectId,
-    runs: enrichQaPilotRuns(baseRuns, agentTelemetryStore, qaBroker),
+    runs: await enrichRuns(baseRuns),
   });
 });
 
-app.get("/api/qa/artifacts/:artifactId/metadata", (request, response) => {
-  const artifact = artifacts.find(request.params.artifactId);
+app.get("/api/qa/artifacts/:artifactId/metadata", async (request, response) => {
+  const artifact = await artifacts.find(request.params.artifactId);
   if (!artifact) return void response.status(404).json({ error: "artifact_not_found" });
-  const run = accessibleRun(artifact.record.runId);
+  const run = await accessibleRun(artifact.record.runId);
   if (run === undefined) return void response.status(409).json({ error: "artifact_run_not_persisted" });
   if (run === null) return void response.status(403).json({ error: "artifact_access_denied" });
   response.setHeader("Cache-Control", "private, no-store");
   response.json(artifact.record);
 });
 
-app.get("/api/qa/artifacts/:artifactId", (request, response) => {
-  const artifact = artifacts.find(request.params.artifactId);
+app.get("/api/qa/artifacts/:artifactId", async (request, response) => {
+  const artifact = await artifacts.readBuffer(request.params.artifactId);
   if (!artifact) return void response.status(404).json({ error: "artifact_not_found" });
-  const run = accessibleRun(artifact.record.runId);
+  const run = await accessibleRun(artifact.record.runId);
   if (run === undefined) return void response.status(409).json({ error: "artifact_run_not_persisted" });
   if (run === null) return void response.status(403).json({ error: "artifact_access_denied" });
   response.setHeader("Cache-Control", "private, no-store");
   response.setHeader("X-Content-Type-Options", "nosniff");
   response.setHeader("Content-Type", artifact.record.mediaType);
   response.setHeader("Content-Disposition", `${artifact.record.mediaType === "application/zip" ? "attachment" : "inline"}; filename="${artifact.record.filename}"`);
-  response.sendFile(artifact.diskPath);
+  response.send(artifact.data);
 });
 
-app.get("/api/qa/actions/:actionId", (request, response) => {
-  const action = accessibleAction(request.params.actionId);
+app.get("/api/qa/actions/:actionId", async (request, response) => {
+  const action = await accessibleAction(request.params.actionId);
   if (action === undefined) return void response.status(404).json({ error: "action_not_found" });
   if (action === null) return void response.status(403).json({ error: "action_access_denied" });
   response.json(action);
 });
 
 app.get("/api/qa/actions/:actionId/review", async (request, response) => {
-  const action = accessibleAction(request.params.actionId);
+  const action = await accessibleAction(request.params.actionId);
   if (action === undefined) return void response.status(404).json({ error: "action_not_found" });
   if (action === null) return void response.status(403).json({ error: "action_access_denied" });
   if (action.capabilityId !== "qa.jira.bug.create") return void response.status(400).json({ error: "review_not_supported_for_capability" });
@@ -307,8 +376,8 @@ app.get("/api/qa/actions/:actionId/review", async (request, response) => {
   }
 });
 
-app.post("/api/qa/actions/:actionId/decision", (request, response) => {
-  const action = accessibleAction(request.params.actionId);
+app.post("/api/qa/actions/:actionId/decision", async (request, response) => {
+  const action = await accessibleAction(request.params.actionId);
   if (action === undefined) return void response.status(404).json({ error: "action_not_found" });
   if (action === null) return void response.status(403).json({ error: "action_access_denied" });
   const decision = request.body?.decision;
@@ -322,7 +391,7 @@ app.post("/api/qa/actions/:actionId/decision", (request, response) => {
   }
   const reason = typeof request.body?.reason === "string" ? request.body.reason : undefined;
   try {
-    const result = startActiveSpan(
+    const result = await startActiveSpan(
       "bm.approval.decision",
       {
         "bm.action.id": action.id,
@@ -340,17 +409,18 @@ app.post("/api/qa/actions/:actionId/decision", (request, response) => {
   }
 });
 
-app.get("/api/audit", (request, response) => {
+app.get("/api/audit", async (request, response) => {
   const rawLimit = Number(request.query.limit ?? 100);
   const limit = Number.isFinite(rawLimit) ? Math.max(1, Math.min(rawLimit, 200)) : 100;
   const identity = currentRequestIdentity();
-  const events = qaBroker.listAudit(500)
-    .filter((event) => {
-      const run = qaBroker.getRun(event.runId);
-      return Boolean(run && canAccessExecutionContext(identity, run.context));
-    })
-    .slice(0, limit);
-  response.json({ events });
+  const events = await qaBroker.listAudit(500);
+  const visible = [];
+  for (const event of events) {
+    const run = await qaBroker.getRun(event.runId);
+    if (run && canAccessExecutionContext(identity, run.context)) visible.push(event);
+    if (visible.length >= limit) break;
+  }
+  response.json({ events: visible });
 });
 
 app.use(createCopilotExpressHandler({
@@ -366,19 +436,16 @@ if (existsSync(clientDirectory)) {
   app.get("*path", (_request, response) => response.sendFile(resolve(clientDirectory, "index.html")));
 }
 
-const server = app.listen(PORT, "0.0.0.0", () => {
+const server = app.listen(PORT, "0.0.0.0", async () => {
+  const readiness = await currentReadiness();
   const integrations = loadQaIntegrationStatus();
-  const readiness = buildDeploymentReadiness(integrations, {
-    statePath: stateStore.path,
-    artifactRoot: artifacts.root,
-    packCount: registry.packs.length,
-  });
   const otel = telemetryRuntimeStatus();
   console.log(`[bm-agents-world] loaded ${registry.packs.length} agent packs`);
   console.log(`[bm-agents-world] runtime: http://localhost:${PORT}/api/copilotkit`);
   console.log(`[bm-agents-world] probes: /healthz and /readyz (${readiness.mode}, ready=${readiness.ready})`);
   console.log(`[bm-agents-world] qa capabilities: ${qaBroker.listCapabilities().length}`);
-  console.log(`[bm-agents-world] qa state: sqlite ${stateStore.path}`);
+  console.log(`[bm-agents-world] persistence: ${persistence.status.mode}; shared=${persistence.status.shared}`);
+  console.log(`[bm-agents-world] state: ${persistence.status.state.kind}; artifacts: ${persistence.status.artifacts.kind}`);
   console.log(`[bm-agents-world] telemetry: model usage persists when provider metadata is present; otel=${otel.enabled ? "enabled" : "disabled"}`);
   console.log(`[bm-agents-world] identity mode: ${process.env.BM_IDENTITY_MODE?.trim() || "local-dev"}`);
   console.log(`[bm-agents-world] qa jira read: ${integrations.jira.mode}; jira write: ${integrations.jira.writeMode}; bitbucket: ${integrations.bitbucket.mode}; playwright: ${integrations.playwright.mode}`);
@@ -389,10 +456,8 @@ function shutdown() {
   if (shuttingDown) return;
   shuttingDown = true;
   server.close(async () => {
-    observabilityStore.close();
-    agentTelemetryStore.close();
-    stateStore.close();
     try {
+      await persistence.close();
       await shutdownTelemetry();
     } finally {
       process.exit(0);

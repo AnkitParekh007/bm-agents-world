@@ -2,9 +2,9 @@
 
 BM Agents World is the incubation repository for turning the organization agent packs under `packs/` into runnable, governed AI coworkers. The implementation is intentionally being stabilized here before it is merged into BM Agent Foundry.
 
-## Current milestone: QA team pilot
+## Current milestone: scalable QA team pilot
 
-`apps/agent-window` uses CopilotKit + AG-UI as the agent experience layer and now contains a real QA vertical slice plus a deployable and measurable shared-pilot package.
+`apps/agent-window` uses CopilotKit + AG-UI as the agent experience layer and contains a real QA vertical slice plus a deployable, measurable, horizontally scalable shared-pilot package.
 
 What is working:
 
@@ -19,21 +19,22 @@ What is working:
 - Screenshot, trace, network, test-result, evidence-manifest, and bug-draft artifacts.
 - Jira duplicate search.
 - Real Jira defect creation behind L3 exact-artifact human approval.
-- Durable QA run/action/approval/audit state in SQLite.
-- Request-scoped tenant/project authorization.
-- Self-approval denial in trusted shared-pilot mode.
+- Request-scoped tenant/project authorization and trusted-mode self-approval denial.
 - Run-scoped artifact authorization.
-- QA pilot observability derived from persistent run/action/approval results.
+- QA pilot observability derived from persistent execution facts.
 - Persistent per-run human evaluation: outcome, usefulness, reuse intent, false positives, manual override time, and notes.
-- Tenant/project-scoped pilot scorecard with recent-run drilldown.
 - AG-UI agent-run telemetry with measured token usage when provider metadata is present.
 - Explicit measured/partial/unavailable model-usage coverage instead of fake zeroes.
 - Configured token-rate cost estimates without hard-coded provider prices.
 - OpenTelemetry spans for agent runs, governed capability execution, and approval decisions.
 - Persistent capability execution latency and per-capability timing breakdowns.
-- Docker image with pinned Playwright browser runtime.
-- Kubernetes single-replica pilot package with persistent storage, health/readiness probes, and trusted-gateway-only ingress NetworkPolicy.
-- CI for strict TypeScript, policy/integration/deployment/observability/telemetry tests, production build, and container build.
+- Local SQLite/filesystem persistence for developer workflows.
+- Shared Postgres persistence for runs, actions, approvals, audit, evaluations, and model telemetry.
+- Private Supabase Storage evidence repository for cross-pod QA workflows.
+- Two-replica rolling-update Kubernetes pilot without a runtime data PVC.
+- Health/readiness probes that validate shared state/evidence availability in pilot mode.
+- Trusted-gateway-only ingress NetworkPolicy and no public Ingress.
+- CI for strict TypeScript, policy/integration/deployment/observability/telemetry/shared-persistence tests, production build, and container build.
 
 ## Architecture
 
@@ -53,34 +54,30 @@ CopilotKit + AG-UI
         |       +-- trace id
         |
         v
-Agent Window
+Agent Window pods
         |
         v
-Capability Broker
-        |
-        +-- Policy / risk level
-        +-- Persistent run/action state
-        +-- Human approval
-        +-- Audit
-        +-- execution latency
-        |
-        v
-Trusted adapters
-        |
-        +-- Jira
-        +-- Bitbucket
-        +-- Playwright
-        |
-        v
-Evidence / governed Jira defect
-        |
-        v
-Pilot Observability
-        +-- derived run metrics
-        +-- model/tool telemetry
-        +-- human evaluation
-        +-- team scorecard
-        +-- optional OTLP trace export
+Capability Broker contract
+   +----+-------------------------------+
+   |                                    |
+   | local development                  | shared pilot
+   v                                    v
+SQLite + filesystem              Postgres + private Storage
+                                        |
+                           +------------+------------+
+                           |                         |
+                           v                         v
+                    durable state              QA evidence
+                    approvals/audit            traces/screenshots
+                    evaluations                bug drafts/results
+                           |
+                           v
+                    Trusted adapters
+                     Jira / Bitbucket /
+                       Playwright
+                           |
+                           v
+                    Pilot Observability
 ```
 
 The pack files remain the source material. The core application must not become a separate hard-coded implementation for every organizational role.
@@ -100,14 +97,14 @@ npm run dev
 
 The UI runs at `http://localhost:5173` and proxies API calls to the runtime on `http://localhost:4000`.
 
-For OpenAI, for example:
+Local development defaults to:
 
-```bash
-AI_MODEL=openai:gpt-5.4-mini
-OPENAI_API_KEY=...
+```text
+BM_IDENTITY_MODE=local-dev
+BM_PERSISTENCE_MODE=sqlite-filesystem
 ```
 
-Local development defaults to `BM_IDENTITY_MODE=local-dev`. Shared team deployments must use the trusted gateway model documented in `docs/qa-team-pilot-deployment.md`.
+Shared team deployments must use the trusted gateway model and shared persistence documented in `docs/qa-team-pilot-deployment.md` and `docs/shared-supabase-runtime.md`.
 
 ## QA shared pilot
 
@@ -117,13 +114,27 @@ The deployment package is under:
 deploy/k8s/qa-pilot/
 ```
 
-The container can be built with:
+The shared pilot uses:
 
-```bash
-docker build -f apps/agent-window/Dockerfile -t bm-agents-world:qa-pilot .
+```text
+BM_DEPLOYMENT_MODE=pilot
+BM_IDENTITY_MODE=trusted-headers
+BM_PERSISTENCE_MODE=postgres-supabase
+replicas=2
+RollingUpdate
 ```
 
-A manual GitHub Actions workflow can publish the image to GHCR. The Kubernetes base creates a `ClusterIP` service plus a NetworkPolicy that only permits explicitly labeled trusted-gateway pods in explicitly labeled gateway namespaces. There is intentionally no public Ingress. The cluster network provider must enforce NetworkPolicy, or an equivalent network restriction must be provided before trusted identity headers are accepted.
+Runtime state lives in the private `bm_agents_world` Postgres schema and QA evidence lives in a private Supabase Storage bucket. The Kubernetes base therefore does not mount a runtime data PVC.
+
+Apply the shared database bootstrap before deployment:
+
+```text
+deploy/supabase/shared-runtime-schema.sql
+```
+
+Then create the private evidence bucket and provide the server-only Postgres/Supabase credentials through the deployment secret manager.
+
+The Kubernetes base creates a `ClusterIP` service plus a NetworkPolicy that only permits explicitly labeled trusted-gateway pods in explicitly labeled gateway namespaces. There is intentionally no public Ingress.
 
 Pilot probes:
 
@@ -132,9 +143,12 @@ GET /healthz
 GET /readyz
 ```
 
-`BM_DEPLOYMENT_MODE=pilot` makes readiness fail until the required trusted identity, persistent storage, model credential, Jira, Bitbucket, and Playwright configuration is live.
+In shared pilot mode, readiness fails closed if Postgres or private artifact storage is unavailable, in addition to the existing identity/model/Jira/Bitbucket/Playwright requirements.
 
-See [QA Team Pilot Deployment](docs/qa-team-pilot-deployment.md) for the full gateway, network, secret, storage, image, and pilot-admission contract.
+See:
+
+- [QA Team Pilot Deployment](docs/qa-team-pilot-deployment.md)
+- [Shared Postgres + Supabase Storage Runtime](docs/shared-supabase-runtime.md)
 
 ## QA pilot scorecard
 
@@ -161,6 +175,8 @@ CopilotKit agent
    ↓
 Capability broker
    ↓
+Shared durable state / evidence
+   ↓
 Risk / policy
    ↓
 Payload-bound human approval when required
@@ -172,29 +188,29 @@ Jira / Bitbucket / Playwright
 Persistent audit + authorized evidence
 ```
 
-Raw Jira, Bitbucket, model-provider, and Playwright authentication material remains server-side and must not enter model context. OpenTelemetry spans contain bounded operational identifiers/counters, not prompts, credentials, raw tool payloads, or evidence bodies.
+Postgres credentials, Supabase secret keys, Jira/Bitbucket/model-provider credentials, and Playwright authentication material remain server-side and must not enter model context. Private Storage objects are returned only through the BM authorization boundary; the shared persistence implementation does not expose public or signed evidence URLs to the employee UI.
 
 Free-form production mutation remains unavailable.
 
 ## Current constraints
 
-- The QA pilot intentionally runs as **one replica** while SQLite is authoritative.
-- The Kubernetes base has **no public Ingress** and requires trusted-gateway network isolation.
+- Shared pilot mode requires the `bm_agents_world` Postgres schema and a private Supabase Storage bucket to be provisioned before startup.
+- Local SQLite/filesystem mode remains single-process and must not be used as independent state across multiple pods.
+- The Kubernetes base has no public Ingress and requires trusted-gateway network isolation.
 - Jira writes remain separately opt-in and always require L3 approval.
 - Database validation and Teams posting are not yet live integrations.
 - Production browser execution is not supported.
 - Model token telemetry depends on actual provider/AG-UI usage metadata; unsupported runs remain `unavailable`.
 - Cost is an explicit configured estimate and not provider billing.
-- Horizontal scaling should wait for a shared Postgres/Supabase capability store and object storage.
 
 ## Next milestones
 
-1. Deploy the QA pilot behind organization SSO/gateway and verify NetworkPolicy/equivalent isolation.
+1. Provision the shared schema/private bucket and deploy the two-replica QA pilot behind organization SSO/gateway.
 2. Configure one real project, an approved OTLP collector if desired, and validated model token rates if cost estimates are needed.
-3. Onboard 2-3 QA engineers plus an independent reviewer and use the scorecard to measure task success, defect quality, approval rejection, usefulness, manual overrides, latency, token usage, and cost.
-4. Replace SQLite/filesystem persistence with shared Postgres/Supabase + object storage before horizontal scale.
+3. Onboard 2-3 QA engineers plus an independent reviewer and prove cross-pod run/approval/evidence continuity.
+4. Use the scorecard to measure task success, defect quality, approval rejection, usefulness, manual overrides, latency, token usage, and cost.
 5. Add OPA-backed centralized policy evaluation and organization-approved MCP connection management.
-6. Reuse the proven capability/approval/audit/telemetry pattern for Angular, Java, Database, DevOps, Product, SRE, Security, AI/ML, MLOps, and the remaining packs.
+6. Reuse the proven capability/approval/audit/telemetry/shared-persistence pattern for Angular, Java, Database, DevOps, Product, SRE, Security, AI/ML, MLOps, and the remaining packs.
 
 ## Useful commands
 

@@ -123,8 +123,9 @@ test("failed project QA creates a bug-draft artifact but performs no Jira write"
     assert.equal(data.execution.status, "failed");
     assert.equal(data.bugDraftArtifact.type, "bug-draft");
     const found = store.find(data.bugDraftArtifact.id);
-    assert.ok(found);
-    const draft = JSON.parse(await import("node:fs").then((fs) => fs.readFileSync(found.diskPath, "utf8")));
+    const diskPath = found?.diskPath;
+    assert.ok(diskPath);
+    const draft = JSON.parse(await import("node:fs").then((fs) => fs.readFileSync(diskPath, "utf8")));
     assert.equal(draft.parentIssue, "PCC-202");
     assert.equal(draft.environment, "qa");
     assert.ok(Array.isArray(draft.stepsToReproduce));

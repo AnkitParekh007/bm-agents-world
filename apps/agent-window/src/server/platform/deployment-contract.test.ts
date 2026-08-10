@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import test from "node:test";
 import YAML from "yaml";
@@ -18,11 +18,12 @@ test("container pins the Playwright browser image and runs as pwuser", () => {
   assert.match(dockerfile, /\/healthz/);
 });
 
-test("pilot deployment is single replica with persistent data and HTTP probes", () => {
+test("pilot deployment scales across shared persistence and keeps HTTP probes", () => {
   const deployment = yamlFile("deployment.yaml");
   assert.equal(deployment.kind, "Deployment");
-  assert.equal(deployment.spec.replicas, 1);
-  assert.equal(deployment.spec.strategy.type, "Recreate");
+  assert.equal(deployment.spec.replicas, 2);
+  assert.equal(deployment.spec.strategy.type, "RollingUpdate");
+  assert.equal(deployment.spec.strategy.rollingUpdate.maxUnavailable, 0);
 
   const container = deployment.spec.template.spec.containers[0];
   assert.equal(container.securityContext.readOnlyRootFilesystem, true);
@@ -30,15 +31,15 @@ test("pilot deployment is single replica with persistent data and HTTP probes", 
   assert.equal(container.startupProbe.httpGet.path, "/healthz");
   assert.equal(container.readinessProbe.httpGet.path, "/readyz");
   assert.equal(container.livenessProbe.httpGet.path, "/healthz");
-  assert.ok(container.volumeMounts.some((item: any) => item.mountPath === "/var/lib/bm-agents"));
+  assert.ok(!container.volumeMounts.some((item: any) => item.mountPath === "/var/lib/bm-agents"));
   assert.ok(container.volumeMounts.some((item: any) => item.mountPath === "/dev/shm"));
 
   const volumes = deployment.spec.template.spec.volumes;
-  assert.equal(volumes.find((item: any) => item.name === "data")?.persistentVolumeClaim.claimName, "bm-agents-world-data");
+  assert.ok(!volumes.some((item: any) => item.persistentVolumeClaim));
   assert.equal(volumes.find((item: any) => item.name === "shm")?.emptyDir.medium, "Memory");
 });
 
-test("pilot service is internal-only and config fails toward trusted production posture", () => {
+test("pilot service is internal-only and config requires shared trusted persistence", () => {
   const service = yamlFile("service.yaml");
   const configMap = yamlFile("configmap.yaml");
   const kustomization = yamlFile("kustomization.yaml");
@@ -46,12 +47,26 @@ test("pilot service is internal-only and config fails toward trusted production 
   assert.equal(service.spec.type, "ClusterIP");
   assert.equal(configMap.data.BM_DEPLOYMENT_MODE, "pilot");
   assert.equal(configMap.data.BM_IDENTITY_MODE, "trusted-headers");
-  assert.equal(configMap.data.BM_STATE_DB_PATH, "/var/lib/bm-agents/state/qa-pilot.sqlite");
-  assert.equal(configMap.data.BM_ARTIFACT_ROOT, "/var/lib/bm-agents");
+  assert.equal(configMap.data.BM_PERSISTENCE_MODE, "postgres-supabase");
+  assert.equal(configMap.data.BM_SUPABASE_ARTIFACT_BUCKET, "bm-agents-world-evidence");
+  assert.equal(configMap.data.BM_STATE_DB_PATH, undefined);
+  assert.equal(configMap.data.BM_ARTIFACT_ROOT, undefined);
   assert.equal(configMap.data.QA_JIRA_WRITE_ENABLED, "false");
   assert.ok(kustomization.resources.includes("networkpolicy.yaml"));
+  assert.ok(!kustomization.resources.includes("pvc.yaml"));
+  assert.equal(existsSync(resolve(deploymentRoot, "pvc.yaml")), false);
   assert.ok(!kustomization.resources.some((item: string) => item.toLowerCase().includes("ingress")));
   assert.ok(!kustomization.resources.some((item: string) => item.toLowerCase().includes("secret.example")));
+});
+
+test("pilot secret template keeps shared persistence credentials server-side", () => {
+  const secret = yamlFile("secret.example.yaml");
+  assert.match(secret.stringData.BM_POSTGRES_URL, /REPLACE_WITH/);
+  assert.match(secret.stringData.SUPABASE_URL, /REPLACE_WITH/);
+  assert.match(secret.stringData.SUPABASE_SECRET_KEY, /REPLACE_WITH/);
+  const config = yamlFile("configmap.yaml");
+  assert.equal(config.data.BM_POSTGRES_URL, undefined);
+  assert.equal(config.data.SUPABASE_SECRET_KEY, undefined);
 });
 
 test("pilot ingress accepts traffic only from explicitly trusted gateway pods", () => {

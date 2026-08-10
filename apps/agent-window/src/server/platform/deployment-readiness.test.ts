@@ -83,6 +83,45 @@ test("pilot readiness requires trusted identity, persistent storage, live reads,
   }
 });
 
+test("shared pilot readiness uses Postgres and object-storage health instead of local paths", () => {
+  const before = snapshotEnv();
+  try {
+    process.env.BM_DEPLOYMENT_MODE = "pilot";
+    process.env.BM_IDENTITY_MODE = "trusted-headers";
+    process.env.AI_MODEL = "openai:gpt-5.4-mini";
+    process.env.OPENAI_API_KEY = "test-key-not-real";
+    delete process.env.BM_STATE_DB_PATH;
+    delete process.env.BM_ARTIFACT_ROOT;
+
+    const ready = buildDeploymentReadiness(liveIntegrations(), {
+      packCount: 5,
+      persistence: {
+        mode: "postgres-supabase",
+        shared: true,
+        stateReady: true,
+        artifactsReady: true,
+      },
+    });
+    assert.equal(ready.ready, true);
+    assert.equal(ready.checks.find((item) => item.id === "shared-postgres-state")?.ok, true);
+    assert.equal(ready.checks.find((item) => item.id === "shared-artifact-storage")?.ok, true);
+
+    const unavailable = buildDeploymentReadiness(liveIntegrations(), {
+      packCount: 5,
+      persistence: {
+        mode: "postgres-supabase",
+        shared: true,
+        stateReady: false,
+        artifactsReady: true,
+      },
+    });
+    assert.equal(unavailable.ready, false);
+    assert.equal(unavailable.checks.find((item) => item.id === "shared-postgres-state")?.required, true);
+  } finally {
+    restoreEnv(before);
+  }
+});
+
 test("pilot readiness fails closed when trusted identity or live integrations are missing", () => {
   const before = snapshotEnv();
   const root = mkdtempSync(join(tmpdir(), "bm-pilot-unready-"));

@@ -2,7 +2,7 @@ import { randomUUID } from "node:crypto";
 import { defineTool } from "@copilotkit/runtime/v2";
 import { z } from "zod";
 import type { AgentTelemetryService } from "../platform/agent-telemetry.js";
-import type { CapabilityBroker } from "../platform/capability-broker.js";
+import type { CapabilityBrokerContract } from "../platform/capability-broker-contract.js";
 import type { EnvironmentName, ExecutionContext } from "../platform/capability-types.js";
 import {
   assertProjectAccess,
@@ -26,8 +26,8 @@ function contextFor(projectId: string, environment: EnvironmentName, runId = ran
   };
 }
 
-function actionForCurrentIdentity(broker: CapabilityBroker, actionId: string) {
-  const action = broker.getAction(actionId);
+async function actionForCurrentIdentity(broker: CapabilityBrokerContract, actionId: string) {
+  const action = await broker.getAction(actionId);
   if (!action) return undefined;
   if (!canAccessExecutionContext(currentRequestIdentity(), action.context)) {
     throw new Error("Current identity is not authorized for this action scope.");
@@ -55,7 +55,7 @@ QA capability execution protocol:
 - Teams posting remains mock-only. Production browser execution and free-form production mutation are unavailable.
 `;
 
-export function buildQaTools(broker: CapabilityBroker, telemetry?: AgentTelemetryService) {
+export function buildQaTools(broker: CapabilityBrokerContract, telemetry?: AgentTelemetryService) {
   const linkRun = (runId: string) => telemetry?.linkCurrentAgentRunToQaRun(runId);
 
   const listCapabilities = defineTool({
@@ -80,7 +80,7 @@ export function buildQaTools(broker: CapabilityBroker, telemetry?: AgentTelemetr
       environment: z.enum(["playground", "qa", "prod"]),
     }),
     execute: async ({ projectId, environment }) => {
-      const run = broker.startRun(contextFor(projectId, environment as EnvironmentName));
+      const run = await broker.startRun(contextFor(projectId, environment as EnvironmentName));
       linkRun(run.id);
       return {
         runId: run.id,
@@ -107,7 +107,7 @@ export function buildQaTools(broker: CapabilityBroker, telemetry?: AgentTelemetr
       assertProjectAccess(identity, projectId);
       let context: ExecutionContext;
       if (runId) {
-        const run = broker.getRun(runId);
+        const run = await broker.getRun(runId);
         if (!run) throw new Error("QA run was not found or has expired from the configured store.");
         if (!canAccessExecutionContext(identity, run.context)) throw new Error("Current identity cannot access this QA run.");
         if (run.context.projectId !== projectId || run.context.environment !== environment) {
@@ -118,7 +118,7 @@ export function buildQaTools(broker: CapabilityBroker, telemetry?: AgentTelemetr
         context = contextFor(projectId, environment as EnvironmentName);
       }
       linkRun(context.runId);
-      return broker.requestAction(capabilityId, context, payload);
+      return await broker.requestAction(capabilityId, context, payload);
     },
   });
 
@@ -127,7 +127,7 @@ export function buildQaTools(broker: CapabilityBroker, telemetry?: AgentTelemetr
     description: "Read the server-side status of one previously requested QA action in the current identity scope.",
     parameters: z.object({ actionId: z.string().uuid() }),
     execute: async ({ actionId }) => {
-      const action = actionForCurrentIdentity(broker, actionId);
+      const action = await actionForCurrentIdentity(broker, actionId);
       if (action) linkRun(action.context.runId);
       return action ?? { error: "action_not_found", actionId };
     },
@@ -138,7 +138,7 @@ export function buildQaTools(broker: CapabilityBroker, telemetry?: AgentTelemetr
     description: "Execute a previously requested QA action only when server policy and current identity scope permit it.",
     parameters: z.object({ actionId: z.string().uuid() }),
     execute: async ({ actionId }) => {
-      const action = actionForCurrentIdentity(broker, actionId);
+      const action = await actionForCurrentIdentity(broker, actionId);
       if (!action) throw new Error("Action not found");
       linkRun(action.context.runId);
       return broker.executeAction(actionId);
