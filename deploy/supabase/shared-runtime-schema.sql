@@ -45,6 +45,46 @@ create table if not exists bm_agents_world.actions (
 create index if not exists idx_bm_actions_run_updated
   on bm_agents_world.actions(run_id, updated_at asc);
 
+-- Every shared action write uses INSERT ... ON CONFLICT DO UPDATE. PostgreSQL
+-- serializes conflicting updates to one action row; this trigger then validates
+-- the state transition against the committed OLD row. That makes execution
+-- claims and approval decisions compare-and-swap operations across pods without
+-- allowing a stale writer to regress or duplicate an action.
+create or replace function bm_agents_world.enforce_action_transition()
+returns trigger
+language plpgsql
+as $$
+begin
+  if new.status = old.status then
+    -- Repeating `executing` is a stale second execution claim and must fail.
+    if new.status = 'executing' then
+      raise exception 'action % is already executing', old.action_id using errcode = '40001';
+    end if;
+    return new;
+  end if;
+
+  if old.status = 'pending_approval' and new.status in ('approved', 'rejected') then
+    return new;
+  end if;
+
+  if old.status in ('ready', 'approved') and new.status = 'executing' then
+    return new;
+  end if;
+
+  if old.status = 'executing' and new.status in ('executed', 'failed') then
+    return new;
+  end if;
+
+  raise exception 'invalid action transition for %: % -> %', old.action_id, old.status, new.status
+    using errcode = '40001';
+end;
+$$;
+
+drop trigger if exists trg_bm_action_transition on bm_agents_world.actions;
+create trigger trg_bm_action_transition
+before update on bm_agents_world.actions
+for each row execute function bm_agents_world.enforce_action_transition();
+
 create table if not exists bm_agents_world.approvals (
   approval_id uuid primary key,
   action_id uuid not null unique references bm_agents_world.actions(action_id) on delete cascade,
