@@ -5,6 +5,7 @@ import "@copilotkit/react-core/v2/styles.css";
 import { App } from "./App";
 import "./styles.css";
 import "./qa-workbench.css";
+import "./pilot-dashboard.css";
 
 const root = document.getElementById("root");
 if (!root) throw new Error("Missing #root element");

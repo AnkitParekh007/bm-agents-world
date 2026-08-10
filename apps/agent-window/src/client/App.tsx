@@ -5,6 +5,7 @@ import {
   useCopilotKit,
 } from "@copilotkit/react-core/v2";
 import { QaApprovalBridge, QaWorkbench } from "./QaWorkbench";
+import { QaPilotDashboard } from "./QaPilotDashboard";
 
 interface PackSummary {
   id: string;
@@ -202,6 +203,7 @@ export function App() {
         )}
 
         {selectedId === "qa" && <QaWorkbench />}
+        {selectedId === "qa" && <QaPilotDashboard />}
 
         <div className="workspace-grid">
           <section className="operations-panel">

@@ -4,7 +4,7 @@ BM Agents World is the incubation repository for turning the organization agent 
 
 ## Current milestone: QA team pilot
 
-`apps/agent-window` uses CopilotKit + AG-UI as the agent experience layer and now contains a real QA vertical slice plus a deployable shared-pilot package.
+`apps/agent-window` uses CopilotKit + AG-UI as the agent experience layer and now contains a real QA vertical slice plus a deployable and measurable shared-pilot package.
 
 What is working:
 
@@ -23,9 +23,12 @@ What is working:
 - Request-scoped tenant/project authorization.
 - Self-approval denial in trusted shared-pilot mode.
 - Run-scoped artifact authorization.
+- QA pilot observability derived from persistent run/action/approval results.
+- Persistent per-run human evaluation: outcome, usefulness, reuse intent, false positives, manual override time, and notes.
+- Tenant/project-scoped pilot scorecard with recent-run drilldown.
 - Docker image with pinned Playwright browser runtime.
 - Kubernetes single-replica pilot package with persistent storage, health/readiness probes, and trusted-gateway-only ingress NetworkPolicy.
-- CI for strict TypeScript, policy/integration/deployment tests, production build, and container build.
+- CI for strict TypeScript, policy/integration/deployment/observability tests, production build, and container build.
 
 ## Architecture
 
@@ -58,6 +61,12 @@ Trusted adapters
         |
         v
 Evidence / governed Jira defect
+        |
+        v
+Pilot Observability
+        +-- derived run metrics
+        +-- human evaluation
+        +-- team scorecard
 ```
 
 The pack files remain the source material. The core application must not become a separate hard-coded implementation for every organizational role.
@@ -113,6 +122,14 @@ GET /readyz
 
 See [QA Team Pilot Deployment](docs/qa-team-pilot-deployment.md) for the full gateway, network, secret, storage, image, and pilot-admission contract.
 
+## QA pilot scorecard
+
+When the QA pack is selected, BM Agents World renders a Team Pilot Scorecard built from persisted execution facts and human feedback. It tracks run/action success, browser test pass/fail, approvals, bug drafts, confirmed Jira side effects, usefulness, would-use-again rate, false-positive defects, and manual override time.
+
+Model token/cost telemetry is deliberately shown as `not_instrumented` until provider usage is written into the BM Agents World persistence contract; missing usage is never reported as zero.
+
+See [QA Pilot Observability and Evaluation](docs/qa-pilot-observability.md).
+
 ## Security boundary
 
 External capability execution follows:
@@ -152,16 +169,18 @@ Free-form production mutation remains unavailable.
 - Jira writes remain separately opt-in and always require L3 approval.
 - Database validation and Teams posting are not yet live integrations.
 - Production browser execution is not supported.
+- Model call/token/cost usage is not yet persisted by the current CopilotKit integration.
 - Horizontal scaling should wait for a shared Postgres/Supabase capability store and object storage.
 
 ## Next milestones
 
 1. Deploy the QA pilot behind organization SSO/gateway and verify NetworkPolicy/equivalent isolation.
 2. Configure one real project first, then onboard 2-3 QA engineers and an independent reviewer.
-3. Measure task success, defect-draft quality, approval rejection, latency, cost, and manual overrides.
-4. Replace SQLite/filesystem persistence with shared Postgres/Supabase + object storage before horizontal scale.
-5. Add OPA-backed centralized policy evaluation and organization-approved MCP connection management.
-6. Reuse the proven capability/approval/audit pattern for Angular, Java, Database, DevOps, Product, SRE, Security, AI/ML, MLOps, and the remaining packs.
+3. Use the pilot scorecard to measure task success, defect quality, approval rejection, usefulness, manual overrides, and latency.
+4. Add model/provider usage telemetry and OpenTelemetry export for operational diagnosis.
+5. Replace SQLite/filesystem persistence with shared Postgres/Supabase + object storage before horizontal scale.
+6. Add OPA-backed centralized policy evaluation and organization-approved MCP connection management.
+7. Reuse the proven capability/approval/audit pattern for Angular, Java, Database, DevOps, Product, SRE, Security, AI/ML, MLOps, and the remaining packs.
 
 ## Useful commands
 

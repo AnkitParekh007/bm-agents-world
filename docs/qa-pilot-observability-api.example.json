@@ -1,0 +1,25 @@
+{
+  "summary": {
+    "periodDays": 7,
+    "totalRuns": 12,
+    "evaluatedRuns": 9,
+    "evaluatedSuccessRate": 0.6667,
+    "averageUsefulnessScore": 4.2,
+    "wouldUseAgainRate": 0.8889,
+    "falsePositiveDefectRate": 0.1111,
+    "averageManualOverrideMinutes": 6,
+    "averageRunDurationMs": 128000,
+    "actionSuccessRate": 0.94,
+    "approvalRejectionRate": 0.08,
+    "totalSelectedTests": 73,
+    "totalPassedTests": 68,
+    "totalFailedTests": 5,
+    "browserPassRate": 0.9315,
+    "bugDraftsGenerated": 4,
+    "jiraDefectsCreated": 3,
+    "liveActions": 44,
+    "externalSideEffects": 3,
+    "modelUsageStatus": "not_instrumented"
+  },
+  "note": "Example only. The runtime never seeds or fabricates these values; the real API derives them from persisted pilot runs and evaluations."
+}
