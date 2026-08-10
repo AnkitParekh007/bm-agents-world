@@ -49,6 +49,29 @@ test("pilot service is internal-only and config fails toward trusted production 
   assert.equal(configMap.data.BM_STATE_DB_PATH, "/var/lib/bm-agents/state/qa-pilot.sqlite");
   assert.equal(configMap.data.BM_ARTIFACT_ROOT, "/var/lib/bm-agents");
   assert.equal(configMap.data.QA_JIRA_WRITE_ENABLED, "false");
+  assert.ok(kustomization.resources.includes("networkpolicy.yaml"));
   assert.ok(!kustomization.resources.some((item: string) => item.toLowerCase().includes("ingress")));
   assert.ok(!kustomization.resources.some((item: string) => item.toLowerCase().includes("secret.example")));
+});
+
+test("pilot ingress accepts traffic only from explicitly trusted gateway pods", () => {
+  const policy = yamlFile("networkpolicy.yaml");
+  assert.equal(policy.apiVersion, "networking.k8s.io/v1");
+  assert.equal(policy.kind, "NetworkPolicy");
+  assert.deepEqual(policy.spec.policyTypes, ["Ingress"]);
+  assert.equal(policy.spec.podSelector.matchLabels["app.kubernetes.io/name"], "bm-agents-world");
+  assert.equal(policy.spec.podSelector.matchLabels["app.kubernetes.io/component"], "agent-window");
+
+  const rule = policy.spec.ingress[0];
+  assert.equal(rule.ports[0].protocol, "TCP");
+  assert.equal(rule.ports[0].port, 4000);
+  assert.equal(rule.from.length, 1);
+  assert.equal(
+    rule.from[0].namespaceSelector.matchLabels["bm-agents-world.io/trusted-gateway"],
+    "true",
+  );
+  assert.equal(
+    rule.from[0].podSelector.matchLabels["bm-agents-world.io/trusted-gateway"],
+    "true",
+  );
 });
