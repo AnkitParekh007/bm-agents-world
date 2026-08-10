@@ -20,6 +20,19 @@ export const QA_CAPABILITIES: CapabilityDefinition[] = [
     adapterId: "qa-jira-read-adapter",
   },
   {
+    id: "qa.jira.duplicate.search",
+    system: "jira",
+    action: "bug.duplicate.search",
+    description: "Search recent unresolved Jira bugs for likely duplicates of an immutable bug-draft artifact.",
+    riskLevel: "L0",
+    approvalMode: "none",
+    actionClass: "read",
+    externalWrite: false,
+    productionMutation: false,
+    allowedEnvironments: ["playground", "qa", "prod"],
+    adapterId: "qa-jira-defect-adapter",
+  },
+  {
     id: "qa.bitbucket.change-impact.read",
     system: "bitbucket",
     action: "change-impact.read",
@@ -62,14 +75,14 @@ export const QA_CAPABILITIES: CapabilityDefinition[] = [
     id: "qa.jira.bug.create",
     system: "jira",
     action: "bug.create",
-    description: "Create a Jira bug from a reviewed defect draft.",
+    description: "Create a Jira bug from the exact immutable bug-draft artifact after payload-bound L3 human approval.",
     riskLevel: "L3",
     approvalMode: "human",
     actionClass: "external-write",
     externalWrite: true,
     productionMutation: false,
     allowedEnvironments: ["playground", "qa", "prod"],
-    adapterId: "qa-mock-adapter",
+    adapterId: "qa-jira-defect-adapter",
   },
   {
     id: "qa.teams.status.post",
@@ -160,22 +173,6 @@ export class QaMockAdapter implements CapabilityAdapter {
             skipped: 0,
             evidence: ["mock://screenshot/failure-1", "mock://trace/run-1"],
             note: "No browser was launched because Playwright live execution is not configured.",
-          },
-        };
-      case "qa.jira.bug.create":
-        return {
-          ok: true,
-          mode: "mock",
-          externalSideEffect: false,
-          data: {
-            simulated: true,
-            wouldCreate: {
-              projectId: context.projectId,
-              summary: payload.summary,
-              severity: payload.severity,
-              storyId: payload.storyId,
-            },
-            note: "Human approval was verified, but no Jira write occurred because the live Jira write adapter is not connected.",
           },
         };
       case "qa.teams.status.post":
