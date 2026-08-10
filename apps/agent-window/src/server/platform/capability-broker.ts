@@ -11,6 +11,7 @@ import type {
   RiskLevel,
 } from "./capability-types.js";
 import type { CapabilityRun, CapabilityStore } from "./capability-store.js";
+import { startActiveSpan } from "./telemetry.js";
 
 const APPROVAL_TTL_MS = 10 * 60 * 1000;
 const RISK_REQUIRES_HUMAN = new Set<RiskLevel>(["L2", "L3", "L4"]);
@@ -256,43 +257,70 @@ export class CapabilityBroker {
     const adapter = this.adapters.get(definition.adapterId);
     if (!adapter) throw new Error(`Adapter ${definition.adapterId} is not registered`);
 
+    const executionStarted = Date.now();
     action.status = "executing";
-    action.updatedAt = new Date().toISOString();
+    action.executionStartedAt = new Date(executionStarted).toISOString();
+    action.updatedAt = action.executionStartedAt;
     this.saveAction(action);
     this.audit("action.executing", action, "system", "capability-broker");
 
-    try {
-      action.result = await adapter.execute(definition, action.context, action.payload);
-      action.status = action.result.ok ? "executed" : "failed";
-      action.updatedAt = new Date().toISOString();
-      this.saveAction(action);
-      this.audit(
-        action.result.ok ? "action.executed" : "action.failed",
-        action,
-        "system",
-        adapter.id,
-        {
-          mode: action.result.mode,
-          externalSideEffect: action.result.externalSideEffect,
-          error: action.result.error,
-        },
-      );
-      return action;
-    } catch (error) {
-      action.status = "failed";
-      action.updatedAt = new Date().toISOString();
-      action.result = {
-        ok: false,
-        mode: "mock",
-        externalSideEffect: false,
-        error: error instanceof Error ? error.message : String(error),
-      };
-      this.saveAction(action);
-      this.audit("action.failed", action, "system", adapter.id, {
-        error: action.result.error,
-      });
-      return action;
-    }
+    return startActiveSpan(
+      "bm.capability.execute",
+      {
+        "bm.capability.id": action.capabilityId,
+        "bm.action.id": action.id,
+        "bm.run.id": action.context.runId,
+        "bm.tenant.id": action.context.tenantId,
+        "bm.project.id": action.context.projectId,
+        "bm.environment": action.context.environment,
+        "bm.risk.level": action.riskLevel,
+        "bm.adapter.id": adapter.id,
+      },
+      async (span) => {
+        try {
+          action.result = await adapter.execute(definition, action.context, action.payload);
+          action.status = action.result.ok ? "executed" : "failed";
+          action.executionFinishedAt = new Date().toISOString();
+          action.executionDurationMs = Math.max(0, Date.now() - executionStarted);
+          action.updatedAt = action.executionFinishedAt;
+          span.setAttribute("bm.capability.mode", action.result.mode);
+          span.setAttribute("bm.capability.external_side_effect", action.result.externalSideEffect);
+          span.setAttribute("bm.capability.duration_ms", action.executionDurationMs);
+          this.saveAction(action);
+          this.audit(
+            action.result.ok ? "action.executed" : "action.failed",
+            action,
+            "system",
+            adapter.id,
+            {
+              mode: action.result.mode,
+              externalSideEffect: action.result.externalSideEffect,
+              durationMs: action.executionDurationMs,
+              error: action.result.error,
+            },
+          );
+          return action;
+        } catch (error) {
+          action.status = "failed";
+          action.executionFinishedAt = new Date().toISOString();
+          action.executionDurationMs = Math.max(0, Date.now() - executionStarted);
+          action.updatedAt = action.executionFinishedAt;
+          action.result = {
+            ok: false,
+            mode: "mock",
+            externalSideEffect: false,
+            error: error instanceof Error ? error.message : String(error),
+          };
+          span.setAttribute("bm.capability.duration_ms", action.executionDurationMs);
+          this.saveAction(action);
+          this.audit("action.failed", action, "system", adapter.id, {
+            durationMs: action.executionDurationMs,
+            error: action.result.error,
+          });
+          return action;
+        }
+      },
+    );
   }
 
   private saveAction(action: CapabilityAction): void {

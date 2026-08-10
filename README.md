@@ -26,9 +26,14 @@ What is working:
 - QA pilot observability derived from persistent run/action/approval results.
 - Persistent per-run human evaluation: outcome, usefulness, reuse intent, false positives, manual override time, and notes.
 - Tenant/project-scoped pilot scorecard with recent-run drilldown.
+- AG-UI agent-run telemetry with measured token usage when provider metadata is present.
+- Explicit measured/partial/unavailable model-usage coverage instead of fake zeroes.
+- Configured token-rate cost estimates without hard-coded provider prices.
+- OpenTelemetry spans for agent runs, governed capability execution, and approval decisions.
+- Persistent capability execution latency and per-capability timing breakdowns.
 - Docker image with pinned Playwright browser runtime.
 - Kubernetes single-replica pilot package with persistent storage, health/readiness probes, and trusted-gateway-only ingress NetworkPolicy.
-- CI for strict TypeScript, policy/integration/deployment/observability tests, production build, and container build.
+- CI for strict TypeScript, policy/integration/deployment/observability/telemetry tests, production build, and container build.
 
 ## Architecture
 
@@ -41,6 +46,12 @@ PackRegistry / Pack Compiler
         v
 CopilotKit + AG-UI
         |
+        +--> Agent-run telemetry
+        |       +-- provider/model
+        |       +-- measured tokens
+        |       +-- configured cost estimate
+        |       +-- trace id
+        |
         v
 Agent Window
         |
@@ -51,6 +62,7 @@ Capability Broker
         +-- Persistent run/action state
         +-- Human approval
         +-- Audit
+        +-- execution latency
         |
         v
 Trusted adapters
@@ -65,8 +77,10 @@ Evidence / governed Jira defect
         v
 Pilot Observability
         +-- derived run metrics
+        +-- model/tool telemetry
         +-- human evaluation
         +-- team scorecard
+        +-- optional OTLP trace export
 ```
 
 The pack files remain the source material. The core application must not become a separate hard-coded implementation for every organizational role.
@@ -124,11 +138,11 @@ See [QA Team Pilot Deployment](docs/qa-team-pilot-deployment.md) for the full ga
 
 ## QA pilot scorecard
 
-When the QA pack is selected, BM Agents World renders a Team Pilot Scorecard built from persisted execution facts and human feedback. It tracks run/action success, browser test pass/fail, approvals, bug drafts, confirmed Jira side effects, usefulness, would-use-again rate, false-positive defects, and manual override time.
+When the QA pack is selected, BM Agents World renders a Team Pilot Scorecard built from persisted execution facts and human feedback. It tracks run/action success, browser test pass/fail, approvals, bug drafts, confirmed Jira side effects, usefulness, would-use-again rate, false-positive defects, manual override time, model usage, configured cost estimates, and capability latency.
 
-Model token/cost telemetry is deliberately shown as `not_instrumented` until provider usage is written into the BM Agents World persistence contract; missing usage is never reported as zero.
+Model usage is reported only when numeric provider/AG-UI metadata is present. A workflow can therefore be `measured`, `partial`, or `unavailable`; missing usage is never reported as zero. Cost remains unavailable unless validated input/output token rates are explicitly configured server-side.
 
-See [QA Pilot Observability and Evaluation](docs/qa-pilot-observability.md).
+See [QA Pilot Observability and Evaluation](docs/qa-pilot-observability.md) and [Model Usage Telemetry and OpenTelemetry](docs/model-usage-opentelemetry.md).
 
 ## Security boundary
 
@@ -158,7 +172,7 @@ Jira / Bitbucket / Playwright
 Persistent audit + authorized evidence
 ```
 
-Raw Jira, Bitbucket, model-provider, and Playwright authentication material remains server-side and must not enter model context.
+Raw Jira, Bitbucket, model-provider, and Playwright authentication material remains server-side and must not enter model context. OpenTelemetry spans contain bounded operational identifiers/counters, not prompts, credentials, raw tool payloads, or evidence bodies.
 
 Free-form production mutation remains unavailable.
 
@@ -169,18 +183,18 @@ Free-form production mutation remains unavailable.
 - Jira writes remain separately opt-in and always require L3 approval.
 - Database validation and Teams posting are not yet live integrations.
 - Production browser execution is not supported.
-- Model call/token/cost usage is not yet persisted by the current CopilotKit integration.
+- Model token telemetry depends on actual provider/AG-UI usage metadata; unsupported runs remain `unavailable`.
+- Cost is an explicit configured estimate and not provider billing.
 - Horizontal scaling should wait for a shared Postgres/Supabase capability store and object storage.
 
 ## Next milestones
 
 1. Deploy the QA pilot behind organization SSO/gateway and verify NetworkPolicy/equivalent isolation.
-2. Configure one real project first, then onboard 2-3 QA engineers and an independent reviewer.
-3. Use the pilot scorecard to measure task success, defect quality, approval rejection, usefulness, manual overrides, and latency.
-4. Add model/provider usage telemetry and OpenTelemetry export for operational diagnosis.
-5. Replace SQLite/filesystem persistence with shared Postgres/Supabase + object storage before horizontal scale.
-6. Add OPA-backed centralized policy evaluation and organization-approved MCP connection management.
-7. Reuse the proven capability/approval/audit pattern for Angular, Java, Database, DevOps, Product, SRE, Security, AI/ML, MLOps, and the remaining packs.
+2. Configure one real project, an approved OTLP collector if desired, and validated model token rates if cost estimates are needed.
+3. Onboard 2-3 QA engineers plus an independent reviewer and use the scorecard to measure task success, defect quality, approval rejection, usefulness, manual overrides, latency, token usage, and cost.
+4. Replace SQLite/filesystem persistence with shared Postgres/Supabase + object storage before horizontal scale.
+5. Add OPA-backed centralized policy evaluation and organization-approved MCP connection management.
+6. Reuse the proven capability/approval/audit/telemetry pattern for Angular, Java, Database, DevOps, Product, SRE, Security, AI/ML, MLOps, and the remaining packs.
 
 ## Useful commands
 

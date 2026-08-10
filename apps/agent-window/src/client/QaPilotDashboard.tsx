@@ -21,7 +21,16 @@ interface PilotSummary {
   jiraDefectsCreated: number;
   liveActions: number;
   externalSideEffects: number;
-  modelUsageStatus: "not_instrumented";
+  modelUsageStatus: "measured" | "partial" | "unavailable";
+  modelUsageCoverage: number | null;
+  totalModelCalls: number;
+  totalInputTokens: number | null;
+  totalOutputTokens: number | null;
+  totalTokens: number | null;
+  estimatedCostUsd: number | null;
+  costStatus: "configured_estimate" | "partial" | "unavailable";
+  averageCapabilityDurationMs: number | null;
+  measuredCapabilityExecutions: number;
 }
 
 interface RunEvaluation {
@@ -33,6 +42,22 @@ interface RunEvaluation {
   notes?: string;
   reviewerUserId: string;
   updatedAt: string;
+}
+
+interface QaRunModelUsage {
+  status: "measured" | "partial" | "unavailable";
+  agentRuns: number;
+  measuredAgentRuns: number;
+  modelCalls: number;
+  toolCalls: number;
+  inputTokens: number | null;
+  outputTokens: number | null;
+  totalTokens: number | null;
+  estimatedCostUsd: number | null;
+  costStatus: "configured_estimate" | "partial" | "unavailable";
+  models: string[];
+  providers: string[];
+  traceIds: string[];
 }
 
 interface PilotRun {
@@ -58,6 +83,12 @@ interface PilotRun {
   jiraDefectCreated: boolean;
   liveActions: number;
   externalSideEffects: number;
+  modelUsage: QaRunModelUsage;
+  executionTelemetry: {
+    measuredExecutions: number;
+    averageCapabilityDurationMs: number | null;
+    totalCapabilityDurationMs: number;
+  };
   evaluation?: RunEvaluation;
 }
 
@@ -78,6 +109,19 @@ function duration(value: number | null): string {
   const minutes = Math.floor(seconds / 60);
   const remainder = seconds % 60;
   return `${minutes}m ${remainder}s`;
+}
+
+function tokens(value: number | null): string {
+  if (value == null) return "—";
+  if (value >= 1_000_000) return `${(value / 1_000_000).toFixed(2)}M`;
+  if (value >= 1_000) return `${(value / 1_000).toFixed(1)}K`;
+  return String(value);
+}
+
+function cost(value: number | null): string {
+  if (value == null) return "—";
+  if (value < 0.01) return `$${value.toFixed(4)}`;
+  return `$${value.toFixed(2)}`;
 }
 
 function EvaluationEditor({ run, onSaved, onCancel }: {
@@ -208,25 +252,33 @@ export function QaPilotDashboard() {
             <div className="pilot-metric"><strong>{percent(summary.actionSuccessRate)}</strong><span>Action success</span></div>
             <div className="pilot-metric"><strong>{percent(summary.browserPassRate)}</strong><span>Browser pass</span></div>
             <div className="pilot-metric"><strong>{summary.averageUsefulnessScore ?? "—"}</strong><span>Usefulness / 5</span></div>
-            <div className="pilot-metric"><strong>{percent(summary.wouldUseAgainRate)}</strong><span>Would use again</span></div>
-            <div className="pilot-metric"><strong>{summary.averageManualOverrideMinutes ?? "—"}</strong><span>Manual minutes</span></div>
-            <div className="pilot-metric"><strong>{percent(summary.approvalRejectionRate)}</strong><span>Approval reject</span></div>
-            <div className="pilot-metric"><strong>{duration(summary.averageRunDurationMs)}</strong><span>Avg duration</span></div>
+            <div className="pilot-metric"><strong>{tokens(summary.totalTokens)}</strong><span>Measured tokens</span></div>
+            <div className="pilot-metric"><strong>{summary.totalModelCalls}</strong><span>Model calls</span></div>
+            <div className="pilot-metric"><strong>{cost(summary.estimatedCostUsd)}</strong><span>Cost estimate</span></div>
+            <div className="pilot-metric"><strong>{duration(summary.averageCapabilityDurationMs)}</strong><span>Avg tool latency</span></div>
           </div>
           <div className="pilot-secondary-metrics">
+            <span><strong>{percent(summary.wouldUseAgainRate)}</strong> would use again</span>
+            <span><strong>{summary.averageManualOverrideMinutes ?? "—"}</strong> manual minutes</span>
+            <span><strong>{percent(summary.approvalRejectionRate)}</strong> approval reject</span>
+            <span><strong>{duration(summary.averageRunDurationMs)}</strong> avg run</span>
             <span><strong>{summary.totalSelectedTests}</strong> selected tests</span>
             <span><strong>{summary.bugDraftsGenerated}</strong> bug drafts</span>
             <span><strong>{summary.jiraDefectsCreated}</strong> Jira defects</span>
-            <span><strong>{summary.externalSideEffects}</strong> live side effects</span>
             <span><strong>{summary.evaluatedRuns}/{summary.totalRuns}</strong> runs evaluated</span>
-            <span className="pilot-telemetry-pending">Token/cost telemetry: not instrumented</span>
+            <span className={summary.modelUsageStatus === "measured" ? "pilot-telemetry-live" : "pilot-telemetry-pending"}>
+              Model usage: {summary.modelUsageStatus} · {percent(summary.modelUsageCoverage)} coverage
+            </span>
+            <span className={summary.costStatus === "configured_estimate" ? "pilot-telemetry-live" : "pilot-telemetry-pending"}>
+              Cost: {summary.costStatus === "unavailable" ? "rates not configured / usage unavailable" : summary.costStatus}
+            </span>
           </div>
         </>
       )}
 
       <div className="pilot-run-list">
         <div className="pilot-run-header">
-          <span>Run</span><span>Scope</span><span>Actions</span><span>Tests</span><span>Outcome</span><span>Evaluation</span>
+          <span>Run</span><span>Scope</span><span>Actions</span><span>Tests</span><span>Model</span><span>Outcome</span><span>Evaluation</span>
         </div>
         {!loading && runs.length === 0 && <div className="pilot-empty">No QA runs exist in this scope yet.</div>}
         {runs.map((run) => (
@@ -234,8 +286,12 @@ export function QaPilotDashboard() {
             <div className="pilot-run-row">
               <div><strong>{run.runId.slice(0, 12)}</strong><small>{duration(run.durationMs)} · {new Date(run.startedAt).toLocaleString()}</small></div>
               <div><strong>{run.projectId}</strong><small>{run.environment} · {run.userId}</small></div>
-              <div><strong>{run.executedActions}/{run.actionCount}</strong><small>{run.failedActions} failed · {run.rejectedActions} rejected</small></div>
+              <div><strong>{run.executedActions}/{run.actionCount}</strong><small>{run.failedActions} failed · tool avg {duration(run.executionTelemetry.averageCapabilityDurationMs)}</small></div>
               <div><strong>{run.passedTests}/{run.selectedTests}</strong><small>{run.failedTests} failed · {run.bugDraftGenerated ? "bug draft" : "no draft"}</small></div>
+              <div>
+                <strong>{run.modelUsage.status === "unavailable" ? "Usage unavailable" : `${tokens(run.modelUsage.totalTokens)} · ${run.modelUsage.modelCalls} calls`}</strong>
+                <small>{run.modelUsage.models[0] ?? "model metadata pending"}{run.modelUsage.estimatedCostUsd == null ? "" : ` · ${cost(run.modelUsage.estimatedCostUsd)}`}</small>
+              </div>
               <div><strong>{run.jiraDefectCreated ? "Jira created" : run.externalSideEffects ? "Live side effect" : "No write"}</strong><small>{run.approvalsApproved} approved · {run.approvalsRejected} rejected</small></div>
               <div>
                 <strong>{run.evaluation ? `${run.evaluation.usefulnessScore}/5 · ${run.evaluation.outcome.replace("_", " ")}` : "Not evaluated"}</strong>

@@ -1,5 +1,6 @@
 import { BuiltInAgent, CopilotRuntime, defineTool } from "@copilotkit/runtime/v2";
 import { z } from "zod";
+import type { AgentTelemetryService } from "./platform/agent-telemetry.js";
 import type { CapabilityBroker } from "./platform/capability-broker.js";
 import type { AgentPack } from "./pack-registry.js";
 import { PackRegistry } from "./pack-registry.js";
@@ -150,25 +151,31 @@ function worldTools(registry: PackRegistry) {
 export function buildCopilotRuntime(
   registry: PackRegistry,
   qaBroker: CapabilityBroker,
+  telemetry?: AgentTelemetryService,
 ): CopilotRuntime {
   const agents: Record<string, BuiltInAgent> = {};
+  const model = modelName();
 
   for (const pack of registry.packs) {
     const isQa = pack.id === "qa";
-    agents[pack.id] = new BuiltInAgent({
-      model: modelName(),
+    const agent = new BuiltInAgent({
+      model,
       prompt: packPrompt(pack) + (isQa ? QA_CAPABILITY_PROMPT : ""),
-      tools: isQa ? [...packTools(pack), ...buildQaTools(qaBroker)] : packTools(pack),
+      tools: isQa ? [...packTools(pack), ...buildQaTools(qaBroker, telemetry)] : packTools(pack),
       maxSteps: isQa ? 16 : 8,
     });
+    if (telemetry) agent.use(telemetry.middleware(pack.id, model));
+    agents[pack.id] = agent;
   }
 
-  agents.default = new BuiltInAgent({
-    model: modelName(),
+  const supervisor = new BuiltInAgent({
+    model,
     prompt: `You are the BM Agents World Supervisor. You help users discover the right organizational agent and understand the packs currently loaded by the platform. Use your tools rather than inventing pack capabilities. Do not claim an external system action has happened unless an actual capability tool is available and its result confirms a live external side effect. The currently loaded pack ids are: ${registry.packs.map((pack) => pack.id).join(", ")}.`,
     tools: worldTools(registry),
     maxSteps: 6,
   });
+  if (telemetry) supervisor.use(telemetry.middleware("default", model));
+  agents.default = supervisor;
 
   return new CopilotRuntime({
     agents,
