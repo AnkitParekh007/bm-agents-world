@@ -19,9 +19,23 @@ export interface PolicyEvaluator {
 }
 
 const RISK_ORDER: RiskLevel[] = ["L0", "L1", "L2", "L3", "L4"];
+const EFFECT_ORDER: PolicyDecision["effect"][] = ["allow", "approval", "deny"];
 
 function maxRisk(left: RiskLevel, right: RiskLevel): RiskLevel {
   return RISK_ORDER[Math.max(RISK_ORDER.indexOf(left), RISK_ORDER.indexOf(right))] ?? "L4";
+}
+
+function stricterEffect(left: PolicyDecision["effect"], right: PolicyDecision["effect"]): PolicyDecision["effect"] {
+  return EFFECT_ORDER[Math.max(EFFECT_ORDER.indexOf(left), EFFECT_ORDER.indexOf(right))] ?? "deny";
+}
+
+function approvalFor(effect: PolicyDecision["effect"], riskLevel: RiskLevel, baseline: ApprovalMode, requested: ApprovalMode): ApprovalMode {
+  if (riskLevel === "L4") return "privileged-process";
+  if (effect === "approval") {
+    return baseline === "privileged-process" || requested === "privileged-process" ? "privileged-process" : "human";
+  }
+  if (effect === "deny") return requested === "privileged-process" ? "privileged-process" : baseline;
+  return baseline;
 }
 
 function baselineDecision(definition: CapabilityDefinition, context: ExecutionContext, admission: ConnectorAdmission): PolicyDecision {
@@ -83,7 +97,7 @@ export class OpaPolicyEngine implements PolicyEvaluator {
   async evaluate(definition: CapabilityDefinition, context: ExecutionContext): Promise<PolicyDecision> {
     const admission = this.connectors.admission(definition, context.packId, context.environment);
     const baseline = baselineDecision(definition, context, admission);
-    if (!admission.allowed) return baseline;
+    if (!admission.allowed || baseline.effect === "deny") return baseline;
 
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), this.timeoutMs);
@@ -98,11 +112,18 @@ export class OpaPolicyEngine implements PolicyEvaluator {
       const body = await response.json() as { result?: Partial<PolicyDecision>; decision_id?: string };
       const result = body.result;
       if (!result?.effect || !result.riskLevel || !result.approvalMode) throw new Error("OPA decision is undefined or incomplete");
+
+      const effect = stricterEffect(baseline.effect, result.effect);
+      const riskLevel = maxRisk(baseline.riskLevel, result.riskLevel);
+      const approvalMode = approvalFor(effect, riskLevel, baseline.approvalMode, result.approvalMode);
+      const bounded = effect !== result.effect || riskLevel !== result.riskLevel || approvalMode !== result.approvalMode;
       return {
-        effect: result.effect,
-        riskLevel: result.riskLevel,
-        approvalMode: result.approvalMode,
-        reason: String(result.reason ?? "OPA policy decision"),
+        effect,
+        riskLevel,
+        approvalMode,
+        reason: bounded
+          ? `OPA decision was bounded by the capability/connector minimum. OPA reason: ${String(result.reason ?? "not provided")}`
+          : String(result.reason ?? "OPA policy decision"),
         source: "opa",
         decisionId: body.decision_id,
         connectorId: admission.connector?.id,
