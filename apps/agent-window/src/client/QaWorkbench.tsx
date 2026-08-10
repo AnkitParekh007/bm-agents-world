@@ -18,7 +18,7 @@ interface QaCapability {
 }
 
 interface QaIntegrationStatus {
-  jira: { mode: "live" | "mock" };
+  jira: { mode: "live" | "mock"; writeMode: "live" | "mock"; writeEnabled: boolean };
   bitbucket: {
     mode: "live" | "mock";
     projects: Record<string, Array<{ label: string; workspace: string; repoSlug: string }>>;
@@ -50,6 +50,31 @@ interface ApprovalDecisionResponse {
   message?: string;
 }
 
+interface JiraDefectReview {
+  artifact: { id: string; sha256: string; uri: string };
+  draft: {
+    title: string;
+    parentIssue: string;
+    environment: string;
+    build?: string;
+    expectedResult: string;
+    actualResult: string;
+    severityRecommendation?: string;
+    evidenceIds: string[];
+  };
+  jiraProjectKey: string;
+  issueType: string;
+  labels: string[];
+  duplicateCandidates: Array<{
+    key: string;
+    summary: string;
+    status?: string;
+    priority?: string;
+    similarity: number;
+  }>;
+  writeMode: "live" | "mock";
+}
+
 function ApprovalCard({ actionId, capabilityId, riskLevel, summary, payloadHash, respond }: {
   actionId: string;
   capabilityId: string;
@@ -61,6 +86,21 @@ function ApprovalCard({ actionId, capabilityId, riskLevel, summary, payloadHash,
   const [submitting, setSubmitting] = useState<"approved" | "rejected" | null>(null);
   const [decision, setDecision] = useState<string>();
   const [error, setError] = useState<string>();
+  const [review, setReview] = useState<JiraDefectReview>();
+  const [reviewLoading, setReviewLoading] = useState(capabilityId === "qa.jira.bug.create");
+
+  useEffect(() => {
+    if (capabilityId !== "qa.jira.bug.create") return;
+    void fetch(`/api/qa/actions/${encodeURIComponent(actionId)}/review`)
+      .then(async (response) => {
+        const body = await response.json();
+        if (!response.ok) throw new Error(body.message ?? body.error ?? `Review returned ${response.status}`);
+        return body as JiraDefectReview;
+      })
+      .then(setReview)
+      .catch((reason: unknown) => setError(reason instanceof Error ? reason.message : String(reason)))
+      .finally(() => setReviewLoading(false));
+  }, [actionId, capabilityId]);
 
   const decide = async (next: "approved" | "rejected") => {
     setSubmitting(next);
@@ -71,7 +111,9 @@ function ApprovalCard({ actionId, capabilityId, riskLevel, summary, payloadHash,
         headers: { "content-type": "application/json", "x-user-id": "local-dev-user" },
         body: JSON.stringify({
           decision: next,
-          reason: next === "approved" ? "Approved in BM Agents World QA workbench" : "Rejected in BM Agents World QA workbench",
+          reason: next === "approved"
+            ? `Approved exact ${capabilityId} payload after reviewing immutable artifact and duplicate candidates`
+            : `Rejected ${capabilityId} in BM Agents World QA workbench`,
         }),
       });
       const result = (await response.json()) as ApprovalDecisionResponse;
@@ -84,6 +126,9 @@ function ApprovalCard({ actionId, capabilityId, riskLevel, summary, payloadHash,
     }
   };
 
+  const isJiraCreate = capabilityId === "qa.jira.bug.create";
+  const approvalDisabled = Boolean(submitting) || (isJiraCreate && (reviewLoading || !review));
+
   return (
     <div className="approval-card">
       <div className="approval-card-header"><span className="risk-chip">{riskLevel}</span><strong>Human approval required</strong></div>
@@ -93,14 +138,49 @@ function ApprovalCard({ actionId, capabilityId, riskLevel, summary, payloadHash,
         <div><dt>Action</dt><dd>{actionId}</dd></div>
         <div><dt>Payload hash</dt><dd title={payloadHash}>{payloadHash.slice(0, 16)}…</dd></div>
       </dl>
+
+      {reviewLoading && <div className="approval-result">Loading exact defect artifact and duplicate review…</div>}
+      {review && (
+        <div className="jira-defect-review">
+          <h4>{review.writeMode === "live" ? "Real Jira create preview" : "Jira create simulation preview"}</h4>
+          <dl className="approval-details">
+            <div><dt>Project / type</dt><dd>{review.jiraProjectKey} / {review.issueType}</dd></div>
+            <div><dt>Title</dt><dd>{review.draft.title}</dd></div>
+            <div><dt>Parent story</dt><dd>{review.draft.parentIssue}</dd></div>
+            <div><dt>Environment</dt><dd>{review.draft.environment}{review.draft.build ? ` · ${review.draft.build}` : ""}</dd></div>
+            <div><dt>Severity</dt><dd>{review.draft.severityRecommendation ?? "not set"}</dd></div>
+            <div><dt>Evidence</dt><dd>{review.draft.evidenceIds.length} artifact(s)</dd></div>
+            <div><dt>Draft SHA</dt><dd title={review.artifact.sha256}>{review.artifact.sha256.slice(0, 16)}…</dd></div>
+          </dl>
+          <div className="defect-preview-copy">
+            <strong>Expected</strong><p>{review.draft.expectedResult}</p>
+            <strong>Actual</strong><p>{review.draft.actualResult}</p>
+          </div>
+          <div className="duplicate-review">
+            <strong>Duplicate candidates ({review.duplicateCandidates.length})</strong>
+            {review.duplicateCandidates.length === 0 ? (
+              <p>No similar unresolved bugs were found in the bounded Jira scan.</p>
+            ) : (
+              <ul>{review.duplicateCandidates.map((candidate) => (
+                <li key={candidate.key}><strong>{candidate.key}</strong> · {candidate.summary} · similarity {candidate.similarity}</li>
+              ))}</ul>
+            )}
+          </div>
+        </div>
+      )}
+
       {error && <div className="approval-error">{error}</div>}
       {decision ? (
         <div className={`approval-result ${decision}`}>{decision === "approved" ? "Approved" : "Rejected"}</div>
       ) : (
         <div className="approval-actions">
           <button className="secondary-button" disabled={Boolean(submitting)} onClick={() => void decide("rejected")}>Reject</button>
-          <button className="primary-button" disabled={Boolean(submitting)} onClick={() => void decide("approved")}>
-            {submitting === "approved" ? "Approving…" : "Approve exact action"}
+          <button className="primary-button" disabled={approvalDisabled} onClick={() => void decide("approved")}>
+            {submitting === "approved"
+              ? "Approving…"
+              : review?.writeMode === "live"
+                ? "Approve exact Jira create"
+                : "Approve exact action"}
           </button>
         </div>
       )}
@@ -148,9 +228,7 @@ export function QaWorkbench() {
         return response.json() as Promise<{ capabilities: QaCapability[]; integrations: QaIntegrationStatus; projectTests: ProjectTestProfile[] }>;
       })
       .then(({ capabilities: loaded, integrations: status, projectTests: tests }) => {
-        setCapabilities(loaded);
-        setIntegrations(status);
-        setProjectTests(tests);
+        setCapabilities(loaded); setIntegrations(status); setProjectTests(tests);
       })
       .catch((reason: unknown) => setError(reason instanceof Error ? reason.message : String(reason)));
   }, []);
@@ -166,24 +244,22 @@ export function QaWorkbench() {
     try {
       agent.addMessage({ id: crypto.randomUUID(), role: "user", content: instruction });
       await copilotkit.runAgent({ agent });
-    } finally {
-      setActiveAction(undefined);
-    }
+    } finally { setActiveAction(undefined); }
   };
 
   const analyzeStory = () => run(
     "Analyze story",
-    `Analyze ${storyId} for project ${projectId} in ${environment}. First request and execute qa.jira.story.read with storyId ${storyId}, then request and execute qa.bitbucket.change-impact.read with storyId ${storyId}. Use only returned evidence to produce the QA impact analysis and test approach. Clearly distinguish live evidence from mock simulation.`,
+    `Analyze ${storyId} for project ${projectId} in ${environment}. First request and execute qa.jira.story.read with storyId ${storyId}, then request and execute qa.bitbucket.change-impact.read with storyId ${storyId}. Use only returned evidence and distinguish live evidence from simulation.`,
   );
 
   const runProjectTests = () => run(
     "Run project tests",
-    `Execute the governed story-scoped QA workflow for ${storyId} in ${projectId}/${environment}. First request and execute qa.bitbucket.change-impact.read for ${storyId}; extract the changed file paths from that returned evidence. Then call listQaProjectTests, request qa.playwright.test.run with payload {"suite":"story-smoke","storyId":"${storyId}","changedFiles":[the exact Bitbucket changed paths]} and execute it if policy permits. Never supply a target URL, selector, credential, storage-state contents, script, or test file path. The server selects project tests and authenticated identity. If live execution returns a bugDraftArtifact, surface its URI together with testResultArtifact and evidenceManifestArtifact and state that it is a draft requiring human review before any Jira write.`,
+    `Execute story-scoped QA for ${storyId} in ${projectId}/${environment}. Read Bitbucket impact, extract exact changed file paths, call listQaProjectTests, then request and execute qa.playwright.test.run with suite story-smoke, storyId ${storyId}, and only those changedFiles. Never supply target URLs, selectors, credentials, scripts, or test files. Surface all result/evidence artifacts. If a bugDraftArtifact is returned, stop at the draft and tell me it is ready for the governed defect flow.`,
   );
 
-  const approvalDemo = () => run(
-    "Create bug",
-    `Demonstrate the governed defect-write flow for ${storyId} in ${projectId}. Request qa.jira.bug.create with summary "QA demo defect for ${storyId}", severity "Major", and storyId "${storyId}". When pending_approval is returned, call reviewQaAction with the exact action id, capability id, risk level, payload hash, and summary. If I approve, execute that same action id. Be explicit that Jira write remains mock-only.`,
+  const runDefectFlow = () => run(
+    "Run defect flow",
+    `Run the complete governed QA defect workflow for ${storyId} in ${projectId}/${environment}. Read Bitbucket impact and execute the allowlisted story-scoped Playwright tests. If there is no bugDraftArtifact, stop and report that no Jira defect is needed. If a bugDraftArtifact exists, take its exact id and sha256; request and execute qa.jira.duplicate.search with only bugDraftArtifactId and bugDraftSha256, report duplicate candidates, then request qa.jira.bug.create with only those same two artifact fields. When it returns pending_approval, call reviewQaAction with the exact action id, capability id, risk level, payload hash, and summary. After I approve, execute that same action id. If mode=live and externalSideEffect=true, report the real Jira key; otherwise state that no Jira issue was created.`,
   );
 
   const configuredRepos = integrations?.bitbucket.projects[projectId]?.length ?? 0;
@@ -198,7 +274,6 @@ export function QaWorkbench() {
         <div><span className="eyebrow">QA VERTICAL SLICE</span><h2>Governed QA workbench</h2></div>
         <span className="live-chip">{capabilities.length} capabilities</span>
       </div>
-
       {error && <div className="error-banner">{error}</div>}
 
       <div className="qa-scope-grid">
@@ -220,18 +295,19 @@ export function QaWorkbench() {
           <strong>{activeAction === "Run project tests" ? "Running project QA…" : playwrightRunnable ? "Run story-scoped project tests" : "Run project test simulation"}</strong>
           <span>{playwrightRunnable ? `L1 · ${smokeSuite?.cases.length ?? 0} allowlisted cases · ${selectedProfile?.authenticatedIdentity.configured ? "authenticated" : "anonymous"}` : "L1 governed Playwright contract"}</span>
         </button>
-        <button className="qa-action approval-demo" disabled={agent.isRunning} onClick={() => void approvalDemo()}>
-          <strong>{activeAction === "Create bug" ? "Preparing…" : "Approval demo: create bug"}</strong><span>L3 → payload-bound human approval</span>
+        <button className="qa-action approval-demo" disabled={agent.isRunning || environment === "prod"} onClick={() => void runDefectFlow()}>
+          <strong>{activeAction === "Run defect flow" ? "Running governed defect flow…" : "QA → review → Jira defect"}</strong>
+          <span>L1 tests → duplicate scan → L3 exact-artifact approval → {integrations?.jira.writeMode === "live" ? "real Jira" : "simulation"}</span>
         </button>
       </div>
 
       <div className="risk-row">
         {riskSummary.map(([risk, count]) => <span key={risk}>{risk}: {count}</span>)}
-        <span>Jira: {integrations?.jira.mode ?? "loading"}</span>
+        <span>Jira read: {integrations?.jira.mode ?? "loading"}</span>
+        <span>Jira write: {integrations?.jira.writeMode ?? "loading"}</span>
         <span>Bitbucket: {integrations?.bitbucket.mode ?? "loading"} · {configuredRepos} repos</span>
         <span>Playwright: {integrations?.playwright.mode ?? "loading"}{playwrightTarget ? ` · ${environment}` : ""}</span>
         <span>Identity: {selectedProfile?.authenticatedIdentity.configured ? "server-side auth ready" : "not configured"}</span>
-        <span>Bug write: mock</span>
       </div>
     </section>
   );
