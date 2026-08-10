@@ -30,6 +30,16 @@ test("shared runtime schema stays private and contains the authoritative pilot t
   assert.match(sql, /values \('runtime_schema', 1\)/i);
 });
 
+test("shared action state machine prevents stale duplicate execution and approval writes", () => {
+  const sql = text("deploy/supabase/shared-runtime-schema.sql");
+  assert.match(sql, /create or replace function bm_agents_world\.enforce_action_transition\(\)/i);
+  assert.match(sql, /if new\.status = old\.status then[\s\S]*new\.status = 'executing'[\s\S]*raise exception/i);
+  assert.match(sql, /old\.status = 'pending_approval' and new\.status in \('approved', 'rejected'\)/i);
+  assert.match(sql, /old\.status in \('ready', 'approved'\) and new\.status = 'executing'/i);
+  assert.match(sql, /old\.status = 'executing' and new\.status in \('executed', 'failed'\)/i);
+  assert.match(sql, /create trigger trg_bm_action_transition/i);
+});
+
 test("telemetry correlation does not depend on cross-callback foreign-key ordering", () => {
   const sql = text("deploy/supabase/shared-runtime-schema.sql");
   const linkTable = sql.match(/create table if not exists bm_agents_world\.qa_run_agent_links \(([\s\S]*?)\);/i)?.[1] ?? "";
