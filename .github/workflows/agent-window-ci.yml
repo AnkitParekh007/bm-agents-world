@@ -9,6 +9,8 @@ on:
     paths:
       - "apps/agent-window/**"
       - "packs/**"
+      - "config/**"
+      - "policies/**"
       - "deploy/**"
       - ".dockerignore"
       - "package.json"
@@ -36,6 +38,20 @@ jobs:
 
       - name: Test capability and deployment policies
         run: npm run test --workspace @bm-agents-world/agent-window
+
+      - name: Validate OPA policy
+        run: >-
+          docker run --rm
+          -v "$PWD/policies/bm-agents-world:/policies:ro"
+          openpolicyagent/opa:1.17.0
+          check /policies/authorization.rego
+
+      - name: Test OPA policy decisions
+        run: >-
+          docker run --rm
+          -v "$PWD/policies/bm-agents-world:/policies:ro"
+          openpolicyagent/opa:1.17.0
+          test /policies
 
       - name: Build application
         run: npm run build

@@ -6,16 +6,15 @@ import type {
   CapabilityAction,
   CapabilityAdapter,
   CapabilityDefinition,
-  EnvironmentName,
   ExecutionContext,
-  RiskLevel,
 } from "./capability-types.js";
 import type { CapabilityRun } from "./capability-store.js";
 import type { CapabilityBrokerContract } from "./capability-broker-contract.js";
+import { ApprovedConnectorRegistry } from "./connector-registry.js";
+import { createPolicyEngine, type PolicyDecision, type PolicyEvaluator } from "./policy-engine.js";
 import { startActiveSpan } from "./telemetry.js";
 
 const APPROVAL_TTL_MS = 10 * 60 * 1000;
-const RISK_REQUIRES_HUMAN = new Set<RiskLevel>(["L2", "L3", "L4"]);
 
 export interface AsyncCapabilityStore {
   upsertRun(context: ExecutionContext): Promise<CapabilityRun>;
@@ -41,57 +40,52 @@ function canonicalize(value: unknown): unknown {
 }
 
 function payloadHash(payload: Record<string, unknown>): string {
-  return createHash("sha256")
-    .update(JSON.stringify(canonicalize(payload)))
-    .digest("hex");
+  return createHash("sha256").update(JSON.stringify(canonicalize(payload))).digest("hex");
 }
 
-function effectiveRisk(definition: CapabilityDefinition, environment: EnvironmentName): RiskLevel {
-  if (environment === "prod" && definition.actionClass === "read") return "L4";
-  return definition.riskLevel;
+function legacyDecision(definition: CapabilityDefinition, context: ExecutionContext): PolicyDecision {
+  if (!definition.allowedEnvironments.includes(context.environment)) {
+    return { effect: "deny", riskLevel: definition.riskLevel, approvalMode: "none", reason: `Capability is not allowed in ${context.environment}.`, source: "local" };
+  }
+  if (context.environment === "prod" && definition.productionMutation) {
+    return { effect: "deny", riskLevel: "L4", approvalMode: "privileged-process", reason: "Free-form production mutation is denied by pack policy.", source: "local" };
+  }
+  const riskLevel = context.environment === "prod" && definition.actionClass === "read" ? "L4" : definition.riskLevel;
+  const needsApproval = ["L2", "L3", "L4"].includes(riskLevel);
+  return {
+    effect: needsApproval ? "approval" : "allow",
+    riskLevel,
+    approvalMode: riskLevel === "L4" ? "privileged-process" : needsApproval ? "human" : definition.approvalMode,
+    reason: needsApproval ? `${riskLevel} requires governed approval.` : `${riskLevel} is permitted by standing policy.`,
+    source: "local",
+  };
 }
 
-/**
- * Shared-store broker. It intentionally mirrors the local CapabilityBroker
- * policy semantics while awaiting every persistence boundary so another pod can
- * immediately observe runs, approvals, actions and audit events.
- */
+/** Shared-store broker with optional centralized policy enforcement. */
 export class AsyncCapabilityBroker implements CapabilityBrokerContract {
   private readonly definitions = new Map<string, CapabilityDefinition>();
   private readonly adapters = new Map<string, CapabilityAdapter>();
+  private readonly policy?: PolicyEvaluator;
 
   constructor(
     definitions: CapabilityDefinition[],
     adapters: CapabilityAdapter[],
     private readonly store: AsyncCapabilityStore,
+    policy?: PolicyEvaluator,
   ) {
     for (const definition of definitions) this.definitions.set(definition.id, definition);
     for (const adapter of adapters) this.adapters.set(adapter.id, adapter);
+    this.policy = policy ?? (process.env.BM_POLICY_MODE?.trim()
+      ? createPolicyEngine(new ApprovedConnectorRegistry())
+      : undefined);
   }
 
-  listCapabilities(): CapabilityDefinition[] {
-    return [...this.definitions.values()];
-  }
-
-  startRun(context: ExecutionContext): Promise<CapabilityRun> {
-    return this.store.upsertRun(context);
-  }
-
-  getRun(runId: string): Promise<CapabilityRun | undefined> {
-    return this.store.getRun(runId);
-  }
-
-  listRuns(limit = 100): Promise<CapabilityRun[]> {
-    return this.store.listRuns(limit);
-  }
-
-  listActionsForRun(runId: string): Promise<CapabilityAction[]> {
-    return this.store.listActionsForRun(runId);
-  }
-
-  listAudit(limit = 100): Promise<AuditEvent[]> {
-    return this.store.listAudit(limit);
-  }
+  listCapabilities(): CapabilityDefinition[] { return [...this.definitions.values()]; }
+  startRun(context: ExecutionContext): Promise<CapabilityRun> { return this.store.upsertRun(context); }
+  getRun(runId: string): Promise<CapabilityRun | undefined> { return this.store.getRun(runId); }
+  listRuns(limit = 100): Promise<CapabilityRun[]> { return this.store.listRuns(limit); }
+  listActionsForRun(runId: string): Promise<CapabilityAction[]> { return this.store.listActionsForRun(runId); }
+  listAudit(limit = 100): Promise<AuditEvent[]> { return this.store.listAudit(limit); }
 
   async getAction(actionId: string): Promise<CapabilityAction | undefined> {
     const action = await this.store.getAction(actionId);
@@ -104,70 +98,48 @@ export class AsyncCapabilityBroker implements CapabilityBrokerContract {
     return action;
   }
 
-  async requestAction(
-    capabilityId: string,
-    context: ExecutionContext,
-    payload: Record<string, unknown>,
-  ): Promise<CapabilityAction> {
+  async requestAction(capabilityId: string, context: ExecutionContext, payload: Record<string, unknown>): Promise<CapabilityAction> {
     const definition = this.definitions.get(capabilityId);
     if (!definition) throw new Error(`Unknown capability: ${capabilityId}`);
 
     await this.startRun(context);
     const now = new Date();
     const hash = payloadHash(payload);
-    const riskLevel = effectiveRisk(definition, context.environment);
     const actionId = randomUUID();
+    const policy = this.policy ? await this.policy.evaluate(definition, context) : legacyDecision(definition, context);
+    const policyDecision = {
+      effect: policy.effect,
+      source: this.policy ? policy.source : "legacy" as const,
+      decisionId: policy.decisionId,
+      connectorId: policy.connectorId,
+      toolId: policy.toolId,
+    };
 
-    if (!definition.allowedEnvironments.includes(context.environment)) {
+    if (policy.effect === "deny") {
       const denied: CapabilityAction = {
         id: actionId,
         capabilityId,
         context,
         payload,
         payloadHash: hash,
-        riskLevel,
-        approvalMode: definition.approvalMode,
+        riskLevel: policy.riskLevel,
+        approvalMode: policy.approvalMode,
         status: "rejected",
         createdAt: now.toISOString(),
         updatedAt: now.toISOString(),
-        policyReason: `Capability is not allowed in ${context.environment}.`,
+        policyReason: policy.reason,
+        policyDecision,
       };
       await this.saveAction(denied);
-      await this.audit("action.denied", denied, "system", "capability-broker", { reason: denied.policyReason });
+      await this.audit("action.denied", denied, "system", "capability-broker", this.policyMetadata(policy));
       return denied;
     }
 
-    if (context.environment === "prod" && definition.productionMutation) {
-      const denied: CapabilityAction = {
-        id: actionId,
-        capabilityId,
-        context,
-        payload,
-        payloadHash: hash,
-        riskLevel: "L4",
-        approvalMode: "privileged-process",
-        status: "rejected",
-        createdAt: now.toISOString(),
-        updatedAt: now.toISOString(),
-        policyReason: "Free-form production mutation is denied by the QA pack policy.",
-      };
-      await this.saveAction(denied);
-      await this.audit("action.denied", denied, "system", "capability-broker", { reason: denied.policyReason });
-      return denied;
-    }
-
-    const needsApproval = RISK_REQUIRES_HUMAN.has(riskLevel);
-    const approval: ApprovalContract | undefined = needsApproval
-      ? {
-          id: randomUUID(),
-          actionId,
-          payloadHash: hash,
-          riskLevel,
-          status: "pending",
-          requestedAt: now.toISOString(),
-          expiresAt: new Date(now.getTime() + APPROVAL_TTL_MS).toISOString(),
-        }
-      : undefined;
+    const needsApproval = policy.effect === "approval";
+    const approval: ApprovalContract | undefined = needsApproval ? {
+      id: randomUUID(), actionId, payloadHash: hash, riskLevel: policy.riskLevel, status: "pending",
+      requestedAt: now.toISOString(), expiresAt: new Date(now.getTime() + APPROVAL_TTL_MS).toISOString(),
+    } : undefined;
 
     const action: CapabilityAction = {
       id: actionId,
@@ -175,31 +147,23 @@ export class AsyncCapabilityBroker implements CapabilityBrokerContract {
       context,
       payload,
       payloadHash: hash,
-      riskLevel,
-      approvalMode: needsApproval ? "human" : definition.approvalMode,
+      riskLevel: policy.riskLevel,
+      approvalMode: policy.approvalMode,
       status: needsApproval ? "pending_approval" : "ready",
       createdAt: now.toISOString(),
       updatedAt: now.toISOString(),
       approval,
-      policyReason: needsApproval
-        ? `${riskLevel} requires a payload-bound human approval.`
-        : riskLevel === "L1"
-          ? "L1 is permitted by the current standing test policy."
-          : "L0 scoped read is permitted automatically.",
+      policyReason: policy.reason,
+      policyDecision,
     };
 
     await this.saveAction(action);
-    await this.audit("action.requested", action, "agent", context.agentId);
-    if (approval) await this.audit("approval.requested", action, "system", "capability-broker");
+    await this.audit("action.requested", action, "agent", context.agentId, this.policyMetadata(policy));
+    if (approval) await this.audit("approval.requested", action, "system", "capability-broker", this.policyMetadata(policy));
     return action;
   }
 
-  async decideAction(
-    actionId: string,
-    decision: "approved" | "rejected",
-    decidedBy: string,
-    reason?: string,
-  ): Promise<CapabilityAction> {
+  async decideAction(actionId: string, decision: "approved" | "rejected", decidedBy: string, reason?: string): Promise<CapabilityAction> {
     const action = await this.getAction(actionId);
     if (!action) throw new Error("Action not found");
     if (!action.approval) throw new Error("This action does not require approval");
@@ -214,26 +178,31 @@ export class AsyncCapabilityBroker implements CapabilityBrokerContract {
     action.status = decision === "approved" ? "approved" : "rejected";
     action.updatedAt = now;
     await this.saveAction(action);
-    await this.audit(
-      decision === "approved" ? "approval.approved" : "approval.rejected",
-      action,
-      "human",
-      decidedBy,
-      { reason },
-    );
+    await this.audit(decision === "approved" ? "approval.approved" : "approval.rejected", action, "human", decidedBy, { reason, ...action.policyDecision });
     return action;
   }
 
   async executeAction(actionId: string): Promise<CapabilityAction> {
     const action = await this.getAction(actionId);
     if (!action) throw new Error("Action not found");
-    if (!(["ready", "approved"] as ActionStatus[]).includes(action.status)) {
-      throw new Error(`Action ${action.id} cannot execute from status ${action.status}`);
-    }
+    if (!(["ready", "approved"] as ActionStatus[]).includes(action.status)) throw new Error(`Action ${action.id} cannot execute from status ${action.status}`);
     if (action.approval && action.approval.payloadHash !== action.payloadHash) throw new Error("Payload changed after approval");
 
     const definition = this.definitions.get(action.capabilityId);
     if (!definition) throw new Error(`Capability ${action.capabilityId} is no longer registered`);
+
+    if (this.policy) {
+      const currentPolicy = await this.policy.evaluate(definition, action.context);
+      if (currentPolicy.effect === "deny") {
+        await this.audit("action.denied", action, "system", "central-policy", this.policyMetadata(currentPolicy));
+        throw new Error(`Central policy denied execution: ${currentPolicy.reason}`);
+      }
+      if (currentPolicy.riskLevel !== action.riskLevel || currentPolicy.approvalMode !== action.approvalMode) {
+        await this.audit("action.denied", action, "system", "central-policy", { ...this.policyMetadata(currentPolicy), reason: "policy_changed_after_request" });
+        throw new Error("Central policy changed after the action was requested; create a new action and approval.");
+      }
+    }
+
     const adapter = this.adapters.get(definition.adapterId);
     if (!adapter) throw new Error(`Adapter ${definition.adapterId} is not registered`);
 
@@ -242,84 +211,60 @@ export class AsyncCapabilityBroker implements CapabilityBrokerContract {
     action.executionStartedAt = new Date(executionStarted).toISOString();
     action.updatedAt = action.executionStartedAt;
     await this.saveAction(action);
-    await this.audit("action.executing", action, "system", "capability-broker");
+    await this.audit("action.executing", action, "system", "capability-broker", action.policyDecision);
 
-    return startActiveSpan(
-      "bm.capability.execute",
-      {
-        "bm.capability.id": action.capabilityId,
-        "bm.action.id": action.id,
-        "bm.run.id": action.context.runId,
-        "bm.tenant.id": action.context.tenantId,
-        "bm.project.id": action.context.projectId,
-        "bm.environment": action.context.environment,
-        "bm.risk.level": action.riskLevel,
-        "bm.adapter.id": adapter.id,
-      },
-      async (span) => {
-        try {
-          action.result = await adapter.execute(definition, action.context, action.payload);
-          action.status = action.result.ok ? "executed" : "failed";
-          action.executionFinishedAt = new Date().toISOString();
-          action.executionDurationMs = Math.max(0, Date.now() - executionStarted);
-          action.updatedAt = action.executionFinishedAt;
-          span.setAttribute("bm.capability.mode", action.result.mode);
-          span.setAttribute("bm.capability.external_side_effect", action.result.externalSideEffect);
-          span.setAttribute("bm.capability.duration_ms", action.executionDurationMs);
-          await this.saveAction(action);
-          await this.audit(action.result.ok ? "action.executed" : "action.failed", action, "system", adapter.id, {
-            mode: action.result.mode,
-            externalSideEffect: action.result.externalSideEffect,
-            durationMs: action.executionDurationMs,
-            error: action.result.error,
-          });
-          return action;
-        } catch (error) {
-          action.status = "failed";
-          action.executionFinishedAt = new Date().toISOString();
-          action.executionDurationMs = Math.max(0, Date.now() - executionStarted);
-          action.updatedAt = action.executionFinishedAt;
-          action.result = {
-            ok: false,
-            mode: "mock",
-            externalSideEffect: false,
-            error: error instanceof Error ? error.message : String(error),
-          };
-          span.setAttribute("bm.capability.duration_ms", action.executionDurationMs);
-          await this.saveAction(action);
-          await this.audit("action.failed", action, "system", adapter.id, {
-            durationMs: action.executionDurationMs,
-            error: action.result.error,
-          });
-          return action;
-        }
-      },
-    );
+    return startActiveSpan("bm.capability.execute", {
+      "bm.capability.id": action.capabilityId,
+      "bm.action.id": action.id,
+      "bm.run.id": action.context.runId,
+      "bm.tenant.id": action.context.tenantId,
+      "bm.project.id": action.context.projectId,
+      "bm.environment": action.context.environment,
+      "bm.risk.level": action.riskLevel,
+      "bm.adapter.id": adapter.id,
+      "bm.policy.source": action.policyDecision?.source ?? "legacy",
+      "bm.connector.id": action.policyDecision?.connectorId ?? "unmapped",
+    }, async (span) => {
+      try {
+        action.result = await adapter.execute(definition, action.context, action.payload);
+        action.status = action.result.ok ? "executed" : "failed";
+        action.executionFinishedAt = new Date().toISOString();
+        action.executionDurationMs = Math.max(0, Date.now() - executionStarted);
+        action.updatedAt = action.executionFinishedAt;
+        span.setAttribute("bm.capability.mode", action.result.mode);
+        span.setAttribute("bm.capability.external_side_effect", action.result.externalSideEffect);
+        span.setAttribute("bm.capability.duration_ms", action.executionDurationMs);
+        await this.saveAction(action);
+        await this.audit(action.result.ok ? "action.executed" : "action.failed", action, "system", adapter.id, {
+          mode: action.result.mode, externalSideEffect: action.result.externalSideEffect,
+          durationMs: action.executionDurationMs, error: action.result.error, ...action.policyDecision,
+        });
+        return action;
+      } catch (error) {
+        action.status = "failed";
+        action.executionFinishedAt = new Date().toISOString();
+        action.executionDurationMs = Math.max(0, Date.now() - executionStarted);
+        action.updatedAt = action.executionFinishedAt;
+        action.result = { ok: false, mode: "mock", externalSideEffect: false, error: error instanceof Error ? error.message : String(error) };
+        span.setAttribute("bm.capability.duration_ms", action.executionDurationMs);
+        await this.saveAction(action);
+        await this.audit("action.failed", action, "system", adapter.id, { durationMs: action.executionDurationMs, error: action.result.error, ...action.policyDecision });
+        return action;
+      }
+    });
   }
 
-  private saveAction(action: CapabilityAction): Promise<void> {
-    return this.store.saveAction(action);
+  private saveAction(action: CapabilityAction): Promise<void> { return this.store.saveAction(action); }
+
+  private policyMetadata(policy: PolicyDecision): Record<string, unknown> {
+    return { policySource: policy.source, policyDecisionId: policy.decisionId, connectorId: policy.connectorId, toolId: policy.toolId, riskLevel: policy.riskLevel, approvalMode: policy.approvalMode, reason: policy.reason };
   }
 
-  private async audit(
-    event: AuditEvent["event"],
-    action: CapabilityAction,
-    actorType: AuditEvent["actorType"],
-    actorId: string,
-    metadata?: Record<string, unknown>,
-  ): Promise<void> {
-    const auditEvent: AuditEvent = {
-      id: randomUUID(),
-      timestamp: new Date().toISOString(),
-      runId: action.context.runId,
-      actorType,
-      actorId,
-      event,
-      actionId: action.id,
-      capabilityId: action.capabilityId,
-      payloadHash: action.payloadHash,
-      metadata,
-    };
-    await this.store.appendAudit(auditEvent, action.context);
+  private async audit(event: AuditEvent["event"], action: CapabilityAction, actorType: AuditEvent["actorType"], actorId: string, metadata?: Record<string, unknown>): Promise<void> {
+    await this.store.appendAudit({
+      id: randomUUID(), timestamp: new Date().toISOString(), runId: action.context.runId,
+      actorType, actorId, event, actionId: action.id, capabilityId: action.capabilityId,
+      payloadHash: action.payloadHash, metadata,
+    }, action.context);
   }
 }

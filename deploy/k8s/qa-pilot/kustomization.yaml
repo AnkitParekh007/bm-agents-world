@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - configmap.yaml
+  - opa-policy-configmap.yaml
   - deployment.yaml
   - service.yaml
   - networkpolicy.yaml

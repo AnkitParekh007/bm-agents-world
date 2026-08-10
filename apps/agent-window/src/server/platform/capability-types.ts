@@ -28,9 +28,7 @@ export interface ExecutionContext {
   requestedAt: string;
 }
 
-/**
- * A model may see this reference, but never the secret value behind it.
- */
+/** A model may see this reference, but never the secret value behind it. */
 export interface SecretReference {
   provider: "vault" | "environment" | "workload-identity";
   name: string;
@@ -50,6 +48,14 @@ export interface CapabilityDefinition {
   productionMutation: boolean;
   allowedEnvironments: EnvironmentName[];
   adapterId: string;
+}
+
+export interface AppliedPolicyDecision extends Record<string, unknown> {
+  effect: "allow" | "deny" | "approval";
+  source: "local" | "opa" | "legacy";
+  decisionId?: string;
+  connectorId?: string;
+  toolId?: string;
 }
 
 export interface ApprovalContract {
@@ -82,6 +88,7 @@ export interface CapabilityAction {
   approval?: ApprovalContract;
   result?: AdapterResult;
   policyReason: string;
+  policyDecision?: AppliedPolicyDecision;
 }
 
 export interface AdapterResult {
