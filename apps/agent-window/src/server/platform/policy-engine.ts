@@ -1,4 +1,4 @@
-import type { ApprovalMode, CapabilityDefinition, EnvironmentName, ExecutionContext, RiskLevel } from "./capability-types.js";
+import type { ApprovalMode, CapabilityDefinition, ExecutionContext, RiskLevel } from "./capability-types.js";
 import { ApprovedConnectorRegistry, type ConnectorAdmission } from "./connector-registry.js";
 
 export interface PolicyDecision {
@@ -96,12 +96,13 @@ export class OpaPolicyEngine implements PolicyEvaluator {
       });
       if (!response.ok) throw new Error(`OPA returned HTTP ${response.status}`);
       const body = await response.json() as { result?: Partial<PolicyDecision>; decision_id?: string };
-      if (!body.result?.effect || !body.result.riskLevel || !body.result.approvalMode) throw new Error("OPA decision is undefined or incomplete");
+      const result = body.result;
+      if (!result?.effect || !result.riskLevel || !result.approvalMode) throw new Error("OPA decision is undefined or incomplete");
       return {
-        effect: body.result.effect,
-        riskLevel: body.result.riskLevel,
-        approvalMode: body.result.approvalMode,
-        reason: String(body.result.reason ?? "OPA policy decision"),
+        effect: result.effect,
+        riskLevel: result.riskLevel,
+        approvalMode: result.approvalMode,
+        reason: String(result.reason ?? "OPA policy decision"),
         source: "opa",
         decisionId: body.decision_id,
         connectorId: admission.connector?.id,
