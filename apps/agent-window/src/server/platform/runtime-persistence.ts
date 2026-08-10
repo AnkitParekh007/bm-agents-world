@@ -88,7 +88,6 @@ export async function createRuntimePersistence(): Promise<RuntimePersistence> {
   if (!supabaseSecret) throw new Error("SUPABASE_SECRET_KEY is required when BM_PERSISTENCE_MODE=postgres-supabase");
 
   const shared = new PostgresRuntimeStore(postgresUrl);
-  await shared.assertReady();
   const artifacts = new SupabaseArtifactStore(supabaseUrl, supabaseSecret);
   const telemetryServiceStore = new SharedAgentTelemetryBridge(shared);
 
@@ -108,7 +107,7 @@ export async function createRuntimePersistence(): Promise<RuntimePersistence> {
     },
     async healthCheck() {
       const [state, artifactHealth] = await Promise.all([
-        shared.healthCheck(),
+        shared.assertReady().then(() => true).catch(() => false),
         artifacts.healthCheck(),
       ]);
       return { state, artifacts: artifactHealth };
