@@ -29,6 +29,7 @@ export interface AgentRunUsage {
   durationMs: number;
   eventCount: number;
   toolCallCount: number;
+  modelCallCount: number;
   inputTokens: number | null;
   outputTokens: number | null;
   totalTokens: number | null;
@@ -82,7 +83,7 @@ function candidateUsage(record: Record<string, unknown>, identity: string): Usag
   return { signature, inputTokens, outputTokens, totalTokens };
 }
 
-function collectUsageEvidence(value: unknown, seenObjects = new Set<unknown>(), inheritedId = "root"): UsageEvidence[] {
+export function collectUsageEvidence(value: unknown, seenObjects = new Set<unknown>(), inheritedId = "root"): UsageEvidence[] {
   if (!value || typeof value !== "object" || seenObjects.has(value)) return [];
   seenObjects.add(value);
   if (Array.isArray(value)) {
@@ -159,6 +160,7 @@ export class AgentTelemetryStore {
         duration_ms INTEGER NOT NULL,
         event_count INTEGER NOT NULL,
         tool_call_count INTEGER NOT NULL,
+        model_call_count INTEGER NOT NULL,
         input_tokens INTEGER,
         output_tokens INTEGER,
         total_tokens INTEGER,
@@ -187,15 +189,16 @@ export class AgentTelemetryStore {
     this.db.prepare(`
       INSERT INTO agent_run_usage(
         agent_run_id, thread_id, tenant_id, user_id, agent_id, model, provider,
-        started_at, finished_at, duration_ms, event_count, tool_call_count,
+        started_at, finished_at, duration_ms, event_count, tool_call_count, model_call_count,
         input_tokens, output_tokens, total_tokens, usage_status,
         estimated_cost_usd, cost_status, trace_id, span_id, error
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       ON CONFLICT(agent_run_id) DO UPDATE SET
         finished_at=excluded.finished_at,
         duration_ms=excluded.duration_ms,
         event_count=excluded.event_count,
         tool_call_count=excluded.tool_call_count,
+        model_call_count=excluded.model_call_count,
         input_tokens=excluded.input_tokens,
         output_tokens=excluded.output_tokens,
         total_tokens=excluded.total_tokens,
@@ -207,7 +210,7 @@ export class AgentTelemetryStore {
         error=excluded.error
     `).run(
       run.agentRunId, run.threadId, run.tenantId, run.userId, run.agentId, run.model, run.provider,
-      run.startedAt, run.finishedAt, run.durationMs, run.eventCount, run.toolCallCount,
+      run.startedAt, run.finishedAt, run.durationMs, run.eventCount, run.toolCallCount, run.modelCallCount,
       run.inputTokens, run.outputTokens, run.totalTokens, run.usageStatus,
       run.estimatedCostUsd, run.costStatus, run.traceId ?? null, run.spanId ?? null, run.error ?? null,
     );
@@ -241,6 +244,7 @@ export class AgentTelemetryStore {
       durationMs: Number(row.duration_ms),
       eventCount: Number(row.event_count),
       toolCallCount: Number(row.tool_call_count),
+      modelCallCount: Number(row.model_call_count),
       inputTokens: row.input_tokens === null ? null : Number(row.input_tokens),
       outputTokens: row.output_tokens === null ? null : Number(row.output_tokens),
       totalTokens: row.total_tokens === null ? null : Number(row.total_tokens),
@@ -314,6 +318,7 @@ export class AgentTelemetryService {
           durationMs: 0,
           eventCount: 0,
           toolCallCount: 0,
+          modelCallCount: 0,
           inputTokens: null,
           outputTokens: null,
           totalTokens: null,
@@ -327,13 +332,47 @@ export class AgentTelemetryService {
 
         const otelCtx = trace.setSpan(otelContext.active(), span);
         const active: ActiveAgentRun = { agentRunId: input.runId, agentId, model };
+        let finalized = false;
+
+        const finalize = () => {
+          if (finalized) return;
+          finalized = true;
+          const usages = [...evidence.values()];
+          const inputTokens = usages.length ? usages.reduce((sum, item) => sum + item.inputTokens, 0) : null;
+          const outputTokens = usages.length ? usages.reduce((sum, item) => sum + item.outputTokens, 0) : null;
+          const totalTokens = usages.length ? usages.reduce((sum, item) => sum + item.totalTokens, 0) : null;
+          const cost = estimateCost(inputTokens, outputTokens);
+          if (inputTokens !== null) span.setAttribute("gen_ai.usage.input_tokens", inputTokens);
+          if (outputTokens !== null) span.setAttribute("gen_ai.usage.output_tokens", outputTokens);
+          span.setAttribute("bm.agent.event_count", eventCount);
+          span.setAttribute("bm.agent.tool_call_count", toolCallCount);
+          span.setAttribute("bm.agent.model_call_count", usages.length);
+          if (!runError) span.setStatus({ code: SpanStatusCode.OK });
+          span.end();
+
+          service.store.saveRun({
+            ...initial,
+            finishedAt: new Date().toISOString(),
+            durationMs: Math.max(0, Date.now() - started),
+            eventCount,
+            toolCallCount,
+            modelCallCount: usages.length,
+            inputTokens,
+            outputTokens,
+            totalTokens,
+            usageStatus: usages.length ? "measured" : "unavailable",
+            estimatedCostUsd: cost.value,
+            costStatus: cost.status,
+            error: runError,
+          });
+        };
 
         return new Observable<BaseEvent>((subscriber) => {
           const subscription = activeAgentRun.run(active, () => otelContext.with(otelCtx, () =>
             this.runNextWithState(input, next).subscribe({
               next: ({ event }) => {
                 eventCount += 1;
-                if (String(event.type).startsWith("TOOL_CALL_START")) toolCallCount += 1;
+                if (String(event.type) === "TOOL_CALL_START") toolCallCount += 1;
                 for (const item of collectUsageEvidence(event)) evidence.set(item.signature, item);
                 subscriber.next(event);
               },
@@ -342,44 +381,20 @@ export class AgentTelemetryService {
                 span.recordException(error instanceof Error ? error : new Error(runError));
                 span.setStatus({ code: SpanStatusCode.ERROR, message: runError });
                 subscriber.error(error);
+                finalize();
               },
-              complete: () => subscriber.complete(),
+              complete: () => {
+                subscriber.complete();
+                finalize();
+              },
             }),
           ));
 
-          return () => subscription.unsubscribe();
-        }).pipe((source) => new Observable<BaseEvent>((subscriber) => {
-          const subscription = source.subscribe(subscriber);
           return () => {
             subscription.unsubscribe();
-            const usages = [...evidence.values()];
-            const inputTokens = usages.length ? usages.reduce((sum, item) => sum + item.inputTokens, 0) : null;
-            const outputTokens = usages.length ? usages.reduce((sum, item) => sum + item.outputTokens, 0) : null;
-            const totalTokens = usages.length ? usages.reduce((sum, item) => sum + item.totalTokens, 0) : null;
-            const cost = estimateCost(inputTokens, outputTokens);
-            if (inputTokens !== null) span.setAttribute("gen_ai.usage.input_tokens", inputTokens);
-            if (outputTokens !== null) span.setAttribute("gen_ai.usage.output_tokens", outputTokens);
-            span.setAttribute("bm.agent.event_count", eventCount);
-            span.setAttribute("bm.agent.tool_call_count", toolCallCount);
-            if (!runError) span.setStatus({ code: SpanStatusCode.OK });
-            span.end();
-
-            service.store.saveRun({
-              ...initial,
-              finishedAt: new Date().toISOString(),
-              durationMs: Math.max(0, Date.now() - started),
-              eventCount,
-              toolCallCount,
-              inputTokens,
-              outputTokens,
-              totalTokens,
-              usageStatus: usages.length ? "measured" : "unavailable",
-              estimatedCostUsd: cost.value,
-              costStatus: cost.status,
-              error: runError,
-            });
+            finalize();
           };
-        }));
+        });
       }
     }();
   }
