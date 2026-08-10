@@ -27,6 +27,7 @@ function context(): ExecutionContext {
 
 class FakeBrowserExecutor implements BrowserExecutor {
   requests: BrowserRunRequest[] = [];
+  fail = false;
 
   async run(request: BrowserRunRequest) {
     this.requests.push(request);
@@ -36,12 +37,17 @@ class FakeBrowserExecutor implements BrowserExecutor {
       targetUrl: request.targetUrl,
       finalUrl: request.targetUrl,
       pageTitle: "PCC QA",
-      httpStatus: 200,
-      checks: [
-        { id: "document-response", passed: true, detail: "Document returned HTTP 200." },
-        { id: "body-visible", passed: true, detail: "Document body is visible." },
-        { id: "console-errors", passed: true, detail: "No browser console errors captured." },
-      ],
+      authenticated: Boolean(request.storageStatePath),
+      cases: request.cases.map((testCase, index) => ({
+        id: testCase.id,
+        title: testCase.title,
+        passed: !(this.fail && index === 0),
+        steps: [{
+          type: "expectVisible",
+          passed: !(this.fail && index === 0),
+          detail: this.fail && index === 0 ? "Selector body is not visible." : "Selector body is visible.",
+        }],
+      })),
       consoleErrors: [],
       network: [{ method: "GET", url: request.targetUrl, status: 200 }],
       screenshot: Buffer.from("png-evidence"),
@@ -51,21 +57,20 @@ class FakeBrowserExecutor implements BrowserExecutor {
 }
 
 function withPlaywrightEnvironment(run: () => Promise<void>) {
-  const previous = {
-    enabled: process.env.QA_PLAYWRIGHT_ENABLED,
-    target: process.env.QA_PCC_PLAYWRIGHT_QA_URL,
-  };
+  const keys = ["QA_PLAYWRIGHT_ENABLED", "QA_PCC_PLAYWRIGHT_QA_URL", "QA_PCC_PLAYWRIGHT_STORAGE_STATE"];
+  const previous = Object.fromEntries(keys.map((key) => [key, process.env[key]]));
   process.env.QA_PLAYWRIGHT_ENABLED = "true";
   process.env.QA_PCC_PLAYWRIGHT_QA_URL = "https://qa.pcc.example.test";
+  delete process.env.QA_PCC_PLAYWRIGHT_STORAGE_STATE;
   return run().finally(() => {
-    if (previous.enabled === undefined) delete process.env.QA_PLAYWRIGHT_ENABLED;
-    else process.env.QA_PLAYWRIGHT_ENABLED = previous.enabled;
-    if (previous.target === undefined) delete process.env.QA_PCC_PLAYWRIGHT_QA_URL;
-    else process.env.QA_PCC_PLAYWRIGHT_QA_URL = previous.target;
+    for (const [key, value] of Object.entries(previous)) {
+      if (value === undefined) delete process.env[key];
+      else process.env[key] = value;
+    }
   });
 }
 
-test("Playwright worker produces schema-shaped evidence artifacts", async () => withPlaywrightEnvironment(async () => {
+test("Playwright worker selects project tests and produces schema-shaped evidence", async () => withPlaywrightEnvironment(async () => {
   const directory = mkdtempSync(resolve(tmpdir(), "bm-artifact-test-"));
   try {
     const store = new ArtifactStore(directory);
@@ -75,6 +80,7 @@ test("Playwright worker produces schema-shaped evidence artifacts", async () => 
       suite: "story-smoke",
       storyId: "PCC-101",
       build: "qa-2026.08.10",
+      changedFiles: ["src/app/supplier.ts"],
     });
 
     assert.equal(result.ok, true);
@@ -82,14 +88,47 @@ test("Playwright worker produces schema-shaped evidence artifacts", async () => 
     assert.equal(result.externalSideEffect, false);
     assert.equal(executor.requests.length, 1);
     assert.equal(executor.requests[0]?.targetUrl, "https://qa.pcc.example.test");
+    assert.equal(executor.requests[0]?.cases[0]?.id, "pcc-shell");
+    assert.equal(executor.requests[0]?.storageStatePath, undefined);
 
     const data = result.data as Record<string, any>;
     assert.equal(data.execution.status, "passed");
+    assert.deepEqual(data.execution.selectedCases, ["pcc-shell"]);
     assert.equal(data.testResultArtifact.type, "test-execution-result");
     assert.equal(data.evidenceManifestArtifact.type, "evidence-manifest");
+    assert.equal(data.bugDraftArtifact, undefined);
     assert.ok(store.find(data.testResultArtifact.id));
     assert.ok(store.find(data.evidenceManifestArtifact.id));
-    assert.equal(data.evidence.length, 4);
+  } finally {
+    rmSync(directory, { recursive: true, force: true });
+  }
+}));
+
+test("failed project QA creates a bug-draft artifact but performs no Jira write", async () => withPlaywrightEnvironment(async () => {
+  const directory = mkdtempSync(resolve(tmpdir(), "bm-artifact-test-"));
+  try {
+    const store = new ArtifactStore(directory);
+    const executor = new FakeBrowserExecutor();
+    executor.fail = true;
+    const adapter = new PlaywrightWorkerAdapter(new QaMockAdapter(), store, executor);
+    const result = await adapter.execute(definition, context(), {
+      suite: "story-smoke",
+      storyId: "PCC-202",
+      build: "qa-build-202",
+    });
+
+    assert.equal(result.ok, true);
+    assert.equal(result.externalSideEffect, false);
+    const data = result.data as Record<string, any>;
+    assert.equal(data.execution.status, "failed");
+    assert.equal(data.bugDraftArtifact.type, "bug-draft");
+    const found = store.find(data.bugDraftArtifact.id);
+    assert.ok(found);
+    const draft = JSON.parse(await import("node:fs").then((fs) => fs.readFileSync(found.diskPath, "utf8")));
+    assert.equal(draft.parentIssue, "PCC-202");
+    assert.equal(draft.environment, "qa");
+    assert.ok(Array.isArray(draft.stepsToReproduce));
+    assert.ok(Array.isArray(draft.evidenceIds));
   } finally {
     rmSync(directory, { recursive: true, force: true });
   }
