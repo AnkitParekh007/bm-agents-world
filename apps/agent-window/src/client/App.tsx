@@ -4,6 +4,7 @@ import {
   useAgent,
   useCopilotKit,
 } from "@copilotkit/react-core/v2";
+import { QaApprovalBridge, QaWorkbench } from "./QaWorkbench";
 
 interface PackSummary {
   id: string;
@@ -56,7 +57,7 @@ function TaskLauncher({ agentId, details }: { agentId: string; details?: PackDet
       agent.addMessage({
         id: crypto.randomUUID(),
         role: "user",
-        content: `Start this pack task: ${task}\nTask group: ${group}\n\nUse the loaded agent pack as the operating contract. In this foundation milestone, inspect the pack, explain the execution plan, identify the sub-agents/skills/tools/artifacts that should participate, and clearly call out any external integrations that are not wired yet. Do not claim external actions were completed.`,
+        content: `Start this pack task: ${task}\nTask group: ${group}\n\nUse the loaded agent pack as the operating contract. Inspect the pack, explain the execution plan, identify the sub-agents/skills/tools/artifacts that should participate, and use any governed capability tools available for this pack. Clearly label mock/simulated results and never claim an external action occurred unless the tool result confirms a live side effect.`,
       });
       await copilotkit.runAgent({ agent });
     } finally {
@@ -125,6 +126,7 @@ export function App() {
 
   return (
     <div className="app-shell">
+      <QaApprovalBridge />
       <aside className="sidebar">
         <div className="brand">
           <div className="brand-mark">BM</div>
@@ -167,7 +169,7 @@ export function App() {
           <span className="status-dot" />
           <div>
             <strong>Pack runtime online</strong>
-            <small>Read-only foundation mode</small>
+            <small>{selectedId === "qa" ? "QA capability broker active" : "Pack metadata mode"}</small>
           </div>
         </div>
       </aside>
@@ -182,7 +184,7 @@ export function App() {
           </div>
           {selected && (
             <div className="policy-badge">
-              <span>Foundation policy</span>
+              <span>{selectedId === "qa" ? "QA policy" : "Foundation policy"}</span>
               <strong>No production mutation</strong>
             </div>
           )}
@@ -198,6 +200,8 @@ export function App() {
             <Metric value={selected.workflowCount} label="Workflows" />
           </section>
         )}
+
+        {selectedId === "qa" && <QaWorkbench />}
 
         <div className="workspace-grid">
           <section className="operations-panel">
