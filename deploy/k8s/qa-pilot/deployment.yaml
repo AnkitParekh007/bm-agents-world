@@ -1,0 +1,101 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bm-agents-world
+  namespace: bm-agents-world
+  labels:
+    app.kubernetes.io/name: bm-agents-world
+    app.kubernetes.io/component: agent-window
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: bm-agents-world
+      app.kubernetes.io/component: agent-window
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: bm-agents-world
+        app.kubernetes.io/component: agent-window
+    spec:
+      terminationGracePeriodSeconds: 30
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: agent-window
+          image: bm-agents-world:qa-pilot
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: bm-agents-world-config
+            - secretRef:
+                name: bm-agents-world-secrets
+                optional: true
+          ports:
+            - name: http
+              containerPort: 4000
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          resources:
+            requests:
+              cpu: 500m
+              memory: 1Gi
+            limits:
+              cpu: "2"
+              memory: 3Gi
+          startupProbe:
+            httpGet:
+              path: /healthz
+              port: http
+            periodSeconds: 2
+            timeoutSeconds: 2
+            failureThreshold: 30
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: http
+            periodSeconds: 5
+            timeoutSeconds: 2
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+            periodSeconds: 15
+            timeoutSeconds: 2
+            failureThreshold: 5
+          volumeMounts:
+            - name: data
+              mountPath: /var/lib/bm-agents
+            - name: tmp
+              mountPath: /tmp
+            - name: shm
+              mountPath: /dev/shm
+            - name: playwright-auth
+              mountPath: /var/run/bm-secrets/playwright-auth
+              readOnly: true
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: bm-agents-world-data
+        - name: tmp
+          emptyDir: {}
+        - name: shm
+          emptyDir:
+            medium: Memory
+            sizeLimit: 512Mi
+        - name: playwright-auth
+          secret:
+            secretName: bm-agents-world-playwright-auth
+            optional: true
