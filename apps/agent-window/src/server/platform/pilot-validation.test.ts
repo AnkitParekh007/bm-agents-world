@@ -67,7 +67,7 @@ const persistence: PersistenceStatus = {
   mode: "postgres-supabase",
   shared: true,
   state: { kind: "postgres", location: "postgres://private" },
-  artifacts: { kind: "supabase", location: "private-bucket" },
+  artifacts: { kind: "supabase-storage", location: "private-bucket" },
 };
 
 test("Phase 7 gate becomes ready for a real shared PCC pilot", () => withEnv(() => {
