@@ -41,6 +41,7 @@
 
 ## QA pilot runbooks
 * [Team pilot deployment](qa-team-pilot-deployment.md)
+* [Phase 7 real QA team pilot](qa-phase-7-real-team-pilot.md)
 * [Pilot hardening](qa-pilot-hardening.md)
 * [Authenticated project tests](qa-authenticated-project-tests.md)
 * [Playwright evidence worker](qa-playwright-evidence-worker.md)

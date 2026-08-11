@@ -1,0 +1,11 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: bm-agents-world
+  namespace: bm-agents-world
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: bm-agents-world
+      app.kubernetes.io/component: agent-window

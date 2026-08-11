@@ -40,6 +40,28 @@ test("pilot deployment scales across shared persistence and keeps HTTP probes", 
   assert.equal(volumes.find((item: any) => item.name === "shm")?.emptyDir.medium, "Memory");
 });
 
+test("Phase 7 pilot spreads replicas and protects one instance during voluntary disruption", () => {
+  const deployment = yamlFile("deployment.yaml");
+  const podSpec = deployment.spec.template.spec;
+  const spread = podSpec.topologySpreadConstraints?.[0];
+  assert.ok(spread);
+  assert.equal(spread.maxSkew, 1);
+  assert.equal(spread.topologyKey, "kubernetes.io/hostname");
+  assert.equal(spread.whenUnsatisfiable, "ScheduleAnyway");
+  assert.equal(spread.labelSelector.matchLabels["app.kubernetes.io/component"], "agent-window");
+
+  const antiAffinity = podSpec.affinity?.podAntiAffinity?.preferredDuringSchedulingIgnoredDuringExecution?.[0];
+  assert.ok(antiAffinity);
+  assert.equal(antiAffinity.weight, 100);
+  assert.equal(antiAffinity.podAffinityTerm.topologyKey, "kubernetes.io/hostname");
+
+  const budget = yamlFile("poddisruptionbudget.yaml");
+  assert.equal(budget.apiVersion, "policy/v1");
+  assert.equal(budget.kind, "PodDisruptionBudget");
+  assert.equal(budget.spec.minAvailable, 1);
+  assert.equal(budget.spec.selector.matchLabels["app.kubernetes.io/component"], "agent-window");
+});
+
 test("shared pilot includes a loopback-only pinned OPA policy sidecar", () => {
   const deployment = yamlFile("deployment.yaml");
   const opa = deployment.spec.template.spec.containers.find((item: any) => item.name === "opa");
@@ -55,7 +77,7 @@ test("shared pilot includes a loopback-only pinned OPA policy sidecar", () => {
   assert.match(policy.data["authorization.rego"], /Production reads require privileged approval/);
 });
 
-test("pilot service is internal-only and config requires shared trusted persistence and OPA", () => {
+test("pilot service is internal-only and config requires shared trusted persistence, OPA, and PCC Phase 7 gates", () => {
   const service = yamlFile("service.yaml");
   const configMap = yamlFile("configmap.yaml");
   const kustomization = yamlFile("kustomization.yaml");
@@ -67,11 +89,17 @@ test("pilot service is internal-only and config requires shared trusted persiste
   assert.equal(configMap.data.BM_POLICY_MODE, "opa");
   assert.equal(configMap.data.BM_OPA_URL, "http://127.0.0.1:8181");
   assert.equal(configMap.data.BM_SUPABASE_ARTIFACT_BUCKET, "bm-agents-world-evidence");
+  assert.equal(configMap.data.BM_PILOT_PROJECT_IDS, "PCC");
+  assert.equal(configMap.data.BM_PILOT_REQUIRED_ENVIRONMENTS, "playground,qa");
+  assert.equal(configMap.data.BM_PILOT_EXPECTED_REPLICAS, "2");
   assert.equal(configMap.data.BM_STATE_DB_PATH, undefined);
   assert.equal(configMap.data.BM_ARTIFACT_ROOT, undefined);
   assert.equal(configMap.data.QA_JIRA_WRITE_ENABLED, "false");
+  assert.ok(Object.hasOwn(configMap.data, "QA_PCC_PLAYWRIGHT_PLAYGROUND_URL"));
+  assert.ok(Object.hasOwn(configMap.data, "QA_PCC_PLAYWRIGHT_QA_URL"));
   assert.ok(kustomization.resources.includes("networkpolicy.yaml"));
   assert.ok(kustomization.resources.includes("opa-policy-configmap.yaml"));
+  assert.ok(kustomization.resources.includes("poddisruptionbudget.yaml"));
   assert.ok(!kustomization.resources.includes("pvc.yaml"));
   assert.equal(existsSync(resolve(deploymentRoot, "pvc.yaml")), false);
   assert.ok(!kustomization.resources.some((item: string) => item.toLowerCase().includes("ingress")));

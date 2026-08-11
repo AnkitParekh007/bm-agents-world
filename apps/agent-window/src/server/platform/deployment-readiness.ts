@@ -22,6 +22,14 @@ export interface PersistenceReadiness {
   artifactsReady?: boolean;
 }
 
+export interface PolicyReadiness {
+  configured?: boolean;
+  mode?: string;
+  healthy?: boolean;
+  connectorRegistryReady?: boolean;
+  failClosed?: boolean;
+}
+
 function booleanEnv(name: string, fallback = false): boolean {
   const raw = process.env[name]?.trim().toLowerCase();
   if (!raw) return fallback;
@@ -53,12 +61,14 @@ export function buildDeploymentReadiness(
     artifactRoot?: string;
     packCount: number;
     persistence?: PersistenceReadiness;
+    policy?: PolicyReadiness;
   },
 ): DeploymentReadiness {
   const mode = process.env.BM_DEPLOYMENT_MODE?.trim().toLowerCase() === "pilot" ? "pilot" : "development";
   const strict = mode === "pilot";
   const requireJiraWrite = booleanEnv("BM_PILOT_REQUIRE_JIRA_WRITE", false);
   const shared = options.persistence?.shared === true || options.persistence?.mode === "postgres-supabase";
+  const centralPolicyRequired = strict && shared;
 
   const configuredStatePath = process.env.BM_STATE_DB_PATH?.trim();
   const configuredArtifactRoot = process.env.BM_ARTIFACT_ROOT?.trim();
@@ -80,6 +90,13 @@ export function buildDeploymentReadiness(
   const stateReady = shared ? options.persistence?.stateReady === true : localStateReady;
   const artifactsReady = shared ? options.persistence?.artifactsReady === true : localArtifactReady;
   const trustedIdentityReady = process.env.BM_IDENTITY_MODE?.trim().toLowerCase() === "trusted-headers";
+  const centralPolicyConfigured = Boolean(
+    options.policy?.configured
+    && options.policy.mode === "opa"
+    && options.policy.failClosed,
+  );
+  const centralPolicyHealthy = options.policy?.healthy === true;
+  const connectorRegistryReady = options.policy?.connectorRegistryReady === true;
 
   const checks: ReadinessCheck[] = [
     {
@@ -101,6 +118,30 @@ export function buildDeploymentReadiness(
       message: trustedIdentityReady
         ? "Trusted gateway identity mode is enabled."
         : "Pilot mode requires BM_IDENTITY_MODE=trusted-headers.",
+    },
+    {
+      id: "central-policy-mode",
+      ok: centralPolicyConfigured,
+      required: centralPolicyRequired,
+      message: centralPolicyConfigured
+        ? "Shared pilot is configured for fail-closed OPA policy evaluation."
+        : "Shared pilot requires BM_POLICY_MODE=opa with fail-closed centralized policy.",
+    },
+    {
+      id: "central-policy-health",
+      ok: centralPolicyHealthy,
+      required: centralPolicyRequired,
+      message: centralPolicyHealthy
+        ? "OPA centralized policy service is healthy."
+        : "Shared pilot requires a healthy OPA policy service.",
+    },
+    {
+      id: "approved-connector-registry",
+      ok: connectorRegistryReady,
+      required: centralPolicyRequired,
+      message: connectorRegistryReady
+        ? "Approved MCP/connector registry is loaded."
+        : "Shared pilot requires a readable non-empty approved connector registry.",
     },
     {
       id: shared ? "shared-postgres-state" : "persistent-state-path",
