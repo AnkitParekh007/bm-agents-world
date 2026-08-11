@@ -16,6 +16,7 @@
 * [Capability broker and data flow](architecture/capability-broker.md)
 * [Identity and authorization](architecture/identity-and-authorization.md)
 * [Persistence and artifacts](architecture/persistence.md)
+* [Central policy and approved connectors](central-policy-mcp-registry.md)
 
 ## Product features
 * [Agent window](features/agent-window.md)
@@ -35,6 +36,7 @@
 ## Operations
 * [Deployment](deployment/deployment.md)
 * [Security](deployment/security.md)
+* [Shared Postgres and Supabase runtime](shared-supabase-runtime.md)
 * [Troubleshooting](troubleshooting/troubleshooting.md)
 
 ## QA pilot runbooks
@@ -45,6 +47,14 @@
 * [Real context adapters](qa-real-context-read-adapters.md)
 * [Real Jira defect write](qa-real-jira-defect-write.md)
 * [Pilot observability](qa-pilot-observability.md)
+* [Model usage and OpenTelemetry](model-usage-opentelemetry.md)
+
+## Generated reference
+* [API route inventory](generated/api-routes.md)
+* [Environment-variable inventory](generated/environment-variables.md)
+* [Capability and connector catalog](generated/capability-catalog.md)
+* [Agent-pack catalog](generated/agent-pack-catalog.md)
+* [Deployment reference](generated/deployment-reference.md)
 
 ## Reference
 * [Command reference](reference/commands.md)

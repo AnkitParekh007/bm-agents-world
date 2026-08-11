@@ -1,0 +1,101 @@
+version: 1
+coverage:
+  include:
+    - apps/**/*
+    - packs/**/*
+    - config/**/*
+    - policies/**/*
+    - deploy/**/*
+    - package.json
+    - .github/workflows/**/*
+  exclude:
+    - apps/**/*.test.ts
+    - apps/**/dist/**/*
+rules:
+  - id: api-routes
+    description: Express and CopilotKit route changes affect the API contract.
+    sources:
+      - apps/agent-window/src/server/index.ts
+    generated:
+      - docs/generated/api-routes.md
+    narrative:
+      - docs/development/api-reference.md
+
+  - id: runtime-configuration
+    description: Runtime settings must stay aligned with configuration and deployment guidance.
+    sources:
+      - apps/agent-window/.env.example
+      - apps/agent-window/src/server/**/*config*.ts
+      - apps/agent-window/src/server/platform/deployment-readiness.ts
+      - deploy/k8s/qa-pilot/configmap.yaml
+    generated:
+      - docs/generated/environment-variables.md
+    narrative:
+      - docs/development/environment-variables.md
+      - docs/deployment/deployment.md
+
+  - id: capability-governance
+    description: Capability and connector changes require governance and security review.
+    sources:
+      - apps/agent-window/src/server/platform/capability-types.ts
+      - apps/agent-window/src/server/platform/capability-broker.ts
+      - apps/agent-window/src/server/platform/async-capability-broker.ts
+      - apps/agent-window/src/server/qa/qa-capabilities.ts
+      - config/approved-connectors.yaml
+      - policies/**/*
+    generated:
+      - docs/generated/capability-catalog.md
+    narrative:
+      - docs/architecture/capability-broker.md
+      - docs/deployment/security.md
+
+  - id: agent-packs
+    description: Pack discovery and manifests drive the published pack catalog.
+    sources:
+      - apps/agent-window/src/server/pack-registry.ts
+      - packs/**/config/pack-manifest.yaml
+    generated:
+      - docs/generated/agent-pack-catalog.md
+    narrative:
+      - docs/architecture/agents-and-packs.md
+
+  - id: shared-persistence
+    description: Durable state and evidence changes affect persistence and operations.
+    sources:
+      - apps/agent-window/src/server/platform/*store*.ts
+      - apps/agent-window/src/server/platform/runtime-persistence.ts
+      - deploy/supabase/shared-runtime-schema.sql
+    narrative:
+      - docs/architecture/persistence.md
+      - docs/shared-supabase-runtime.md
+
+  - id: frontend-experience
+    description: User-facing component changes require the frontend and feature guides to remain accurate.
+    sources:
+      - apps/agent-window/src/client/**/*
+    narrative:
+      - docs/architecture/frontend.md
+      - docs/frontend/components.md
+      - docs/features/agent-window.md
+
+  - id: deployment-contract
+    description: Kubernetes and container changes affect generated deployment facts and runbooks.
+    sources:
+      - apps/agent-window/Dockerfile
+      - deploy/k8s/qa-pilot/**/*
+    generated:
+      - docs/generated/deployment-reference.md
+    narrative:
+      - docs/deployment/deployment.md
+      - docs/deployment/security.md
+      - docs/qa-team-pilot-deployment.md
+
+  - id: developer-workflow
+    description: Commands and CI changes affect contributor guidance.
+    sources:
+      - package.json
+      - apps/*/package.json
+      - .github/workflows/**/*
+    narrative:
+      - docs/reference/commands.md
+      - docs/development/build-and-ci.md

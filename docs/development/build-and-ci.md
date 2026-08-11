@@ -13,4 +13,10 @@ flowchart LR
   B --> D[Docker build]
 ```
 
-`qa-pilot-image.yml` is the separate manual image publication workflow. Documentation is currently built independently from `docs/`; adding docs CI is a recommended follow-up, not an existing repository behavior.
+`qa-pilot-image.yml` is the separate manual image publication workflow. Documentation is built independently from `docs/` and validated by the `Documentation Integrity` workflow.
+
+## Documentation integrity
+
+`.github/workflows/docs-integrity.yml` runs for every pull request and every push to `main`. It regenerates factual reference pages, fails when generated output was not committed, checks changed source paths against `docs/doc-impact-map.yaml`, and builds the HonKit portal.
+
+Generated pages under `docs/generated/` are derived from repository sources and must not be edited directly. Narrative architecture, security, feature, and operations pages remain human-owned. When a mapped source changes, at least one mapped narrative page must change unless a maintainer applies the `docs-not-needed` label and provides a documentation-impact explanation in the pull request.

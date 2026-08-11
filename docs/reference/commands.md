@@ -23,3 +23,12 @@ Run documentation commands from `docs/`.
 | `npm run validate` | Build and verify navigation, links, metadata, search, and 404 output |
 
 From the repository root, the equivalent commands are `npm run docs:serve`, `npm run docs:build`, `npm run docs:clean`, and `npm run docs:validate`.
+
+Documentation synchronization commands also run from the repository root:
+
+| Command | Result |
+|---|---|
+| `npm run docs:generate` | Regenerate route, configuration, capability, pack, and deployment references |
+| `npm run docs:generate:check` | Regenerate and fail when committed generated pages are stale |
+| `npm run docs:impact -- --base origin/main` | Check changed code against the documentation impact map |
+| `npm run docs:ci` | Run generation freshness, impact, and portal validation checks |

@@ -20,6 +20,17 @@ async function walk(directory) {
   return nested.flat();
 }
 
+async function walkSources(directory) {
+  const entries = await readdir(directory, { withFileTypes: true });
+  const nested = await Promise.all(entries
+    .filter((entry) => !["_book", "node_modules"].includes(entry.name))
+    .map((entry) => {
+      const path = join(directory, entry.name);
+      return entry.isDirectory() ? walkSources(path) : [path];
+    }));
+  return nested.flat();
+}
+
 function localTargets(html) {
   const targets = [];
   const pattern = /(?:href|src)=["']([^"']+)["']/g;
@@ -35,6 +46,24 @@ const summary = await readFile(join(docsRoot, "SUMMARY.md"), "utf8");
 const summaryPages = [...summary.matchAll(/\]\(([^)#]+\.md)(?:#[^)]+)?\)/g)].map((match) => match[1]);
 for (const page of summaryPages) {
   try { await stat(join(docsRoot, page)); } catch { failures.push(`SUMMARY source is missing: ${page}`); }
+}
+
+const sourceFiles = await walkSources(docsRoot);
+const markdownSources = sourceFiles
+  .filter((file) => extname(file) === ".md" && relative(docsRoot, file) !== "SUMMARY.md")
+  .map((file) => relative(docsRoot, file).replaceAll("\\", "/"));
+for (const page of markdownSources) {
+  if (!summaryPages.includes(page)) failures.push(`Markdown source is missing from SUMMARY.md: ${page}`);
+}
+
+for (const page of markdownSources.filter((page) => page.startsWith("generated/"))) {
+  const generated = await readFile(join(docsRoot, page), "utf8");
+  if (!generated.startsWith("<!-- GENERATED FILE: DO NOT EDIT DIRECTLY.")) failures.push(`Generated page marker is missing: ${page}`);
+}
+
+for (const file of sourceFiles.filter((file) => extname(file) === ".json" && !["package.json", "package-lock.json", "book.json"].includes(relative(docsRoot, file).replaceAll("\\", "/")))) {
+  try { JSON.parse(await readFile(file, "utf8")); }
+  catch { failures.push(`Invalid JSON documentation asset: ${relative(docsRoot, file)}`); }
 }
 
 const rootPackage = JSON.parse(await readFile(join(repositoryRoot, "package.json"), "utf8"));

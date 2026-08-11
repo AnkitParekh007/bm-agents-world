@@ -16,7 +16,11 @@
     "docs:serve": "npm run serve --prefix docs",
     "docs:build": "npm run build --prefix docs",
     "docs:clean": "npm run clean --prefix docs",
-    "docs:validate": "npm run validate --prefix docs"
+    "docs:validate": "npm run validate --prefix docs",
+    "docs:generate": "node scripts/docs/generate-docs.mjs",
+    "docs:generate:check": "npm run docs:generate && node scripts/docs/check-generated-docs.mjs",
+    "docs:impact": "node scripts/docs/check-doc-impact.mjs",
+    "docs:ci": "npm run docs:generate:check && npm run docs:impact && npm run docs:validate"
   },
   "engines": {
     "node": ">=22.13.0"

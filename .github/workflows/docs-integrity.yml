@@ -1,0 +1,52 @@
+name: Documentation Integrity
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate-documentation:
+    name: docs-integrity
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+      DOCS_NOT_NEEDED: ${{ contains(github.event.pull_request.labels.*.name, 'docs-not-needed') }}
+      DOCS_IMPACT_EXPLANATION: ${{ github.event.pull_request.body || '' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install documentation dependencies
+        run: npm install --prefix docs
+
+      - name: Verify generated documentation is committed
+        run: npm run docs:generate:check
+
+      - name: Check documentation impact
+        run: node scripts/docs/check-doc-impact.mjs --base "$BASE_SHA"
+
+      - name: Build and validate portal
+        run: npm run docs:validate
+
+      - name: Upload generated portal on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: documentation-validation-output
+          path: |
+            docs/_book
+            docs/generated
+          retention-days: 5

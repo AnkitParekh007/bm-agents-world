@@ -1,0 +1,14 @@
+# Documentation and documentation automation
+/docs/ @AnkitParekh007
+/scripts/docs/ @AnkitParekh007
+/README.md @AnkitParekh007
+
+# Security, policy, and deployment contracts
+/policies/ @AnkitParekh007
+/config/approved-connectors.yaml @AnkitParekh007
+/deploy/ @AnkitParekh007
+/docs/deployment/security.md @AnkitParekh007
+/docs/doc-impact-map.yaml @AnkitParekh007
+
+# Protect repository governance files themselves
+/.github/ @AnkitParekh007

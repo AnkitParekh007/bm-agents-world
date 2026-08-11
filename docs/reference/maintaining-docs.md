@@ -16,6 +16,12 @@ Use fenced `mermaid` blocks for diagrams and normal language fences for code. Gi
 
 The portal adds theme persistence, system theme, `Ctrl/Cmd+K` search focus, code-language labels, copy buttons, heading links, page breadcrumbs, an on-page table of contents, and mobile navigation without changing generated HonKit core files.
 
+## Keep documentation synchronized
+
+`docs/doc-impact-map.yaml` maps implementation paths to generated facts and human-owned narrative pages. Run `npm run docs:generate` after changing routes, environment configuration, capability definitions, connector configuration, pack manifests, or Kubernetes deployment files. Never edit `docs/generated/` directly.
+
+Before opening a pull request, run `npm run docs:impact -- --base origin/main` and `npm run docs:validate`. The required documentation-integrity workflow repeats these checks and rejects stale generated output, orphan Markdown pages, or mapped code changes without a corresponding narrative update. A maintainer may use the `docs-not-needed` label only with a concrete explanation in the pull request.
+
 ## Publishing and print
 
 Publish the generated `docs/_book/` directory as a static site. The build includes a root `404.html` for hosts that use conventional static error pages. Configure the host to route missing paths to that file if it does not do so automatically.
