@@ -10,6 +10,7 @@ What is working:
 
 - Repository-driven agent pack discovery and one named CopilotKit agent per pack.
 - Global BM Agents World supervisor for agent-pack discovery.
+- QA runs as a multi-agent team: a supervisor plus scoped specialist agents (story context, change impact, test design, browser/API/database execution, integration traceability, defect investigation, and reporting).
 - Pack task launcher and Copilot chat workspace.
 - Governed capability broker with L0-L4 risk levels and payload-bound approvals.
 - Centralized policy engine with local evaluation and OPA-backed shared-pilot enforcement.
@@ -22,6 +23,13 @@ What is working:
 - Screenshot, trace, network, test-result, evidence-manifest, and bug-draft artifacts.
 - Jira duplicate search.
 - Real Jira defect creation behind L3 exact-artifact human approval.
+- Same-run invariant: Jira duplicate search and bug creation require a bug draft produced by a real test run in the same run.
+- Governed test-plan generation persisting immutable, story-scoped test-plan artifacts linked to the automated suite for traceability.
+- Real Teams status posting through an approved, host-allowlisted server-side webhook.
+- Allowlisted read-only database validation: server-curated named SQL, where the model supplies only a validation id (never SQL).
+- Allowlisted read-only API contract checks (status, latency, JSON fields), where the model supplies only a contract id (never a URL).
+- Run-scoped integration traceability correlating test plan, execution result, and bug draft with cross-step consistency checks.
+- Executor capabilities that degrade to an honest mock instead of a fabricated success when their integration is not configured.
 - Request-scoped tenant/project authorization and trusted-mode self-approval denial.
 - Run-scoped artifact authorization.
 - QA pilot observability derived from persistent execution facts.
@@ -99,7 +107,7 @@ bm-agents-world/
 │           ├── client/               → Agent Window and QA pilot UI
 │           └── server/
 │               ├── platform/         → Capability, policy, persistence, and telemetry
-│               └── qa/               → Jira, Bitbucket, and Playwright adapters
+│               └── qa/               → Jira, Bitbucket, Playwright, Teams, database, API, test-plan, and traceability adapters
 ├── packs/                            → Organization agent-pack source material
 ├── config/                           → Approved connector configuration
 ├── policies/                         → Central authorization policy
@@ -214,7 +222,7 @@ flowchart TD
     State --> Policy{"Risk / policy"}
     Policy --> Approval{"Payload-bound human approval<br/>when required"}
     Approval --> Adapter["Trusted server adapter"]
-    Adapter --> Systems["Jira / Bitbucket / Playwright"]
+    Adapter --> Systems["Jira / Bitbucket / Playwright<br/>Teams / database / API"]
     Systems --> Audit[("Persistent audit +<br/>authorized evidence")]
 
     classDef identity fill:#eef2ff,stroke:#6366f1,color:#1e1b4b,stroke-width:1.5px;
@@ -227,7 +235,7 @@ flowchart TD
     class Systems external;
 ```
 
-Postgres credentials, Supabase secret keys, Jira/Bitbucket/model-provider credentials, and Playwright authentication material remain server-side and must not enter model context. Private Storage objects are returned only through the BM authorization boundary; the shared persistence implementation does not expose public or signed evidence URLs to the employee UI.
+Postgres credentials, Supabase secret keys, Jira/Bitbucket/model-provider credentials, Playwright authentication material, Teams webhook URLs, database connection strings, and API tokens remain server-side and must not enter model context. Database, API-contract, and browser execution run only server-curated, allowlisted work; the model supplies identifiers, never SQL, URLs, selectors, or scripts. Private Storage objects are returned only through the BM authorization boundary; the shared persistence implementation does not expose public or signed evidence URLs to the employee UI.
 
 Free-form production mutation remains unavailable.
 
@@ -237,7 +245,7 @@ Free-form production mutation remains unavailable.
 - Local SQLite/filesystem mode remains single-process and must not be used as independent state across multiple pods.
 - The Kubernetes base has no public Ingress and requires trusted-gateway network isolation.
 - Jira writes remain separately opt-in and always require L3 approval.
-- Database validation and Teams posting are not yet live integrations.
+- Live Teams, database, and API-contract execution require operator-provided webhooks, read-only connections, and server-curated allowlists; unconfigured, these capabilities run as honest mocks. Database validation is also hidden from the agent unless explicitly opted in.
 - Production browser execution is not supported.
 - Model token telemetry depends on actual provider/AG-UI usage metadata; unsupported runs remain `unavailable`.
 - Cost is an explicit configured estimate and not provider billing.

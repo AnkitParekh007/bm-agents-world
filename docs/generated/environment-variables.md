@@ -16,6 +16,13 @@ Authoritative sources:
 | `BM_DEPLOYMENT_MODE` | Runtime and model | `development` |
 | `BM_PILOT_REQUIRE_JIRA_WRITE` | Runtime and model | `false` |
 | `BM_AGENTS_REPO_ROOT` | Runtime and model | `/absolute/path/to/bm-agents-world` |
+| `BM_PILOT_PROJECT_IDS` | Runtime and model | `PCC` |
+| `BM_PILOT_REQUIRED_ENVIRONMENTS` | Runtime and model | `playground,qa` |
+| `BM_PILOT_EXPECTED_REPLICAS` | Runtime and model | `2` |
+| `BM_PILOT_BASE_URL` | Runtime and model | `https://bm-agents-world.internal.example` |
+| `BM_PILOT_VALIDATION_REQUESTS` | Runtime and model | `12` |
+| `BM_PILOT_VALIDATION_BEARER_TOKEN` | Runtime and model | server-side secret |
+| `BM_PILOT_VALIDATION_COOKIE` | Runtime and model | unset example |
 | `BM_POLICY_MODE` | Central policy + approved connector registry | `local` |
 | `BM_OPA_URL` | Central policy + approved connector registry | `http://127.0.0.1:8181` |
 | `BM_OPA_TIMEOUT_MS` | Central policy + approved connector registry | `1500` |
@@ -71,5 +78,10 @@ Authoritative sources:
 | `QA_PCC_PLAYWRIGHT_STORAGE_STATE` | QA Playwright worker | `/secure/runtime/playwright-auth/pcc-user.json` |
 | `QA_SOP_PLAYWRIGHT_STORAGE_STATE` | QA Playwright worker | `/secure/runtime/playwright-auth/sop-user.json` |
 | `QA_DATABRIDGE_PLAYWRIGHT_STORAGE_STATE` | QA Playwright worker | `/secure/runtime/playwright-auth/databridge-user.json` |
+| `QA_TEAMS_WEBHOOK_URL` | QA Teams status adapter | server-side secret |
+| `QA_DATABASE_VALIDATION_ENABLED` | QA database validation adapter | `false` |
+| `QA_DATABASE_URL` | QA database validation adapter | server-side secret |
+| `QA_DATABASE_VALIDATIONS_PATH` | QA database validation adapter | `/absolute/path/to/qa-database-validations.yaml` |
+| `QA_API_CONTRACTS_PATH` | QA API contract adapter | `/absolute/path/to/qa-api-contracts.yaml` |
 
 Secret values are intentionally replaced with classifications. See [Environment variables](../development/environment-variables.md) for behavior and security guidance.

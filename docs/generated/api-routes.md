@@ -22,6 +22,7 @@ Authoritative sources:
 | GET | /api/qa/integrations | apps/agent-window/src/server/index.ts |
 | GET | /api/qa/observability/runs | apps/agent-window/src/server/index.ts |
 | GET | /api/qa/observability/summary | apps/agent-window/src/server/index.ts |
+| GET | /api/qa/pilot/validation | apps/agent-window/src/server/index.ts |
 | GET | /api/qa/project-tests | apps/agent-window/src/server/index.ts |
 | GET | /api/qa/runs | apps/agent-window/src/server/index.ts |
 | GET | /api/qa/runs/:runId | apps/agent-window/src/server/index.ts |

@@ -40,7 +40,7 @@ async function generateRoutes() {
 }
 
 function safeDefault(name, value, commented) {
-  if (/(?:API_KEY|ACCESS_TOKEN|BEARER_TOKEN|SECRET_KEY|PASSWORD|POSTGRES_URL|OTEL_EXPORTER_OTLP_HEADERS)$/.test(name)) return "server-side secret";
+  if (/(?:API_KEY|ACCESS_TOKEN|BEARER_TOKEN|SECRET_KEY|PASSWORD|POSTGRES_URL|DATABASE_URL|WEBHOOK_URL|OTEL_EXPORTER_OTLP_HEADERS)$/.test(name)) return "server-side secret";
   if (!value) return commented ? "unset example" : "empty";
   return `\`${value.replaceAll("`", "\\`")}\``;
 }
@@ -51,7 +51,7 @@ async function generateEnvironment() {
   let section = "Runtime and model";
   const variables = new Map();
   for (const line of lines) {
-    const heading = line.match(/^#\s+(Central policy \+ approved connector registry|Runtime persistence|Shared team pilot \/ horizontal scaling:|Request identity|Model usage \+ OpenTelemetry|QA Jira Cloud read \+ governed defect adapter|QA Bitbucket Cloud read adapter|QA Playwright worker)$/);
+    const heading = line.match(/^#\s+(Central policy \+ approved connector registry|Runtime persistence|Shared team pilot \/ horizontal scaling:|Request identity|Model usage \+ OpenTelemetry|QA Jira Cloud read \+ governed defect adapter|QA Bitbucket Cloud read adapter|QA Playwright worker|QA Teams status adapter|QA database validation adapter|QA API contract adapter)$/);
     if (heading) { section = heading[1].replace(/:$/, ""); continue; }
     const assignment = line.match(/^\s*(#\s*)?([A-Z][A-Z0-9_]*)=(.*)$/);
     if (assignment) {
