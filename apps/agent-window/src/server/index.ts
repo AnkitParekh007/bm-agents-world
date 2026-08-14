@@ -27,7 +27,12 @@ import { BitbucketReadAdapter } from "./qa/bitbucket-read-adapter.js";
 import { JiraDefectAdapter } from "./qa/jira-defect-adapter.js";
 import { JiraReadAdapter } from "./qa/jira-read-adapter.js";
 import { PlaywrightWorkerAdapter } from "./qa/playwright-worker-adapter.js";
-import { QA_CAPABILITIES, QaMockAdapter } from "./qa/qa-capabilities.js";
+import { availableQaCapabilities, QaMockAdapter } from "./qa/qa-capabilities.js";
+import { QaTestPlanAdapter } from "./qa/qa-testplan-adapter.js";
+import { TeamsStatusAdapter } from "./qa/qa-teams-adapter.js";
+import { DatabaseValidationAdapter } from "./qa/qa-database-adapter.js";
+import { ApiContractAdapter } from "./qa/qa-api-contract-adapter.js";
+import { IntegrationTraceAdapter } from "./qa/qa-integration-trace-adapter.js";
 import { loadQaIntegrationStatus } from "./qa/qa-integration-config.js";
 import { projectTestCatalogStatus } from "./qa/qa-project-tests.js";
 
@@ -53,10 +58,16 @@ const adapters = [
   new BitbucketReadAdapter(qaMockAdapter),
   new PlaywrightWorkerAdapter(qaMockAdapter, artifacts),
   jiraDefectAdapter,
+  new QaTestPlanAdapter(artifacts),
+  new TeamsStatusAdapter(qaMockAdapter),
+  new DatabaseValidationAdapter(qaMockAdapter),
+  new ApiContractAdapter(qaMockAdapter),
+  new IntegrationTraceAdapter(artifacts),
 ];
+const qaCapabilities = availableQaCapabilities();
 const qaBroker: CapabilityBrokerContract = persistence.shared
-  ? new AsyncCapabilityBroker(QA_CAPABILITIES, adapters, persistence.capabilityStore, centralPolicy)
-  : new CapabilityBroker(QA_CAPABILITIES, adapters, persistence.capabilityStore);
+  ? new AsyncCapabilityBroker(qaCapabilities, adapters, persistence.capabilityStore, centralPolicy)
+  : new CapabilityBroker(qaCapabilities, adapters, persistence.capabilityStore);
 const runtime = buildCopilotRuntime(registry, qaBroker, agentTelemetry);
 const app = express();
 

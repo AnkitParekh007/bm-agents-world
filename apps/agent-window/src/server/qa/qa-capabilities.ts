@@ -46,6 +46,19 @@ export const QA_CAPABILITIES: CapabilityDefinition[] = [
     adapterId: "qa-bitbucket-read-adapter",
   },
   {
+    id: "qa.testplan.generate",
+    system: "qa",
+    action: "testplan.generate",
+    description: "Persist an immutable, story-scoped QA test plan artifact (scope, test types, entry/exit criteria, and traceable cases) derived from the story and change-impact reads.",
+    riskLevel: "L0",
+    approvalMode: "none",
+    actionClass: "read",
+    externalWrite: false,
+    productionMutation: false,
+    allowedEnvironments: ["playground", "qa", "prod"],
+    adapterId: "qa-testplan-adapter",
+  },
+  {
     id: "qa.database.validation.read",
     system: "database",
     action: "validation.read",
@@ -56,7 +69,20 @@ export const QA_CAPABILITIES: CapabilityDefinition[] = [
     externalWrite: false,
     productionMutation: false,
     allowedEnvironments: ["playground", "qa", "prod"],
-    adapterId: "qa-mock-adapter",
+    adapterId: "qa-database-read-adapter",
+  },
+  {
+    id: "qa.integration.trace",
+    system: "qa",
+    action: "integration.trace",
+    description: "Correlate a run's test plan, execution result, and bug draft into an immutable traceability artifact with cross-step consistency checks.",
+    riskLevel: "L0",
+    approvalMode: "none",
+    actionClass: "read",
+    externalWrite: false,
+    productionMutation: false,
+    allowedEnvironments: ["playground", "qa", "prod"],
+    adapterId: "qa-integration-trace-adapter",
   },
   {
     id: "qa.playwright.test.run",
@@ -70,6 +96,19 @@ export const QA_CAPABILITIES: CapabilityDefinition[] = [
     productionMutation: false,
     allowedEnvironments: ["playground", "qa"],
     adapterId: "qa-playwright-worker-adapter",
+  },
+  {
+    id: "qa.api.contract.test",
+    system: "api",
+    action: "contract.test",
+    description: "Run allowlisted read-only API contract checks (status, latency, and JSON field presence) against approved non-production endpoints.",
+    riskLevel: "L1",
+    approvalMode: "standing-policy",
+    actionClass: "test",
+    externalWrite: false,
+    productionMutation: false,
+    allowedEnvironments: ["playground", "qa"],
+    adapterId: "qa-api-contract-adapter",
   },
   {
     id: "qa.jira.bug.create",
@@ -95,9 +134,36 @@ export const QA_CAPABILITIES: CapabilityDefinition[] = [
     externalWrite: true,
     productionMutation: false,
     allowedEnvironments: ["playground", "qa", "prod"],
-    adapterId: "qa-mock-adapter",
+    adapterId: "qa-teams-adapter",
   },
 ];
+
+/**
+ * Capabilities hidden from the agent by default and shown only when their
+ * environment flag is set. Database validation has a live adapter but depends on
+ * heavier per-project infra (an approved read-only connection and an SQL
+ * allowlist), so it stays off the default pilot surface until explicitly opted
+ * in — and even then executes as an honest mock until that infra is configured.
+ */
+const OPT_IN_CAPABILITY_FLAGS: Record<string, string> = {
+  "qa.database.validation.read": "QA_DATABASE_VALIDATION_ENABLED",
+};
+
+function capabilityEnabled(id: string): boolean {
+  const flag = OPT_IN_CAPABILITY_FLAGS[id];
+  if (!flag) return true;
+  const raw = process.env[flag]?.trim().toLowerCase();
+  return raw === "true" || raw === "1" || raw === "yes";
+}
+
+/**
+ * The capabilities the runtime should register and expose to the QA agent.
+ * Mock-only capabilities are excluded unless explicitly opted in, so the agent
+ * only ever sees capabilities it can actually execute.
+ */
+export function availableQaCapabilities(): CapabilityDefinition[] {
+  return QA_CAPABILITIES.filter((capability) => capabilityEnabled(capability.id));
+}
 
 function storyFixture(projectId: string, storyId: string) {
   return {

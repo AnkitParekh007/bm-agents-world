@@ -50,6 +50,53 @@ Operating rules for this implementation stage:
 `;
 }
 
+/**
+ * Maps QA pack specialists (from the pack agent-registry) to the governed
+ * capabilities they are responsible for. Only specialists listed here are
+ * instantiated as their own scoped agent; the rest remain supervisor context.
+ * Tool access is uniform (the broker enforces capability admission), so scoping
+ * is expressed through the specialist's focused prompt.
+ */
+const QA_SPECIALIST_CAPABILITIES: Record<string, string[]> = {
+  "story-context": ["qa.jira.story.read"],
+  "change-impact": ["qa.bitbucket.change-impact.read"],
+  "test-design": ["qa.testplan.generate"],
+  "browser-qa": ["qa.playwright.test.run"],
+  "api-qa": ["qa.api.contract.test"],
+  "database-validation": ["qa.database.validation.read"],
+  "integration-qa": ["qa.integration.trace"],
+  "defect-investigator": ["qa.jira.duplicate.search", "qa.jira.bug.create"],
+  "qa-reporter": ["qa.teams.status.post"],
+};
+
+function qaSupervisorPrompt(specialistIds: string[]): string {
+  const roster = specialistIds.map((id) => `- ${id}`).join("\n");
+  return `
+
+You are the QA supervisor. You own the run, its durable state, approvals, and the
+final consolidated result. Coordinate the following specialist agents, each scoped
+to its own governed capabilities:
+${roster || "- (no specialists registered)"}
+
+Run the workflow in order — story context, change impact, test design, execution
+(browser/api/database), integration traceability, then defect handling and
+reporting — reusing one startQaRun runId across the whole workflow. You may perform
+any step yourself using the governed tools, but keep each step scoped to the
+capability it needs, and never claim a step ran unless a tool result confirms it.`;
+}
+
+function qaSpecialistPrompt(pack: AgentPack, specialistId: string, purpose: string, capabilities: string[]): string {
+  return `You are the QA ${specialistId} specialist inside the ${pack.displayName} Agent, coordinated by the qa supervisor.
+
+Your responsibility: ${purpose}
+
+Stay strictly within your scope. You are accountable only for these governed
+capabilities: ${capabilities.join(", ")}. Do not request or execute other
+capabilities. Reuse the supervisor's startQaRun runId when one is provided, return
+structured results the supervisor can consolidate, and never claim an external
+system was touched unless a governed tool result confirms it.`;
+}
+
 function packTools(pack: AgentPack) {
   const overview = defineTool({
     name: "getPackOverview",
@@ -158,14 +205,40 @@ export function buildCopilotRuntime(
 
   for (const pack of registry.packs) {
     const isQa = pack.id === "qa";
-    const agent = new BuiltInAgent({
+    if (!isQa) {
+      const agent = new BuiltInAgent({ model, prompt: packPrompt(pack), tools: packTools(pack), maxSteps: 8 });
+      if (telemetry) agent.use(telemetry.middleware(pack.id, model));
+      agents[pack.id] = agent;
+      continue;
+    }
+
+    // QA runs as a multi-agent team: a supervisor plus one scoped specialist
+    // agent per registered specialist that maps to a governed capability.
+    const specialists = pack.subAgents.filter((specialist) => QA_SPECIALIST_CAPABILITIES[specialist.id]);
+    const specialistIds = specialists.map((specialist) => `qa.${specialist.id}`);
+
+    const supervisor = new BuiltInAgent({
       model,
-      prompt: packPrompt(pack) + (isQa ? QA_CAPABILITY_PROMPT : ""),
-      tools: isQa ? [...packTools(pack), ...buildQaTools(qaBroker, telemetry)] : packTools(pack),
-      maxSteps: isQa ? 16 : 8,
+      prompt: packPrompt(pack) + QA_CAPABILITY_PROMPT + qaSupervisorPrompt(specialistIds),
+      tools: [...packTools(pack), ...buildQaTools(qaBroker, telemetry)],
+      maxSteps: 16,
     });
-    if (telemetry) agent.use(telemetry.middleware(pack.id, model));
-    agents[pack.id] = agent;
+    if (telemetry) supervisor.use(telemetry.middleware(pack.id, model));
+    agents[pack.id] = supervisor;
+
+    for (const specialist of specialists) {
+      const agentId = `qa.${specialist.id}`;
+      const specialistAgent = new BuiltInAgent({
+        model,
+        prompt:
+          qaSpecialistPrompt(pack, specialist.id, specialist.purpose ?? specialist.description ?? specialist.role ?? "QA specialist", QA_SPECIALIST_CAPABILITIES[specialist.id])
+          + QA_CAPABILITY_PROMPT,
+        tools: [...packTools(pack), ...buildQaTools(qaBroker, telemetry)],
+        maxSteps: 10,
+      });
+      if (telemetry) specialistAgent.use(telemetry.middleware(agentId, model));
+      agents[agentId] = specialistAgent;
+    }
   }
 
   const supervisor = new BuiltInAgent({

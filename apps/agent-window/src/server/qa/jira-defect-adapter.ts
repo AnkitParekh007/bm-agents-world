@@ -139,6 +139,7 @@ function bulletList(items: string[]) {
 async function loadDraft(
   artifacts: ArtifactRepository,
   payload: Record<string, unknown>,
+  context: ExecutionContext,
 ): Promise<{ artifact: StoredArtifact; draft: BugDraft }> {
   const id = cleanText(payload.bugDraftArtifactId, 100);
   const expectedSha = cleanText(payload.bugDraftSha256, 128).toLowerCase();
@@ -148,6 +149,15 @@ async function loadDraft(
   if (!loaded) throw new Error("Bug draft artifact was not found or is not a valid bug-draft JSON artifact");
   if (loaded.record.sha256.toLowerCase() !== expectedSha) {
     throw new Error("Bug draft SHA-256 does not match the immutable artifact");
+  }
+  // Workflow invariant: a bug draft may only be de-duplicated or filed within the
+  // same durable run that produced it. Bug-draft artifacts are created solely by a
+  // real qa.playwright.test.run, so a matching runId proves an executed test run in
+  // this run generated the draft — the model cannot fabricate one across runs.
+  if (loaded.record.runId !== context.runId) {
+    throw new Error(
+      "Bug draft artifact does not belong to this QA run. Run qa.playwright.test.run in this run to produce a bug draft before de-duplicating or creating a Jira bug.",
+    );
   }
 
   const draft: BugDraft = {
@@ -209,7 +219,7 @@ export class JiraDefectAdapter implements CapabilityAdapter {
 
   async previewCreateAction(action: CapabilityAction): Promise<JiraDefectReview> {
     if (action.capabilityId !== "qa.jira.bug.create") throw new Error("Action is not a Jira bug create action");
-    const { artifact, draft } = await loadDraft(this.artifacts, action.payload);
+    const { artifact, draft } = await loadDraft(this.artifacts, action.payload, action.context);
     const duplicateCandidates = await this.searchDuplicates(action.context, draft);
     return {
       artifact,
@@ -229,7 +239,7 @@ export class JiraDefectAdapter implements CapabilityAdapter {
   ): Promise<AdapterResult> {
     if (definition.id === "qa.jira.duplicate.search") {
       try {
-        const { artifact, draft } = await loadDraft(this.artifacts, payload);
+        const { artifact, draft } = await loadDraft(this.artifacts, payload, context);
         const candidates = await this.searchDuplicates(context, draft);
         return {
           ok: true,
@@ -253,7 +263,7 @@ export class JiraDefectAdapter implements CapabilityAdapter {
     }
 
     try {
-      const { artifact, draft } = await loadDraft(this.artifacts, payload);
+      const { artifact, draft } = await loadDraft(this.artifacts, payload, context);
       const evidence = await evidenceDetails(this.artifacts, draft.evidenceIds);
 
       if (!this.liveWriteReady()) {
