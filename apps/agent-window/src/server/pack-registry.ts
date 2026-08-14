@@ -7,6 +7,7 @@ import {
   validatePackManifest,
   type PackValidation,
 } from "./pack-schema.js";
+import { compilePack, type CompiledPack } from "./pack-compiler.js";
 
 export interface PackSubAgent {
   id: string;
@@ -262,20 +263,33 @@ export function loadAgentPacks(): AgentPack[] {
 export class PackRegistry {
   readonly packs: AgentPack[];
   private readonly byId: Map<string, AgentPack>;
+  private readonly compiledById: Map<string, CompiledPack>;
 
   constructor(packs = loadAgentPacks()) {
     this.packs = packs;
     this.byId = new Map(packs.flatMap((pack) => [[pack.id, pack], [pack.packName, pack]]));
+    this.compiledById = new Map(
+      packs.flatMap((pack) => {
+        const compiled = compilePack(pack);
+        return [[pack.id, compiled], [pack.packName, compiled]] as const;
+      }),
+    );
   }
 
   get(id: string): AgentPack | undefined {
     return this.byId.get(id);
   }
 
+  /** The deterministic, content-hashed compiled definition for a pack. */
+  compiled(id: string): CompiledPack | undefined {
+    return this.compiledById.get(id);
+  }
+
   listPublic() {
     return this.packs.map(({ directory: _directory, taskGroups: _taskGroups, validation, ...pack }) => ({
       ...pack,
       valid: validation.ok,
+      contentHash: this.compiledById.get(pack.id)?.contentHash,
     }));
   }
 
