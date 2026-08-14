@@ -33,6 +33,7 @@ test("mock-only capabilities are hidden from the agent by default", () => {
     assert.equal(available.includes("qa.jira.story.read"), true);
     assert.equal(available.includes("qa.playwright.test.run"), true);
     assert.equal(available.includes("qa.jira.bug.create"), true);
+    assert.equal(available.includes("qa.testplan.generate"), true);
   } finally {
     restoreEnv(before);
   }
@@ -56,7 +57,7 @@ test("the full catalog is never mutated by the availability filter", () => {
   try {
     for (const key of ENV_KEYS) delete process.env[key];
     availableQaCapabilities();
-    assert.equal(QA_CAPABILITIES.length, 7);
+    assert.equal(QA_CAPABILITIES.length, 8);
     for (const id of MOCK_ONLY) {
       assert.ok(QA_CAPABILITIES.some((capability) => capability.id === id));
     }

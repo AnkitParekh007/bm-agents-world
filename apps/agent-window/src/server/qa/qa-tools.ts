@@ -41,6 +41,7 @@ QA capability execution protocol:
 - Use governed server tools for executable QA work; never pretend an external system was accessed.
 - For every multi-step workflow, call startQaRun once with the exact project/environment and reuse the returned runId in every requestQaCapabilityAction call for that workflow.
 - Start with listQaCapabilities and listQaProjectTests when you need executable scope.
+- After reading the story and change impact, request and execute qa.testplan.generate with non-empty scope, testTypes, entryCriteria, and exitCriteria plus story-derived cases. The server persists an immutable test-plan artifact for traceability; use it to justify which tests to run.
 - For an action, call requestQaCapabilityAction with exact runId, project, environment, capability, and payload. Execute only the returned immutable action id.
 - If status is pending_approval, call reviewQaAction with the exact action id, capability id, risk level, summary, and payload hash. Execute only after human approval.
 - Approval is payload-hash-bound and expires. Never substitute a new payload after approval.

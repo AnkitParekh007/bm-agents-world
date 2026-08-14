@@ -28,6 +28,7 @@ import { JiraDefectAdapter } from "./qa/jira-defect-adapter.js";
 import { JiraReadAdapter } from "./qa/jira-read-adapter.js";
 import { PlaywrightWorkerAdapter } from "./qa/playwright-worker-adapter.js";
 import { availableQaCapabilities, QaMockAdapter } from "./qa/qa-capabilities.js";
+import { QaTestPlanAdapter } from "./qa/qa-testplan-adapter.js";
 import { loadQaIntegrationStatus } from "./qa/qa-integration-config.js";
 import { projectTestCatalogStatus } from "./qa/qa-project-tests.js";
 
@@ -53,6 +54,7 @@ const adapters = [
   new BitbucketReadAdapter(qaMockAdapter),
   new PlaywrightWorkerAdapter(qaMockAdapter, artifacts),
   jiraDefectAdapter,
+  new QaTestPlanAdapter(artifacts),
 ];
 const qaCapabilities = availableQaCapabilities();
 const qaBroker: CapabilityBrokerContract = persistence.shared

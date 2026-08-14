@@ -57,6 +57,20 @@ connectors:
         actionClass: test
         maxRisk: L1
         environments: [playground, qa]
+  - id: qa-test-design
+    displayName: QA Test Design
+    kind: native
+    status: approved
+    systems: [qa]
+    transports: [native-worker]
+    auth: workload-identity
+    allowedPacks: [qa]
+    tools:
+      - id: testplan.generate
+        capabilityIds: [qa.testplan.generate]
+        actionClass: read
+        maxRisk: L0
+        environments: [playground, qa, prod]
   - id: qa-database
     displayName: QA Database Read Adapter
     kind: mcp
