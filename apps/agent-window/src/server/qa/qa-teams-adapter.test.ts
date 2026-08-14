@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import type { ExecutionContext } from "../platform/capability-types.js";
 import { QA_CAPABILITIES, QaMockAdapter } from "./qa-capabilities.js";
-import { TeamsStatusAdapter } from "./qa-teams-adapter.js";
+import { TeamsStatusAdapter, teamsAdapterMode } from "./qa-teams-adapter.js";
 
 const context: ExecutionContext = {
   runId: "run-teams",
@@ -70,4 +70,10 @@ test("rejects a webhook on a non-Teams host and does not call it", async () => {
     assert.equal(result.mode, "mock");
     assert.equal(called, 0);
   });
+});
+
+test("teamsAdapterMode reflects configured status", async () => {
+  await withEnv(undefined, async () => assert.equal(teamsAdapterMode(), "mock"));
+  await withEnv("https://acme.webhook.office.com/webhookb2/x", async () => assert.equal(teamsAdapterMode(), "live"));
+  await withEnv("https://evil.example.com/hook", async () => assert.equal(teamsAdapterMode(), "mock"));
 });

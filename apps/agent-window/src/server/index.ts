@@ -29,9 +29,9 @@ import { JiraReadAdapter } from "./qa/jira-read-adapter.js";
 import { PlaywrightWorkerAdapter } from "./qa/playwright-worker-adapter.js";
 import { availableQaCapabilities, QaMockAdapter } from "./qa/qa-capabilities.js";
 import { QaTestPlanAdapter } from "./qa/qa-testplan-adapter.js";
-import { TeamsStatusAdapter } from "./qa/qa-teams-adapter.js";
-import { DatabaseValidationAdapter } from "./qa/qa-database-adapter.js";
-import { ApiContractAdapter } from "./qa/qa-api-contract-adapter.js";
+import { TeamsStatusAdapter, teamsAdapterMode } from "./qa/qa-teams-adapter.js";
+import { DatabaseValidationAdapter, databaseAdapterMode } from "./qa/qa-database-adapter.js";
+import { ApiContractAdapter, apiContractAdapterMode } from "./qa/qa-api-contract-adapter.js";
 import { IntegrationTraceAdapter } from "./qa/qa-integration-trace-adapter.js";
 import { loadQaIntegrationStatus } from "./qa/qa-integration-config.js";
 import { projectTestCatalogStatus } from "./qa/qa-project-tests.js";
@@ -274,10 +274,11 @@ app.get("/api/health", async (_request, response) => {
     qaAdapters: {
       jira: integrations.jira.mode,
       bitbucket: integrations.bitbucket.mode,
-      database: "mock",
+      database: databaseAdapterMode(),
       playwright: integrations.playwright.mode,
       jiraWrite: integrations.jira.writeMode,
-      teams: "mock",
+      teams: teamsAdapterMode(),
+      api: apiContractAdapterMode(),
     },
     qaProjectTests: projectTestCatalogStatus().map((item) => ({
       projectId: item.projectId,

@@ -5,7 +5,7 @@ import { join, resolve } from "node:path";
 import test from "node:test";
 import type { ExecutionContext } from "../platform/capability-types.js";
 import { QA_CAPABILITIES, QaMockAdapter } from "./qa-capabilities.js";
-import { ApiContractAdapter } from "./qa-api-contract-adapter.js";
+import { ApiContractAdapter, apiContractAdapterMode } from "./qa-api-contract-adapter.js";
 
 const context: ExecutionContext = {
   runId: "run-api",
@@ -104,6 +104,16 @@ test("rejects a contract id that is not on the project allowlist", async () => {
       assert.match(result.error ?? "", /allowlist/);
       assert.equal(called, 0);
     });
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test("apiContractAdapterMode is live only with a configured allowlist", async () => {
+  const dir = mkdtempSync(resolve(tmpdir(), "bm-api-"));
+  try {
+    await withEnv(undefined, async () => assert.equal(apiContractAdapterMode(), "mock"));
+    await withEnv(allowlistFile(dir), async () => assert.equal(apiContractAdapterMode(), "live"));
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }

@@ -53,7 +53,7 @@ QA capability execution protocol:
 - If the Jira create result has mode=live and externalSideEffect=true, report the returned Jira key as a real created defect. If mode=mock, explicitly say no Jira issue was created.
 - The Jira adapter rechecks duplicates immediately before the POST and may fail safely if a high-confidence duplicate appears.
 - SecretReference metadata is safe to name, but never request or expose secret values or storage-state contents.
-- Teams posting remains mock-only. Production browser execution and free-form production mutation are unavailable.
+- Teams posting, database validation, and API contract checks run live only when their server-side integration is configured; otherwise they return an explicit mock. Always report mode=live vs mode=mock honestly and never claim a live side effect on a mock result. Production browser execution and free-form production mutation are unavailable.
 `;
 
 export function buildQaTools(broker: CapabilityBrokerContract, telemetry?: AgentTelemetryService) {

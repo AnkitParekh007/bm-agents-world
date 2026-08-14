@@ -27,6 +27,11 @@ function webhookUrl(): string | undefined {
   }
 }
 
+/** Reports whether the Teams executor is configured for live delivery. */
+export function teamsAdapterMode(): "live" | "mock" {
+  return webhookUrl() ? "live" : "mock";
+}
+
 /**
  * Posts an approved QA status message to a Microsoft Teams Incoming Webhook.
  * The webhook URL is server-side only and never enters model context. When no

@@ -5,7 +5,7 @@ import { join, resolve } from "node:path";
 import test from "node:test";
 import type { ExecutionContext } from "../platform/capability-types.js";
 import { QA_CAPABILITIES, QaMockAdapter } from "./qa-capabilities.js";
-import { DatabaseValidationAdapter, type DatabaseValidationExecutor } from "./qa-database-adapter.js";
+import { DatabaseValidationAdapter, databaseAdapterMode, type DatabaseValidationExecutor } from "./qa-database-adapter.js";
 
 const context: ExecutionContext = {
   runId: "run-db",
@@ -89,6 +89,17 @@ test("rejects a validation id that is not on the project allowlist", async () =>
       assert.match(result.error ?? "", /allowlist/);
       assert.equal(called, 0);
     });
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test("databaseAdapterMode is live only with a connection and a non-empty allowlist", async () => {
+  const dir = mkdtempSync(resolve(tmpdir(), "bm-db-"));
+  try {
+    await withEnv({ QA_DATABASE_URL: undefined, QA_DATABASE_VALIDATIONS_PATH: undefined }, async () => assert.equal(databaseAdapterMode(), "mock"));
+    await withEnv({ QA_DATABASE_URL: "postgres://ro@db/qa", QA_DATABASE_VALIDATIONS_PATH: undefined }, async () => assert.equal(databaseAdapterMode(), "mock"));
+    await withEnv({ QA_DATABASE_URL: "postgres://ro@db/qa", QA_DATABASE_VALIDATIONS_PATH: allowlistFile(dir) }, async () => assert.equal(databaseAdapterMode(), "live"));
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }
