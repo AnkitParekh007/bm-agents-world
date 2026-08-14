@@ -160,6 +160,45 @@ test("high-confidence duplicate blocks Jira create before external side effect",
   }
 }));
 
+test("bug draft from another run cannot be de-duplicated or filed", async () => withEnv(jiraEnv, async () => {
+  const directory = mkdtempSync(resolve(tmpdir(), "bm-jira-defect-test-"));
+  try {
+    const store = new ArtifactStore(directory);
+    // Draft produced under a different durable run than the action context.
+    const foreign = store.writeJson("some-other-run", "bug-draft", "bug-draft.json", {
+      title: "Supplier search returns incorrect results",
+      parentIssue: "PCC-123",
+      environment: "qa",
+      expectedResult: "Only authorized suppliers are returned.",
+      actualResult: "An unauthorized supplier is returned.",
+      evidenceIds: [],
+    });
+    let calls = 0;
+    const adapter = new JiraDefectAdapter(new QaMockAdapter(), store, async () => {
+      calls += 1;
+      return new Response(JSON.stringify({ issues: [] }), { status: 200 });
+    });
+    const payload = { bugDraftArtifactId: foreign.id, bugDraftSha256: foreign.sha256 };
+
+    const create = QA_CAPABILITIES.find((item) => item.id === "qa.jira.bug.create");
+    const dedupe = QA_CAPABILITIES.find((item) => item.id === "qa.jira.duplicate.search");
+    assert.ok(create && dedupe);
+
+    const createResult = await adapter.execute(create, context, payload);
+    assert.equal(createResult.ok, false);
+    assert.match(createResult.error ?? "", /does not belong to this QA run/);
+
+    const dedupeResult = await adapter.execute(dedupe, context, payload);
+    assert.equal(dedupeResult.ok, false);
+    assert.match(dedupeResult.error ?? "", /does not belong to this QA run/);
+
+    // The invariant fails closed before any Jira network access.
+    assert.equal(calls, 0);
+  } finally {
+    rmSync(directory, { recursive: true, force: true });
+  }
+}));
+
 test("bug draft SHA mismatch is rejected before Jira access", async () => withEnv(jiraEnv, async () => {
   const directory = mkdtempSync(resolve(tmpdir(), "bm-jira-defect-test-"));
   try {
