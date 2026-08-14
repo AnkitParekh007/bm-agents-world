@@ -1,4 +1,5 @@
 import { CapabilityGrantRegistry } from "../platform/capability-grants.js";
+import type { PackRuntimeProvider } from "../pack-runtime.js";
 
 /** Runtime agent id for the QA supervisor that coordinates the whole run. */
 export const QA_SUPERVISOR_AGENT_ID = "qa";
@@ -41,3 +42,15 @@ export function buildQaGrantRegistry(): CapabilityGrantRegistry {
   }
   return new CapabilityGrantRegistry(grants);
 }
+
+/**
+ * QA implementation of the generic PackRuntimeProvider. Namespacing and grants
+ * come from the same single source used to build the broker grant registry, so
+ * the generic runtime path plans exactly the QA team the special-case builds.
+ */
+export const qaRuntimeProvider: PackRuntimeProvider = {
+  packId: QA_SUPERVISOR_AGENT_ID,
+  supervisorRuntimeId: () => QA_SUPERVISOR_AGENT_ID,
+  specialistRuntimeId: (sourceId) => qaSpecialistAgentId(sourceId),
+  grantsFor: (sourceId) => QA_SPECIALIST_CAPABILITIES[sourceId],
+};

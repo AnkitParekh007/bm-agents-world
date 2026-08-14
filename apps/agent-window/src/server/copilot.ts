@@ -8,8 +8,23 @@ import { buildQaTools, QA_CAPABILITY_PROMPT } from "./qa/qa-tools.js";
 import {
   QA_SPECIALIST_CAPABILITIES,
   QA_SUPERVISOR_AGENT_ID,
+  qaRuntimeProvider,
   qaSpecialistAgentId,
 } from "./qa/qa-grants.js";
+import { planGovernedAgents } from "./pack-runtime.js";
+
+/** A scoped specialist agent to instantiate: its identity, prompt inputs, and grant. */
+interface SpecialistSpec {
+  sourceId: string;
+  runtimeId: string;
+  purpose: string;
+  capabilities: string[];
+}
+
+/** True when the generic (pack-agnostic) agent-construction path is enabled. */
+function genericAgentsEnabled(): boolean {
+  return process.env.BM_GENERIC_AGENTS?.trim().toLowerCase() === "true";
+}
 
 const DEFAULT_MODEL = "openai:gpt-5.4-mini";
 
@@ -181,6 +196,43 @@ function worldTools(registry: PackRegistry) {
   return [listPacks, inspectPack];
 }
 
+/**
+ * Derives the scoped QA specialist agents to instantiate. With BM_GENERIC_AGENTS
+ * enabled this runs through the pack-agnostic planner (proven equivalent to the
+ * special-case in tests); otherwise it uses the QA capability map directly. Both
+ * produce the same team, so the pilot is never regressed while the generic path
+ * is validated in a live environment.
+ */
+function deriveQaSpecialistSpecs(pack: AgentPack, registry: PackRegistry): SpecialistSpec[] {
+  if (genericAgentsEnabled()) {
+    const compiled = registry.compiled(pack.id);
+    if (compiled) {
+      const plan = planGovernedAgents(compiled, qaRuntimeProvider);
+      if (plan.diagnostics.length > 0) {
+        console.warn(`[bm-agents-world] generic agent plan for ${pack.id}: ${plan.diagnostics.join("; ")}`);
+      }
+      const byId = new Map(pack.subAgents.map((agent) => [agent.id, agent]));
+      return plan.specialists.map((spec) => {
+        const source = byId.get(spec.sourceId);
+        return {
+          sourceId: spec.sourceId,
+          runtimeId: spec.runtimeId,
+          purpose: source?.purpose ?? source?.description ?? source?.role ?? spec.purpose ?? "QA specialist",
+          capabilities: spec.capabilities ?? [],
+        };
+      });
+    }
+  }
+  return pack.subAgents
+    .filter((specialist) => QA_SPECIALIST_CAPABILITIES[specialist.id])
+    .map((specialist) => ({
+      sourceId: specialist.id,
+      runtimeId: qaSpecialistAgentId(specialist.id),
+      purpose: specialist.purpose ?? specialist.description ?? specialist.role ?? "QA specialist",
+      capabilities: QA_SPECIALIST_CAPABILITIES[specialist.id],
+    }));
+}
+
 export function buildCopilotRuntime(
   registry: PackRegistry,
   qaBroker: CapabilityBrokerContract,
@@ -199,9 +251,11 @@ export function buildCopilotRuntime(
     }
 
     // QA runs as a multi-agent team: a supervisor plus one scoped specialist
-    // agent per registered specialist that maps to a governed capability.
-    const specialists = pack.subAgents.filter((specialist) => QA_SPECIALIST_CAPABILITIES[specialist.id]);
-    const specialistIds = specialists.map((specialist) => qaSpecialistAgentId(specialist.id));
+    // agent per registered specialist that maps to a governed capability. The
+    // specialist set is derived either from the generic planner (flagged) or the
+    // QA special-case map; both yield the same team.
+    const specialistSpecs = deriveQaSpecialistSpecs(pack, registry);
+    const specialistIds = specialistSpecs.map((spec) => spec.runtimeId);
 
     const supervisor = new BuiltInAgent({
       model,
@@ -212,18 +266,16 @@ export function buildCopilotRuntime(
     if (telemetry) supervisor.use(telemetry.middleware(pack.id, model));
     agents[pack.id] = supervisor;
 
-    for (const specialist of specialists) {
-      const agentId = qaSpecialistAgentId(specialist.id);
+    for (const spec of specialistSpecs) {
       const specialistAgent = new BuiltInAgent({
         model,
         prompt:
-          qaSpecialistPrompt(pack, specialist.id, specialist.purpose ?? specialist.description ?? specialist.role ?? "QA specialist", QA_SPECIALIST_CAPABILITIES[specialist.id])
-          + QA_CAPABILITY_PROMPT,
-        tools: [...packTools(pack), ...buildQaTools(qaBroker, telemetry, agentId)],
+          qaSpecialistPrompt(pack, spec.sourceId, spec.purpose, spec.capabilities) + QA_CAPABILITY_PROMPT,
+        tools: [...packTools(pack), ...buildQaTools(qaBroker, telemetry, spec.runtimeId)],
         maxSteps: 10,
       });
-      if (telemetry) specialistAgent.use(telemetry.middleware(agentId, model));
-      agents[agentId] = specialistAgent;
+      if (telemetry) specialistAgent.use(telemetry.middleware(spec.runtimeId, model));
+      agents[spec.runtimeId] = specialistAgent;
     }
   }
 
