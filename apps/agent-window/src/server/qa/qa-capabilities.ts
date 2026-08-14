@@ -69,7 +69,20 @@ export const QA_CAPABILITIES: CapabilityDefinition[] = [
     externalWrite: false,
     productionMutation: false,
     allowedEnvironments: ["playground", "qa", "prod"],
-    adapterId: "qa-mock-adapter",
+    adapterId: "qa-database-read-adapter",
+  },
+  {
+    id: "qa.integration.trace",
+    system: "qa",
+    action: "integration.trace",
+    description: "Correlate a run's test plan, execution result, and bug draft into an immutable traceability artifact with cross-step consistency checks.",
+    riskLevel: "L0",
+    approvalMode: "none",
+    actionClass: "read",
+    externalWrite: false,
+    productionMutation: false,
+    allowedEnvironments: ["playground", "qa", "prod"],
+    adapterId: "qa-integration-trace-adapter",
   },
   {
     id: "qa.playwright.test.run",
@@ -83,6 +96,19 @@ export const QA_CAPABILITIES: CapabilityDefinition[] = [
     productionMutation: false,
     allowedEnvironments: ["playground", "qa"],
     adapterId: "qa-playwright-worker-adapter",
+  },
+  {
+    id: "qa.api.contract.test",
+    system: "api",
+    action: "contract.test",
+    description: "Run allowlisted read-only API contract checks (status, latency, and JSON field presence) against approved non-production endpoints.",
+    riskLevel: "L1",
+    approvalMode: "standing-policy",
+    actionClass: "test",
+    externalWrite: false,
+    productionMutation: false,
+    allowedEnvironments: ["playground", "qa"],
+    adapterId: "qa-api-contract-adapter",
   },
   {
     id: "qa.jira.bug.create",
@@ -108,19 +134,19 @@ export const QA_CAPABILITIES: CapabilityDefinition[] = [
     externalWrite: true,
     productionMutation: false,
     allowedEnvironments: ["playground", "qa", "prod"],
-    adapterId: "qa-mock-adapter",
+    adapterId: "qa-teams-adapter",
   },
 ];
 
 /**
- * Capabilities whose only adapter is the mock adapter — they have no live
- * integration path. They are hidden from the agent by default so it can never
- * advertise or "report" simulated database/Teams work as real. Each can be
- * explicitly opted in (e.g. for local demos) via its environment flag.
+ * Capabilities hidden from the agent by default and shown only when their
+ * environment flag is set. Database validation has a live adapter but depends on
+ * heavier per-project infra (an approved read-only connection and an SQL
+ * allowlist), so it stays off the default pilot surface until explicitly opted
+ * in — and even then executes as an honest mock until that infra is configured.
  */
 const OPT_IN_CAPABILITY_FLAGS: Record<string, string> = {
   "qa.database.validation.read": "QA_DATABASE_VALIDATION_ENABLED",
-  "qa.teams.status.post": "QA_TEAMS_ENABLED",
 };
 
 function capabilityEnabled(id: string): boolean {

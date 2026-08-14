@@ -2,8 +2,8 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { availableQaCapabilities, QA_CAPABILITIES } from "./qa-capabilities.js";
 
-const MOCK_ONLY = ["qa.database.validation.read", "qa.teams.status.post"];
-const ENV_KEYS = ["QA_DATABASE_VALIDATION_ENABLED", "QA_TEAMS_ENABLED"] as const;
+const MOCK_ONLY = ["qa.database.validation.read"];
+const ENV_KEYS = ["QA_DATABASE_VALIDATION_ENABLED"] as const;
 
 function snapshotEnv() {
   return Object.fromEntries(ENV_KEYS.map((key) => [key, process.env[key]]));
@@ -34,6 +34,9 @@ test("mock-only capabilities are hidden from the agent by default", () => {
     assert.equal(available.includes("qa.playwright.test.run"), true);
     assert.equal(available.includes("qa.jira.bug.create"), true);
     assert.equal(available.includes("qa.testplan.generate"), true);
+    // Teams and API contract checks have real adapters, so they are always available (live-or-mock).
+    assert.equal(available.includes("qa.teams.status.post"), true);
+    assert.equal(available.includes("qa.api.contract.test"), true);
   } finally {
     restoreEnv(before);
   }
@@ -43,10 +46,8 @@ test("mock-only capabilities appear only when explicitly opted in", () => {
   const before = snapshotEnv();
   try {
     process.env.QA_DATABASE_VALIDATION_ENABLED = "true";
-    delete process.env.QA_TEAMS_ENABLED;
     const available = ids(availableQaCapabilities());
     assert.equal(available.includes("qa.database.validation.read"), true);
-    assert.equal(available.includes("qa.teams.status.post"), false);
   } finally {
     restoreEnv(before);
   }
@@ -57,7 +58,7 @@ test("the full catalog is never mutated by the availability filter", () => {
   try {
     for (const key of ENV_KEYS) delete process.env[key];
     availableQaCapabilities();
-    assert.equal(QA_CAPABILITIES.length, 8);
+    assert.equal(QA_CAPABILITIES.length, 10);
     for (const id of MOCK_ONLY) {
       assert.ok(QA_CAPABILITIES.some((capability) => capability.id === id));
     }

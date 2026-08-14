@@ -29,6 +29,10 @@ import { JiraReadAdapter } from "./qa/jira-read-adapter.js";
 import { PlaywrightWorkerAdapter } from "./qa/playwright-worker-adapter.js";
 import { availableQaCapabilities, QaMockAdapter } from "./qa/qa-capabilities.js";
 import { QaTestPlanAdapter } from "./qa/qa-testplan-adapter.js";
+import { TeamsStatusAdapter } from "./qa/qa-teams-adapter.js";
+import { DatabaseValidationAdapter } from "./qa/qa-database-adapter.js";
+import { ApiContractAdapter } from "./qa/qa-api-contract-adapter.js";
+import { IntegrationTraceAdapter } from "./qa/qa-integration-trace-adapter.js";
 import { loadQaIntegrationStatus } from "./qa/qa-integration-config.js";
 import { projectTestCatalogStatus } from "./qa/qa-project-tests.js";
 
@@ -55,6 +59,10 @@ const adapters = [
   new PlaywrightWorkerAdapter(qaMockAdapter, artifacts),
   jiraDefectAdapter,
   new QaTestPlanAdapter(artifacts),
+  new TeamsStatusAdapter(qaMockAdapter),
+  new DatabaseValidationAdapter(qaMockAdapter),
+  new ApiContractAdapter(qaMockAdapter),
+  new IntegrationTraceAdapter(artifacts),
 ];
 const qaCapabilities = availableQaCapabilities();
 const qaBroker: CapabilityBrokerContract = persistence.shared
