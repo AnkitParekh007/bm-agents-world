@@ -4,6 +4,7 @@ import express from "express";
 import { createCopilotExpressHandler } from "@copilotkit/runtime/v2/express";
 import { buildCopilotRuntime } from "./copilot.js";
 import { PackRegistry } from "./pack-registry.js";
+import { buildPackLock, diffPackLock, loadPackLock } from "./pack-lock.js";
 import { AgentTelemetryService } from "./platform/agent-telemetry.js";
 import { AsyncCapabilityBroker } from "./platform/async-capability-broker.js";
 import type { CapabilityBrokerContract } from "./platform/capability-broker-contract.js";
@@ -44,6 +45,8 @@ const INSTANCE_ID = process.env.HOSTNAME?.trim() || `pid-${process.pid}`;
 initTelemetry();
 
 const registry = new PackRegistry();
+const packLockBaseline = loadPackLock(resolve(process.cwd(), "config", "pack-lock.json"));
+const packDrift = packLockBaseline ? diffPackLock(packLockBaseline, buildPackLock(registry)) : undefined;
 const persistence = await createRuntimePersistence();
 const artifacts = persistence.artifacts;
 const agentTelemetry = new AgentTelemetryService(persistence.telemetryServiceStore);
@@ -259,6 +262,9 @@ app.get("/api/health", async (_request, response) => {
     instanceId: INSTANCE_ID,
     packCount: registry.packs.length,
     invalidPacks: registry.invalidPacks(),
+    packLock: packDrift
+      ? { ok: packDrift.ok, added: packDrift.added.map((entry) => entry.id), removed: packDrift.removed.map((entry) => entry.id), changed: packDrift.changed.map((entry) => entry.id) }
+      : { status: "no-lock" },
     agents: ["default", ...registry.packs.map((pack) => pack.id)],
     model: process.env.AI_MODEL ?? "openai:gpt-5.4-mini",
     qaCapabilityCount: qaBroker.listCapabilities().length,
