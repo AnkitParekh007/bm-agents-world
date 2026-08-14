@@ -5,6 +5,11 @@ import type { CapabilityBrokerContract } from "./platform/capability-broker-cont
 import type { AgentPack } from "./pack-registry.js";
 import { PackRegistry } from "./pack-registry.js";
 import { buildQaTools, QA_CAPABILITY_PROMPT } from "./qa/qa-tools.js";
+import {
+  QA_SPECIALIST_CAPABILITIES,
+  QA_SUPERVISOR_AGENT_ID,
+  qaSpecialistAgentId,
+} from "./qa/qa-grants.js";
 
 const DEFAULT_MODEL = "openai:gpt-5.4-mini";
 
@@ -49,25 +54,6 @@ Operating rules for this implementation stage:
 7. Prefer structured, actionable output that can later become BM Agent Foundry artifacts.
 `;
 }
-
-/**
- * Maps QA pack specialists (from the pack agent-registry) to the governed
- * capabilities they are responsible for. Only specialists listed here are
- * instantiated as their own scoped agent; the rest remain supervisor context.
- * Tool access is uniform (the broker enforces capability admission), so scoping
- * is expressed through the specialist's focused prompt.
- */
-const QA_SPECIALIST_CAPABILITIES: Record<string, string[]> = {
-  "story-context": ["qa.jira.story.read"],
-  "change-impact": ["qa.bitbucket.change-impact.read"],
-  "test-design": ["qa.testplan.generate"],
-  "browser-qa": ["qa.playwright.test.run"],
-  "api-qa": ["qa.api.contract.test"],
-  "database-validation": ["qa.database.validation.read"],
-  "integration-qa": ["qa.integration.trace"],
-  "defect-investigator": ["qa.jira.duplicate.search", "qa.jira.bug.create"],
-  "qa-reporter": ["qa.teams.status.post"],
-};
 
 function qaSupervisorPrompt(specialistIds: string[]): string {
   const roster = specialistIds.map((id) => `- ${id}`).join("\n");
@@ -215,25 +201,25 @@ export function buildCopilotRuntime(
     // QA runs as a multi-agent team: a supervisor plus one scoped specialist
     // agent per registered specialist that maps to a governed capability.
     const specialists = pack.subAgents.filter((specialist) => QA_SPECIALIST_CAPABILITIES[specialist.id]);
-    const specialistIds = specialists.map((specialist) => `qa.${specialist.id}`);
+    const specialistIds = specialists.map((specialist) => qaSpecialistAgentId(specialist.id));
 
     const supervisor = new BuiltInAgent({
       model,
       prompt: packPrompt(pack) + QA_CAPABILITY_PROMPT + qaSupervisorPrompt(specialistIds),
-      tools: [...packTools(pack), ...buildQaTools(qaBroker, telemetry)],
+      tools: [...packTools(pack), ...buildQaTools(qaBroker, telemetry, QA_SUPERVISOR_AGENT_ID)],
       maxSteps: 16,
     });
     if (telemetry) supervisor.use(telemetry.middleware(pack.id, model));
     agents[pack.id] = supervisor;
 
     for (const specialist of specialists) {
-      const agentId = `qa.${specialist.id}`;
+      const agentId = qaSpecialistAgentId(specialist.id);
       const specialistAgent = new BuiltInAgent({
         model,
         prompt:
           qaSpecialistPrompt(pack, specialist.id, specialist.purpose ?? specialist.description ?? specialist.role ?? "QA specialist", QA_SPECIALIST_CAPABILITIES[specialist.id])
           + QA_CAPABILITY_PROMPT,
-        tools: [...packTools(pack), ...buildQaTools(qaBroker, telemetry)],
+        tools: [...packTools(pack), ...buildQaTools(qaBroker, telemetry, agentId)],
         maxSteps: 10,
       });
       if (telemetry) specialistAgent.use(telemetry.middleware(agentId, model));

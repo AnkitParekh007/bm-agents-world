@@ -28,6 +28,7 @@ import { JiraDefectAdapter } from "./qa/jira-defect-adapter.js";
 import { JiraReadAdapter } from "./qa/jira-read-adapter.js";
 import { PlaywrightWorkerAdapter } from "./qa/playwright-worker-adapter.js";
 import { availableQaCapabilities, QaMockAdapter } from "./qa/qa-capabilities.js";
+import { buildQaGrantRegistry } from "./qa/qa-grants.js";
 import { QaTestPlanAdapter } from "./qa/qa-testplan-adapter.js";
 import { TeamsStatusAdapter, teamsAdapterMode } from "./qa/qa-teams-adapter.js";
 import { DatabaseValidationAdapter, databaseAdapterMode } from "./qa/qa-database-adapter.js";
@@ -65,9 +66,10 @@ const adapters = [
   new IntegrationTraceAdapter(artifacts),
 ];
 const qaCapabilities = availableQaCapabilities();
+const qaGrants = buildQaGrantRegistry();
 const qaBroker: CapabilityBrokerContract = persistence.shared
-  ? new AsyncCapabilityBroker(qaCapabilities, adapters, persistence.capabilityStore, centralPolicy)
-  : new CapabilityBroker(qaCapabilities, adapters, persistence.capabilityStore);
+  ? new AsyncCapabilityBroker(qaCapabilities, adapters, persistence.capabilityStore, centralPolicy, qaGrants)
+  : new CapabilityBroker(qaCapabilities, adapters, persistence.capabilityStore, qaGrants);
 const runtime = buildCopilotRuntime(registry, qaBroker, agentTelemetry);
 const app = express();
 

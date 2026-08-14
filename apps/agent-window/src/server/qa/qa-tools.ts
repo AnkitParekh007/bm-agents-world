@@ -10,14 +10,15 @@ import {
   currentRequestIdentity,
 } from "../platform/request-identity.js";
 import { projectTestCatalogStatus } from "./qa-project-tests.js";
+import { QA_SUPERVISOR_AGENT_ID } from "./qa-grants.js";
 
-function contextFor(projectId: string, environment: EnvironmentName, runId = randomUUID()): ExecutionContext {
+function contextFor(agentId: string, projectId: string, environment: EnvironmentName, runId = randomUUID()): ExecutionContext {
   const identity = currentRequestIdentity();
   assertProjectAccess(identity, projectId);
   return {
     runId,
     userId: identity.userId,
-    agentId: "qa",
+    agentId,
     packId: "qa-agent-pack",
     projectId,
     environment,
@@ -56,7 +57,11 @@ QA capability execution protocol:
 - Teams posting, database validation, and API contract checks run live only when their server-side integration is configured; otherwise they return an explicit mock. Always report mode=live vs mode=mock honestly and never claim a live side effect on a mock result. Production browser execution and free-form production mutation are unavailable.
 `;
 
-export function buildQaTools(broker: CapabilityBrokerContract, telemetry?: AgentTelemetryService) {
+export function buildQaTools(
+  broker: CapabilityBrokerContract,
+  telemetry?: AgentTelemetryService,
+  agentId: string = QA_SUPERVISOR_AGENT_ID,
+) {
   const linkRun = (runId: string) => telemetry?.linkCurrentAgentRunToQaRun(runId);
 
   const listCapabilities = defineTool({
@@ -81,7 +86,7 @@ export function buildQaTools(broker: CapabilityBrokerContract, telemetry?: Agent
       environment: z.enum(["playground", "qa", "prod"]),
     }),
     execute: async ({ projectId, environment }) => {
-      const run = await broker.startRun(contextFor(projectId, environment as EnvironmentName));
+      const run = await broker.startRun(contextFor(agentId, projectId, environment as EnvironmentName));
       linkRun(run.id);
       return {
         runId: run.id,
@@ -114,9 +119,12 @@ export function buildQaTools(broker: CapabilityBrokerContract, telemetry?: Agent
         if (run.context.projectId !== projectId || run.context.environment !== environment) {
           throw new Error("Action scope must match the durable QA run project and environment.");
         }
-        context = run.context;
+        // Reuse the durable run's project/environment/identity scope, but
+        // attribute this action to the specialist that actually requested it so
+        // the broker's capability grant is enforced per specialist, not per run.
+        context = { ...run.context, agentId };
       } else {
-        context = contextFor(projectId, environment as EnvironmentName);
+        context = contextFor(agentId, projectId, environment as EnvironmentName);
       }
       linkRun(context.runId);
       return await broker.requestAction(capabilityId, context, payload);

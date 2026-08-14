@@ -10,6 +10,7 @@ import type {
 } from "./capability-types.js";
 import type { CapabilityRun } from "./capability-store.js";
 import type { CapabilityBrokerContract } from "./capability-broker-contract.js";
+import type { CapabilityGrantRegistry } from "./capability-grants.js";
 import { ApprovedConnectorRegistry } from "./connector-registry.js";
 import { createPolicyEngine, type PolicyDecision, type PolicyEvaluator } from "./policy-engine.js";
 import { startActiveSpan } from "./telemetry.js";
@@ -72,6 +73,7 @@ export class AsyncCapabilityBroker implements CapabilityBrokerContract {
     adapters: CapabilityAdapter[],
     private readonly store: AsyncCapabilityStore,
     policy?: PolicyEvaluator,
+    private readonly grants?: CapabilityGrantRegistry,
   ) {
     for (const definition of definitions) this.definitions.set(definition.id, definition);
     for (const adapter of adapters) this.adapters.set(adapter.id, adapter);
@@ -106,6 +108,29 @@ export class AsyncCapabilityBroker implements CapabilityBrokerContract {
     const now = new Date();
     const hash = payloadHash(payload);
     const actionId = randomUUID();
+
+    if (this.grants && !this.grants.allows(context.agentId, capabilityId)) {
+      const denied: CapabilityAction = {
+        id: actionId,
+        capabilityId,
+        context,
+        payload,
+        payloadHash: hash,
+        riskLevel: definition.riskLevel,
+        approvalMode: "none",
+        status: "rejected",
+        createdAt: now.toISOString(),
+        updatedAt: now.toISOString(),
+        policyReason: `Agent ${context.agentId} is not granted capability ${capabilityId}.`,
+      };
+      await this.saveAction(denied);
+      await this.audit("action.denied", denied, "system", "capability-broker", {
+        reason: denied.policyReason,
+        grant: "denied",
+      });
+      return denied;
+    }
+
     const policy = this.policy ? await this.policy.evaluate(definition, context) : legacyDecision(definition, context);
     const policyDecision = {
       effect: policy.effect,

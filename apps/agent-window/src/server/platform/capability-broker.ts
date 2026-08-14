@@ -11,6 +11,7 @@ import type {
   RiskLevel,
 } from "./capability-types.js";
 import type { CapabilityRun, CapabilityStore } from "./capability-store.js";
+import type { CapabilityGrantRegistry } from "./capability-grants.js";
 import { startActiveSpan } from "./telemetry.js";
 
 const APPROVAL_TTL_MS = 10 * 60 * 1000;
@@ -53,6 +54,7 @@ export class CapabilityBroker {
     definitions: CapabilityDefinition[],
     adapters: CapabilityAdapter[],
     private readonly store?: CapabilityStore,
+    private readonly grants?: CapabilityGrantRegistry,
   ) {
     for (const definition of definitions) this.definitions.set(definition.id, definition);
     for (const adapter of adapters) this.adapters.set(adapter.id, adapter);
@@ -124,6 +126,28 @@ export class CapabilityBroker {
     const hash = payloadHash(payload);
     const riskLevel = effectiveRisk(definition, context.environment);
     const actionId = randomUUID();
+
+    if (this.grants && !this.grants.allows(context.agentId, capabilityId)) {
+      const denied: CapabilityAction = {
+        id: actionId,
+        capabilityId,
+        context,
+        payload,
+        payloadHash: hash,
+        riskLevel,
+        approvalMode: definition.approvalMode,
+        status: "rejected",
+        createdAt: now.toISOString(),
+        updatedAt: now.toISOString(),
+        policyReason: `Agent ${context.agentId} is not granted capability ${capabilityId}.`,
+      };
+      this.saveAction(denied);
+      this.audit("action.denied", denied, "system", "capability-broker", {
+        reason: denied.policyReason,
+        grant: "denied",
+      });
+      return denied;
+    }
 
     if (!definition.allowedEnvironments.includes(context.environment)) {
       const denied: CapabilityAction = {
