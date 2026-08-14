@@ -1,6 +1,12 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { basename, resolve } from "node:path";
 import YAML from "yaml";
+import {
+  mergeValidations,
+  validateAgentRegistry,
+  validatePackManifest,
+  type PackValidation,
+} from "./pack-schema.js";
 
 export interface PackSubAgent {
   id: string;
@@ -38,7 +44,20 @@ export interface AgentPack {
     externalWrites?: string;
     secretValuesVisibleToModel?: boolean;
   };
+  validation: PackValidation;
   directory: string;
+}
+
+/**
+ * In strict mode an invalid pack is failed closed (never loaded); otherwise it
+ * loads with its validation issues recorded for observability. Strict mode is
+ * on in production and can be forced with BM_PACK_STRICT.
+ */
+function packStrictMode(): boolean {
+  const flag = process.env.BM_PACK_STRICT?.trim().toLowerCase();
+  if (flag === "true" || flag === "1") return true;
+  if (flag === "false" || flag === "0") return false;
+  return process.env.NODE_ENV === "production";
 }
 
 const ACRONYMS = new Map([
@@ -139,10 +158,7 @@ function readTaskGroups(packDirectory: string): TaskGroup[] {
   return groups;
 }
 
-function readSubAgents(packDirectory: string, configuredPath?: string): PackSubAgent[] {
-  const registry = parseYamlFile(
-    resolve(packDirectory, "config", configuredPath ?? "agent-registry.yaml"),
-  );
+function readSubAgents(registry: Record<string, any>): PackSubAgent[] {
   const agents = Array.isArray(registry.agents) ? registry.agents : [];
   return agents
     .filter((agent) => agent && typeof agent.id === "string")
@@ -168,7 +184,25 @@ function loadPack(packDirectory: string): AgentPack | null {
   const metadata = manifest.metadata ?? {};
   const spec = manifest.spec ?? {};
   const registries = spec.registries ?? {};
-  const packName = metadata.name ?? basename(packDirectory);
+  const agentRegistry = parseYamlFile(
+    resolve(packDirectory, "config", registries.agents ?? "agent-registry.yaml"),
+  );
+
+  const validation = mergeValidations(
+    validatePackManifest(manifest),
+    validateAgentRegistry(agentRegistry),
+  );
+  if (!validation.ok && packStrictMode()) {
+    console.warn(
+      `[bm-agents-world] pack ${basename(packDirectory)} failed schema validation and was skipped (strict mode):\n  - ${validation.issues.join("\n  - ")}`,
+    );
+    return null;
+  }
+
+  const packName =
+    typeof metadata.name === "string" && metadata.name.length > 0
+      ? metadata.name
+      : basename(packDirectory);
   const id = basename(packDirectory).replace(/-agent-pack$/, "");
   const taskGroups = readTaskGroups(packDirectory);
   const workflowsDirectory = resolve(packDirectory, "workflows");
@@ -182,7 +216,7 @@ function loadPack(packDirectory: string): AgentPack | null {
     summary: readSummary(packDirectory),
     projects: Array.isArray(spec.projects) ? spec.projects.map(String) : [],
     environments: Array.isArray(spec.environments) ? spec.environments.map(String) : [],
-    subAgents: readSubAgents(packDirectory, registries.agents),
+    subAgents: readSubAgents(agentRegistry),
     skillCount: countConfig(packDirectory, registries.skills ?? "skill-registry.yaml", ["skills"]),
     mcpCount: countConfig(packDirectory, registries.mcpServers ?? "mcp-registry.yaml", [
       "servers",
@@ -197,15 +231,30 @@ function loadPack(packDirectory: string): AgentPack | null {
     taskCount: taskGroups.reduce((total, group) => total + group.tasks.length, 0),
     taskGroups,
     policy: spec.defaultPolicy ?? {},
+    validation,
     directory: packDirectory,
   };
+}
+
+function loadPackSafely(packDirectory: string): AgentPack | null {
+  try {
+    return loadPack(packDirectory);
+  } catch (error) {
+    // A single malformed pack must never take down the whole registry.
+    console.warn(
+      `[bm-agents-world] pack ${basename(packDirectory)} could not be loaded and was skipped: ${
+        error instanceof Error ? error.message : String(error)
+      }`,
+    );
+    return null;
+  }
 }
 
 export function loadAgentPacks(): AgentPack[] {
   const packsDirectory = resolve(resolveRepoRoot(), "packs");
   return readdirSync(packsDirectory, { withFileTypes: true })
     .filter((entry) => entry.isDirectory())
-    .map((entry) => loadPack(resolve(packsDirectory, entry.name)))
+    .map((entry) => loadPackSafely(resolve(packsDirectory, entry.name)))
     .filter((pack): pack is AgentPack => Boolean(pack))
     .sort((a, b) => a.displayName.localeCompare(b.displayName));
 }
@@ -224,6 +273,16 @@ export class PackRegistry {
   }
 
   listPublic() {
-    return this.packs.map(({ directory: _directory, taskGroups: _taskGroups, ...pack }) => pack);
+    return this.packs.map(({ directory: _directory, taskGroups: _taskGroups, validation, ...pack }) => ({
+      ...pack,
+      valid: validation.ok,
+    }));
+  }
+
+  /** Packs that loaded but carry schema validation issues (empty when clean). */
+  invalidPacks(): Array<{ id: string; issues: string[] }> {
+    return this.packs
+      .filter((pack) => !pack.validation.ok)
+      .map((pack) => ({ id: pack.id, issues: pack.validation.issues }));
   }
 }

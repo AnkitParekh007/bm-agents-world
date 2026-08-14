@@ -258,6 +258,7 @@ app.get("/api/health", async (_request, response) => {
     service: "bm-agents-world-agent-window",
     instanceId: INSTANCE_ID,
     packCount: registry.packs.length,
+    invalidPacks: registry.invalidPacks(),
     agents: ["default", ...registry.packs.map((pack) => pack.id)],
     model: process.env.AI_MODEL ?? "openai:gpt-5.4-mini",
     qaCapabilityCount: qaBroker.listCapabilities().length,
