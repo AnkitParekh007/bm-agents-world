@@ -99,6 +99,33 @@ export const QA_CAPABILITIES: CapabilityDefinition[] = [
   },
 ];
 
+/**
+ * Capabilities whose only adapter is the mock adapter — they have no live
+ * integration path. They are hidden from the agent by default so it can never
+ * advertise or "report" simulated database/Teams work as real. Each can be
+ * explicitly opted in (e.g. for local demos) via its environment flag.
+ */
+const OPT_IN_CAPABILITY_FLAGS: Record<string, string> = {
+  "qa.database.validation.read": "QA_DATABASE_VALIDATION_ENABLED",
+  "qa.teams.status.post": "QA_TEAMS_ENABLED",
+};
+
+function capabilityEnabled(id: string): boolean {
+  const flag = OPT_IN_CAPABILITY_FLAGS[id];
+  if (!flag) return true;
+  const raw = process.env[flag]?.trim().toLowerCase();
+  return raw === "true" || raw === "1" || raw === "yes";
+}
+
+/**
+ * The capabilities the runtime should register and expose to the QA agent.
+ * Mock-only capabilities are excluded unless explicitly opted in, so the agent
+ * only ever sees capabilities it can actually execute.
+ */
+export function availableQaCapabilities(): CapabilityDefinition[] {
+  return QA_CAPABILITIES.filter((capability) => capabilityEnabled(capability.id));
+}
+
 function storyFixture(projectId: string, storyId: string) {
   return {
     key: storyId,
