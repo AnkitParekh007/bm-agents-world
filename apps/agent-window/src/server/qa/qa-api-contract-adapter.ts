@@ -93,6 +93,11 @@ interface Assertion {
   detail: string;
 }
 
+/** Reports whether the API contract executor has a configured allowlist. */
+export function apiContractAdapterMode(): "live" | "mock" {
+  return loadContracts().length > 0 ? "live" : "mock";
+}
+
 /**
  * Executes an allowlisted, read-only API contract check against an approved
  * endpoint. The model supplies only a contractId; the URL, method, and

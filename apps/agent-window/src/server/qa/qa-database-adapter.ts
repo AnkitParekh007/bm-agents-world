@@ -72,6 +72,11 @@ function loadValidations(): DatabaseValidation[] {
   }
 }
 
+/** Reports whether the database executor is configured for live validation. */
+export function databaseAdapterMode(): "live" | "mock" {
+  return process.env.QA_DATABASE_URL?.trim() && loadValidations().length > 0 ? "live" : "mock";
+}
+
 /** Real executor. Runs each validation inside a read-only transaction. */
 export class PgDatabaseValidationExecutor implements DatabaseValidationExecutor {
   constructor(private readonly connectionString = process.env.QA_DATABASE_URL?.trim()) {}
