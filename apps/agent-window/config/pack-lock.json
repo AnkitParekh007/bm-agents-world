@@ -1,97 +1,350 @@
 {
-  "lockVersion": 1,
+  "lockVersion": 2,
   "packs": {
     "ai-ml-engineer": {
       "version": "1.0.0",
-      "contentHash": "e5fa42beeb805144ce37f22f77cb06552d5f20021b195c8541c0591f966b8554"
+      "contentHash": "15077cfd8e4b43984d10b1ea6b4c0ebe2986a2c17f3d594bdb52dea11120af46",
+      "components": {
+        "manifest": "c5b6a5a3e56e766220ec6d879c9dbd2723467e2800da8937b3d760562c4e3870",
+        "agents": "6f265a53a21db1efad5a68918cfb5080fd331fbb8d5ce8018e74bc7610db4263",
+        "skills": "6da2a4a787d5dccca093ead5a886d58aac1c0010493a800bd57d10d83e30ab6c",
+        "mcpServers": "88888c436b3613ef8d420e5a95baf04462e01cb02b8d9cbad49e24b2c3f52442",
+        "plugins": "cf4b6055279da12e1e53139490d651925e707d9ca855e245623f87aff45f2503",
+        "artifacts": "d201b7fbd1f9f9ebddcf63f9ea1d7cb1d010cfba3fb6299e464db6d883ce8684",
+        "workflows": "1268a2af6ec36c443d077572283bed7ace689e482ebdc62b6ba984113704e40d",
+        "policies": "0cf628b93f5790d9cf2ff8bc692aecdccedd8b58ea751dbae871814e717c5a80",
+        "permissions": "7e5d723e8f0f321689f767ceadc811dd48e1ad1e7cce14b5daaeb9285eba41ad"
+      }
     },
     "application-security-devsecops": {
       "version": "1.0.0",
-      "contentHash": "6496a2f15f4948f10670919af6e0fecfd79cb8abdb43eb0ce9c56b6ad6477b78"
+      "contentHash": "ed6eb6b5a88f0b569bcda9dda533168f50b6f1aae1455ea090c8cc71c6d9f96e",
+      "components": {
+        "manifest": "67c25b153066850aca70d53dc4397db514dfff532c91ffc27e4c6c710d58b01d",
+        "agents": "f3f6c899c545cd4dc7c6808113e94d690b1be1669db7ce6e0459420bb1066c4b",
+        "skills": "d6483c530c4f34b30ee22617d9113d675cb50dc4180dce5ff8285e90cb70dee5",
+        "mcpServers": "9bd965e7d292d028d1d88210a32702c5844a7a044d568a2e2ca106d93aacf6be",
+        "plugins": "7f057b80fa709d6d581cdaf8ed3717e5cf25890ae1576730db5eefa324f79c80",
+        "artifacts": "6732656477b8b0cc68885c2078b62a457e91a4a2721ca62e5f61e0564bfa3290",
+        "workflows": "f2ad0dd9af1e1394bb0d75ebc575e4f36430c3a9a3bdea166282bfd14becb9de",
+        "policies": "9982bb2bee49430d1ce55fb03df25ae82bb47d30d6cd7fcde222b479eaf5ad0c",
+        "permissions": "439aaf19dd086c0515564b87d76fe14d78e0be98d1ec6f5d789f3786ef49c2e8"
+      }
     },
     "business-analyst": {
       "version": "1.0.0",
-      "contentHash": "2995bc87c35988cec370c9e84e8a5ba9530b20e6a0f946f378e54207d5251fd2"
+      "contentHash": "b25920a3e62536df297cc502cd8c477e253bc9c3f4d8b53f99ae4e69159afd27",
+      "components": {
+        "manifest": "75b9969b82501d37766cbae18114fbcb69b0d7770c19e9da49de23756455a47b",
+        "agents": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "skills": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "mcpServers": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "plugins": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "artifacts": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "workflows": "259ff649909d911084e27baeb25c290bf954f228d29deeb3e44934ce9bee0045",
+        "policies": "7580ea7102deb29c8df47d35319225bc36e33d2d8a307ecad47233c8e01438c5",
+        "permissions": "aeb0bc9100d75a51817d6308214cecb9689356eb0bd2c25e44d725cd96d2b272"
+      }
     },
     "compliance-governance": {
       "version": "1.0.0",
-      "contentHash": "9add43163cf99dfd4dad276a9eca1c66f871c5fff58ca3582486aae881eae4d3"
+      "contentHash": "8c17b422178dab48f6d54ef7243a2bec8e7eabd5b3dadb0b5afa3b7f83c64b72",
+      "components": {
+        "manifest": "35af117b83445403b7fe33fdb5c59f7aa5351e8619a552799f9d64d2359af619",
+        "agents": "24897bb19c42a31cf332e0837e43408e88e70583bb4cff911c0720cc2296dcd3",
+        "skills": "005812e3b55867dc4ad4430392739f9cf7acd459b7ee1210a942afeee8020775",
+        "mcpServers": "85df6a0beb6dc6dbe51189f85ef54416fc804b8c961783277eb977eb12130ac2",
+        "plugins": "a75a81961a1a026bed3ef3b8ac1fe87e7a17783da9bab5305427c107c6a6e920",
+        "artifacts": "7fe52ea369148ab168f1badc5af65f2bdefdef516643b2f23641a93bc8196623",
+        "workflows": "68e8197ca1c361ad3a832a577cfdc817426dc5e7e4bb81bae42d3d76c80e0377",
+        "policies": "6831a8ea364148750da928ecfee910c01d6e953a3db380a09786291f40b06755",
+        "permissions": "e91efee3e67a9d37d240f3e01c614feb8c741fd8618eab32a856b0be4113a3eb"
+      }
     },
     "customer-success": {
       "version": "1.0.0",
-      "contentHash": "ac5889e6b8f53c385d0c1903e5f9864810c52925a3389d784da1d00f11a97148"
+      "contentHash": "99f33413cd95f45791b11187ac3299f15e36b4b61612179627508a8689d16580",
+      "components": {
+        "manifest": "ecd9659694a851025bae26ec5ca1ed6c4316f54d7dce66975deef5fcbd721994",
+        "agents": "7ad94daf4c13e6b02530815a0f1aecde158104f73731a3bc3ecd6d8f71f30f8d",
+        "skills": "af34e9a03ce127fad0c62ebd5fb16baca846e5759812471e963d1d8536f4dd1a",
+        "mcpServers": "27cd8f99344fe960fb3cec67ea86d984a6f65ee9512a4df8cc34740e7ae754eb",
+        "plugins": "b7c395624cf1afb5d12df4a94974725e63ac968322e5bd9b02681eb1ab658d54",
+        "artifacts": "24c006d030655e0cf4b986dc2d212906631c4f9da2b1dafe11683a0cfb4187c2",
+        "workflows": "f38c607b046a45cc5907b261dbc71b73e9c81b19dc94ca79cca1c83562f58d63",
+        "policies": "aef4bac0735a417ef7f7fd3cbca1d99d4d443c6e66b4c509cc261817a4cb22fa",
+        "permissions": "ca8204d21b8e5304c293fe90096eec643a2f29fe65dda958de2ea45e9feca676"
+      }
     },
     "data-engineer-pyspark": {
       "version": "1.0.0",
-      "contentHash": "6cc10d26c3041af56dc6b7f414007465a3b955ecb695ca98438e482cf08f68c9"
+      "contentHash": "5aef97db124f42c8d7b1158efdb069fd217531b024d1140d8e8e0f488d645d2c",
+      "components": {
+        "manifest": "03897b826d1cfdfcadb5a9968b4ada7dacc9f88b5510af7d66108d2c10409839",
+        "agents": "9a659cb7f14a1046f6d020f236ddf79bd6360d700e2fa73f3acc35429761688b",
+        "skills": "de75e3a8f7cad4a0b70e51d57750842db8b7e96c5a0c35fdc22798097d29b732",
+        "mcpServers": "05d7c8f8c9abc38b3e7d95260985721c570e1dd018db62835ebf17d836acddc4",
+        "plugins": "baaf9761e87b3be9b1d89f8e67ba717ce8a7d215d3c70b71e64796302e413728",
+        "artifacts": "102cdf946399044adbc0929f9d00737fe193462b6cd9d6103db8b4d5e1ef2da6",
+        "workflows": "8b2274d0c34752f9b3bb1346aae7b858d491f3c88213f6cb71355ada48ec8b52",
+        "policies": "9eba901fb9c2db917d1fdee22b63f89e4328e4570f29d22b6edee23e2397f661",
+        "permissions": "66c3471ef411452dfaa0eac0a5a4660eebf1091d6f84b1b07420efaf5edf3950"
+      }
     },
     "database-architect-developer": {
       "version": "1.0.0",
-      "contentHash": "36373b0fe0c35de2f9102873fb07f791cb7edbceb351cf023bea4f2958eca4e0"
+      "contentHash": "be9572216eec3e8f03ba700c95bdf20b5e8f260194452b1abd913f30aa2e59b1",
+      "components": {
+        "manifest": "1f2447bb58de7e0f2b5bd2b37fe4938a14db28ade1fb5521999fd49f2ebb9ffa",
+        "agents": "73ac032ff04cff9723b96e739ba6c0f2a272f9c0d4710a094ecd7620908c1c03",
+        "skills": "3071c32ed4dbea113b57596d31b0ca5dd9cc79faf6a968906ecc3c12a6fd32ef",
+        "mcpServers": "0b756819ae7f517cecaa0872d24ecd012746d53833a02b408f61dc390f9c8c8c",
+        "plugins": "c94b0aea7aa7ef8c06cd91475143df1fd736275adeb9116c43080fd39f334f93",
+        "artifacts": "dd96c7c2d279dc8d9c05c15fe15c7c32419876b8dc4bb3f2e03ff649a134dcb8",
+        "workflows": "539641e8f74968db16aee01353dece422074a15605d9db29cf5e3c7aeba0afaf",
+        "policies": "809c25c6e01fea0e542c6e9838c12d45cfe14fbfcd421d645f6e55fcdfa9b0a1",
+        "permissions": "d272e2347dfde6e2875fda49d9e08d43dffb9771f64b2ed0d7aa405cb4323823"
+      }
     },
     "devops": {
       "version": "1.0.0",
-      "contentHash": "fa333c645131ce405f1c5162e079b532e07957ee8f88361ea68d35b15ffd0b45"
+      "contentHash": "2b6faf3678b3f39498c66510e2aab6a7214aac69b9b65efefebb246924a0b391",
+      "components": {
+        "manifest": "36251b987f82c6e602698ebedc18dd5b77a969e3627ea80901eb7507392544e9",
+        "agents": "a3b448ebdd50151a6f90e9da5decf3ee7596333c69aeb6ae14488895c4b3f933",
+        "skills": "1ebb199e53a4c0efd3e4841c085b0dad25387e8bcce8af1d99a9a72afcb97ead",
+        "mcpServers": "7e0891bf67151a4c0b80564105fa6919cb338797514143518112dddc4be65a36",
+        "plugins": "4f3c2a9f264ceb11776d7f6ad711d2ff55a1c992f95852e4d607d8b97298c2ed",
+        "artifacts": "569bc587c04f32ac60d6b898b6989c7bec7c1c9d6ed72c3d09e56ea90d29457c",
+        "workflows": "e5a9cd27c4b1fca72c87e268a9598cbb9f2a2cc9e40a14c964bc20ce176eb109",
+        "policies": "dd6c0ad7283e3723cf5e6fe6d791c667d747c8eaae4c8974a7e73e5feb9594d5",
+        "permissions": "c6d860a779dd12ddcff127c4b543b06739574be03f5c9aa64af3a03bed9e808a"
+      }
     },
     "engineering-manager-technical-lead": {
       "version": "1.0.0",
-      "contentHash": "1d391218c13c57b9eef833a8cc186cf8e5e77f6b3ce2040c71b356b4f957b25c"
+      "contentHash": "2228413996ac46b7a4b97cce0c3c8c777a214d8399c8ece0b17e86577e103cb2",
+      "components": {
+        "manifest": "50ab98b0bb3985f19121977cd65100c5309ad30bc3230b6af4f79e68b2a9327b",
+        "agents": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "skills": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "mcpServers": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "plugins": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "artifacts": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "workflows": "77b50a02885b8a49266ef1564a584f115f15fc7b9e4ea165577c10604624bffe",
+        "policies": "6f70df79295b77ffdef5e6035e110c23c4608e61aefb7e19b70dbe13cf239874",
+        "permissions": "744cd0ef3218ac1304b98b28f112d27843cb832a153271649fcd4e3d5e8da902"
+      }
     },
     "frontend-angular": {
       "version": "1.0.0",
-      "contentHash": "54421258626d4784faeb47dcf12ce77bb403987b6350fbde0d06c08079d0506e"
+      "contentHash": "95248694d4a4e9081c679c2de02d7111d65705ad6ed6cb50b89f416fa7d13eca",
+      "components": {
+        "manifest": "b0f15650eeeeff7596d220a01e332ad37e8e44bbd9ad0ee0f85a176d242f9215",
+        "agents": "91bbbbecb4c29cd6d9c36b3cf523b0165919dc737f29f51c6766a51f15632df4",
+        "skills": "7a07077ec373a5dc70d6a72f4419df85bc5965df78f4a520f5eb79aaa1c60be1",
+        "mcpServers": "fcfdcd476edf482a9884f51d1f5a75d59fc3d66e18e616271dde0adfb540be24",
+        "plugins": "2636e51ed6977b25124d5253d92c72538ba384a34c9b336d7017861ed8c5c1b9",
+        "artifacts": "6c8cb79ce6d0f0c0020763e0765b6ec7c252cde1eff372e2a0c47dbf321647aa",
+        "workflows": "ad61749c2119e4c00db617507166631c2cda18cc29a090d7d74bd494290977aa",
+        "policies": "3eafab964f5489de4ad1ad6eb31595bf73e70925dda7dabb1aa779f8ed3666f4",
+        "permissions": "7059a55e9e39f89d6b97980d4129d2332ca5c736e611d1ee896be188486b08be"
+      }
     },
     "integration-api-architect": {
       "version": "1.0.0",
-      "contentHash": "e1c77865a7cd9e92427fc6859735487609a4e4c4a54948c6a826f04e824e8271"
+      "contentHash": "16e26647e71ac6996ff1e1722b50d696f767355494541ee1827192ccd4424806",
+      "components": {
+        "manifest": "329634073630c3a226cc62e5a2524da0679887d5696143250988bdf3de1f8d60",
+        "agents": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "skills": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "mcpServers": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "plugins": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "artifacts": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "workflows": "c45c7586662435e1f861efbdf961832ee145cd0aa189c70bc937944a79ebe475",
+        "policies": "ddcabd6d7a801fa44516e5530d39f54160f829156eece6d9a254c62015414642",
+        "permissions": "b8f22fa453d55fb3c97e8c3270b2faab8c9a61855a06a572868a866e642e14f8"
+      }
     },
     "java-developer": {
       "version": "1.0.0",
-      "contentHash": "350ed0483e95fcba1594f7040bb12c8f4b1adeabfc57d28fea3050bffc2c629c"
+      "contentHash": "4f98f52044f3b41506a4d2cb366ab7323b5961eaab73c34c7c8da019dd82ca2d",
+      "components": {
+        "manifest": "6f1e648af4894ec3f0d1ce9bfd6090dd2622dfe2846355ca3ca316b7651b358d",
+        "agents": "301e239046bc7e19396a1c4acb63c1e2270c1cbb507f37c79cebadf0c11185d8",
+        "skills": "130d571d41b6be865997747729cdb68a428e80b9ae10ef632eb3a5c11632abb6",
+        "mcpServers": "fd014cf688e3a9106ec6254fda7f73edff2138ab76994b90f3a7fbf8cd01a15d",
+        "plugins": "cdc773e0aa248195c58e88a409ac170d08a9e690f1815e2e836e4358b67b38a3",
+        "artifacts": "dcd2d1cd74ac74530e58ba9224007b5f3df2f6ca419cdbccf05dbe4efb318baf",
+        "workflows": "1c337fb06b79853674eead342c02180e4473129e6013e8e284f66527e2cdf118",
+        "policies": "5e60028a802648c8186cf3224d34fc7f1a58a6109761bfd6ccd3e45768d8393a",
+        "permissions": "fbe8c9b931bf1adce1fe74d041c6e0a1a05fad6d430038f8cd249a2a2b1a2ad2"
+      }
     },
     "mlops-ai-platform": {
       "version": "1.0.0",
-      "contentHash": "bc0f1e2396acc3728796f5d4b4eee2e715557acfc31c60796af71c194b3e4443"
+      "contentHash": "db56843459ff90893012a500056255d28cae60eb69f65fcbebd38eec6101ea89",
+      "components": {
+        "manifest": "9bc97b47d7ed7bd5f6c48d7ad09162a9fdc087f6a5f4674a75c709b8e6161e5f",
+        "agents": "307f499810414f06278e460d63318b3bf153cccdc76b28200b2f10d70bbff7ea",
+        "skills": "4f285367ef797a3bacaed5396d995e5d87d9c528eac3cdc91a3036fedc3accf0",
+        "mcpServers": "9dfe8adf33e36e4e1f51309ebb30010374f45540a47e6c6e831a5e7aed027ab8",
+        "plugins": "6cdcc76110d1fc436357e57aa05ab31a12c6326051be0c6f05e8e4535d8f03e1",
+        "artifacts": "6fb97f6310a9e230dd18481f26a9f6271eb9f5e99a754ffd3c0a90378fe25147",
+        "workflows": "c249acfcb2bf96f3842f05a514d4662244297fb8556c8a983f857394121b9ea6",
+        "policies": "04b97accce85e1494ab2d9221448019a89c1d5164f1a4b01ca843007833c73da",
+        "permissions": "1e82b69af5150e08f080c9d4252719f460ddbc443580a99d47bc501b887ac2e9"
+      }
     },
     "product-manager": {
       "version": "1.0.0",
-      "contentHash": "874a690e5ba69b94fee0396b2f533f0470d8a0ee61e091d7ead87582ba1eb12d"
+      "contentHash": "e1038e00f659f95442ef0aaeefcb70021c70bd020bedc0c4798279c8a1e2e197",
+      "components": {
+        "manifest": "1f99097dc5e37b894aaa4f904f60ab4fc6fea647d55c1d8c01b8e472b3ac9b87",
+        "agents": "fb26c27683e10049c2c48596fe21012fa6338e443dddda77b3b5521d01891921",
+        "skills": "3d10d635c38af506ce93b3d28f84ad85bd77b8f7bf411734afdead0f1a9c390d",
+        "mcpServers": "44cf5d9ddc639b1b76921d76bfa13754a8253a4dc54363dd99a2e72d9fdb26e4",
+        "plugins": "2b8d16ef72d9bd28321c47be96355686c5509eb4f69f05982c4b74d02bf0a16a",
+        "artifacts": "9741044ba2c4d67af3ec8412a15552643b4fcb0fdcbdbb22b66ef1295aefff4e",
+        "workflows": "5ab39a2ca97306339de2e1567a31329f334daa1e19cf4f6e12774ee0ece5300f",
+        "policies": "a1a11c3f1f4928bef6d24aae773a776406365d4e825fbb66f65893698e33e6a7",
+        "permissions": "8dee10c484931d1b8cfbce7df8712c3408e7314ab8510aa542cfe6f38b5ffd58"
+      }
     },
     "product-owner": {
       "version": "1.0.0",
-      "contentHash": "39197bd21ef7f758a6cdbcdef2228f73a092212583677c10072ed781e716b153"
+      "contentHash": "06d859f9eb345522228ff7c38e650aebd8209d2f567e67f62511b485519a2bce",
+      "components": {
+        "manifest": "e4f1c8a1f691f4c9129c9ddafc5e469c11f24f6ff7cac0681e80a29d2c2b8f21",
+        "agents": "3e5424c26ae6af6b39f8ff8446ada9f8800c2e141fe7322891f060d6bbe01f73",
+        "skills": "f6db691364f27e1522da98edc9b09a9aee27e045720dd0252f9bfeb0331389f4",
+        "mcpServers": "4d21e5d13f6f02f43cb0ecdf3e7184d91cdf07e1b7e13ae9e91d0279699be616",
+        "plugins": "2f9f803a8ff8ed8d7c762b44d4c461deb34a72eb0aa5f9d307921363600da043",
+        "artifacts": "4de52ba60e1758c0796c52c74b5f01eb710501533efd2b06fede6505390fe132",
+        "workflows": "a5fb41470610f07e26c2365d9d9ff968be676cb2fad48f2092511241763b110f",
+        "policies": "fd5c79455856b847765af54cafea582f234c735753f90b2faf092f7fd2436eab",
+        "permissions": "9a4fac0e55bf8274e415904c9c8f618f576eb2ca642394adef5b21c4b2b7372b"
+      }
     },
     "python-developer": {
       "version": "1.0.0",
-      "contentHash": "69f0e027a0c930c2988060bfb21c6416a41040f5716cf466afe5c6c7cbb43877"
+      "contentHash": "d1c26032320aa098f027c7a58dc3bcb1cff7b0afa62433b657ddf61fe00c1ce0",
+      "components": {
+        "manifest": "ad6f463c44a64a2429491444dd3578a9c975fc19a615cffdf052bf388a1ef1be",
+        "agents": "486b31068593245f9cad7c561fa174fbc70fb24a2bbb4d38f37b557d53b8f8d1",
+        "skills": "258e09a0ddbaf692ba919f214738570ae0116ff3442bdde18df837a447544e88",
+        "mcpServers": "97040553001f12783fa7c4c10e0a671d89bfb15097f8cf81faafd73967431b33",
+        "plugins": "4db868d06de2d2eb7d974d3b4b98fcec6802e85cb1c48708acdd5cbae432487f",
+        "artifacts": "2713284b117c69509861924f5a93498cc946fc0a2eb4701b9e2735e1eb539bd8",
+        "workflows": "b0a40ef23e4e304d3c8e16063d04a61fd126417c87c91f913bf633eafafcdb9a",
+        "policies": "209d828c7beebcdf5d4da116d36d11bff72d5d2e8e4bfa77e0e88866572cbc38",
+        "permissions": "a97d05bf89c5ad87e8035a6b0235794cf8c8411ae6f2a063730af09154042b3f"
+      }
     },
     "qa": {
       "version": "1.0.0",
-      "contentHash": "efd3c209b5dfa4902f56846f728871fce5df28354d9c24e9b6e550436c98684d"
+      "contentHash": "c2889afb39c88c9249da15deb218dfb6239ada585761dafbaa5443449fe001dc",
+      "components": {
+        "manifest": "43fee0e2830d7500283856afb1af0aa8f8c4f08a24d455a4080705a6e767d4c1",
+        "agents": "ab1dad86cb68bd05d2eafbcdbb9d05f0b081504b3b1657d4c4818ecbad40a8dc",
+        "skills": "9506b08d27c149a47423e41fce1a35ce6f9b9b02a57db06579f44abdeb2a91ea",
+        "mcpServers": "de58d4b8ad2e2d6530fcc0aa406e501ee8c99c1c545c87bef94f6fa5817ff499",
+        "plugins": "5fb35cd7d07eaf318c670277585a9e95693fd990f63415270cbfb1202b4c9116",
+        "artifacts": "41d58c9d029e34431f15029a66a8e41b63236a88d28c535bbcd6d253f8cbf729",
+        "workflows": "77d496a729430703a885ec9a8fe2c9c17432f3d9139b2c2212d2dd42d2ff6707",
+        "policies": "9ebf8f3daccef18a299e10848fe2f24adc5c05db29f6b5d7ec3b058968b98ebd",
+        "permissions": "3a7c6850f8318653197e22126fefba2b2ce685dd3678102c5b8cc37834b0705e"
+      }
     },
     "release-manager": {
       "version": "1.0.0",
-      "contentHash": "e655d65093c34b0c63afd3dc775ee2fca388ad1f2eaa2d6d724d5f2322f4f430"
+      "contentHash": "a01f389c608455d9c4878d4ee8c0ce5ab58909dac7e2eb712d5398d8fe259b37",
+      "components": {
+        "manifest": "55dec6bf02c2875690a1c22cf86479e96e76552766ccec3433a2e07eb9185d11",
+        "agents": "affa37738e76968c9ab24b7329d66e9b659e14b14d6a47d807aeb1176b706568",
+        "skills": "77112ee94528c7e63ae3ed6c37ecba5ec9e2395c0221bf922e289f9a0952b688",
+        "mcpServers": "46365b553dcbef8de577789e3aaa3f6758e9761e0e103132e51f30d962af949a",
+        "plugins": "a4eae88719e776e651a2e6b95933f90a934ecff1fbe623ab2384e36964c63236",
+        "artifacts": "f88eb1ce9f1de5b28f3358eea081b6a2ed62fee19856904c315b01f6ac953b2c",
+        "workflows": "c90c43f776221070003ad5b55f5257534125ee308cdc26ab0eec510b132f274c",
+        "policies": "512c9270ba486424e64a2cba54ed5432a7f201c7f385a1c995c59a1fe9b593c4",
+        "permissions": "08ee3813464e4ab0ae47581d399d6078936dcb473b75d269d3d03cd8cf995b2e"
+      }
     },
     "scrum-master": {
       "version": "1.0.0",
-      "contentHash": "65d6ba8f8382461ad7d3d3109b12a1c83d239e2f6bab90b6a9dc237433de4774"
+      "contentHash": "b38436be51bd01618fad86242206145e48937fc50686a6d9be43eb5f9eb16d97",
+      "components": {
+        "manifest": "c74cc8c64f1f00943ad91738095b77cad6a7d37affdef03b779d3df7d681e310",
+        "agents": "c4d5ae1afd26c7c16e5bffe4ae91476bed5b3780db7e8fc0a72aec4b32ce13c1",
+        "skills": "f63b968da612e174d3b44f40f2e8d8ce1d1aed069fba7ab6acfaec92e039d3be",
+        "mcpServers": "b7f51d68782e186e9b6bc6967921d6f852e2d90b64232dae8db0afc4171023d3",
+        "plugins": "af6cef348181cc8c1ecfc0679cb69699532240c9c76de95d2342584843a6f05c",
+        "artifacts": "0e425e876e0536f18fd289c87c9e19cdbcdcfd8df056ba2dc6126a8c905e0df7",
+        "workflows": "d124c4217b67ab46cceecf6cee49f2002c94c32a26bddaf3c6af6d93f5b6d76d",
+        "policies": "be44cedace37cef47703c42f8a8fd415205810bb7ab74ca40669c37882cb106b",
+        "permissions": "9ae8a554ad8a66784d0c9c7424f450f600ca2a606e5236f8464f32c2d44b072c"
+      }
     },
     "site-reliability-engineer-incident-management": {
       "version": "1.0.0",
-      "contentHash": "cd4a853b6f2732d755ac551d2b6f96a5c5fee52a5d3c904437a7fef315d9d8ea"
+      "contentHash": "692d78583a1cd1c362b1b2f497ee561a30002655fd45ad59d563bbead0995694",
+      "components": {
+        "manifest": "ebe00c00c74b92b9a4cd20a5f492a4622006d75bcc0775ddbb708974983853be",
+        "agents": "68fbebaa6b9a001c3422bd803e08efefff6849fbeea67c37ca4872f9e670f873",
+        "skills": "d0d29a8e6ccbd995c8889fb193aacc7d7671071a650c4f7a522a054e0c862be0",
+        "mcpServers": "2d7351769eb1f1d3c7bf8a38e062f6f84a1e92de9cf0564d5bae54ae65d42d2b",
+        "plugins": "99d691c4106f08933d967977b084a07fd60f98386c4dd97d455295adac657778",
+        "artifacts": "cedf819bff6e3740c02b87f6f7165c1ad8301044f07f1edd82b3839e8a4bbff0",
+        "workflows": "3059dd3b76d0c1cb4528d7d0a0ab03b58c19562c360a08ed392e98a6d074daeb",
+        "policies": "4c9be4438cb02309144e8993b6eaf633c8df241bebda677befe5dda6a8941d45",
+        "permissions": "23f5b415c17a1aa8c55164e329157da09ce6a0c65493888f2973caaa0110d80b"
+      }
     },
     "solution-architect": {
       "version": "1.0.0",
-      "contentHash": "becda12de2f54df16f933a3c8c87b8c6d721494bd24afdf6f42f0024f95fa734"
+      "contentHash": "fd19b3e1e4f07401ea51a89af4842a32f1dfbb5fa9b547e036ddaf8b43594ab1",
+      "components": {
+        "manifest": "f8f7653efab5cd968062d1856a9cda840051f75fad964d850cf79643d278e7bc",
+        "agents": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "skills": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "mcpServers": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "plugins": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "artifacts": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "workflows": "e7a0e7f5ee3553ed5fff49a6ae320cf56f7b3f31b1ee80098f742377c6e3569a",
+        "policies": "87ebf570c70a51ffeb9737987c67707bb5c41ad1ab77ec15024983a709db73f9",
+        "permissions": "fc6c0baab618597e81eb8a6500be231f80bb666726ea50e01c3fa09c243f16e8"
+      }
     },
     "technical-writer": {
       "version": "1.0.0",
-      "contentHash": "28eed454ebb7217c34babf628b851436e00427f17440134bc80a0a93f1133b94"
+      "contentHash": "50e9df940fc2b07b746d926ac4b1a9b46969970bfb62af847a8c9666684f5f19",
+      "components": {
+        "manifest": "64d8b2dd1ccbe57caa235776f7e5bf576dca078dd535afbb6e27050727bd0493",
+        "agents": "6f4667450d3df398aba8162524087e61b158dfa11e5131803938b5d9222ec8a4",
+        "skills": "3f075229a7e37a042292efab4d69fe7c2091ac801eb761f9ac022ee6417ac830",
+        "mcpServers": "117122e6f625e3cfe047dfedf2d4a43ecc038fb3197c2c80173feeb61fb206e9",
+        "plugins": "a5038d7d40b7d4e8cd2cefcb62b1d51a23be93e47cf70c6828eca4800324b400",
+        "artifacts": "04ffb2b75c87943dda98effaa982dddb52af8c5035bd9292db75b1ac343658ac",
+        "workflows": "9c0fffcea7930390a290d04f2f942bace44f0fe821bf58480bf30c3d0f4f63f5",
+        "policies": "1a477753281daef86b6525fd1ab4a7fd1d02c3a9870fa3a958c9ccf0b482dfd1",
+        "permissions": "f2b1b4262270ad41029d45d9f6f881d6dcbd75f715824524e630a7f047917443"
+      }
     },
     "ux-designer": {
       "version": "1.0.0",
-      "contentHash": "6b23f5448212f5d3acb5bde067be9124b6757f5b3436df4af1e9db82a6f1a2fc"
+      "contentHash": "c08a7c95af0f384b7059aaca322d7b52cdcebf28c29a1569eed7e97fbda643bb",
+      "components": {
+        "manifest": "24e3161ebc662c3dd229faca35726b63319ba8e2f1109b1de2915dc7ef9c2046",
+        "agents": "202781573e69dc918c30c6aa3237bf599b1a1c989ff447d27624e4361d6cb065",
+        "skills": "de92eff398d7d41bb06c164e47b4c4b27e435d40f13ef73f74d333d8d3303eac",
+        "mcpServers": "515b6c48726247e8a777e3a20510031aed8846cf69dc5f72d66ae107d4f95835",
+        "plugins": "901b88cf11f3ef27e9bbdebbeafcdb42e5aea7586d7c9fdd2a7a67ac26bd6635",
+        "artifacts": "28062427295c18b29e5b1891fbaad12c37b55cc4ab7424e33b2b203b85602dcb",
+        "workflows": "3e4930e658780e0bd7ba7e0114d0f0f556c5ca05b860d98396d38a25c9a1c428",
+        "policies": "8322fa307cc8a0ea3ba310fe695ebaaaaf4fdaa3efcd62e2288a20914f4258e4",
+        "permissions": "f0d32aa8784679f555b4f78372fc41feeb4dcdb7e5ce54a66fdffa911a493d28"
+      }
     }
   }
 }

@@ -30,17 +30,19 @@ export function qaSpecialistAgentId(specialistId: string): string {
 
 /**
  * Builds the broker-enforced capability grant for the QA pack. Each specialist
- * agent is scoped to exactly its mapped capabilities; the supervisor is left
- * unscoped so it can drive any step it coordinates. Enforcement happens in the
- * broker before policy, so a specialist that tries to reach outside its grant
- * (e.g. `qa.browser-qa` requesting `qa.jira.bug.create`) is denied up front.
+ * agent is scoped to exactly its mapped capabilities; the supervisor is declared
+ * as an explicit unrestricted principal so it can drive any step it coordinates.
+ * Enforcement happens in the broker before policy, so a specialist that reaches
+ * outside its grant (e.g. `qa.browser-qa` requesting `qa.jira.bug.create`) is
+ * denied up front — and, because the registry fails closed, so is any agent id
+ * that matches no declaration (a typo'd or spoofed specialist id).
  */
 export function buildQaGrantRegistry(): CapabilityGrantRegistry {
-  const grants: Record<string, readonly string[]> = {};
+  const scoped: Record<string, readonly string[]> = {};
   for (const [specialistId, capabilities] of Object.entries(QA_SPECIALIST_CAPABILITIES)) {
-    grants[qaSpecialistAgentId(specialistId)] = capabilities;
+    scoped[qaSpecialistAgentId(specialistId)] = capabilities;
   }
-  return new CapabilityGrantRegistry(grants);
+  return new CapabilityGrantRegistry({ scoped, unrestricted: [QA_SUPERVISOR_AGENT_ID] });
 }
 
 /**
