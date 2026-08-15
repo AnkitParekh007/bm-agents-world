@@ -1,0 +1,97 @@
+{
+  "lockVersion": 1,
+  "packs": {
+    "ai-ml-engineer": {
+      "version": "1.0.0",
+      "contentHash": "e5fa42beeb805144ce37f22f77cb06552d5f20021b195c8541c0591f966b8554"
+    },
+    "application-security-devsecops": {
+      "version": "1.0.0",
+      "contentHash": "6496a2f15f4948f10670919af6e0fecfd79cb8abdb43eb0ce9c56b6ad6477b78"
+    },
+    "business-analyst": {
+      "version": "1.0.0",
+      "contentHash": "2995bc87c35988cec370c9e84e8a5ba9530b20e6a0f946f378e54207d5251fd2"
+    },
+    "compliance-governance": {
+      "version": "1.0.0",
+      "contentHash": "9add43163cf99dfd4dad276a9eca1c66f871c5fff58ca3582486aae881eae4d3"
+    },
+    "customer-success": {
+      "version": "1.0.0",
+      "contentHash": "ac5889e6b8f53c385d0c1903e5f9864810c52925a3389d784da1d00f11a97148"
+    },
+    "data-engineer-pyspark": {
+      "version": "1.0.0",
+      "contentHash": "6cc10d26c3041af56dc6b7f414007465a3b955ecb695ca98438e482cf08f68c9"
+    },
+    "database-architect-developer": {
+      "version": "1.0.0",
+      "contentHash": "36373b0fe0c35de2f9102873fb07f791cb7edbceb351cf023bea4f2958eca4e0"
+    },
+    "devops": {
+      "version": "1.0.0",
+      "contentHash": "fa333c645131ce405f1c5162e079b532e07957ee8f88361ea68d35b15ffd0b45"
+    },
+    "engineering-manager-technical-lead": {
+      "version": "1.0.0",
+      "contentHash": "1d391218c13c57b9eef833a8cc186cf8e5e77f6b3ce2040c71b356b4f957b25c"
+    },
+    "frontend-angular": {
+      "version": "1.0.0",
+      "contentHash": "54421258626d4784faeb47dcf12ce77bb403987b6350fbde0d06c08079d0506e"
+    },
+    "integration-api-architect": {
+      "version": "1.0.0",
+      "contentHash": "e1c77865a7cd9e92427fc6859735487609a4e4c4a54948c6a826f04e824e8271"
+    },
+    "java-developer": {
+      "version": "1.0.0",
+      "contentHash": "350ed0483e95fcba1594f7040bb12c8f4b1adeabfc57d28fea3050bffc2c629c"
+    },
+    "mlops-ai-platform": {
+      "version": "1.0.0",
+      "contentHash": "bc0f1e2396acc3728796f5d4b4eee2e715557acfc31c60796af71c194b3e4443"
+    },
+    "product-manager": {
+      "version": "1.0.0",
+      "contentHash": "874a690e5ba69b94fee0396b2f533f0470d8a0ee61e091d7ead87582ba1eb12d"
+    },
+    "product-owner": {
+      "version": "1.0.0",
+      "contentHash": "39197bd21ef7f758a6cdbcdef2228f73a092212583677c10072ed781e716b153"
+    },
+    "python-developer": {
+      "version": "1.0.0",
+      "contentHash": "69f0e027a0c930c2988060bfb21c6416a41040f5716cf466afe5c6c7cbb43877"
+    },
+    "qa": {
+      "version": "1.0.0",
+      "contentHash": "efd3c209b5dfa4902f56846f728871fce5df28354d9c24e9b6e550436c98684d"
+    },
+    "release-manager": {
+      "version": "1.0.0",
+      "contentHash": "e655d65093c34b0c63afd3dc775ee2fca388ad1f2eaa2d6d724d5f2322f4f430"
+    },
+    "scrum-master": {
+      "version": "1.0.0",
+      "contentHash": "65d6ba8f8382461ad7d3d3109b12a1c83d239e2f6bab90b6a9dc237433de4774"
+    },
+    "site-reliability-engineer-incident-management": {
+      "version": "1.0.0",
+      "contentHash": "cd4a853b6f2732d755ac551d2b6f96a5c5fee52a5d3c904437a7fef315d9d8ea"
+    },
+    "solution-architect": {
+      "version": "1.0.0",
+      "contentHash": "becda12de2f54df16f933a3c8c87b8c6d721494bd24afdf6f42f0024f95fa734"
+    },
+    "technical-writer": {
+      "version": "1.0.0",
+      "contentHash": "28eed454ebb7217c34babf628b851436e00427f17440134bc80a0a93f1133b94"
+    },
+    "ux-designer": {
+      "version": "1.0.0",
+      "contentHash": "6b23f5448212f5d3acb5bde067be9124b6757f5b3436df4af1e9db82a6f1a2fc"
+    }
+  }
+}
