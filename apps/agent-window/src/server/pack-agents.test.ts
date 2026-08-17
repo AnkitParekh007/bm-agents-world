@@ -21,6 +21,10 @@ function compiled(overrides: Partial<CompiledPack> = {}): CompiledPack {
     counts: { skills: 0, mcpServers: 0, plugins: 0, artifacts: 0, workflows: 0, tasks: 0, subAgents: 3 },
     policy: {},
     valid: true,
+    components: {
+      manifest: "m", agents: "a", skills: "s", mcpServers: "mc", plugins: "p",
+      artifacts: "ar", workflows: "w", policies: "po", permissions: "pe",
+    },
     contentHash: "x",
     ...overrides,
   };

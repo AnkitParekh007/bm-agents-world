@@ -23,6 +23,30 @@ export interface TaskGroup {
   tasks: string[];
 }
 
+export interface PackWorkflowContent {
+  name: string;
+  content: unknown;
+}
+
+/**
+ * The actual normalized contents of a pack's governance-bearing registries —
+ * not just their counts. This is what the Phase 2 compiler hashes per component
+ * so that a change to *what* a registry declares (a skill swapped, an approval
+ * policy relaxed, a permission row edited) changes the pack hash even when the
+ * item count is unchanged.
+ */
+export interface PackContent {
+  skills: unknown[];
+  mcpServers: unknown[];
+  plugins: unknown[];
+  artifacts: unknown[];
+  workflows: PackWorkflowContent[];
+  /** Parsed approval-policies.yaml ({} when absent). */
+  policies: unknown;
+  /** Raw permission-matrix.csv, line-endings normalized ("" when absent). */
+  permissions: string;
+}
+
 export interface AgentPack {
   id: string;
   packName: string;
@@ -45,6 +69,8 @@ export interface AgentPack {
     externalWrites?: string;
     secretValuesVisibleToModel?: boolean;
   };
+  /** Normalized registry contents used for per-component hashing (Phase 2). */
+  content?: PackContent;
   validation: PackValidation;
   directory: string;
 }
@@ -106,16 +132,16 @@ function parseYamlFile(path: string): Record<string, any> {
   return parsed && typeof parsed === "object" ? parsed : {};
 }
 
-function firstArrayLength(value: Record<string, any>, preferredKeys: string[]): number {
+function firstArray(value: Record<string, any>, preferredKeys: string[]): any[] {
   for (const key of preferredKeys) {
-    if (Array.isArray(value[key])) return value[key].length;
+    if (Array.isArray(value[key])) return value[key];
   }
 
   for (const entry of Object.values(value)) {
-    if (Array.isArray(entry)) return entry.length;
+    if (Array.isArray(entry)) return entry;
   }
 
-  return 0;
+  return [];
 }
 
 function readSummary(packDirectory: string): string {
@@ -173,8 +199,22 @@ function readSubAgents(registry: Record<string, any>): PackSubAgent[] {
     }));
 }
 
-function countConfig(packDirectory: string, file: string, keys: string[]): number {
-  return firstArrayLength(parseYamlFile(resolve(packDirectory, "config", file)), keys);
+function readConfigList(packDirectory: string, file: string, keys: string[]): any[] {
+  return firstArray(parseYamlFile(resolve(packDirectory, "config", file)), keys);
+}
+
+function readWorkflowContents(workflowsDirectory: string): PackWorkflowContent[] {
+  if (!existsSync(workflowsDirectory)) return [];
+  return readdirSync(workflowsDirectory)
+    .filter((file) => /\.ya?ml$/i.test(file))
+    .sort((a, b) => a.localeCompare(b))
+    .map((file) => ({ name: file, content: parseYamlFile(resolve(workflowsDirectory, file)) }));
+}
+
+function readPermissionMatrix(packDirectory: string): string {
+  const path = resolve(packDirectory, "config", "permission-matrix.csv");
+  if (!existsSync(path)) return "";
+  return readFileSync(path, "utf8").replace(/\r\n/g, "\n").trimEnd();
 }
 
 function loadPack(packDirectory: string): AgentPack | null {
@@ -208,6 +248,18 @@ function loadPack(packDirectory: string): AgentPack | null {
   const taskGroups = readTaskGroups(packDirectory);
   const workflowsDirectory = resolve(packDirectory, "workflows");
 
+  const skills = readConfigList(packDirectory, registries.skills ?? "skill-registry.yaml", ["skills"]);
+  const mcpServers = readConfigList(packDirectory, registries.mcpServers ?? "mcp-registry.yaml", [
+    "servers",
+    "mcpServers",
+    "mcp_servers",
+  ]);
+  const plugins = readConfigList(packDirectory, registries.plugins ?? "plugin-registry.yaml", ["plugins"]);
+  const artifacts = readConfigList(packDirectory, "artifact-registry.yaml", ["artifacts"]);
+  const workflows = readWorkflowContents(workflowsDirectory);
+  const policies = parseYamlFile(resolve(packDirectory, "config", "approval-policies.yaml"));
+  const permissions = readPermissionMatrix(packDirectory);
+
   return {
     id,
     packName,
@@ -218,20 +270,15 @@ function loadPack(packDirectory: string): AgentPack | null {
     projects: Array.isArray(spec.projects) ? spec.projects.map(String) : [],
     environments: Array.isArray(spec.environments) ? spec.environments.map(String) : [],
     subAgents: readSubAgents(agentRegistry),
-    skillCount: countConfig(packDirectory, registries.skills ?? "skill-registry.yaml", ["skills"]),
-    mcpCount: countConfig(packDirectory, registries.mcpServers ?? "mcp-registry.yaml", [
-      "servers",
-      "mcpServers",
-      "mcp_servers",
-    ]),
-    pluginCount: countConfig(packDirectory, registries.plugins ?? "plugin-registry.yaml", ["plugins"]),
-    artifactCount: countConfig(packDirectory, "artifact-registry.yaml", ["artifacts"]),
-    workflowCount: existsSync(workflowsDirectory)
-      ? readdirSync(workflowsDirectory).filter((file) => /\.ya?ml$/i.test(file)).length
-      : 0,
+    skillCount: skills.length,
+    mcpCount: mcpServers.length,
+    pluginCount: plugins.length,
+    artifactCount: artifacts.length,
+    workflowCount: workflows.length,
     taskCount: taskGroups.reduce((total, group) => total + group.tasks.length, 0),
     taskGroups,
     policy: spec.defaultPolicy ?? {},
+    content: { skills, mcpServers, plugins, artifacts, workflows, policies, permissions },
     validation,
     directory: packDirectory,
   };

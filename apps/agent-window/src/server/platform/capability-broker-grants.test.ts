@@ -64,7 +64,7 @@ test("a denied grant records an audit trail and cannot be executed", async () =>
   await assert.rejects(() => instance.executeAction(action.id), /cannot execute/);
 });
 
-test("the unscoped supervisor may drive any capability", () => {
+test("the declared supervisor may drive any capability", () => {
   const instance = grantedBroker();
   const read = instance.requestAction("qa.jira.story.read", context("qa"), { storyId: "PCC-1" });
   assert.equal(read.status, "ready");
@@ -72,7 +72,19 @@ test("the unscoped supervisor may drive any capability", () => {
     bugDraftArtifactId: "draft-1",
     bugDraftSha256: "abc",
   });
-  // Not a grant rejection: the supervisor is unscoped, so this reaches the
-  // normal risk/approval path instead (external write => human approval).
+  // Not a grant rejection: the supervisor is declared unrestricted, so this
+  // reaches the normal risk/approval path instead (external write => approval).
   assert.notEqual(write.policyReason, `Agent qa is not granted capability qa.jira.bug.create.`);
+});
+
+test("an unknown (typo'd/spoofed) agent id is denied before any policy check", () => {
+  // qa.browser_qa (underscore) is not the granted qa.browser-qa (hyphen): under
+  // fail-closed grants it collapses to no authority instead of unrestricted.
+  const action = grantedBroker().requestAction(
+    "qa.jira.story.read",
+    context("qa.browser_qa"),
+    { storyId: "PCC-1" },
+  );
+  assert.equal(action.status, "rejected");
+  assert.match(action.policyReason, /not granted/);
 });

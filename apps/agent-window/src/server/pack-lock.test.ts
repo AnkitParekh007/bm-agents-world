@@ -50,3 +50,31 @@ test("diff detects added, removed, and changed packs", () => {
   assert.equal(drift.changed[0].expected, "hash-qa");
   assert.equal(drift.changed[0].actual, "hash-qa-2");
 });
+
+test("a changed pack names which components drifted", () => {
+  const components = (over: Partial<Record<string, string>> = {}) => ({
+    manifest: "m",
+    agents: "a",
+    skills: "s",
+    mcpServers: "mc",
+    plugins: "p",
+    artifacts: "ar",
+    workflows: "w",
+    policies: "po",
+    permissions: "pe",
+    ...over,
+  });
+  const baseline: PackLock = {
+    lockVersion: 2,
+    packs: { qa: { version: "1.0.0", contentHash: "h1", components: components() } },
+  };
+  const current: PackLock = {
+    lockVersion: 2,
+    packs: {
+      qa: { version: "1.0.0", contentHash: "h2", components: components({ skills: "s2", policies: "po2" }) },
+    },
+  };
+  const drift = diffPackLock(baseline, current);
+  assert.equal(drift.ok, false);
+  assert.deepEqual(drift.changed[0].components, ["policies", "skills"]);
+});

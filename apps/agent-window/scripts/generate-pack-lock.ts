@@ -34,7 +34,10 @@ function main(): void {
     console.error("Pack drift detected against the approved lock:");
     for (const entry of drift.added) console.error(`  + added:   ${entry.id}`);
     for (const entry of drift.removed) console.error(`  - removed: ${entry.id}`);
-    for (const entry of drift.changed) console.error(`  ~ changed: ${entry.id} (${entry.expected?.slice(0, 12)} -> ${entry.actual?.slice(0, 12)})`);
+    for (const entry of drift.changed) {
+      const components = entry.components?.length ? ` [${entry.components.join(", ")}]` : "";
+      console.error(`  ~ changed: ${entry.id} (${entry.expected?.slice(0, 12)} -> ${entry.actual?.slice(0, 12)})${components}`);
+    }
     console.error("If this change is intended, run: npm run pack:lock");
     process.exit(1);
   }
