@@ -71,10 +71,16 @@ export interface WorkflowRunResult {
   diagnostics: string[];
 }
 
-const GATE_TYPES = new Set(["human-approval", "policy-and-human-gate"]);
+export const GATE_TYPES = new Set(["human-approval", "policy-and-human-gate"]);
 
-function isGate(step: CompiledWorkflowStep): boolean {
+/** True when a step is a human/policy approval gate rather than executable work. */
+export function isGate(step: CompiledWorkflowStep): boolean {
   return step.type ? GATE_TYPES.has(step.type) || /approval|gate/i.test(step.type) : false;
+}
+
+/** True when a step declares executable work (a skill or tool) that must be governed. */
+export function isExecutable(step: CompiledWorkflowStep): boolean {
+  return Boolean(step.skill || step.tool);
 }
 
 export async function executeWorkflow(
