@@ -1,4 +1,5 @@
 import { existsSync, readFileSync } from "node:fs";
+import type { PackComponentHashes } from "./pack-compiler.js";
 import type { PackRegistry } from "./pack-registry.js";
 
 /**
@@ -11,11 +12,14 @@ import type { PackRegistry } from "./pack-registry.js";
  * to refuse an unreviewed pack change in production.
  */
 
-export const PACK_LOCK_VERSION = 1 as const;
+export const PACK_LOCK_VERSION = 2 as const;
 
 export interface PackLockEntry {
   version: string;
+  /** The package hash (SHA-256 of the component-hash record). */
   contentHash: string;
+  /** Per-component hashes, so drift can name what changed. */
+  components?: PackComponentHashes;
 }
 
 export interface PackLock {
@@ -27,6 +31,8 @@ export interface PackDriftEntry {
   id: string;
   expected?: string;
   actual?: string;
+  /** For a changed pack: which component hashes differ (when both locks carry them). */
+  components?: string[];
 }
 
 export interface PackDrift {
@@ -41,9 +47,22 @@ export function buildPackLock(registry: PackRegistry): PackLock {
   const packs: Record<string, PackLockEntry> = {};
   for (const pack of [...registry.packs].sort((a, b) => a.id.localeCompare(b.id))) {
     const compiled = registry.compiled(pack.id);
-    if (compiled) packs[pack.id] = { version: pack.version, contentHash: compiled.contentHash };
+    if (compiled) {
+      packs[pack.id] = {
+        version: pack.version,
+        contentHash: compiled.contentHash,
+        components: compiled.components,
+      };
+    }
   }
   return { lockVersion: PACK_LOCK_VERSION, packs };
+}
+
+/** Names the component hashes that differ between two lock entries. */
+function changedComponents(before?: PackComponentHashes, after?: PackComponentHashes): string[] {
+  if (!before || !after) return [];
+  const keys = new Set([...Object.keys(before), ...Object.keys(after)]) as Set<keyof PackComponentHashes>;
+  return [...keys].filter((key) => before[key] !== after[key]).sort();
 }
 
 /** Deterministic JSON for committing a lock (sorted keys, trailing newline). */
@@ -77,7 +96,12 @@ export function diffPackLock(baseline: PackLock, current: PackLock): PackDrift {
     const prior = baseline.packs[id];
     if (!prior) added.push({ id, actual: entry.contentHash });
     else if (prior.contentHash !== entry.contentHash) {
-      changed.push({ id, expected: prior.contentHash, actual: entry.contentHash });
+      changed.push({
+        id,
+        expected: prior.contentHash,
+        actual: entry.contentHash,
+        components: changedComponents(prior.components, entry.components),
+      });
     }
   }
   for (const [id, entry] of Object.entries(baseline.packs)) {
