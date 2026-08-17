@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
-import { defineTool } from "@copilotkit/runtime/v2";
 import { z } from "zod";
+import { defineNeutralTool, type NeutralTool } from "../runtime/agent-runtime.js";
 import type { AgentTelemetryService } from "../platform/agent-telemetry.js";
 import type { CapabilityBrokerContract } from "../platform/capability-broker-contract.js";
 import type { EnvironmentName, ExecutionContext } from "../platform/capability-types.js";
@@ -61,24 +61,24 @@ export function buildQaTools(
   broker: CapabilityBrokerContract,
   telemetry?: AgentTelemetryService,
   agentId: string = QA_SUPERVISOR_AGENT_ID,
-) {
+): NeutralTool[] {
   const linkRun = (runId: string) => telemetry?.linkCurrentAgentRunToQaRun(runId);
 
-  const listCapabilities = defineTool({
+  const listCapabilities = defineNeutralTool({
     name: "listQaCapabilities",
     description: "List governed QA capabilities, risk levels, environments, and approval requirements.",
     parameters: z.object({}),
     execute: async () => ({ capabilities: broker.listCapabilities() }),
   });
 
-  const listProjectTests = defineTool({
+  const listProjectTests = defineNeutralTool({
     name: "listQaProjectTests",
     description: "List public metadata for allowlisted project QA suites and whether a server-side authenticated identity reference is configured. Never returns secret values or selectors.",
     parameters: z.object({}),
     execute: async () => ({ projects: projectTestCatalogStatus() }),
   });
 
-  const startRun = defineTool({
+  const startRun = defineNeutralTool({
     name: "startQaRun",
     description: "Start one durable QA workflow run scoped to the current authenticated identity, project, and environment.",
     parameters: z.object({
@@ -98,7 +98,7 @@ export function buildQaTools(
     },
   });
 
-  const requestAction = defineTool({
+  const requestAction = defineNeutralTool({
     name: "requestQaCapabilityAction",
     description: "Create an immutable, policy-evaluated QA capability action inside a durable QA run.",
     parameters: z.object({
@@ -131,7 +131,7 @@ export function buildQaTools(
     },
   });
 
-  const getAction = defineTool({
+  const getAction = defineNeutralTool({
     name: "getQaCapabilityAction",
     description: "Read the server-side status of one previously requested QA action in the current identity scope.",
     parameters: z.object({ actionId: z.string().uuid() }),
@@ -142,7 +142,7 @@ export function buildQaTools(
     },
   });
 
-  const executeAction = defineTool({
+  const executeAction = defineNeutralTool({
     name: "executeQaCapabilityAction",
     description: "Execute a previously requested QA action only when server policy and current identity scope permit it.",
     parameters: z.object({ actionId: z.string().uuid() }),

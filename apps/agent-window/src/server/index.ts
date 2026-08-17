@@ -2,7 +2,7 @@ import { existsSync } from "node:fs";
 import { resolve } from "node:path";
 import express from "express";
 import { createCopilotExpressHandler } from "@copilotkit/runtime/v2/express";
-import { buildCopilotRuntime } from "./copilot.js";
+import { buildCopilotRuntime } from "./runtime/copilot-runtime.js";
 import { PackRegistry } from "./pack-registry.js";
 import { buildPackLock, diffPackLock, loadPackLock } from "./pack-lock.js";
 import { AgentTelemetryService } from "./platform/agent-telemetry.js";

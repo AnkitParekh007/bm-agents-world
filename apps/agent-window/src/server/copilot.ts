@@ -1,4 +1,3 @@
-import { BuiltInAgent, CopilotRuntime, defineTool } from "@copilotkit/runtime/v2";
 import { z } from "zod";
 import type { AgentTelemetryService } from "./platform/agent-telemetry.js";
 import type { CapabilityBrokerContract } from "./platform/capability-broker-contract.js";
@@ -12,6 +11,7 @@ import {
   qaSpecialistAgentId,
 } from "./qa/qa-grants.js";
 import { planGovernedAgents } from "./pack-runtime.js";
+import { defineNeutralTool, type AgentDefinition, type NeutralTool } from "./runtime/agent-runtime.js";
 
 /** A scoped specialist agent to instantiate: its identity, prompt inputs, and grant. */
 interface SpecialistSpec {
@@ -98,8 +98,8 @@ structured results the supervisor can consolidate, and never claim an external
 system was touched unless a governed tool result confirms it.`;
 }
 
-function packTools(pack: AgentPack) {
-  const overview = defineTool({
+function packTools(pack: AgentPack): NeutralTool[] {
+  const overview = defineNeutralTool({
     name: "getPackOverview",
     description: "Return the loaded operating metadata for this agent pack.",
     parameters: z.object({}),
@@ -124,14 +124,14 @@ function packTools(pack: AgentPack) {
     }),
   });
 
-  const subAgents = defineTool({
+  const subAgents = defineNeutralTool({
     name: "listPackSubAgents",
     description: "List the supervisor and specialist agents declared by this pack.",
     parameters: z.object({}),
     execute: async () => ({ agents: pack.subAgents }),
   });
 
-  const tasks = defineTool({
+  const tasks = defineNeutralTool({
     name: "listPackTasks",
     description: "List daily tasks from this pack, optionally narrowed to one task group.",
     parameters: z.object({
@@ -156,15 +156,15 @@ function packTools(pack: AgentPack) {
   return [overview, subAgents, tasks];
 }
 
-function worldTools(registry: PackRegistry) {
-  const listPacks = defineTool({
+function worldTools(registry: PackRegistry): NeutralTool[] {
+  const listPacks = defineNeutralTool({
     name: "listAgentPacks",
     description: "List all BM Agents World packs discovered from the repository.",
     parameters: z.object({}),
     execute: async () => ({ packs: registry.listPublic() }),
   });
 
-  const inspectPack = defineTool({
+  const inspectPack = defineNeutralTool({
     name: "inspectAgentPack",
     description: "Inspect one agent pack by runtime id or pack name.",
     parameters: z.object({
@@ -233,65 +233,61 @@ function deriveQaSpecialistSpecs(pack: AgentPack, registry: PackRegistry): Speci
     }));
 }
 
-export function buildCopilotRuntime(
+/**
+ * Builds the platform's runtime-neutral agent definitions.
+ *
+ * This is the whole agent/tool wiring — the default supervisor, one agent per
+ * pack, and the QA multi-agent team (a supervisor plus one scoped specialist per
+ * registered specialist that maps to a governed capability) — expressed with no
+ * dependency on any agent runtime. A {@link RuntimeAdapter} turns these into a
+ * concrete runtime; the CopilotKit adapter reproduces exactly the team the pilot
+ * ran before this layer existed. The QA specialist set is derived from the
+ * generic planner (flagged) or the QA special-case map; both yield the same team.
+ */
+export function buildAgentDefinitions(
   registry: PackRegistry,
   qaBroker: CapabilityBrokerContract,
   telemetry?: AgentTelemetryService,
-): CopilotRuntime {
-  const agents: Record<string, BuiltInAgent> = {};
+): AgentDefinition[] {
   const model = modelName();
+  const definitions: AgentDefinition[] = [];
 
   for (const pack of registry.packs) {
-    const isQa = pack.id === "qa";
-    if (!isQa) {
-      const agent = new BuiltInAgent({ model, prompt: packPrompt(pack), tools: packTools(pack), maxSteps: 8 });
-      if (telemetry) agent.use(telemetry.middleware(pack.id, model));
-      agents[pack.id] = agent;
+    if (pack.id !== "qa") {
+      definitions.push({ id: pack.id, model, prompt: packPrompt(pack), tools: packTools(pack), maxSteps: 8 });
       continue;
     }
 
-    // QA runs as a multi-agent team: a supervisor plus one scoped specialist
-    // agent per registered specialist that maps to a governed capability. The
-    // specialist set is derived either from the generic planner (flagged) or the
-    // QA special-case map; both yield the same team.
     const specialistSpecs = deriveQaSpecialistSpecs(pack, registry);
     const specialistIds = specialistSpecs.map((spec) => spec.runtimeId);
 
-    const supervisor = new BuiltInAgent({
+    definitions.push({
+      id: pack.id,
       model,
       prompt: packPrompt(pack) + QA_CAPABILITY_PROMPT + qaSupervisorPrompt(specialistIds),
       tools: [...packTools(pack), ...buildQaTools(qaBroker, telemetry, QA_SUPERVISOR_AGENT_ID)],
       maxSteps: 16,
     });
-    if (telemetry) supervisor.use(telemetry.middleware(pack.id, model));
-    agents[pack.id] = supervisor;
 
     for (const spec of specialistSpecs) {
-      const specialistAgent = new BuiltInAgent({
+      definitions.push({
+        id: spec.runtimeId,
         model,
         prompt:
           qaSpecialistPrompt(pack, spec.sourceId, spec.purpose, spec.capabilities) + QA_CAPABILITY_PROMPT,
         tools: [...packTools(pack), ...buildQaTools(qaBroker, telemetry, spec.runtimeId)],
         maxSteps: 10,
       });
-      if (telemetry) specialistAgent.use(telemetry.middleware(spec.runtimeId, model));
-      agents[spec.runtimeId] = specialistAgent;
     }
   }
 
-  const supervisor = new BuiltInAgent({
+  definitions.push({
+    id: "default",
     model,
     prompt: `You are the BM Agents World Supervisor. You help users discover the right organizational agent and understand the packs currently loaded by the platform. Use your tools rather than inventing pack capabilities. Do not claim an external system action has happened unless an actual capability tool is available and its result confirms a live external side effect. The currently loaded pack ids are: ${registry.packs.map((pack) => pack.id).join(", ")}.`,
     tools: worldTools(registry),
     maxSteps: 6,
   });
-  if (telemetry) supervisor.use(telemetry.middleware("default", model));
-  agents.default = supervisor;
 
-  return new CopilotRuntime({
-    agents,
-    forwardHeaders: {
-      allow: ["authorization", "x-user-id", "x-project-id", "x-project-ids", "x-tenant-id"],
-    },
-  });
+  return definitions;
 }
