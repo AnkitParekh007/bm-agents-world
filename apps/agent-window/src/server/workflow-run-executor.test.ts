@@ -111,7 +111,9 @@ test("a governed step is attributed to the compiled workflow agent, not a caller
   assert.match(step.error ?? "", /not granted/);
 });
 
-test("an executable step with no capability binding fails closed", async () => {
+test("an unmapped skill step is ungoverned reasoning and delegates; an unmapped tool step fails closed", async () => {
+  // The pack binding map decides: an unmapped `skill` is reasoning (delegated),
+  // but an unmapped `tool` is a declared side effect and must be refused.
   const broker = countingBroker();
   const runner = new BrokerStepRunner({
     broker,
@@ -119,13 +121,18 @@ test("an executable step with no capability binding fails closed", async () => {
     buildContext: baseContext("qa"),
     resolveAgentId: () => "qa",
   });
-  const compiled = compileWorkflow({ metadata: { id: "wf" }, steps: [{ id: "run-tests", agent: "browser-qa", skill: "qa.playwright" }] });
   const store = new InMemoryWorkflowRunStore();
 
-  const result = await executeWorkflowRun(compiled, runner, store, { runId: "run-B" });
-  assert.equal(result.status, "failed");
-  assert.match(store.getStep("run-B", "run-tests")!.error ?? "", /unmapped executable|no governed capability/);
-  assert.equal(broker.requests, 0, "no capability action is requested for an unmapped executable step");
+  const reasoning = compileWorkflow({ metadata: { id: "wf" }, steps: [{ id: "score-risk", agent: "story-context", skill: "qa.risk.story-scoring" }] });
+  const delegated = await executeWorkflowRun(reasoning, runner, store, { runId: "run-reason" });
+  assert.equal(delegated.status, "completed");
+  assert.equal(store.getStep("run-reason", "score-risk")!.status, "completed");
+
+  const sideEffect = compileWorkflow({ metadata: { id: "wf" }, steps: [{ id: "post", agent: "qa-reporter", tool: "teams.post" }] });
+  const failed = await executeWorkflowRun(sideEffect, runner, store, { runId: "run-tool" });
+  assert.equal(failed.status, "failed");
+  assert.match(store.getStep("run-tool", "post")!.error ?? "", /side-effecting|no governed capability/);
+  assert.equal(broker.requests, 0, "no capability action is requested for an unmapped step");
 });
 
 test("the run persists the audit chain: agent, capability, action, and input hash", async () => {
