@@ -5,6 +5,10 @@ import { createCopilotExpressHandler } from "@copilotkit/runtime/v2/express";
 import { buildCopilotRuntime } from "./runtime/copilot-runtime.js";
 import { PackRegistry } from "./pack-registry.js";
 import { buildPackLock, diffPackLock, loadPackLock } from "./pack-lock.js";
+import { GovernedWorkflowService, WorkflowServiceError } from "./workflow-run-service.js";
+import { SqliteWorkflowRunStore } from "./sqlite-workflow-run-store.js";
+import { InMemoryWorkflowRunStore } from "./workflow-run-store.js";
+import type { EnvironmentName } from "./platform/capability-types.js";
 import { AgentTelemetryService } from "./platform/agent-telemetry.js";
 import { AsyncCapabilityBroker } from "./platform/async-capability-broker.js";
 import type { CapabilityBrokerContract } from "./platform/capability-broker-contract.js";
@@ -74,6 +78,11 @@ const qaBroker: CapabilityBrokerContract = persistence.shared
   ? new AsyncCapabilityBroker(qaCapabilities, adapters, persistence.capabilityStore, centralPolicy, qaGrants)
   : new CapabilityBroker(qaCapabilities, adapters, persistence.capabilityStore, qaGrants);
 const runtime = buildCopilotRuntime(registry, qaBroker, agentTelemetry);
+// Durable workflow-run state for the governed workflow engine. Local mode uses
+// the SQLite binding; a Postgres binding for shared-pilot mode is a follow-up, so
+// shared mode uses the in-memory store in the interim.
+const workflowRunStore = persistence.shared ? new InMemoryWorkflowRunStore() : new SqliteWorkflowRunStore();
+const workflowService = new GovernedWorkflowService({ registry, broker: qaBroker, store: workflowRunStore });
 const app = express();
 
 app.disable("x-powered-by");
@@ -247,6 +256,47 @@ app.get("/api/session", (_request, response) => {
     source: identity.source,
     selfApprovalAllowed: canSelfApprove(identity),
   });
+});
+
+const WORKFLOW_ERROR_STATUS: Record<WorkflowServiceError["code"], number> = {
+  pack_not_found: 404,
+  workflow_not_found: 404,
+  pack_not_governed: 400,
+  workflow_invalid: 422,
+};
+
+// Launch (or resume, with an existing runId) a governed workflow run on the
+// durable engine. Scoped to a project the caller can access; specialist identity,
+// governed-vs-reasoning steps, approvals, idempotency, and persistence are all
+// enforced by the engine. The result carries the run's step states directly.
+app.post("/api/workflows/:packId/:workflowId/runs", async (request, response) => {
+  const identity = currentRequestIdentity();
+  const body = (request.body ?? {}) as { projectId?: unknown; environment?: unknown; runId?: unknown; inputs?: unknown };
+  const projectId = typeof body.projectId === "string" ? body.projectId.trim() : "";
+  if (!projectId || !identity.projectIds.includes(projectId)) {
+    response.status(403).json({ error: "workflow_project_access_denied" });
+    return;
+  }
+  const environment: EnvironmentName =
+    body.environment === "playground" || body.environment === "prod" ? body.environment : "qa";
+  try {
+    const result = await workflowService.launch(
+      request.params.packId,
+      request.params.workflowId,
+      { projectId, environment, userId: identity.userId, tenantId: identity.tenantId },
+      {
+        runId: typeof body.runId === "string" ? body.runId : undefined,
+        inputs: body.inputs && typeof body.inputs === "object" ? (body.inputs as Record<string, unknown>) : undefined,
+      },
+    );
+    response.json(result);
+  } catch (error) {
+    if (error instanceof WorkflowServiceError) {
+      response.status(WORKFLOW_ERROR_STATUS[error.code]).json({ error: error.code, message: error.message });
+      return;
+    }
+    throw error;
+  }
 });
 
 app.get("/api/health", async (_request, response) => {
@@ -529,6 +579,7 @@ function shutdown() {
   shuttingDown = true;
   server.close(async () => {
     try {
+      if (workflowRunStore instanceof SqliteWorkflowRunStore) workflowRunStore.close();
       await persistence.close();
       await shutdownTelemetry();
     } finally {

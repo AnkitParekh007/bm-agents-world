@@ -3,6 +3,9 @@ import type { CapabilityBrokerContract } from "./platform/capability-broker-cont
 import type { AgentPack } from "./pack-registry.js";
 import type { GovernedAgentSpec, PackRuntimeProvider } from "./pack-runtime.js";
 import type { NeutralTool } from "./runtime/agent-runtime.js";
+import type { CompiledWorkflowStep } from "./workflow-compiler.js";
+import type { WorkflowRunContext } from "./workflow-executor.js";
+import type { CapabilityStepBinding } from "./workflow-broker-runner.js";
 import { qaGovernance } from "./qa/qa-governance.js";
 
 /**
@@ -32,6 +35,19 @@ export interface PackGovernance {
     telemetry: AgentTelemetryService | undefined,
     agentId: string,
   ): NeutralTool[];
+  /**
+   * Maps a workflow step to the governed capability it must go through, or
+   * undefined when the step is ungoverned reasoning. This binding map is the
+   * pack's authoritative statement of what is governed: the live workflow engine
+   * treats a mapped step as governed-executable (and fails it closed if the
+   * capability cannot be satisfied) and an unmapped skill step as reasoning it
+   * may delegate. A step declaring a `tool` (a concrete side effect) is always
+   * governed and must be mapped.
+   */
+  resolveWorkflowBinding(
+    step: CompiledWorkflowStep,
+    context: WorkflowRunContext,
+  ): CapabilityStepBinding | undefined;
 }
 
 /** The governed packs known to the platform, keyed by pack id. */
