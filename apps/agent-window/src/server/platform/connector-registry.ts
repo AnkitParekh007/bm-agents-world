@@ -34,6 +34,19 @@ export interface ConnectorAdmission {
   reason: string;
 }
 
+/**
+ * The admission surface consumers depend on. {@link ApprovedConnectorRegistry}
+ * implements it; tests and alternative sources can supply a lighter object
+ * without constructing the file-backed registry.
+ */
+export interface ConnectorAdmissionResolver {
+  admission(
+    definition: CapabilityDefinition,
+    packId: string,
+    environment: EnvironmentName,
+  ): ConnectorAdmission;
+}
+
 const RISK_ORDER: RiskLevel[] = ["L0", "L1", "L2", "L3", "L4"];
 
 function repoRoot(): string {
@@ -49,7 +62,7 @@ function normalizePackId(packId: string): string {
   return packId.replace(/-agent-pack$/, "");
 }
 
-export class ApprovedConnectorRegistry {
+export class ApprovedConnectorRegistry implements ConnectorAdmissionResolver {
   private readonly connectors: ApprovedConnector[];
   private readonly byCapability = new Map<string, { connector: ApprovedConnector; tool: ApprovedConnectorTool }>();
 
