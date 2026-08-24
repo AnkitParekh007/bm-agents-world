@@ -5,6 +5,7 @@ import type { CapabilityRun } from "./capability-store.js";
 import type { AuditEvent, CapabilityAction, ExecutionContext } from "./capability-types.js";
 import { JiraReadAdapter } from "../qa/jira-read-adapter.js";
 import { QA_CAPABILITIES, QaMockAdapter } from "../qa/qa-capabilities.js";
+import { TeamsStatusAdapter } from "../qa/qa-teams-adapter.js";
 
 class MemoryAsyncStore implements AsyncCapabilityStore {
   readonly runs = new Map<string, CapabilityRun>();
@@ -77,6 +78,9 @@ function broker(store: AsyncCapabilityStore) {
   return new AsyncCapabilityBroker(QA_CAPABILITIES, [
     mock,
     new JiraReadAdapter(mock),
+    // Registered so qa.teams.status.post (adapterId "qa-teams-adapter")
+    // resolves; with no webhook configured it delegates to the mock.
+    new TeamsStatusAdapter(mock),
   ], store);
 }
 
