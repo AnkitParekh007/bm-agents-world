@@ -370,13 +370,13 @@ export class AgentTelemetryService {
         return new Observable<BaseEvent>((subscriber) => {
           const subscription = activeAgentRun.run(active, () => otelContext.with(otelCtx, () =>
             this.runNextWithState(input, next).subscribe({
-              next: ({ event }) => {
+              next: ({ event }: { event: BaseEvent }) => {
                 eventCount += 1;
                 if (String(event.type) === "TOOL_CALL_START") toolCallCount += 1;
                 for (const item of collectUsageEvidence(event)) evidence.set(item.signature, item);
                 subscriber.next(event);
               },
-              error: (error) => {
+              error: (error: unknown) => {
                 runError = error instanceof Error ? error.message : String(error);
                 span.recordException(error instanceof Error ? error : new Error(runError));
                 span.setStatus({ code: SpanStatusCode.ERROR, message: runError });

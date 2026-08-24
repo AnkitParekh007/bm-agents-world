@@ -34,6 +34,24 @@ export interface ConnectorAdmission {
   reason: string;
 }
 
+/**
+ * The admission surface consumers depend on. {@link ApprovedConnectorRegistry}
+ * implements it; tests and alternative sources can supply a lighter object
+ * without constructing the file-backed registry.
+ */
+export interface ConnectorAdmissionResolver {
+  admission(
+    definition: CapabilityDefinition,
+    packId: string,
+    environment: EnvironmentName,
+  ): ConnectorAdmission;
+}
+
+/** The subset of the registry an MCP adapter factory enumerates over. */
+export interface McpConnectorSource extends ConnectorAdmissionResolver {
+  mcpCapableConnectors(): Array<{ connector: ApprovedConnector; capabilityIds: string[] }>;
+}
+
 const RISK_ORDER: RiskLevel[] = ["L0", "L1", "L2", "L3", "L4"];
 
 function repoRoot(): string {
@@ -49,7 +67,7 @@ function normalizePackId(packId: string): string {
   return packId.replace(/-agent-pack$/, "");
 }
 
-export class ApprovedConnectorRegistry {
+export class ApprovedConnectorRegistry implements ConnectorAdmissionResolver {
   private readonly connectors: ApprovedConnector[];
   private readonly byCapability = new Map<string, { connector: ApprovedConnector; tool: ApprovedConnectorTool }>();
 
@@ -97,6 +115,20 @@ export class ApprovedConnectorRegistry {
       allowedPacks: connector.allowedPacks,
       tools: connector.tools.map(({ capabilityIds, ...tool }) => ({ ...tool, capabilityCount: capabilityIds.length })),
     }));
+  }
+
+  /**
+   * Connectors that can be served over MCP — kind `mcp` or `native-or-mcp` — and
+   * are not disabled. Returned with the capability ids each connector's tools
+   * cover, so a factory can stand up one governed MCP adapter per connector.
+   */
+  mcpCapableConnectors(): Array<{ connector: ApprovedConnector; capabilityIds: string[] }> {
+    return this.connectors
+      .filter((connector) => connector.kind !== "native" && connector.status !== "disabled")
+      .map((connector) => ({
+        connector,
+        capabilityIds: [...new Set(connector.tools.flatMap((tool) => tool.capabilityIds))],
+      }));
   }
 
   admission(definition: CapabilityDefinition, packId: string, environment: EnvironmentName): ConnectorAdmission {

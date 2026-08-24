@@ -5,6 +5,7 @@ import type { ExecutionContext } from "./capability-types.js";
 import { BitbucketReadAdapter } from "../qa/bitbucket-read-adapter.js";
 import { JiraReadAdapter } from "../qa/jira-read-adapter.js";
 import { QA_CAPABILITIES, QaMockAdapter } from "../qa/qa-capabilities.js";
+import { TeamsStatusAdapter } from "../qa/qa-teams-adapter.js";
 
 function context(environment: ExecutionContext["environment"] = "qa"): ExecutionContext {
   return {
@@ -25,6 +26,10 @@ function broker() {
     mock,
     new JiraReadAdapter(mock),
     new BitbucketReadAdapter(mock),
+    // No webhook is configured in tests, so the Teams adapter delegates to the
+    // mock — but it must be registered so qa.teams.status.post (adapterId
+    // "qa-teams-adapter") resolves at execute time.
+    new TeamsStatusAdapter(mock),
   ]);
 }
 
