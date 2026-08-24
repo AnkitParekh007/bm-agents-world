@@ -1,8 +1,8 @@
 import { existsSync } from "node:fs";
 import { resolve } from "node:path";
 import express from "express";
-import { createCopilotExpressHandler } from "@copilotkit/runtime/v2/express";
 import { buildCopilotRuntime } from "./runtime/copilot-runtime.js";
+import { copilotKitExpressTransport } from "./runtime/copilotkit-transport.js";
 import { PackRegistry } from "./pack-registry.js";
 import { buildPackLock, diffPackLock, loadPackLock } from "./pack-lock.js";
 import { GovernedWorkflowService, WorkflowServiceError } from "./workflow-run-service.js";
@@ -542,11 +542,11 @@ app.get("/api/audit", async (request, response) => {
   response.json({ events: visible });
 });
 
-app.use(createCopilotExpressHandler({
-  runtime,
+app.use(copilotKitExpressTransport.handler(runtime, {
   basePath: "/api/copilotkit",
-  mode: "single-route",
-  cors: process.env.NODE_ENV === "production" ? false : { origin: ["http://localhost:5173", "http://127.0.0.1:5173"] },
+  cors: process.env.NODE_ENV === "production"
+    ? false
+    : { allowedOrigins: ["http://localhost:5173", "http://127.0.0.1:5173"] },
 }));
 
 const clientDirectory = resolve(process.cwd(), "dist/client");
