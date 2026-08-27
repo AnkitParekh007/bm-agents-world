@@ -15,6 +15,7 @@ import type { CapabilityBrokerContract } from "./platform/capability-broker-cont
 import { CapabilityBroker } from "./platform/capability-broker.js";
 import { ApprovedConnectorRegistry } from "./platform/connector-registry.js";
 import { buildDeploymentReadiness } from "./platform/deployment-readiness.js";
+import { createMcpRuntime } from "./platform/mcp/mcp-runtime.js";
 import { buildPilotValidation, type PilotPolicyStatus } from "./platform/pilot-validation.js";
 import { createPolicyEngine, type PolicyEvaluator } from "./platform/policy-engine.js";
 import { enrichQaPilotRunsShared } from "./platform/pilot-telemetry-view-async.js";
@@ -82,6 +83,11 @@ const runtime = buildCopilotRuntime(registry, qaBroker, agentTelemetry);
 // the SQLite binding; a Postgres binding for shared-pilot mode is a follow-up, so
 // shared mode uses the in-memory store in the interim.
 const workflowRunStore = persistence.shared ? new InMemoryWorkflowRunStore() : new SqliteWorkflowRunStore();
+// The MCP layer's single owner, so its connections share the server's lifetime.
+// Disabled until a concrete transport and connection-config resolver are
+// provisioned for the environment; until then it opens nothing and its adapters
+// are never registered with the broker, so the pilot keeps its native adapters.
+const mcpRuntime = createMcpRuntime({ registry: connectorRegistry });
 const workflowService = new GovernedWorkflowService({ registry, broker: qaBroker, store: workflowRunStore });
 const app = express();
 
@@ -323,6 +329,7 @@ app.get("/api/health", async (_request, response) => {
     identityMode: process.env.BM_IDENTITY_MODE?.trim() || "local-dev",
     persistence: persistence.status,
     centralPolicy: policy,
+    mcp: mcpRuntime.status,
     qaObservability: {
       evaluationPersistence: persistence.status.state.kind,
       operationalMetrics: "derived-from-run-action-audit",
@@ -568,6 +575,7 @@ const server = app.listen(PORT, "0.0.0.0", async () => {
   console.log(`[bm-agents-world] persistence: ${persistence.status.mode}; shared=${persistence.status.shared}`);
   console.log(`[bm-agents-world] state: ${persistence.status.state.kind}; artifacts: ${persistence.status.artifacts.kind}`);
   console.log(`[bm-agents-world] central policy: ${policy.mode}; healthy=${policy.healthy}; connectors=${policy.connectorCount}`);
+  console.log(`[bm-agents-world] mcp: ${mcpRuntime.status.enabled ? `enabled for ${mcpRuntime.status.connectors.length} connector(s)` : "disabled"} — ${mcpRuntime.status.reason}`);
   console.log(`[bm-agents-world] telemetry: model usage persists when provider metadata is present; otel=${otel.enabled ? "enabled" : "disabled"}`);
   console.log(`[bm-agents-world] identity mode: ${process.env.BM_IDENTITY_MODE?.trim() || "local-dev"}`);
   console.log(`[bm-agents-world] qa jira read: ${integrations.jira.mode}; jira write: ${integrations.jira.writeMode}; bitbucket: ${integrations.bitbucket.mode}; playwright: ${integrations.playwright.mode}`);
@@ -580,6 +588,7 @@ function shutdown() {
   server.close(async () => {
     try {
       if (workflowRunStore instanceof SqliteWorkflowRunStore) workflowRunStore.close();
+      await mcpRuntime.shutdown();
       await persistence.close();
       await shutdownTelemetry();
     } finally {
