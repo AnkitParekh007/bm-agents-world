@@ -2,6 +2,8 @@
 
 `npm run build` delegates to the app workspace, runs strict typecheck, then creates the Vite production bundle in `apps/agent-window/dist/client`. Express serves this directory when present.
 
+The bundle has **two entries**: `index.html` (the agent lab) and `control-plane.html` (the operator console). They are independent — the console imports no agent runtime — so a failure to resolve the CopilotKit packages breaks the lab entry without making the console unbuildable. `npm run typecheck:control-plane` in the app workspace compiles the console on its own and is the check that keeps that isolation real rather than assumed.
+
 The `Agent Window CI` workflow runs on pushes to `main` and `agent/**`, and relevant pull requests. It installs on Node 22, typechecks, runs policy/integration/deployment/observability tests, builds the application, then builds the pilot container.
 
 ```mermaid

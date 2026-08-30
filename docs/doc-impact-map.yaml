@@ -41,6 +41,10 @@ rules:
       - apps/agent-window/src/server/platform/capability-broker.ts
       - apps/agent-window/src/server/platform/async-capability-broker.ts
       - apps/agent-window/src/server/qa/qa-capabilities.ts
+      - apps/agent-window/src/server/frontend/frontend-capabilities.ts
+      - apps/agent-window/src/server/platform/connector-registry.ts
+      - apps/agent-window/src/server/governed-packs.ts
+      - apps/agent-window/src/server/pack-governance.ts
       - config/approved-connectors.yaml
       - policies/**/*
     generated:
@@ -89,6 +93,19 @@ rules:
       - docs/deployment/deployment.md
       - docs/deployment/security.md
       - docs/qa-team-pilot-deployment.md
+
+  - id: control-plane
+    description: The operator console and its read model describe what the platform may do; both must stay documented together.
+    sources:
+      - apps/agent-window/src/server/control-plane.ts
+      - apps/agent-window/src/client/control-plane/**/*
+      - apps/agent-window/control-plane.html
+      - apps/agent-window/tsconfig.control-plane.json
+      - apps/agent-window/vite.config.ts
+    narrative:
+      - docs/features/control-plane.md
+      - docs/architecture/frontend.md
+      - docs/development/api-reference.md
 
   - id: developer-workflow
     description: Commands and CI changes affect contributor guidance.
