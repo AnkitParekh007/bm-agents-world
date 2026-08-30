@@ -33,6 +33,10 @@ Authoritative sources:
 | qa-api | QA API Contract Checks | native | approved | native-http |
 | qa-integration | QA Integration Traceability | native | approved | native-worker |
 | qa-database | QA Database Read Adapter | mcp | approved | streamable-http |
+| frontend-jira | Jira Cloud (frontend-angular) | native-or-mcp | approved | native-http, streamable-http |
+| frontend-bitbucket | Bitbucket (frontend-angular) | native-or-mcp | approved | native-http, streamable-http |
+| frontend-design-system | Design System Tokens | mcp | pilot | streamable-http |
+| frontend-quality | Frontend Quality Gates | native | approved | native-worker |
 | teams | Microsoft Teams | mcp | pilot | streamable-http |
 
 See [Capability broker and data flow](../architecture/capability-broker.md) for policy semantics.

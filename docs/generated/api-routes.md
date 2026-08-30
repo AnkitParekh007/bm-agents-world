@@ -9,6 +9,10 @@ Authoritative sources:
 | Method | Path | Declared in |
 | --- | --- | --- |
 | GET | /api/audit | apps/agent-window/src/server/index.ts |
+| GET | /api/control-plane/agents | apps/agent-window/src/server/index.ts |
+| GET | /api/control-plane/approvals | apps/agent-window/src/server/index.ts |
+| GET | /api/control-plane/capabilities | apps/agent-window/src/server/index.ts |
+| GET | /api/control-plane/overview | apps/agent-window/src/server/index.ts |
 | ALL | /api/copilotkit/* | apps/agent-window/src/server/index.ts |
 | GET | /api/health | apps/agent-window/src/server/index.ts |
 | GET | /api/packs | apps/agent-window/src/server/index.ts |
@@ -28,6 +32,7 @@ Authoritative sources:
 | GET | /api/qa/runs/:runId | apps/agent-window/src/server/index.ts |
 | POST | /api/qa/runs/:runId/evaluation | apps/agent-window/src/server/index.ts |
 | GET | /api/session | apps/agent-window/src/server/index.ts |
+| POST | /api/workflows/:packId/:workflowId/runs | apps/agent-window/src/server/index.ts |
 | GET | /healthz | apps/agent-window/src/server/index.ts |
 | GET | /readyz | apps/agent-window/src/server/index.ts |
 
