@@ -1,7 +1,7 @@
 import { canonicalHash } from "./platform/canonical.js";
 import type { CapabilityBrokerContract } from "./platform/capability-broker-contract.js";
 import type { CapabilityAction, ExecutionContext } from "./platform/capability-types.js";
-import type { WorkflowRunContext } from "./workflow-executor.js";
+import { declaresSideEffect, type WorkflowRunContext } from "./workflow-executor.js";
 import type { CompiledWorkflowStep } from "./workflow-compiler.js";
 import type { GovernedStepOutcome, GovernedStepRunner } from "./workflow-run-executor.js";
 
@@ -19,8 +19,9 @@ import type { GovernedStepOutcome, GovernedStepRunner } from "./workflow-run-exe
  * - Fail-closed on unmapped governed work. The pack's binding map is the
  *   authoritative statement of what is governed: a mapped step is driven through
  *   the broker, an unmapped `skill` step is ungoverned reasoning the engine may
- *   delegate, and an unmapped `tool` step (a declared side effect) is refused —
- *   a side-effecting step must never run without a governed capability behind it.
+ *   delegate, and an unmapped `tool` or `action` step (a declared side effect)
+ *   is refused — a side-effecting step must never run without a governed
+ *   capability behind it.
  * - Idempotent resume. `resume` reuses the exact bound capability action instead
  *   of requesting a new one, so approving and continuing a paused run never
  *   produces a duplicate external side effect.
@@ -58,12 +59,14 @@ export class BrokerStepRunner implements GovernedStepRunner {
     const binding = this.options.resolveCapability(step, context);
 
     if (!binding) {
-      // A step declaring a `tool` is a concrete side effect; it must be governed,
-      // so an unmapped tool step fails closed regardless of onUnmapped.
-      if (step.tool) {
+      // A step declaring a `tool` or a named `action` is a concrete side effect;
+      // it must be governed, so an unmapped one fails closed regardless of
+      // onUnmapped.
+      if (declaresSideEffect(step)) {
+        const declared = step.tool ? `tool "${step.tool}"` : `action "${step.action}"`;
         return {
           status: "failed",
-          error: `Step "${step.id}" declares tool "${step.tool}" but has no governed capability binding; refusing to run an unmapped side-effecting step.`,
+          error: `Step "${step.id}" declares ${declared} but has no governed capability binding; refusing to run an unmapped side-effecting step.`,
         };
       }
       // An unmapped skill (or bare) step is ungoverned reasoning: delegate it.

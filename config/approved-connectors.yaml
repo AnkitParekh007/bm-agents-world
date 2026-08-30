@@ -113,6 +113,79 @@ connectors:
         actionClass: read
         maxRisk: L4
         environments: [playground, qa, prod]
+  - id: frontend-jira
+    displayName: Jira Cloud (frontend-angular)
+    kind: native-or-mcp
+    status: approved
+    systems: [jira]
+    transports: [native-http, streamable-http]
+    auth: server-secret-or-oauth-2.1
+    allowedPacks: [frontend-angular]
+    tools:
+      - id: story.read
+        capabilityIds: [frontend.jira.story.read]
+        actionClass: read
+        maxRisk: L4
+        environments: [playground, qa, prod]
+      - id: comment.post
+        capabilityIds: [frontend.jira.comment.post]
+        actionClass: external-write
+        maxRisk: L3
+        environments: [playground, qa]
+        approval: human
+  - id: frontend-bitbucket
+    displayName: Bitbucket (frontend-angular)
+    kind: native-or-mcp
+    status: approved
+    systems: [bitbucket]
+    transports: [native-http, streamable-http]
+    auth: server-secret-or-workload-identity
+    allowedPacks: [frontend-angular]
+    tools:
+      - id: repository.context.read
+        capabilityIds: [frontend.repository.context.read]
+        actionClass: read
+        maxRisk: L4
+        environments: [playground, qa, prod]
+      - id: pullrequest.create
+        capabilityIds: [frontend.bitbucket.pullrequest.create]
+        actionClass: external-write
+        maxRisk: L3
+        environments: [playground, qa]
+        approval: human
+  - id: frontend-design-system
+    displayName: Design System Tokens
+    kind: mcp
+    status: pilot
+    systems: [design]
+    transports: [streamable-http]
+    auth: oauth-2.1
+    allowedPacks: [frontend-angular]
+    tools:
+      - id: tokens.read
+        capabilityIds: [frontend.design.tokens.read]
+        actionClass: read
+        maxRisk: L0
+        environments: [playground, qa, prod]
+  - id: frontend-quality
+    displayName: Frontend Quality Gates
+    kind: native
+    status: approved
+    systems: [frontend]
+    transports: [native-worker]
+    auth: workload-identity
+    allowedPacks: [frontend-angular]
+    tools:
+      - id: quality.gates.run
+        capabilityIds: [frontend.quality.gates.run]
+        actionClass: test
+        maxRisk: L1
+        environments: [playground, qa]
+      - id: plan.generate
+        capabilityIds: [frontend.plan.generate]
+        actionClass: read
+        maxRisk: L0
+        environments: [playground, qa, prod]
   - id: teams
     displayName: Microsoft Teams
     kind: mcp

@@ -78,9 +78,19 @@ export function isGate(step: CompiledWorkflowStep): boolean {
   return step.type ? GATE_TYPES.has(step.type) || /approval|gate/i.test(step.type) : false;
 }
 
-/** True when a step declares executable work (a skill or tool) that must be governed. */
+/** True when a step declares executable work (a skill, tool, or action). */
 export function isExecutable(step: CompiledWorkflowStep): boolean {
-  return Boolean(step.skill || step.tool);
+  return Boolean(step.skill || step.tool || step.action);
+}
+
+/**
+ * True when a step declares a concrete external side effect — a `tool` or a
+ * named `action` such as `git.push`. Such a step must be bound to a governed
+ * capability by its pack; the governed runner refuses to run an unbound one.
+ * A `skill` alone is not a side effect: it may be ungoverned reasoning.
+ */
+export function declaresSideEffect(step: CompiledWorkflowStep): boolean {
+  return Boolean(step.tool || step.action);
 }
 
 export async function executeWorkflow(

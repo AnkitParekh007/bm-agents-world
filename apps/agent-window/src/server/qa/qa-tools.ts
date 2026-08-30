@@ -1,40 +1,21 @@
-import { randomUUID } from "node:crypto";
 import { z } from "zod";
 import { defineNeutralTool, type NeutralTool } from "../runtime/agent-runtime.js";
 import type { AgentTelemetryService } from "../platform/agent-telemetry.js";
 import type { CapabilityBrokerContract } from "../platform/capability-broker-contract.js";
-import type { EnvironmentName, ExecutionContext } from "../platform/capability-types.js";
-import {
-  assertProjectAccess,
-  canAccessExecutionContext,
-  currentRequestIdentity,
-} from "../platform/request-identity.js";
+import { buildGovernedCapabilityTools, type GovernedToolSurface } from "../platform/governed-capability-tools.js";
 import { projectTestCatalogStatus } from "./qa-project-tests.js";
 import { QA_SUPERVISOR_AGENT_ID } from "./qa-grants.js";
 
-function contextFor(agentId: string, projectId: string, environment: EnvironmentName, runId = randomUUID()): ExecutionContext {
-  const identity = currentRequestIdentity();
-  assertProjectAccess(identity, projectId);
-  return {
-    runId,
-    userId: identity.userId,
-    agentId,
-    packId: "qa-agent-pack",
-    projectId,
-    environment,
-    tenantId: identity.tenantId,
-    requestedAt: new Date().toISOString(),
-  };
-}
-
-async function actionForCurrentIdentity(broker: CapabilityBrokerContract, actionId: string) {
-  const action = await broker.getAction(actionId);
-  if (!action) return undefined;
-  if (!canAccessExecutionContext(currentRequestIdentity(), action.context)) {
-    throw new Error("Current identity is not authorized for this action scope.");
-  }
-  return action;
-}
+/**
+ * QA's governed tool surface.
+ *
+ * The broker protocol itself lives in the shared
+ * {@link buildGovernedCapabilityTools}; QA contributes only what is genuinely
+ * QA's — its tool names, its capability prompt, and one pack-owned tool that
+ * lists allowlisted project test suites. The resulting surface is identical to
+ * the hand-written one this replaced (names, order, descriptions, and parameter
+ * schemas), which `qa-tools.test.ts` pins.
+ */
 
 export const QA_CAPABILITY_PROMPT = `
 
@@ -57,102 +38,32 @@ QA capability execution protocol:
 - Teams posting, database validation, and API contract checks run live only when their server-side integration is configured; otherwise they return an explicit mock. Always report mode=live vs mode=mock honestly and never claim a live side effect on a mock result. Production browser execution and free-form production mutation are unavailable.
 `;
 
+/** QA's own tool: allowlisted project suites and whether a live identity is configured. */
+const listProjectTests = defineNeutralTool({
+  name: "listQaProjectTests",
+  description: "List public metadata for allowlisted project QA suites and whether a server-side authenticated identity reference is configured. Never returns secret values or selectors.",
+  parameters: z.object({}),
+  execute: async () => ({ projects: projectTestCatalogStatus() }),
+});
+
+export const QA_TOOL_SURFACE: GovernedToolSurface = {
+  packName: "qa-agent-pack",
+  defaultAgentId: QA_SUPERVISOR_AGENT_ID,
+  label: "QA",
+  names: {
+    listCapabilities: "listQaCapabilities",
+    startRun: "startQaRun",
+    requestAction: "requestQaCapabilityAction",
+    getAction: "getQaCapabilityAction",
+    executeAction: "executeQaCapabilityAction",
+  },
+  extraTools: [listProjectTests],
+};
+
 export function buildQaTools(
   broker: CapabilityBrokerContract,
   telemetry?: AgentTelemetryService,
   agentId: string = QA_SUPERVISOR_AGENT_ID,
 ): NeutralTool[] {
-  const linkRun = (runId: string) => telemetry?.linkCurrentAgentRunToQaRun(runId);
-
-  const listCapabilities = defineNeutralTool({
-    name: "listQaCapabilities",
-    description: "List governed QA capabilities, risk levels, environments, and approval requirements.",
-    parameters: z.object({}),
-    execute: async () => ({ capabilities: broker.listCapabilities() }),
-  });
-
-  const listProjectTests = defineNeutralTool({
-    name: "listQaProjectTests",
-    description: "List public metadata for allowlisted project QA suites and whether a server-side authenticated identity reference is configured. Never returns secret values or selectors.",
-    parameters: z.object({}),
-    execute: async () => ({ projects: projectTestCatalogStatus() }),
-  });
-
-  const startRun = defineNeutralTool({
-    name: "startQaRun",
-    description: "Start one durable QA workflow run scoped to the current authenticated identity, project, and environment.",
-    parameters: z.object({
-      projectId: z.string().min(1),
-      environment: z.enum(["playground", "qa", "prod"]),
-    }),
-    execute: async ({ projectId, environment }) => {
-      const run = await broker.startRun(contextFor(agentId, projectId, environment as EnvironmentName));
-      linkRun(run.id);
-      return {
-        runId: run.id,
-        projectId: run.context.projectId,
-        environment: run.context.environment,
-        requestedBy: run.context.userId,
-        tenantId: run.context.tenantId,
-      };
-    },
-  });
-
-  const requestAction = defineNeutralTool({
-    name: "requestQaCapabilityAction",
-    description: "Create an immutable, policy-evaluated QA capability action inside a durable QA run.",
-    parameters: z.object({
-      runId: z.string().uuid().optional().describe("Run id from startQaRun. Omit only for backward-compatible single actions."),
-      capabilityId: z.string().describe("Capability id from listQaCapabilities"),
-      projectId: z.string().min(1).describe("Project id such as PCC, SOP, or DataBridge"),
-      environment: z.enum(["playground", "qa", "prod"]),
-      payload: z.record(z.string(), z.unknown()).default({}),
-    }),
-    execute: async ({ runId, capabilityId, projectId, environment, payload }) => {
-      const identity = currentRequestIdentity();
-      assertProjectAccess(identity, projectId);
-      let context: ExecutionContext;
-      if (runId) {
-        const run = await broker.getRun(runId);
-        if (!run) throw new Error("QA run was not found or has expired from the configured store.");
-        if (!canAccessExecutionContext(identity, run.context)) throw new Error("Current identity cannot access this QA run.");
-        if (run.context.projectId !== projectId || run.context.environment !== environment) {
-          throw new Error("Action scope must match the durable QA run project and environment.");
-        }
-        // Reuse the durable run's project/environment/identity scope, but
-        // attribute this action to the specialist that actually requested it so
-        // the broker's capability grant is enforced per specialist, not per run.
-        context = { ...run.context, agentId };
-      } else {
-        context = contextFor(agentId, projectId, environment as EnvironmentName);
-      }
-      linkRun(context.runId);
-      return await broker.requestAction(capabilityId, context, payload);
-    },
-  });
-
-  const getAction = defineNeutralTool({
-    name: "getQaCapabilityAction",
-    description: "Read the server-side status of one previously requested QA action in the current identity scope.",
-    parameters: z.object({ actionId: z.string().uuid() }),
-    execute: async ({ actionId }) => {
-      const action = await actionForCurrentIdentity(broker, actionId);
-      if (action) linkRun(action.context.runId);
-      return action ?? { error: "action_not_found", actionId };
-    },
-  });
-
-  const executeAction = defineNeutralTool({
-    name: "executeQaCapabilityAction",
-    description: "Execute a previously requested QA action only when server policy and current identity scope permit it.",
-    parameters: z.object({ actionId: z.string().uuid() }),
-    execute: async ({ actionId }) => {
-      const action = await actionForCurrentIdentity(broker, actionId);
-      if (!action) throw new Error("Action not found");
-      linkRun(action.context.runId);
-      return broker.executeAction(actionId);
-    },
-  });
-
-  return [listCapabilities, listProjectTests, startRun, requestAction, getAction, executeAction];
+  return buildGovernedCapabilityTools(QA_TOOL_SURFACE, broker, telemetry, agentId);
 }

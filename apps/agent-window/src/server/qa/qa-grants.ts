@@ -1,4 +1,4 @@
-import { CapabilityGrantRegistry } from "../platform/capability-grants.js";
+import { CapabilityGrantRegistry, type CapabilityGrantSpec } from "../platform/capability-grants.js";
 import type { PackRuntimeProvider } from "../pack-runtime.js";
 
 /** Runtime agent id for the QA supervisor that coordinates the whole run. */
@@ -37,12 +37,16 @@ export function qaSpecialistAgentId(specialistId: string): string {
  * denied up front — and, because the registry fails closed, so is any agent id
  * that matches no declaration (a typo'd or spoofed specialist id).
  */
-export function buildQaGrantRegistry(): CapabilityGrantRegistry {
+export function qaGrantSpec(): CapabilityGrantSpec {
   const scoped: Record<string, readonly string[]> = {};
   for (const [specialistId, capabilities] of Object.entries(QA_SPECIALIST_CAPABILITIES)) {
     scoped[qaSpecialistAgentId(specialistId)] = capabilities;
   }
-  return new CapabilityGrantRegistry({ scoped, unrestricted: [QA_SUPERVISOR_AGENT_ID] });
+  return { scoped, unrestricted: [QA_SUPERVISOR_AGENT_ID] };
+}
+
+export function buildQaGrantRegistry(): CapabilityGrantRegistry {
+  return new CapabilityGrantRegistry(qaGrantSpec());
 }
 
 /**
