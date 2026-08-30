@@ -1,5 +1,8 @@
 import type { AgentTelemetryService } from "./platform/agent-telemetry.js";
 import type { CapabilityBrokerContract } from "./platform/capability-broker-contract.js";
+import type { CapabilityAdapter, CapabilityDefinition } from "./platform/capability-types.js";
+import type { CapabilityGrantSpec } from "./platform/capability-grants.js";
+import type { ArtifactRepository } from "./platform/artifact-store.js";
 import type { AgentPack } from "./pack-registry.js";
 import type { GovernedAgentSpec, PackRuntimeProvider } from "./pack-runtime.js";
 import type { NeutralTool } from "./runtime/agent-runtime.js";
@@ -7,6 +10,7 @@ import type { CompiledWorkflowStep } from "./workflow-compiler.js";
 import type { WorkflowRunContext } from "./workflow-executor.js";
 import type { CapabilityStepBinding } from "./workflow-broker-runner.js";
 import { qaGovernance } from "./qa/qa-governance.js";
+import { frontendGovernance } from "./frontend/frontend-governance.js";
 
 /**
  * Pack governance provider (finishes Phase 4).
@@ -22,9 +26,25 @@ import { qaGovernance } from "./qa/qa-governance.js";
  * materializes a governed team from that provider. QA is simply the first
  * registered provider, not an exception.
  */
+/** Server-side dependencies a pack's capability adapters may need. */
+export interface PackAdapterContext {
+  artifacts: ArtifactRepository;
+}
+
 export interface PackGovernance {
   /** Namespacing + capability grants the generic planner uses. */
   runtimeProvider: PackRuntimeProvider;
+  /**
+   * The governed capabilities this pack registers with the broker, already
+   * filtered to those the deployment can actually execute. A capability absent
+   * here cannot be requested at all — which is how a pack expresses a denied
+   * action (no capability, rather than a capability that refuses).
+   */
+  capabilities(): CapabilityDefinition[];
+  /** The adapters backing those capabilities. Adapter ids must be unique platform-wide. */
+  buildAdapters(context: PackAdapterContext): CapabilityAdapter[];
+  /** Per-agent capability allowlist contributed to the platform grant registry. */
+  grantSpec(): CapabilityGrantSpec;
   /** Governed capability protocol appended to the supervisor and every specialist. */
   capabilityPrompt: string;
   supervisorPrompt(specialistRuntimeIds: string[]): string;
@@ -53,9 +73,15 @@ export interface PackGovernance {
 /** The governed packs known to the platform, keyed by pack id. */
 const PACK_GOVERNANCE: Record<string, PackGovernance> = {
   qa: qaGovernance,
+  "frontend-angular": frontendGovernance,
 };
 
 /** The registered governance for a pack, or undefined for an ungoverned pack. */
 export function resolvePackGovernance(packId: string): PackGovernance | undefined {
   return PACK_GOVERNANCE[packId];
+}
+
+/** Every registered governed pack, as `[packId, governance]` in registration order. */
+export function listPackGovernance(): Array<[string, PackGovernance]> {
+  return Object.entries(PACK_GOVERNANCE);
 }

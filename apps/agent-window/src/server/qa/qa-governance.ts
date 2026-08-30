@@ -1,10 +1,21 @@
-import type { PackGovernance } from "../pack-governance.js";
+import type { CapabilityAdapter } from "../platform/capability-types.js";
+import type { PackAdapterContext, PackGovernance } from "../pack-governance.js";
 import type { AgentPack } from "../pack-registry.js";
 import type { GovernedAgentSpec } from "../pack-runtime.js";
 import type { CompiledWorkflowStep } from "../workflow-compiler.js";
 import type { WorkflowRunContext } from "../workflow-executor.js";
 import type { CapabilityStepBinding } from "../workflow-broker-runner.js";
-import { qaRuntimeProvider } from "./qa-grants.js";
+import { BitbucketReadAdapter } from "./bitbucket-read-adapter.js";
+import { JiraDefectAdapter } from "./jira-defect-adapter.js";
+import { JiraReadAdapter } from "./jira-read-adapter.js";
+import { PlaywrightWorkerAdapter } from "./playwright-worker-adapter.js";
+import { availableQaCapabilities, QaMockAdapter } from "./qa-capabilities.js";
+import { ApiContractAdapter } from "./qa-api-contract-adapter.js";
+import { DatabaseValidationAdapter } from "./qa-database-adapter.js";
+import { IntegrationTraceAdapter } from "./qa-integration-trace-adapter.js";
+import { QaTestPlanAdapter } from "./qa-testplan-adapter.js";
+import { TeamsStatusAdapter } from "./qa-teams-adapter.js";
+import { qaGrantSpec, qaRuntimeProvider } from "./qa-grants.js";
 import { buildQaTools, QA_CAPABILITY_PROMPT } from "./qa-tools.js";
 
 /**
@@ -82,8 +93,42 @@ function qaWorkflowBinding(step: CompiledWorkflowStep, context: WorkflowRunConte
   return { capabilityId, payload };
 }
 
+/**
+ * QA's capability adapters, in the order the broker registers them. Every live
+ * adapter falls back to the shared mock when its server-side integration is not
+ * configured, so an unconfigured deployment returns an explicit `mode: "mock"`
+ * rather than failing or pretending.
+ */
+function buildQaAdapters(context: PackAdapterContext): CapabilityAdapter[] {
+  const mock = new QaMockAdapter();
+  return [
+    mock,
+    new JiraReadAdapter(mock),
+    new BitbucketReadAdapter(mock),
+    new PlaywrightWorkerAdapter(mock, context.artifacts),
+    new JiraDefectAdapter(mock, context.artifacts),
+    new QaTestPlanAdapter(context.artifacts),
+    new TeamsStatusAdapter(mock),
+    new DatabaseValidationAdapter(mock),
+    new ApiContractAdapter(mock),
+    new IntegrationTraceAdapter(context.artifacts),
+  ];
+}
+
+/**
+ * The QA defect adapter from a composed adapter list. The QA review route needs
+ * the concrete adapter to preview a Jira create action against the exact stored
+ * bug draft; this keeps that lookup typed rather than casting an adapter id.
+ */
+export function findQaJiraDefectAdapter(adapters: CapabilityAdapter[]): JiraDefectAdapter | undefined {
+  return adapters.find((adapter): adapter is JiraDefectAdapter => adapter instanceof JiraDefectAdapter);
+}
+
 export const qaGovernance: PackGovernance = {
   runtimeProvider: qaRuntimeProvider,
+  capabilities: availableQaCapabilities,
+  buildAdapters: buildQaAdapters,
+  grantSpec: qaGrantSpec,
   capabilityPrompt: QA_CAPABILITY_PROMPT,
   supervisorPrompt: qaSupervisorPrompt,
   specialistPrompt: qaSpecialistPrompt,

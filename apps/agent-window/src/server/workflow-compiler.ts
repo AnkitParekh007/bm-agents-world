@@ -1,24 +1,37 @@
 import { canonicalHash } from "./platform/canonical.js";
-import { validateWorkflow, type WorkflowStep } from "./workflow-schema.js";
+import {
+  normalizeWorkflowDocument,
+  validateWorkflow,
+  type NormalizedWorkflowStep,
+} from "./workflow-schema.js";
 
 /**
- * Workflow compiler (Phase 5).
+ * Workflow compiler (Phase 5, generalized in Phase 9).
  *
  * Compiles a declarative workflow into an executable model: a validated DAG plus
  * a deterministic execution order. Each "wave" is a set of steps whose
  * dependencies are all satisfied and that may therefore run in parallel; waves
  * are ordered, and steps within a wave are sorted by id for determinism. The
  * compiler fails closed on structural defects — duplicate step ids, references
- * to unknown steps or (optionally) unknown agents, and cycles — surfacing them
- * as diagnostics rather than producing an unrunnable plan. A contentHash over
- * the compiled form ties workflows into the same provenance model as packs.
+ * to unknown steps or (optionally) unknown agents, cycles, and a document that
+ * declares no steps at all — surfacing them as diagnostics rather than producing
+ * an unrunnable (or silently empty) plan. A contentHash over the compiled form
+ * ties workflows into the same provenance model as packs.
+ *
+ * The compiler is dialect-independent: {@link normalizeWorkflowDocument} has
+ * already reduced whichever shape a pack authored to one normalized graph.
  */
 
 export interface CompiledWorkflowStep {
   id: string;
   agent?: string;
   tool?: string;
+  /** First declared skill, kept for single-skill packs and existing callers. */
   skill?: string;
+  /** Every skill the step exercises, in declaration order. */
+  skills: string[];
+  /** A named external operation the step performs; a declared side effect. */
+  action?: string;
   type?: string;
   dependsOn: string[];
   parallelGroup?: string;
@@ -43,7 +56,7 @@ export interface CompileWorkflowOptions {
   strict?: boolean;
 }
 
-function computeWaves(steps: WorkflowStep[], diagnostics: string[]): { waves: string[][]; waveOf: Map<string, number> } {
+function computeWaves(steps: NormalizedWorkflowStep[], diagnostics: string[]): { waves: string[][]; waveOf: Map<string, number> } {
   const ids = new Set(steps.map((step) => step.id));
   const deps = new Map<string, string[]>();
   for (const step of steps) {
@@ -80,9 +93,12 @@ export function compileWorkflow(raw: unknown, options: CompileWorkflowOptions = 
   const schema = validateWorkflow(raw);
   diagnostics.push(...schema.issues);
 
-  const document = (raw ?? {}) as { metadata?: { id?: string }; steps?: WorkflowStep[] };
-  const id = document.metadata?.id ?? "workflow";
-  const steps = Array.isArray(document.steps) ? document.steps : [];
+  const { id, steps, declaresSteps } = normalizeWorkflowDocument(raw);
+
+  // A document with no step list is not an empty workflow — it is a workflow the
+  // compiler could not find, and running it as a no-op would report success for
+  // work that never happened.
+  if (!declaresSteps) diagnostics.push("workflow declares no steps");
 
   // Unique step ids.
   const seen = new Set<string>();
@@ -109,6 +125,8 @@ export function compileWorkflow(raw: unknown, options: CompileWorkflowOptions = 
       agent: step.agent,
       tool: step.tool,
       skill: step.skill,
+      skills: step.skills,
+      action: step.action,
       type: step.type,
       dependsOn: step.dependsOn ?? [],
       parallelGroup: step.parallelGroup,

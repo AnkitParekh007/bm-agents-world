@@ -1,4 +1,4 @@
-import { existsSync } from "node:fs";
+﻿import { existsSync } from "node:fs";
 import { resolve } from "node:path";
 import express from "express";
 import { buildCopilotRuntime } from "./runtime/copilot-runtime.js";
@@ -29,17 +29,11 @@ import {
 } from "./platform/request-identity.js";
 import { createRuntimePersistence } from "./platform/runtime-persistence.js";
 import { initTelemetry, shutdownTelemetry, startActiveSpan, telemetryRuntimeStatus } from "./platform/telemetry.js";
-import { BitbucketReadAdapter } from "./qa/bitbucket-read-adapter.js";
-import { JiraDefectAdapter } from "./qa/jira-defect-adapter.js";
-import { JiraReadAdapter } from "./qa/jira-read-adapter.js";
-import { PlaywrightWorkerAdapter } from "./qa/playwright-worker-adapter.js";
-import { availableQaCapabilities, QaMockAdapter } from "./qa/qa-capabilities.js";
-import { buildQaGrantRegistry } from "./qa/qa-grants.js";
-import { QaTestPlanAdapter } from "./qa/qa-testplan-adapter.js";
-import { TeamsStatusAdapter, teamsAdapterMode } from "./qa/qa-teams-adapter.js";
-import { DatabaseValidationAdapter, databaseAdapterMode } from "./qa/qa-database-adapter.js";
-import { ApiContractAdapter, apiContractAdapterMode } from "./qa/qa-api-contract-adapter.js";
-import { IntegrationTraceAdapter } from "./qa/qa-integration-trace-adapter.js";
+import { composeGovernedPacks } from "./governed-packs.js";
+import { findQaJiraDefectAdapter } from "./qa/qa-governance.js";
+import { teamsAdapterMode } from "./qa/qa-teams-adapter.js";
+import { databaseAdapterMode } from "./qa/qa-database-adapter.js";
+import { apiContractAdapterMode } from "./qa/qa-api-contract-adapter.js";
 import { loadQaIntegrationStatus } from "./qa/qa-integration-config.js";
 import { projectTestCatalogStatus } from "./qa/qa-project-tests.js";
 
@@ -59,26 +53,15 @@ const connectorRegistry = new ApprovedConnectorRegistry();
 const centralPolicy: PolicyEvaluator | undefined = persistence.shared && process.env.BM_POLICY_MODE?.trim()
   ? createPolicyEngine(connectorRegistry)
   : undefined;
-const qaMockAdapter = new QaMockAdapter();
-const jiraDefectAdapter = new JiraDefectAdapter(qaMockAdapter, artifacts);
-const adapters = [
-  qaMockAdapter,
-  new JiraReadAdapter(qaMockAdapter),
-  new BitbucketReadAdapter(qaMockAdapter),
-  new PlaywrightWorkerAdapter(qaMockAdapter, artifacts),
-  jiraDefectAdapter,
-  new QaTestPlanAdapter(artifacts),
-  new TeamsStatusAdapter(qaMockAdapter),
-  new DatabaseValidationAdapter(qaMockAdapter),
-  new ApiContractAdapter(qaMockAdapter),
-  new IntegrationTraceAdapter(artifacts),
-];
-const qaCapabilities = availableQaCapabilities();
-const qaGrants = buildQaGrantRegistry();
-const qaBroker: CapabilityBrokerContract = persistence.shared
-  ? new AsyncCapabilityBroker(qaCapabilities, adapters, persistence.capabilityStore, centralPolicy, qaGrants)
-  : new CapabilityBroker(qaCapabilities, adapters, persistence.capabilityStore, qaGrants);
-const runtime = buildCopilotRuntime(registry, qaBroker, agentTelemetry);
+// Every governed pack contributes its capabilities, adapters, and grants; the
+// broker is built from the union. A new vertical is a registered governance
+// provider, not an edit here. Collisions between packs fail startup closed.
+const governed = composeGovernedPacks({ artifacts });
+const jiraDefectAdapter = findQaJiraDefectAdapter(governed.adapters);
+const broker: CapabilityBrokerContract = persistence.shared
+  ? new AsyncCapabilityBroker(governed.capabilities, governed.adapters, persistence.capabilityStore, centralPolicy, governed.grants)
+  : new CapabilityBroker(governed.capabilities, governed.adapters, persistence.capabilityStore, governed.grants);
+const runtime = buildCopilotRuntime(registry, broker, agentTelemetry);
 // Durable workflow-run state for the governed workflow engine. Local mode uses
 // the SQLite binding; a Postgres binding for shared-pilot mode is a follow-up, so
 // shared mode uses the in-memory store in the interim.
@@ -88,7 +71,7 @@ const workflowRunStore = persistence.shared ? new InMemoryWorkflowRunStore() : n
 // provisioned for the environment; until then it opens nothing and its adapters
 // are never registered with the broker, so the pilot keeps its native adapters.
 const mcpRuntime = createMcpRuntime({ registry: connectorRegistry });
-const workflowService = new GovernedWorkflowService({ registry, broker: qaBroker, store: workflowRunStore });
+const workflowService = new GovernedWorkflowService({ registry, broker: broker, store: workflowRunStore });
 const app = express();
 
 app.disable("x-powered-by");
@@ -156,13 +139,13 @@ app.get("/readyz", async (_request, response) => {
 app.use(identityMiddleware());
 
 async function accessibleRun(runId: string) {
-  const run = await qaBroker.getRun(runId);
+  const run = await broker.getRun(runId);
   if (!run) return undefined;
   return canAccessExecutionContext(currentRequestIdentity(), run.context) ? run : null;
 }
 
 async function accessibleAction(actionId: string) {
-  const action = await qaBroker.getAction(actionId);
+  const action = await broker.getAction(actionId);
   if (!action) return undefined;
   return canAccessExecutionContext(currentRequestIdentity(), action.context) ? action : null;
 }
@@ -235,13 +218,13 @@ async function saveEvaluation(run: Awaited<ReturnType<typeof accessibleRun>> & o
 
 async function enrichRuns(baseRuns: QaPilotRunMetrics[]): Promise<EnrichedQaPilotRunMetrics[]> {
   if (persistence.shared) {
-    return enrichQaPilotRunsShared(baseRuns, persistence.telemetryReadStore, qaBroker);
+    return enrichQaPilotRunsShared(baseRuns, persistence.telemetryReadStore, broker);
   }
-  return enrichQaPilotRuns(baseRuns, persistence.telemetryReadStore, qaBroker as CapabilityBroker);
+  return enrichQaPilotRuns(baseRuns, persistence.telemetryReadStore, broker as CapabilityBroker);
 }
 
 async function enrichedMetricsForRun(runId: string) {
-  const run = await qaBroker.getRun(runId);
+  const run = await broker.getRun(runId);
   if (!run) return undefined;
   const metrics = (await listRunMetrics({
     tenantId: run.context.tenantId,
@@ -323,7 +306,8 @@ app.get("/api/health", async (_request, response) => {
       : { status: "no-lock" },
     agents: ["default", ...registry.packs.map((pack) => pack.id)],
     model: process.env.AI_MODEL ?? "openai:gpt-5.4-mini",
-    qaCapabilityCount: qaBroker.listCapabilities().length,
+    qaCapabilityCount: broker.listCapabilities().length,
+    governedPacks: governed.packIds,
     deploymentMode: readiness.mode,
     ready: readiness.ready,
     identityMode: process.env.BM_IDENTITY_MODE?.trim() || "local-dev",
@@ -384,7 +368,7 @@ app.get("/api/packs/:packId", (request, response) => {
 });
 
 app.get("/api/qa/capabilities", (_request, response) => {
-  response.json({ integrations: loadQaIntegrationStatus(), projectTests: projectTestCatalogStatus(), capabilities: qaBroker.listCapabilities() });
+  response.json({ integrations: loadQaIntegrationStatus(), projectTests: projectTestCatalogStatus(), capabilities: broker.listCapabilities() });
 });
 
 app.get("/api/qa/integrations", (_request, response) => response.json(loadQaIntegrationStatus()));
@@ -394,12 +378,12 @@ app.get("/api/qa/runs", async (request, response) => {
   const rawLimit = Number(request.query.limit ?? 50);
   const limit = Number.isFinite(rawLimit) ? Math.max(1, Math.min(rawLimit, 200)) : 50;
   const identity = currentRequestIdentity();
-  const visibleRuns = (await qaBroker.listRuns(500))
+  const visibleRuns = (await broker.listRuns(500))
     .filter((run) => canAccessExecutionContext(identity, run.context))
     .slice(0, limit);
   const runs = await Promise.all(visibleRuns.map(async (run) => ({
     ...run,
-    actionCount: (await qaBroker.listActionsForRun(run.id)).length,
+    actionCount: (await broker.listActionsForRun(run.id)).length,
   })));
   response.json({ runs });
 });
@@ -409,7 +393,7 @@ app.get("/api/qa/runs/:runId", async (request, response) => {
   if (run === undefined) return void response.status(404).json({ error: "run_not_found" });
   if (run === null) return void response.status(403).json({ error: "run_access_denied" });
   const [actions, evaluation, telemetry] = await Promise.all([
-    qaBroker.listActionsForRun(run.id),
+    broker.listActionsForRun(run.id),
     getEvaluation(run.id),
     enrichedMetricsForRun(run.id),
   ]);
@@ -495,6 +479,7 @@ app.get("/api/qa/actions/:actionId/review", async (request, response) => {
   if (action === undefined) return void response.status(404).json({ error: "action_not_found" });
   if (action === null) return void response.status(403).json({ error: "action_access_denied" });
   if (action.capabilityId !== "qa.jira.bug.create") return void response.status(400).json({ error: "review_not_supported_for_capability" });
+  if (!jiraDefectAdapter) return void response.status(503).json({ error: "review_unavailable", message: "The QA defect adapter is not registered in this deployment." });
   try {
     response.json(await jiraDefectAdapter.previewCreateAction(action));
   } catch (error) {
@@ -527,7 +512,7 @@ app.post("/api/qa/actions/:actionId/decision", async (request, response) => {
         "bm.project.id": action.context.projectId,
         "bm.approval.decision": decision,
       },
-      () => qaBroker.decideAction(request.params.actionId, decision, identity.userId, reason),
+      () => broker.decideAction(request.params.actionId, decision, identity.userId, reason),
     );
     response.json(result);
   } catch (error) {
@@ -539,10 +524,10 @@ app.get("/api/audit", async (request, response) => {
   const rawLimit = Number(request.query.limit ?? 100);
   const limit = Number.isFinite(rawLimit) ? Math.max(1, Math.min(rawLimit, 200)) : 100;
   const identity = currentRequestIdentity();
-  const events = await qaBroker.listAudit(500);
+  const events = await broker.listAudit(500);
   const visible = [];
   for (const event of events) {
-    const run = await qaBroker.getRun(event.runId);
+    const run = await broker.getRun(event.runId);
     if (run && canAccessExecutionContext(identity, run.context)) visible.push(event);
     if (visible.length >= limit) break;
   }
@@ -571,11 +556,11 @@ const server = app.listen(PORT, "0.0.0.0", async () => {
   console.log(`[bm-agents-world] runtime: http://localhost:${PORT}/api/copilotkit`);
   console.log(`[bm-agents-world] probes: /healthz and /readyz (${readiness.mode}, ready=${readiness.ready})`);
   console.log(`[bm-agents-world] instance: ${INSTANCE_ID}`);
-  console.log(`[bm-agents-world] qa capabilities: ${qaBroker.listCapabilities().length}`);
+  console.log(`[bm-agents-world] governed packs: ${governed.packIds.join(", ")}; capabilities: ${broker.listCapabilities().length}`);
   console.log(`[bm-agents-world] persistence: ${persistence.status.mode}; shared=${persistence.status.shared}`);
   console.log(`[bm-agents-world] state: ${persistence.status.state.kind}; artifacts: ${persistence.status.artifacts.kind}`);
   console.log(`[bm-agents-world] central policy: ${policy.mode}; healthy=${policy.healthy}; connectors=${policy.connectorCount}`);
-  console.log(`[bm-agents-world] mcp: ${mcpRuntime.status.enabled ? `enabled for ${mcpRuntime.status.connectors.length} connector(s)` : "disabled"} — ${mcpRuntime.status.reason}`);
+  console.log(`[bm-agents-world] mcp: ${mcpRuntime.status.enabled ? `enabled for ${mcpRuntime.status.connectors.length} connector(s)` : "disabled"} â€” ${mcpRuntime.status.reason}`);
   console.log(`[bm-agents-world] telemetry: model usage persists when provider metadata is present; otel=${otel.enabled ? "enabled" : "disabled"}`);
   console.log(`[bm-agents-world] identity mode: ${process.env.BM_IDENTITY_MODE?.trim() || "local-dev"}`);
   console.log(`[bm-agents-world] qa jira read: ${integrations.jira.mode}; jira write: ${integrations.jira.writeMode}; bitbucket: ${integrations.bitbucket.mode}; playwright: ${integrations.playwright.mode}`);

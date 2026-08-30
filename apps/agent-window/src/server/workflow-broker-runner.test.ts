@@ -1,4 +1,4 @@
-import assert from "node:assert/strict";
+﻿import assert from "node:assert/strict";
 import test from "node:test";
 import { CapabilityBroker } from "./platform/capability-broker.js";
 import type { ExecutionContext } from "./platform/capability-types.js";
@@ -39,13 +39,21 @@ function resolverFrom(map: Record<string, CapabilityStepBinding>) {
 
 const runContext = (): WorkflowRunContext => ({ runId: "run-1", results: {} });
 
+const step = (id: string, extra: Partial<CompiledWorkflowStep> = {}): CompiledWorkflowStep => ({
+  id,
+  skills: [],
+  dependsOn: [],
+  wave: 0,
+  ...extra,
+});
+
 test("an L0 read step is requested and executed to completion", async () => {
   const runner = new BrokerStepRunner({
     broker: broker(),
     resolveCapability: resolverFrom({ read: { capabilityId: "qa.jira.story.read", payload: { storyId: "PCC-1" } } }),
     buildContext: ctxBuilder(),
   });
-  const outcome = await runner.run({ id: "read", dependsOn: [], wave: 0 }, runContext());
+  const outcome = await runner.run(step("read"), runContext());
   assert.equal(outcome.status, "completed");
 });
 
@@ -55,7 +63,7 @@ test("an L3 write step comes back awaiting approval instead of executing", async
     resolveCapability: resolverFrom({ post: { capabilityId: "qa.teams.status.post", payload: { channel: "Teams", message: "hi" } } }),
     buildContext: ctxBuilder(),
   });
-  const outcome = await runner.run({ id: "post", dependsOn: [], wave: 0 }, runContext());
+  const outcome = await runner.run(step("post"), runContext());
   assert.equal(outcome.status, "awaiting_approval");
 });
 
@@ -65,17 +73,32 @@ test("a step outside the agent's grant is failed by the broker", async () => {
     resolveCapability: resolverFrom({ bug: { capabilityId: "qa.jira.bug.create", payload: {} } }),
     buildContext: ctxBuilder("qa.browser-qa"),
   });
-  const outcome = await runner.run({ id: "bug", dependsOn: [], wave: 0 }, runContext());
+  const outcome = await runner.run(step("bug"), runContext());
   assert.equal(outcome.status, "failed");
   assert.match(outcome.error ?? "", /not granted/);
 });
 
 test("an unmapped step is delegated (completed) or failed per onUnmapped", async () => {
   const base = { broker: broker(), resolveCapability: () => undefined, buildContext: ctxBuilder() };
-  const delegated = await new BrokerStepRunner(base).run({ id: "think", dependsOn: [], wave: 0 }, runContext());
+  const delegated = await new BrokerStepRunner(base).run(step("think"), runContext());
   assert.equal(delegated.status, "completed");
-  const failed = await new BrokerStepRunner({ ...base, onUnmapped: "fail" }).run({ id: "think", dependsOn: [], wave: 0 }, runContext());
+  const failed = await new BrokerStepRunner({ ...base, onUnmapped: "fail" }).run(step("think"), runContext());
   assert.equal(failed.status, "failed");
+});
+
+test("an unmapped step declaring a side effect fails closed, tool or action", async () => {
+  const base = { broker: broker(), resolveCapability: () => undefined, buildContext: ctxBuilder() };
+
+  const unmappedTool = await new BrokerStepRunner(base).run(step("publish", { tool: "teams.post" }), runContext());
+  assert.equal(unmappedTool.status, "failed");
+  assert.match(unmappedTool.error ?? "", /tool "teams\.post".*no governed capability binding/);
+
+  // A named `action` (git.push, jira.write) is just as concrete a side effect as
+  // a tool; delegating one as if it were reasoning would let a workflow perform
+  // an ungoverned external write.
+  const unmappedAction = await new BrokerStepRunner(base).run(step("push", { action: "git.push" }), runContext());
+  assert.equal(unmappedAction.status, "failed");
+  assert.match(unmappedAction.error ?? "", /action "git\.push".*no governed capability binding/);
 });
 
 test("end to end: compile a workflow and run it through the governed broker", async () => {
