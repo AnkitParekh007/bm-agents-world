@@ -6,9 +6,12 @@ import { copilotKitExpressTransport } from "./runtime/copilotkit-transport.js";
 import { PackRegistry } from "./pack-registry.js";
 import { buildPackLock, diffPackLock, loadPackLock } from "./pack-lock.js";
 import { GovernedWorkflowService, WorkflowServiceError } from "./workflow-run-service.js";
+import { buildAgentRows, buildApprovalRows, buildCapabilityRows, buildOverview } from "./control-plane.js";
+import { listPackGovernance } from "./pack-governance.js";
+import { planGovernedAgents, type GovernedAgentPlan } from "./pack-runtime.js";
 import { SqliteWorkflowRunStore } from "./sqlite-workflow-run-store.js";
 import { InMemoryWorkflowRunStore } from "./workflow-run-store.js";
-import type { EnvironmentName } from "./platform/capability-types.js";
+import type { CapabilityAction, EnvironmentName } from "./platform/capability-types.js";
 import { AgentTelemetryService } from "./platform/agent-telemetry.js";
 import { AsyncCapabilityBroker } from "./platform/async-capability-broker.js";
 import type { CapabilityBrokerContract } from "./platform/capability-broker-contract.js";
@@ -353,6 +356,76 @@ app.get("/api/qa/pilot/validation", async (_request, response) => {
   });
   response.setHeader("Cache-Control", "private, no-store");
   response.status(validation.ready ? 200 : 503).json(validation);
+});
+
+// ---------------------------------------------------------------------------
+// Control plane (Phase 10). Pack-agnostic operator surface: what this platform
+// is allowed to do, which agent may ask for it, and what is waiting on a human.
+// Every payload is derived server-side by the pure builders in control-plane.ts,
+// so the console renders what the server actually computed.
+// ---------------------------------------------------------------------------
+
+/** Governed agent plans, one per registered governed pack. */
+function governedPlans(): Array<[string, GovernedAgentPlan]> {
+  return listPackGovernance().flatMap(([packId, governance]) => {
+    const compiled = registry.compiled(packId);
+    if (!compiled) return [];
+    return [[packId, planGovernedAgents(compiled, governance.runtimeProvider)] as [string, GovernedAgentPlan]];
+  });
+}
+
+/** Pending actions visible to the current identity, across every governed run. */
+async function pendingApprovalActions(): Promise<CapabilityAction[]> {
+  const identity = currentRequestIdentity();
+  const runs = (await broker.listRuns(500)).filter((run) => canAccessExecutionContext(identity, run.context));
+  const actions = await Promise.all(runs.map((run) => broker.listActionsForRun(run.id)));
+  return actions.flat().filter((action) => action.status === "pending_approval");
+}
+
+app.get("/api/control-plane/overview", async (_request, response) => {
+  const pending = await pendingApprovalActions();
+  response.setHeader("Cache-Control", "private, no-store");
+  response.json(
+    buildOverview({
+      packCount: registry.packs.length,
+      invalidPacks: registry.invalidPacks(),
+      plans: governedPlans(),
+      capabilities: broker.listCapabilities(),
+      pendingApprovals: pending.length,
+      packDrift,
+      persistenceMode: persistence.status.mode,
+      policyConfigured: Boolean(centralPolicy),
+      mcp: mcpRuntime.status,
+    }),
+  );
+});
+
+app.get("/api/control-plane/agents", (_request, response) => {
+  response.setHeader("Cache-Control", "private, no-store");
+  response.json({ agents: buildAgentRows(governedPlans(), governed.grants) });
+});
+
+app.get("/api/control-plane/capabilities", (_request, response) => {
+  const capabilityPack = new Map<string, string>();
+  for (const [packId, governance] of listPackGovernance()) {
+    for (const capability of governance.capabilities()) capabilityPack.set(capability.id, packId);
+  }
+  response.setHeader("Cache-Control", "private, no-store");
+  response.json({
+    capabilities: buildCapabilityRows({
+      capabilities: broker.listCapabilities(),
+      capabilityPack,
+      registeredAdapterIds: new Set(governed.adapters.map((adapter) => adapter.id)),
+      connectors: connectorRegistry.listAll(),
+      agents: buildAgentRows(governedPlans(), governed.grants),
+    }),
+  });
+});
+
+app.get("/api/control-plane/approvals", async (_request, response) => {
+  const pending = await pendingApprovalActions();
+  response.setHeader("Cache-Control", "private, no-store");
+  response.json({ approvals: buildApprovalRows(pending, broker.listCapabilities()) });
 });
 
 app.get("/api/packs", (_request, response) => response.json({ packs: registry.listPublic() }));

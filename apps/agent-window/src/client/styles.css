@@ -42,6 +42,13 @@ button { color: inherit; }
 .brand strong { display: block; font-size: 15px; }
 .brand span { display: block; margin-top: 3px; color: #7f879d; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
 
+.control-plane-link {
+  display: block; text-align: center; text-decoration: none; color: #c3caf0;
+  border: 1px solid rgba(255,255,255,.09); background: rgba(255,255,255,.035);
+  border-radius: 12px; padding: 10px 12px; font-size: 12.5px; font-weight: 600; transition: .16s ease;
+}
+.control-plane-link:hover { border-color: rgba(126, 139, 255, .55); background: rgba(126, 139, 255, .1); color: #fff; }
+
 .sidebar-heading { display: flex; align-items: center; justify-content: space-between; padding: 0 6px; color: #9aa2b7; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
 .count-pill { border: 1px solid rgba(255,255,255,.1); border-radius: 999px; padding: 2px 8px; color: #dce0ec; background: rgba(255,255,255,.04); }
 .pack-search {
