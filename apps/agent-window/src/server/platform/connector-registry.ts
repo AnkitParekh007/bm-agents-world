@@ -118,6 +118,16 @@ export class ApprovedConnectorRegistry implements ConnectorAdmissionResolver {
   }
 
   /**
+   * Every registered connector, including the capability ids its tools cover.
+   * Capability ids are governance metadata, not secrets — the control plane
+   * needs them to show which connector admits a capability — but endpoints and
+   * credentials are never part of this registry at all.
+   */
+  listAll(): ApprovedConnector[] {
+    return this.connectors;
+  }
+
+  /**
    * Connectors that can be served over MCP — kind `mcp` or `native-or-mcp` — and
    * are not disabled. Returned with the capability ids each connector's tools
    * cover, so a factory can stand up one governed MCP adapter per connector.

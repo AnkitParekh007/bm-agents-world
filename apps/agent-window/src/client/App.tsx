@@ -166,6 +166,12 @@ export function App() {
           ))}
         </nav>
 
+        {/* A plain link, not an import: the operator console is a separate entry
+            that loads no agent runtime, so it stays reachable when this one cannot start. */}
+        <a className="control-plane-link" href="/control-plane.html">
+          Control plane →
+        </a>
+
         <div className="sidebar-footer">
           <span className="status-dot" />
           <div>

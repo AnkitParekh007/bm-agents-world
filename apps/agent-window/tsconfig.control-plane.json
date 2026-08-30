@@ -1,0 +1,19 @@
+{
+  "//": "Typechecks the operator console on its own. The full client build cannot compile in every environment (the CopilotKit v2 ESM outputs are missing from some installs), and the console must never depend on them — so this config proves the console is genuinely self-contained by compiling it in isolation.",
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "types": []
+  },
+  "include": ["src/client/control-plane"]
+}
