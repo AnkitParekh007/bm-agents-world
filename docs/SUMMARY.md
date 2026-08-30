@@ -20,6 +20,7 @@
 
 ## Product features
 * [Agent window](features/agent-window.md)
+* [Control plane](features/control-plane.md)
 * [QA workbench](features/qa-workbench.md)
 * [QA pilot scorecard](features/pilot-observability.md)
 * [External integrations](features/integrations.md)
